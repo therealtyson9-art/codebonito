@@ -2,6 +2,10 @@ import { NextResponse } from "next/server";
 import { getStripe } from "@/lib/stripe";
 import { createClient } from "@/lib/supabase/server";
 
+// TODO: Replace with your real Stripe Price ID from the dashboard
+// Create a Product "Code Bonito Pro" with a $5/month recurring price
+const STRIPE_PRO_PRICE_ID = process.env.STRIPE_PRO_PRICE_ID || "price_REPLACE_ME";
+
 export async function POST() {
   try {
     const supabase = await createClient();
@@ -17,15 +21,7 @@ export async function POST() {
       customer_email: user.email,
       line_items: [
         {
-          price_data: {
-            currency: "usd",
-            product_data: {
-              name: "Code Bonito Pro",
-              description: "Unlimited access to all design templates",
-            },
-            unit_amount: 500, // $5.00
-            recurring: { interval: "month" },
-          },
+          price: STRIPE_PRO_PRICE_ID,
           quantity: 1,
         },
       ],

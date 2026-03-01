@@ -1,12 +1,12 @@
 "use client";
 
-import { use } from "react";
+import { use, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Card, CardContent } from "@/components/ui/card";
 import { MOCK_TEMPLATES } from "@/lib/mock-data";
 import {
   ArrowLeft,
@@ -15,8 +15,9 @@ import {
   Smartphone,
   Figma,
   Calendar,
-  User,
   ArrowRight,
+  Loader2,
+  Lock,
 } from "lucide-react";
 
 const platformMeta: Record<string, { icon: React.ReactNode; label: string }> = {
@@ -33,6 +34,9 @@ export default function TemplateDetailPage({
 }) {
   const { id } = use(params);
   const template = MOCK_TEMPLATES.find((t) => t.id === id);
+  const router = useRouter();
+  const [downloading, setDownloading] = useState(false);
+  const [showUpgrade, setShowUpgrade] = useState(false);
 
   if (!template) {
     return (
@@ -48,6 +52,40 @@ export default function TemplateDetailPage({
         </div>
       </div>
     );
+  }
+
+  async function handleDownload() {
+    setDownloading(true);
+    setShowUpgrade(false);
+
+    try {
+      const res = await fetch("/api/download", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ templateId: template!.id }),
+      });
+
+      const data = await res.json();
+
+      if (res.status === 401) {
+        router.push(`/login?redirect=/template/${template!.id}`);
+        return;
+      }
+
+      if (res.status === 403 && data.upgrade) {
+        setShowUpgrade(true);
+        return;
+      }
+
+      if (data.success) {
+        // In a real app, this would trigger a file download
+        alert(`Download started for "${data.template}"!`);
+      }
+    } catch {
+      // Network error
+    } finally {
+      setDownloading(false);
+    }
   }
 
   const relatedTemplates = MOCK_TEMPLATES.filter(
@@ -186,14 +224,41 @@ export default function TemplateDetailPage({
             <Separator className="my-6" />
 
             {/* Download CTA */}
-            <Button className="h-12 w-full text-base" size="lg">
-              <Download className="mr-2 h-4 w-4" />
+            <Button
+              className="h-12 w-full text-base"
+              size="lg"
+              onClick={handleDownload}
+              disabled={downloading}
+            >
+              {downloading ? (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              ) : (
+                <Download className="mr-2 h-4 w-4" />
+              )}
               {template.price_tier === "pro"
                 ? "Download (Pro)"
                 : "Download Free"}
             </Button>
 
-            {template.price_tier === "pro" && (
+            {showUpgrade && (
+              <div className="mt-4 rounded-lg border border-primary/50 bg-primary/5 p-4">
+                <div className="flex items-center gap-2 text-sm font-medium">
+                  <Lock className="h-4 w-4 text-primary" />
+                  Pro subscription required
+                </div>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Upgrade to Pro for unlimited access to all templates.
+                </p>
+                <Button asChild size="sm" className="mt-3">
+                  <Link href="/pricing">
+                    Upgrade to Pro — $5/mo
+                    <ArrowRight className="ml-2 h-3.5 w-3.5" />
+                  </Link>
+                </Button>
+              </div>
+            )}
+
+            {template.price_tier === "pro" && !showUpgrade && (
               <p className="mt-3 text-center text-xs text-muted-foreground">
                 Requires a{" "}
                 <Link
