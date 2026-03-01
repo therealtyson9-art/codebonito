@@ -1,5 +1,6 @@
 "use client";
 
+import { generatePrompt } from "@/lib/prompt-generator";
 import { use, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -27,6 +28,7 @@ export default function TemplateDetailPage({
   const router = useRouter();
   const [downloading, setDownloading] = useState(false);
   const [showUpgrade, setShowUpgrade] = useState(false);
+  const [copiedPlatform, setCopiedPlatform] = useState<string | null>(null);
 
   if (!template) {
     return (
@@ -55,22 +57,35 @@ export default function TemplateDetailPage({
         body: JSON.stringify({ templateId: template!.id }),
       });
 
-      const data = await res.json();
-
       if (res.status === 401) {
         router.push(`/login?redirect=/template/${template!.id}`);
         return;
       }
 
-      if (res.status === 403 && data.upgrade) {
-        setShowUpgrade(true);
+      if (res.status === 403) {
+        const data = await res.json();
+        if (data.upgrade) {
+          setShowUpgrade(true);
+        }
         return;
       }
 
-      if (data.success) {
-        // In a real app, this would trigger a file download
-        alert(`Download started for "${data.template}"!`);
+      if (!res.ok) {
+        return;
       }
+
+      // Response is a ZIP blob — trigger browser download
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      const disposition = res.headers.get("Content-Disposition");
+      const match = disposition?.match(/filename="?([^"]+)"?/);
+      a.download = match?.[1] ?? `codebonito-${template!.slug}.zip`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
     } catch {
       // Network error
     } finally {
@@ -164,22 +179,34 @@ export default function TemplateDetailPage({
 
             {/* Metadata */}
             <div className="space-y-5">
-              {/* Platforms */}
+              {/* Platforms — Copy Prompt */}
               <div>
                 <h3 className="mb-3 text-sm font-medium text-muted-foreground">
-                  Supported Platforms
+                  Copy Prompt for Platform
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {template.platforms.map((platform) => (
-                      <div
+                      <button
                         key={platform}
-                        className="flex items-center gap-2 rounded-lg border border-border/40 bg-card px-3 py-2 text-sm"
+                        onClick={() => {
+                          const prompt = generatePrompt(template as any, platform);
+                          navigator.clipboard.writeText(prompt);
+                          setCopiedPlatform(platform);
+                          setTimeout(() => setCopiedPlatform(null), 2000);
+                        }}
+                        className={`flex items-center gap-2 rounded-lg border px-3 py-2 text-sm transition-colors ${
+                          copiedPlatform === platform
+                            ? "border-green-500 bg-green-500/10 text-green-400"
+                            : "border-border/40 bg-card hover:border-primary/50 hover:bg-primary/5"
+                        }`}
                       >
-                        {platform}
-                      </div>
+                        {copiedPlatform === platform ? "✓ Copied!" : `📋 ${platform}`}
+                      </button>
                     ))}
                 </div>
+                <p className="mt-2 text-xs text-muted-foreground">Click to copy the prompt, then paste it into your platform</p>
               </div>
+
 
               {/* Stats */}
               <div className="grid grid-cols-2 gap-3">
