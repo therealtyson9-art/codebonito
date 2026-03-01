@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,7 +13,7 @@ import {
 } from "@/components/ui/select";
 import { TemplateCard } from "@/components/template-card";
 import { CATEGORIES, STYLES } from "@/lib/mock-data";
-import { Search, SlidersHorizontal, X } from "lucide-react";
+import { Search, SlidersHorizontal, X, ExternalLink } from "lucide-react";
 import type { Template } from "@/types/database";
 
 export function BrowseClient({ templates }: { templates: Template[] }) {
@@ -37,7 +38,10 @@ export function BrowseClient({ templates }: { templates: Template[] }) {
   }, [templates, search, category, style, priceTier]);
 
   const hasActiveFilters =
-    category !== "all" || style !== "all" || priceTier !== "all" || search !== "";
+    category !== "all" ||
+    style !== "all" ||
+    priceTier !== "all" ||
+    search !== "";
 
   function clearFilters() {
     setSearch("");
@@ -149,7 +153,26 @@ export function BrowseClient({ templates }: { templates: Template[] }) {
       ) : (
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((template) => (
-            <TemplateCard key={template.id} template={template} />
+            <div key={template.id} className="flex flex-col">
+              <TemplateCard template={template} />
+              {template.demo_url && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="mt-2"
+                  asChild
+                >
+                  <Link
+                    href={template.demo_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <ExternalLink className="mr-1.5 h-3 w-3" />
+                    Live Demo
+                  </Link>
+                </Button>
+              )}
+            </div>
           ))}
         </div>
       )}

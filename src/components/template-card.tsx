@@ -7,15 +7,8 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { Download, Globe, Smartphone, Monitor, Figma } from "lucide-react";
+import { Download } from "lucide-react";
 import type { Template } from "@/types/database";
-
-const platformIcons: Record<string, React.ReactNode> = {
-  Web: <Globe className="h-3 w-3" />,
-  iOS: <Smartphone className="h-3 w-3" />,
-  Android: <Smartphone className="h-3 w-3" />,
-  Figma: <Figma className="h-3 w-3" />,
-};
 
 export function TemplateCard({ template }: { template: Template }) {
   return (
@@ -71,12 +64,21 @@ export function TemplateCard({ template }: { template: Template }) {
               </Badge>
             )}
           </div>
-          <div className="flex items-center gap-1.5 text-muted-foreground">
-            {template.platforms.map((platform) => (
-              <span key={platform} title={platform}>
-                {platformIcons[platform] || null}
-              </span>
+          <div className="flex items-center gap-1 text-muted-foreground">
+            {template.platforms.slice(0, 3).map((platform) => (
+              <Badge
+                key={platform}
+                variant="outline"
+                className="px-1.5 py-0 text-[10px] font-normal"
+              >
+                {platform}
+              </Badge>
             ))}
+            {template.platforms.length > 3 && (
+              <span className="text-[10px]">
+                +{template.platforms.length - 3}
+              </span>
+            )}
           </div>
         </CardFooter>
       </Card>

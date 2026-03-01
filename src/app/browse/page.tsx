@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import { MOCK_TEMPLATES } from "@/lib/mock-data";
+import { MOCK_TEMPLATES, getDemoUrl } from "@/lib/mock-data";
 import type { Template } from "@/types/database";
 import { BrowseClient } from "./browse-client";
 
@@ -15,11 +15,21 @@ export default async function BrowsePage() {
       .order("downloads_count", { ascending: false });
 
     if (!error && data && data.length > 0) {
-      templates = data as Template[];
+      // Map DB rows to Template shape and attach demo_url
+      templates = (data as Template[]).map((t) => ({
+        ...t,
+        demo_url: getDemoUrl(t.slug),
+      }));
     }
   } catch {
     // Supabase unavailable — fall back to mock data
   }
+
+  // Ensure mock templates also have demo_url set
+  templates = templates.map((t) => ({
+    ...t,
+    demo_url: t.demo_url ?? getDemoUrl(t.slug),
+  }));
 
   return <BrowseClient templates={templates} />;
 }

@@ -4,28 +4,33 @@ import { MOCK_TEMPLATES } from "@/lib/mock-data";
 
 export async function POST() {
   if (process.env.NODE_ENV === "production") {
-    return NextResponse.json({ error: "Not allowed in production" }, { status: 403 });
+    return NextResponse.json(
+      { error: "Not allowed in production" },
+      { status: 403 }
+    );
   }
 
   const supabase = createAdminClient();
 
-  const { data: existing } = await supabase
-    .from("templates")
-    .select("id")
-    .limit(1);
+  // Map mock templates to the DB schema:
+  // DB columns: id (uuid), name, slug, description, category, style,
+  //             platforms, is_pro, downloads, preview_url, created_at
+  const rows = MOCK_TEMPLATES.map((t) => ({
+    name: t.name,
+    slug: t.slug,
+    description: t.description,
+    category: t.category,
+    style: t.style,
+    platforms: t.platforms,
+    is_pro: t.price_tier === "pro",
+    downloads: t.downloads_count,
+    preview_url: t.preview_url,
+  }));
 
-  if (existing && existing.length > 0) {
-    return NextResponse.json({
-      message: "Templates table already has data, skipping seed",
-      count: existing.length,
-    });
-  }
-
-  const rows = MOCK_TEMPLATES.map(({ id, ...rest }) => rest);
-
+  // Upsert on slug so re-running the seed is idempotent
   const { data, error } = await supabase
     .from("templates")
-    .insert(rows)
+    .upsert(rows, { onConflict: "slug" })
     .select();
 
   if (error) {
@@ -34,7 +39,7 @@ export async function POST() {
   }
 
   return NextResponse.json({
-    message: `Seeded ${data.length} templates`,
+    message: `Upserted ${data.length} templates`,
     count: data.length,
   });
 }

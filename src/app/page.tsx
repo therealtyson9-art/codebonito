@@ -87,7 +87,7 @@ export default function HomePage() {
               </div>
               <div className="flex items-center gap-2">
                 <Code2 className="h-4 w-4" />
-                <span>4 platforms</span>
+                <span>5 platforms</span>
               </div>
             </div>
           </div>

@@ -11,21 +11,11 @@ import { MOCK_TEMPLATES } from "@/lib/mock-data";
 import {
   ArrowLeft,
   Download,
-  Globe,
-  Smartphone,
-  Figma,
   Calendar,
   ArrowRight,
   Loader2,
   Lock,
 } from "lucide-react";
-
-const platformMeta: Record<string, { icon: React.ReactNode; label: string }> = {
-  Web: { icon: <Globe className="h-4 w-4" />, label: "Web" },
-  iOS: { icon: <Smartphone className="h-4 w-4" />, label: "iOS" },
-  Android: { icon: <Smartphone className="h-4 w-4" />, label: "Android" },
-  Figma: { icon: <Figma className="h-4 w-4" />, label: "Figma" },
-};
 
 export default function TemplateDetailPage({
   params,
@@ -180,18 +170,14 @@ export default function TemplateDetailPage({
                   Supported Platforms
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                  {template.platforms.map((platform) => {
-                    const meta = platformMeta[platform];
-                    return (
+                  {template.platforms.map((platform) => (
                       <div
                         key={platform}
                         className="flex items-center gap-2 rounded-lg border border-border/40 bg-card px-3 py-2 text-sm"
                       >
-                        {meta?.icon}
-                        {meta?.label || platform}
+                        {platform}
                       </div>
-                    );
-                  })}
+                    ))}
                 </div>
               </div>
 

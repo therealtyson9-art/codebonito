@@ -1,226 +1,280 @@
 import type { Template } from "@/types/database";
 
 export const CATEGORIES = [
-  "Landing Page",
-  "Dashboard",
-  "E-commerce",
-  "Portfolio",
-  "Blog",
   "SaaS",
+  "Portfolio",
+  "E-commerce",
+  "Landing",
+  "Blog",
+  "Dashboard",
+  "Docs",
+  "Agency",
+  "Restaurant",
+  "Startup",
 ] as const;
 
 export const STYLES = [
-  "Minimal",
-  "Bold",
-  "Gradient",
-  "Glassmorphism",
-  "Retro",
-  "Corporate",
+  "Minimalist",
   "Brutalist",
-  "Neomorphic",
+  "Corporate",
+  "Playful",
+  "Luxury",
 ] as const;
 
-export const PLATFORMS = ["Web", "iOS", "Android", "Figma"] as const;
+export const PLATFORMS_LIST = [
+  "cursor",
+  "v0",
+  "bolt",
+  "lovable",
+  "claude-code",
+] as const;
 
-export const MOCK_TEMPLATES: Template[] = [
-  {
-    id: "1",
-    name: "SaaS Minimalist",
-    slug: "saas-minimalist",
-    description:
-      "A clean, whitespace-heavy SaaS landing page with subtle animations. Features hero with product mockup, feature grid, testimonials carousel, pricing table, and a beautiful CTA section. Built with accessibility-first approach.",
-    category: "SaaS",
-    style: "Minimal",
-    platforms: ["Web", "Figma"],
-    creator_id: "creator-1",
-    price_tier: "pro",
-    downloads_count: 3847,
-    preview_url: "https://placehold.co/800x600/0a0a0a/f5f5f5?text=SaaS+Minimalist",
-    preview_mobile_url: "https://placehold.co/400x800/0a0a0a/f5f5f5?text=SaaS+Mobile",
-    manifest_json: null,
-    tokens_json: null,
-    status: "published",
-    created_at: "2025-01-10T00:00:00Z",
-    updated_at: "2025-03-01T00:00:00Z",
+/** @deprecated Use PLATFORMS_LIST */
+export const PLATFORMS = PLATFORMS_LIST;
+
+// Demo pages that actually exist under /demo/[slug]
+const DEMO_SLUGS = new Set([
+  "saas-minimalist",
+  "saas-brutalist",
+  "saas-corporate",
+  "saas-playful",
+  "saas-luxury",
+  "portfolio-minimalist",
+  "ecommerce-luxury",
+  "landing-brutalist",
+  "blog-playful",
+  "dashboard-minimalist",
+  "docs-corporate",
+  "agency-brutalist",
+  "restaurant-luxury",
+  "startup-playful",
+]);
+
+// Deterministic pseudo-random from seed string
+function seededRand(seed: string): number {
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) {
+    h = (Math.imul(31, h) + seed.charCodeAt(i)) | 0;
+  }
+  return ((h >>> 0) % 451 + 50); // range 50-500
+}
+
+function pickPlatforms(seed: string): string[] {
+  const all = [...PLATFORMS_LIST];
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) {
+    h = (Math.imul(37, h) + seed.charCodeAt(i)) | 0;
+  }
+  const count = (h >>> 0) % 4 + 2; // 2-5 platforms
+  // Shuffle deterministically
+  for (let i = all.length - 1; i > 0; i--) {
+    h = (Math.imul(31, h) + i) | 0;
+    const j = (h >>> 0) % (i + 1);
+    [all[i], all[j]] = [all[j], all[i]];
+  }
+  return all.slice(0, count);
+}
+
+function isPro(seed: string): boolean {
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) {
+    h = (Math.imul(41, h) + seed.charCodeAt(i)) | 0;
+  }
+  return (h >>> 0) % 100 < 60; // ~60% pro
+}
+
+// Category-specific placeholder colors for preview URLs
+const CATEGORY_COLORS: Record<string, [string, string]> = {
+  SaaS: ["0a0a0a", "f5f5f5"],
+  Portfolio: ["f5f5f5", "0a0a0a"],
+  "E-commerce": ["0a0a1a", "06b6d4"],
+  Landing: ["1e1b4b", "c084fc"],
+  Blog: ["18181b", "fafafa"],
+  Dashboard: ["0f0f23", "a78bfa"],
+  Docs: ["0f172a", "94a3b8"],
+  Agency: ["111111", "f59e0b"],
+  Restaurant: ["1c1917", "d4a574"],
+  Startup: ["09090b", "e4e4e7"],
+};
+
+// ── Template descriptions ──────────────────────────────────────────
+
+const DESCRIPTIONS: Record<string, Record<string, string>> = {
+  SaaS: {
+    Minimalist:
+      "A clean, whitespace-heavy SaaS landing page with subtle animations. Features hero with product mockup, feature grid, testimonials carousel, pricing table, and a beautiful CTA section.",
+    Brutalist:
+      "Raw, unapologetic SaaS template with exposed grid systems, monospaced typography, and deliberate anti-design elements. Bold black-and-white with yellow accents.",
+    Corporate:
+      "Enterprise-grade SaaS template with professional blue tones, data-driven layout, trust badges, and compliance-ready design. Built for B2B products.",
+    Playful:
+      "Vibrant, energetic SaaS page with rounded corners, bouncy animations, colorful gradients, and fun micro-interactions. Perfect for consumer apps.",
+    Luxury:
+      "Premium SaaS landing with dark theme, gold accents, serif typography, and cinematic scroll effects. Designed for high-end products.",
   },
-  {
-    id: "2",
-    name: "Portfolio Brutalist",
-    slug: "portfolio-brutalist",
-    description:
-      "Raw, unapologetic portfolio template with exposed grid systems, monospaced typography, and deliberate anti-design elements. Features project showcase with full-bleed images, manifesto section, and contact form.",
-    category: "Portfolio",
-    style: "Brutalist",
-    platforms: ["Web"],
-    creator_id: "creator-2",
-    price_tier: "free",
-    downloads_count: 2156,
-    preview_url: "https://placehold.co/800x600/f5f5f5/0a0a0a?text=Portfolio+Brutalist",
-    preview_mobile_url: null,
-    manifest_json: null,
-    tokens_json: null,
-    status: "published",
-    created_at: "2025-01-20T00:00:00Z",
-    updated_at: "2025-02-15T00:00:00Z",
+  Portfolio: {
+    Minimalist:
+      "Elegant, distraction-free portfolio with generous whitespace, clean typography, and smooth fade-in animations. Focus on your work, nothing else.",
+    Brutalist:
+      "Bold portfolio with exposed grid systems, monospaced type, and deliberate anti-design elements. Project showcase with full-bleed images and manifesto section.",
+    Corporate:
+      "Professional portfolio template for consultants and agencies. Structured case studies, client logos, testimonials grid, and contact form with validation.",
+    Playful:
+      "Colorful, animated portfolio with emoji accents, card-flip interactions, sticker-style badges, and a fun project timeline. Stand out from the crowd.",
+    Luxury:
+      "High-end portfolio with editorial layout, art-directed project pages, parallax scrolling, and refined serif typography. Museum-quality presentation.",
   },
-  {
-    id: "3",
-    name: "Aurora Dashboard",
-    slug: "aurora-dashboard",
-    description:
-      "Premium analytics dashboard with glassmorphic panels, real-time data visualization, and a stunning dark theme. Includes 12+ chart types, data tables, kanban board, and notification center. Fully responsive.",
-    category: "Dashboard",
-    style: "Glassmorphism",
-    platforms: ["Web", "Figma"],
-    creator_id: "creator-1",
-    price_tier: "pro",
-    downloads_count: 5203,
-    preview_url: "https://placehold.co/800x600/0f0f23/a78bfa?text=Aurora+Dashboard",
-    preview_mobile_url: "https://placehold.co/400x800/0f0f23/a78bfa?text=Aurora+Mobile",
-    manifest_json: null,
-    tokens_json: null,
-    status: "published",
-    created_at: "2025-02-01T00:00:00Z",
-    updated_at: "2025-03-10T00:00:00Z",
+  "E-commerce": {
+    Minimalist:
+      "Clean storefront with generous product photography, subtle hover effects, minimal navigation, and a distraction-free checkout flow. Less is more.",
+    Brutalist:
+      "Raw e-commerce template with exposed structure, monospace product descriptions, stark black-and-white imagery, and zero visual fluff.",
+    Corporate:
+      "Enterprise e-commerce with advanced filtering, mega-menu navigation, trust badges, bulk ordering, and a corporate account management system.",
+    Playful:
+      "Fun, vibrant storefront with bouncy add-to-cart animations, confetti effects, emoji reviews, and a playful color palette. Great for lifestyle brands.",
+    Luxury:
+      "Premium e-commerce experience with editorial product photography, dark theme, gold accents, and sophisticated checkout. Built for fashion and jewelry.",
   },
-  {
-    id: "4",
-    name: "Neon Commerce",
-    slug: "neon-commerce",
-    description:
-      "Electric e-commerce storefront with vibrant gradient accents and smooth micro-interactions. Product grid with quick view, cart drawer, wishlist, and checkout flow. Built for fashion, sneakers, and streetwear brands.",
-    category: "E-commerce",
-    style: "Gradient",
-    platforms: ["Web", "iOS", "Android"],
-    creator_id: "creator-3",
-    price_tier: "pro",
-    downloads_count: 1892,
-    preview_url: "https://placehold.co/800x600/0a0a1a/06b6d4?text=Neon+Commerce",
-    preview_mobile_url: "https://placehold.co/400x800/0a0a1a/06b6d4?text=Neon+Mobile",
-    manifest_json: null,
-    tokens_json: null,
-    status: "published",
-    created_at: "2025-02-10T00:00:00Z",
-    updated_at: "2025-03-05T00:00:00Z",
+  Landing: {
+    Minimalist:
+      "The perfect first impression. Minimal landing page with animated hero text, feature bento grid, testimonial wall, pricing toggle, and clean footer.",
+    Brutalist:
+      "Show-stopping brutalist landing with raw typography, geometric shapes, exposed grid, and high-contrast color blocks. Impossible to ignore.",
+    Corporate:
+      "Professional landing page with trust signals, data-driven sections, executive team grid, case studies, and enterprise-ready contact form.",
+    Playful:
+      "Energetic landing page with gradient blobs, animated counters, fun illustrations, interactive pricing slider, and a cheerful color palette.",
+    Luxury:
+      "Cinematic landing with full-screen video hero, parallax sections, gold foil effects, and elegant serif typography. First-class first impression.",
   },
-  {
-    id: "5",
-    name: "Terminal Folio",
-    slug: "terminal-folio",
-    description:
-      "Developer portfolio inspired by terminal aesthetics. Monospaced type, command-line animations, ASCII art headers, and a matrix-rain easter egg. Project cards look like terminal windows. Dark only.",
-    category: "Portfolio",
-    style: "Retro",
-    platforms: ["Web"],
-    creator_id: "creator-2",
-    price_tier: "free",
-    downloads_count: 4721,
-    preview_url: "https://placehold.co/800x600/0d1117/22c55e?text=%3E_+Terminal+Folio",
-    preview_mobile_url: null,
-    manifest_json: null,
-    tokens_json: null,
-    status: "published",
-    created_at: "2025-02-15T00:00:00Z",
-    updated_at: "2025-02-28T00:00:00Z",
+  Blog: {
+    Minimalist:
+      "Content-first blog with gorgeous typography, reading progress bar, estimated read time, table of contents sidebar, and newsletter signup.",
+    Brutalist:
+      "Anti-design blog with monospaced type, stark layout, raw markdown aesthetic, and no-nonsense content presentation. Words over decoration.",
+    Corporate:
+      "Professional blog template with author bylines, category taxonomy, related posts, share buttons, and SEO-optimized metadata structure.",
+    Playful:
+      "Colorful blog with emoji tags, gradient cards, animated category pills, fun hover effects, and an engaging newsletter popup.",
+    Luxury:
+      "Editorial blog with magazine-quality layout, pull quotes, full-bleed hero images, drop caps, and refined serif typography throughout.",
   },
-  {
-    id: "6",
-    name: "Gradient Hero",
-    slug: "gradient-hero",
-    description:
-      "Show-stopping landing page with mesh gradient hero, animated blob backgrounds, and bold typography. Sections for features, social proof, integrations grid, FAQ accordion, and waitlist signup. Conversion-optimized.",
-    category: "Landing Page",
-    style: "Gradient",
-    platforms: ["Web", "Figma"],
-    creator_id: "creator-1",
-    price_tier: "pro",
-    downloads_count: 2934,
-    preview_url: "https://placehold.co/800x600/1e1b4b/c084fc?text=Gradient+Hero",
-    preview_mobile_url: "https://placehold.co/400x800/1e1b4b/c084fc?text=Gradient+Mobile",
-    manifest_json: null,
-    tokens_json: null,
-    status: "published",
-    created_at: "2025-02-20T00:00:00Z",
-    updated_at: "2025-03-12T00:00:00Z",
+  Dashboard: {
+    Minimalist:
+      "Clean analytics dashboard with simple charts, plenty of whitespace, and an intuitive sidebar navigation. Focus on data clarity.",
+    Brutalist:
+      "Raw data dashboard with monospaced metrics, stark table layouts, and zero visual chrome. Pure information density.",
+    Corporate:
+      "Enterprise admin panel with role-based access, audit logs, data tables with sorting and filtering, and a professional blue theme.",
+    Playful:
+      "Colorful dashboard with animated progress rings, emoji status indicators, gradient stat cards, and fun data visualizations.",
+    Luxury:
+      "Premium analytics dashboard with glassmorphic panels, dark theme, gold accent charts, and sophisticated data visualization components.",
   },
-  {
-    id: "7",
-    name: "Blogify Pro",
-    slug: "blogify-pro",
-    description:
-      "Content-first blog template with gorgeous typography, reading progress bar, estimated read time, table of contents sidebar, code syntax highlighting, and newsletter signup. Supports MDX out of the box.",
-    category: "Blog",
-    style: "Minimal",
-    platforms: ["Web"],
-    creator_id: "creator-3",
-    price_tier: "free",
-    downloads_count: 3156,
-    preview_url: "https://placehold.co/800x600/18181b/fafafa?text=Blogify+Pro",
-    preview_mobile_url: null,
-    manifest_json: null,
-    tokens_json: null,
-    status: "published",
-    created_at: "2025-03-01T00:00:00Z",
-    updated_at: "2025-03-15T00:00:00Z",
+  Docs: {
+    Minimalist:
+      "Clean documentation site with sidebar navigation, syntax highlighting, copy-to-clipboard code blocks, and fast full-text search.",
+    Brutalist:
+      "No-nonsense documentation with monospaced everything, stark black-and-white layout, and terminal-inspired code blocks.",
+    Corporate:
+      "Enterprise documentation portal with versioning, API reference generator, team permissions, and professional structured layout.",
+    Playful:
+      "Friendly docs with colorful syntax themes, interactive code playgrounds, emoji callouts, and step-by-step tutorials with progress tracking.",
+    Luxury:
+      "Premium documentation with elegant typography, dark theme code blocks, smooth transitions, and beautifully styled API reference pages.",
   },
-  {
-    id: "8",
-    name: "Enterprise Suite",
-    slug: "enterprise-suite",
-    description:
-      "Corporate SaaS template suite with admin dashboard, user management, role-based access, audit logs, and settings. Clean, professional design with data density focus. Includes light and dark modes.",
-    category: "SaaS",
-    style: "Corporate",
-    platforms: ["Web", "Figma"],
-    creator_id: "creator-1",
-    price_tier: "pro",
-    downloads_count: 1547,
-    preview_url: "https://placehold.co/800x600/0f172a/94a3b8?text=Enterprise+Suite",
-    preview_mobile_url: "https://placehold.co/400x800/0f172a/94a3b8?text=Enterprise+Mobile",
-    manifest_json: null,
-    tokens_json: null,
-    status: "published",
-    created_at: "2025-03-05T00:00:00Z",
-    updated_at: "2025-03-18T00:00:00Z",
+  Agency: {
+    Minimalist:
+      "Clean agency site with case study cards, team grid, service list, and a simple contact form. Let your work speak for itself.",
+    Brutalist:
+      "Bold digital agency template with raw typography, geometric layouts, manifesto-style copy, and high-impact project showcases.",
+    Corporate:
+      "Professional agency template with client logos, service packages, team bios, industry certifications, and a detailed process timeline.",
+    Playful:
+      "Energetic agency site with bouncy animations, colorful team cards, fun service illustrations, and an interactive project showcase.",
+    Luxury:
+      "High-end agency presence with cinematic project reveals, editorial case studies, dark theme, and premium serif typography throughout.",
   },
-  {
-    id: "9",
-    name: "Starter Landing",
-    slug: "starter-landing",
-    description:
-      "The perfect first impression. Minimal landing page with animated hero text, feature bento grid, testimonial wall, pricing toggle, and clean footer. Optimized for conversions with A/B test friendly sections.",
-    category: "Landing Page",
-    style: "Minimal",
-    platforms: ["Web"],
-    creator_id: "creator-2",
-    price_tier: "free",
-    downloads_count: 6842,
-    preview_url: "https://placehold.co/800x600/09090b/e4e4e7?text=Starter+Landing",
-    preview_mobile_url: null,
-    manifest_json: null,
-    tokens_json: null,
-    status: "published",
-    created_at: "2025-03-08T00:00:00Z",
-    updated_at: "2025-03-20T00:00:00Z",
+  Restaurant: {
+    Minimalist:
+      "Clean restaurant site with full-screen food photography, simple menu layout, reservation form, and elegant spacing throughout.",
+    Brutalist:
+      "Raw restaurant template with stark typography, monospaced menu listings, high-contrast imagery, and an unapologetically bold aesthetic.",
+    Corporate:
+      "Professional restaurant template for chains and franchises. Multi-location support, nutritional info, online ordering, and brand guidelines.",
+    Playful:
+      "Fun restaurant site with animated menu items, emoji food categories, colorful section dividers, and a cheerful reservation widget.",
+    Luxury:
+      "Premium dining experience with dark theme, gold accents, Cormorant Garamond serif font, editorial food photography, and elegant menu presentation.",
   },
-  {
-    id: "10",
-    name: "Soft Dashboard",
-    slug: "soft-dashboard",
-    description:
-      "Neomorphic admin dashboard with soft shadows, pill-shaped controls, and pastel accents on dark backgrounds. Features project tracker, team activity feed, file manager, and calendar view. Touch-friendly.",
-    category: "Dashboard",
-    style: "Neomorphic",
-    platforms: ["Web", "iOS", "Android", "Figma"],
-    creator_id: "creator-3",
-    price_tier: "pro",
-    downloads_count: 1203,
-    preview_url: "https://placehold.co/800x600/1a1a2e/e879f9?text=Soft+Dashboard",
-    preview_mobile_url: "https://placehold.co/400x800/1a1a2e/e879f9?text=Soft+Mobile",
-    manifest_json: null,
-    tokens_json: null,
-    status: "published",
-    created_at: "2025-03-12T00:00:00Z",
-    updated_at: "2025-03-22T00:00:00Z",
+  Startup: {
+    Minimalist:
+      "Clean startup landing with animated hero, feature list, team section, and waitlist signup. Ship your MVP page in minutes.",
+    Brutalist:
+      "Bold startup page with raw typography, geometric hero, exposed grid metrics, and a no-BS approach to telling your story.",
+    Corporate:
+      "Enterprise startup template with investor-ready metrics, team grid, advisory board, press logos, and professional contact section.",
+    Playful:
+      "Vibrant startup page with gradient backgrounds, animated counters, fun team photos, emoji feature tags, and a cheerful waitlist form.",
+    Luxury:
+      "Premium startup presence with cinematic hero, elegant typography, dark theme, and sophisticated scroll animations. Fundraise in style.",
   },
-];
+};
+
+// ── Generate all 50 templates ──────────────────────────────────────
+
+function generateTemplates(): Template[] {
+  const templates: Template[] = [];
+  let idx = 0;
+
+  for (const category of CATEGORIES) {
+    for (const style of STYLES) {
+      idx++;
+      const slug = `${category.toLowerCase().replace(/[- ]/g, "")}-${style.toLowerCase()}`;
+      // Friendly name: "SaaS Minimalist", "E-commerce Luxury", etc.
+      const name = `${category} ${style}`;
+      const description =
+        DESCRIPTIONS[category]?.[style] ?? `${name} template — production-ready and fully responsive.`;
+      const downloads = seededRand(slug);
+      const pro = isPro(slug);
+      const platforms = pickPlatforms(slug);
+      const [bg, fg] = CATEGORY_COLORS[category] ?? ["111111", "eeeeee"];
+      const previewUrl = `https://placehold.co/800x600/${bg}/${fg}?text=${encodeURIComponent(name)}`;
+      const demoSlug = slug.replace("e-commerce", "ecommerce").replace("landing", "landing");
+      const demoPreviewUrl = DEMO_SLUGS.has(demoSlug) ? `/demo/${demoSlug}` : null;
+
+      templates.push({
+        id: String(idx),
+        name,
+        slug,
+        description,
+        category,
+        style,
+        platforms,
+        creator_id: `creator-${(idx % 5) + 1}`,
+        price_tier: pro ? "pro" : "free",
+        downloads_count: downloads,
+        preview_url: previewUrl,
+        preview_mobile_url: null,
+        manifest_json: null,
+        tokens_json: null,
+        status: "published",
+        created_at: new Date(2025, 0, 1 + idx).toISOString(),
+        updated_at: new Date(2025, 2, 1 + idx).toISOString(),
+        // Extra field for demo link (not in DB, used by UI)
+        ...(demoPreviewUrl ? { demo_url: demoPreviewUrl } : {}),
+      } as Template);
+    }
+  }
+
+  return templates;
+}
+
+export const MOCK_TEMPLATES: Template[] = generateTemplates();
+
+// Helper to get demo URL for a template slug
+export function getDemoUrl(slug: string): string | null {
+  const demoSlug = slug.replace("e-commerce", "ecommerce");
+  return DEMO_SLUGS.has(demoSlug) ? `/demo/${demoSlug}` : null;
+}

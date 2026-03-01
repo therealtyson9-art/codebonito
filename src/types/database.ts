@@ -32,6 +32,8 @@ export interface Template {
   status: TemplateStatus;
   created_at: string;
   updated_at: string;
+  /** URL to live demo page, if available (not stored in DB) */
+  demo_url?: string | null;
 }
 
 export interface Subscription {
