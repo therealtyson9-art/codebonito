@@ -6,8 +6,25 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { Card, CardContent } from "@/components/ui/card";
 import { MOCK_TEMPLATES } from "@/lib/mock-data";
-import { ArrowLeft, Download, Monitor, Smartphone } from "lucide-react";
+import {
+  ArrowLeft,
+  Download,
+  Globe,
+  Smartphone,
+  Figma,
+  Calendar,
+  User,
+  ArrowRight,
+} from "lucide-react";
+
+const platformMeta: Record<string, { icon: React.ReactNode; label: string }> = {
+  Web: { icon: <Globe className="h-4 w-4" />, label: "Web" },
+  iOS: { icon: <Smartphone className="h-4 w-4" />, label: "iOS" },
+  Android: { icon: <Smartphone className="h-4 w-4" />, label: "Android" },
+  Figma: { icon: <Figma className="h-4 w-4" />, label: "Figma" },
+};
 
 export default function TemplateDetailPage({
   params,
@@ -25,7 +42,7 @@ export default function TemplateDetailPage({
           <p className="mt-2 text-muted-foreground">
             The template you&apos;re looking for doesn&apos;t exist.
           </p>
-          <Button asChild className="mt-4">
+          <Button asChild className="mt-6">
             <Link href="/browse">Back to Browse</Link>
           </Button>
         </div>
@@ -33,20 +50,25 @@ export default function TemplateDetailPage({
     );
   }
 
+  const relatedTemplates = MOCK_TEMPLATES.filter(
+    (t) => t.id !== template.id && t.category === template.category
+  ).slice(0, 2);
+
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      {/* Back nav */}
       <Link
         href="/browse"
-        className="mb-6 inline-flex items-center text-sm text-muted-foreground hover:text-foreground"
+        className="mb-8 inline-flex items-center text-sm text-muted-foreground transition-colors hover:text-foreground"
       >
         <ArrowLeft className="mr-2 h-4 w-4" />
         Back to Browse
       </Link>
 
-      <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-12 lg:grid-cols-5">
         {/* Preview */}
-        <div className="lg:col-span-2">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-xl border bg-muted">
+        <div className="lg:col-span-3">
+          <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-border/40 bg-muted">
             <Image
               src={
                 template.preview_url ||
@@ -60,12 +82,8 @@ export default function TemplateDetailPage({
           </div>
 
           {template.preview_mobile_url && (
-            <div className="mt-6 flex gap-4">
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Monitor className="h-4 w-4" />
-                Desktop Preview
-              </div>
-              <div className="relative aspect-[1/2] w-48 overflow-hidden rounded-xl border bg-muted">
+            <div className="mt-6 flex items-start gap-6">
+              <div className="relative aspect-[9/16] w-40 overflow-hidden rounded-xl border border-border/40 bg-muted">
                 <Image
                   src={template.preview_mobile_url}
                   alt={`${template.name} mobile`}
@@ -74,72 +92,167 @@ export default function TemplateDetailPage({
                   unoptimized
                 />
               </div>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Smartphone className="h-4 w-4" />
-                Mobile Preview
+              <div className="pt-2">
+                <Badge variant="outline" className="mb-2">
+                  Mobile Preview
+                </Badge>
+                <p className="text-sm text-muted-foreground">
+                  Fully responsive design optimized for mobile devices.
+                </p>
               </div>
             </div>
           )}
         </div>
 
-        {/* Details */}
-        <div>
-          <div className="flex items-start justify-between">
+        {/* Details Sidebar */}
+        <div className="lg:col-span-2">
+          <div className="sticky top-24">
+            {/* Title & badges */}
             <div>
-              <h1 className="text-3xl font-bold">{template.name}</h1>
-              <div className="mt-2 flex gap-2">
-                <Badge variant="secondary">{template.category}</Badge>
+              <div className="flex items-center gap-2">
+                {template.price_tier === "pro" ? (
+                  <Badge>PRO</Badge>
+                ) : (
+                  <Badge variant="secondary">FREE</Badge>
+                )}
+                <Badge variant="outline">{template.category}</Badge>
                 {template.style && (
                   <Badge variant="outline">{template.style}</Badge>
                 )}
-                {template.price_tier === "pro" && <Badge>PRO</Badge>}
               </div>
-            </div>
-          </div>
-
-          <Separator className="my-6" />
-
-          <p className="text-muted-foreground">{template.description}</p>
-
-          <Separator className="my-6" />
-
-          <div className="space-y-4">
-            <div>
-              <h3 className="text-sm font-medium">Platforms</h3>
-              <div className="mt-2 flex flex-wrap gap-2">
-                {template.platforms.map((platform) => (
-                  <Badge key={platform} variant="secondary">
-                    {platform}
-                  </Badge>
-                ))}
-              </div>
+              <h1 className="mt-4 text-3xl font-bold tracking-tight">
+                {template.name}
+              </h1>
             </div>
 
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Download className="h-4 w-4" />
-              {template.downloads_count.toLocaleString()} downloads
-            </div>
-          </div>
+            <Separator className="my-6" />
 
-          <Separator className="my-6" />
-
-          <Button className="w-full" size="lg">
-            <Download className="mr-2 h-4 w-4" />
-            {template.price_tier === "pro"
-              ? "Download (Pro)"
-              : "Download Free"}
-          </Button>
-
-          {template.price_tier === "pro" && (
-            <p className="mt-2 text-center text-xs text-muted-foreground">
-              Requires a{" "}
-              <Link href="/pricing" className="underline hover:text-foreground">
-                Pro subscription
-              </Link>
+            {/* Description */}
+            <p className="leading-relaxed text-muted-foreground">
+              {template.description}
             </p>
-          )}
+
+            <Separator className="my-6" />
+
+            {/* Metadata */}
+            <div className="space-y-5">
+              {/* Platforms */}
+              <div>
+                <h3 className="mb-3 text-sm font-medium text-muted-foreground">
+                  Supported Platforms
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {template.platforms.map((platform) => {
+                    const meta = platformMeta[platform];
+                    return (
+                      <div
+                        key={platform}
+                        className="flex items-center gap-2 rounded-lg border border-border/40 bg-card px-3 py-2 text-sm"
+                      >
+                        {meta?.icon}
+                        {meta?.label || platform}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Stats */}
+              <div className="grid grid-cols-2 gap-3">
+                <div className="rounded-lg border border-border/40 bg-card p-3">
+                  <div className="flex items-center gap-2 text-muted-foreground">
+                    <Download className="h-4 w-4" />
+                    <span className="text-xs">Downloads</span>
+                  </div>
+                  <p className="mt-1 text-lg font-semibold">
+                    {template.downloads_count.toLocaleString()}
+                  </p>
+                </div>
+                <div className="rounded-lg border border-border/40 bg-card p-3">
+                  <div className="flex items-center gap-2 text-muted-foreground">
+                    <Calendar className="h-4 w-4" />
+                    <span className="text-xs">Updated</span>
+                  </div>
+                  <p className="mt-1 text-lg font-semibold">
+                    {new Date(template.updated_at).toLocaleDateString("en-US", {
+                      month: "short",
+                      year: "numeric",
+                    })}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <Separator className="my-6" />
+
+            {/* Download CTA */}
+            <Button className="h-12 w-full text-base" size="lg">
+              <Download className="mr-2 h-4 w-4" />
+              {template.price_tier === "pro"
+                ? "Download (Pro)"
+                : "Download Free"}
+            </Button>
+
+            {template.price_tier === "pro" && (
+              <p className="mt-3 text-center text-xs text-muted-foreground">
+                Requires a{" "}
+                <Link
+                  href="/pricing"
+                  className="font-medium text-primary hover:underline"
+                >
+                  Pro subscription ($5/mo)
+                </Link>
+              </p>
+            )}
+          </div>
         </div>
       </div>
+
+      {/* Related Templates */}
+      {relatedTemplates.length > 0 && (
+        <div className="mt-20">
+          <div className="flex items-center justify-between">
+            <h2 className="text-xl font-bold">
+              More {template.category} templates
+            </h2>
+            <Button asChild variant="ghost" size="sm">
+              <Link href="/browse">
+                View all <ArrowRight className="ml-1 h-3.5 w-3.5" />
+              </Link>
+            </Button>
+          </div>
+          <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {relatedTemplates.map((related) => (
+              <Link
+                key={related.id}
+                href={`/template/${related.id}`}
+                className="group"
+              >
+                <div className="overflow-hidden rounded-xl border border-border/40 bg-card transition-all hover:border-primary/50">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+                    <Image
+                      src={
+                        related.preview_url ||
+                        "https://placehold.co/800x600/1a1a1a/e0e0e0?text=Preview"
+                      }
+                      alt={related.name}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      unoptimized
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-semibold">{related.name}</h3>
+                    <p className="mt-1 line-clamp-1 text-sm text-muted-foreground">
+                      {related.description}
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,0 +1,45 @@
+{
+  "name": "SaaS Minimalist",
+  "version": "1.0.0",
+  "category": "SaaS",
+  "style": "Minimalist",
+  "description": "Clean, minimal design for SaaS products with focus on functionality and clarity. Perfect for dashboards, admin panels, and business applications.",
+  "tags": ["saas", "minimal", "clean", "dashboard", "business"],
+  "author": "Code Bonito",
+  "platforms": ["cursor", "claude-code", "v0", "bolt", "lovable", "universal"],
+  "preview": {
+    "desktop": "preview.png",
+    "mobile": "preview-mobile.png"
+  },
+  "files": {
+    "tokens": "tokens.json",
+    "prompt": "prompt.md",
+    "cursorrules": ".cursorrules",
+    "claudeRules": "claude-rules.md",
+    "v0Prompt": "v0-prompt.md",
+    "boltPrompt": "bolt-prompt.md",
+    "readme": "README.md"
+  },
+  "colors": {
+    "primary": "#64748b",
+    "accent": "#3b82f6",
+    "background": "#ffffff"
+  },
+  "features": [
+    "Minimal color palette",
+    "Clean typography hierarchy",
+    "Generous whitespace",
+    "Subtle shadows and borders",
+    "Modern button styles",
+    "Responsive grid system"
+  ],
+  "useCases": [
+    "SaaS dashboards",
+    "Admin panels",
+    "Business applications",
+    "Data visualization",
+    "User management interfaces"
+  ],
+  "created": "2026-03-01",
+  "updated": "2026-03-01"
+}

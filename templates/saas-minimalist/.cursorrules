@@ -1,0 +1,45 @@
+# SaaS Minimalist - Cursor Rules
+
+## Design System Enforcement
+You are building a SaaS application with a clean, minimal design language. Every component must follow these strict guidelines:
+
+## Colors (Use These Exact Values)
+- Primary: #64748b (slate-600 in Tailwind)
+- Accent: #3b82f6 (blue-500 in Tailwind) 
+- Background: #ffffff (white)
+- Text: #0f172a (slate-900)
+- Muted: #64748b (slate-500)
+
+## Typography Rules
+- Font: Inter (import from Google Fonts or use system stack)
+- Body text: 16px (1rem), line-height 1.5
+- Headings: Use font-semibold (600) or font-bold (700)
+- Never use decorative fonts or script fonts
+
+## Component Standards
+- Border radius: 6px (rounded-md) for buttons, 12px (rounded-xl) for cards
+- Button height: 40px minimum
+- Input height: 40px minimum
+- Card padding: 24px (p-6 in Tailwind)
+- Use subtle shadows: shadow-sm or shadow-md only
+
+## Forbidden Patterns
+- No gradients (use solid colors)
+- No neon or bright colors
+- No rounded-full buttons (use rounded-md)
+- No complex animations (simple hover states only)
+- No heavy shadows or glow effects
+
+## Framework Preferences
+- Use Tailwind CSS when possible
+- Prefer Headless UI for interactive components
+- Use Lucide React or Heroicons for icons
+- Implement with TypeScript
+- Use modern React patterns (hooks, functional components)
+
+## Code Style
+- Clean, readable component structure
+- Descriptive variable names
+- Consistent spacing and indentation
+- Extract reusable components
+- Use semantic HTML elements
