@@ -1,76 +1,47 @@
 import type { Template } from "@/types/database";
 
-export function generatePrompt(template: Template, platform: string): string {
-  const base = `You are building a ${template.category.toLowerCase()} website using the "${template.name}" design system.
+export interface CustomizationData {
+  businessName?: string;
+  businessDescription?: string;
+}
 
-## Design Tokens
-- **Style:** ${template.style || ''}
-- **Category:** ${template.category}
-- **Description:** ${template.description}
+export function generatePrompt(
+  template: Template,
+  platform: string,
+  customization?: CustomizationData
+): string {
+  const biz = customization?.businessName || "[Your Business]";
+  const desc =
+    customization?.businessDescription ||
+    "a " + (template.category?.toLowerCase() || "web") + " website";
 
-## Visual Guidelines
-- Use a clean, ${template.style?.toLowerCase()} aesthetic
-- Follow the design system consistently across all components
-- Ensure responsive design (mobile-first)
-- Use semantic HTML and accessible components
+  const base = [
+    "You are building a website for **" + biz + "** — " + desc + ".",
+    "",
+    'Use the "' + template.name + '" design system (' + (template.style?.toLowerCase() || "modern") + " style).",
+    "",
+    "## Design Direction",
+    "- **Style:** " + (template.style || "Modern"),
+    "- **Category:** " + template.category,
+    "- **Aesthetic:** " + template.description,
+    "",
+    "## Requirements",
+    "- Build a complete, production-ready page",
+    "- Responsive design (mobile-first)",
+    "- Semantic HTML, accessible components",
+    "- Apply the " + (template.style?.toLowerCase() || "modern") + " aesthetic consistently",
+    "- Tailor all copy and sections to " + biz + " (" + desc + ")",
+    "- Include: hero, features/services, social proof, CTA, footer",
+    "- Use real-sounding placeholder text specific to the business (not lorem ipsum)",
+  ].join("\n");
 
-## Color Palette
-Apply colors that match the "${template.style || ''}" style for a ${template.category.toLowerCase()} website.
-
-## Typography
-Choose fonts appropriate for a ${template.style?.toLowerCase()} ${template.category.toLowerCase()} design.
-
-## Component Guidelines
-- Navigation: Clean, consistent with the design system
-- Hero section: Impactful, on-brand
-- Cards/Features: Grid layout, consistent spacing
-- CTAs: Clear hierarchy, styled buttons
-- Footer: Professional, with relevant links
-
-Build a complete, production-ready page with all sections.`;
-
-  const platformInstructions: Record<string, string> = {
-    cursor: `${base}
-
-## Cursor-Specific Instructions
-- Create a Next.js 14+ page component
-- Use Tailwind CSS for all styling
-- Use TypeScript
-- Include proper metadata and SEO
-- Make it a single page.tsx file`,
-    v0: `${base}
-
-## v0-Specific Instructions
-- Generate a single React component
-- Use Tailwind CSS classes only
-- Use shadcn/ui components where appropriate
-- Make it responsive and interactive
-- Include all sections in one component`,
-    bolt: `${base}
-
-## Bolt-Specific Instructions
-- Create a complete web application
-- Use React + Tailwind CSS
-- Include routing if multiple pages needed
-- Add interactive elements
-- Make it deployment-ready`,
-    lovable: `${base}
-
-## Lovable-Specific Instructions
-- Build with React + Tailwind
-- Use shadcn/ui component library
-- Focus on clean, maintainable code
-- Include responsive design
-- Add smooth transitions and hover states`,
-    "claude-code": `${base}
-
-## Claude Code Instructions
-- Create a Next.js application
-- Use TypeScript + Tailwind CSS
-- Include proper file structure
-- Add error handling
-- Make it production-ready with proper types`,
+  const extras: Record<string, string> = {
+    cursor: "\n\n## Cursor Instructions\n- Create a Next.js 14+ page in TypeScript\n- Use Tailwind CSS for all styling\n- Single page.tsx file with all sections\n- Include metadata and SEO tags\n- Make it deployable as-is",
+    v0: "\n\n## v0 Instructions\n- Single React component with Tailwind CSS\n- Use shadcn/ui components where appropriate\n- All sections in one component\n- Responsive and interactive",
+    bolt: "\n\n## Bolt Instructions\n- Complete React + Tailwind application\n- Include routing if needed\n- Interactive elements and animations\n- Deployment-ready",
+    lovable: "\n\n## Lovable Instructions\n- React + Tailwind + shadcn/ui\n- Clean, maintainable code\n- Smooth transitions and hover states\n- Responsive design",
+    "claude-code": "\n\n## Claude Code Instructions\n- Next.js app with TypeScript + Tailwind\n- Proper file structure and types\n- Error handling included\n- Production-ready",
   };
 
-  return platformInstructions[platform] || base;
+  return base + (extras[platform] || "");
 }

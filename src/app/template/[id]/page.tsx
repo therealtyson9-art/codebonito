@@ -1,6 +1,6 @@
 "use client";
 
-import { generatePrompt } from "@/lib/prompt-generator";
+import { generatePrompt, type CustomizationData } from "@/lib/prompt-generator";
 import { use, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -49,6 +49,7 @@ export default function TemplateDetailPage({
   const [checkingPurchase, setCheckingPurchase] = useState(true);
   const [purchasing, setPurchasing] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
+  const [customization, setCustomization] = useState<CustomizationData>({});
 
   // Fetch template from Supabase, fallback to mock
   useEffect(() => {
@@ -123,7 +124,7 @@ export default function TemplateDetailPage({
   const canCopy = isFree || purchased;
 
   const prompt = activePlatform
-    ? generatePrompt(template as Parameters<typeof generatePrompt>[0], activePlatform)
+    ? generatePrompt(template as Parameters<typeof generatePrompt>[0], activePlatform, customization)
     : "";
 
   function handleCopy() {
@@ -275,8 +276,44 @@ export default function TemplateDetailPage({
           {/* Platform Tabs + Prompt Preview */}
           <div className="mt-8">
             <h3 className="mb-4 text-lg font-semibold">
-              Copy Prompt for Your Platform
+              Personalize Your Prompt
             </h3>
+
+            {/* Customization Form */}
+            <div className="mb-6 space-y-3 rounded-lg border border-border/40 bg-card p-4">
+              <div>
+                <label className="mb-1 block text-xs font-medium text-muted-foreground">
+                  Business Name
+                </label>
+                <input
+                  type="text"
+                  placeholder="e.g. Acme Dental Clinic"
+                  value={customization.businessName || ""}
+                  onChange={(e) =>
+                    setCustomization((prev) => ({ ...prev, businessName: e.target.value }))
+                  }
+                  className="w-full rounded-md border border-border/40 bg-background px-3 py-2 text-sm placeholder:text-muted-foreground/50 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                />
+              </div>
+              <div>
+                <label className="mb-1 block text-xs font-medium text-muted-foreground">
+                  What does it do? (one line)
+                </label>
+                <input
+                  type="text"
+                  placeholder="e.g. family dentistry with cosmetic services in Austin, TX"
+                  value={customization.businessDescription || ""}
+                  onChange={(e) =>
+                    setCustomization((prev) => ({ ...prev, businessDescription: e.target.value }))
+                  }
+                  className="w-full rounded-md border border-border/40 bg-background px-3 py-2 text-sm placeholder:text-muted-foreground/50 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                />
+              </div>
+            </div>
+
+            <h4 className="mb-3 text-sm font-medium text-muted-foreground">
+              Choose your platform
+            </h4>
 
             {/* Tabs */}
             <div className="flex flex-wrap gap-1 rounded-lg border border-border/40 bg-muted/50 p-1">
