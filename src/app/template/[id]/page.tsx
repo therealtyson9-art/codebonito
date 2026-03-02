@@ -8,7 +8,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { MOCK_TEMPLATES } from "@/lib/mock-data";
+import { MOCK_TEMPLATES, getDemoUrl } from "@/lib/mock-data";
 import { createClient } from "@/lib/supabase/client";
 import {
   ArrowLeft,
@@ -260,18 +260,42 @@ export default function TemplateDetailPage({
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-5">
         {/* Preview */}
         <div className="lg:col-span-3">
-          <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-border/40 bg-muted">
-            <Image
-              src={
-                template.preview_url ||
-                "https://placehold.co/800x600/1a1a1a/e0e0e0?text=Preview"
-              }
-              alt={template.name}
-              fill
-              className="object-cover"
-              unoptimized
-            />
-          </div>
+          {(() => {
+            const demoUrl = getDemoUrl(template.slug);
+            if (demoUrl) {
+              return (
+                <div className="relative overflow-hidden rounded-xl border border-border/40">
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <iframe
+                      src={demoUrl}
+                      title={template.name + " preview"}
+                      className="h-[600px] w-[1200px] origin-top-left scale-[0.5] border-0"
+                      style={{ width: "1200px", height: "600px", transform: "scale(0.5)", transformOrigin: "top left" }}
+                    />
+                  </div>
+                  <a
+                    href={demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block border-t border-border/40 bg-card/50 px-4 py-2 text-center text-xs text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    Open full preview ↗
+                  </a>
+                </div>
+              );
+            }
+            return (
+              <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-border/40 bg-muted">
+                <Image
+                  src={template.preview_url || "https://placehold.co/800x600/1a1a1a/e0e0e0?text=Preview"}
+                  alt={template.name}
+                  fill
+                  className="object-cover"
+                  unoptimized
+                />
+              </div>
+            );
+          })()}
 
           {/* Platform Tabs + Prompt Preview */}
           <div className="mt-8">
