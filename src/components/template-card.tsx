@@ -8,6 +8,7 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { Download } from "lucide-react";
+import { getDemoUrl } from "@/lib/mock-data";
 import type { Template } from "@/types/database";
 
 export function TemplateCard({ template }: { template: Template }) {
@@ -15,17 +16,31 @@ export function TemplateCard({ template }: { template: Template }) {
     <Link href={`/template/${template.id}`}>
       <Card className="group overflow-hidden transition-all hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5">
         <CardHeader className="p-0">
-          <div className="relative aspect-[16/10] overflow-hidden bg-muted">
-            <Image
-              src={
-                template.preview_url ||
-                "https://placehold.co/800x600/1a1a1a/e0e0e0?text=Preview"
+          <div className="relative aspect-[16/10] overflow-hidden bg-white">
+            {(() => {
+              const demoUrl = getDemoUrl(template.slug);
+              if (demoUrl) {
+                return (
+                  <iframe
+                    src={demoUrl}
+                    title={template.name}
+                    className="pointer-events-none absolute left-0 top-0 border-0"
+                    style={{ width: "1440px", height: "900px", transform: "scale(0.26)", transformOrigin: "top left" }}
+                    tabIndex={-1}
+                    loading="lazy"
+                  />
+                );
               }
-              alt={template.name}
-              fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
-              unoptimized
-            />
+              return (
+                <Image
+                  src={template.preview_url || "https://placehold.co/800x600/1a1a1a/e0e0e0?text=Preview"}
+                  alt={template.name}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  unoptimized
+                />
+              );
+            })()}
             {template.price_tier === "pro" ? (
               <Badge className="absolute right-3 top-3 font-mono text-[10px] tracking-wider">
                 $2
