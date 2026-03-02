@@ -1,3 +1,4 @@
+import { FadeIn } from "@/components/fade-in";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -47,8 +48,8 @@ export default function HomePage() {
         {/* Gradient mesh background */}
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,rgba(37,99,235,0.12),transparent)]" />
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_50%_at_80%_50%,rgba(139,92,246,0.08),transparent)]" />
-        <div className="absolute top-20 right-[10%] -z-10 h-[500px] w-[500px] rounded-full bg-brand-amber/[0.04] blur-[100px] animate-float" />
-        <div className="absolute bottom-20 left-[5%] -z-10 h-[400px] w-[400px] rounded-full bg-brand-blue/[0.06] blur-[80px] animate-float-delayed" />
+        <div className="absolute top-20 right-[10%] -z-10 h-[500px] w-[500px] rounded-full bg-brand-amber/[0.04] blur-[100px] animate-float animate-float" />
+        <div className="absolute bottom-20 left-[5%] -z-10 h-[400px] w-[400px] rounded-full bg-brand-blue/[0.06] blur-[80px] animate-float-delayed animate-float-delayed" />
 
         <div className="mx-auto max-w-7xl px-4 pb-20 pt-20 sm:px-6 sm:pt-32 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
@@ -104,7 +105,7 @@ export default function HomePage() {
                     i === 0 ? "-rotate-2 translate-y-4" : i === 1 ? "translate-y-0 scale-105 z-10" : "rotate-2 translate-y-4"
                   }`}
                 >
-                  <div className="overflow-hidden rounded-2xl bg-white shadow-xl shadow-black/[0.08] ring-1 ring-black/[0.05] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+                  <div className="overflow-hidden rounded-2xl bg-white shadow-xl shadow-black/[0.08] ring-1 ring-black/[0.05] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
                     <div className="relative aspect-[16/10] overflow-hidden bg-gray-50">
                       {template.demo_url ? (
                         <iframe
@@ -195,6 +196,7 @@ export default function HomePage() {
       </section>
 
       {/* How It Works */}
+      <FadeIn>
       <section className="bg-white py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
@@ -230,7 +232,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      </FadeIn>
 
+      <FadeIn>
       {/* Features */}
       <section className="bg-[#fafafa] py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -279,7 +283,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      </FadeIn>
 
+      <FadeIn>
       {/* Trending Templates — Horizontal scroll carousel */}
       <section className="bg-white py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -319,6 +325,7 @@ export default function HomePage() {
           </Button>
         </div>
       </section>
+      </FadeIn>
 
       {/* New This Week */}
       {newThisWeek.length > 0 && (
