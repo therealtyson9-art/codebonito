@@ -37,9 +37,10 @@ export default function TemplateDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = use(params);
-  const template = MOCK_TEMPLATES.find((t) => t.id === id);
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [template, setTemplate] = useState<(typeof MOCK_TEMPLATES)[number] | null>(null);
+  const [loading, setLoading] = useState(true);
   const [downloading, setDownloading] = useState(false);
   const [copiedPlatform, setCopiedPlatform] = useState<string | null>(null);
   const [activePlatform, setActivePlatform] = useState<string>("");
@@ -49,44 +50,58 @@ export default function TemplateDetailPage({
   const [purchasing, setPurchasing] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
 
-  // Initialize active platform
+  // Fetch template from Supabase, fallback to mock
   useEffect(() => {
-    if (template && template.platforms.length > 0 && !activePlatform) {
-      setActivePlatform(template.platforms[0]);
+    const supabase = createClient();
+    async function fetchTemplate() {
+      const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
+      let found = null;
+      if (isUuid) {
+        const { data } = await supabase.from("templates").select("*").eq("id", id).maybeSingle();
+        found = data;
+      }
+      if (!found) {
+        const { data } = await supabase.from("templates").select("*").eq("slug", id).maybeSingle();
+        found = data;
+      }
+      if (!found) {
+        found = MOCK_TEMPLATES.find((t) => t.id === id || t.slug === id) || null;
+      }
+      setTemplate(found as (typeof MOCK_TEMPLATES)[number] | null);
+      if (found && found.platforms?.length > 0) {
+        setActivePlatform(found.platforms[0]);
+      }
+      setLoading(false);
     }
-  }, [template, activePlatform]);
+    fetchTemplate();
+  }, [id]);
 
   // Check auth and purchase status
   useEffect(() => {
+    if (!template) return;
     const supabase = createClient();
-
     async function checkStatus() {
-      const {
-        data: { user: currentUser },
-      } = await supabase.auth.getUser();
+      const { data: { user: currentUser } } = await supabase.auth.getUser();
       setUser(currentUser);
-
-      if (currentUser && id) {
-        const { data } = await supabase
-          .from("purchases")
-          .select("id")
-          .eq("user_id", currentUser.id)
-          .eq("template_id", id)
-          .limit(1)
-          .maybeSingle();
+      if (currentUser && template) {
+        const { data } = await supabase.from("purchases").select("id").eq("user_id", currentUser.id).eq("template_id", template.id).limit(1).maybeSingle();
         setPurchased(!!data);
       }
-
       setCheckingPurchase(false);
     }
-
     checkStatus();
-
-    // If returned from successful purchase
     if (searchParams.get("purchased") === "true") {
       setPurchased(true);
     }
-  }, [id, searchParams]);
+  }, [template, searchParams]);
+
+  if (loading) {
+    return (
+      <div className="flex min-h-[60vh] items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+      </div>
+    );
+  }
 
   if (!template) {
     return (
