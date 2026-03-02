@@ -11,6 +11,16 @@ export const CATEGORIES = [
   "Agency",
   "Restaurant",
   "Startup",
+  "Medical",
+  "Legal",
+  "Fitness",
+  "Real Estate",
+  "Education",
+  "Consulting",
+  "Travel",
+  "Food",
+  "Tech",
+  "Wellness",
 ] as const;
 
 export const STYLES = [
@@ -84,6 +94,56 @@ const DEMO_SLUGS = new Set([
   "startup-luxury",
   "startup-minimalist",
   "startup-playful",
+  "medical-minimalist",
+  "medical-brutalist",
+  "medical-corporate",
+  "medical-playful",
+  "medical-luxury",
+  "legal-minimalist",
+  "legal-brutalist",
+  "legal-corporate",
+  "legal-playful",
+  "legal-luxury",
+  "fitness-minimalist",
+  "fitness-brutalist",
+  "fitness-corporate",
+  "fitness-playful",
+  "fitness-luxury",
+  "realestate-minimalist",
+  "realestate-brutalist",
+  "realestate-corporate",
+  "realestate-playful",
+  "realestate-luxury",
+  "education-minimalist",
+  "education-brutalist",
+  "education-corporate",
+  "education-playful",
+  "education-luxury",
+  "consulting-minimalist",
+  "consulting-brutalist",
+  "consulting-corporate",
+  "consulting-playful",
+  "consulting-luxury",
+  "travel-minimalist",
+  "travel-brutalist",
+  "travel-corporate",
+  "travel-playful",
+  "travel-luxury",
+  "food-minimalist",
+  "food-brutalist",
+  "food-corporate",
+  "food-playful",
+  "food-luxury",
+  "tech-minimalist",
+  "tech-brutalist",
+  "tech-corporate",
+  "tech-playful",
+  "tech-luxury",
+  "wellness-minimalist",
+  "wellness-brutalist",
+  "wellness-corporate",
+  "wellness-playful",
+  "wellness-luxury",
 ]);
 
 // Deterministic pseudo-random from seed string
@@ -134,6 +194,16 @@ const CATEGORY_COLORS: Record<string, [string, string]> = {
   Agency: ["111111", "f59e0b"],
   Restaurant: ["1c1917", "d4a574"],
   Startup: ["09090b", "e4e4e7"],
+  Medical: ["eef7ff", "2563eb"],
+  Legal: ["1a1a2e", "c8b06e"],
+  Fitness: ["0f0f0f", "f43f5e"],
+  "Real Estate": ["0d1117", "d4af37"],
+  Education: ["1e3a5f", "60a5fa"],
+  Consulting: ["0a0a14", "818cf8"],
+  Travel: ["064e3b", "34d399"],
+  Food: ["2d1b0e", "f97316"],
+  Tech: ["020617", "38bdf8"],
+  Wellness: ["f0fdf4", "16a34a"],
 };
 
 // ── Template descriptions ──────────────────────────────────────────
@@ -259,19 +329,167 @@ const DESCRIPTIONS: Record<string, Record<string, string>> = {
     Luxury:
       "Premium startup presence with cinematic hero, elegant typography, dark theme, and sophisticated scroll animations. Fundraise in style.",
   },
+  Medical: {
+    Minimalist:
+      "Clean medical clinic website with soft blue accents, appointment booking form, doctor profiles, and patient testimonials. Calming and professional.",
+    Brutalist:
+      "Stark, high-contrast medical site with monospaced data, raw clinical aesthetic, bold health stats, and brutally honest patient information.",
+    Corporate:
+      "Enterprise healthcare portal with multi-department navigation, insurance info, compliance badges, and a professional appointment system.",
+    Playful:
+      "Friendly pediatric clinic site with rounded cards, cheerful illustrations, colorful service blocks, and an inviting patient intake form.",
+    Luxury:
+      "Premium private practice with dark theme, gold accents, elegant serif headings, concierge medicine feel, and exclusive membership tiers.",
+  },
+  Legal: {
+    Minimalist:
+      "Clean law firm site with structured practice areas, attorney profiles, case results, and a refined contact form. Trust through simplicity.",
+    Brutalist:
+      "Raw typography law firm with monospaced text, stark black-and-white palette, bold case numbers, and an unapologetic legal presence.",
+    Corporate:
+      "Enterprise law firm with multi-office locations, practice area navigation, partner bios, notable cases, and regulatory compliance display.",
+    Playful:
+      "Approachable legal services site with friendly icons, colorful practice area cards, FAQ accordion, and a welcoming consultation form.",
+    Luxury:
+      "Prestigious law firm with dark background, gold accents, serif typography, marble-inspired textures, and an exclusive client experience.",
+  },
+  Fitness: {
+    Minimalist:
+      "Clean gym website with class schedule grid, trainer profiles, membership tiers, and a distraction-free join form. Results-focused design.",
+    Brutalist:
+      "Raw, aggressive fitness site with bold type, high-contrast imagery, monospaced workout stats, and an intense motivational aesthetic.",
+    Corporate:
+      "Professional fitness chain site with multi-location finder, corporate wellness programs, certification badges, and membership management.",
+    Playful:
+      "Vibrant gym site with neon accents, animated class cards, emoji workout categories, fun progress trackers, and energetic color palette.",
+    Luxury:
+      "Premium fitness club with dark theme, gold accents, editorial photography, exclusive membership tiers, and a sophisticated booking system.",
+  },
+  "Real Estate": {
+    Minimalist:
+      "Clean property listing site with elegant cards, map integration placeholder, property details, and a refined inquiry form. Less is luxury.",
+    Brutalist:
+      "Raw real estate site with monospaced property data, stark grid layout, high-contrast photography, and unfiltered market statistics.",
+    Corporate:
+      "Enterprise real estate portal with advanced search filters, agent directories, market reports, and multi-property comparison tools.",
+    Playful:
+      "Fun property browsing experience with colorful listing cards, emoji neighborhood tags, interactive price ranges, and a cheerful contact form.",
+    Luxury:
+      "Premium real estate with dark background, gold accents, full-bleed property photography, exclusive listings, and elegant serif typography.",
+  },
+  Education: {
+    Minimalist:
+      "Clean education site with course catalog, instructor profiles, enrollment form, and a well-structured curriculum overview. Focus on learning.",
+    Brutalist:
+      "Raw academic site with monospaced course codes, stark layout, exposed data structures, and no-nonsense educational content presentation.",
+    Corporate:
+      "Professional school site with blue tones, department navigation, accreditation badges, tuition calculator, and structured course catalog.",
+    Playful:
+      "Colorful learning platform with animated course cards, emoji subject tags, progress badges, fun quizzes, and an engaging student dashboard.",
+    Luxury:
+      "Premium academy with dark theme, gold accents, prestigious typography, exclusive program listings, and an elite enrollment experience.",
+  },
+  Consulting: {
+    Minimalist:
+      "Clean consulting firm site with service cards, case studies, team profiles, and a structured engagement process. Clarity builds confidence.",
+    Brutalist:
+      "Raw consulting site with monospaced metrics, stark methodology layouts, bold impact numbers, and an unfiltered approach to results.",
+    Corporate:
+      "Enterprise consulting portal with industry expertise sections, engagement models, global office listings, and professional credentials.",
+    Playful:
+      "Approachable consulting site with colorful service blocks, animated testimonials, fun process steps, and a friendly discovery call form.",
+    Luxury:
+      "Premium consulting firm with dark theme, gold accents, serif typography, C-suite testimonials, and an exclusive engagement experience.",
+  },
+  Travel: {
+    Minimalist:
+      "Clean travel agency site with destination cards, itinerary layout, traveler reviews, and a simple booking inquiry form. Wander with purpose.",
+    Brutalist:
+      "Raw travel site with stark destination photography, monospaced coordinates, bold typography, and an unfiltered adventure aesthetic.",
+    Corporate:
+      "Professional travel management platform with corporate booking, expense tracking, multi-destination planning, and travel policy compliance.",
+    Playful:
+      "Vibrant travel site with colorful destination cards, emoji country flags, animated price deals, fun trip planners, and cheerful booking flow.",
+    Luxury:
+      "Premium travel concierge with dark theme, gold accents, full-bleed destination imagery, bespoke itineraries, and exclusive resort partnerships.",
+  },
+  Food: {
+    Minimalist:
+      "Clean food delivery site with menu grid, ingredient details, dietary filters, and a distraction-free ordering flow. Fresh and focused.",
+    Brutalist:
+      "Raw food brand site with monospaced nutrition data, stark product photography, bold flavor descriptions, and an unfiltered culinary aesthetic.",
+    Corporate:
+      "Professional food service company with catering packages, corporate meal plans, nutrition compliance, and multi-location ordering.",
+    Playful:
+      "Fun food ordering site with animated menu items, emoji cuisine tags, colorful meal cards, bouncy cart interactions, and cheerful checkout.",
+    Luxury:
+      "Premium artisanal food brand with dark theme, gold accents, editorial food photography, chef profiles, and a sophisticated tasting experience.",
+  },
+  Tech: {
+    Minimalist:
+      "Clean tech company site with product features, API documentation preview, developer testimonials, and a sleek signup flow. Ship with clarity.",
+    Brutalist:
+      "Raw tech startup with monospaced code snippets, exposed terminal aesthetics, stark documentation layout, and zero visual ornamentation.",
+    Corporate:
+      "Enterprise tech platform with security certifications, compliance badges, integration ecosystem, and professional sales contact flow.",
+    Playful:
+      "Vibrant tech product site with animated feature demos, colorful integration cards, emoji status badges, and a fun developer playground.",
+    Luxury:
+      "Premium tech brand with dark theme, gold accents, cinematic product reveals, exclusive beta access, and sophisticated developer experience.",
+  },
+  Wellness: {
+    Minimalist:
+      "Clean wellness studio with service menu, practitioner profiles, booking calendar, and a serene whitespace-heavy design. Calm by design.",
+    Brutalist:
+      "Raw wellness brand with monospaced session data, stark treatment layouts, bold wellness metrics, and an unfiltered healing aesthetic.",
+    Corporate:
+      "Professional wellness program with corporate packages, employee wellness analytics, certification badges, and multi-location directory.",
+    Playful:
+      "Cheerful wellness site with animated service cards, emoji treatment categories, colorful booking steps, and a warm community section.",
+    Luxury:
+      "Premium spa experience with dark theme, gold accents, elegant serif headings, exclusive treatment packages, and a sophisticated booking flow.",
+  },
 };
 
-// ── Generate all 50 templates ──────────────────────────────────────
+// ── Original 10 categories ─────────────────────────────────────────
+const ORIGINAL_CATEGORIES = [
+  "SaaS",
+  "Portfolio",
+  "E-commerce",
+  "Landing",
+  "Blog",
+  "Dashboard",
+  "Docs",
+  "Agency",
+  "Restaurant",
+  "Startup",
+] as const;
+
+// ── New 10 categories ──────────────────────────────────────────────
+const NEW_CATEGORIES = [
+  "Medical",
+  "Legal",
+  "Fitness",
+  "Real Estate",
+  "Education",
+  "Consulting",
+  "Travel",
+  "Food",
+  "Tech",
+  "Wellness",
+] as const;
+
+// ── Generate all 100 templates ─────────────────────────────────────
 
 function generateTemplates(): Template[] {
   const templates: Template[] = [];
   let idx = 0;
 
-  for (const category of CATEGORIES) {
+  // Original 50 templates (IDs 1-50, older dates)
+  for (const category of ORIGINAL_CATEGORIES) {
     for (const style of STYLES) {
       idx++;
       const slug = `${category.toLowerCase().replace(/[- ]/g, "")}-${style.toLowerCase()}`;
-      // Friendly name: "SaaS Minimalist", "E-commerce Luxury", etc.
       const name = `${category} ${style}`;
       const description =
         DESCRIPTIONS[category]?.[style] ?? `${name} template — production-ready and fully responsive.`;
@@ -301,7 +519,51 @@ function generateTemplates(): Template[] {
         status: "published",
         created_at: new Date(2025, 0, 1 + idx).toISOString(),
         updated_at: new Date(2025, 2, 1 + idx).toISOString(),
-        // Extra field for demo link (not in DB, used by UI)
+        ...(demoPreviewUrl ? { demo_url: demoPreviewUrl } : {}),
+      } as Template);
+    }
+  }
+
+  // New 50 templates (IDs 51-100, recent dates within last 7 days)
+  const now = Date.now();
+  let newIdx = 0;
+  for (const category of NEW_CATEGORIES) {
+    for (const style of STYLES) {
+      idx++;
+      newIdx++;
+      const slug = `${category.toLowerCase().replace(/[- ]/g, "")}-${style.toLowerCase()}`;
+      const name = `${category} ${style}`;
+      const description =
+        DESCRIPTIONS[category]?.[style] ?? `${name} template — production-ready and fully responsive.`;
+      const downloads = seededRand(slug);
+      const platforms = pickPlatforms(slug);
+      const [bg, fg] = CATEGORY_COLORS[category] ?? ["111111", "eeeeee"];
+      const previewUrl = `https://placehold.co/800x600/${bg}/${fg}?text=${encodeURIComponent(name)}`;
+      const demoSlug = slug.replace("real estate", "realestate").replace("realestate", "realestate");
+      const demoPreviewUrl = DEMO_SLUGS.has(demoSlug) ? `/demo/${demoSlug}` : null;
+
+      // Stagger dates: newest first, spread across last 7 days
+      const hoursAgo = (newIdx - 1) * 3.3; // ~3.3 hours apart, 50 templates across ~7 days
+      const createdDate = new Date(now - hoursAgo * 60 * 60 * 1000);
+
+      templates.push({
+        id: String(idx),
+        name,
+        slug,
+        description,
+        category,
+        style,
+        platforms,
+        creator_id: `creator-${(idx % 5) + 1}`,
+        price_tier: "pro",
+        downloads_count: downloads,
+        preview_url: previewUrl,
+        preview_mobile_url: null,
+        manifest_json: null,
+        tokens_json: null,
+        status: "published",
+        created_at: createdDate.toISOString(),
+        updated_at: createdDate.toISOString(),
         ...(demoPreviewUrl ? { demo_url: demoPreviewUrl } : {}),
       } as Template);
     }
@@ -314,6 +576,6 @@ export const MOCK_TEMPLATES: Template[] = generateTemplates();
 
 // Helper to get demo URL for a template slug
 export function getDemoUrl(slug: string): string | null {
-  const demoSlug = slug.replace("e-commerce", "ecommerce");
+  const demoSlug = slug.replace("e-commerce", "ecommerce").replace("real estate", "realestate");
   return DEMO_SLUGS.has(demoSlug) ? `/demo/${demoSlug}` : null;
 }

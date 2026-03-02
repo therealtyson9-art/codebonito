@@ -529,11 +529,12 @@ export default function TemplateDetailPage({
                 <div className="rounded-xl bg-white p-4 shadow-sm">
                   <div className="flex items-center gap-2 text-muted-foreground">
                     <Calendar className="h-4 w-4 text-brand-amber" />
-                    <span className="text-xs">Updated</span>
+                    <span className="text-xs">Added</span>
                   </div>
                   <p className="mt-1 text-lg font-semibold text-foreground">
-                    {new Date(template.updated_at).toLocaleDateString("en-US", {
+                    {new Date(template.created_at).toLocaleDateString("en-US", {
                       month: "short",
+                      day: "numeric",
                       year: "numeric",
                     })}
                   </p>

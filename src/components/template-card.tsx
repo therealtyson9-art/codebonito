@@ -41,6 +41,14 @@ export function TemplateCard({ template }: { template: Template }) {
                 />
               );
             })()}
+            {(() => {
+              const isNew = Date.now() - new Date(template.created_at).getTime() < 48 * 60 * 60 * 1000;
+              return isNew ? (
+                <Badge className="absolute left-3 top-3 bg-amber-500 text-white font-mono text-[10px] tracking-wider shadow-sm">
+                  NEW
+                </Badge>
+              ) : null;
+            })()}
             {template.price_tier === "pro" ? (
               <Badge className="absolute right-3 top-3 bg-brand-blue text-white font-mono text-[10px] tracking-wider shadow-sm">
                 $2

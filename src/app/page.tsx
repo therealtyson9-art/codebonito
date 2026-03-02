@@ -30,6 +30,11 @@ export default function HomePage() {
     .sort((a, b) => b.downloads_count - a.downloads_count)
     .slice(0, 3);
 
+  const newThisWeek = [...MOCK_TEMPLATES]
+    .filter((t) => Date.now() - new Date(t.created_at).getTime() < 7 * 24 * 60 * 60 * 1000)
+    .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
+    .slice(0, 6);
+
   const totalDownloads = MOCK_TEMPLATES.reduce(
     (sum, t) => sum + t.downloads_count,
     0
@@ -243,6 +248,44 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* New This Week */}
+      {newThisWeek.length > 0 && (
+        <section className="bg-white py-28">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="flex items-end justify-between">
+              <div>
+                <Badge className="mb-4 border-brand-amber/20 bg-brand-amber-light text-amber-800">
+                  Fresh
+                </Badge>
+                <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
+                  New this week
+                </h2>
+                <p className="mt-4 text-lg text-muted-foreground">
+                  Just added — the latest templates for your next project.
+                </p>
+              </div>
+              <Button asChild variant="ghost" className="hidden text-brand-blue hover:text-brand-blue/80 hover:bg-brand-blue/5 sm:flex">
+                <Link href="/browse">
+                  View all <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+            <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {newThisWeek.map((template) => (
+                <TemplateCard key={template.id} template={template} />
+              ))}
+            </div>
+            <div className="mt-8 text-center sm:hidden">
+              <Button asChild variant="outline">
+                <Link href="/browse">
+                  View all templates <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Pricing Preview */}
       <section className="bg-white py-28">

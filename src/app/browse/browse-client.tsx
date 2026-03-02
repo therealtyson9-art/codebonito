@@ -21,9 +21,10 @@ export function BrowseClient({ templates }: { templates: Template[] }) {
   const [category, setCategory] = useState<string>("all");
   const [style, setStyle] = useState<string>("all");
   const [priceTier, setPriceTier] = useState<string>("all");
+  const [sortBy, setSortBy] = useState<string>("popular");
 
   const filtered = useMemo(() => {
-    return templates.filter((t) => {
+    const result = templates.filter((t) => {
       const matchesSearch =
         !search ||
         t.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -35,12 +36,17 @@ export function BrowseClient({ templates }: { templates: Template[] }) {
         priceTier === "all" || t.price_tier === priceTier;
       return matchesSearch && matchesCategory && matchesStyle && matchesTier;
     });
-  }, [templates, search, category, style, priceTier]);
+    if (sortBy === "newest") {
+      result.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+    }
+    return result;
+  }, [templates, search, category, style, priceTier, sortBy]);
 
   const hasActiveFilters =
     category !== "all" ||
     style !== "all" ||
     priceTier !== "all" ||
+    sortBy !== "popular" ||
     search !== "";
 
   function clearFilters() {
@@ -48,6 +54,7 @@ export function BrowseClient({ templates }: { templates: Template[] }) {
     setCategory("all");
     setStyle("all");
     setPriceTier("all");
+    setSortBy("popular");
   }
 
   return (
@@ -110,6 +117,15 @@ export function BrowseClient({ templates }: { templates: Template[] }) {
                 <SelectItem value="all">All Plans</SelectItem>
                 <SelectItem value="free">Free</SelectItem>
                 <SelectItem value="pro">Pro</SelectItem>
+              </SelectContent>
+            </Select>
+            <Select value={sortBy} onValueChange={setSortBy}>
+              <SelectTrigger className="w-full bg-white border-border/60 sm:w-[160px]">
+                <SelectValue placeholder="Sort" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="popular">Most Popular</SelectItem>
+                <SelectItem value="newest">Newest First</SelectItem>
               </SelectContent>
             </Select>
           </div>
