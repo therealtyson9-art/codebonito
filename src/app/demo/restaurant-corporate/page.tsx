@@ -1,268 +1,170 @@
 export default function RestaurantCorporateDemo() {
-  const locations = [
-    { city: "New York", address: "350 Park Ave, Midtown", hours: "11AM–10PM" },
-    { city: "Chicago", address: "200 N Michigan Ave", hours: "11AM–10PM" },
-    { city: "Los Angeles", address: "8500 Beverly Blvd", hours: "11AM–11PM" },
-    { city: "Houston", address: "1200 Westheimer Rd", hours: "11AM–10PM" },
+  const restaurants = [
+    { name: "Cornerstone Midtown", city: "New York", address: "350 Park Avenue, 2nd Floor, New York, NY 10022", cuisine: "Modern American", hours: "Mon-Sun 11:30 AM - 10:00 PM", seats: 180, desc: "Our flagship location in the heart of Midtown Manhattan, featuring a grand dining room with floor-to-ceiling windows overlooking Park Avenue." },
+    { name: "Cornerstone Gold Coast", city: "Chicago", address: "200 N Michigan Avenue, Chicago, IL 60601", cuisine: "Contemporary Steakhouse", hours: "Mon-Sun 11:00 AM - 10:30 PM", seats: 150, desc: "A modern steakhouse concept on the Magnificent Mile with dry-aged cuts and an award-winning wine program of over 600 labels." },
+    { name: "Cornerstone Beverly", city: "Los Angeles", address: "8500 Beverly Boulevard, Los Angeles, CA 90048", cuisine: "California Mediterranean", hours: "Mon-Sun 11:00 AM - 11:00 PM", seats: 200, desc: "Sun-drenched indoor-outdoor dining celebrating the produce and flavors of the California coast with a Mediterranean sensibility." },
+    { name: "Cornerstone Brickell", city: "Miami", address: "1450 Brickell Avenue, Miami, FL 33131", cuisine: "Coastal Latin Fusion", hours: "Mon-Sun 11:30 AM - 11:30 PM", seats: 170, desc: "Our newest location brings together the bold flavors of Latin America with locally sourced Florida seafood and waterfront terrace dining." },
   ]
 
-  const menuItems = [
-    { name: "Grilled Atlantic Salmon", desc: "Wild-caught, quinoa pilaf, steamed broccoli, lemon dill sauce", price: "$24.99", cal: 520, badges: ["Gluten-Free", "High Protein"] },
-    { name: "Classic Angus Burger", desc: "1/3 lb patty, aged cheddar, lettuce, tomato, brioche bun, house fries", price: "$18.99", cal: 780, badges: ["Popular"] },
-    { name: "Mediterranean Bowl", desc: "Falafel, hummus, tabbouleh, pickled onion, tahini, warm pita", price: "$16.99", cal: 620, badges: ["Vegetarian"] },
-    { name: "Chicken Caesar Wrap", desc: "Grilled chicken breast, romaine, Parmesan, Caesar dressing, flour tortilla", price: "$15.99", cal: 590, badges: ["High Protein"] },
-    { name: "Thai Shrimp Stir-Fry", desc: "Tiger shrimp, snap peas, bell pepper, Thai basil, jasmine rice", price: "$22.99", cal: 480, badges: ["Gluten-Free"] },
-    { name: "Plant-Based Impossible Burger", desc: "Impossible patty, vegan cheese, avocado, pickles, whole wheat bun", price: "$19.99", cal: 650, badges: ["Vegan", "Popular"] },
+  const careers = [
+    { title: "Executive Sous Chef", location: "Chicago", type: "Full-Time" },
+    { title: "Restaurant General Manager", location: "Miami", type: "Full-Time" },
+    { title: "Sommelier", location: "New York", type: "Full-Time" },
+    { title: "Line Cook", location: "All Locations", type: "Full-Time" },
+    { title: "Host / Hostess", location: "Los Angeles", type: "Part-Time" },
   ]
-
-  const stats = [
-    { value: "127", label: "Locations Nationwide" },
-    { value: "15M+", label: "Guests Served Annually" },
-    { value: "92%", label: "Local Sourcing Rate" },
-    { value: "4.6", label: "Average Guest Rating" },
-  ]
-
-  const testimonials = [
-    { name: "David Chen", role: "Food Critic, Daily Post", text: "Consistent quality across every location I've visited. The nutritional transparency is a game-changer for health-conscious diners." },
-    { name: "Maria Santos", role: "Regular Guest, Chicago", text: "My family eats here twice a week. The kids love the menu options and I love knowing exactly what's in every dish." },
-    { name: "Tom Bradley", role: "Corporate Events Manager", text: "We've hosted over 30 team dinners at Harvest Table. The private dining coordination is always seamless and professional." },
-  ]
-
-  const badgeColor = (badge: string) => {
-    if (badge === "Gluten-Free") return "bg-green-100 text-green-700"
-    if (badge === "Vegetarian") return "bg-emerald-100 text-emerald-700"
-    if (badge === "Vegan") return "bg-lime-100 text-lime-700"
-    if (badge === "High Protein") return "bg-blue-100 text-blue-700"
-    if (badge === "Popular") return "bg-amber-100 text-amber-700"
-    return "bg-gray-100 text-gray-700"
-  }
 
   return (
-    <div className="min-h-screen bg-white text-gray-800" style={{ fontFamily: "Inter, sans-serif" }}>
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-      </head>
+    <div className="min-h-screen bg-white" style={{ fontFamily: "Cabin, sans-serif" }}>
+      <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-      {/* Top Bar */}
-      <div className="bg-blue-900 text-white text-xs py-2">
-        <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
-          <span>Order Online &mdash; Free delivery on orders $35+</span>
-          <div className="hidden md:flex space-x-6">
-            <span className="cursor-pointer hover:underline">Careers</span>
-            <span className="cursor-pointer hover:underline">Franchise Info</span>
-            <span className="cursor-pointer hover:underline">Gift Cards</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Navigation */}
-      <nav className="border-b border-gray-200 bg-white sticky top-0 z-10">
+      {/* Nav */}
+      <nav className="border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white text-xs font-bold">HT</div>
-            <span className="text-lg font-semibold text-gray-900">Harvest Table</span>
-          </div>
+          <span className="text-xl font-bold tracking-tight" style={{ color: "#722f37" }}>CORNERSTONE</span>
           <div className="hidden md:flex items-center space-x-8">
-            {["Menu", "Locations", "Nutrition", "Catering", "About Us"].map((link) => (
-              <span key={link} className="text-sm text-gray-600 hover:text-blue-600 cursor-pointer transition-colors font-medium">
-                {link}
-              </span>
+            {["Our Restaurants", "Private Dining", "Careers", "Gift Cards", "Press"].map((item) => (
+              <span key={item} className="text-sm font-medium text-gray-600 cursor-pointer hover:text-gray-900">{item}</span>
             ))}
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="text-sm text-gray-600 cursor-pointer hover:text-blue-600">Sign In</span>
-            <span className="bg-blue-600 text-white text-sm font-medium px-5 py-2 rounded cursor-pointer hover:bg-blue-700 transition-colors">
-              Order Now
-            </span>
+            <button className="px-5 py-2 text-sm font-semibold text-white rounded" style={{ backgroundColor: "#722f37" }}>Newsletter</button>
           </div>
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="bg-gradient-to-r from-blue-50 to-gray-50 border-b border-gray-200">
-        <div className="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <span className="inline-block bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">
-              Now in 127 Locations
-            </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-              Fresh food you can <span className="text-blue-600">feel good</span> about.
-            </h1>
-            <p className="text-lg text-gray-500 mt-4 leading-relaxed">
-              Responsibly sourced ingredients, full nutritional transparency, and a menu designed for
-              every dietary need. Dine in, take out, or order for delivery.
-            </p>
-            <div className="mt-8 flex gap-3">
-              <span className="bg-blue-600 text-white text-sm font-medium px-6 py-3 rounded cursor-pointer hover:bg-blue-700 transition-colors">
-                View Full Menu
-              </span>
-              <span className="border border-gray-300 text-gray-700 text-sm font-medium px-6 py-3 rounded cursor-pointer hover:border-gray-400 transition-colors">
-                Find a Location
-              </span>
-            </div>
-          </div>
-          <div className="h-72 bg-gradient-to-br from-blue-100 to-green-50 rounded-lg border border-gray-200" />
+      {/* Interior Photo Hero */}
+      <section className="relative h-96 flex items-center justify-center" style={{ backgroundColor: "#f5f0eb" }}>
+        <div className="absolute inset-0 flex items-center justify-center opacity-10">
+          <div className="w-full h-full" style={{ background: "repeating-linear-gradient(45deg, #722f37 0, #722f37 1px, transparent 0, transparent 40px)" }} />
+        </div>
+        <div className="relative text-center px-6">
+          <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: "#722f37" }}>Cornerstone Hospitality Group</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Four Cities. One Standard.</h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Since 2012, Cornerstone Hospitality has built a portfolio of restaurants united by a commitment to exceptional ingredients, genuine hospitality, and the communities we serve.
+          </p>
         </div>
       </section>
 
-      {/* Locations */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
-        <div className="flex justify-between items-end mb-8">
-          <div>
-            <h2 className="text-2xl font-bold text-gray-900">Our Locations</h2>
-            <p className="text-gray-500 mt-1">Find a Harvest Table near you</p>
-          </div>
-          <span className="text-sm text-blue-600 font-medium cursor-pointer hover:underline">View all locations →</span>
-        </div>
-        <div className="grid md:grid-cols-4 gap-4">
-          {locations.map((loc) => (
-            <div key={loc.city} className="border border-gray-200 rounded-lg p-5 hover:border-blue-300 hover:shadow-sm transition-all cursor-pointer">
-              <h3 className="font-semibold text-gray-900">{loc.city}</h3>
-              <p className="text-sm text-gray-500 mt-1">{loc.address}</p>
-              <p className="text-xs text-gray-400 mt-2">{loc.hours}</p>
-              <span className="text-xs text-blue-600 font-medium mt-3 inline-block">Get Directions →</span>
+      {/* Our Restaurants */}
+      <section className="max-w-6xl mx-auto px-6 py-20">
+        <h2 className="text-3xl font-bold text-center text-gray-900 mb-4">Our Restaurants</h2>
+        <p className="text-center text-gray-500 mb-14 max-w-2xl mx-auto">Each Cornerstone location has its own identity, menu, and character &mdash; shaped by the city it calls home.</p>
+        <div className="grid md:grid-cols-2 gap-8">
+          {restaurants.map((r) => (
+            <div key={r.name} className="border border-gray-200 rounded-lg overflow-hidden">
+              <div className="h-48 flex items-center justify-center" style={{ backgroundColor: "#f9f5f1" }}>
+                <span className="text-sm font-semibold tracking-widest uppercase" style={{ color: "#722f37" }}>{r.city}</span>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-1">{r.name}</h3>
+                <p className="text-sm font-medium mb-3" style={{ color: "#722f37" }}>{r.cuisine} &middot; {r.seats} seats</p>
+                <p className="text-sm text-gray-600 mb-3">{r.desc}</p>
+                <p className="text-xs text-gray-400">{r.address}</p>
+                <p className="text-xs text-gray-400">{r.hours}</p>
+              </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Menu */}
-      <section className="bg-gray-50 border-y border-gray-200">
-        <div className="max-w-6xl mx-auto px-6 py-16">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl font-bold text-gray-900">Popular Menu Items</h2>
-            <p className="text-gray-500 mt-1">All items include full nutritional information</p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-4">
-            {menuItems.map((item) => (
-              <div key={item.name} className="bg-white border border-gray-200 rounded-lg p-5 flex justify-between hover:shadow-sm transition-shadow">
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <h3 className="font-semibold text-gray-900">{item.name}</h3>
-                    {item.badges.map((badge) => (
-                      <span key={badge} className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${badgeColor(badge)}`}>
-                        {badge}
-                      </span>
-                    ))}
-                  </div>
-                  <p className="text-sm text-gray-500 mt-1">{item.desc}</p>
-                  <p className="text-xs text-gray-400 mt-2">{item.cal} cal</p>
-                </div>
-                <div className="ml-4 text-right">
-                  <span className="font-bold text-gray-900">{item.price}</span>
-                </div>
+      {/* Private Dining */}
+      <section className="py-20" style={{ backgroundColor: "#f9f5f1" }}>
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Private Dining & Events</h2>
+          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+            From intimate boardroom dinners for 12 to full restaurant buyouts for 200, our events team crafts bespoke experiences at every Cornerstone location. Custom menus, curated wine pairings, and dedicated event coordinators ensure flawless execution.
+          </p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { label: "Corporate Dinners", detail: "Private rooms with A/V, prix fixe menus, and dedicated service staff" },
+              { label: "Celebrations", detail: "Birthdays, anniversaries, rehearsal dinners, and milestone events" },
+              { label: "Full Buyouts", detail: "Exclusive use of any location for galas, launches, and large gatherings" },
+            ].map((item) => (
+              <div key={item.label} className="bg-white p-6 rounded-lg border border-gray-200">
+                <h3 className="font-bold text-gray-900 mb-2">{item.label}</h3>
+                <p className="text-sm text-gray-600">{item.detail}</p>
               </div>
             ))}
           </div>
-          <div className="text-center mt-8">
-            <span className="text-sm text-blue-600 font-medium cursor-pointer hover:underline">
-              View complete menu with nutritional details →
-            </span>
-          </div>
+          <button className="mt-10 px-8 py-3 text-sm font-semibold text-white rounded" style={{ backgroundColor: "#722f37" }}>Inquire About Events</button>
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {stats.map((stat) => (
-            <div key={stat.label}>
-              <div className="text-3xl font-bold text-blue-600">{stat.value}</div>
-              <p className="text-sm text-gray-500 mt-1">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* About */}
-      <section className="bg-blue-900 text-white">
-        <div className="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl font-bold mb-4">Our Commitment to Quality</h2>
-            <p className="text-blue-200 leading-relaxed mb-4">
-              Since 2012, Harvest Table has been on a mission to make nutritious, delicious food accessible to everyone.
-              We partner with over 200 local farms and suppliers to ensure every ingredient meets our standards.
-            </p>
-            <p className="text-blue-200 leading-relaxed">
-              Our team of registered dietitians reviews every menu item. We publish complete allergen information,
-              macronutrient breakdowns, and sourcing details for full transparency.
-            </p>
-          </div>
-          <div className="h-64 bg-blue-800 rounded-lg" />
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl font-bold text-gray-900">What Our Guests Say</h2>
-        </div>
-        <div className="grid md:grid-cols-3 gap-6">
-          {testimonials.map((t) => (
-            <div key={t.name} className="border border-gray-200 rounded-lg p-6">
-              <div className="flex gap-0.5 mb-3">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <span key={i} className="text-amber-400 text-sm">★</span>
-                ))}
-              </div>
-              <p className="text-sm text-gray-600 leading-relaxed mb-4">&quot;{t.text}&quot;</p>
+      {/* Careers */}
+      <section className="max-w-4xl mx-auto px-6 py-20">
+        <h2 className="text-3xl font-bold text-center text-gray-900 mb-4">Careers</h2>
+        <p className="text-center text-gray-500 mb-10">Join a team that values craft, growth, and genuine hospitality. Benefits include health insurance, dining discounts, and professional development.</p>
+        <div className="space-y-4">
+          {careers.map((job) => (
+            <div key={job.title + job.location} className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
               <div>
-                <p className="text-sm font-semibold text-gray-900">{t.name}</p>
-                <p className="text-xs text-gray-400">{t.role}</p>
+                <p className="font-semibold text-gray-900">{job.title}</p>
+                <p className="text-sm text-gray-500">{job.location} &middot; {job.type}</p>
               </div>
+              <button className="px-5 py-2 text-sm font-medium border rounded" style={{ borderColor: "#722f37", color: "#722f37" }}>Apply</button>
             </div>
           ))}
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-gray-50 border-t border-gray-200">
-        <div className="max-w-4xl mx-auto px-6 py-16 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Ready to dine with us?</h2>
-          <p className="text-gray-500 mb-8">Book a table, order online, or plan your next corporate event.</p>
-          <div className="flex justify-center gap-3 flex-wrap">
-            <span className="bg-blue-600 text-white text-sm font-medium px-6 py-3 rounded cursor-pointer hover:bg-blue-700 transition-colors">
-              Reserve a Table
-            </span>
-            <span className="border border-gray-300 text-gray-700 text-sm font-medium px-6 py-3 rounded cursor-pointer hover:border-gray-400 transition-colors">
-              Order Online
-            </span>
-            <span className="border border-gray-300 text-gray-700 text-sm font-medium px-6 py-3 rounded cursor-pointer hover:border-gray-400 transition-colors">
-              Corporate Catering
-            </span>
+      {/* Gift Cards */}
+      <section className="py-16" style={{ backgroundColor: "#722f37" }}>
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold text-white mb-4">Gift Cards</h2>
+          <p className="text-white/80 mb-8 max-w-xl mx-auto">
+            Give the gift of Cornerstone. Digital and physical gift cards are redeemable at all four locations. Available in amounts from $50 to $500.
+          </p>
+          <button className="px-8 py-3 text-sm font-semibold bg-white rounded" style={{ color: "#722f37" }}>Purchase a Gift Card</button>
+        </div>
+      </section>
+
+      {/* Press */}
+      <section className="max-w-4xl mx-auto px-6 py-20">
+        <h2 className="text-3xl font-bold text-center text-gray-900 mb-10">In the Press</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          {[
+            { outlet: "The New York Times", quote: "Cornerstone has quietly built one of America\u2019s most consistent restaurant groups." },
+            { outlet: "Bon App\u00e9tit", quote: "The Gold Coast steakhouse sets a new standard for the genre \u2014 modern, confident, and impeccably sourced." },
+            { outlet: "Eater", quote: "With Brickell, Cornerstone proves it can adapt its formula to any city without losing its soul." },
+          ].map((item) => (
+            <div key={item.outlet} className="p-6 border border-gray-200 rounded-lg">
+              <p className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: "#722f37" }}>{item.outlet}</p>
+              <p className="text-sm text-gray-600 italic">&ldquo;{item.quote}&rdquo;</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Newsletter */}
+      <section className="py-16" style={{ backgroundColor: "#f9f5f1" }}>
+        <div className="max-w-xl mx-auto px-6 text-center">
+          <h2 className="text-2xl font-bold text-gray-900 mb-3">Stay Connected</h2>
+          <p className="text-sm text-gray-600 mb-6">Receive updates on seasonal menus, new openings, exclusive events, and chef collaborations.</p>
+          <div className="flex gap-3 max-w-md mx-auto">
+            <div className="flex-1 h-11 rounded border border-gray-300 px-4 flex items-center text-sm text-gray-400">your@email.com</div>
+            <button className="px-6 h-11 text-sm font-semibold text-white rounded" style={{ backgroundColor: "#722f37" }}>Subscribe</button>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-gray-400">
-        <div className="max-w-6xl mx-auto px-6 py-12">
+      <footer className="border-t border-gray-200 py-10">
+        <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <span className="text-white font-semibold">Harvest Table</span>
-              <p className="text-sm mt-2">Fresh food you can feel good about. Serving communities across America since 2012.</p>
-            </div>
-            {[
-              { title: "Company", links: ["About Us", "Careers", "Press", "Investor Relations"] },
-              { title: "Support", links: ["Contact Us", "FAQ", "Allergen Info", "Accessibility"] },
-              { title: "Connect", links: ["Instagram", "Facebook", "Twitter", "LinkedIn"] },
-            ].map((col) => (
-              <div key={col.title}>
-                <span className="text-white font-semibold text-sm">{col.title}</span>
-                <div className="mt-3 space-y-2">
-                  {col.links.map((link) => (
-                    <p key={link} className="text-sm cursor-pointer hover:text-white transition-colors">{link}</p>
-                  ))}
-                </div>
+            {restaurants.map((r) => (
+              <div key={r.city}>
+                <p className="font-semibold text-gray-900 mb-1">{r.city}</p>
+                <p className="text-xs text-gray-500">{r.address}</p>
+                <p className="text-xs text-gray-500">{r.hours}</p>
               </div>
             ))}
           </div>
-          <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-xs">&copy; 2026 Harvest Table Inc. All rights reserved.</p>
-            <div className="flex space-x-6 text-xs">
-              <span className="cursor-pointer hover:text-white">Privacy Policy</span>
-              <span className="cursor-pointer hover:text-white">Terms of Service</span>
-              <span className="cursor-pointer hover:text-white">Accessibility</span>
+          <div className="border-t border-gray-200 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400">
+            <p>&copy; 2025 Cornerstone Hospitality Group. All rights reserved.</p>
+            <div className="flex space-x-6 mt-3 md:mt-0">
+              <span className="cursor-pointer hover:text-gray-600">Privacy Policy</span>
+              <span className="cursor-pointer hover:text-gray-600">Terms of Service</span>
+              <span className="cursor-pointer hover:text-gray-600">Accessibility</span>
             </div>
           </div>
         </div>

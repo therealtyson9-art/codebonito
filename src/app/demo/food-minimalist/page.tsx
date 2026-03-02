@@ -1,178 +1,153 @@
 export default function FoodMinimalistDemo() {
-  const navLinks = ["Menu", "How It Works", "Dietary", "Reviews"]
-
-  const categories = [
-    { name: "Bowls", desc: "Hearty grain and protein bowls", icon: "🥗" },
-    { name: "Salads", desc: "Crisp seasonal greens", icon: "🥬" },
-    { name: "Wraps", desc: "Hand-rolled with fresh fillings", icon: "🌯" },
-    { name: "Smoothies", desc: "Cold-pressed and blended", icon: "🥤" },
+  const recipes = [
+    { name: "Dashi Ochazuke", season: "Winter", time: "15 min", description: "Rice steeped in fragrant dashi broth with pickled plum, nori, and wasabi. The simplest meal, and often the most satisfying.", ingredients: "Steamed rice, kombu dashi, umeboshi, toasted nori, wasabi" },
+    { name: "Spring Onigiri", season: "Spring", time: "20 min", description: "Hand-formed rice triangles filled with seasoned bamboo shoot and shiso leaf. A bento essential that celebrates restraint.", ingredients: "Short-grain rice, bamboo shoot, shiso, sea salt, nori" },
+    { name: "Cold Somen", season: "Summer", time: "10 min", description: "Ice-chilled wheat noodles with a clean tsuyu dipping sauce and grated ginger. When heat demands simplicity.", ingredients: "Somen noodles, tsuyu, fresh ginger, scallion, myoga" },
+    { name: "Miso-Glazed Kabocha", season: "Autumn", time: "35 min", description: "Roasted Japanese pumpkin with a white miso and mirin glaze. Sweet, savory, and impossibly tender.", ingredients: "Kabocha squash, white miso, mirin, sesame seeds" },
   ]
 
-  const popularItems = [
-    { name: "Mediterranean Power Bowl", desc: "Quinoa, grilled chicken, roasted red peppers, kalamata olives, cucumber, and tahini drizzle", price: "$15" },
-    { name: "Harvest Kale Salad", desc: "Tuscan kale, roasted sweet potato, dried cranberries, toasted pecans, maple vinaigrette", price: "$13" },
-    { name: "Thai Peanut Wrap", desc: "Shredded cabbage, carrots, edamame, cilantro, crispy tofu, spicy peanut sauce", price: "$14" },
-    { name: "Teriyaki Salmon Bowl", desc: "Wild-caught salmon, jasmine rice, pickled ginger, avocado, sesame seeds, teriyaki glaze", price: "$18" },
-    { name: "Green Goddess Smoothie", desc: "Spinach, banana, mango, chia seeds, coconut water, fresh mint", price: "$12" },
-    { name: "Chicken Caesar Wrap", desc: "Grilled chicken breast, romaine, shaved parmesan, house-made Caesar dressing, whole wheat tortilla", price: "$14" },
-  ]
-
-  const steps = [
-    { step: "01", title: "Choose", desc: "Browse our menu and pick your favorite meals for the week. Filter by dietary needs." },
-    { step: "02", title: "Order", desc: "Place your order by 8 PM and we'll prepare everything fresh the next morning." },
-    { step: "03", title: "Enjoy", desc: "Your meals arrive at your door by noon, chilled and ready to heat or eat." },
-  ]
-
-  const filters = ["Vegan", "Gluten-Free", "Keto", "High Protein"]
-
-  const reviews = [
-    { name: "Priya S.", text: "I've been ordering every week for three months. The Mediterranean Bowl is my go-to lunch and I never get tired of it.", rating: 5 },
-    { name: "David L.", text: "As someone with celiac, having reliable gluten-free options delivered fresh is life-changing. The quality is outstanding.", rating: 5 },
-    { name: "Monica T.", text: "The portions are generous, ingredients are always fresh, and the packaging is compostable. What's not to love?", rating: 5 },
+  const essentials = [
+    { name: "Nakiri Knife", price: "$89", description: "A vegetable knife with a flat blade for precise, even cuts. The foundation of Japanese home cooking." },
+    { name: "Donabe Clay Pot", price: "$120", description: "Handcrafted earthenware for slow-cooked rice, hot pots, and soups that taste like they took hours." },
+    { name: "Suribachi Mortar", price: "$45", description: "A ridged ceramic mortar for grinding sesame seeds, making dressings, and preparing gomashio." },
+    { name: "Hinoki Cutting Board", price: "$75", description: "Japanese cypress wood that is naturally antibacterial, gentle on blades, and beautiful on your counter." },
   ]
 
   return (
-    <div className="min-h-screen bg-white text-stone-800" style={{ fontFamily: "Inter, sans-serif" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <div style={{ backgroundColor: "#ffffff", fontFamily: "'Zen Kaku Gothic New', sans-serif" }} className="min-h-screen">
+      <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet" />
 
-      {/* Navigation */}
-      <nav className="border-b border-stone-100">
-        <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-          <span className="text-xl font-semibold tracking-wide text-green-600">FRESH PLATE</span>
-          <div className="hidden md:flex items-center space-x-10">
-            {navLinks.map((link) => (
-              <span key={link} className="text-sm text-stone-500 hover:text-green-600 cursor-pointer transition-colors">{link}</span>
-            ))}
-          </div>
-          <span className="px-6 py-2.5 bg-green-600 text-white text-sm font-medium rounded-full cursor-pointer hover:bg-green-700 transition-colors">Order Now</span>
+      {/* Zen Nav */}
+      <nav className="max-w-4xl mx-auto px-8 py-8 flex items-center justify-between">
+        <span className="text-lg tracking-widest" style={{ color: "#5a7a42", fontFamily: "'Zen Kaku Gothic New', sans-serif", fontWeight: 700 }}>KANSO</span>
+        <div className="hidden md:flex items-center gap-8 text-sm" style={{ color: "#5a7a42", fontWeight: 300 }}>
+          <a href="#philosophy" className="hover:opacity-70">Philosophy</a>
+          <a href="#recipes" className="hover:opacity-70">Recipes</a>
+          <a href="#shop" className="hover:opacity-70">Shop</a>
+          <a href="#about" className="hover:opacity-70">About</a>
         </div>
+        <button className="text-sm underline underline-offset-4" style={{ color: "#5a7a42", fontWeight: 300 }}>Newsletter</button>
       </nav>
 
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-green-50 via-white to-emerald-50">
-        <div className="max-w-5xl mx-auto px-6 py-28 text-center">
-          <p className="text-xs tracking-[0.3em] uppercase text-green-600 mb-4 font-medium">Farm-Fresh Delivery</p>
-          <h1 className="text-5xl md:text-6xl font-light text-stone-900 leading-tight">Healthy meals,<br />delivered daily</h1>
-          <p className="text-lg text-stone-500 font-light mt-6 max-w-lg mx-auto">Chef-prepared meals made with locally sourced ingredients, delivered to your door every morning.</p>
-          <div className="mt-10 flex justify-center gap-4">
-            <span className="px-8 py-3.5 bg-green-600 text-white text-sm font-medium rounded-full cursor-pointer hover:bg-green-700 transition-colors">View This Week&apos;s Menu</span>
-            <span className="px-8 py-3.5 border border-stone-300 text-stone-700 text-sm rounded-full cursor-pointer hover:border-green-600 hover:text-green-600 transition-colors">How It Works</span>
+      {/* Ingredient Hero */}
+      <section className="max-w-4xl mx-auto px-8 py-16">
+        <div className="rounded-xl overflow-hidden" style={{ backgroundColor: "#f4f7f0", height: "380px" }}>
+          <div className="h-full flex flex-col items-center justify-center text-center px-8">
+            <p className="text-xs tracking-[0.3em] uppercase mb-6" style={{ color: "#8aa86e", fontWeight: 300 }}>The kitchen as meditation</p>
+            <h1 className="text-4xl md:text-5xl leading-tight mb-6" style={{ color: "#5a7a42", fontFamily: "'Zen Kaku Gothic New', sans-serif", fontWeight: 700 }}>
+              One ingredient.<br />Full attention.
+            </h1>
+            <p className="text-base max-w-md leading-relaxed" style={{ color: "#7a9a62", fontWeight: 300 }}>
+              Kanso Kitchen is a practice of simplicity. We cook with fewer ingredients, more intention, and the belief that nourishment begins before the first bite.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Menu Categories */}
-      <section className="max-w-5xl mx-auto px-6 py-20">
-        <div className="text-center mb-14">
-          <p className="text-xs tracking-[0.3em] uppercase text-green-600 mb-3">Categories</p>
-          <h2 className="text-3xl font-light text-stone-900">What are you craving?</h2>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {categories.map((cat) => (
-            <div key={cat.name} className="border border-stone-100 rounded-xl p-6 text-center hover:border-green-200 hover:shadow-sm transition-all cursor-pointer">
-              <span className="text-3xl">{cat.icon}</span>
-              <h3 className="text-base font-medium text-stone-900 mt-3">{cat.name}</h3>
-              <p className="text-sm text-stone-400 mt-1">{cat.desc}</p>
-            </div>
-          ))}
-        </div>
+      {/* Philosophy */}
+      <section id="philosophy" className="max-w-3xl mx-auto px-8 py-16 text-center">
+        <p className="text-xs tracking-[0.3em] uppercase mb-4" style={{ color: "#8aa86e", fontWeight: 300 }}>Our approach</p>
+        <h2 className="text-3xl mb-8" style={{ color: "#5a7a42", fontFamily: "'Zen Kaku Gothic New', sans-serif", fontWeight: 700 }}>Kanso: the beauty of elimination</h2>
+        <p className="text-base leading-loose mb-6" style={{ color: "#6b8a52", fontWeight: 300 }}>
+          In Japanese aesthetics, kanso means simplicity achieved by eliminating the unnecessary. In our kitchen, this means five ingredients or fewer per recipe, seasonal produce from local farms, and techniques that honor the ingredient rather than mask it. We do not add what is not needed. We do not rush what asks for patience.
+        </p>
+        <p className="text-base leading-loose" style={{ color: "#6b8a52", fontWeight: 300 }}>
+          Every recipe on this site has been tested in a home kitchen with a single burner, a good knife, and whatever the market offered that morning. No special equipment. No rare imports. Just attention.
+        </p>
       </section>
 
-      {/* Popular Items */}
-      <section className="bg-stone-50">
-        <div className="max-w-5xl mx-auto px-6 py-20">
-          <div className="text-center mb-14">
-            <p className="text-xs tracking-[0.3em] uppercase text-green-600 mb-3">Popular</p>
-            <h2 className="text-3xl font-light text-stone-900">This Week&apos;s Favorites</h2>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6">
-            {popularItems.map((item) => (
-              <div key={item.name} className="bg-white rounded-xl p-6 flex justify-between items-start hover:shadow-sm transition-shadow">
-                <div className="flex-1 pr-4">
-                  <h4 className="font-medium text-stone-900">{item.name}</h4>
-                  <p className="text-sm text-stone-400 mt-1.5 leading-relaxed">{item.desc}</p>
+      {/* Seasonal Recipes */}
+      <section id="recipes" className="max-w-4xl mx-auto px-8 py-16">
+        <p className="text-xs tracking-[0.3em] uppercase mb-4" style={{ color: "#8aa86e", fontWeight: 300 }}>Cook</p>
+        <h2 className="text-3xl mb-12" style={{ color: "#5a7a42", fontFamily: "'Zen Kaku Gothic New', sans-serif", fontWeight: 700 }}>Seasonal Recipes</h2>
+        <div className="space-y-8">
+          {recipes.map((recipe) => (
+            <div key={recipe.name} className="border-t pt-8" style={{ borderColor: "#e0e8d8" }}>
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+                <div>
+                  <h3 className="text-xl mb-1" style={{ color: "#5a7a42", fontFamily: "'Zen Kaku Gothic New', sans-serif", fontWeight: 500 }}>{recipe.name}</h3>
+                  <p className="text-xs" style={{ color: "#8aa86e", fontWeight: 300 }}>{recipe.season} &middot; {recipe.time}</p>
                 </div>
-                <span className="text-green-600 font-semibold whitespace-nowrap">{item.price}</span>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works */}
-      <section className="max-w-5xl mx-auto px-6 py-20">
-        <div className="text-center mb-14">
-          <p className="text-xs tracking-[0.3em] uppercase text-green-600 mb-3">Process</p>
-          <h2 className="text-3xl font-light text-stone-900">How It Works</h2>
-        </div>
-        <div className="grid md:grid-cols-3 gap-10">
-          {steps.map((s) => (
-            <div key={s.step} className="text-center">
-              <span className="text-4xl font-light text-green-600">{s.step}</span>
-              <h3 className="text-xl font-medium text-stone-900 mt-4">{s.title}</h3>
-              <p className="text-sm text-stone-500 mt-3 leading-relaxed">{s.desc}</p>
+              <p className="text-sm leading-relaxed mb-3" style={{ color: "#6b8a52", fontWeight: 300 }}>{recipe.description}</p>
+              <p className="text-xs" style={{ color: "#9ab882" }}>{recipe.ingredients}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Dietary Filters */}
-      <section className="border-y border-stone-100">
-        <div className="max-w-5xl mx-auto px-6 py-14 text-center">
-          <p className="text-xs tracking-[0.3em] uppercase text-green-600 mb-6">Dietary Preferences</p>
-          <div className="flex flex-wrap justify-center gap-4">
-            {filters.map((filter) => (
-              <span key={filter} className="px-6 py-2.5 border border-green-200 text-green-700 text-sm rounded-full hover:bg-green-50 cursor-pointer transition-colors">{filter}</span>
-            ))}
-          </div>
-          <p className="text-sm text-stone-400 mt-5">Every item on our menu is labeled so you can filter for exactly what fits your lifestyle.</p>
-        </div>
-      </section>
-
-      {/* Reviews */}
-      <section className="max-w-5xl mx-auto px-6 py-20">
-        <div className="text-center mb-14">
-          <p className="text-xs tracking-[0.3em] uppercase text-green-600 mb-3">Testimonials</p>
-          <h2 className="text-3xl font-light text-stone-900">What Our Customers Say</h2>
-        </div>
-        <div className="grid md:grid-cols-3 gap-8">
-          {reviews.map((review) => (
-            <div key={review.name} className="border border-stone-100 rounded-xl p-8">
-              <div className="flex gap-1 mb-4">
-                {Array.from({ length: review.rating }).map((_, i) => (
-                  <span key={i} className="text-green-500 text-sm">★</span>
-                ))}
+      {/* Cooking Essentials Shop */}
+      <section id="shop" className="max-w-4xl mx-auto px-8 py-16">
+        <p className="text-xs tracking-[0.3em] uppercase mb-4" style={{ color: "#8aa86e", fontWeight: 300 }}>Essentials</p>
+        <h2 className="text-3xl mb-12" style={{ color: "#5a7a42", fontFamily: "'Zen Kaku Gothic New', sans-serif", fontWeight: 700 }}>Cooking Tools</h2>
+        <div className="grid sm:grid-cols-2 gap-8">
+          {essentials.map((item) => (
+            <div key={item.name} className="p-6 rounded-xl" style={{ backgroundColor: "#f4f7f0" }}>
+              <div className="w-full h-32 rounded-lg mb-4" style={{ backgroundColor: "#e0e8d8" }} />
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="text-base" style={{ color: "#5a7a42", fontFamily: "'Zen Kaku Gothic New', sans-serif", fontWeight: 500 }}>{item.name}</h3>
+                <span className="text-sm" style={{ color: "#5a7a42", fontWeight: 700 }}>{item.price}</span>
               </div>
-              <p className="text-stone-500 leading-relaxed mb-6">{`"${review.text}"`}</p>
-              <p className="text-sm font-medium text-stone-900">{review.name}</p>
+              <p className="text-sm leading-relaxed" style={{ color: "#7a9a62", fontWeight: 300 }}>{item.description}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Order CTA */}
-      <section className="bg-green-600 text-white">
-        <div className="max-w-3xl mx-auto px-6 py-20 text-center">
-          <h2 className="text-4xl font-light mb-4">Start eating better today</h2>
-          <p className="text-green-100 font-light mb-8 max-w-md mx-auto">Your first order ships free. No subscription required -- order as often or as little as you like.</p>
-          <span className="inline-block px-10 py-3.5 bg-white text-green-700 text-sm font-medium rounded-full cursor-pointer hover:bg-green-50 transition-colors">Browse This Week&apos;s Menu</span>
+      {/* Seasonal Pantry */}
+      <section className="max-w-4xl mx-auto px-8 py-16">
+        <p className="text-xs tracking-[0.3em] uppercase mb-4" style={{ color: "#8aa86e", fontWeight: 300 }}>Stock</p>
+        <h2 className="text-3xl mb-12" style={{ color: "#5a7a42", fontFamily: "'Zen Kaku Gothic New', sans-serif", fontWeight: 700 }}>The Kanso Pantry</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {[
+            { name: "Kombu", origin: "Hokkaido", note: "The foundation of all dashi" },
+            { name: "White Miso", origin: "Kyoto", note: "Sweet, mild, and endlessly versatile" },
+            { name: "Rice Vinegar", origin: "Kyoto", note: "Gentle acidity for dressings and sushi" },
+            { name: "Toasted Sesame Oil", origin: "Kagoshima", note: "A few drops transform any dish" },
+            { name: "Katsuobushi", origin: "Makurazaki", note: "Smoked bonito for rich umami" },
+            { name: "Mirin", origin: "Aichi", note: "Sweet rice wine for glazes and balance" },
+            { name: "Soy Sauce", origin: "Chiba", note: "Naturally brewed, aged two years" },
+            { name: "Shichimi", origin: "Kyoto", note: "Seven-spice blend with sansho pepper" },
+          ].map((item) => (
+            <div key={item.name} className="text-center p-4 rounded-lg" style={{ backgroundColor: "#f4f7f0" }}>
+              <h4 className="text-sm mb-1" style={{ color: "#5a7a42", fontWeight: 500 }}>{item.name}</h4>
+              <p className="text-xs mb-1" style={{ color: "#8aa86e", fontWeight: 300 }}>{item.origin}</p>
+              <p className="text-xs" style={{ color: "#9ab882", fontWeight: 300 }}>{item.note}</p>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-stone-100">
-        <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div>
-            <span className="text-lg font-semibold tracking-wide text-green-600">FRESH PLATE</span>
-            <p className="text-sm text-stone-400 mt-1">Healthy meals delivered to Portland, Seattle, and San Francisco</p>
+      {/* About the Chef */}
+      <section id="about" className="max-w-3xl mx-auto px-8 py-16 text-center">
+        <div className="w-20 h-20 rounded-full mx-auto mb-6" style={{ backgroundColor: "#e0e8d8" }} />
+        <p className="text-xs tracking-[0.3em] uppercase mb-4" style={{ color: "#8aa86e", fontWeight: 300 }}>About</p>
+        <h2 className="text-2xl mb-6" style={{ color: "#5a7a42", fontFamily: "'Zen Kaku Gothic New', sans-serif", fontWeight: 700 }}>Yuki Mori</h2>
+        <p className="text-sm leading-loose mb-6" style={{ color: "#6b8a52", fontWeight: 300 }}>
+          Yuki trained in Kyoto under a kaiseki chef for six years before returning to her home kitchen in Portland. She started Kanso Kitchen as a weekly email to friends, sharing one recipe each Sunday. That email became a blog, then a cookbook, and now a small shop of tools she actually uses every day. She still cooks on a single burner most mornings.
+        </p>
+        <p className="text-sm leading-loose" style={{ color: "#6b8a52", fontWeight: 300 }}>
+          Her cookbook, &ldquo;Five or Fewer,&rdquo; was published in 2023 and has been translated into nine languages. She teaches seasonal cooking workshops at her Portland studio each quarter and believes the best meals are the ones you make without thinking too hard.
+        </p>
+      </section>
+
+      {/* Newsletter */}
+      <section className="max-w-3xl mx-auto px-8 py-16">
+        <div className="rounded-xl p-10 text-center" style={{ backgroundColor: "#f4f7f0" }}>
+          <p className="text-xs tracking-[0.3em] uppercase mb-4" style={{ color: "#8aa86e", fontWeight: 300 }}>Subscribe</p>
+          <h2 className="text-2xl mb-4" style={{ color: "#5a7a42", fontFamily: "'Zen Kaku Gothic New', sans-serif", fontWeight: 700 }}>One recipe, every Sunday</h2>
+          <p className="text-sm mb-8" style={{ color: "#7a9a62", fontWeight: 300 }}>Seasonal, simple, and never more than five ingredients. No spam, no ads, just food.</p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <input type="email" placeholder="your@email.com" className="px-5 py-3 rounded-lg text-sm border-0 outline-none w-64" style={{ backgroundColor: "#ffffff", color: "#5a7a42" }} />
+            <button className="px-6 py-3 rounded-lg text-sm text-white" style={{ backgroundColor: "#5a7a42", fontWeight: 500 }}>Subscribe</button>
           </div>
-          <div className="text-sm text-stone-400 space-x-8">
-            <span className="cursor-pointer hover:text-green-600">Instagram</span>
-            <span className="cursor-pointer hover:text-green-600">Twitter</span>
-            <span className="cursor-pointer hover:text-green-600">hello@freshplate.co</span>
-          </div>
-          <p className="text-xs text-stone-300">&copy; 2026 Fresh Plate. All rights reserved.</p>
         </div>
+      </section>
+
+      {/* Zen Footer */}
+      <footer className="max-w-4xl mx-auto px-8 py-10 border-t text-center" style={{ borderColor: "#e0e8d8" }}>
+        <span className="text-sm tracking-widest" style={{ color: "#5a7a42", fontWeight: 700 }}>KANSO</span>
+        <p className="text-xs mt-3" style={{ color: "#9ab882", fontWeight: 300 }}>&copy; 2025 Kanso Kitchen. Simplicity in every bite.</p>
       </footer>
     </div>
   )

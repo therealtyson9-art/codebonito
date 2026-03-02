@@ -1,196 +1,176 @@
 export default function DashboardBrutalistDemo() {
-  const stats = [
-    { label: "TOTAL REVENUE", value: "$127,840", delta: "+14.2%", direction: "UP" },
-    { label: "ACTIVE USERS", value: "9,312", delta: "+6.8%", direction: "UP" },
-    { label: "CHURN RATE", value: "2.1%", delta: "-0.3%", direction: "DOWN" },
-    { label: "MRR", value: "$38,450", delta: "+9.7%", direction: "UP" },
+  const systemStats = [
+    { label: "CPU_LOAD", value: "47.3%", bar: 47 },
+    { label: "MEM_USAGE", value: "12.8 GB / 32 GB", bar: 40 },
+    { label: "DISK_IO", value: "284 MB/s", bar: 62 },
+    { label: "NET_THROUGHPUT", value: "1.2 Gbps", bar: 78 },
   ];
 
-  const navItems = [
-    { label: "OVERVIEW", active: true },
-    { label: "ANALYTICS", active: false },
-    { label: "USERS", active: false },
-    { label: "REVENUE", active: false },
-    { label: "LOGS", active: false },
-    { label: "SYSTEM", active: false },
+  const servers = [
+    { id: "SRV-001", name: "us-east-prod-01", status: "ONLINE", cpu: "32%", mem: "8.2 GB", uptime: "142d 07h" },
+    { id: "SRV-002", name: "us-west-prod-01", status: "ONLINE", cpu: "58%", mem: "14.1 GB", uptime: "89d 14h" },
+    { id: "SRV-003", name: "eu-central-prod-01", status: "WARNING", cpu: "87%", mem: "28.4 GB", uptime: "21d 03h" },
+    { id: "SRV-004", name: "ap-south-prod-01", status: "ONLINE", cpu: "24%", mem: "6.7 GB", uptime: "204d 19h" },
+    { id: "SRV-005", name: "us-east-staging-01", status: "OFFLINE", cpu: "0%", mem: "0 GB", uptime: "0d 00h" },
   ];
 
-  const transactions = [
-    { id: "TXN-0041", user: "MARCUS_W", amount: "$2,340.00", type: "SUBSCRIPTION", status: "COMPLETE", ts: "2026-02-28 14:32:07" },
-    { id: "TXN-0040", user: "ELENA_R", amount: "$890.00", type: "ONE-TIME", status: "COMPLETE", ts: "2026-02-28 13:18:45" },
-    { id: "TXN-0039", user: "CHEN_L", amount: "$1,200.00", type: "SUBSCRIPTION", status: "PENDING", ts: "2026-02-28 11:05:22" },
-    { id: "TXN-0038", user: "PRIYA_K", amount: "$450.00", type: "REFUND", status: "PROCESSED", ts: "2026-02-27 22:41:09" },
-    { id: "TXN-0037", user: "JAMES_O", amount: "$3,100.00", type: "SUBSCRIPTION", status: "COMPLETE", ts: "2026-02-27 19:27:33" },
-    { id: "TXN-0036", user: "SOFIA_M", amount: "$780.00", type: "ONE-TIME", status: "FAILED", ts: "2026-02-27 16:54:18" },
+  const logs = [
+    { time: "03:24:18", level: "INFO", msg: "[nginx] 200 GET /api/v2/metrics - 12ms" },
+    { time: "03:24:17", level: "WARN", msg: "[redis] connection pool nearing capacity (87/100)" },
+    { time: "03:24:15", level: "INFO", msg: "[postgres] query executed: SELECT * FROM events LIMIT 500 - 34ms" },
+    { time: "03:24:12", level: "ERROR", msg: "[worker-3] timeout exceeded on job queue batch_process_42819" },
+    { time: "03:24:09", level: "INFO", msg: "[k8s] pod nexus-api-7f4d8b scaled to 4 replicas" },
+    { time: "03:24:05", level: "INFO", msg: "[cdn] cache purge completed for zone us-east (247 objects)" },
+    { time: "03:24:01", level: "WARN", msg: "[ssl] certificate for *.nexus.io expires in 14 days" },
   ];
 
-  const chartData = [
-    { month: "SEP", value: 42 },
-    { month: "OCT", value: 58 },
-    { month: "NOV", value: 35 },
-    { month: "DEC", value: 72 },
-    { month: "JAN", value: 64 },
-    { month: "FEB", value: 89 },
+  const alerts = [
+    { severity: "CRITICAL", msg: "SRV-003 CPU exceeding 85% threshold for 12 minutes", time: "03:12" },
+    { severity: "WARNING", msg: "Redis connection pool at 87% capacity on us-east cluster", time: "03:18" },
+    { severity: "INFO", msg: "Scheduled maintenance window begins in 4 hours", time: "02:45" },
+    { severity: "WARNING", msg: "SSL certificate renewal required within 14 days", time: "01:30" },
   ];
 
-  const activityLog = [
-    { time: "14:32:07", event: "PAYMENT RECEIVED", detail: "TXN-0041 // $2,340.00" },
-    { time: "14:28:41", event: "USER SIGNUP", detail: "NEW_USER // elena.r@mail.com" },
-    { time: "14:15:03", event: "DEPLOY SUCCESS", detail: "BUILD #847 // PROD" },
-    { time: "13:58:22", event: "ALERT TRIGGERED", detail: "CPU > 85% // NODE-03" },
-    { time: "13:42:19", event: "CONFIG UPDATED", detail: "RATE_LIMIT // 1000/min" },
+  const uptimeGrid = [
+    [1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1],
+    [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+    [1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1],
+    [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
   ];
 
   return (
-    <div className="min-h-screen bg-white text-black" style={{ fontFamily: "'Space Mono', monospace" }}>
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-      </head>
+    <div style={{ fontFamily: "'Share Tech Mono', monospace", backgroundColor: "#000000", color: "#4ade80" }} className="min-h-screen p-6">
+      <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
 
-      {/* NAV */}
-      <nav className="border-b-4 border-black">
-        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
-          <div className="text-lg font-bold tracking-widest">[ SYSTEM_DASH ]</div>
-          <div className="hidden md:flex items-center space-x-0">
-            {navItems.map((item) => (
-              <div key={item.label} className={`px-4 py-5 text-xs font-bold tracking-wider border-l-2 border-black ${item.active ? "bg-black text-white" : "hover:bg-gray-100"}`}>
-                {item.label}
-              </div>
-            ))}
-          </div>
-          <div className="flex items-center space-x-4">
-            <div className="text-xs font-bold border-2 border-black px-3 py-1">ADMIN_01</div>
-          </div>
+      {/* Command Nav */}
+      <div className="mb-6" style={{ borderBottom: "1px solid #166534" }}>
+        <div className="flex items-center gap-2 mb-3">
+          <span style={{ color: "#4ade80" }} className="text-lg font-bold">NEXUS</span>
+          <span style={{ color: "#166534" }} className="text-sm">// SERVER MONITORING TERMINAL v4.1.0</span>
         </div>
-      </nav>
-
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        {/* HEADER */}
-        <div className="flex items-end justify-between mb-8 border-b-2 border-black pb-4">
-          <div>
-            <h1 className="text-3xl font-bold uppercase tracking-wider">SYSTEM OVERVIEW</h1>
-            <p className="text-xs tracking-widest mt-1 text-gray-600">LAST_SYNC: 2026-02-28T14:32:07Z // STATUS: OPERATIONAL</p>
-          </div>
-          <div className="text-xs font-bold border-2 border-black px-4 py-2 hover:bg-black hover:text-white">EXPORT_RAW</div>
+        <div className="flex gap-6 pb-3 text-sm">
+          {["> DASHBOARD", "> SERVERS", "> LOGS", "> ALERTS", "> NETWORK", "> DEPLOY"].map((cmd, i) => (
+            <span key={cmd} className="cursor-pointer" style={{ color: i === 0 ? "#4ade80" : "#166534" }}>{cmd}</span>
+          ))}
         </div>
+      </div>
 
-        {/* STAT BLOCKS */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 mb-8">
-          {stats.map((stat) => (
-            <div key={stat.label} className="border-2 border-black p-6">
-              <p className="text-[10px] font-bold tracking-[0.2em] text-gray-500 mb-2">{stat.label}</p>
-              <p className="text-3xl font-bold tracking-tight">{stat.value}</p>
-              <div className="flex items-center mt-2 space-x-2">
-                <span className="text-xs font-bold">{stat.delta}</span>
-                <span className={`text-[10px] font-bold px-2 py-0.5 ${stat.direction === "UP" ? "bg-black text-white" : "bg-gray-200 text-black"}`}>
-                  {stat.direction}
-                </span>
+      {/* System Stats Hero */}
+      <div className="mb-6 p-4" style={{ border: "1px solid #166534" }}>
+        <div className="text-xs mb-3" style={{ color: "#166534" }}>[ SYSTEM_OVERVIEW // {new Date().toISOString().split("T")[0]} ]</div>
+        <div className="grid grid-cols-4 gap-4">
+          {systemStats.map((stat) => (
+            <div key={stat.label}>
+              <div className="text-xs mb-1" style={{ color: "#166534" }}>{stat.label}</div>
+              <div className="text-xl mb-2" style={{ color: "#4ade80" }}>{stat.value}</div>
+              <div className="h-2 w-full" style={{ backgroundColor: "#0a0a0a", border: "1px solid #166534" }}>
+                <div className="h-full" style={{ width: `${stat.bar}%`, backgroundColor: stat.bar > 80 ? "#ef4444" : stat.bar > 60 ? "#eab308" : "#4ade80" }} />
               </div>
             </div>
           ))}
         </div>
+      </div>
 
-        {/* CHART + ACTIVITY */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 mb-8">
-          <div className="lg:col-span-2 border-2 border-black p-6">
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-sm font-bold tracking-widest uppercase">REVENUE // MONTHLY</h2>
-              <span className="text-[10px] font-bold text-gray-500">UNIT: $K</span>
-            </div>
-            <div className="flex items-end space-x-1 h-40">
-              {chartData.map((d) => (
-                <div key={d.month} className="flex-1 flex flex-col items-center">
-                  <div className="w-full bg-black" style={{ height: `${d.value * 1.6}px` }} />
-                  <span className="text-[10px] font-bold mt-2 tracking-wider">{d.month}</span>
-                  <span className="text-[10px] text-gray-500">{d.value}K</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="border-2 border-black border-l-0 lg:border-l-2 p-6">
-            <h2 className="text-sm font-bold tracking-widest uppercase mb-4">ACTIVITY_LOG</h2>
-            <div className="space-y-0">
-              {activityLog.map((entry, i) => (
-                <div key={i} className="border-b border-gray-300 py-3">
-                  <div className="text-[10px] font-bold text-gray-400 tracking-wider">{entry.time}</div>
-                  <div className="text-xs font-bold mt-0.5">{entry.event}</div>
-                  <div className="text-[10px] text-gray-600 mt-0.5">{entry.detail}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* TRAFFIC SOURCES */}
-        <div className="border-2 border-black p-6 mb-8">
-          <h2 className="text-sm font-bold tracking-widest uppercase mb-4">TRAFFIC_SOURCES</h2>
-          <div className="space-y-3">
-            {[
-              { source: "DIRECT", pct: 38 },
-              { source: "ORGANIC", pct: 31 },
-              { source: "REFERRAL", pct: 18 },
-              { source: "SOCIAL", pct: 13 },
-            ].map((s) => (
-              <div key={s.source} className="flex items-center space-x-4">
-                <span className="text-[10px] font-bold w-20 tracking-wider">{s.source}</span>
-                <div className="flex-1 h-4 bg-gray-100 border border-black">
-                  <div className="h-full bg-black" style={{ width: `${s.pct}%` }} />
-                </div>
-                <span className="text-xs font-bold w-10 text-right">{s.pct}%</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* TABLE */}
-        <div className="border-2 border-black mb-8">
-          <div className="flex items-center justify-between p-4 border-b-2 border-black">
-            <h2 className="text-sm font-bold tracking-widest uppercase">TRANSACTION_LOG</h2>
-            <span className="text-[10px] font-bold text-gray-500">{transactions.length} RECORDS</span>
-          </div>
-          <table className="w-full">
+      <div className="grid grid-cols-3 gap-6 mb-6">
+        {/* Server Status */}
+        <div className="col-span-2 p-4" style={{ border: "1px solid #166534" }}>
+          <div className="text-xs mb-3" style={{ color: "#166534" }}>[ SERVER_STATUS ]</div>
+          <table className="w-full text-xs">
             <thead>
-              <tr className="border-b-2 border-black bg-gray-50">
-                {["ID", "USER", "AMOUNT", "TYPE", "STATUS", "TIMESTAMP"].map((h) => (
-                  <th key={h} className="text-left px-4 py-3 text-[10px] font-bold tracking-[0.2em] text-gray-500">{h}</th>
+              <tr style={{ borderBottom: "1px solid #166534" }}>
+                {["ID", "HOSTNAME", "STATUS", "CPU", "MEM", "UPTIME"].map((h) => (
+                  <th key={h} className="text-left py-2 pr-4" style={{ color: "#166534" }}>{h}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {transactions.map((tx) => (
-                <tr key={tx.id} className="border-b border-gray-200 hover:bg-gray-50">
-                  <td className="px-4 py-3 text-xs font-bold">{tx.id}</td>
-                  <td className="px-4 py-3 text-xs">{tx.user}</td>
-                  <td className="px-4 py-3 text-xs font-bold">{tx.amount}</td>
-                  <td className="px-4 py-3">
-                    <span className="text-[10px] font-bold border border-black px-2 py-0.5">{tx.type}</span>
+              {servers.map((srv) => (
+                <tr key={srv.id} style={{ borderBottom: "1px solid #0a2010" }}>
+                  <td className="py-2 pr-4" style={{ color: "#4ade80" }}>{srv.id}</td>
+                  <td className="py-2 pr-4" style={{ color: "#4ade80" }}>{srv.name}</td>
+                  <td className="py-2 pr-4" style={{ color: srv.status === "ONLINE" ? "#4ade80" : srv.status === "WARNING" ? "#eab308" : "#ef4444" }}>
+                    [{srv.status}]
                   </td>
-                  <td className="px-4 py-3">
-                    <span className={`text-[10px] font-bold px-2 py-0.5 ${tx.status === "COMPLETE" ? "bg-black text-white" : tx.status === "FAILED" ? "bg-gray-200 text-black border-2 border-black" : "bg-white text-black border border-black"}`}>
-                      {tx.status}
-                    </span>
-                  </td>
-                  <td className="px-4 py-3 text-[10px] text-gray-500">{tx.ts}</td>
+                  <td className="py-2 pr-4">{srv.cpu}</td>
+                  <td className="py-2 pr-4">{srv.mem}</td>
+                  <td className="py-2 pr-4">{srv.uptime}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-      </div>
 
-      {/* FOOTER */}
-      <footer className="border-t-4 border-black mt-8">
-        <div className="max-w-7xl mx-auto px-4 py-6 flex items-center justify-between">
-          <div className="text-[10px] font-bold tracking-widest text-gray-500">SYSTEM_DASH V2.4.1 // BUILD #847</div>
-          <div className="flex space-x-6">
-            {["STATUS", "DOCS", "API", "SUPPORT"].map((link) => (
-              <span key={link} className="text-[10px] font-bold tracking-wider hover:underline">{link}</span>
+        {/* Alert Feed */}
+        <div className="p-4" style={{ border: "1px solid #166534" }}>
+          <div className="text-xs mb-3" style={{ color: "#166534" }}>[ ALERT_FEED ]</div>
+          <div className="space-y-3">
+            {alerts.map((alert, i) => (
+              <div key={i} className="text-xs">
+                <div className="flex items-center gap-2 mb-1">
+                  <span style={{ color: alert.severity === "CRITICAL" ? "#ef4444" : alert.severity === "WARNING" ? "#eab308" : "#4ade80" }}>
+                    [{alert.severity}]
+                  </span>
+                  <span style={{ color: "#166534" }}>{alert.time}</span>
+                </div>
+                <div style={{ color: "#4ade80" }}>{alert.msg}</div>
+              </div>
             ))}
           </div>
-          <div className="text-[10px] font-bold tracking-widest text-gray-500">2026 // ALL_RIGHTS_RESERVED</div>
         </div>
-      </footer>
+      </div>
+
+      {/* Log Output */}
+      <div className="mb-6 p-4" style={{ border: "1px solid #166534", backgroundColor: "#0a0a0a" }}>
+        <div className="text-xs mb-3" style={{ color: "#166534" }}>[ LOG_OUTPUT // tail -f /var/log/nexus/combined.log ]</div>
+        <div className="space-y-1">
+          {logs.map((log, i) => (
+            <div key={i} className="text-xs flex gap-3">
+              <span style={{ color: "#166534" }}>{log.time}</span>
+              <span style={{
+                color: log.level === "ERROR" ? "#ef4444" : log.level === "WARN" ? "#eab308" : "#166534",
+                minWidth: "3rem",
+              }}>
+                {log.level}
+              </span>
+              <span style={{ color: "#4ade80" }}>{log.msg}</span>
+            </div>
+          ))}
+        </div>
+        <div className="mt-3 text-xs animate-pulse" style={{ color: "#4ade80" }}>
+          {">"} _
+        </div>
+      </div>
+
+      {/* Uptime Grid */}
+      <div className="p-4 mb-6" style={{ border: "1px solid #166534" }}>
+        <div className="text-xs mb-3" style={{ color: "#166534" }}>[ UPTIME_MATRIX // LAST 30 DAYS ]</div>
+        <div className="flex items-center gap-4">
+          {["SRV-001", "SRV-002", "SRV-003", "SRV-004"].map((srv, si) => (
+            <div key={srv} className="flex-1">
+              <div className="text-xs mb-2" style={{ color: "#166534" }}>{srv}</div>
+              <div className="flex gap-0.5">
+                {uptimeGrid[si].map((up, di) => (
+                  <div
+                    key={di}
+                    className="h-4 flex-1"
+                    style={{ backgroundColor: up ? "#166534" : "#ef4444", opacity: up ? 0.7 : 1 }}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="flex justify-between mt-2 text-xs" style={{ color: "#166534" }}>
+          <span>30d ago</span>
+          <span>today</span>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="flex items-center justify-between pt-4 text-xs" style={{ borderTop: "1px solid #166534", color: "#166534" }}>
+        <span>nexus@monitoring:~$ uptime: 142d 07:23:41 | load: 0.47 | sessions: 3</span>
+        <span>NEXUS TERMINAL v4.1.0 // ENCRYPTED CONNECTION // TLS 1.3</span>
+      </div>
     </div>
   );
 }

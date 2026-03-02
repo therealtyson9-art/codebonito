@@ -1,272 +1,161 @@
 export default function DocsMinimalistDemo() {
-  const sidebarSections = [
-    {
-      title: "Getting Started",
-      items: [
-        { label: "Introduction", active: true },
-        { label: "Installation", active: false },
-        { label: "Quick Start", active: false },
-        { label: "Configuration", active: false },
-      ],
-    },
-    {
-      title: "Core API",
-      items: [
-        { label: "Authentication", active: false },
-        { label: "Requests", active: false },
-        { label: "Responses", active: false },
-        { label: "Error Handling", active: false },
-      ],
-    },
-    {
-      title: "Resources",
-      items: [
-        { label: "Customers", active: false },
-        { label: "Payments", active: false },
-        { label: "Subscriptions", active: false },
-        { label: "Invoices", active: false },
-      ],
-    },
-    {
-      title: "Utilities",
-      items: [
-        { label: "Webhooks", active: false },
-        { label: "Pagination", active: false },
-        { label: "Rate Limits", active: false },
-        { label: "Versioning", active: false },
-      ],
-    },
-  ];
-
-  const tocItems = ["Overview", "Authentication", "Making Requests", "Response Format", "Error Codes", "Next Steps"];
-
-  const configOptions = [
-    { param: "api_key", type: "string", required: "Yes", desc: "Your secret API key" },
-    { param: "base_url", type: "string", required: "No", desc: "Override the default base URL" },
-    { param: "timeout", type: "number", required: "No", desc: "Request timeout in milliseconds" },
-    { param: "max_retries", type: "number", required: "No", desc: "Maximum number of retries on failure" },
-    { param: "idempotency", type: "boolean", required: "No", desc: "Enable automatic idempotency keys" },
-  ];
-
-  const errorCodes = [
-    { code: "400", meaning: "Bad Request", desc: "The request was malformed or missing required fields." },
-    { code: "401", meaning: "Unauthorized", desc: "Invalid or missing API key." },
-    { code: "404", meaning: "Not Found", desc: "The requested resource does not exist." },
-    { code: "429", meaning: "Rate Limited", desc: "Too many requests. Retry after the specified delay." },
-  ];
-
   return (
-    <div className="min-h-screen bg-white text-slate-800" style={{ fontFamily: "Inter, sans-serif" }}>
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-      </head>
+    <div style={{ fontFamily: "'Atkinson Hyperlegible', sans-serif", color: "#374151" }} className="min-h-screen bg-white">
+      <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet" />
 
-      {/* Top Nav */}
-      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-100">
-        <div className="max-w-[88rem] mx-auto px-6 h-14 flex items-center justify-between">
-          <div className="flex items-center gap-8">
-            <span className="text-base font-semibold tracking-tight text-slate-900">Clearway</span>
-            <div className="hidden md:flex items-center gap-6">
-              {["Docs", "API Reference", "Guides", "Changelog"].map((item, i) => (
-                <span key={item} className={`text-[13px] cursor-pointer transition-colors ${i === 0 ? "text-slate-900 font-medium" : "text-slate-400 hover:text-slate-700"}`}>{item}</span>
-              ))}
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="hidden md:flex items-center h-8 w-56 border border-slate-200 rounded-md px-3 gap-2">
-              <svg className="w-3.5 h-3.5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-              <span className="text-xs text-slate-300">Search docs...</span>
-              <span className="ml-auto text-[10px] text-slate-300 border border-slate-200 px-1 rounded font-mono">/</span>
-            </div>
-            <span className="text-[13px] text-slate-400 hover:text-slate-700 cursor-pointer">GitHub</span>
-          </div>
+      {/* Top Bar */}
+      <header className="border-b border-gray-200 px-6 py-3 flex items-center justify-between">
+        <div className="flex items-center gap-6">
+          <span className="text-lg font-bold tracking-tight" style={{ color: "#374151" }}>Lattice SDK</span>
+          <span className="text-xs px-2 py-0.5 rounded-full border border-gray-300" style={{ color: "#6b7280" }}>v3.2.1</span>
         </div>
-      </nav>
+        <nav className="flex items-center gap-6 text-sm">
+          <a className="hover:underline" style={{ color: "#374151" }}>Guides</a>
+          <a className="hover:underline" style={{ color: "#374151" }}>API Reference</a>
+          <a className="hover:underline" style={{ color: "#374151" }}>Changelog</a>
+          <a className="hover:underline" style={{ color: "#374151" }}>GitHub</a>
+        </nav>
+      </header>
 
-      <div className="max-w-[88rem] mx-auto flex">
-        {/* Sidebar */}
-        <aside className="hidden lg:block w-60 flex-shrink-0 border-r border-slate-100 sticky top-14 h-[calc(100vh-3.5rem)] overflow-y-auto py-8 px-5">
-          {sidebarSections.map((section) => (
-            <div key={section.title} className="mb-7">
-              <h4 className="text-[11px] font-medium text-slate-400 uppercase tracking-widest mb-2.5">{section.title}</h4>
-              <div className="space-y-px">
-                {section.items.map((item) => (
-                  <div key={item.label} className={`py-1.5 px-2 text-[13px] rounded cursor-pointer transition-colors ${item.active ? "text-slate-900 font-medium bg-slate-50" : "text-slate-400 hover:text-slate-600"}`}>
-                    {item.label}
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
+      <div className="flex">
+        {/* Tree Nav Sidebar */}
+        <aside className="w-64 border-r border-gray-200 p-6 min-h-screen hidden lg:block">
+          <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#9ca3af" }}>Documentation</p>
+          <ul className="space-y-1 text-sm">
+            <li className="font-bold" style={{ color: "#374151" }}>Getting Started</li>
+            <li className="pl-4" style={{ color: "#6b7280" }}>Installation</li>
+            <li className="pl-4" style={{ color: "#6b7280" }}>Quick Start</li>
+            <li className="pl-4" style={{ color: "#6b7280" }}>Configuration</li>
+            <li className="mt-3 font-bold" style={{ color: "#374151" }}>Core Concepts</li>
+            <li className="pl-4" style={{ color: "#6b7280" }}>Schemas</li>
+            <li className="pl-4" style={{ color: "#6b7280" }}>Queries</li>
+            <li className="pl-4" style={{ color: "#6b7280" }}>Mutations</li>
+            <li className="pl-4" style={{ color: "#6b7280" }}>Subscriptions</li>
+            <li className="mt-3 font-bold" style={{ color: "#374151" }}>Advanced</li>
+            <li className="pl-4" style={{ color: "#6b7280" }}>Middleware</li>
+            <li className="pl-4" style={{ color: "#6b7280" }}>Caching</li>
+            <li className="pl-4" style={{ color: "#6b7280" }}>Error Handling</li>
+            <li className="pl-4" style={{ color: "#6b7280" }}>Testing</li>
+            <li className="mt-3 font-bold" style={{ color: "#374151" }}>Plugins</li>
+            <li className="pl-4" style={{ color: "#6b7280" }}>Auth Plugin</li>
+            <li className="pl-4" style={{ color: "#6b7280" }}>Logger Plugin</li>
+            <li className="pl-4" style={{ color: "#6b7280" }}>Metrics Plugin</li>
+          </ul>
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 min-w-0 px-10 lg:px-16 py-12 max-w-3xl">
-          <p className="text-[13px] text-slate-300 mb-8">Getting Started &nbsp;/&nbsp; Introduction</p>
-
-          <h1 className="text-[28px] font-semibold text-slate-900 tracking-tight mb-3">Introduction</h1>
-          <p className="text-[15px] text-slate-500 leading-relaxed mb-10">
-            Clearway is a payments API built for developers. Accept payments, manage subscriptions, and handle invoicing with a clean, predictable interface.
-          </p>
-
-          {/* Info callout */}
-          <div className="border border-slate-200 rounded-md p-4 mb-10 flex gap-3">
-            <span className="text-slate-300 text-sm mt-0.5">&#9432;</span>
-            <p className="text-[13px] text-slate-500 leading-relaxed">
-              This guide covers the REST API. For client-side integration, see the <span className="text-slate-700 font-medium cursor-pointer">SDK Reference</span>.
-            </p>
-          </div>
-
-          <h2 id="authentication" className="text-lg font-semibold text-slate-900 mb-3 mt-12">Authentication</h2>
-          <p className="text-[13px] text-slate-500 leading-relaxed mb-4">
-            Authenticate requests by including your API key in the Authorization header. All API requests must be made over HTTPS.
-          </p>
-          <div className="bg-slate-50 border border-slate-100 rounded-md overflow-hidden mb-8">
-            <div className="flex items-center justify-between px-4 py-2 border-b border-slate-100">
-              <span className="text-[11px] text-slate-400 font-mono">bash</span>
-              <span className="text-[11px] text-slate-300 cursor-pointer hover:text-slate-500">Copy</span>
-            </div>
-            <pre className="p-4 text-[13px] text-slate-700 leading-relaxed overflow-x-auto" style={{ fontFamily: "SF Mono, Menlo, monospace" }}>
-{`curl https://api.clearway.dev/v1/payments \\
-  -H "Authorization: Bearer sk_live_abc123..." \\
-  -H "Content-Type: application/json"`}
-            </pre>
-          </div>
-
-          <h2 id="making-requests" className="text-lg font-semibold text-slate-900 mb-3 mt-12">Making Requests</h2>
-          <p className="text-[13px] text-slate-500 leading-relaxed mb-4">
-            The API accepts JSON-encoded request bodies and returns JSON-encoded responses. Use standard HTTP methods to interact with resources.
-          </p>
-          <div className="bg-slate-50 border border-slate-100 rounded-md overflow-hidden mb-8">
-            <div className="flex items-center justify-between px-4 py-2 border-b border-slate-100">
-              <span className="text-[11px] text-slate-400 font-mono">javascript</span>
-              <span className="text-[11px] text-slate-300 cursor-pointer hover:text-slate-500">Copy</span>
-            </div>
-            <pre className="p-4 text-[13px] text-slate-700 leading-relaxed overflow-x-auto" style={{ fontFamily: "SF Mono, Menlo, monospace" }}>
-{`const clearway = require('clearway')('sk_live_abc123');
-
-const payment = await clearway.payments.create({
-  amount: 2000,
-  currency: 'usd',
-  customer: 'cus_9f3b2a',
-  description: 'Order #1234',
-});
-
-console.log(payment.id); // pay_7x8k2m`}
-            </pre>
-          </div>
-
-          <h2 id="response-format" className="text-lg font-semibold text-slate-900 mb-3 mt-12">Response Format</h2>
-          <p className="text-[13px] text-slate-500 leading-relaxed mb-4">
-            Every response includes an object type, an ID, and the resource data. List endpoints return a paginated array.
-          </p>
-          <div className="border border-slate-200 rounded-md overflow-hidden mb-10">
-            <table className="w-full text-left">
-              <thead>
-                <tr className="border-b border-slate-100">
-                  {["Parameter", "Type", "Required", "Description"].map((h) => (
-                    <th key={h} className="text-[11px] font-medium text-slate-400 uppercase tracking-wider px-4 py-2.5">{h}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {configOptions.map((row) => (
-                  <tr key={row.param} className="border-b border-slate-50 last:border-0">
-                    <td className="px-4 py-2.5 text-[13px] font-mono text-slate-700">{row.param}</td>
-                    <td className="px-4 py-2.5 text-[13px] font-mono text-slate-400">{row.type}</td>
-                    <td className="px-4 py-2.5 text-[13px] text-slate-400">{row.required}</td>
-                    <td className="px-4 py-2.5 text-[13px] text-slate-500">{row.desc}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <h2 id="error-codes" className="text-lg font-semibold text-slate-900 mb-3 mt-12">Error Codes</h2>
-          <p className="text-[13px] text-slate-500 leading-relaxed mb-4">
-            Clearway uses standard HTTP status codes. Errors include a machine-readable code and a human-readable message.
-          </p>
-          {/* Warning callout */}
-          <div className="border-l-2 border-amber-300 bg-amber-50/50 pl-4 pr-4 py-3 mb-6">
-            <p className="text-[13px] text-slate-600 leading-relaxed">
-              Always handle errors gracefully. Implement exponential backoff for 429 responses.
-            </p>
-          </div>
-          <div className="space-y-2 mb-10">
-            {errorCodes.map((err) => (
-              <div key={err.code} className="flex items-start gap-4 py-2">
-                <span className="text-[13px] font-mono text-slate-700 w-10 flex-shrink-0">{err.code}</span>
-                <span className="text-[13px] font-medium text-slate-600 w-28 flex-shrink-0">{err.meaning}</span>
-                <span className="text-[13px] text-slate-400">{err.desc}</span>
+        <main className="flex-1 max-w-3xl mx-auto px-8 py-12">
+          {/* Search Hero */}
+          <section className="mb-16 text-center">
+            <h1 className="text-4xl font-bold mb-3" style={{ color: "#374151" }}>Lattice SDK Documentation</h1>
+            <p className="text-lg mb-6" style={{ color: "#6b7280" }}>Build type-safe, composable data layers for modern applications.</p>
+            <div className="max-w-lg mx-auto relative">
+              <div className="border border-gray-300 rounded-lg px-4 py-3 flex items-center gap-3 bg-gray-50">
+                <span style={{ color: "#9ca3af" }}>&#x1F50D;</span>
+                <span className="text-sm" style={{ color: "#9ca3af" }}>Search documentation... (Ctrl+K)</span>
               </div>
-            ))}
-          </div>
-
-          <h2 id="next-steps" className="text-lg font-semibold text-slate-900 mb-4 mt-12">Next Steps</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
-            {[
-              { title: "Quick Start", desc: "Create your first payment in 5 minutes" },
-              { title: "API Reference", desc: "Full endpoint documentation" },
-            ].map((card) => (
-              <div key={card.title} className="border border-slate-150 rounded-md p-4 cursor-pointer hover:border-slate-300 transition-colors group">
-                <h3 className="text-[13px] font-medium text-slate-700 group-hover:text-slate-900 transition-colors">{card.title} &rarr;</h3>
-                <p className="text-[12px] text-slate-400 mt-1">{card.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Prev/Next */}
-          <div className="border-t border-slate-100 pt-6 flex justify-between">
-            <div />
-            <div className="text-right">
-              <p className="text-[11px] text-slate-300 mb-1">Next</p>
-              <span className="text-[13px] font-medium text-slate-600 cursor-pointer hover:text-slate-900">Installation &rarr;</span>
             </div>
-          </div>
+          </section>
+
+          {/* Getting Started */}
+          <section className="mb-14">
+            <h2 className="text-2xl font-bold mb-4" style={{ color: "#374151" }}>Getting Started</h2>
+            <p className="mb-4 leading-relaxed" style={{ color: "#6b7280" }}>
+              Install Lattice SDK via your preferred package manager. The SDK requires Node.js 18 or later and supports both ESM and CommonJS module formats.
+            </p>
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-4 font-mono text-sm" style={{ color: "#374151" }}>
+              <p>$ npm install @lattice/sdk</p>
+            </div>
+            <p className="leading-relaxed" style={{ color: "#6b7280" }}>
+              After installation, initialize your Lattice client by providing your schema definition and connection parameters. The client auto-discovers your data sources and builds an optimized query planner at startup.
+            </p>
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mt-4 font-mono text-sm" style={{ color: "#374151" }}>
+              <p style={{ color: "#9ca3af" }}>{"// Initialize the client"}</p>
+              <p>{"import { LatticeClient } from '@lattice/sdk';"}</p>
+              <p className="mt-2">{"const client = new LatticeClient({"}</p>
+              <p className="pl-4">{"schema: './schema.lattice',"}</p>
+              <p className="pl-4">{"endpoint: 'https://api.example.com',"}</p>
+              <p>{"});"}</p>
+            </div>
+          </section>
+
+          {/* API Reference Cards */}
+          <section className="mb-14">
+            <h2 className="text-2xl font-bold mb-6" style={{ color: "#374151" }}>API Reference</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="border border-gray-200 rounded-lg p-5">
+                <h3 className="font-bold mb-2" style={{ color: "#374151" }}>client.query()</h3>
+                <p className="text-sm leading-relaxed" style={{ color: "#6b7280" }}>
+                  Execute a read operation against your data layer. Supports filtering, pagination, field selection, and nested relation loading with automatic batching.
+                </p>
+                <span className="text-xs mt-3 inline-block px-2 py-0.5 rounded bg-gray-100" style={{ color: "#6b7280" }}>Returns: Promise&lt;QueryResult&gt;</span>
+              </div>
+              <div className="border border-gray-200 rounded-lg p-5">
+                <h3 className="font-bold mb-2" style={{ color: "#374151" }}>client.mutate()</h3>
+                <p className="text-sm leading-relaxed" style={{ color: "#6b7280" }}>
+                  Perform create, update, or delete operations with built-in optimistic locking. Mutations are validated against your schema before execution.
+                </p>
+                <span className="text-xs mt-3 inline-block px-2 py-0.5 rounded bg-gray-100" style={{ color: "#6b7280" }}>Returns: Promise&lt;MutationResult&gt;</span>
+              </div>
+              <div className="border border-gray-200 rounded-lg p-5">
+                <h3 className="font-bold mb-2" style={{ color: "#374151" }}>client.subscribe()</h3>
+                <p className="text-sm leading-relaxed" style={{ color: "#6b7280" }}>
+                  Open a real-time subscription to data changes. Uses WebSocket transport with automatic reconnection and message ordering guarantees.
+                </p>
+                <span className="text-xs mt-3 inline-block px-2 py-0.5 rounded bg-gray-100" style={{ color: "#6b7280" }}>Returns: Subscription</span>
+              </div>
+              <div className="border border-gray-200 rounded-lg p-5">
+                <h3 className="font-bold mb-2" style={{ color: "#374151" }}>client.batch()</h3>
+                <p className="text-sm leading-relaxed" style={{ color: "#6b7280" }}>
+                  Group multiple operations into an atomic batch. All operations succeed or fail together, with automatic rollback on partial failure.
+                </p>
+                <span className="text-xs mt-3 inline-block px-2 py-0.5 rounded bg-gray-100" style={{ color: "#6b7280" }}>Returns: Promise&lt;BatchResult&gt;</span>
+              </div>
+            </div>
+          </section>
+
+          {/* Code Examples */}
+          <section className="mb-14">
+            <h2 className="text-2xl font-bold mb-4" style={{ color: "#374151" }}>Code Examples</h2>
+            <p className="mb-4 leading-relaxed" style={{ color: "#6b7280" }}>
+              Fetch a paginated list of users with their associated organizations, applying a filter on account status.
+            </p>
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 font-mono text-sm" style={{ color: "#374151" }}>
+              <p>{"const users = await client.query('User', {"}</p>
+              <p className="pl-4">{"filter: { status: 'active' },"}</p>
+              <p className="pl-4">{"include: ['organization'],"}</p>
+              <p className="pl-4">{"pagination: { page: 1, perPage: 25 },"}</p>
+              <p className="pl-4">{"orderBy: { createdAt: 'desc' },"}</p>
+              <p>{"});"}</p>
+              <p className="mt-3" style={{ color: "#9ca3af" }}>{"// Result: { data: User[], meta: { total: 142, page: 1 } }"}</p>
+            </div>
+          </section>
+
+          {/* Changelog */}
+          <section className="mb-14">
+            <h2 className="text-2xl font-bold mb-6" style={{ color: "#374151" }}>Changelog</h2>
+            <div className="space-y-4">
+              <div className="border-l-2 border-gray-300 pl-4">
+                <p className="font-bold text-sm" style={{ color: "#374151" }}>v3.2.1 — February 2026</p>
+                <p className="text-sm" style={{ color: "#6b7280" }}>Fixed edge case in batch rollback when using nested transactions. Improved WebSocket reconnection stability.</p>
+              </div>
+              <div className="border-l-2 border-gray-300 pl-4">
+                <p className="font-bold text-sm" style={{ color: "#374151" }}>v3.2.0 — January 2026</p>
+                <p className="text-sm" style={{ color: "#6b7280" }}>Added support for computed fields in schema definitions. New caching middleware with TTL-based invalidation.</p>
+              </div>
+              <div className="border-l-2 border-gray-300 pl-4">
+                <p className="font-bold text-sm" style={{ color: "#374151" }}>v3.1.0 — December 2025</p>
+                <p className="text-sm" style={{ color: "#6b7280" }}>Introduced plugin system for extending client behavior. Added official Auth, Logger, and Metrics plugins.</p>
+              </div>
+            </div>
+          </section>
         </main>
-
-        {/* Right TOC */}
-        <aside className="hidden xl:block w-48 flex-shrink-0 sticky top-14 h-[calc(100vh-3.5rem)] overflow-y-auto py-12 pr-6">
-          <h4 className="text-[11px] font-medium text-slate-400 uppercase tracking-widest mb-3">On this page</h4>
-          <div className="space-y-2">
-            {tocItems.map((item, i) => (
-              <div key={item} className={`text-[13px] cursor-pointer transition-colors ${i === 0 ? "text-slate-800 font-medium" : "text-slate-300 hover:text-slate-600"}`}>
-                {item}
-              </div>
-            ))}
-          </div>
-        </aside>
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-slate-100 mt-16">
-        <div className="max-w-[88rem] mx-auto px-6 py-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-            {[
-              { heading: "Product", links: ["Features", "Pricing", "Changelog", "Status"] },
-              { heading: "Developers", links: ["Documentation", "API Reference", "SDKs", "CLI"] },
-              { heading: "Company", links: ["About", "Blog", "Careers", "Press"] },
-              { heading: "Legal", links: ["Privacy", "Terms", "Security", "Compliance"] },
-            ].map((col) => (
-              <div key={col.heading}>
-                <h4 className="text-[11px] font-medium text-slate-400 uppercase tracking-widest mb-3">{col.heading}</h4>
-                <div className="space-y-2">
-                  {col.links.map((link) => (
-                    <p key={link} className="text-[13px] text-slate-300 hover:text-slate-600 cursor-pointer transition-colors">{link}</p>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="border-t border-slate-100 pt-6 flex items-center justify-between">
-            <span className="text-[12px] text-slate-300">&copy; 2024 Clearway Inc.</span>
-            <div className="flex gap-4">
-              {["GitHub", "Twitter", "Discord"].map((s) => (
-                <span key={s} className="text-[12px] text-slate-300 hover:text-slate-500 cursor-pointer transition-colors">{s}</span>
-              ))}
-            </div>
-          </div>
-        </div>
+      <footer className="border-t border-gray-200 px-6 py-4 flex items-center justify-between text-xs" style={{ color: "#9ca3af" }}>
+        <span>Lattice SDK Documentation v3.2.1</span>
+        <span>Last updated February 2026</span>
       </footer>
     </div>
   );

@@ -1,166 +1,184 @@
 export default function LandingPlayfulDemo() {
   return (
-    <div className="min-h-screen bg-white text-slate-800" style={{ fontFamily: "Nunito, sans-serif" }}>
+    <div className="min-h-screen" style={{ fontFamily: "'Comfortaa', cursive", backgroundColor: "#fff7ed", color: "#292524" }}>
       <head>
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </head>
 
-      {/* Nav */}
-      <nav className="relative z-10">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <span className="text-xl font-extrabold bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">
-            sparkle
-          </span>
-          <div className="hidden md:flex items-center space-x-6">
-            {["Features", "Templates", "Pricing", "Blog"].map((item) => (
-              <span key={item} className="text-sm font-semibold text-slate-600 hover:text-purple-600 cursor-pointer transition-colors">{item}</span>
-            ))}
-          </div>
-          <button className="h-9 px-5 text-sm font-bold bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-full hover:opacity-90 transition-opacity">
-            Try Free &#10024;
-          </button>
+      {/* Rounded Nav */}
+      <nav className="max-w-5xl mx-auto mt-4 px-6 py-3 flex justify-between items-center bg-white rounded-full shadow-sm">
+        <span className="text-xl font-bold" style={{ color: "#f97316" }}>PetPal</span>
+        <div className="hidden md:flex gap-6 text-sm font-medium text-gray-600">
+          <span className="cursor-pointer hover:text-orange-500">How It Works</span>
+          <span className="cursor-pointer hover:text-orange-500">Pet Types</span>
+          <span className="cursor-pointer hover:text-orange-500">Sitters</span>
+          <span className="cursor-pointer hover:text-orange-500">Safety</span>
         </div>
+        <button className="px-6 py-2 rounded-full text-white text-sm font-semibold" style={{ backgroundColor: "#f97316" }}>Download App</button>
       </nav>
 
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-10 left-10 w-72 h-72 bg-pink-300 rounded-full opacity-20 blur-3xl" />
-          <div className="absolute top-32 right-20 w-96 h-96 bg-purple-300 rounded-full opacity-20 blur-3xl" />
-          <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-cyan-300 rounded-full opacity-20 blur-3xl" />
-        </div>
-        <div className="max-w-6xl mx-auto px-6 pt-16 pb-24 text-center">
-          <div className="inline-flex items-center space-x-2 bg-purple-100 rounded-full px-4 py-1.5 mb-8">
-            <span className="text-sm">&#127881;</span>
-            <span className="text-xs font-bold text-purple-700">Just launched v3.0 with AI magic</span>
-          </div>
-          <h1 className="text-5xl lg:text-7xl font-black leading-tight mb-6">
-            Create <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">beautiful</span>
-            <br />content in minutes
+      {/* Illustrated Hero */}
+      <section className="max-w-5xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-wider mb-4" style={{ color: "#f97316" }}>Your Pet&apos;s New Best Friend</p>
+          <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6" style={{ color: "#292524" }}>
+            Trusted Pet Sitting, Right in Your Neighborhood
           </h1>
-          <p className="text-lg text-slate-500 max-w-xl mx-auto mb-10 font-medium leading-relaxed">
-            The all-in-one creative toolkit for social media managers, designers, and content creators who want to stand out. No design skills needed!
+          <p className="text-lg text-gray-500 leading-relaxed mb-8">
+            PetPal connects you with verified, background-checked pet sitters who treat your furry family members like their own. Book walks, overnight stays, or drop-in visits in just a few taps.
           </p>
-          <div className="flex items-center justify-center gap-4">
-            <button className="h-12 px-8 text-sm font-bold bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-full hover:opacity-90 transition-opacity shadow-lg shadow-purple-300/50">
-              Start Creating &rarr;
-            </button>
-            <button className="h-12 px-8 text-sm font-bold text-purple-700 bg-purple-100 rounded-full hover:bg-purple-200 transition-colors">
-              Watch Demo &#9654;
-            </button>
+          <div className="flex gap-4">
+            <button className="px-8 py-3 rounded-full text-white font-semibold" style={{ backgroundColor: "#f97316" }}>Find a Sitter</button>
+            <button className="px-8 py-3 rounded-full font-semibold border-2" style={{ borderColor: "#f97316", color: "#f97316" }}>Become a Sitter</button>
           </div>
-          <p className="text-xs text-slate-400 mt-4 font-semibold">Free forever for individuals &middot; No credit card required</p>
+          <p className="mt-6 text-sm text-gray-400">Over 2 million happy pet parents and counting!</p>
+        </div>
+        <div className="flex items-center justify-center">
+          <div className="w-80 h-80 rounded-3xl flex flex-col items-center justify-center shadow-lg" style={{ backgroundColor: "#fed7aa" }}>
+            <div className="text-8xl mb-4">&#128054;</div>
+            <p className="text-sm font-semibold text-orange-700">Your pet, always in good paws</p>
+          </div>
         </div>
       </section>
 
-      {/* Logos */}
-      <section className="max-w-6xl mx-auto px-6 py-10">
-        <p className="text-xs text-slate-400 text-center uppercase tracking-widest font-bold mb-6">Loved by creators at</p>
-        <div className="flex items-center justify-center flex-wrap gap-x-10 gap-y-4">
-          {["&#127912; Dribbble", "&#128247; Instagram", "&#127916; TikTok", "&#128140; Pinterest", "&#9889; Canva", "&#127775; Behance"].map((logo) => (
-            <span key={logo} className="text-sm font-bold text-slate-300" dangerouslySetInnerHTML={{ __html: logo }} />
-          ))}
-        </div>
-      </section>
-
-      {/* Feature Cards */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
-        <div className="text-center mb-14">
-          <h2 className="text-3xl font-extrabold mb-3">Everything you need to shine &#10024;</h2>
-          <p className="text-slate-500 font-medium max-w-lg mx-auto">Powerful tools wrapped in a delightful experience. Create scroll-stopping content without the learning curve.</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {[
-            { emoji: "&#127912;", title: "Smart Templates", desc: "1,000+ professionally designed templates for every platform. Customize colors, fonts, and layout with one click.", gradient: "from-pink-100 to-rose-50", border: "border-pink-200" },
-            { emoji: "&#129302;", title: "AI Assistant", desc: "Generate captions, hashtags, and even visuals using our built-in AI. Describe what you want and watch it appear.", gradient: "from-purple-100 to-violet-50", border: "border-purple-200" },
-            { emoji: "&#128197;", title: "Content Calendar", desc: "Plan and schedule posts across all platforms from one dashboard. Visual calendar with drag-and-drop simplicity.", gradient: "from-cyan-100 to-sky-50", border: "border-cyan-200" },
-            { emoji: "&#128200;", title: "Analytics Hub", desc: "Track engagement, growth, and performance in real-time. Beautiful charts that actually make sense.", gradient: "from-emerald-100 to-green-50", border: "border-emerald-200" },
-            { emoji: "&#127917;", title: "Brand Kit", desc: "Store your colors, fonts, and logos in one place. Apply your brand to any template instantly.", gradient: "from-amber-100 to-yellow-50", border: "border-amber-200" },
-            { emoji: "&#128101;", title: "Team Collab", desc: "Real-time collaboration with comments, approvals, and shared libraries. Keep everyone on the same page.", gradient: "from-indigo-100 to-blue-50", border: "border-indigo-200" },
-          ].map((f) => (
-            <div key={f.title} className={`bg-gradient-to-br ${f.gradient} border ${f.border} rounded-2xl p-6 hover:scale-[1.02] transition-transform`}>
-              <span className="text-3xl" dangerouslySetInnerHTML={{ __html: f.emoji }} />
-              <h3 className="text-base font-extrabold mt-3 mb-2">{f.title}</h3>
-              <p className="text-sm text-slate-500 leading-relaxed">{f.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500">
-        <div className="max-w-6xl mx-auto px-6 py-14">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      {/* How It Works */}
+      <section className="py-20 px-6 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4" style={{ color: "#292524" }}>How PetPal Works</h2>
+          <p className="text-center text-gray-500 mb-16 max-w-lg mx-auto">Booking your pet&apos;s next adventure takes less than 2 minutes.</p>
+          <div className="grid md:grid-cols-3 gap-10">
             {[
-              { value: "2M+", label: "Creators", emoji: "&#128588;" },
-              { value: "50M+", label: "Designs made", emoji: "&#127912;" },
-              { value: "4.9/5", label: "App Store", emoji: "&#11088;" },
-              { value: "180+", label: "Countries", emoji: "&#127758;" },
-            ].map((s) => (
-              <div key={s.label} className="text-center text-white">
-                <div className="text-sm mb-1" dangerouslySetInnerHTML={{ __html: s.emoji }} />
-                <div className="text-3xl font-black">{s.value}</div>
-                <div className="text-sm font-semibold opacity-80 mt-1">{s.label}</div>
+              { step: "1", title: "Search Nearby Sitters", desc: "Enter your zip code and pet type. Browse sitter profiles with reviews, photos, and availability calendars. Filter by services like walking, boarding, or drop-ins." },
+              { step: "2", title: "Book & Meet", desc: "Send a booking request with your dates. Every first-time booking includes a free meet-and-greet so your pet and sitter can get comfortable before the real thing." },
+              { step: "3", title: "Relax & Get Updates", desc: "Receive real-time photo and video updates throughout the day. GPS-tracked walks, feeding confirmations, and a detailed report card when you pick up your pet." },
+            ].map((item, i) => (
+              <div key={i} className="text-center">
+                <div className="w-14 h-14 rounded-full mx-auto mb-6 flex items-center justify-center text-2xl font-bold text-white" style={{ backgroundColor: "#f97316" }}>{item.step}</div>
+                <h3 className="font-bold text-lg mb-3">{item.title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="max-w-6xl mx-auto px-6 py-24">
-        <h2 className="text-3xl font-extrabold text-center mb-14">Creators love us &#128156;</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            { quote: "I went from spending 3 hours on a single Instagram post to creating a full week of content in 20 minutes. Game changer!", author: "Mia Johnson", handle: "@miacreates", avatar: "MJ", color: "bg-pink-100 text-pink-600" },
-            { quote: "The AI caption generator is scary good. It nails my brand voice every time. My engagement is up 200% since switching.", author: "Leo Park", handle: "@leoparkdesign", avatar: "LP", color: "bg-purple-100 text-purple-600" },
-            { quote: "As a small business owner, I needed something simple but professional. Sparkle is exactly that. My social media finally looks cohesive!", author: "Aisha Patel", handle: "@aishacooks", avatar: "AP", color: "bg-cyan-100 text-cyan-600" },
-          ].map((t) => (
-            <div key={t.author} className="border border-slate-200 rounded-2xl p-6 hover:shadow-lg transition-shadow">
-              <div className="flex mb-3">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <span key={star} className="text-yellow-400 text-sm">&#9733;</span>
-                ))}
+      {/* Pet Types We Cover */}
+      <section className="py-20 px-6">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16" style={{ color: "#292524" }}>Every Pet is Welcome</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { emoji: "\uD83D\uDC36", name: "Dogs", desc: "All breeds, all sizes" },
+              { emoji: "\uD83D\uDC31", name: "Cats", desc: "Indoor & outdoor" },
+              { emoji: "\uD83D\uDC30", name: "Rabbits", desc: "Bunnies & small mammals" },
+              { emoji: "\uD83D\uDC26", name: "Birds", desc: "Parrots to finches" },
+              { emoji: "\uD83D\uDC20", name: "Fish", desc: "Freshwater & saltwater" },
+              { emoji: "\uD83D\uDC22", name: "Reptiles", desc: "Lizards, snakes, turtles" },
+              { emoji: "\uD83D\uDC39", name: "Hamsters", desc: "Guinea pigs & gerbils" },
+              { emoji: "\uD83D\uDC3E", name: "Exotic Pets", desc: "Hedgehogs, ferrets & more" },
+            ].map((pet, i) => (
+              <div key={i} className="bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition-shadow">
+                <span className="text-4xl block mb-3">{pet.emoji}</span>
+                <h3 className="font-bold mb-1">{pet.name}</h3>
+                <p className="text-sm text-gray-400">{pet.desc}</p>
               </div>
-              <p className="text-sm text-slate-600 leading-relaxed mb-6">&ldquo;{t.quote}&rdquo;</p>
-              <div className="flex items-center space-x-3">
-                <div className={`w-9 h-9 rounded-full ${t.color} flex items-center justify-center text-xs font-bold`}>{t.avatar}</div>
-                <div>
-                  <p className="text-sm font-bold">{t.author}</p>
-                  <p className="text-xs text-slate-400 font-semibold">{t.handle}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="max-w-6xl mx-auto px-6 pb-24">
-        <div className="relative overflow-hidden bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 rounded-3xl p-12 lg:p-16 text-center">
-          <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2" />
-          <div className="relative z-10">
-            <h2 className="text-3xl lg:text-4xl font-black text-white mb-4">Ready to sparkle? &#10024;</h2>
-            <p className="text-white/80 font-medium mb-8 max-w-md mx-auto">Join 2 million creators already making beautiful content. Start for free, upgrade when you need more.</p>
-            <button className="h-12 px-8 text-sm font-bold bg-white text-purple-700 rounded-full hover:bg-white/90 transition-colors shadow-lg">
-              Get Started Free &rarr;
-            </button>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-slate-200">
-        <div className="max-w-6xl mx-auto px-6 py-10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <span className="text-lg font-extrabold bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">sparkle</span>
-            <div className="flex items-center space-x-6">
-              {["Twitter", "Instagram", "TikTok", "YouTube", "Help Center"].map((link) => (
-                <span key={link} className="text-sm font-semibold text-slate-400 hover:text-purple-600 cursor-pointer transition-colors">{link}</span>
-              ))}
+      {/* Sitter Profiles */}
+      <section className="py-20 px-6 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4" style={{ color: "#292524" }}>Meet Our Top Sitters</h2>
+          <p className="text-center text-gray-500 mb-16 max-w-lg mx-auto">Every PetPal sitter passes a comprehensive background check and completes our pet care certification program.</p>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { name: "Emily Carter", location: "Brooklyn, NY", reviews: 248, rating: "4.98", specialty: "Dog walking & overnight boarding", bio: "Former vet tech with 6 years of professional animal care experience. Specializes in senior dogs and anxious pups." },
+              { name: "Marcus Thompson", location: "Austin, TX", reviews: 187, rating: "4.95", specialty: "Cat sitting & small animals", bio: "Lifelong cat person and certified animal behaviorist. Provides enrichment activities and medication administration." },
+              { name: "Sofia Reyes", location: "Portland, OR", reviews: 312, rating: "4.99", specialty: "Multi-pet households", bio: "Experienced with up to 5 pets at once. Has a large fenced yard and provides daily photo journals for every pet." },
+            ].map((sitter, i) => (
+              <div key={i} className="rounded-2xl p-6 border border-orange-100 hover:border-orange-300 transition-colors" style={{ backgroundColor: "#fff7ed" }}>
+                <div className="w-16 h-16 rounded-full mb-4 flex items-center justify-center text-2xl font-bold text-white" style={{ backgroundColor: "#f97316" }}>{sitter.name[0]}</div>
+                <h3 className="font-bold text-lg">{sitter.name}</h3>
+                <p className="text-sm text-gray-400 mb-1">{sitter.location}</p>
+                <p className="text-sm font-semibold mb-3" style={{ color: "#f97316" }}>{sitter.rating} stars ({sitter.reviews} reviews)</p>
+                <p className="text-sm text-gray-500 leading-relaxed mb-3">{sitter.bio}</p>
+                <span className="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full" style={{ backgroundColor: "#fed7aa", color: "#c2410c" }}>{sitter.specialty}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Safety Features */}
+      <section className="py-20 px-6">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16" style={{ color: "#292524" }}>Safety You Can Count On</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              { title: "Background Checks", desc: "Every sitter undergoes a comprehensive background check including criminal history, identity verification, and reference checks from previous pet care experience." },
+              { title: "Pet Insurance Included", desc: "Every booking includes up to $25,000 in veterinary coverage through our partnership with PetSure. Your pet is protected from the moment the booking starts." },
+              { title: "GPS-Tracked Walks", desc: "See exactly where your dog goes on every walk with real-time GPS tracking. Route history, distance, and duration are all recorded in your booking dashboard." },
+              { title: "24/7 Emergency Support", desc: "Our dedicated trust and safety team is available around the clock. If anything seems off, one tap connects you to a live specialist who can intervene immediately." },
+            ].map((feature, i) => (
+              <div key={i} className="bg-white rounded-2xl p-8 shadow-sm flex gap-4">
+                <div className="w-3 h-3 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: "#f97316" }} />
+                <div>
+                  <h3 className="font-bold text-lg mb-2">{feature.title}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed">{feature.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Download CTA */}
+      <section className="py-20 px-6">
+        <div className="max-w-2xl mx-auto text-center bg-white rounded-3xl p-12 shadow-lg">
+          <span className="text-6xl block mb-6">&#128062;</span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: "#292524" }}>Ready to Find Your Perfect Sitter?</h2>
+          <p className="text-gray-500 mb-8 leading-relaxed">Download PetPal and browse trusted sitters in your area. Your first booking includes a free meet-and-greet.</p>
+          <div className="flex justify-center gap-4">
+            <button className="px-10 py-4 rounded-full text-white font-semibold text-lg" style={{ backgroundColor: "#f97316" }}>Download for iOS</button>
+            <button className="px-10 py-4 rounded-full font-semibold text-lg border-2" style={{ borderColor: "#f97316", color: "#f97316" }}>Get on Android</button>
+          </div>
+          <p className="mt-6 text-sm text-gray-400">Free to download. Free to browse. You only pay when you book.</p>
+        </div>
+      </section>
+
+      {/* Playful Footer */}
+      <footer className="py-12 px-6">
+        <div className="max-w-5xl mx-auto bg-white rounded-3xl p-10 shadow-sm">
+          <div className="flex flex-col md:flex-row justify-between gap-8">
+            <div>
+              <span className="text-2xl font-bold" style={{ color: "#f97316" }}>PetPal</span>
+              <p className="text-sm text-gray-400 mt-2 max-w-xs">Making pet care easier, safer, and more joyful for families and their furry companions since 2019.</p>
             </div>
-            <span className="text-xs text-slate-400 font-semibold">&copy; 2025 Sparkle Inc.</span>
+            <div className="flex gap-12">
+              <div>
+                <h4 className="font-bold text-sm mb-3">For Pet Parents</h4>
+                <ul className="space-y-2 text-sm text-gray-400">
+                  <li>Find a Sitter</li>
+                  <li>How It Works</li>
+                  <li>Safety</li>
+                  <li>Pricing</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-sm mb-3">For Sitters</h4>
+                <ul className="space-y-2 text-sm text-gray-400">
+                  <li>Become a Sitter</li>
+                  <li>Sitter Resources</li>
+                  <li>Community</li>
+                  <li>Support</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 pt-6 border-t border-gray-100 text-center text-xs text-gray-400">
+            &copy; 2025 PetPal, Inc. All rights reserved. Made with love for pets everywhere.
           </div>
         </div>
       </footer>

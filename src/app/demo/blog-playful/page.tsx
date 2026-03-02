@@ -1,158 +1,203 @@
 export default function BlogPlayfulDemo() {
-  const articles = [
-    { title: "Why Designers Should Learn to Code in 2024", tag: "Design", emoji: "🎨", color: "bg-pink-100", tagColor: "bg-pink-200 text-pink-700", author: "Luna Park", avatar: "LP", date: "Dec 12", readTime: "5 min" },
-    { title: "The Ultimate Guide to Building Design Systems", tag: "Tutorial", emoji: "📐", color: "bg-violet-100", tagColor: "bg-violet-200 text-violet-700", author: "Max Chen", avatar: "MC", date: "Dec 10", readTime: "12 min" },
-    { title: "My Journey from Freelancer to Agency Owner", tag: "Story", emoji: "🚀", color: "bg-amber-100", tagColor: "bg-amber-200 text-amber-700", author: "Zara Kim", avatar: "ZK", date: "Dec 8", readTime: "8 min" },
-    { title: "CSS Container Queries Changed Everything", tag: "Code", emoji: "💻", color: "bg-cyan-100", tagColor: "bg-cyan-200 text-cyan-700", author: "Dev Patel", avatar: "DP", date: "Dec 5", readTime: "6 min" },
-    { title: "Figma vs Framer: An Honest Comparison", tag: "Tools", emoji: "⚡", color: "bg-pink-100", tagColor: "bg-pink-200 text-pink-700", author: "Luna Park", avatar: "LP", date: "Dec 3", readTime: "10 min" },
-    { title: "How I Grew My Newsletter to 50K Subscribers", tag: "Growth", emoji: "📈", color: "bg-violet-100", tagColor: "bg-violet-200 text-violet-700", author: "Zara Kim", avatar: "ZK", date: "Nov 30", readTime: "7 min" },
+  const tags = ["All", "Creativity", "Focus", "Habits", "Mindset", "Tools", "Journaling", "Collaboration"];
+
+  const trendingArticles = [
+    {
+      title: "The 20-Minute Rule That Changed How I Start My Day",
+      excerpt: "Before coffee, before email, before anything. Twenty minutes of unstructured thinking transformed my creative output for the rest of the day.",
+      tag: "Habits",
+      author: "Mika Santos",
+      initials: "MS",
+      date: "Feb 28",
+      readTime: "5 min",
+      color: "#fce7f3",
+    },
+    {
+      title: "Why Your Best Ideas Come in the Shower (and How to Capture Them)",
+      excerpt: "Neuroscience explains why relaxation triggers insight. Plus, seven practical ways to catch those fleeting sparks before they disappear.",
+      tag: "Creativity",
+      author: "Theo Park",
+      initials: "TP",
+      date: "Feb 24",
+      readTime: "7 min",
+      color: "#dbeafe",
+    },
+    {
+      title: "Building a Second Brain Without Fancy Software",
+      excerpt: "Index cards, a pocket notebook, and a weekly review session. Sometimes the simplest system is the one that actually sticks.",
+      tag: "Tools",
+      author: "Zara Obi",
+      initials: "ZO",
+      date: "Feb 20",
+      readTime: "9 min",
+      color: "#fef3c7",
+    },
   ];
 
-  const tags = ["All", "Design 🎨", "Tutorial 📐", "Story 🚀", "Code 💻", "Tools ⚡", "Growth 📈"];
+  const tipsGrid = [
+    { title: "Morning Pages", description: "Write three pages longhand every morning. No editing, no judgment. Just let the thoughts flow.", icon: "~" },
+    { title: "Pomodoro Remix", description: "Try 25 minutes of focus, then 5 minutes of doodling. The creative break makes the next sprint sharper.", icon: "@" },
+    { title: "Idea Compost", description: "Keep a messy notes file. Bad ideas decompose into nutrients for good ones. Nothing is wasted.", icon: "#" },
+    { title: "Walk and Talk", description: "Record voice memos while walking. Movement unlocks verbal fluency that sitting at a desk never will.", icon: "&" },
+  ];
+
+  const readerFavorites = [
+    { title: "How I Read 52 Books Last Year Without Speed Reading", author: "Nina Johansson", readTime: "6 min" },
+    { title: "The Creativity Myth: You Are Already Creative", author: "Dev Patel", readTime: "4 min" },
+    { title: "Why Boredom Is Your Brain's Best Friend", author: "Camille Rousseau", readTime: "5 min" },
+  ];
 
   return (
-    <div className="min-h-screen bg-amber-50" style={{ fontFamily: "Nunito, sans-serif" }}>
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-      </head>
+    <div style={{ fontFamily: "'Lexend', sans-serif", backgroundColor: "#f3e8ff", color: "#1e1b4b" }} className="min-h-screen">
+      <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
 
-      {/* Nav */}
-      <nav className="bg-white/70 backdrop-blur-sm sticky top-0 z-50 border-b border-pink-100">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <span className="text-2xl">✨</span>
-            <span className="text-xl font-extrabold text-violet-600">Pixel Blog</span>
+      {/* Tag Cloud Nav */}
+      <nav className="px-6 py-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex items-center justify-between mb-6">
+            <h1 className="text-2xl font-bold" style={{ color: "#6366f1" }}>BrainSpark</h1>
+            <button className="text-sm font-medium px-4 py-2 rounded-full text-white" style={{ backgroundColor: "#6366f1" }}>
+              Subscribe
+            </button>
           </div>
-          <div className="hidden md:flex items-center space-x-6">
-            <span className="text-sm font-bold text-violet-500 cursor-pointer hover:text-pink-500 transition-colors">Home</span>
-            <span className="text-sm font-bold text-slate-400 cursor-pointer hover:text-pink-500 transition-colors">Articles</span>
-            <span className="text-sm font-bold text-slate-400 cursor-pointer hover:text-pink-500 transition-colors">Podcast</span>
-            <span className="text-sm font-bold text-slate-400 cursor-pointer hover:text-pink-500 transition-colors">Resources</span>
+          <div className="flex flex-wrap gap-2">
+            {tags.map((tag, i) => (
+              <span
+                key={tag}
+                className="px-3 py-1.5 rounded-full text-xs font-medium cursor-pointer transition-colors"
+                style={i === 0
+                  ? { backgroundColor: "#6366f1", color: "#ffffff" }
+                  : { backgroundColor: "#ede9fe", color: "#6366f1" }
+                }
+              >
+                {tag}
+              </span>
+            ))}
           </div>
-          <button className="h-10 px-6 text-sm font-bold text-white bg-gradient-to-r from-pink-500 to-violet-500 rounded-2xl hover:shadow-lg hover:shadow-pink-200 transition-all">
-            Subscribe 💌
-          </button>
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="max-w-6xl mx-auto px-6 py-16 lg:py-24 text-center">
-        <div className="inline-flex items-center px-4 py-2 bg-pink-100 rounded-2xl text-sm font-bold text-pink-600 mb-6">
-          🔥 Trending in Design & Dev
-        </div>
-        <h1 className="text-4xl lg:text-6xl font-black text-slate-800 mb-6 leading-tight">
-          Stories, Tutorials &<br />
-          <span className="bg-gradient-to-r from-pink-500 via-violet-500 to-amber-500 bg-clip-text text-transparent">Creative Inspiration</span>
-        </h1>
-        <p className="text-lg text-slate-500 max-w-xl mx-auto font-medium mb-8">
-          A playful corner of the internet where designers and developers share what they&apos;ve learned. No fluff, just good stuff.
-        </p>
-        <div className="flex justify-center gap-3 flex-wrap">
-          {tags.map((tag, i) => (
-            <button key={tag} className={`px-4 py-2 rounded-2xl text-sm font-bold transition-all ${i === 0 ? "bg-violet-500 text-white shadow-lg shadow-violet-200" : "bg-white text-slate-500 hover:bg-violet-100 hover:text-violet-600 border border-violet-100"}`}>
-              {tag}
-            </button>
-          ))}
-        </div>
-      </section>
-
-      {/* Featured */}
-      <section className="max-w-6xl mx-auto px-6 pb-12">
-        <div className="bg-gradient-to-br from-violet-500 to-pink-500 rounded-2xl p-8 lg:p-12 flex flex-col lg:flex-row gap-8 items-center">
-          <div className="bg-white/20 rounded-2xl aspect-video lg:aspect-square lg:w-80 w-full flex items-center justify-center flex-shrink-0">
-            <span className="text-white/50 text-sm font-bold">Featured Image</span>
-          </div>
-          <div>
-            <span className="inline-flex items-center px-3 py-1 bg-white/20 rounded-2xl text-xs font-bold text-white mb-4">⭐ Editor&apos;s Pick</span>
-            <h2 className="text-2xl lg:text-3xl font-extrabold text-white mb-3">The State of Web Design in 2025: What&apos;s Next?</h2>
-            <p className="text-white/70 font-medium mb-6 leading-relaxed">
-              An in-depth look at emerging trends, tools, and techniques that will shape how we design and build for the web.
+      {/* Card Stack Hero */}
+      <section className="max-w-5xl mx-auto px-6 py-10">
+        <div className="relative">
+          <div className="absolute top-4 left-4 right-4 h-48 rounded-2xl opacity-40" style={{ backgroundColor: "#c4b5fd", transform: "rotate(-2deg)" }} />
+          <div className="absolute top-2 left-2 right-2 h-48 rounded-2xl opacity-60" style={{ backgroundColor: "#a78bfa", transform: "rotate(1deg)" }} />
+          <div className="relative rounded-2xl p-8 md:p-12 text-white" style={{ backgroundColor: "#6366f1" }}>
+            <span className="text-xs font-semibold tracking-wider uppercase opacity-80">Featured This Week</span>
+            <h2 className="text-2xl md:text-4xl font-bold mt-4 mb-4 leading-tight">
+              The Science of Creative Blocks (and 5 Evidence-Based Ways to Break Through)
+            </h2>
+            <p className="text-sm opacity-90 max-w-2xl leading-relaxed mb-6">
+              Creative blocks are not a failure of willpower. They are a neurological signal that your
+              default mode network needs a different kind of input. We spoke with cognitive scientists,
+              artists, and writers to compile the most effective strategies for getting unstuck.
             </p>
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-white/30 flex items-center justify-center text-sm font-bold text-white">LP</div>
-              <div>
-                <p className="text-sm font-bold text-white">Luna Park</p>
-                <p className="text-xs text-white/60">Dec 15 &middot; 15 min read</p>
-              </div>
+              <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold">LW</div>
+              <span className="text-xs opacity-80">Luna Wei &middot; March 1 &middot; 11 min read</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Articles Grid */}
-      <section className="max-w-6xl mx-auto px-6 pb-20">
-        <h2 className="text-2xl font-extrabold text-slate-800 mb-8">Latest Articles ✍️</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {articles.map((article) => (
-            <div key={article.title} className="bg-white rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-violet-100 transition-all duration-300 cursor-pointer group border border-violet-50">
-              <div className={`${article.color} aspect-[16/10] flex items-center justify-center`}>
-                <span className="text-5xl group-hover:scale-125 transition-transform duration-300">{article.emoji}</span>
-              </div>
-              <div className="p-5">
-                <div className="flex items-center gap-2 mb-3">
-                  <span className={`px-2.5 py-1 rounded-2xl text-xs font-bold ${article.tagColor}`}>{article.tag}</span>
-                  <span className="text-xs text-slate-400 font-medium">{article.readTime} read</span>
+      {/* Trending Articles */}
+      <section className="max-w-5xl mx-auto px-6 py-8">
+        <h3 className="text-lg font-semibold mb-6" style={{ color: "#6366f1" }}>Trending This Week</h3>
+        <div className="grid md:grid-cols-3 gap-5">
+          {trendingArticles.map((article, i) => (
+            <article key={i} className="rounded-xl p-6 cursor-pointer hover:shadow-lg transition-shadow" style={{ backgroundColor: article.color }}>
+              <span className="inline-block text-xs font-medium px-2 py-1 rounded-full mb-3" style={{ backgroundColor: "#6366f1", color: "#ffffff" }}>
+                {article.tag}
+              </span>
+              <h4 className="text-base font-semibold mb-2 leading-snug">{article.title}</h4>
+              <p className="text-sm leading-relaxed opacity-70 mb-4">{article.excerpt}</p>
+              <div className="flex items-center gap-2 text-xs opacity-60">
+                <div className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: "#6366f1" }}>
+                  {article.initials}
                 </div>
-                <h3 className="text-lg font-extrabold text-slate-800 mb-3 leading-snug group-hover:text-violet-600 transition-colors">
-                  {article.title}
-                </h3>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-xl bg-violet-100 flex items-center justify-center text-[10px] font-bold text-violet-600">
-                      {article.avatar}
-                    </div>
-                    <span className="text-xs font-bold text-slate-500">{article.author}</span>
-                  </div>
-                  <span className="text-xs text-slate-400">{article.date}</span>
-                </div>
+                <span>{article.author}</span>
+                <span>&middot;</span>
+                <span>{article.readTime}</span>
               </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* Creativity Tips Grid */}
+      <section className="max-w-5xl mx-auto px-6 py-10">
+        <h3 className="text-lg font-semibold mb-6" style={{ color: "#6366f1" }}>Quick Creativity Tips</h3>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {tipsGrid.map((tip, i) => (
+            <div key={i} className="bg-white rounded-xl p-5 border" style={{ borderColor: "#e9d5ff" }}>
+              <div className="w-10 h-10 rounded-lg flex items-center justify-center text-lg font-bold text-white mb-3" style={{ backgroundColor: "#6366f1" }}>
+                {tip.icon}
+              </div>
+              <h4 className="text-sm font-semibold mb-2">{tip.title}</h4>
+              <p className="text-xs leading-relaxed opacity-60">{tip.description}</p>
             </div>
           ))}
         </div>
-        <div className="text-center mt-12">
-          <button className="h-12 px-8 text-sm font-bold text-violet-600 bg-violet-100 hover:bg-violet-200 rounded-2xl transition-colors">
-            Load More Articles 📚
-          </button>
+      </section>
+
+      {/* Reader Favorites */}
+      <section className="max-w-5xl mx-auto px-6 py-8">
+        <h3 className="text-lg font-semibold mb-6" style={{ color: "#6366f1" }}>Reader Favorites</h3>
+        <div className="space-y-3">
+          {readerFavorites.map((fav, i) => (
+            <div key={i} className="bg-white rounded-xl px-6 py-4 flex items-center justify-between cursor-pointer hover:shadow-md transition-shadow border" style={{ borderColor: "#e9d5ff" }}>
+              <div className="flex items-center gap-4">
+                <span className="text-2xl font-bold opacity-20">{String(i + 1).padStart(2, "0")}</span>
+                <div>
+                  <h4 className="text-sm font-semibold">{fav.title}</h4>
+                  <p className="text-xs opacity-50">{fav.author} &middot; {fav.readTime}</p>
+                </div>
+              </div>
+              <span className="text-xs font-medium" style={{ color: "#6366f1" }}>Read</span>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Newsletter */}
-      <section className="bg-white border-y border-pink-100 py-16">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <span className="text-4xl mb-4 block">💌</span>
-          <h2 className="text-3xl font-extrabold text-slate-800 mb-3">Get the Weekly Digest</h2>
-          <p className="text-slate-500 font-medium mb-8 max-w-md mx-auto">
-            Every Friday, the best articles curated into one delightful email. No spam, pinky promise.
-          </p>
-          <div className="flex justify-center gap-3 max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="your@email.com"
-              className="flex-1 h-12 px-5 rounded-2xl bg-violet-50 border-2 border-violet-100 text-sm font-medium placeholder:text-violet-300 focus:outline-none focus:border-violet-300"
-              readOnly
-            />
-            <button className="h-12 px-6 text-sm font-bold text-white bg-gradient-to-r from-pink-500 to-violet-500 rounded-2xl hover:shadow-lg hover:shadow-pink-200 transition-all whitespace-nowrap">
-              Join 12K+ ✨
-            </button>
+      {/* Poll / Quiz CTA */}
+      <section className="max-w-5xl mx-auto px-6 py-8">
+        <div className="rounded-2xl p-8 text-center text-white" style={{ backgroundColor: "#6366f1" }}>
+          <h3 className="text-xl font-bold mb-2">Quick Poll</h3>
+          <p className="text-sm opacity-80 mb-6">When do you feel most creative?</p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {["Early morning", "Late at night", "During exercise", "In the shower"].map((option) => (
+              <button key={option} className="px-5 py-2.5 rounded-full text-sm font-medium transition-colors bg-white/20 hover:bg-white/30">
+                {option}
+              </button>
+            ))}
           </div>
+          <p className="text-xs opacity-50 mt-4">1,847 votes so far this week</p>
+        </div>
+      </section>
+
+      {/* Subscribe */}
+      <section className="max-w-md mx-auto px-6 py-10 text-center">
+        <h3 className="text-xl font-bold mb-2" style={{ color: "#6366f1" }}>Get your weekly spark</h3>
+        <p className="text-sm opacity-60 mb-6">One creative idea, one focus tip, and one tool recommendation. Every Tuesday.</p>
+        <div className="flex flex-col sm:flex-row gap-3">
+          <input type="email" placeholder="you@email.com" className="flex-1 px-4 py-2.5 text-sm rounded-full border focus:outline-none" style={{ borderColor: "#c4b5fd" }} />
+          <button className="px-6 py-2.5 text-sm font-medium rounded-full text-white" style={{ backgroundColor: "#6366f1" }}>
+            Join 19k readers
+          </button>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="max-w-6xl mx-auto px-6 py-12">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-2">
-            <span className="text-xl">✨</span>
-            <span className="text-lg font-extrabold text-violet-600">Pixel Blog</span>
-          </div>
-          <div className="flex items-center gap-6">
-            <span className="text-sm font-bold text-slate-400 hover:text-pink-500 cursor-pointer transition-colors">Twitter</span>
-            <span className="text-sm font-bold text-slate-400 hover:text-pink-500 cursor-pointer transition-colors">Instagram</span>
-            <span className="text-sm font-bold text-slate-400 hover:text-pink-500 cursor-pointer transition-colors">YouTube</span>
-            <span className="text-sm font-bold text-slate-400 hover:text-pink-500 cursor-pointer transition-colors">RSS</span>
-          </div>
-          <p className="text-sm text-slate-400 font-medium">&copy; 2024 Pixel Blog. Made with 💜</p>
+      <footer className="max-w-5xl mx-auto px-6 py-8 text-center">
+        <div className="flex flex-wrap justify-center gap-2 mb-4">
+          {["Creativity", "Focus", "Habits", "Mindset", "Tools"].map((t) => (
+            <span key={t} className="text-xs px-3 py-1 rounded-full" style={{ backgroundColor: "#ede9fe", color: "#6366f1" }}>{t}</span>
+          ))}
         </div>
+        <p className="text-xs opacity-40">&copy; 2026 BrainSpark. Made with curiosity.</p>
       </footer>
     </div>
   );

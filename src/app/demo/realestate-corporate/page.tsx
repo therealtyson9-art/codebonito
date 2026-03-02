@@ -1,184 +1,175 @@
-export default function RealEstateCorporateDemo() {
-  const propertyTypes = [
-    { type: "Residential", desc: "Single-family homes, condominiums, and townhouses across premium neighborhoods.", count: "1,240+" },
-    { type: "Commercial", desc: "Office buildings, retail spaces, and mixed-use developments for growing businesses.", count: "380+" },
-    { type: "Industrial", desc: "Warehouses, distribution centers, and manufacturing facilities in strategic locations.", count: "165+" },
-    { type: "Land", desc: "Development parcels, agricultural lots, and investment acreage with growth potential.", count: "92+" },
-  ]
-
-  const analytics = [
-    { label: "Total Portfolio Value", value: "$4.8B" },
-    { label: "Properties Under Management", value: "12,400" },
-    { label: "Cities Covered", value: "47" },
-    { label: "Client Retention Rate", value: "94%" },
-    { label: "Average ROI for Investors", value: "11.3%" },
-    { label: "Years in Operation", value: "28" },
-  ]
-
-  const developments = [
-    { name: "Meridian Tower", location: "Downtown Seattle, WA", type: "Mixed-Use", units: "220 units", status: "Pre-Leasing", completion: "Q3 2027" },
-    { name: "Harborview Commons", location: "Boston Seaport, MA", type: "Residential", units: "148 units", status: "Under Construction", completion: "Q1 2027" },
-    { name: "Apex Business Park", location: "Research Triangle, NC", type: "Commercial", units: "450,000 sqft", status: "Phase 2 Active", completion: "Q4 2026" },
-  ]
-
-  const team = [
-    { name: "Margaret Caldwell", title: "Chief Executive Officer", exp: "28 years in commercial real estate" },
-    { name: "Robert Tanaka", title: "VP of Residential Sales", exp: "19 years specializing in luxury markets" },
-    { name: "Diana Osei", title: "Director of Investment Advisory", exp: "15 years in portfolio management" },
-    { name: "James McCarthy", title: "Head of Property Management", exp: "22 years in operations and facilities" },
-  ]
+export default function RealestateCorporateDemo() {
+  const megaNav = {
+    services: ["Leasing", "Sales", "Property Management", "Consulting"],
+    markets: ["Downtown", "Midtown", "Waterfront", "Suburban"],
+  }
 
   const services = [
-    { name: "Buying", desc: "Expert guidance from property search through closing, with access to off-market opportunities and detailed market analysis." },
-    { name: "Selling", desc: "Strategic marketing, professional staging consultation, competitive pricing analysis, and negotiation expertise to maximize your return." },
-    { name: "Property Management", desc: "Full-service management including tenant relations, maintenance coordination, financial reporting, and regulatory compliance." },
-    { name: "Investment Advisory", desc: "Data-driven investment strategies, portfolio diversification, 1031 exchanges, and development opportunity identification." },
+    { name: "Commercial Leasing", icon: "LSE", desc: "Full-service tenant and landlord representation for office, retail, and industrial spaces. Market analysis, tour coordination, lease negotiation, and renewal advisory." },
+    { name: "Investment Sales", icon: "SLS", desc: "Institutional-grade brokerage for commercial asset transactions. We handle acquisitions, dispositions, and 1031 exchanges with discretion and market expertise." },
+    { name: "Property Management", icon: "MGT", desc: "Day-to-day operations, capital improvement planning, tenant relations, and financial reporting for commercial portfolios of all sizes." },
+    { name: "Advisory & Consulting", icon: "ADV", desc: "Strategic consulting on market entry, portfolio optimization, highest-and-best-use analysis, and development feasibility studies." },
   ]
 
-  return (
-    <div className="min-h-screen bg-white text-slate-800" style={{ fontFamily: "Inter, sans-serif" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  const reports = [
+    { title: "Q4 2024 Office Market Report", type: "QUARTERLY", summary: "Downtown office vacancy declined to 14.2%, driven by tech sector expansion. Average asking rents rose 3.1% to $42.50/SF." },
+    { title: "2025 Industrial Outlook", type: "ANNUAL", summary: "Warehouse demand continues to outpace supply with a 2.8% vacancy rate. New construction pipeline of 4.2M SF expected by mid-2026." },
+    { title: "Retail Recovery Analysis", type: "SPECIAL REPORT", summary: "Experiential retail and food-and-beverage tenants are driving suburban shopping center occupancy back to pre-pandemic levels." },
+  ]
 
-      {/* Nav */}
-      <nav className="px-6 py-4 flex items-center justify-between" style={{ backgroundColor: "#1e3a5f" }}>
-        <span className="text-lg font-bold text-white tracking-wide">CRESTPOINT</span>
-        <div className="hidden md:flex items-center space-x-8">
-          {["Properties", "Services", "Developments", "About", "Careers", "Contact"].map((item) => (
-            <span key={item} className="text-sm text-blue-200 hover:text-white cursor-pointer transition-colors">{item}</span>
-          ))}
+  const properties = [
+    { name: "Harbor Tower", type: "Class A Office", sqft: "285,000 SF", occupancy: "92%", price: "$48.00/SF", location: "Financial District" },
+    { name: "Waterfront Plaza", type: "Mixed-Use Retail", sqft: "124,000 SF", occupancy: "88%", price: "$62.00/SF", location: "Harbor Walk" },
+    { name: "Meridian Business Park", type: "Industrial Flex", sqft: "510,000 SF", occupancy: "96%", price: "$18.50/SF NNN", location: "North Corridor" },
+    { name: "Capitol Centre", type: "Class B+ Office", sqft: "178,000 SF", occupancy: "85%", price: "$36.00/SF", location: "Midtown" },
+  ]
+
+  const clientLogos = ["Meridian Financial", "Apex Industries", "Sterling Group", "Northway Capital", "Oakbridge Partners", "Summit Holdings"]
+
+  return (
+    <div style={{ fontFamily: "'Open Sans', sans-serif" }} className="min-h-screen text-gray-800">
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+      {/* Mega Nav */}
+      <nav className="px-8 py-4 bg-white border-b border-gray-200">
+        <div className="flex items-center justify-between max-w-7xl mx-auto">
+          <div className="text-xl font-bold" style={{ color: "#1e3a5f" }}>Harbor &amp; Associates</div>
+          <div className="hidden md:flex items-center gap-8">
+            <div className="relative group">
+              <span className="text-sm font-medium text-gray-600 cursor-pointer">Services</span>
+            </div>
+            <div className="relative group">
+              <span className="text-sm font-medium text-gray-600 cursor-pointer">Markets</span>
+            </div>
+            <a href="#" className="text-sm font-medium text-gray-600">Research</a>
+            <a href="#" className="text-sm font-medium text-gray-600">Properties</a>
+            <a href="#" className="text-sm font-medium text-gray-600">About</a>
+          </div>
+          <button className="text-sm font-semibold text-white px-5 py-2 rounded" style={{ backgroundColor: "#1e3a5f" }}>Contact Us</button>
         </div>
-        <span className="text-sm font-medium text-white px-5 py-2 border border-blue-300 hover:bg-blue-800 cursor-pointer transition-colors rounded">Client Portal</span>
+        {/* Mega nav sub-items */}
+        <div className="hidden md:flex max-w-7xl mx-auto mt-2 gap-12 text-xs text-gray-400">
+          <div className="flex gap-4">{megaNav.services.map((s) => <span key={s}>{s}</span>)}</div>
+          <div className="flex gap-4">{megaNav.markets.map((m) => <span key={m}>{m}</span>)}</div>
+        </div>
       </nav>
 
-      {/* Hero */}
-      <section className="relative py-28 px-6 text-center text-white" style={{ backgroundColor: "#1e3a5f" }}>
-        <div className="absolute inset-0 opacity-10 bg-gradient-to-b from-transparent to-black" />
-        <div className="relative max-w-3xl mx-auto">
-          <p className="text-xs uppercase tracking-[0.25em] text-blue-300 mb-4">Enterprise Real Estate Solutions</p>
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight">Building Value Across Every Asset Class</h1>
-          <p className="mt-6 text-blue-200 max-w-xl mx-auto">Crestpoint Partners delivers institutional-grade real estate services to individuals, corporations, and investment groups nationwide.</p>
-          <div className="mt-8 flex justify-center gap-4">
-            <span className="px-6 py-3 text-sm font-semibold bg-white cursor-pointer rounded" style={{ color: "#1e3a5f" }}>Explore Properties</span>
-            <span className="px-6 py-3 text-sm font-semibold border border-white text-white cursor-pointer rounded hover:bg-white/10 transition-colors">Investor Relations</span>
-          </div>
-        </div>
-      </section>
-
-      {/* Property Types */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
-        <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-2">What We Offer</p>
-        <h2 className="text-3xl font-bold mb-12" style={{ color: "#1e3a5f" }}>Property Types</h2>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {propertyTypes.map((pt) => (
-            <div key={pt.type} className="border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-              <p className="text-2xl font-bold" style={{ color: "#1e3a5f" }}>{pt.count}</p>
-              <h3 className="text-lg font-semibold mt-2">{pt.type}</h3>
-              <p className="text-sm text-slate-500 mt-2 leading-relaxed">{pt.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Market Analytics */}
-      <section className="py-16" style={{ backgroundColor: "#f8fafc" }}>
-        <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-2">Performance</p>
-          <h2 className="text-3xl font-bold mb-12" style={{ color: "#1e3a5f" }}>Market Analytics</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
-            {analytics.map((a) => (
-              <div key={a.label} className="text-center p-6 bg-white rounded-lg shadow-sm">
-                <p className="text-3xl md:text-4xl font-bold" style={{ color: "#1e3a5f" }}>{a.value}</p>
-                <p className="text-sm text-slate-500 mt-2">{a.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Developments */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
-        <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-2">Pipeline</p>
-        <h2 className="text-3xl font-bold mb-12" style={{ color: "#1e3a5f" }}>Featured Developments</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {developments.map((d) => (
-            <div key={d.name} className="rounded-lg overflow-hidden border border-slate-200">
-              <div className="aspect-[16/9] bg-slate-100" />
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-semibold px-2 py-1 rounded text-white" style={{ backgroundColor: "#1e3a5f" }}>{d.status}</span>
-                  <span className="text-xs text-slate-400">{d.completion}</span>
-                </div>
-                <h3 className="text-lg font-bold mt-2">{d.name}</h3>
-                <p className="text-sm text-slate-500">{d.location}</p>
-                <p className="text-sm text-slate-400 mt-1">{d.type} &middot; {d.units}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Our Team */}
-      <section className="py-16" style={{ backgroundColor: "#f8fafc" }}>
-        <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-2">Leadership</p>
-          <h2 className="text-3xl font-bold mb-12" style={{ color: "#1e3a5f" }}>Our Team</h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {team.map((t) => (
-              <div key={t.name} className="bg-white rounded-lg p-6 shadow-sm text-center">
-                <div className="w-20 h-20 rounded-full bg-slate-200 mx-auto mb-4" />
-                <h3 className="text-sm font-bold">{t.name}</h3>
-                <p className="text-xs font-semibold mt-1" style={{ color: "#1e3a5f" }}>{t.title}</p>
-                <p className="text-xs text-slate-400 mt-2">{t.exp}</p>
-              </div>
-            ))}
+      {/* City Skyline Hero */}
+      <section className="py-24 px-8" style={{ backgroundColor: "#f0f4ff" }}>
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-sm font-semibold uppercase tracking-wider mb-3" style={{ color: "#1e3a5f" }}>Commercial Real Estate Brokerage</p>
+          <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6" style={{ color: "#1e3a5f" }}>Navigating Commercial Real Estate With Precision</h1>
+          <p className="text-lg text-gray-500 mb-8 max-w-2xl mx-auto">Harbor & Associates is a full-service commercial real estate brokerage serving institutional investors, corporate occupiers, and private owners across the metropolitan market.</p>
+          <div className="flex gap-4 justify-center">
+            <button className="text-white font-semibold px-8 py-3 rounded" style={{ backgroundColor: "#1e3a5f" }}>View Properties</button>
+            <button className="font-semibold px-8 py-3 rounded border" style={{ borderColor: "#1e3a5f", color: "#1e3a5f" }}>Market Reports</button>
           </div>
         </div>
       </section>
 
       {/* Services */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
-        <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-2">Capabilities</p>
-        <h2 className="text-3xl font-bold mb-12" style={{ color: "#1e3a5f" }}>Our Services</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {services.map((s) => (
-            <div key={s.name} className="border-l-4 pl-6 py-2" style={{ borderColor: "#1e3a5f" }}>
-              <h3 className="text-lg font-semibold">{s.name}</h3>
-              <p className="text-sm text-slate-500 mt-2 leading-relaxed">{s.desc}</p>
-            </div>
-          ))}
+      <section className="py-20 px-8 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: "#1e3a5f" }}>Our Services</p>
+          <h2 className="text-3xl font-bold mb-12" style={{ color: "#1e3a5f" }}>Full-Spectrum Commercial Solutions</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {services.map((s) => (
+              <div key={s.name} className="flex gap-5 p-6 rounded-lg border border-gray-100 hover:shadow-md transition-shadow">
+                <div className="w-12 h-12 rounded flex-shrink-0 flex items-center justify-center text-white text-xs font-bold" style={{ backgroundColor: "#1e3a5f" }}>{s.icon}</div>
+                <div>
+                  <h3 className="text-lg font-bold mb-2" style={{ color: "#1e3a5f" }}>{s.name}</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">{s.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="text-white py-12 px-6" style={{ backgroundColor: "#1e3a5f" }}>
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
-          <div>
-            <span className="text-lg font-bold">CRESTPOINT</span>
-            <p className="text-sm text-blue-200 mt-2">Enterprise real estate solutions since 1998.</p>
-          </div>
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-wider mb-3">Properties</p>
-            {["Residential", "Commercial", "Industrial", "Land"].map((i) => (
-              <p key={i} className="text-sm text-blue-200 mb-1 cursor-pointer hover:text-white transition-colors">{i}</p>
+      {/* Market Reports */}
+      <section className="py-20 px-8" style={{ backgroundColor: "#f0f4ff" }}>
+        <div className="max-w-6xl mx-auto">
+          <p className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: "#1e3a5f" }}>Research</p>
+          <h2 className="text-3xl font-bold mb-12" style={{ color: "#1e3a5f" }}>Market Intelligence</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {reports.map((r) => (
+              <div key={r.title} className="bg-white p-6 rounded-lg border border-gray-100 shadow-sm">
+                <span className="text-xs font-bold tracking-widest px-2 py-1 rounded text-white mb-4 inline-block" style={{ backgroundColor: "#1e3a5f" }}>{r.type}</span>
+                <h3 className="text-lg font-bold mb-3" style={{ color: "#1e3a5f" }}>{r.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed mb-4">{r.summary}</p>
+                <a href="#" className="text-sm font-semibold" style={{ color: "#1e3a5f" }}>Download Report &rarr;</a>
+              </div>
             ))}
           </div>
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-wider mb-3">Company</p>
-            {["About", "Careers", "Press", "Investor Relations"].map((i) => (
-              <p key={i} className="text-sm text-blue-200 mb-1 cursor-pointer hover:text-white transition-colors">{i}</p>
+        </div>
+      </section>
+
+      {/* Featured Properties */}
+      <section className="py-20 px-8 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: "#1e3a5f" }}>Featured Properties</p>
+          <h2 className="text-3xl font-bold mb-12" style={{ color: "#1e3a5f" }}>Available Listings</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {properties.map((p) => (
+              <div key={p.name} className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+                <div className="flex justify-between items-start mb-3">
+                  <div>
+                    <h3 className="text-lg font-bold" style={{ color: "#1e3a5f" }}>{p.name}</h3>
+                    <p className="text-sm text-gray-500">{p.type} &middot; {p.location}</p>
+                  </div>
+                  <span className="text-lg font-bold" style={{ color: "#1e3a5f" }}>{p.price}</span>
+                </div>
+                <div className="flex gap-6 text-sm text-gray-600">
+                  <span>{p.sqft}</span>
+                  <span>{p.occupancy} Occupied</span>
+                </div>
+              </div>
             ))}
           </div>
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-wider mb-3">Contact</p>
-            <p className="text-sm text-blue-200">500 Financial Plaza, Suite 2400</p>
-            <p className="text-sm text-blue-200">Boston, MA 02110</p>
-            <p className="text-sm text-blue-200 mt-2">(617) 555-0300</p>
+        </div>
+      </section>
+
+      {/* Client Logos */}
+      <section className="py-16 px-8" style={{ backgroundColor: "#f0f4ff" }}>
+        <div className="max-w-6xl mx-auto text-center">
+          <p className="text-sm font-semibold uppercase tracking-wider mb-8" style={{ color: "#1e3a5f" }}>Trusted By Leading Organizations</p>
+          <div className="flex flex-wrap justify-center gap-10">
+            {clientLogos.map((c) => (
+              <div key={c} className="text-sm font-bold text-gray-400 tracking-wider">{c}</div>
+            ))}
           </div>
         </div>
-        <div className="max-w-6xl mx-auto mt-10 pt-6 border-t border-blue-400/30 text-xs text-blue-300 flex flex-col md:flex-row justify-between gap-2">
-          <span>&copy; 2026 Crestpoint Partners. All rights reserved.</span>
-          <span>NMLS #1234567 | Equal Housing Opportunity</span>
+      </section>
+
+      {/* Contact */}
+      <section className="py-20 px-8 text-white text-center" style={{ backgroundColor: "#1e3a5f" }}>
+        <h2 className="text-3xl font-bold mb-4">Ready to Discuss Your Commercial Real Estate Needs?</h2>
+        <p className="text-blue-200 mb-8 max-w-lg mx-auto">Our experienced brokers are ready to help you navigate the market with clarity and confidence.</p>
+        <button className="bg-white font-semibold px-10 py-3 rounded" style={{ color: "#1e3a5f" }}>Schedule a Consultation</button>
+      </section>
+
+      {/* Corporate Multi-Column Footer */}
+      <footer className="py-12 px-8 bg-gray-900 text-gray-400">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-8">
+          <div>
+            <div className="text-lg font-bold text-white mb-3">Harbor &amp; Associates</div>
+            <p className="text-sm">100 Harbor Boulevard, Suite 2200<br />Boston, MA 02110</p>
+            <p className="text-sm mt-2">(617) 555-0240</p>
+          </div>
+          <div>
+            <p className="font-semibold text-white mb-3 text-sm">Services</p>
+            <div className="space-y-1 text-sm"><p>Leasing</p><p>Sales</p><p>Property Management</p><p>Consulting</p></div>
+          </div>
+          <div>
+            <p className="font-semibold text-white mb-3 text-sm">Research</p>
+            <div className="space-y-1 text-sm"><p>Market Reports</p><p>Economic Outlook</p><p>Sector Analysis</p><p>Data Portal</p></div>
+          </div>
+          <div>
+            <p className="font-semibold text-white mb-3 text-sm">Company</p>
+            <div className="space-y-1 text-sm"><p>About Us</p><p>Careers</p><p>Press</p><p>Legal</p></div>
+          </div>
         </div>
+        <p className="text-center text-xs text-gray-600 mt-8">&copy; 2025 Harbor &amp; Associates. All rights reserved. Licensed Commercial Real Estate Brokerage.</p>
       </footer>
     </div>
   )

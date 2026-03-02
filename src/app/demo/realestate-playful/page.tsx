@@ -1,179 +1,169 @@
-export default function RealEstatePlayfulDemo() {
-  const properties = [
-    { address: "24 Sunflower Lane, Portland, OR", price: "$475,000", beds: 3, baths: 2, sqft: "1,850", tag: "Hot Deal!", tagColor: "#f97316", img: "bg-teal-50" },
-    { address: "7 Breezy Court, Bend, OR", price: "$612,000", beds: 4, baths: 3, sqft: "2,400", tag: "New!", tagColor: "#14b8a6", img: "bg-orange-50" },
-    { address: "130 Willow Park Ave, Eugene, OR", price: "$389,000", beds: 2, baths: 1, sqft: "1,200", tag: "Open House", tagColor: "#a855f7", img: "bg-purple-50" },
-    { address: "55 Cedar Heights Blvd, Salem, OR", price: "$545,000", beds: 3, baths: 2, sqft: "2,100", tag: "Hot Deal!", tagColor: "#f97316", img: "bg-amber-50" },
+export default function RealestatePlayfulDemo() {
+  const navLinks = ["How It Works", "Homes", "Calculator", "Stories", "Resources"]
+
+  const steps = [
+    { number: "1", title: "Tell Us Your Dream", desc: "Answer a few fun questions about your ideal home — neighborhood vibes, must-haves, deal-breakers, and your budget. Our matching algorithm does the heavy lifting.", emoji: "&#127968;" },
+    { number: "2", title: "Tour Your Matches", desc: "We handpick homes that fit your personality and budget. Schedule tours on your time — evenings, weekends, whenever works. No pressure, just exploring.", emoji: "&#128269;" },
+    { number: "3", title: "Move In & Celebrate", desc: "From offer to closing, we handle the paperwork, negotiations, and inspections. You pop the champagne when you get the keys.", emoji: "&#127881;" },
   ]
 
-  const neighborhoods = [
-    { name: "Pearl District", emoji: "\u2728", vibe: "Artsy lofts and rooftop bars", avgPrice: "$580K" },
-    { name: "Hawthorne", emoji: "\ud83c\udf3f", vibe: "Bohemian vibes and vintage shops", avgPrice: "$510K" },
-    { name: "Alberta Arts", emoji: "\ud83c\udfa8", vibe: "Murals, galleries, and food carts", avgPrice: "$465K" },
-    { name: "Sellwood", emoji: "\ud83c\udf33", vibe: "Quiet streets and antique stores", avgPrice: "$525K" },
-    { name: "Division", emoji: "\ud83c\udf55", vibe: "Foodie paradise with new builds", avgPrice: "$495K" },
-    { name: "St. Johns", emoji: "\ud83c\udf09", vibe: "Bridge views and community spirit", avgPrice: "$430K" },
+  const homeTypes = [
+    { type: "Cozy Starter", range: "$250K - $400K", desc: "Perfect first homes with character. Think updated bungalows, townhomes near transit, and condos with rooftop decks.", vibe: "Budget-friendly" },
+    { type: "Family Nest", range: "$400K - $650K", desc: "Three-plus bedrooms, fenced yards, good school districts, and room to grow. Bonus points for a finished basement.", vibe: "Room to grow" },
+    { type: "Fixer-Upper Fun", range: "$180K - $350K", desc: "Diamond-in-the-rough properties with great bones. Bring your Pinterest board and a little elbow grease.", vibe: "Creative project" },
+    { type: "Urban Cool", range: "$300K - $550K", desc: "Lofts, mid-century apartments, and walkable neighborhoods. Coffee shops downstairs, bike lanes outside.", vibe: "City living" },
   ]
 
-  const agents = [
-    { name: "Priya Sharma", tagline: "Your Portland bestie with keys!", deals: 87, rating: "4.9", funFact: "Has visited every food cart in SE Portland" },
-    { name: "Jake Olsen", tagline: "Turning house hunters into homeowners!", deals: 64, rating: "4.8", funFact: "Former carpenter who knows every wall stud" },
-    { name: "Maria Santos", tagline: "Making first homes feel like forever homes!", deals: 103, rating: "5.0", funFact: "Bakes cookies for every closing day" },
+  const stories = [
+    { name: "Mia & Jordan", location: "Portland, OR", quote: "We thought buying our first home would be terrifying. Nestling made it feel like an adventure. We found our place in three weeks!", result: "Closed in 28 days" },
+    { name: "Carlos R.", location: "Austin, TX", quote: "The mortgage calculator alone saved me from so much stress. I knew exactly what I could afford before I even started looking.", result: "Under budget by $20K" },
+    { name: "Aisha & Dev", location: "Raleigh, NC", quote: "As first-generation homebuyers, we had a million questions. The Nestling team answered every single one without making us feel silly.", result: "First-time buyers" },
   ]
 
-  const happyClients = [
-    { quote: "Priya made house hunting feel like a fun adventure instead of a chore. We found our dream home on the third showing!", name: "Leo & Nadia Park", emoji: "\ud83c\udfe0" },
-    { quote: "Jake literally crawled under the house to check the foundation for us. That is dedication. Five stars forever.", name: "Casey Brennan", emoji: "\u2b50" },
+  const resources = [
+    { title: "First-Timer's Homebuying Checklist", desc: "Everything you need to do before, during, and after buying your first home. Print it, pin it, love it.", tag: "Guide" },
+    { title: "Understanding Your Credit Score", desc: "What lenders actually look at, how to improve your score quickly, and why that old gym membership matters.", tag: "Article" },
+    { title: "Down Payment Assistance Programs", desc: "State-by-state breakdown of grants, forgivable loans, and programs designed specifically for first-time buyers.", tag: "Resource" },
+    { title: "Renting vs. Buying Calculator", desc: "Plug in your numbers and see the real math behind the rent-or-buy decision. Spoiler: it depends.", tag: "Tool" },
   ]
 
   return (
-    <div className="min-h-screen bg-white text-slate-800" style={{ fontFamily: "Poppins, sans-serif" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <div style={{ fontFamily: "'Mali', sans-serif" }} className="min-h-screen text-gray-800" >
+      <link href="https://fonts.googleapis.com/css2?family=Mali:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-      {/* Nav */}
-      <nav className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <span className="text-2xl">\ud83c\udfe1</span>
-          <span className="text-xl font-bold" style={{ color: "#14b8a6" }}>Nestled</span>
-        </div>
-        <div className="hidden md:flex items-center space-x-8">
-          {["Browse", "Neighborhoods", "Agents", "Calculator", "About"].map((item) => (
-            <span key={item} className="text-sm text-slate-500 hover:text-slate-800 cursor-pointer transition-colors font-medium">{item}</span>
+      {/* Fun Nav */}
+      <nav className="flex items-center justify-between px-8 py-4 bg-white border-b-2 border-dashed" style={{ borderColor: "#f97316" }}>
+        <div className="text-2xl font-bold" style={{ color: "#f97316" }}>Nestling</div>
+        <div className="hidden md:flex items-center gap-6">
+          {navLinks.map((link) => (
+            <a key={link} href="#" className="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">{link}</a>
           ))}
         </div>
-        <span className="text-sm font-semibold text-white px-5 py-2 rounded-full cursor-pointer transition-colors" style={{ backgroundColor: "#f97316" }}>Get Started!</span>
+        <button className="text-sm font-bold text-white px-6 py-2 rounded-full" style={{ backgroundColor: "#f97316" }}>Get Started!</button>
       </nav>
 
-      {/* Hero */}
-      <section className="max-w-6xl mx-auto px-6 pt-16 pb-20 text-center">
-        <p className="text-4xl mb-4">\ud83c\udfe0 \u2764\ufe0f</p>
-        <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-          Home is where the <span style={{ color: "#f97316" }}>heart</span> is!
-        </h1>
-        <p className="mt-4 text-lg text-slate-500 max-w-lg mx-auto">Finding your perfect place should be exciting, not exhausting. Let us make it fun!</p>
-        <div className="mt-8 flex justify-center gap-4 flex-wrap">
-          <span className="px-6 py-3 text-sm font-semibold text-white rounded-full cursor-pointer" style={{ backgroundColor: "#14b8a6" }}>Browse Homes</span>
-          <span className="px-6 py-3 text-sm font-semibold rounded-full cursor-pointer border-2" style={{ borderColor: "#f97316", color: "#f97316" }}>Take the Quiz!</span>
+      {/* Illustrated Houses Hero */}
+      <section className="py-24 px-8 text-center" style={{ backgroundColor: "#fef3c7" }}>
+        <div className="max-w-3xl mx-auto">
+          <p className="text-4xl mb-4">&#127968; &#127793; &#127968;</p>
+          <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6" style={{ color: "#f97316" }}>Your First Home Should Feel Like Magic</h1>
+          <p className="text-lg text-gray-600 mb-8 max-w-xl mx-auto">Nestling is the friendly, stress-free way for first-time buyers to find, finance, and close on their very first home. No jargon. No surprises. Just your new front door.</p>
+          <div className="flex gap-4 justify-center">
+            <button className="text-white font-bold px-8 py-3 rounded-full shadow-lg" style={{ backgroundColor: "#f97316" }}>Find My Home</button>
+            <button className="font-bold px-8 py-3 rounded-full border-2" style={{ borderColor: "#f97316", color: "#f97316" }}>Take the Quiz</button>
+          </div>
         </div>
       </section>
 
-      {/* Property Cards */}
-      <section className="max-w-6xl mx-auto px-6 py-12">
-        <h2 className="text-2xl font-bold mb-8">Fresh on the market \ud83c\udf1f</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {properties.map((p) => (
-            <div key={p.address} className="rounded-2xl overflow-hidden border border-slate-100 hover:shadow-lg transition-shadow cursor-pointer">
-              <div className={`aspect-[4/3] ${p.img} relative`}>
-                <span className="absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full text-white" style={{ backgroundColor: p.tagColor }}>{p.tag}</span>
-              </div>
-              <div className="p-4">
-                <p className="text-xl font-bold" style={{ color: "#14b8a6" }}>{p.price}</p>
-                <p className="text-sm text-slate-600 mt-1">{p.address}</p>
-                <div className="flex items-center space-x-3 mt-2 text-xs text-slate-400 font-medium">
-                  <span>\ud83d\udecf\ufe0f {p.beds}</span>
-                  <span>\ud83d\udebf {p.baths}</span>
-                  <span>\ud83d\udccf {p.sqft}</span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Neighborhood Badges */}
-      <section className="py-16" style={{ backgroundColor: "#f0fdfa" }}>
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-2xl font-bold mb-2">Explore neighborhoods \ud83d\uddfa\ufe0f</h2>
-          <p className="text-sm text-slate-500 mb-8">Portland has a vibe for everyone. Find yours!</p>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {neighborhoods.map((n) => (
-              <div key={n.name} className="bg-white rounded-xl p-5 hover:shadow-md transition-shadow cursor-pointer border border-teal-100">
-                <p className="text-2xl mb-2">{n.emoji}</p>
-                <h3 className="text-base font-bold">{n.name}</h3>
-                <p className="text-xs text-slate-500 mt-1">{n.vibe}</p>
-                <p className="text-sm font-bold mt-3" style={{ color: "#14b8a6" }}>{n.avgPrice} avg</p>
+      {/* How It Works */}
+      <section className="py-20 px-8 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <p className="text-sm font-bold uppercase tracking-widest mb-2 text-center" style={{ color: "#f97316" }}>How It Works</p>
+          <h2 className="text-3xl font-bold mb-16 text-center">Three Steps to Your New Home</h2>
+          <div className="grid md:grid-cols-3 gap-12">
+            {steps.map((s) => (
+              <div key={s.number} className="text-center">
+                <div className="text-4xl mb-4" dangerouslySetInnerHTML={{ __html: s.emoji }} />
+                <div className="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-xl font-bold" style={{ backgroundColor: "#f97316" }}>{s.number}</div>
+                <h3 className="text-xl font-bold mb-3">{s.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{s.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Agent Cards */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
-        <h2 className="text-2xl font-bold mb-8">Meet your crew \ud83d\udc4b</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {agents.map((a) => (
-            <div key={a.name} className="rounded-2xl border-2 p-6 text-center hover:shadow-lg transition-shadow" style={{ borderColor: "#14b8a6" }}>
-              <div className="w-20 h-20 rounded-full mx-auto mb-4" style={{ backgroundColor: "#e0f2fe" }} />
-              <h3 className="text-lg font-bold">{a.name}</h3>
-              <p className="text-sm font-medium mt-1" style={{ color: "#f97316" }}>{a.tagline}</p>
-              <div className="flex justify-center gap-4 mt-3 text-xs text-slate-500">
-                <span>{a.deals} deals</span>
-                <span>\u2b50 {a.rating}</span>
+      {/* Home Types */}
+      <section className="py-20 px-8" style={{ backgroundColor: "#fef3c7" }}>
+        <div className="max-w-6xl mx-auto">
+          <p className="text-sm font-bold uppercase tracking-widest mb-2" style={{ color: "#f97316" }}>Home Types</p>
+          <h2 className="text-3xl font-bold mb-12">What Kind of Nest Are You Looking For?</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {homeTypes.map((h) => (
+              <div key={h.type} className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow border-2 border-transparent hover:border-orange-200">
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-xl font-bold">{h.type}</h3>
+                  <span className="text-xs font-bold px-3 py-1 rounded-full text-white" style={{ backgroundColor: "#f97316" }}>{h.vibe}</span>
+                </div>
+                <p className="text-lg font-bold mb-3" style={{ color: "#f97316" }}>{h.range}</p>
+                <p className="text-sm text-gray-600 leading-relaxed">{h.desc}</p>
               </div>
-              <p className="text-xs text-slate-400 mt-3 italic">Fun fact: {a.funFact}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Mortgage Calculator Placeholder */}
-      <section className="py-16" style={{ backgroundColor: "#fff7ed" }}>
-        <div className="max-w-2xl mx-auto px-6 text-center">
-          <p className="text-3xl mb-3">\ud83e\uddf0</p>
-          <h2 className="text-2xl font-bold">Mortgage Calculator</h2>
-          <p className="text-sm text-slate-500 mt-2 mb-8">Crunch the numbers and see what you can afford!</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-white rounded-xl p-4 text-left">
-              <label className="text-xs font-semibold text-slate-600">Home Price</label>
-              <div className="mt-2 border border-slate-200 rounded-lg px-4 py-3 text-sm text-slate-400">$450,000</div>
+      <section className="py-20 px-8 bg-white">
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="text-sm font-bold uppercase tracking-widest mb-2" style={{ color: "#f97316" }}>Mortgage Calculator</p>
+          <h2 className="text-3xl font-bold mb-6">How Much Home Can You Afford?</h2>
+          <p className="text-gray-600 mb-8">Plug in your income, savings, and monthly expenses to get a realistic picture of your buying power. No sign-up required.</p>
+          <div className="rounded-2xl p-12 border-2 border-dashed flex items-center justify-center" style={{ borderColor: "#f97316", backgroundColor: "#fff7ed" }}>
+            <div className="text-center">
+              <p className="text-5xl mb-4">&#128200;</p>
+              <p className="text-lg font-bold" style={{ color: "#f97316" }}>Interactive Calculator</p>
+              <p className="text-sm text-gray-500 mt-2">Enter your details and see your estimated monthly payment, down payment options, and total buying power.</p>
+              <button className="mt-6 text-white font-bold px-8 py-3 rounded-full" style={{ backgroundColor: "#f97316" }}>Try the Calculator</button>
             </div>
-            <div className="bg-white rounded-xl p-4 text-left">
-              <label className="text-xs font-semibold text-slate-600">Down Payment</label>
-              <div className="mt-2 border border-slate-200 rounded-lg px-4 py-3 text-sm text-slate-400">20%</div>
-            </div>
-            <div className="bg-white rounded-xl p-4 text-left">
-              <label className="text-xs font-semibold text-slate-600">Interest Rate</label>
-              <div className="mt-2 border border-slate-200 rounded-lg px-4 py-3 text-sm text-slate-400">6.5%</div>
-            </div>
-          </div>
-          <div className="mt-6 bg-white rounded-xl p-6 inline-block">
-            <p className="text-xs text-slate-400">Estimated Monthly Payment</p>
-            <p className="text-3xl font-bold" style={{ color: "#14b8a6" }}>$2,275/mo</p>
           </div>
         </div>
       </section>
 
-      {/* Happy Clients */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
-        <h2 className="text-2xl font-bold mb-8">Happy homeowners \ud83c\udf89</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {happyClients.map((c) => (
-            <div key={c.name} className="rounded-2xl p-6 border border-slate-100 bg-slate-50">
-              <p className="text-2xl mb-3">{c.emoji}</p>
-              <p className="text-sm text-slate-600 leading-relaxed italic">&ldquo;{c.quote}&rdquo;</p>
-              <p className="text-sm font-bold mt-4" style={{ color: "#14b8a6" }}>{c.name}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="text-white py-10 px-6" style={{ backgroundColor: "#14b8a6" }}>
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-          <div className="flex items-center space-x-2">
-            <span className="text-2xl">\ud83c\udfe1</span>
-            <div>
-              <span className="text-lg font-bold">Nestled</span>
-              <p className="text-xs text-teal-100">Portland&apos;s friendliest real estate team</p>
-            </div>
-          </div>
-          <div className="flex flex-wrap gap-6">
-            {["Browse", "Neighborhoods", "Agents", "Blog", "Contact"].map((i) => (
-              <span key={i} className="text-sm text-teal-100 hover:text-white cursor-pointer transition-colors">{i}</span>
+      {/* Success Stories */}
+      <section className="py-20 px-8" style={{ backgroundColor: "#fef3c7" }}>
+        <div className="max-w-5xl mx-auto">
+          <p className="text-sm font-bold uppercase tracking-widest mb-2 text-center" style={{ color: "#f97316" }}>Happy Homeowners</p>
+          <h2 className="text-3xl font-bold mb-12 text-center">Real People, Real Keys, Real Happy</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {stories.map((s) => (
+              <div key={s.name} className="bg-white rounded-2xl p-8 shadow-sm">
+                <p className="text-gray-600 italic mb-4 leading-relaxed">&ldquo;{s.quote}&rdquo;</p>
+                <p className="font-bold">{s.name}</p>
+                <p className="text-sm text-gray-500">{s.location}</p>
+                <p className="text-sm font-bold mt-2" style={{ color: "#f97316" }}>{s.result}</p>
+              </div>
             ))}
           </div>
-          <span className="text-xs text-teal-200">&copy; 2026 Nestled Real Estate</span>
+        </div>
+      </section>
+
+      {/* Resources */}
+      <section className="py-20 px-8 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <p className="text-sm font-bold uppercase tracking-widest mb-2" style={{ color: "#f97316" }}>Buyer Resources</p>
+          <h2 className="text-3xl font-bold mb-12">Everything You Need to Know</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {resources.map((r) => (
+              <div key={r.title} className="flex gap-4 p-6 rounded-xl border border-orange-100 hover:bg-orange-50 transition-colors">
+                <div className="text-xs font-bold px-3 py-1 rounded-full h-fit text-white flex-shrink-0" style={{ backgroundColor: "#f97316" }}>{r.tag}</div>
+                <div>
+                  <h3 className="font-bold mb-1">{r.title}</h3>
+                  <p className="text-sm text-gray-600">{r.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Get Started CTA */}
+      <section className="py-20 px-8 text-center text-white" style={{ backgroundColor: "#f97316" }}>
+        <p className="text-4xl mb-4">&#127969;</p>
+        <h2 className="text-4xl font-bold mb-4">Ready to Find Your Nest?</h2>
+        <p className="text-lg opacity-90 mb-8 max-w-lg mx-auto">Take our 2-minute home quiz and get matched with listings that fit your life, your budget, and your vibe.</p>
+        <button className="bg-white font-bold px-10 py-3 rounded-full shadow-lg" style={{ color: "#f97316" }}>Start the Quiz!</button>
+      </section>
+
+      {/* Fun Footer */}
+      <footer className="py-10 px-8 border-t-2 border-dashed" style={{ borderColor: "#f97316", backgroundColor: "#fef3c7" }}>
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="text-xl font-bold" style={{ color: "#f97316" }}>Nestling</div>
+          <div className="text-center text-sm text-gray-600">
+            <p className="font-bold mb-1">Homebuyer Tip of the Day</p>
+            <p>Always get pre-approved before you start touring. It shows sellers you mean business!</p>
+          </div>
+          <p className="text-xs text-gray-400">&copy; 2025 Nestling. All rights reserved. Equal Housing Opportunity.</p>
         </div>
       </footer>
     </div>

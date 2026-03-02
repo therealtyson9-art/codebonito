@@ -1,160 +1,199 @@
 export default function AgencyMinimalistDemo() {
-  const services = [
-    { title: "Brand Strategy", desc: "We distill your vision into a clear, compelling brand identity that resonates with your audience and stands the test of time." },
-    { title: "Digital Design", desc: "Pixel-perfect interfaces and experiences crafted with intention. Every element serves a purpose, nothing more." },
-    { title: "Web Development", desc: "Clean, performant code that brings designs to life. Built with modern frameworks and scalable architecture." },
-    { title: "Content Strategy", desc: "Thoughtful narratives that connect your brand with the people who matter most. Words chosen with care." },
-  ]
+  const navItems = [
+    { label: "Work", active: true },
+    { label: "Approach", active: false },
+    { label: "Team", active: false },
+    { label: "Contact", active: false },
+  ];
 
-  const caseStudies = [
-    { client: "Aura Skincare", category: "Branding & Web", year: "2026", result: "312% increase in online revenue within 6 months of launch" },
-    { client: "Northlight Architecture", category: "Digital Design", year: "2025", result: "Award-winning portfolio site featured in Awwwards" },
-    { client: "Meridian Capital", category: "Brand Strategy", year: "2025", result: "Complete rebrand leading to 4x qualified lead generation" },
-    { client: "Solace Wellness", category: "Full Service", year: "2024", result: "From concept to market leader in the wellness space" },
-  ]
+  const projects = [
+    { name: "Reverie Skincare", category: "Brand Identity", year: "2024", description: "A complete visual overhaul for a clean beauty brand entering the European market. We stripped away the noise and let the product speak." },
+    { name: "Lumen Architecture", category: "Web & Print", year: "2024", description: "Designing a digital presence that mirrors the firm's commitment to light, space, and structural honesty in every project." },
+    { name: "Onward Coffee", category: "Packaging & Brand", year: "2023", description: "From bean sourcing to shelf placement, we built a brand system that communicates craft without pretension." },
+    { name: "The Civic Journal", category: "Editorial Design", year: "2023", description: "A quarterly publication redesign focused on readability, typographic hierarchy, and respect for long-form journalism." },
+  ];
 
-  const team = [
-    { name: "Elena Marsh", role: "Founder & Creative Director", color: "bg-slate-200" },
-    { name: "James Chen", role: "Head of Design", color: "bg-slate-300" },
-    { name: "Sofia Reyes", role: "Lead Developer", color: "bg-slate-100" },
-    { name: "David Kim", role: "Strategy Director", color: "bg-slate-250" },
-    { name: "Ava Thompson", role: "Project Manager", color: "bg-slate-150" },
-    { name: "Marcus Bell", role: "Senior Designer", color: "bg-slate-200" },
-  ]
-
-  const testimonials = [
-    { quote: "They stripped everything back to what truly mattered. The result was more impactful than anything we could have imagined.", author: "Sarah Lin", company: "Aura Skincare" },
-    { quote: "Working with Whitespace felt effortless. They understood our vision before we could fully articulate it.", author: "Thomas Reed", company: "Northlight Architecture" },
-  ]
+  const teamMembers = [
+    { name: "Elara Voss", role: "Founder & Creative Director", bio: "Fifteen years shaping brands that endure. Previously at Pentagram and Collins." },
+    { name: "Marcus Chen", role: "Design Lead", bio: "Typographer and systems thinker. Believes every pixel carries weight." },
+    { name: "Sofia Andersson", role: "Strategy Director", bio: "Turns market complexity into brand clarity. MBA from Stockholm School of Economics." },
+    { name: "James Okafor", role: "Senior Designer", bio: "Print-first designer who brings tactile sensibility to digital work." },
+  ];
 
   return (
-    <div className="min-h-screen bg-white text-slate-900" style={{ fontFamily: "Inter, sans-serif" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <div className="min-h-screen bg-white text-black" style={{ fontFamily: "'Sora', sans-serif" }}>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
 
-      {/* Nav */}
-      <nav className="max-w-6xl mx-auto px-6 py-8 flex items-center justify-between">
-        <span className="text-lg font-medium tracking-tight">whitespace.</span>
-        <div className="hidden md:flex items-center space-x-10">
-          {["Work", "Services", "About", "Contact"].map((item) => (
-            <span key={item} className="text-sm text-slate-500 hover:text-slate-900 cursor-pointer transition-colors">{item}</span>
-          ))}
+      {/* Navigation */}
+      <nav className="border-b border-black/10">
+        <div className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
+          <span className="text-xl font-semibold tracking-tight">Clarity Studio</span>
+          <div className="hidden md:flex items-center space-x-8">
+            {navItems.map((item) => (
+              <span
+                key={item.label}
+                className="text-sm font-medium cursor-pointer"
+                style={{
+                  textDecoration: item.active ? "underline" : "none",
+                  textUnderlineOffset: "6px",
+                  textDecorationThickness: "2px",
+                }}
+              >
+                {item.label}
+              </span>
+            ))}
+          </div>
+          <span className="text-sm font-medium underline cursor-pointer" style={{ textUnderlineOffset: "6px" }}>
+            Start a Project
+          </span>
         </div>
-        <span className="text-sm text-slate-500 hover:text-slate-900 cursor-pointer transition-colors">hello@whitespace.studio</span>
       </nav>
 
       {/* Hero */}
-      <section className="max-w-6xl mx-auto px-6 pt-24 pb-32">
-        <h1 className="text-6xl md:text-8xl font-light leading-[0.95] tracking-tight text-slate-900">
-          Design with<br />intention.
+      <section className="max-w-5xl mx-auto px-6 py-32 md:py-44">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
+          We remove everything unnecessary until only the truth of your brand remains.
         </h1>
-        <p className="mt-10 text-lg text-slate-400 max-w-md font-light leading-relaxed">
-          We are a design studio focused on clarity, craft, and meaningful digital experiences for thoughtful brands.
+        <p className="mt-8 text-lg font-light max-w-2xl leading-relaxed" style={{ color: "#555" }}>
+          Clarity Studio is a branding and design agency for companies that believe
+          less is the only honest answer. Founded in 2018, based in Brooklyn.
         </p>
       </section>
 
-      {/* Services */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
-        <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-16">Services</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-14">
-          {services.map((s) => (
-            <div key={s.title} className="group">
-              <h3 className="text-xl font-medium mb-3">{s.title}</h3>
-              <p className="text-sm text-slate-400 leading-relaxed font-light">{s.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Divider */}
-      <div className="max-w-6xl mx-auto px-6"><div className="border-t border-slate-100" /></div>
-
-      {/* Case Studies */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
-        <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-16">Selected Work</p>
-        <div className="space-y-0">
-          {caseStudies.map((cs) => (
-            <div key={cs.client} className="group py-10 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer hover:pl-2 transition-all">
-              <div>
-                <h3 className="text-2xl font-light">{cs.client}</h3>
-                <p className="text-sm text-slate-400 mt-1">{cs.result}</p>
+      {/* Selected Work */}
+      <section className="max-w-6xl mx-auto px-6 py-20 border-t border-black/10">
+        <h2 className="text-xs font-semibold uppercase tracking-widest mb-16">Selected Work</h2>
+        <div className="space-y-16">
+          {projects.map((project, i) => (
+            <div key={i} className="grid md:grid-cols-2 gap-8 items-start group cursor-pointer">
+              <div className="aspect-[4/3] bg-neutral-100 flex items-center justify-center">
+                <span className="text-sm font-light" style={{ color: "#999" }}>
+                  {project.category} — {project.year}
+                </span>
               </div>
-              <div className="flex items-center space-x-8">
-                <span className="text-xs text-slate-400 uppercase tracking-wider">{cs.category}</span>
-                <span className="text-xs text-slate-300">{cs.year}</span>
+              <div className="py-4">
+                <h3 className="text-2xl md:text-3xl font-semibold mb-4">{project.name}</h3>
+                <p className="text-base font-light leading-relaxed mb-4" style={{ color: "#444" }}>
+                  {project.description}
+                </p>
+                <span className="text-sm font-medium underline" style={{ textUnderlineOffset: "4px" }}>
+                  View Project
+                </span>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Divider */}
-      <div className="max-w-6xl mx-auto px-6"><div className="border-t border-slate-100" /></div>
-
-      {/* Team */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
-        <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-16">Our Team</p>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-10 gap-y-14">
-          {team.map((m) => (
-            <div key={m.name}>
-              <div className={`aspect-[3/4] ${m.color} rounded-sm mb-5`} />
-              <h3 className="text-sm font-medium">{m.name}</h3>
-              <p className="text-xs text-slate-400 mt-1">{m.role}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="bg-slate-50 py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-16">Kind Words</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-            {testimonials.map((t) => (
-              <div key={t.author}>
-                <p className="text-lg font-light leading-relaxed text-slate-600 italic">&ldquo;{t.quote}&rdquo;</p>
-                <p className="text-sm mt-6 text-slate-900 font-medium">{t.author}</p>
-                <p className="text-xs text-slate-400">{t.company}</p>
-              </div>
-            ))}
+      {/* Approach */}
+      <section className="max-w-6xl mx-auto px-6 py-24 border-t border-black/10">
+        <h2 className="text-xs font-semibold uppercase tracking-widest mb-16">Our Approach</h2>
+        <div className="grid md:grid-cols-3 gap-12">
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Listen First</h3>
+            <p className="text-sm font-light leading-relaxed" style={{ color: "#555" }}>
+              Every engagement begins with deep immersion. We interview stakeholders, audit existing
+              assets, study your market, and identify the gap between perception and ambition. No
+              assumptions, no templates.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Reduce to Essence</h3>
+            <p className="text-sm font-light leading-relaxed" style={{ color: "#555" }}>
+              We challenge every element. If a color, word, or layout does not serve a clear purpose,
+              it goes. What remains is a brand system that communicates with precision and confidence.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Build to Last</h3>
+            <p className="text-sm font-light leading-relaxed" style={{ color: "#555" }}>
+              Trends fade. We design brand systems with enough structure to maintain consistency and
+              enough flexibility to evolve. Every deliverable comes with documentation and guidelines.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Client Logos */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
-        <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-12 text-center">Trusted By</p>
-        <div className="flex flex-wrap justify-center items-center gap-12">
-          {["Aura", "Northlight", "Meridian", "Solace", "Vantage", "Lumina"].map((name) => (
-            <span key={name} className="text-sm text-slate-300 font-medium tracking-wider uppercase">{name}</span>
+      {/* Team */}
+      <section className="max-w-6xl mx-auto px-6 py-24 border-t border-black/10">
+        <h2 className="text-xs font-semibold uppercase tracking-widest mb-16">The Team</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+          {teamMembers.map((member, i) => (
+            <div key={i}>
+              <div className="aspect-square bg-neutral-100 mb-5" />
+              <h3 className="text-base font-semibold">{member.name}</h3>
+              <p className="text-sm font-medium mt-1" style={{ color: "#777" }}>{member.role}</p>
+              <p className="text-sm font-light mt-3 leading-relaxed" style={{ color: "#555" }}>
+                {member.bio}
+              </p>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* Contact CTA */}
-      <section className="max-w-6xl mx-auto px-6 py-32 text-center">
-        <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-8">Start a Project</p>
-        <h2 className="text-4xl md:text-6xl font-light tracking-tight">Let&apos;s create something<br />together.</h2>
-        <p className="text-slate-400 mt-6 text-sm font-light">We take on a limited number of projects each quarter to ensure every client gets our full attention.</p>
-        <div className="mt-10">
-          <span className="inline-block px-8 py-3 text-sm font-medium text-white bg-slate-900 hover:bg-slate-800 cursor-pointer transition-colors">Get in touch</span>
+      {/* Contact */}
+      <section className="max-w-6xl mx-auto px-6 py-24 border-t border-black/10">
+        <h2 className="text-xs font-semibold uppercase tracking-widest mb-8">Get in Touch</h2>
+        <div className="grid md:grid-cols-2 gap-16">
+          <div>
+            <p className="text-2xl md:text-3xl font-semibold leading-snug">
+              Have a project in mind? We would love to hear about it.
+            </p>
+            <p className="mt-6 text-sm font-light leading-relaxed" style={{ color: "#555" }}>
+              We take on a limited number of projects each quarter to ensure every client
+              receives our full attention. Reach out early and let us explore what is possible.
+            </p>
+          </div>
+          <div className="space-y-6">
+            <div>
+              <label className="text-xs font-semibold uppercase tracking-widest block mb-2">Name</label>
+              <div className="border-b border-black/20 pb-2 text-sm font-light" style={{ color: "#999" }}>
+                Your full name
+              </div>
+            </div>
+            <div>
+              <label className="text-xs font-semibold uppercase tracking-widest block mb-2">Email</label>
+              <div className="border-b border-black/20 pb-2 text-sm font-light" style={{ color: "#999" }}>
+                you@company.com
+              </div>
+            </div>
+            <div>
+              <label className="text-xs font-semibold uppercase tracking-widest block mb-2">Message</label>
+              <div className="border-b border-black/20 pb-2 text-sm font-light" style={{ color: "#999" }}>
+                Tell us about your project
+              </div>
+            </div>
+            <div className="pt-4">
+              <span className="text-sm font-semibold underline cursor-pointer" style={{ textUnderlineOffset: "4px" }}>
+                Send Message
+              </span>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-100">
-        <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+      <footer className="border-t border-black/10">
+        <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-start md:items-center">
           <div>
-            <span className="text-sm font-medium">whitespace.</span>
-            <p className="text-xs text-slate-400 mt-1">Design studio based in San Francisco</p>
+            <span className="text-lg font-semibold">Clarity Studio</span>
+            <p className="text-xs font-light mt-2" style={{ color: "#777" }}>
+              Branding & Design — Brooklyn, NY
+            </p>
           </div>
-          <div className="flex space-x-8">
-            {["Twitter", "Dribbble", "LinkedIn", "Instagram"].map((s) => (
-              <span key={s} className="text-xs text-slate-400 hover:text-slate-900 cursor-pointer transition-colors">{s}</span>
-            ))}
+          <div className="mt-6 md:mt-0 text-right">
+            <p className="text-xs font-light" style={{ color: "#777" }}>
+              hello@claritystudio.com
+            </p>
+            <p className="text-xs font-light mt-1" style={{ color: "#777" }}>
+              &copy; 2024 Clarity Studio. All rights reserved.
+            </p>
           </div>
-          <span className="text-xs text-slate-300">&copy; 2026 Whitespace Studio</span>
         </div>
       </footer>
     </div>
-  )
+  );
 }

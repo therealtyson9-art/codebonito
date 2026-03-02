@@ -1,162 +1,178 @@
 export default function EducationPlayfulDemo() {
-  const courses = [
-    { emoji: "🧪", title: "Science Lab Adventures", age: "Ages 8-12", desc: "Hands-on experiments from volcanoes to slime. Get messy, learn tons!", color: "bg-purple-100 border-purple-300" },
-    { emoji: "🎨", title: "Creative Coding & Art", age: "Ages 10-16", desc: "Build games, animations, and digital art with Scratch and p5.js.", color: "bg-orange-100 border-orange-300" },
-    { emoji: "🌍", title: "World Explorers", age: "Ages 6-10", desc: "Travel the globe through stories, food, music, and virtual field trips.", color: "bg-teal-100 border-teal-300" },
-    { emoji: "🔢", title: "Math Wizards", age: "Ages 8-14", desc: "Puzzles, games, and real-world challenges that make math click.", color: "bg-purple-100 border-purple-300" },
-    { emoji: "📖", title: "Story Builders", age: "Ages 7-12", desc: "Write, illustrate, and publish your very own storybook in 8 weeks.", color: "bg-orange-100 border-orange-300" },
-    { emoji: "🤖", title: "Robotics Club", age: "Ages 10-16", desc: "Design, build, and program robots that solve real-world problems.", color: "bg-teal-100 border-teal-300" },
-  ]
+  const subjects = [
+    { icon: "🔢", name: "Math", desc: "From counting to fractions, we make numbers fun with games, puzzles, and real-world adventures.", color: "#3b82f6" },
+    { icon: "🔬", name: "Science", desc: "Hands-on experiments and nature walks that spark curiosity about how the world really works.", color: "#10b981" },
+    { icon: "📖", name: "Reading", desc: "Phonics, comprehension, and a love of stories through interactive read-alouds and book clubs.", color: "#f59e0b" },
+    { icon: "✏️", name: "Writing", desc: "Creative journals, story-building exercises, and structured practice to build confident young writers.", color: "#ef4444" },
+  ];
 
-  const stats = [
-    { value: "12,400+", label: "Happy Students", emoji: "🎒" },
-    { value: "150+", label: "Fun Courses", emoji: "📚" },
-    { value: "45", label: "Countries", emoji: "🌎" },
-    { value: "98%", label: "Would Recommend", emoji: "⭐" },
-  ]
+  const tutors = [
+    { name: "Ms. Hannah Park", subject: "Math & Science", experience: "8 years", bio: "Former elementary teacher who believes every child can be a math whiz with the right encouragement." },
+    { name: "Mr. David Reyes", subject: "Reading & Writing", experience: "6 years", bio: "Children's book author and literacy specialist who turns reluctant readers into bookworms." },
+    { name: "Ms. Priya Sharma", subject: "All Subjects", experience: "10 years", bio: "Certified special education teacher with a gift for making complex topics simple and fun." },
+  ];
 
-  const teachers = [
-    { name: "Ms. Rivera", subject: "Science & Nature", bio: "Former marine biologist who brings ocean specimens to every class. Known for her legendary frog dissection alternatives.", color: "bg-purple-500" },
-    { name: "Mr. Tanaka", subject: "Coding & Robotics", bio: "Game developer turned educator. His students have won three national coding competitions in the last two years.", color: "bg-orange-500" },
-    { name: "Coach Jordan", subject: "Math & Logic", bio: "Makes multiplication feel like a sport. Students earn belts like in karate as they master new math levels.", color: "bg-teal-500" },
-  ]
+  const steps = [
+    { num: "1", title: "Tell Us About Your Child", desc: "Share their grade level, subjects, and learning goals so we can find the perfect match." },
+    { num: "2", title: "Meet Your Tutor", desc: "We'll pair your child with a friendly, certified tutor who specializes in what they need." },
+    { num: "3", title: "Watch Them Shine", desc: "Regular sessions, progress reports, and a whole lot of confidence-building along the way." },
+  ];
 
-  const projects = [
-    { title: "Solar-Powered Car", student: "Aisha, Age 11", desc: "Built from recycled materials and actually runs on sunlight!" },
-    { title: "Underwater World Game", student: "Liam, Age 13", desc: "A Scratch game with 5 levels that teaches ocean conservation." },
-    { title: "Community Garden Map", student: "Sofia, Age 9", desc: "An interactive map showing every community garden in the city." },
-  ]
+  const testimonials = [
+    { name: "Jessica M.", child: "Mom of Lily, age 9", quote: "My daughter went from dreading math homework to asking for extra problems. BrightMind's tutors are incredible!" },
+    { name: "Carlos R.", child: "Dad of Mateo, age 7", quote: "Mateo's reading level jumped two grades in just four months. We couldn't be happier with the results." },
+    { name: "Aisha W.", child: "Mom of twins, age 11", quote: "Both my kids look forward to their sessions every week. It doesn't even feel like tutoring to them!" },
+  ];
 
-  const funFacts = [
-    "Our students have collectively read over 42,000 books this year",
-    "The most popular course request? Dinosaur Paleontology (coming soon!)",
-    "Our oldest student is 87 and our youngest is 5",
-  ]
+  const plans = [
+    { name: "Starter", price: "$35", frequency: "/session", features: ["1 session per week", "One subject focus", "Monthly progress report", "Email support"] },
+    { name: "Growth", price: "$29", frequency: "/session", features: ["2 sessions per week", "Up to 2 subjects", "Bi-weekly progress reports", "Parent-tutor calls"], popular: true },
+    { name: "Unlimited", price: "$199", frequency: "/month", features: ["Unlimited sessions", "All subjects covered", "Weekly progress reports", "Priority scheduling"] },
+  ];
 
   return (
-    <div className="min-h-screen bg-white" style={{ fontFamily: "Poppins, sans-serif" }}>
-      <head><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" /></head>
+    <div style={{ fontFamily: "'Comic Neue', cursive" }} className="min-h-screen" >
+      <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet" />
 
-      <nav className="border-b-4 border-purple-500">
-        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-          <span className="text-xl font-extrabold text-purple-600">sparkle<span className="text-orange-500">learn</span></span>
-          <div className="hidden md:flex items-center space-x-6">
-            <span className="text-sm font-medium text-gray-600 hover:text-purple-500 cursor-pointer transition-colors">Courses</span>
-            <span className="text-sm font-medium text-gray-600 hover:text-purple-500 cursor-pointer transition-colors">Teachers</span>
-            <span className="text-sm font-medium text-gray-600 hover:text-purple-500 cursor-pointer transition-colors">Projects</span>
-            <button className="h-10 px-6 text-sm font-bold text-white bg-gradient-to-r from-purple-500 to-orange-500 hover:from-purple-600 hover:to-orange-600 rounded-full transition-all">Join Free!</button>
+      <div style={{ backgroundColor: "#fef9c3" }}>
+        {/* Bouncy Nav */}
+        <nav className="px-8 py-5 flex items-center justify-between max-w-6xl mx-auto">
+          <span className="text-2xl font-bold" style={{ color: "#2563eb" }}>BrightMind Academy</span>
+          <div className="hidden md:flex gap-6 text-base font-bold" style={{ color: "#2563eb" }}>
+            <a href="#" className="hover:underline">Subjects</a>
+            <a href="#" className="hover:underline">Our Tutors</a>
+            <a href="#" className="hover:underline">Pricing</a>
+            <a href="#" className="hover:underline">Contact</a>
           </div>
-        </div>
-      </nav>
+          <button className="px-5 py-2 rounded-full text-white font-bold" style={{ backgroundColor: "#2563eb" }}>Try Free!</button>
+        </nav>
 
-      <section className="max-w-6xl mx-auto px-4 py-20 text-center">
-        <div className="text-5xl mb-4">🎉</div>
-        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">Learning should be <span className="text-purple-500">fun!</span></h1>
-        <p className="text-lg text-gray-500 max-w-xl mx-auto mb-8">Interactive courses, amazing teachers, and a global community of curious kids and lifelong learners. No boring lectures, ever.</p>
-        <div className="flex justify-center space-x-3">
-          <button className="h-12 px-8 text-sm font-bold text-white bg-gradient-to-r from-purple-500 to-orange-500 rounded-full hover:shadow-lg transition-all">Start Learning</button>
-          <button className="h-12 px-8 text-sm font-bold text-purple-600 bg-purple-100 hover:bg-purple-200 rounded-full transition-colors">Watch Demo</button>
-        </div>
-      </section>
-
-      <section className="max-w-6xl mx-auto px-4 py-12">
-        <h2 className="text-2xl font-extrabold text-gray-900 text-center mb-2">Pick Your Adventure</h2>
-        <p className="text-gray-500 text-center mb-10">Every course is hands-on, interactive, and designed by real experts</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {courses.map((c) => (
-            <div key={c.title} className={`rounded-2xl p-6 border-2 ${c.color} hover:scale-105 transition-transform cursor-pointer`}>
-              <div className="text-4xl mb-3">{c.emoji}</div>
-              <h3 className="text-lg font-bold text-gray-900 mb-1">{c.title}</h3>
-              <p className="text-xs font-semibold text-purple-600 mb-2">{c.age}</p>
-              <p className="text-sm text-gray-600">{c.desc}</p>
+        {/* Hero */}
+        <section className="max-w-6xl mx-auto px-8 py-16 grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h1 className="text-5xl font-bold leading-tight mb-6" style={{ color: "#2563eb" }}>Learning should be an adventure!</h1>
+            <p className="text-xl mb-8 leading-relaxed" style={{ color: "#4b5563" }}>BrightMind Academy pairs your child with amazing tutors who make math, science, reading, and writing seriously fun. Grades K-8.</p>
+            <div className="flex gap-4 flex-wrap">
+              <button className="px-6 py-3 rounded-full text-white font-bold text-lg" style={{ backgroundColor: "#2563eb" }}>Schedule a Free Session</button>
+              <button className="px-6 py-3 rounded-full font-bold text-lg border-2" style={{ color: "#2563eb", borderColor: "#2563eb" }}>Meet Our Tutors</button>
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+          <div className="rounded-3xl flex items-center justify-center h-72" style={{ backgroundColor: "#fde68a" }}>
+            <div className="text-center" style={{ color: "#92400e" }}>
+              <div className="text-7xl mb-3">🎒</div>
+              <p className="font-bold">Student Illustration</p>
+            </div>
+          </div>
+        </section>
 
-      <section className="bg-gradient-to-r from-purple-500 to-orange-500 py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((s) => (
-              <div key={s.label} className="text-center">
-                <div className="text-3xl mb-2">{s.emoji}</div>
-                <p className="text-3xl font-extrabold text-white">{s.value}</p>
-                <p className="text-sm text-white/80 font-medium">{s.label}</p>
+        {/* Subjects */}
+        <section className="max-w-6xl mx-auto px-8 py-14">
+          <h2 className="text-3xl font-bold text-center mb-10" style={{ color: "#2563eb" }}>What We Teach</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {subjects.map((s) => (
+              <div key={s.name} className="bg-white rounded-2xl p-6 text-center shadow-sm">
+                <div className="text-5xl mb-3">{s.icon}</div>
+                <h3 className="text-xl font-bold mb-2" style={{ color: s.color }}>{s.name}</h3>
+                <p className="text-sm" style={{ color: "#6b7280" }}>{s.desc}</p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="max-w-6xl mx-auto px-4 py-16">
-        <h2 className="text-2xl font-extrabold text-gray-900 text-center mb-10">Meet Our Amazing Teachers</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {teachers.map((t) => (
-            <div key={t.name} className="rounded-2xl overflow-hidden border-2 border-gray-200 hover:shadow-lg transition-shadow">
-              <div className={`${t.color} h-3`} />
-              <div className="p-6">
-                <div className={`w-14 h-14 rounded-full ${t.color} flex items-center justify-center text-white text-xl font-bold mb-4`}>{t.name[0]}{t.name.split(" ")[1][0]}</div>
-                <h3 className="text-lg font-bold text-gray-900">{t.name}</h3>
-                <p className="text-xs font-semibold text-orange-500 mb-3">{t.subject}</p>
-                <p className="text-sm text-gray-500">{t.bio}</p>
-              </div>
+        {/* Our Tutors */}
+        <section className="py-14" style={{ backgroundColor: "#fffbeb" }}>
+          <div className="max-w-6xl mx-auto px-8">
+            <h2 className="text-3xl font-bold text-center mb-10" style={{ color: "#2563eb" }}>Meet Our Awesome Tutors</h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              {tutors.map((t) => (
+                <div key={t.name} className="bg-white rounded-2xl p-6 text-center shadow-sm">
+                  <div className="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center text-3xl" style={{ backgroundColor: "#dbeafe" }}>👩‍🏫</div>
+                  <h3 className="text-lg font-bold" style={{ color: "#2563eb" }}>{t.name}</h3>
+                  <p className="text-sm font-bold mb-1" style={{ color: "#f59e0b" }}>{t.subject} &middot; {t.experience}</p>
+                  <p className="text-sm" style={{ color: "#6b7280" }}>{t.bio}</p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+        </section>
 
-      <section className="bg-gray-50 py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl font-extrabold text-gray-900 text-center mb-10">Student Projects Showcase</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {projects.map((p) => (
-              <div key={p.title} className="bg-white rounded-2xl p-6 border-2 border-gray-200">
-                <h3 className="text-lg font-bold text-gray-900 mb-1">{p.title}</h3>
-                <p className="text-xs font-semibold text-teal-500 mb-3">{p.student}</p>
-                <p className="text-sm text-gray-500">{p.desc}</p>
+        {/* How It Works */}
+        <section className="max-w-6xl mx-auto px-8 py-14">
+          <h2 className="text-3xl font-bold text-center mb-10" style={{ color: "#2563eb" }}>How It Works</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {steps.map((s) => (
+              <div key={s.num} className="text-center">
+                <div className="w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl font-bold text-white" style={{ backgroundColor: "#2563eb" }}>{s.num}</div>
+                <h3 className="text-xl font-bold mb-2" style={{ color: "#1e40af" }}>{s.title}</h3>
+                <p className="text-sm" style={{ color: "#6b7280" }}>{s.desc}</p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="max-w-4xl mx-auto px-4 py-16">
-        <h2 className="text-2xl font-extrabold text-gray-900 text-center mb-8">Fun Facts</h2>
-        <div className="space-y-4">
-          {funFacts.map((fact, i) => (
-            <div key={i} className="flex items-center space-x-3 bg-purple-50 rounded-xl p-4 border border-purple-200">
-              <span className="text-2xl">💡</span>
-              <p className="text-sm font-medium text-gray-700">{fact}</p>
+        {/* Testimonials */}
+        <section className="py-14" style={{ backgroundColor: "#dbeafe" }}>
+          <div className="max-w-6xl mx-auto px-8">
+            <h2 className="text-3xl font-bold text-center mb-10" style={{ color: "#2563eb" }}>What Parents Say</h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              {testimonials.map((t) => (
+                <div key={t.name} className="bg-white rounded-2xl p-6 shadow-sm">
+                  <p className="text-sm mb-4 italic" style={{ color: "#4b5563" }}>&ldquo;{t.quote}&rdquo;</p>
+                  <p className="font-bold text-sm" style={{ color: "#2563eb" }}>{t.name}</p>
+                  <p className="text-xs" style={{ color: "#9ca3af" }}>{t.child}</p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+        </section>
 
-      <section className="bg-gradient-to-r from-purple-500 to-orange-500 py-16">
-        <div className="max-w-2xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-extrabold text-white mb-4">Ready to Start Learning?</h2>
-          <p className="text-white/80 mb-8">Sign up in 30 seconds. Your first course is completely free!</p>
-          <div className="bg-white rounded-2xl p-6 text-left">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-              <div><label className="text-xs font-semibold text-gray-600 block mb-1">Your Name</label><div className="h-10 bg-gray-100 rounded-lg" /></div>
-              <div><label className="text-xs font-semibold text-gray-600 block mb-1">Email Address</label><div className="h-10 bg-gray-100 rounded-lg" /></div>
+        {/* Pricing */}
+        <section className="max-w-6xl mx-auto px-8 py-14">
+          <h2 className="text-3xl font-bold text-center mb-10" style={{ color: "#2563eb" }}>Simple Pricing</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {plans.map((p) => (
+              <div key={p.name} className={`bg-white rounded-2xl p-6 shadow-sm text-center ${p.popular ? "ring-4" : ""}`} style={p.popular ? { borderColor: "#2563eb", border: "3px solid #2563eb" } : {}}>
+                {p.popular && <span className="text-xs font-bold px-3 py-1 rounded-full text-white" style={{ backgroundColor: "#2563eb" }}>Most Popular</span>}
+                <h3 className="text-xl font-bold mt-3" style={{ color: "#2563eb" }}>{p.name}</h3>
+                <div className="text-4xl font-bold my-4" style={{ color: "#1e40af" }}>{p.price}<span className="text-base font-normal" style={{ color: "#9ca3af" }}>{p.frequency}</span></div>
+                <ul className="space-y-2 text-sm text-left mb-6" style={{ color: "#4b5563" }}>
+                  {p.features.map((f) => <li key={f}>&#10003; {f}</li>)}
+                </ul>
+                <button className="w-full py-3 rounded-full font-bold text-white" style={{ backgroundColor: "#2563eb" }}>Get Started</button>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Schedule CTA */}
+        <section className="max-w-6xl mx-auto px-8 py-16 text-center">
+          <h2 className="text-4xl font-bold mb-4" style={{ color: "#2563eb" }}>Ready to brighten their future?</h2>
+          <p className="text-lg mb-8" style={{ color: "#4b5563" }}>Book a free trial session and see the BrightMind difference for yourself.</p>
+          <button className="px-8 py-4 rounded-full text-white font-bold text-lg" style={{ backgroundColor: "#2563eb" }}>Schedule a Free Session</button>
+        </section>
+
+        {/* Footer */}
+        <footer className="py-10" style={{ backgroundColor: "#2563eb" }}>
+          <div className="max-w-6xl mx-auto px-8 grid md:grid-cols-3 gap-8 text-white">
+            <div>
+              <h4 className="font-bold text-lg mb-3">BrightMind Academy</h4>
+              <p className="text-sm opacity-80">Making learning fun for kids K-8 since 2019. Every child deserves to feel brilliant.</p>
             </div>
-            <div className="mb-4"><label className="text-xs font-semibold text-gray-600 block mb-1">I am a...</label><div className="h-10 bg-gray-100 rounded-lg" /></div>
-            <button className="w-full h-12 text-sm font-bold text-white bg-gradient-to-r from-purple-500 to-orange-500 rounded-full hover:shadow-lg transition-all">Let&apos;s Go! 🚀</button>
+            <div>
+              <h4 className="font-bold mb-3">Contact Us</h4>
+              <p className="text-sm opacity-80">hello@brightmindacademy.com</p>
+              <p className="text-sm opacity-80">(555) 234-5678</p>
+              <p className="text-sm opacity-80">Mon-Sat 8am - 7pm</p>
+            </div>
+            <div>
+              <h4 className="font-bold mb-3">Follow Along!</h4>
+              <p className="text-sm opacity-80">Instagram / Facebook / YouTube</p>
+              <p className="text-sm opacity-80 mt-2">Subscribe to our parent newsletter for tips, activities, and updates.</p>
+            </div>
           </div>
-        </div>
-      </section>
-
-      <footer className="border-t-4 border-purple-500 bg-white">
-        <div className="max-w-6xl mx-auto px-4 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <span className="text-sm font-bold text-gray-400">&copy; 2026 SparkleLearn. Made with ❤️ for curious minds.</span>
-          <div className="flex space-x-6 text-sm text-gray-400">
-            <span className="hover:text-purple-500 cursor-pointer transition-colors">Privacy</span>
-            <span className="hover:text-purple-500 cursor-pointer transition-colors">Terms</span>
-            <span className="hover:text-purple-500 cursor-pointer transition-colors">Help</span>
-          </div>
-        </div>
-      </footer>
+          <div className="text-center text-sm text-white opacity-60 mt-8">&copy; 2026 BrightMind Academy. All rights reserved.</div>
+        </footer>
+      </div>
     </div>
-  )
+  );
 }

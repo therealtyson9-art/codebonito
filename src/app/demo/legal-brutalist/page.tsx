@@ -1,141 +1,164 @@
 export default function LegalBrutalistDemo() {
   const practiceAreas = [
-    { area: "CRIMINAL DEFENSE", desc: "Felonies. Misdemeanors. Federal charges. We show up when it matters most and fight with everything we have." },
-    { area: "PERSONAL INJURY", desc: "Catastrophic injuries. Wrongful death. Medical malpractice. We do not settle for less than you deserve." },
-    { area: "CIVIL RIGHTS", desc: "Police misconduct. Discrimination. Constitutional violations. We hold power accountable." },
-    { area: "FAMILY LAW", desc: "Custody battles. Divorce. Protection orders. We protect what matters to you." },
-  ]
-
-  const attorneys = [
-    { name: "MARCUS COLE", role: "Founding Partner", cases: "400+ trials", bar: "NY, NJ, DC" },
-    { name: "ELENA VOSS", role: "Senior Litigator", cases: "250+ trials", bar: "CA, OR, WA" },
-    { name: "RAFAEL TORRES", role: "Trial Attorney", cases: "150+ trials", bar: "TX, FL, IL" },
+    { area: "TECH LITIGATION", desc: "Patent disputes. Trade secret theft. Software licensing wars. We litigate at the intersection of law and code." },
+    { area: "DATA PRIVACY", desc: "GDPR. CCPA. HIPAA. Breach response. We defend companies when regulators come knocking and build compliance before they do." },
+    { area: "STARTUP LAW", desc: "Incorporation. Cap tables. SAFEs. Series A through IPO. We have closed 400+ venture rounds and counting." },
+    { area: "EMPLOYMENT", desc: "Non-competes. Wrongful termination. Trade secret injunctions. We handle the disputes that keep founders up at night." },
+    { area: "CYBERCRIME DEFENSE", desc: "Federal CFAA charges. Wire fraud. Crypto enforcement actions. We defend technologists when the DOJ overreaches." },
+    { area: "IP PROSECUTION", desc: "Patents. Trademarks. Copyright registration. Licensing. We protect what you build so others cannot take it." },
   ]
 
   const stats = [
-    { number: "$340M+", label: "RECOVERED FOR CLIENTS" },
-    { number: "97%", label: "CASE SUCCESS RATE" },
-    { number: "800+", label: "CASES TRIED" },
-    { number: "25", label: "YEARS IN THE FIGHT" },
+    { number: "847", label: "CASES CLOSED" },
+    { number: "$2.3B", label: "IN JUDGMENTS & SETTLEMENTS" },
+    { number: "96%", label: "WIN RATE AT TRIAL" },
+    { number: "12", label: "YEARS OPERATING" },
+  ]
+
+  const victories = [
+    { case: "US v. Chen (2023)", desc: "Federal cybercrime prosecution. Client acquitted on all counts. The government alleged unauthorized access to a competitor's system. We proved the access was contractually permitted.", result: "NOT GUILTY" },
+    { case: "NexTech v. Orion Systems (2023)", desc: "Trade secret misappropriation claim. Secured $47M verdict for client after a six-week trial. The jury found willful and malicious conduct.", result: "$47M VERDICT" },
+    { case: "In re: Meridian Data Breach (2022)", desc: "Class action defense after a breach affecting 12M users. Negotiated settlement at 8% of plaintiff demand. No admission of liability.", result: "SETTLED — 92% REDUCTION" },
+    { case: "Blackstone v. USPTO (2022)", desc: "Patent appeal before the Federal Circuit. Reversed examiner rejection on a novel blockchain consensus mechanism. Landmark ruling for crypto patents.", result: "REVERSED" },
   ]
 
   return (
-    <div className="min-h-screen bg-black text-white" style={{ fontFamily: "JetBrains Mono, monospace" }}>
-      <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <div style={{ fontFamily: "'Roboto Mono', monospace", backgroundColor: "#111827" }} className="min-h-screen">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-      {/* Nav */}
-      <nav className="border-b-2 border-white">
-        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-          <span className="text-xl font-bold uppercase tracking-wider">COLE_VOSS_LAW</span>
-          <div className="hidden md:flex space-x-6">
-            {["Cases", "Attorneys", "Results", "Retainer"].map((item) => (
-              <span key={item} className="text-sm font-bold uppercase underline underline-offset-4 hover:text-red-500 cursor-pointer transition-colors">{item}</span>
+      {/* Terminal Nav */}
+      <nav style={{ borderBottom: "1px solid #fbbf24" }} className="py-4">
+        <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
+          <h1 style={{ color: "#fbbf24" }} className="text-lg font-bold tracking-widest">BLACKSTONE_LEGAL</h1>
+          <div className="flex items-center gap-6">
+            {["> practice", "> cases", "> the_firm", "> victories", "> contact"].map((link) => (
+              <span key={link} style={{ color: "#fbbf24" }} className="text-xs font-medium cursor-pointer opacity-60 hover:opacity-100">{link}</span>
             ))}
           </div>
-          <span className="text-sm font-bold uppercase bg-white text-black px-4 py-2 hover:bg-red-500 hover:text-white cursor-pointer transition-colors">CALL NOW</span>
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="max-w-6xl mx-auto px-4 py-24">
-        <h1 className="text-7xl md:text-9xl font-extrabold leading-none uppercase">
-          WE FIGHT.<br /><span className="text-red-500">YOU WIN.</span>
-        </h1>
-        <p className="text-base mt-10 max-w-lg border-l-4 border-red-500 pl-4 text-white/70">
-          No billboards. No gimmicks. Just 25 years of relentless courtroom advocacy for people who have been wronged.
-        </p>
+      {/* Dense Paragraph Hero */}
+      <section className="max-w-6xl mx-auto px-6 py-20">
+        <div style={{ borderLeft: "3px solid #fbbf24" }} className="pl-6">
+          <p style={{ color: "#fbbf24" }} className="text-xs font-bold tracking-widest mb-6">$ cat manifesto.txt</p>
+          <p style={{ color: "#fbbf24" }} className="text-sm leading-loose opacity-80 max-w-4xl">
+            BLACKSTONE LEGAL was founded in 2012 by trial attorneys who understood that technology
+            disputes require technologists, not just lawyers. We are a litigation-first firm staffed
+            by attorneys who read source code, understand network architectures, and have testified
+            as expert witnesses before pivoting to advocacy. When a $2B patent troll targets your
+            startup, when a regulator issues a subpoena for your server logs, when a former CTO walks
+            out the door with your proprietary algorithms — we are the firm you call. We do not do
+            billable-hour theater. We do not draft memos that gather dust. We build cases to win, and
+            our 96% trial record proves it. Every engagement starts with a direct conversation with a
+            partner. No intake coordinators. No junior associate filters. You talk to the person who
+            will stand up in court and fight for you.
+          </p>
+        </div>
+        <div className="mt-10 flex gap-4">
+          <span style={{ backgroundColor: "#fbbf24", color: "#111827" }} className="px-6 py-3 text-xs font-bold tracking-widest cursor-pointer">RETAIN_COUNSEL</span>
+          <span style={{ border: "1px solid #fbbf24", color: "#fbbf24" }} className="px-6 py-3 text-xs font-bold tracking-widest cursor-pointer">VIEW_RECORD</span>
+        </div>
       </section>
 
-      {/* Practice Areas */}
-      <section className="border-t-2 border-white">
-        <div className="max-w-6xl mx-auto px-4 py-16">
-          <h2 className="text-3xl font-bold uppercase border-b-2 border-white pb-4 mb-12">PRACTICE_AREAS_</h2>
-          <div className="space-y-0">
+      {/* Practice Areas Grid */}
+      <section style={{ borderTop: "1px solid rgba(251,191,36,0.2)" }} className="py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <p style={{ color: "#fbbf24" }} className="text-xs font-bold tracking-widest mb-10">$ ls practice_areas/</p>
+          <div className="grid grid-cols-3 gap-4">
             {practiceAreas.map((pa) => (
-              <div key={pa.area} className="border-b border-white/20 py-8 hover:bg-white/5 transition-colors px-2">
-                <h3 className="text-2xl font-bold uppercase">{pa.area}</h3>
-                <p className="text-sm text-white/50 mt-2 max-w-2xl">{pa.desc}</p>
+              <div key={pa.area} style={{ border: "1px solid rgba(251,191,36,0.3)" }} className="p-5">
+                <h4 style={{ color: "#fbbf24" }} className="text-sm font-bold mb-2">{pa.area}</h4>
+                <p style={{ color: "#fbbf24" }} className="text-xs opacity-50 leading-relaxed">{pa.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Attorneys */}
-      <section className="bg-white text-black py-20">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold uppercase border-b-4 border-black pb-4 mb-12">THE_TEAM_</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
-            {attorneys.map((att) => (
-              <div key={att.name} className="border-2 border-black p-8 hover:bg-black hover:text-white transition-colors group">
-                <div className="w-20 h-20 bg-black group-hover:bg-red-500 mb-6 transition-colors" />
-                <h3 className="text-xl font-bold uppercase">{att.name}</h3>
-                <p className="text-sm font-bold uppercase text-black/50 group-hover:text-white/50 mt-1">{att.role}</p>
-                <div className="mt-4 pt-4 border-t border-black/20 group-hover:border-white/20">
-                  <p className="text-xs font-bold uppercase">{att.cases}</p>
-                  <p className="text-xs text-black/40 group-hover:text-white/40 mt-1">BARS: {att.bar}</p>
-                </div>
+      {/* Case Stats */}
+      <section style={{ backgroundColor: "#fbbf24" }} className="py-14">
+        <div className="max-w-6xl mx-auto px-6">
+          <p style={{ color: "#111827" }} className="text-xs font-bold tracking-widest mb-8">$ cat stats.log</p>
+          <div className="grid grid-cols-4 gap-6">
+            {stats.map((s) => (
+              <div key={s.label} className="text-center">
+                <p style={{ color: "#111827" }} className="text-4xl font-bold">{s.number}</p>
+                <p style={{ color: "#111827" }} className="text-xs font-medium tracking-widest mt-2 opacity-60">{s.label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="border-t-2 border-white py-20">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold uppercase mb-16">THE_NUMBERS_</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
-            {stats.map((stat) => (
-              <div key={stat.label} className="border border-white/20 p-8 text-center">
-                <p className="text-4xl md:text-5xl font-extrabold text-red-500">{stat.number}</p>
-                <p className="text-xs font-bold uppercase text-white/50 mt-3 tracking-wider">{stat.label}</p>
-              </div>
-            ))}
+      {/* The Firm */}
+      <section className="py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <p style={{ color: "#fbbf24" }} className="text-xs font-bold tracking-widest mb-6">$ cat about.md</p>
+          <div className="grid grid-cols-2 gap-12">
+            <div>
+              <p style={{ color: "#fbbf24" }} className="text-sm leading-loose opacity-70">
+                We maintain a lean team of 18 attorneys. Every one of them has first-chaired a
+                trial. Every one of them holds a technical degree or certification in addition
+                to their JD. We do not hire associates who want to push paper. We hire litigators
+                who want to be in the courtroom.
+              </p>
+            </div>
+            <div>
+              <p style={{ color: "#fbbf24" }} className="text-sm leading-loose opacity-70">
+                Our offices are in San Francisco and New York. We take cases nationwide and have
+                appeared in 34 federal districts. We are admitted to practice before the Supreme
+                Court of the United States, the Federal Circuit, and every state bar where
+                technology disputes happen.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Case Results */}
-      <section className="bg-red-500 text-white py-20">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold uppercase mb-12">RECENT_WINS_</h2>
+      {/* Notable Victories */}
+      <section style={{ borderTop: "1px solid rgba(251,191,36,0.2)" }} className="py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <p style={{ color: "#fbbf24" }} className="text-xs font-bold tracking-widest mb-10">$ grep --results victories.log</p>
           <div className="space-y-6">
-            {[
-              { case: "State v. Hendricks", result: "ALL CHARGES DISMISSED", detail: "Federal racketeering charges dropped after 14-month defense campaign" },
-              { case: "Martinez v. City of Newark", result: "$12.5M VERDICT", detail: "Civil rights violation stemming from unlawful detention and excessive force" },
-              { case: "Thompson Family Trust", result: "FULL RECOVERY", detail: "Estate fraud case resulting in complete restitution of $8.3M in misappropriated assets" },
-            ].map((c) => (
-              <div key={c.case} className="border-2 border-white p-6">
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-2">
-                  <span className="text-lg font-bold uppercase">{c.case}</span>
-                  <span className="text-sm font-bold uppercase bg-white text-red-500 px-3 py-1 inline-block w-fit">{c.result}</span>
+            {victories.map((v) => (
+              <div key={v.case} style={{ border: "1px solid rgba(251,191,36,0.2)" }} className="p-5 flex justify-between items-start gap-8">
+                <div className="flex-1">
+                  <h4 style={{ color: "#fbbf24" }} className="text-sm font-bold mb-2">{v.case}</h4>
+                  <p style={{ color: "#fbbf24" }} className="text-xs opacity-50 leading-relaxed">{v.desc}</p>
                 </div>
-                <p className="text-sm text-white/70 mt-2">{c.detail}</p>
+                <span style={{ backgroundColor: "rgba(251,191,36,0.15)", color: "#fbbf24" }} className="text-xs font-bold px-3 py-1 whitespace-nowrap">{v.result}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Retainer */}
-      <section className="max-w-6xl mx-auto px-4 py-24 text-center">
-        <h2 className="text-5xl md:text-7xl font-extrabold uppercase">READY TO<br /><span className="text-red-500">FIGHT BACK?</span></h2>
-        <p className="text-sm text-white/50 mt-6 max-w-md mx-auto">
-          Free initial consultation. No fee unless we win. We take cases other firms are afraid to touch.
-        </p>
-        <div className="mt-10 flex flex-col md:flex-row justify-center gap-4">
-          <span className="inline-block px-10 py-4 text-sm font-bold uppercase bg-red-500 text-white border-2 border-red-500 hover:bg-white hover:text-black cursor-pointer transition-colors">(212) 555-0199</span>
-          <span className="inline-block px-10 py-4 text-sm font-bold uppercase border-2 border-white hover:bg-white hover:text-black cursor-pointer transition-colors">REQUEST RETAINER</span>
+      {/* Contact (Command-Line Style) */}
+      <section style={{ backgroundColor: "#0a0f1a" }} className="py-16">
+        <div className="max-w-4xl mx-auto px-6">
+          <p style={{ color: "#fbbf24" }} className="text-xs font-bold tracking-widest mb-8">$ ./contact --method=direct</p>
+          <div style={{ border: "1px solid rgba(251,191,36,0.3)" }} className="p-8">
+            <div className="space-y-3">
+              <p style={{ color: "#fbbf24" }} className="text-sm"><span className="opacity-40">name____:</span> BLACKSTONE LEGAL</p>
+              <p style={{ color: "#fbbf24" }} className="text-sm"><span className="opacity-40">phone___:</span> (415) 555-0199</p>
+              <p style={{ color: "#fbbf24" }} className="text-sm"><span className="opacity-40">email___:</span> intake@blackstonelegal.io</p>
+              <p style={{ color: "#fbbf24" }} className="text-sm"><span className="opacity-40">office_1:</span> 101 Market Street, 42nd Floor, San Francisco, CA 94105</p>
+              <p style={{ color: "#fbbf24" }} className="text-sm"><span className="opacity-40">office_2:</span> 1 World Trade Center, 60th Floor, New York, NY 10007</p>
+              <p style={{ color: "#fbbf24" }} className="text-sm"><span className="opacity-40">hours___:</span> Mon-Fri 0800-2000 PST | Emergency line: 24/7</p>
+            </div>
+            <div className="mt-8">
+              <span style={{ backgroundColor: "#fbbf24", color: "#111827" }} className="px-6 py-3 text-xs font-bold tracking-widest cursor-pointer">SUBMIT_INQUIRY</span>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t-2 border-white">
-        <div className="max-w-6xl mx-auto px-4 py-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-          <span className="text-sm font-bold uppercase">COLE_VOSS_LAW</span>
-          <span className="text-xs text-white/40">Attorney advertising. Prior results do not guarantee a similar outcome.</span>
-          <span className="text-xs font-bold uppercase text-white/50">&copy; 2026 COLE &amp; VOSS LLP</span>
+      {/* Terminal Footer */}
+      <footer style={{ borderTop: "1px solid rgba(251,191,36,0.15)" }} className="py-8">
+        <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
+          <p style={{ color: "#fbbf24" }} className="text-xs opacity-30">&copy; 2024 BLACKSTONE LEGAL. ALL RIGHTS RESERVED.</p>
+          <p style={{ color: "#fbbf24" }} className="text-xs opacity-30">BUILD: v12.4.1 | UPTIME: 4,383 DAYS | STATUS: OPERATIONAL</p>
         </div>
       </footer>
     </div>

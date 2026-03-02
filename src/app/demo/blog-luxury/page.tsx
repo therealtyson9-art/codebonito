@@ -1,153 +1,213 @@
 export default function BlogLuxuryDemo() {
-  const articles = [
-    { title: "The Architecture of Silence", subtitle: "How Dieter Rams shaped a century of restraint", category: "Design Philosophy", date: "February 2026", readTime: "14 min", pullQuote: "Good design is as little design as possible. Less, but better, because it concentrates on the essential aspects." },
-    { title: "Crafting Digital Patina", subtitle: "On software that ages with grace", category: "Product Thinking", date: "January 2026", readTime: "11 min", pullQuote: "" },
-    { title: "The Lost Art of Typographic Hierarchy", subtitle: "Why every pixel of whitespace is a decision", category: "Typography", date: "January 2026", readTime: "9 min", pullQuote: "" },
-    { title: "Wabi-Sabi in Interface Design", subtitle: "Embracing imperfection in digital craft", category: "Design Philosophy", date: "December 2025", readTime: "12 min", pullQuote: "" },
-    { title: "On the Ethics of Persuasive Patterns", subtitle: "When delight becomes manipulation", category: "Ethics", date: "December 2025", readTime: "8 min", pullQuote: "" },
-    { title: "The Materiality of Screens", subtitle: "Light, glass, and the textures we forgot", category: "Essays", date: "November 2025", readTime: "10 min", pullQuote: "" },
+  const editorialPicks = [
+    {
+      title: "The Vanishing Art of the Grand Hotel",
+      subtitle: "Inside the last generation of hoteliers who learned their craft before algorithms replaced intuition",
+      category: "Hospitality",
+      date: "February 2026",
+      readTime: "16 min",
+    },
+    {
+      title: "A Perfumer's Year in Grasse",
+      subtitle: "Twelve months among jasmine fields, copper stills, and the slow chemistry of patience",
+      category: "Craft",
+      date: "January 2026",
+      readTime: "13 min",
+    },
+    {
+      title: "Why the World's Best Restaurants Are Getting Smaller",
+      subtitle: "The fine dining counter-revolution favoring eight seats, no menus, and radical intimacy",
+      category: "Gastronomy",
+      date: "January 2026",
+      readTime: "10 min",
+    },
   ];
 
-  const categories = ["All", "Design Philosophy", "Typography", "Product Thinking", "Ethics", "Essays"];
-
-  const featured = articles[0];
-
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-[#e8e4df]" style={{ fontFamily: "Lora, serif" }}>
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
-      </head>
+    <div style={{ fontFamily: "'Lora', serif", backgroundColor: "#1c1210", color: "#d4a053" }} className="min-h-screen">
+      <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap&family=Inter:wght@300;400&display=swap"
+        rel="stylesheet"
+      />
 
-      {/* Nav */}
-      <nav className="border-b border-[#1f1f1f]">
-        <div className="max-w-6xl mx-auto px-8 h-16 flex items-center justify-between">
-          <span className="text-xl tracking-[0.15em] text-[#d4af37]" style={{ fontFamily: "Playfair Display, serif" }}>ATELIER</span>
-          <div className="hidden md:flex items-center space-x-8">
-            {["Journal", "Archive", "Contributors", "About"].map((link) => (
-              <span key={link} className="text-xs tracking-[0.15em] uppercase text-[#666] hover:text-[#d4af37] transition-colors cursor-pointer">{link}</span>
-            ))}
+      {/* Refined Serif Nav */}
+      <nav className="border-b" style={{ borderColor: "#2e1f1a" }}>
+        <div className="max-w-5xl mx-auto px-6 py-6 flex items-center justify-between">
+          <h1 className="text-2xl font-semibold tracking-wide" style={{ color: "#d4a053" }}>
+            Curated Life
+          </h1>
+          <div className="hidden md:flex items-center gap-8 text-sm" style={{ fontFamily: "'Inter', sans-serif", color: "#a07a3a" }}>
+            <a href="#" className="hover:text-white transition-colors tracking-wide">Stories</a>
+            <a href="#" className="hover:text-white transition-colors tracking-wide">Craft</a>
+            <a href="#" className="hover:text-white transition-colors tracking-wide">Travel</a>
+            <a href="#" className="hover:text-white transition-colors tracking-wide">The Edit</a>
+            <a href="#" className="hover:text-white transition-colors tracking-wide">Subscribe</a>
           </div>
-          <span className="md:hidden text-xs tracking-[0.15em] uppercase text-[#666] cursor-pointer">Menu</span>
         </div>
       </nav>
 
-      {/* Featured Article */}
-      <section className="max-w-6xl mx-auto px-8 pt-24 pb-20">
-        <div className="text-center max-w-3xl mx-auto">
-          <p className="text-xs tracking-[0.3em] uppercase text-[#d4af37] mb-6">{featured.category} &mdash; {featured.readTime}</p>
-          <h1 className="text-4xl md:text-6xl leading-[1.1] mb-6" style={{ fontFamily: "Playfair Display, serif", fontWeight: 500 }}>
-            {featured.title}
-          </h1>
-          <p className="text-lg text-[#888] italic mb-8" style={{ fontFamily: "Lora, serif" }}>
-            {featured.subtitle}
+      {/* Editorial Full-Bleed Hero */}
+      <section className="relative py-20 md:py-32 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-xs tracking-[0.35em] uppercase mb-8" style={{ fontFamily: "'Inter', sans-serif", color: "#a07a3a" }}>
+            The Spring Issue
           </p>
-          <p className="text-xs tracking-[0.15em] uppercase text-[#555]">{featured.date}</p>
-        </div>
-
-        {/* Pull Quote */}
-        <div className="max-w-2xl mx-auto mt-16 py-10 border-t border-b border-[#1f1f1f]">
-          <p className="text-2xl md:text-3xl italic text-center leading-relaxed text-[#999]" style={{ fontFamily: "Playfair Display, serif" }}>
-            &ldquo;{featured.pullQuote}&rdquo;
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-normal leading-tight mb-8" style={{ color: "#f5e6c8" }}>
+            The Slow Return of<br />
+            <em className="font-normal">Beautiful Things</em>
+          </h2>
+          <p className="text-base md:text-lg font-light leading-relaxed max-w-2xl mx-auto mb-10" style={{ color: "#a07a3a" }}>
+            In an age of disposability, a quiet resistance is gathering. Artisans, architects, and
+            designers are rediscovering the radical proposition that objects can be made to last,
+            that spaces can be built to age gracefully, and that luxury is not excess but intention.
           </p>
-          <p className="text-center mt-4 text-xs tracking-[0.2em] uppercase text-[#d4af37]">Dieter Rams</p>
+          <div className="flex items-center justify-center gap-4 text-xs" style={{ fontFamily: "'Inter', sans-serif", color: "#6b5530" }}>
+            <span>Words by Isabelle Dumont</span>
+            <span className="w-1 h-1 rounded-full" style={{ backgroundColor: "#6b5530" }} />
+            <span>Photography by Kenji Mori</span>
+          </div>
+          <a href="#" className="inline-block mt-10 text-sm tracking-wider border-b pb-1 transition-colors" style={{ fontFamily: "'Inter', sans-serif", color: "#d4a053", borderColor: "#6b5530" }}>
+            Read the Feature
+          </a>
         </div>
       </section>
 
-      {/* Drop Cap Sample */}
-      <section className="max-w-2xl mx-auto px-8 pb-20">
-        <p className="text-base leading-[1.9] text-[#999]">
-          <span className="float-left text-6xl leading-[0.8] mr-3 mt-1 text-[#d4af37]" style={{ fontFamily: "Playfair Display, serif" }}>T</span>
-          here is a moment in every designer&apos;s career when they stop adding and start removing. This inflection point, quiet and often unrecognized, marks the transition from competence to craft. Rams understood this instinctively. His work at Braun was not minimalism for its own sake but a relentless pursuit of clarity.
+      <div className="max-w-xs mx-auto h-px" style={{ backgroundColor: "#2e1f1a" }} />
+
+      {/* Featured Story */}
+      <section className="max-w-4xl mx-auto px-6 py-20">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <p className="text-xs tracking-[0.25em] uppercase mb-6" style={{ fontFamily: "'Inter', sans-serif", color: "#6b5530" }}>
+              Featured Story
+            </p>
+            <h3 className="text-2xl md:text-3xl font-normal leading-snug mb-6" style={{ color: "#f5e6c8" }}>
+              A Watchmaker&apos;s Hands: Inside the Last Atelier on Rue du Rhone
+            </h3>
+            <p className="text-sm leading-relaxed mb-6" style={{ color: "#a07a3a" }}>
+              At eighty-three, Marcel Aubert still arrives at his Geneva workshop at seven each morning.
+              His bench holds tools inherited from his father, who inherited them from his. In an
+              industry obsessed with silicon and smartwatches, Marcel repairs movements that were
+              assembled before electricity reached his street. We spent a week watching him work.
+            </p>
+            <div className="text-xs" style={{ fontFamily: "'Inter', sans-serif", color: "#6b5530" }}>
+              By Julian Ashford &middot; 18 min read &middot; March 2026
+            </div>
+          </div>
+          <div className="h-72 rounded-sm flex items-center justify-center" style={{ backgroundColor: "#2e1f1a" }}>
+            <div className="text-center" style={{ color: "#6b5530" }}>
+              <div className="text-5xl mb-2" style={{ color: "#d4a053" }}>&#9672;</div>
+              <div className="text-xs tracking-wider" style={{ fontFamily: "'Inter', sans-serif" }}>Editorial Photography</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="max-w-xs mx-auto h-px" style={{ backgroundColor: "#2e1f1a" }} />
+
+      {/* Editorial Picks */}
+      <section className="max-w-4xl mx-auto px-6 py-20">
+        <h3 className="text-xs tracking-[0.25em] uppercase text-center mb-14" style={{ fontFamily: "'Inter', sans-serif", color: "#6b5530" }}>
+          The Editor&apos;s Picks
+        </h3>
+        <div className="space-y-12">
+          {editorialPicks.map((pick, i) => (
+            <article key={i} className="group cursor-pointer">
+              <div className="flex items-start justify-between gap-8">
+                <div className="flex-1">
+                  <p className="text-xs tracking-wider uppercase mb-3" style={{ fontFamily: "'Inter', sans-serif", color: "#6b5530" }}>
+                    {pick.category}
+                  </p>
+                  <h4 className="text-xl md:text-2xl font-normal mb-2 group-hover:underline" style={{ color: "#f5e6c8" }}>
+                    {pick.title}
+                  </h4>
+                  <p className="text-sm leading-relaxed" style={{ color: "#a07a3a" }}>
+                    {pick.subtitle}
+                  </p>
+                </div>
+                <div className="hidden sm:block text-right shrink-0">
+                  <div className="text-xs" style={{ fontFamily: "'Inter', sans-serif", color: "#6b5530" }}>
+                    {pick.date}
+                  </div>
+                  <div className="text-xs mt-1" style={{ fontFamily: "'Inter', sans-serif", color: "#6b5530" }}>
+                    {pick.readTime}
+                  </div>
+                </div>
+              </div>
+              {i < editorialPicks.length - 1 && (
+                <div className="h-px mt-12" style={{ backgroundColor: "#2e1f1a" }} />
+              )}
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <div className="max-w-xs mx-auto h-px" style={{ backgroundColor: "#2e1f1a" }} />
+
+      {/* Editor's Note */}
+      <section className="max-w-2xl mx-auto px-6 py-20 text-center">
+        <p className="text-xs tracking-[0.25em] uppercase mb-8" style={{ fontFamily: "'Inter', sans-serif", color: "#6b5530" }}>
+          A Note from the Editor
+        </p>
+        <p className="text-lg md:text-xl italic leading-relaxed mb-6" style={{ color: "#f5e6c8" }}>
+          &ldquo;We started Curated Life with a simple conviction: that taste is not about wealth,
+          but about attention. Every story in these pages is an invitation to notice something
+          worth caring about, something made with hands and time and the kind of devotion
+          that refuses to be rushed.&rdquo;
+        </p>
+        <div className="text-sm" style={{ fontFamily: "'Inter', sans-serif", color: "#6b5530" }}>
+          <p className="font-medium" style={{ color: "#d4a053" }}>Isabelle Dumont</p>
+          <p className="text-xs mt-1">Editor-in-Chief, Curated Life</p>
+        </div>
+      </section>
+
+      <div className="max-w-xs mx-auto h-px" style={{ backgroundColor: "#2e1f1a" }} />
+
+      {/* Subscribe to Print */}
+      <section className="max-w-lg mx-auto px-6 py-20 text-center">
+        <p className="text-xs tracking-[0.25em] uppercase mb-6" style={{ fontFamily: "'Inter', sans-serif", color: "#6b5530" }}>
+          Receive the Print Edition
+        </p>
+        <h3 className="text-2xl md:text-3xl font-normal mb-4" style={{ color: "#f5e6c8" }}>
+          Delivered quarterly on<br />uncoated cotton paper
+        </h3>
+        <p className="text-sm leading-relaxed mb-8" style={{ color: "#a07a3a" }}>
+          Each issue is designed to be kept, not discarded. Eighty pages of long-form journalism,
+          original photography, and no advertising. Shipped worldwide.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-3 max-w-sm mx-auto">
+          <input
+            type="email"
+            placeholder="your@email.com"
+            className="flex-1 px-4 py-3 text-sm bg-transparent border focus:outline-none"
+            style={{ fontFamily: "'Inter', sans-serif", borderColor: "#2e1f1a", color: "#d4a053" }}
+          />
+          <button
+            className="px-6 py-3 text-xs tracking-wider uppercase transition-opacity hover:opacity-80"
+            style={{ fontFamily: "'Inter', sans-serif", backgroundColor: "#d4a053", color: "#1c1210" }}
+          >
+            Subscribe
+          </button>
+        </div>
+        <p className="text-xs mt-4" style={{ fontFamily: "'Inter', sans-serif", color: "#6b5530" }}>
+          $48 per year &middot; 4 issues &middot; Free worldwide shipping
         </p>
       </section>
 
-      {/* Categories */}
-      <section className="border-t border-[#1f1f1f]">
-        <div className="max-w-6xl mx-auto px-8 py-6 flex items-center justify-center space-x-8 overflow-x-auto">
-          {categories.map((cat, i) => (
-            <span key={cat} className={`text-xs tracking-[0.15em] uppercase whitespace-nowrap cursor-pointer transition-colors ${i === 0 ? "text-[#d4af37]" : "text-[#555] hover:text-[#d4af37]"}`}>
-              {cat}
-            </span>
-          ))}
-        </div>
-      </section>
-
-      {/* Article Grid */}
-      <section className="max-w-6xl mx-auto px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#1f1f1f]">
-          {articles.slice(1).map((article, i) => (
-            <div key={i} className="bg-[#0a0a0a] p-10 group cursor-pointer hover:bg-[#111] transition-colors">
-              <p className="text-xs tracking-[0.2em] uppercase text-[#d4af37] mb-4">{article.category}</p>
-              <h3 className="text-2xl leading-[1.2] mb-3 group-hover:text-[#d4af37] transition-colors" style={{ fontFamily: "Playfair Display, serif", fontWeight: 500 }}>
-                {article.title}
-              </h3>
-              <p className="text-sm italic text-[#666] mb-6">{article.subtitle}</p>
-              <div className="flex items-center justify-between">
-                <span className="text-xs text-[#555]">{article.date}</span>
-                <span className="text-xs text-[#555]">{article.readTime}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Newsletter */}
-      <section className="border-t border-[#1f1f1f]">
-        <div className="max-w-2xl mx-auto px-8 py-24 text-center">
-          <p className="text-xs tracking-[0.3em] uppercase text-[#d4af37] mb-6">The Letter</p>
-          <h2 className="text-3xl md:text-4xl mb-6" style={{ fontFamily: "Playfair Display, serif", fontWeight: 500 }}>
-            A monthly meditation on craft
-          </h2>
-          <p className="text-sm text-[#666] leading-relaxed mb-10 italic">
-            Essays on design philosophy, typographic culture, and the pursuit of meaningful work. Delivered once a month, written with care.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <div className="flex-1 h-12 border border-[#333] bg-transparent flex items-center px-4">
-              <span className="text-sm text-[#444] italic">your@email.com</span>
-            </div>
-            <div className="h-12 px-8 bg-[#d4af37] text-[#0a0a0a] text-xs tracking-[0.15em] uppercase font-semibold flex items-center justify-center cursor-pointer hover:bg-[#c4a030] transition-colors" style={{ fontFamily: "Lora, serif" }}>
-              Subscribe
-            </div>
-          </div>
-          <p className="text-xs text-[#333] mt-4">No algorithms. No engagement metrics. Just thoughtful writing.</p>
-        </div>
-      </section>
-
-      {/* Colophon / Sidebar-style section */}
-      <section className="border-t border-[#1f1f1f]">
-        <div className="max-w-6xl mx-auto px-8 py-16 flex flex-col md:flex-row gap-16">
-          <div className="flex-1">
-            <p className="text-xs tracking-[0.2em] uppercase text-[#d4af37] mb-4">Colophon</p>
-            <p className="text-sm text-[#555] leading-relaxed">
-              Atelier is set in Playfair Display and Lora, served from Google Fonts. The journal is published from a small studio in Copenhagen. All essays are written by hand, edited with patience, and published when ready rather than on schedule.
-            </p>
-          </div>
-          <div className="md:w-64">
-            <p className="text-xs tracking-[0.2em] uppercase text-[#d4af37] mb-4">Follow</p>
-            <div className="space-y-3">
-              {["Mastodon", "Are.na", "Read.cv", "RSS Feed"].map((link) => (
-                <div key={link} className="flex items-center justify-between group cursor-pointer">
-                  <span className="text-sm text-[#555] group-hover:text-[#d4af37] transition-colors">{link}</span>
-                  <span className="text-xs text-[#333] group-hover:text-[#d4af37] transition-colors">&rarr;</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Footer */}
-      <footer className="border-t border-[#1f1f1f]">
-        <div className="max-w-6xl mx-auto px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <span
-            className="text-xs tracking-[0.15em] text-[#333]"
-            style={{ fontFamily: "Playfair Display, serif" }}
-          >
-            ATELIER &copy; 2026
-          </span>
-          <span className="text-xs text-[#333] italic">
-            Crafted with deliberation
-          </span>
+      <footer className="border-t py-10" style={{ borderColor: "#2e1f1a" }}>
+        <div className="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="text-lg font-semibold" style={{ color: "#d4a053" }}>Curated Life</div>
+          <div className="flex gap-6 text-xs" style={{ fontFamily: "'Inter', sans-serif", color: "#6b5530" }}>
+            <span>Stories</span>
+            <span>Craft</span>
+            <span>Travel</span>
+            <span>Archive</span>
+            <span>Contact</span>
+          </div>
+          <div className="text-xs" style={{ fontFamily: "'Inter', sans-serif", color: "#6b5530" }}>
+            &copy; 2026 Curated Life Editorial
+          </div>
         </div>
       </footer>
     </div>

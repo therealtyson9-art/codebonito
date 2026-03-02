@@ -1,131 +1,157 @@
 export default function TechLuxuryDemo() {
-  const products = [
-    { name: "Quantum API", desc: "Next-generation API infrastructure built on quantum-resistant cryptography. Process millions of requests with absolute security.", tag: "Core" },
-    { name: "Neural Engine", desc: "Custom silicon-optimized machine learning inference at the edge. Train once, deploy everywhere with deterministic latency.", tag: "AI" },
-    { name: "Secure Mesh", desc: "Zero-trust service mesh with end-to-end encryption, mutual TLS, and automated certificate rotation across all nodes.", tag: "Security" },
-    { name: "Edge AI", desc: "On-device intelligence that runs without cloud connectivity. Privacy-first AI processing with military-grade data isolation.", tag: "Edge" },
-  ]
-  const metrics = [
-    { value: "0.4ms", label: "Median Latency", detail: "Global P50" },
-    { value: "99.999%", label: "Uptime SLA", detail: "Five nines guaranteed" },
-    { value: "2.1B", label: "Daily Requests", detail: "Across all regions" },
-    { value: "214", label: "Edge Locations", detail: "6 continents" },
-  ]
-  const clients = ["Goldman Sachs", "Tesla", "SpaceX", "Apple", "NVIDIA", "Palantir"]
-  const tiers = [
-    { name: "Pioneer", investment: "$25,000", period: "/year", features: ["Quantum API access", "100M requests/month", "Standard Neural Engine", "Email support", "99.99% SLA"], highlight: false },
-    { name: "Visionary", investment: "$100,000", period: "/year", features: ["Full platform access", "Unlimited requests", "Custom Neural Engine models", "Dedicated architect", "99.999% SLA", "Private edge nodes"], highlight: true },
-    { name: "Sovereign", investment: "Custom", period: "", features: ["Dedicated infrastructure", "Air-gapped deployment", "On-premise option", "Executive partnership", "Custom SLA", "Source code escrow"], highlight: false },
-  ]
+  const solutions = [
+    { name: "Sentinel", desc: "Continuous endpoint monitoring with behavioral analysis and autonomous threat containment. Detects zero-day exploits before they execute.", tag: "Endpoint" },
+    { name: "Cortex SIEM", desc: "Security information and event management that correlates billions of events in real time. Machine learning separates signal from noise.", tag: "Detection" },
+    { name: "Vault", desc: "Secrets management and data encryption with quantum-resistant algorithms. Hardware security modules for key ceremonies and certificate lifecycle.", tag: "Encryption" },
+    { name: "Perimeter", desc: "Zero-trust network access replacing legacy VPNs. Identity-aware micro-segmentation with continuous posture assessment for every connection.", tag: "Network" },
+  ];
+
+  const clients = [
+    { name: "Global Defense Corp", sector: "Defense" },
+    { name: "Swiss National Bank", sector: "Finance" },
+    { name: "Nexus Pharmaceuticals", sector: "Healthcare" },
+    { name: "Orbital Aerospace", sector: "Aerospace" },
+    { name: "Sovereign Energy", sector: "Energy" },
+    { name: "Apex Telecom", sector: "Telecom" },
+  ];
+
+  const team = [
+    { name: "Dr. Elena Vasquez", role: "Chief Threat Officer", bio: "Former NSA cryptanalyst. 18 years in offensive security research. Led the team that discovered the ShadowGate APT cluster." },
+    { name: "Kai Nakamura", role: "VP Engineering", bio: "Built security infrastructure at three unicorn startups. Architect of the Cortex detection engine that processes 4B events daily." },
+    { name: "Anya Petrov", role: "Head of SOC", bio: "Managed security operations for NATO CCDCOE. Specializes in nation-state threat intelligence and incident response at scale." },
+  ];
+
   return (
-    <div className="min-h-screen bg-slate-950" style={{ fontFamily: "Inter, sans-serif" }}>
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-      </head>
-      <nav className="border-b border-slate-800/50">
-        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center space-x-8">
-            <span className="text-lg font-semibold text-sky-400 tracking-widest" style={{ fontFamily: "Playfair Display, serif" }}>AETHON</span>
-            <div className="hidden md:flex space-x-6">
-              {["Platform", "Research", "Enterprise", "About"].map((l) => (
-                <span key={l} className="text-sm text-slate-500 hover:text-slate-300 cursor-pointer transition-colors">{l}</span>
+    <>
+      <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap&family=Inter:wght@300;400&display=swap" rel="stylesheet" />
+      <div style={{ fontFamily: "'Inter', sans-serif", backgroundColor: "#000" }} className="min-h-screen text-white">
+        {/* Neon Nav */}
+        <nav className="border-b" style={{ borderColor: "rgba(14, 165, 233, 0.15)" }}>
+          <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <span className="text-2xl font-light tracking-widest" style={{ fontFamily: "'Bodoni Moda', serif", color: "#0ea5e9", textShadow: "0 0 20px rgba(14, 165, 233, 0.4)" }}>ZENITH</span>
+            <div className="hidden md:flex gap-8 text-xs uppercase tracking-widest text-gray-500">
+              <a href="#" className="hover:text-white transition-colors">Intelligence</a>
+              <a href="#" className="hover:text-white transition-colors">Solutions</a>
+              <a href="#" className="hover:text-white transition-colors">SOC</a>
+              <a href="#" className="hover:text-white transition-colors">Clients</a>
+              <a href="#" className="hover:text-white transition-colors">Research</a>
+            </div>
+            <a href="#" className="text-xs uppercase tracking-widest border px-5 py-2.5 font-light transition-all hover:bg-white/5" style={{ borderColor: "#0ea5e9", color: "#0ea5e9", textShadow: "0 0 10px rgba(14, 165, 233, 0.3)" }}>Request Demo</a>
+          </div>
+        </nav>
+
+        {/* Hero */}
+        <section className="py-32 px-6 relative overflow-hidden">
+          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(14, 165, 233, 0.08) 0%, transparent 60%)" }}></div>
+          <div className="max-w-4xl mx-auto text-center relative z-10">
+            <p className="text-xs uppercase tracking-[0.3em] mb-8" style={{ color: "#0ea5e9" }}>Cybersecurity Redefined</p>
+            <h1 className="text-5xl md:text-7xl font-light leading-tight mb-8" style={{ fontFamily: "'Bodoni Moda', serif" }}>
+              The threat landscape<br /><em className="font-normal" style={{ color: "#0ea5e9", textShadow: "0 0 30px rgba(14, 165, 233, 0.3)" }}>never sleeps.</em><br />Neither do we.
+            </h1>
+            <p className="text-lg text-gray-400 font-light max-w-2xl mx-auto mb-12 leading-relaxed">Zenith Systems delivers enterprise cybersecurity that operates at machine speed. AI-driven threat detection, autonomous response, and intelligence that stays ahead of adversaries.</p>
+            <div className="flex gap-6 justify-center">
+              <a href="#" className="px-8 py-4 text-sm uppercase tracking-wider font-light" style={{ backgroundColor: "#0ea5e9", boxShadow: "0 0 25px rgba(14, 165, 233, 0.3)" }}>Schedule Briefing</a>
+              <a href="#" className="px-8 py-4 text-sm uppercase tracking-wider font-light border border-gray-700 hover:border-gray-500 transition-colors">View Threat Report</a>
+            </div>
+          </div>
+        </section>
+
+        {/* Threat Intelligence */}
+        <section className="py-20 px-6 border-t" style={{ borderColor: "rgba(14, 165, 233, 0.1)" }}>
+          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div>
+              <p className="text-xs uppercase tracking-[0.2em] mb-4" style={{ color: "#0ea5e9" }}>Threat Intelligence</p>
+              <h2 className="text-4xl font-light mb-6" style={{ fontFamily: "'Bodoni Moda', serif" }}>Real-time global threat awareness</h2>
+              <p className="text-gray-400 font-light leading-relaxed mb-6">Our intelligence network ingests data from 300+ sources across the dark web, nation-state feeds, and proprietary honeypots. Machine learning models correlate indicators of compromise across your entire attack surface in milliseconds.</p>
+              <div className="grid grid-cols-3 gap-6 mt-8">
+                <div className="text-center"><div className="text-3xl font-light" style={{ color: "#0ea5e9" }}>4.2B</div><div className="text-xs text-gray-500 mt-1">Events / Day</div></div>
+                <div className="text-center"><div className="text-3xl font-light" style={{ color: "#0ea5e9" }}>12ms</div><div className="text-xs text-gray-500 mt-1">Avg Detection</div></div>
+                <div className="text-center"><div className="text-3xl font-light" style={{ color: "#0ea5e9" }}>99.97%</div><div className="text-xs text-gray-500 mt-1">True Positive</div></div>
+              </div>
+            </div>
+            <div className="h-80 rounded-lg border flex items-center justify-center" style={{ borderColor: "rgba(14, 165, 233, 0.2)", background: "radial-gradient(circle at center, rgba(14, 165, 233, 0.05) 0%, transparent 70%)" }}>
+              <p className="text-gray-600 text-sm uppercase tracking-wider">Global Threat Map</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Solutions */}
+        <section className="py-20 px-6">
+          <div className="max-w-7xl mx-auto">
+            <p className="text-xs uppercase tracking-[0.2em] text-center mb-4" style={{ color: "#0ea5e9" }}>Solutions</p>
+            <h2 className="text-4xl font-light text-center mb-16" style={{ fontFamily: "'Bodoni Moda', serif" }}>Defense in depth, automated</h2>
+            <div className="grid md:grid-cols-2 gap-px bg-gray-900">
+              {solutions.map((s, i) => (
+                <div key={i} className="bg-black p-10 hover:bg-gray-950 transition-colors group">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-[10px] uppercase tracking-widest px-3 py-1 border font-light" style={{ borderColor: "rgba(14, 165, 233, 0.3)", color: "#0ea5e9" }}>{s.tag}</span>
+                  </div>
+                  <h3 className="text-2xl font-light mb-3" style={{ fontFamily: "'Bodoni Moda', serif" }}>{s.name}</h3>
+                  <p className="text-gray-500 font-light leading-relaxed">{s.desc}</p>
+                </div>
               ))}
             </div>
           </div>
-          <div className="flex items-center space-x-3">
-            <button className="h-9 px-4 text-sm text-slate-400 hover:text-slate-200 transition-colors">Sign in</button>
-            <button className="h-9 px-5 text-sm font-medium text-slate-950 bg-sky-400 hover:bg-sky-300 rounded transition-colors">Request Access</button>
-          </div>
-        </div>
-      </nav>
-      <section className="max-w-6xl mx-auto px-4 py-28 text-center">
-        <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight" style={{ fontFamily: "Playfair Display, serif" }}>The future of computing,<br /><span className="text-sky-400">refined</span></h1>
-        <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">Where quantum security meets neural intelligence. Aethon delivers computing infrastructure for organizations that refuse to compromise.</p>
-        <div className="flex justify-center space-x-4">
-          <button className="h-12 px-8 text-sm font-medium text-slate-950 bg-sky-400 hover:bg-sky-300 rounded transition-colors">Explore the platform</button>
-          <button className="h-12 px-8 text-sm font-medium text-slate-400 border border-slate-700 hover:border-slate-500 rounded transition-colors">View research papers</button>
-        </div>
-      </section>
-      <section className="max-w-6xl mx-auto px-4 py-20">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-white mb-3" style={{ fontFamily: "Playfair Display, serif" }}>The Platform</h2>
-          <p className="text-slate-500 max-w-lg mx-auto">Four pillars of next-generation infrastructure, each engineered to the highest standard.</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {products.map((p) => (
-            <div key={p.name} className="bg-slate-900/50 rounded-lg p-8 border border-slate-800 hover:border-sky-900/50 transition-all group">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-xl font-semibold text-white" style={{ fontFamily: "Playfair Display, serif" }}>{p.name}</h3>
-                <span className="text-xs font-medium text-sky-400 bg-sky-400/10 px-2.5 py-1 rounded">{p.tag}</span>
-              </div>
-              <p className="text-sm text-slate-400 leading-relaxed">{p.desc}</p>
-              <span className="inline-block mt-4 text-sm text-sky-400 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">Discover more &rarr;</span>
+        </section>
+
+        {/* Enterprise Clients */}
+        <section className="py-20 px-6 border-t border-b" style={{ borderColor: "rgba(14, 165, 233, 0.1)" }}>
+          <div className="max-w-7xl mx-auto text-center">
+            <p className="text-xs uppercase tracking-[0.2em] mb-10" style={{ color: "#0ea5e9" }}>Trusted By</p>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+              {clients.map((c, i) => (
+                <div key={i} className="text-center">
+                  <p className="text-sm font-light text-gray-300">{c.name}</p>
+                  <p className="text-[10px] uppercase tracking-wider text-gray-600 mt-1">{c.sector}</p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
-      <section className="border-y border-slate-800/50 py-20">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-white text-center mb-16" style={{ fontFamily: "Playfair Display, serif" }}>Performance at Scale</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {metrics.map((m) => (
-              <div key={m.label} className="text-center">
-                <div className="text-4xl font-bold text-sky-400 mb-2">{m.value}</div>
-                <div className="text-sm font-medium text-white mb-1">{m.label}</div>
-                <div className="text-xs text-slate-500">{m.detail}</div>
-              </div>
-            ))}
           </div>
-        </div>
-      </section>
-      <section className="max-w-6xl mx-auto px-4 py-20 text-center">
-        <h2 className="text-sm font-medium text-slate-500 uppercase tracking-widest mb-10">Trusted by the world&apos;s most discerning enterprises</h2>
-        <div className="flex flex-wrap justify-center gap-10">
-          {clients.map((name) => (
-            <span key={name} className="text-lg font-medium text-slate-600 hover:text-slate-400 transition-colors cursor-default" style={{ fontFamily: "Playfair Display, serif" }}>{name}</span>
-          ))}
-        </div>
-      </section>
-      <section className="max-w-4xl mx-auto px-4 py-20 text-center">
-        <div className="bg-gradient-to-b from-sky-400/10 to-transparent rounded-2xl border border-sky-400/20 p-12">
-          <div className="text-xs font-medium text-sky-400 uppercase tracking-widest mb-4">Limited Availability</div>
-          <h2 className="text-3xl font-bold text-white mb-4" style={{ fontFamily: "Playfair Display, serif" }}>Exclusive Beta Access</h2>
-          <p className="text-slate-400 max-w-md mx-auto mb-8 leading-relaxed">Join a select group of technology leaders shaping the future of computing. Applications reviewed within 48 hours.</p>
-          <div className="flex justify-center space-x-3">
-            <button className="h-12 px-8 text-sm font-medium text-slate-950 bg-sky-400 hover:bg-sky-300 rounded transition-colors">Apply for Beta</button>
-          </div>
-          <p className="text-xs text-slate-600 mt-4">Currently accepting applications from enterprise clients only.</p>
-        </div>
-      </section>
-      <section className="max-w-6xl mx-auto px-4 py-20">
-        <h2 className="text-3xl font-bold text-white text-center mb-3" style={{ fontFamily: "Playfair Display, serif" }}>Partnership Tiers</h2>
-        <p className="text-slate-500 text-center mb-12">Investment-grade infrastructure for investment-grade organizations.</p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {tiers.map((t) => (
-            <div key={t.name} className={`rounded-lg p-8 ${t.highlight ? "bg-sky-400/5 border-2 border-sky-400/30" : "bg-slate-900/50 border border-slate-800"}`}>
-              <h3 className="text-lg font-semibold text-white mb-1" style={{ fontFamily: "Playfair Display, serif" }}>{t.name}</h3>
-              <div className="mt-4 mb-6">
-                <span className="text-3xl font-bold text-white">{t.investment}</span>
-                {t.period && <span className="text-sm text-slate-500">{t.period}</span>}
-              </div>
-              <ul className="space-y-3 mb-8 text-sm text-slate-400">
-                {t.features.map((f) => <li key={f} className="flex items-start"><span className="text-sky-400 mr-2">&#8212;</span> {f}</li>)}
-              </ul>
-              <button className={`w-full h-10 text-sm font-medium rounded transition-colors ${t.highlight ? "text-slate-950 bg-sky-400 hover:bg-sky-300" : "text-sky-400 border border-sky-400/30 hover:bg-sky-400/10"}`}>{t.highlight ? "Begin partnership" : "Inquire"}</button>
+        </section>
+
+        {/* SOC Team */}
+        <section className="py-20 px-6">
+          <div className="max-w-7xl mx-auto">
+            <p className="text-xs uppercase tracking-[0.2em] text-center mb-4" style={{ color: "#0ea5e9" }}>Leadership</p>
+            <h2 className="text-4xl font-light text-center mb-16" style={{ fontFamily: "'Bodoni Moda', serif" }}>The minds behind the shield</h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              {team.map((t, i) => (
+                <div key={i} className="border p-8 hover:bg-gray-950 transition-colors" style={{ borderColor: "rgba(14, 165, 233, 0.15)" }}>
+                  <div className="w-16 h-16 rounded-full mb-6 flex items-center justify-center text-lg font-light" style={{ border: "1px solid rgba(14, 165, 233, 0.3)", color: "#0ea5e9" }}>{t.name.split(" ").map(n => n[0]).join("").slice(0, 2)}</div>
+                  <h3 className="text-lg font-light" style={{ fontFamily: "'Bodoni Moda', serif" }}>{t.name}</h3>
+                  <p className="text-xs uppercase tracking-wider mt-1 mb-4" style={{ color: "#0ea5e9" }}>{t.role}</p>
+                  <p className="text-sm text-gray-500 font-light leading-relaxed">{t.bio}</p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
-      <footer className="border-t border-slate-800/50">
-        <div className="max-w-6xl mx-auto px-4 py-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <span className="text-sm text-slate-600">&copy; 2026 Aethon Technologies. All rights reserved.</span>
-          <div className="flex space-x-6 text-sm text-slate-600">
-            {["Privacy", "Terms", "Security", "Research"].map((l) => (
-              <span key={l} className="hover:text-slate-400 cursor-pointer transition-colors">{l}</span>
-            ))}
           </div>
-        </div>
-      </footer>
-    </div>
-  )
+        </section>
+
+        {/* Request Demo CTA */}
+        <section className="py-24 px-6 relative">
+          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 50% 100%, rgba(14, 165, 233, 0.06) 0%, transparent 60%)" }}></div>
+          <div className="max-w-2xl mx-auto text-center relative z-10">
+            <h2 className="text-4xl font-light mb-6" style={{ fontFamily: "'Bodoni Moda', serif" }}>Ready to see Zenith in action?</h2>
+            <p className="text-gray-400 font-light mb-10 leading-relaxed">Schedule a private briefing with our threat intelligence team. We will assess your current posture and demonstrate how Zenith can transform your security operations.</p>
+            <a href="#" className="inline-block px-10 py-4 text-sm uppercase tracking-wider font-light" style={{ backgroundColor: "#0ea5e9", boxShadow: "0 0 30px rgba(14, 165, 233, 0.25)" }}>Request Private Demo</a>
+            <p className="text-xs text-gray-600 mt-6">All briefings are conducted under NDA. Response within 24 hours.</p>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="border-t py-12 px-6" style={{ borderColor: "rgba(14, 165, 233, 0.1)" }}>
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <span className="text-sm font-light tracking-widest" style={{ fontFamily: "'Bodoni Moda', serif", color: "#0ea5e9" }}>ZENITH SYSTEMS</span>
+            <div className="flex gap-8 text-xs text-gray-600 uppercase tracking-wider">
+              <a href="#" className="hover:text-gray-400">Privacy</a>
+              <a href="#" className="hover:text-gray-400">Security</a>
+              <a href="#" className="hover:text-gray-400">Compliance</a>
+              <a href="#" className="hover:text-gray-400">Responsible Disclosure</a>
+            </div>
+            <span className="text-xs text-gray-700">&copy; 2026 Zenith Systems</span>
+          </div>
+        </footer>
+      </div>
+    </>
+  );
 }

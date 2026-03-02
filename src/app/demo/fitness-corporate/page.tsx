@@ -1,201 +1,159 @@
 export default function FitnessCorporateDemo() {
-  const navLinks = ["Programs", "Locations", "Corporate", "About", "Contact"]
+  const navLinks = ["Programs", "Solutions", "Results", "Testimonials", "About", "Contact"]
 
   const programs = [
-    { name: "Personal Training", desc: "One-on-one sessions with certified trainers tailored to your individual goals, schedule, and fitness level.", icon: "PT" },
-    { name: "Group Fitness", desc: "Over 200 weekly classes including cycling, yoga, Zumba, and functional training for every experience level.", icon: "GF" },
-    { name: "Corporate Wellness", desc: "On-site programs, employee fitness assessments, and subsidized memberships for organizations of all sizes.", icon: "CW" },
-    { name: "Rehabilitation", desc: "Medically supervised recovery programs working alongside physical therapists and orthopedic specialists.", icon: "RH" },
-    { name: "Nutrition Coaching", desc: "Registered dietitians create personalized meal plans and provide ongoing accountability coaching.", icon: "NC" },
-    { name: "Kids Programs", desc: "Age-appropriate fitness classes, swim lessons, and youth sports training for children ages 5 to 17.", icon: "KP" },
+    { name: "On-Site Fitness Center", icon: "GYM", desc: "Fully equipped gym facilities installed and managed within your office building. Cardio, strength, and functional training zones with certified staff on-site during business hours." },
+    { name: "Corporate Yoga & Mindfulness", icon: "YGA", desc: "Weekly yoga sessions and guided meditation programs that reduce stress, improve focus, and decrease absenteeism. Available in-person or via live virtual stream." },
+    { name: "Nutrition & Dietetics", icon: "NUT", desc: "Licensed dietitians provide group workshops, individual consultations, and healthy cafeteria menu planning. Tailored programs for dietary needs across your workforce." },
+    { name: "Mental Health & Resilience", icon: "MHR", desc: "Confidential counseling access, stress management workshops, and resilience training for teams navigating high-pressure environments and organizational change." },
   ]
 
-  const locations = [
-    { name: "Downtown Portland", address: "200 SW Market St, Portland, OR 97201", sqft: "45,000 sq ft", hours: "5:00 AM - 11:00 PM", phone: "(503) 555-0120" },
-    { name: "Pearl District", address: "1050 NW Hoyt St, Portland, OR 97209", sqft: "32,000 sq ft", hours: "5:30 AM - 10:00 PM", phone: "(503) 555-0134" },
-    { name: "Lake Oswego", address: "400 A Ave, Lake Oswego, OR 97034", sqft: "28,000 sq ft", hours: "6:00 AM - 9:00 PM", phone: "(503) 555-0148" },
+  const clients = [
+    { name: "Meridian Financial Group", employees: "4,200 employees", result: "32% reduction in sick days within 12 months" },
+    { name: "Apex Technologies", employees: "1,800 employees", result: "Employee satisfaction scores increased by 41%" },
+    { name: "Northway Health Systems", employees: "6,500 employees", result: "Healthcare costs reduced by $1.2M annually" },
+    { name: "Sterling & Partners LLP", employees: "850 employees", result: "Retention rate improved from 78% to 91%" },
   ]
 
-  const certifications = [
-    { name: "ACE", full: "American Council on Exercise" },
-    { name: "NASM", full: "National Academy of Sports Medicine" },
-    { name: "NSCA", full: "National Strength & Conditioning Association" },
-    { name: "ACSM", full: "American College of Sports Medicine" },
+  const roiStats = [
+    { metric: "$3.27", desc: "Return for every $1 spent on employee wellness programs", source: "Harvard Business Review" },
+    { metric: "28%", desc: "Average reduction in sick leave across our client organizations", source: "LifeFit Internal Data" },
+    { metric: "41%", desc: "Improvement in employee-reported energy and productivity levels", source: "Client Survey 2024" },
+    { metric: "67%", desc: "Of employees say wellness benefits influence their choice of employer", source: "SHRM Research" },
   ]
 
-  const partnerships = [
-    "Intel Corporation", "Nike", "Columbia Sportswear", "Providence Health", "Oregon Health & Science University", "Daimler Trucks"
+  const testimonials = [
+    { name: "Karen Liu", title: "VP of Human Resources, Meridian Financial", quote: "LifeFit transformed how our employees think about health. The on-site gym sees 300+ visits per week, and our healthcare costs have dropped measurably." },
+    { name: "Robert Castillo", title: "CEO, Apex Technologies", quote: "We brought in LifeFit expecting a perk. What we got was a strategic advantage. Our team is more focused, more present, and turnover has plummeted." },
+    { name: "Dr. Alison Park", title: "Chief Medical Officer, Northway Health", quote: "The mental health program alone justified the investment. Our staff finally has accessible, stigma-free support and it shows in every metric we track." },
   ]
 
   return (
-    <div className="min-h-screen bg-white text-gray-800" style={{ fontFamily: "Inter, sans-serif" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <div style={{ fontFamily: "'Roboto', sans-serif" }} className="min-h-screen text-gray-800" >
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
 
-      {/* Navigation */}
-      <nav className="bg-white border-b border-gray-100 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white text-xs font-bold">SF</div>
-            <span className="text-lg font-semibold text-gray-900">Summit Fitness</span>
-          </div>
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <span key={link} className="text-sm text-gray-500 hover:text-blue-600 cursor-pointer transition-colors">{link}</span>
-            ))}
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="text-sm text-gray-500 cursor-pointer hover:text-blue-600">Member Login</span>
-            <span className="px-5 py-2 bg-blue-600 text-white text-sm font-medium rounded cursor-pointer hover:bg-blue-700 transition-colors">Get Started</span>
-          </div>
+      {/* Nav */}
+      <nav className="flex items-center justify-between px-8 py-4 bg-white shadow-sm">
+        <div className="text-xl font-bold" style={{ color: "#2563eb" }}>LifeFit<span className="font-light text-gray-400"> Corporate Wellness</span></div>
+        <div className="hidden md:flex items-center gap-6">
+          {navLinks.map((link) => (
+            <a key={link} href="#" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">{link}</a>
+          ))}
         </div>
+        <button className="text-sm font-medium text-white px-5 py-2 rounded" style={{ backgroundColor: "#2563eb" }}>Get a Quote</button>
       </nav>
 
       {/* Hero */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-        <div className="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <p className="text-blue-200 text-sm font-medium mb-4">Trusted by 50,000+ members across 3 locations</p>
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight">Professional fitness solutions for every goal.</h1>
-            <p className="text-blue-100 mt-6 leading-relaxed max-w-lg">From personal training to corporate wellness programs, Summit Fitness delivers evidence-based fitness programming backed by certified professionals.</p>
-            <div className="mt-8 flex gap-4">
-              <span className="px-6 py-3 bg-white text-blue-700 text-sm font-semibold rounded cursor-pointer hover:bg-blue-50 transition-colors">Schedule a Tour</span>
-              <span className="px-6 py-3 border border-white/30 text-white text-sm rounded cursor-pointer hover:bg-white/10 transition-colors">View Programs</span>
-            </div>
+      <section className="py-24 px-8 text-center" style={{ backgroundColor: "#f9fafb" }}>
+        <div className="max-w-3xl mx-auto">
+          <p className="text-sm font-medium uppercase tracking-wider mb-3" style={{ color: "#2563eb" }}>Corporate Wellness Solutions</p>
+          <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6 text-gray-900">A Healthier Workforce Is a Stronger Business</h1>
+          <p className="text-lg text-gray-500 mb-8 max-w-2xl mx-auto">LifeFit delivers comprehensive wellness programs for organizations of every size. From on-site fitness centers to mental health support, we help companies invest in their most valuable asset: their people.</p>
+          <div className="flex gap-4 justify-center">
+            <button className="text-white font-medium px-8 py-3 rounded" style={{ backgroundColor: "#2563eb" }}>Schedule a Consultation</button>
+            <button className="font-medium px-8 py-3 rounded border" style={{ borderColor: "#2563eb", color: "#2563eb" }}>Download Case Studies</button>
           </div>
-          <div className="h-80 bg-blue-500/30 rounded-lg border border-white/10" />
         </div>
       </section>
 
       {/* Programs */}
-      <section className="max-w-7xl mx-auto px-6 py-24">
-        <div className="text-center mb-16">
-          <p className="text-sm text-blue-600 font-semibold mb-2">Our Programs</p>
-          <h2 className="text-3xl font-bold text-gray-900">Comprehensive Fitness Solutions</h2>
-          <p className="text-gray-500 mt-4 max-w-2xl mx-auto">Our programs are designed by certified professionals using evidence-based methodologies to deliver measurable results.</p>
-        </div>
-        <div className="grid md:grid-cols-3 gap-8">
-          {programs.map((prog) => (
-            <div key={prog.name} className="border border-gray-100 rounded-lg p-8 hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 text-sm font-bold mb-6">{prog.icon}</div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">{prog.name}</h3>
-              <p className="text-sm text-gray-500 leading-relaxed">{prog.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Locations */}
-      <section className="bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 py-24">
-          <div className="text-center mb-16">
-            <p className="text-sm text-blue-600 font-semibold mb-2">Find a Location</p>
-            <h2 className="text-3xl font-bold text-gray-900">Three Locations, One Standard</h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {locations.map((loc) => (
-              <div key={loc.name} className="bg-white rounded-lg p-8 shadow-sm border border-gray-100">
-                <div className="h-40 bg-gradient-to-br from-gray-100 to-blue-50 rounded mb-6" />
-                <h3 className="text-lg font-semibold text-gray-900">{loc.name}</h3>
-                <p className="text-sm text-gray-500 mt-2">{loc.address}</p>
-                <div className="mt-4 space-y-2 text-sm text-gray-500">
-                  <p>Facility: {loc.sqft}</p>
-                  <p>Hours: {loc.hours}</p>
-                  <p>{loc.phone}</p>
+      <section className="py-20 px-8 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-sm font-medium uppercase tracking-wider mb-2" style={{ color: "#2563eb" }}>Our Programs</p>
+          <h2 className="text-3xl font-bold mb-12 text-gray-900">Comprehensive Wellness Solutions</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {programs.map((p) => (
+              <div key={p.name} className="flex gap-6 p-6 rounded-lg border border-gray-100 hover:shadow-md transition-shadow" style={{ backgroundColor: "#f9fafb" }}>
+                <div className="w-14 h-14 rounded flex-shrink-0 flex items-center justify-center text-white text-xs font-bold" style={{ backgroundColor: "#2563eb" }}>{p.icon}</div>
+                <div>
+                  <h3 className="text-lg font-bold mb-2 text-gray-900">{p.name}</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">{p.desc}</p>
                 </div>
-                <span className="inline-block mt-6 text-sm text-blue-600 font-medium cursor-pointer hover:text-blue-800">View Details &rarr;</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Certifications */}
-      <section className="max-w-7xl mx-auto px-6 py-24">
-        <div className="text-center mb-12">
-          <p className="text-sm text-blue-600 font-semibold mb-2">Industry Certifications</p>
-          <h2 className="text-3xl font-bold text-gray-900">Accredited Excellence</h2>
-          <p className="text-gray-500 mt-4">Every trainer on our team holds nationally recognized certifications.</p>
-        </div>
-        <div className="flex flex-wrap justify-center gap-8">
-          {certifications.map((cert) => (
-            <div key={cert.name} className="flex items-center gap-4 bg-gray-50 rounded-lg px-8 py-4">
-              <div className="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs font-bold">{cert.name}</div>
-              <span className="text-sm text-gray-600">{cert.full}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Corporate Partnership */}
-      <section className="bg-blue-600 text-white">
-        <div className="max-w-7xl mx-auto px-6 py-24 text-center">
-          <p className="text-blue-200 text-sm font-medium mb-2">Corporate Wellness</p>
-          <h2 className="text-3xl font-bold mb-4">Partner With Summit Fitness</h2>
-          <p className="text-blue-100 max-w-2xl mx-auto mb-8">We provide customized wellness solutions for companies of all sizes. Reduce healthcare costs, improve employee retention, and build a healthier workforce.</p>
-          <p className="text-sm text-blue-200 mb-6">Trusted by leading organizations in the Pacific Northwest</p>
-          <div className="flex flex-wrap justify-center gap-6 mb-12">
-            {partnerships.map((p) => (
-              <span key={p} className="bg-white/10 px-6 py-3 rounded text-sm">{p}</span>
+      {/* Corporate Clients */}
+      <section className="py-20 px-8" style={{ backgroundColor: "#f9fafb" }}>
+        <div className="max-w-6xl mx-auto">
+          <p className="text-sm font-medium uppercase tracking-wider mb-2" style={{ color: "#2563eb" }}>Trusted By</p>
+          <h2 className="text-3xl font-bold mb-12 text-gray-900">Our Corporate Partners</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {clients.map((c) => (
+              <div key={c.name} className="bg-white p-6 rounded-lg border border-gray-100">
+                <h3 className="text-lg font-bold text-gray-900 mb-1">{c.name}</h3>
+                <p className="text-sm text-gray-500 mb-3">{c.employees}</p>
+                <p className="text-sm font-medium" style={{ color: "#2563eb" }}>{c.result}</p>
+              </div>
             ))}
           </div>
-          <span className="inline-block px-8 py-3 bg-white text-blue-700 font-semibold text-sm rounded cursor-pointer hover:bg-blue-50 transition-colors">Request a Proposal</span>
         </div>
       </section>
 
-      {/* Contact */}
-      <section className="max-w-3xl mx-auto px-6 py-24 text-center">
-        <p className="text-sm text-blue-600 font-semibold mb-2">Contact Us</p>
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">Get In Touch</h2>
-        <p className="text-gray-500 mb-10">Have questions about our programs or corporate partnerships? Our team is ready to help.</p>
-        <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto mb-6">
-          <input type="text" placeholder="Full Name" className="px-4 py-3 border border-gray-200 rounded text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-blue-500" readOnly />
-          <input type="text" placeholder="Email" className="px-4 py-3 border border-gray-200 rounded text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-blue-500" readOnly />
-          <input type="text" placeholder="Company (optional)" className="col-span-2 px-4 py-3 border border-gray-200 rounded text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-blue-500" readOnly />
-          <textarea placeholder="Message" className="col-span-2 px-4 py-3 border border-gray-200 rounded text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-blue-500 h-24 resize-none" readOnly />
+      {/* ROI Stats */}
+      <section className="py-20 px-8 text-white" style={{ backgroundColor: "#2563eb" }}>
+        <div className="max-w-6xl mx-auto">
+          <p className="text-sm font-medium uppercase tracking-wider mb-2 text-blue-200">The ROI of Wellness</p>
+          <h2 className="text-3xl font-bold mb-12">Numbers That Drive Decisions</h2>
+          <div className="grid md:grid-cols-4 gap-8">
+            {roiStats.map((s) => (
+              <div key={s.metric}>
+                <div className="text-4xl font-bold mb-2">{s.metric}</div>
+                <p className="text-sm text-blue-100 mb-2">{s.desc}</p>
+                <p className="text-xs text-blue-300">{s.source}</p>
+              </div>
+            ))}
+          </div>
         </div>
-        <span className="inline-block px-8 py-3 bg-blue-600 text-white text-sm font-medium rounded cursor-pointer hover:bg-blue-700 transition-colors">Send Message</span>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white">
-        <div className="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-4 gap-12">
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white text-xs font-bold">SF</div>
-              <span className="font-semibold">Summit Fitness</span>
-            </div>
-            <p className="text-sm text-gray-400 leading-relaxed">Professional fitness solutions for individuals, families, and organizations since 2012.</p>
-          </div>
-          <div>
-            <h4 className="text-sm font-semibold mb-4">Programs</h4>
-            <div className="space-y-2 text-sm text-gray-400">
-              <p className="cursor-pointer hover:text-white">Personal Training</p>
-              <p className="cursor-pointer hover:text-white">Group Fitness</p>
-              <p className="cursor-pointer hover:text-white">Corporate Wellness</p>
-              <p className="cursor-pointer hover:text-white">Rehabilitation</p>
-            </div>
-          </div>
-          <div>
-            <h4 className="text-sm font-semibold mb-4">Company</h4>
-            <div className="space-y-2 text-sm text-gray-400">
-              <p className="cursor-pointer hover:text-white">About Us</p>
-              <p className="cursor-pointer hover:text-white">Careers</p>
-              <p className="cursor-pointer hover:text-white">Press</p>
-              <p className="cursor-pointer hover:text-white">Privacy Policy</p>
-            </div>
-          </div>
-          <div>
-            <h4 className="text-sm font-semibold mb-4">Connect</h4>
-            <div className="space-y-2 text-sm text-gray-400">
-              <p className="cursor-pointer hover:text-white">LinkedIn</p>
-              <p className="cursor-pointer hover:text-white">Instagram</p>
-              <p className="cursor-pointer hover:text-white">Facebook</p>
-              <p className="cursor-pointer hover:text-white">info@summitfitness.com</p>
-            </div>
+      {/* Testimonials */}
+      <section className="py-20 px-8 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-sm font-medium uppercase tracking-wider mb-2" style={{ color: "#2563eb" }}>Testimonials</p>
+          <h2 className="text-3xl font-bold mb-12 text-gray-900">What Our Partners Say</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((t) => (
+              <div key={t.name} className="p-6 rounded-lg" style={{ backgroundColor: "#f9fafb" }}>
+                <p className="text-gray-600 italic mb-6 leading-relaxed">&ldquo;{t.quote}&rdquo;</p>
+                <p className="font-bold text-sm text-gray-900">{t.name}</p>
+                <p className="text-xs text-gray-500">{t.title}</p>
+              </div>
+            ))}
           </div>
         </div>
-        <div className="border-t border-gray-800">
-          <div className="max-w-7xl mx-auto px-6 py-6 text-center text-xs text-gray-500">&copy; 2026 Summit Fitness Inc. All rights reserved.</div>
+      </section>
+
+      {/* Get a Quote CTA */}
+      <section className="py-20 px-8 text-center" style={{ backgroundColor: "#f9fafb" }}>
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-3xl font-bold mb-4 text-gray-900">Ready to Invest in Your Team?</h2>
+          <p className="text-gray-500 mb-8">Request a customized proposal for your organization. Our team will assess your needs and design a wellness program tailored to your workforce, culture, and budget.</p>
+          <button className="text-white font-medium px-10 py-3 rounded" style={{ backgroundColor: "#2563eb" }}>Get a Free Quote</button>
+        </div>
+      </section>
+
+      {/* Corporate Footer */}
+      <footer className="py-12 px-8 bg-gray-900 text-gray-400">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-8">
+          <div>
+            <div className="text-lg font-bold text-white mb-2">LifeFit Corporate Wellness</div>
+            <p className="text-sm">250 Commerce Drive, Suite 400<br />Chicago, IL 60601</p>
+            <p className="text-sm mt-2">info@lifefitcorporate.com | (312) 555-0180</p>
+          </div>
+          <div className="flex gap-12 text-sm">
+            <div className="space-y-2">
+              <p className="font-medium text-white mb-3">Solutions</p>
+              <p>On-Site Fitness</p><p>Yoga & Mindfulness</p><p>Nutrition</p><p>Mental Health</p>
+            </div>
+            <div className="space-y-2">
+              <p className="font-medium text-white mb-3">Company</p>
+              <p>About Us</p><p>Careers</p><p>Case Studies</p><p>Blog</p>
+            </div>
+          </div>
+          <p className="text-xs text-gray-600">&copy; 2025 LifeFit Corporate Wellness. All rights reserved.</p>
         </div>
       </footer>
     </div>

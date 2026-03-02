@@ -1,164 +1,184 @@
 export default function FoodBrutalistDemo() {
-  const menuItems = [
-    { name: "THE BEAST BOWL", ingredients: "grass-fed beef, brown rice, black beans, raw slaw, chimichurri", cal: 780, protein: "52g", price: "$16" },
-    { name: "RAW POWER SALAD", ingredients: "kale, beets, walnuts, sprouted lentils, apple cider vinaigrette", cal: 420, protein: "18g", price: "$13" },
-    { name: "FARM CHICKEN PLATE", ingredients: "pasture-raised chicken thigh, roasted roots, fermented cabbage", cal: 650, protein: "44g", price: "$15" },
-    { name: "OCEAN PLATE", ingredients: "wild sockeye salmon, quinoa, avocado, pickled onion, dill yogurt", cal: 590, protein: "38g", price: "$18" },
-    { name: "PLANT DESTROYER", ingredients: "tempeh, sweet potato, massaged kale, tahini, hemp seeds", cal: 520, protein: "28g", price: "$14" },
-    { name: "BONE BROTH + GREENS", ingredients: "24-hour simmered bone broth, collards, turmeric, black pepper", cal: 280, protein: "22g", price: "$10" },
+  const menuMeats = [
+    { name: "THE TOMAHAWK", weight: "32oz", cook: "Live fire, 8 min per side", price: "$68", description: "Bone-in ribeye. Dry-aged 45 days. Seasoned with salt and smoke. Nothing else." },
+    { name: "LAMB SHOULDER", weight: "Full", cook: "12 hours over oak", price: "$42", description: "Pulled by hand. Served on butcher paper. You eat this with your fingers." },
+    { name: "BRISKET PLANK", weight: "1lb", cook: "16 hours pecan smoke", price: "$38", description: "Central Texas style. Bark so dark it looks burnt. It is not burnt." },
   ]
 
-  const nutritionData = [
-    { nutrient: "Calories", range: "280 - 780 kcal", note: "Real fuel, not filler" },
-    { nutrient: "Protein", range: "18g - 52g", note: "Complete amino acid profiles" },
-    { nutrient: "Fiber", range: "6g - 14g", note: "Whole foods, not supplements" },
-    { nutrient: "Sugar", range: "2g - 8g", note: "Zero added sugar, ever" },
-    { nutrient: "Sodium", range: "380mg - 620mg", note: "Seasoned, not salted" },
-    { nutrient: "Ingredients", range: "6 - 10 per dish", note: "You can pronounce them all" },
+  const menuFish = [
+    { name: "WHOLE BRANZINO", weight: "1.5lb", cook: "Grilled over mesquite", price: "$36", description: "Scored, salted, charred. Lemon and olive oil. The Mediterranean in one plate." },
+    { name: "FIRE-ROASTED OCTOPUS", weight: "Tentacle", cook: "Direct flame, 6 min", price: "$28", description: "Tenderized for 2 hours, then blasted over open coals until the edges curl." },
   ]
 
-  const sourcingFacts = [
-    { label: "FARMS", value: "12", detail: "Within 100 miles of our kitchen" },
-    { label: "CHEMICALS", value: "0", detail: "No pesticides, no preservatives, no BS" },
-    { label: "PROCESSING", value: "NONE", detail: "Whole ingredients, prepared by hand" },
-    { label: "TRANSPARENCY", value: "100%", detail: "Every supplier listed on our site" },
+  const menuVegetables = [
+    { name: "EMBER CARROTS", cook: "Buried in coals, 40 min", price: "$14", description: "Whole carrots cooked directly in embers. Black outside, sweet inside. Served with whipped tahini." },
+    { name: "BLISTERED CABBAGE", cook: "Cast iron, max heat", price: "$12", description: "Half a cabbage, face down on screaming hot iron until deeply charred. Fish sauce vinaigrette." },
+    { name: "COAL-ROASTED BEETS", cook: "Wrapped in foil, 90 min", price: "$13", description: "Slow-cooked until impossibly sweet, then sliced and dressed with horseradish cream and dill." },
+  ]
+
+  const menuDesserts = [
+    { name: "SMOKED CHOCOLATE", cook: "Cold-smoked 4 hours", price: "$16", description: "Dark chocolate mousse smoked over cherry wood. Served with smoked salt flakes and cream." },
+    { name: "GRILLED PEACH", cook: "Open flame, 3 min", price: "$12", description: "Halved stone fruit caramelized over fire. Brown butter, vanilla bean, crushed amaretti." },
+  ]
+
+  const events = [
+    { name: "FULL MOON FIRE", frequency: "Monthly", description: "A 12-course open-fire feast under the night sky. 40 seats. One long table. No menu until you sit down." },
+    { name: "PIT MASTER CLASS", frequency: "Weekends", description: "Learn to build a fire, control temperature, and cook a whole animal over 8 hours. You eat what you cook." },
+    { name: "PRIVATE BURNS", frequency: "By request", description: "We bring the fire pit, the crew, and the food to your location. Minimum 20 guests. Maximum unforgettable." },
   ]
 
   return (
-    <div className="min-h-screen bg-black text-white" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-      <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+    <div style={{ backgroundColor: "#000000", fontFamily: "'Staatliches', 'Inter', sans-serif" }} className="min-h-screen text-white">
+      <link href="https://fonts.googleapis.com/css2?family=Staatliches&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
 
-      {/* Navigation */}
-      <nav className="border-b-2 border-orange-500">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <span className="text-lg font-bold tracking-tight text-orange-500">RAW_FUEL</span>
-          <div className="hidden md:flex items-center space-x-8">
-            <span className="text-xs text-zinc-400 hover:text-orange-500 cursor-pointer">[MENU]</span>
-            <span className="text-xs text-zinc-400 hover:text-orange-500 cursor-pointer">[SOURCING]</span>
-            <span className="text-xs text-zinc-400 hover:text-orange-500 cursor-pointer">[NUTRITION]</span>
-            <span className="text-xs text-zinc-400 hover:text-orange-500 cursor-pointer">[ORDER]</span>
-          </div>
-          <span className="text-xs font-bold text-black bg-orange-500 px-4 py-2 cursor-pointer hover:bg-orange-400 transition-colors">ORDER_NOW</span>
+      {/* Raw Nav */}
+      <nav className="border-b border-white/20 px-6 py-4 flex items-center justify-between">
+        <span className="text-3xl tracking-wider" style={{ fontFamily: "'Staatliches', sans-serif" }}>FORGE</span>
+        <div className="hidden md:flex items-center gap-8 text-sm" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500 }}>
+          <a href="#menu" className="text-white/70 hover:text-white">MENU</a>
+          <a href="#fire" className="text-white/70 hover:text-white">THE FIRE</a>
+          <a href="#events" className="text-white/70 hover:text-white">EVENTS</a>
+          <a href="#reserve" className="text-white/70 hover:text-white">RESERVE</a>
         </div>
+        <button className="border border-white px-5 py-2 text-sm" style={{ fontFamily: "'Staatliches', sans-serif" }}>BOOK A TABLE</button>
       </nav>
 
-      {/* Hero */}
-      <section className="border-b-2 border-zinc-800">
-        <div className="max-w-6xl mx-auto px-6 py-32">
-          <h1 className="text-7xl md:text-9xl font-extrabold leading-none tracking-tighter">
-            EAT.<br />
-            <span className="text-orange-500">REAL.</span><br />
-            FOOD.
-          </h1>
-          <p className="text-zinc-500 text-sm mt-8 max-w-md leading-relaxed">
-            No seed oils. No added sugar. No artificial anything.<br />
-            Just whole food, prepared by humans, from farms you can visit.
+      {/* Bold Menu Hero */}
+      <section className="px-6 py-24 text-center">
+        <div className="max-w-5xl mx-auto">
+          <p className="text-sm tracking-widest mb-6 text-white/40" style={{ fontFamily: "'Inter', sans-serif" }}>FIRE-COOKED SINCE 2018</p>
+          <h1 className="text-7xl md:text-9xl leading-none mb-4" style={{ fontFamily: "'Staatliches', sans-serif" }}>TOMAHAWK</h1>
+          <h1 className="text-7xl md:text-9xl leading-none mb-4 text-white/30" style={{ fontFamily: "'Staatliches', sans-serif" }}>BRISKET</h1>
+          <h1 className="text-7xl md:text-9xl leading-none mb-8" style={{ fontFamily: "'Staatliches', sans-serif" }}>WHOLE FISH</h1>
+          <p className="text-base max-w-lg mx-auto text-white/60" style={{ fontFamily: "'Inter', sans-serif" }}>
+            Everything cooked over open flame. No gas. No electricity. Just wood, fire, and time.
           </p>
-          <div className="mt-10 flex gap-4">
-            <span className="border-2 border-orange-500 text-orange-500 px-6 py-3 text-xs font-bold cursor-pointer hover:bg-orange-500 hover:text-black transition-all">SEE_THE_MENU</span>
-            <span className="border-2 border-zinc-700 text-zinc-400 px-6 py-3 text-xs font-bold cursor-pointer hover:border-zinc-400 transition-colors">READ_THE_MANIFESTO</span>
-          </div>
         </div>
       </section>
 
-      {/* Ingredient Manifesto */}
-      <section className="border-b-2 border-zinc-800 bg-zinc-950">
-        <div className="max-w-4xl mx-auto px-6 py-20">
-          <p className="text-xs text-orange-500 tracking-widest mb-6">// MANIFESTO</p>
-          <div className="space-y-4 text-zinc-300 text-sm leading-relaxed">
-            <p>The food industry is broken. Engineered flavors designed to override your satiety signals. Ingredient lists that read like chemistry experiments. Marketing that calls processed garbage &quot;natural.&quot;</p>
-            <p className="text-orange-500 font-bold text-lg">We reject all of it.</p>
-            <p>Every dish at RAW_FUEL contains between 6 and 10 ingredients. All of them are whole foods. All of them are sourced from farms within 100 miles of our kitchen. We list every supplier. We hide nothing.</p>
-            <p>This is not a diet. This is not a trend. This is how food should have always been.</p>
-          </div>
+      {/* The Fire */}
+      <section id="fire" className="px-6 py-16">
+        <div className="max-w-4xl mx-auto border border-white/20 p-10 md:p-16">
+          <h2 className="text-5xl mb-8" style={{ fontFamily: "'Staatliches', sans-serif" }}>THE FIRE</h2>
+          <p className="text-base leading-relaxed text-white/70 mb-6" style={{ fontFamily: "'Inter', sans-serif" }}>
+            Forge has no stove. No oven. No microwave. We cook over three custom-built fire pits fueled by locally sourced oak, cherry, and mesquite. Our pit runs 24 hours a day, seven days a week. The brisket you eat tonight went on at 4 AM yesterday.
+          </p>
+          <p className="text-base leading-relaxed text-white/70" style={{ fontFamily: "'Inter', sans-serif" }}>
+            Fire cooking is not a trend for us. It is the only way we know how to cook. Every member of our kitchen has spent at least 1,000 hours tending flame before they are allowed to put food on it. Heat is a living thing and we treat it that way.
+          </p>
         </div>
       </section>
 
       {/* Menu */}
-      <section className="border-b-2 border-zinc-800">
-        <div className="max-w-4xl mx-auto px-6 py-20">
-          <p className="text-xs text-orange-500 tracking-widest mb-10">// MENU</p>
-          <div className="space-y-1">
-            {menuItems.map((item) => (
-              <div key={item.name} className="border border-zinc-800 p-5 hover:border-orange-500 transition-colors">
-                <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-sm font-bold text-white">{item.name}</h3>
-                  <span className="text-orange-500 font-bold text-sm">{item.price}</span>
+      <section id="menu" className="px-6 py-16">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-5xl mb-16" style={{ fontFamily: "'Staatliches', sans-serif" }}>THE MENU</h2>
+
+          <h3 className="text-3xl mb-6 text-white/50" style={{ fontFamily: "'Staatliches', sans-serif" }}>MEATS</h3>
+          {menuMeats.map((item) => (
+            <div key={item.name} className="border-b border-white/10 py-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                <span className="text-2xl" style={{ fontFamily: "'Staatliches', sans-serif" }}>{item.name}</span>
+                <span className="text-xl" style={{ fontFamily: "'Staatliches', sans-serif" }}>{item.price}</span>
+              </div>
+              <p className="text-sm text-white/60 mb-1" style={{ fontFamily: "'Inter', sans-serif" }}>{item.description}</p>
+              <p className="text-xs text-white/30" style={{ fontFamily: "'Inter', sans-serif" }}>{item.weight} &middot; {item.cook}</p>
+            </div>
+          ))}
+
+          <h3 className="text-3xl mb-6 mt-12 text-white/50" style={{ fontFamily: "'Staatliches', sans-serif" }}>FISH</h3>
+          {menuFish.map((item) => (
+            <div key={item.name} className="border-b border-white/10 py-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                <span className="text-2xl" style={{ fontFamily: "'Staatliches', sans-serif" }}>{item.name}</span>
+                <span className="text-xl" style={{ fontFamily: "'Staatliches', sans-serif" }}>{item.price}</span>
+              </div>
+              <p className="text-sm text-white/60 mb-1" style={{ fontFamily: "'Inter', sans-serif" }}>{item.description}</p>
+              <p className="text-xs text-white/30" style={{ fontFamily: "'Inter', sans-serif" }}>{item.weight} &middot; {item.cook}</p>
+            </div>
+          ))}
+
+          <h3 className="text-3xl mb-6 mt-12 text-white/50" style={{ fontFamily: "'Staatliches', sans-serif" }}>VEGETABLES</h3>
+          {menuVegetables.map((item) => (
+            <div key={item.name} className="border-b border-white/10 py-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                <span className="text-2xl" style={{ fontFamily: "'Staatliches', sans-serif" }}>{item.name}</span>
+                <span className="text-xl" style={{ fontFamily: "'Staatliches', sans-serif" }}>{item.price}</span>
+              </div>
+              <p className="text-sm text-white/60 mb-1" style={{ fontFamily: "'Inter', sans-serif" }}>{item.description}</p>
+              <p className="text-xs text-white/30" style={{ fontFamily: "'Inter', sans-serif" }}>{item.cook}</p>
+            </div>
+          ))}
+
+          <h3 className="text-3xl mb-6 mt-12 text-white/50" style={{ fontFamily: "'Staatliches', sans-serif" }}>DESSERTS</h3>
+          {menuDesserts.map((item) => (
+            <div key={item.name} className="border-b border-white/10 py-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                <span className="text-2xl" style={{ fontFamily: "'Staatliches', sans-serif" }}>{item.name}</span>
+                <span className="text-xl" style={{ fontFamily: "'Staatliches', sans-serif" }}>{item.price}</span>
+              </div>
+              <p className="text-sm text-white/60 mb-1" style={{ fontFamily: "'Inter', sans-serif" }}>{item.description}</p>
+              <p className="text-xs text-white/30" style={{ fontFamily: "'Inter', sans-serif" }}>{item.cook}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* The Pit Master */}
+      <section className="px-6 py-16">
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-10 items-center">
+          <div className="w-48 h-48 rounded-full flex-shrink-0" style={{ backgroundColor: "#1a1a1a", border: "2px solid rgba(255,255,255,0.1)" }} />
+          <div>
+            <p className="text-sm tracking-widest mb-2 text-white/40" style={{ fontFamily: "'Inter', sans-serif" }}>THE PIT MASTER</p>
+            <h3 className="text-3xl mb-4" style={{ fontFamily: "'Staatliches', sans-serif" }}>MARCUS COLE</h3>
+            <p className="text-sm leading-relaxed text-white/60" style={{ fontFamily: "'Inter', sans-serif" }}>
+              Marcus spent a decade cooking in restaurant kitchens before he realized he hated everything about them except the fire. He left to build his own pit in an empty lot in East Austin, started serving brisket to neighbors, and never looked back. Forge is what happens when you remove everything between a cook and an open flame.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Events */}
+      <section id="events" className="px-6 py-16">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-5xl mb-12" style={{ fontFamily: "'Staatliches', sans-serif" }}>EVENTS</h2>
+          <div className="space-y-6">
+            {events.map((event) => (
+              <div key={event.name} className="border border-white/20 p-8">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                  <h3 className="text-2xl" style={{ fontFamily: "'Staatliches', sans-serif" }}>{event.name}</h3>
+                  <span className="text-sm text-white/40" style={{ fontFamily: "'Inter', sans-serif" }}>{event.frequency}</span>
                 </div>
-                <p className="text-xs text-zinc-500 mb-3">{item.ingredients}</p>
-                <div className="flex gap-6 text-xs">
-                  <span className="text-zinc-600">{item.cal} kcal</span>
-                  <span className="text-zinc-600">{item.protein} protein</span>
-                </div>
+                <p className="text-sm text-white/60 leading-relaxed" style={{ fontFamily: "'Inter', sans-serif" }}>{event.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Nutrition Data */}
-      <section className="border-b-2 border-zinc-800 bg-zinc-950">
-        <div className="max-w-4xl mx-auto px-6 py-20">
-          <p className="text-xs text-orange-500 tracking-widest mb-10">// NUTRITION_DATA</p>
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b border-zinc-800 text-xs text-zinc-600">
-                <th className="text-left py-3 font-normal">NUTRIENT</th>
-                <th className="text-left py-3 font-normal">RANGE</th>
-                <th className="text-left py-3 font-normal hidden md:table-cell">NOTE</th>
-              </tr>
-            </thead>
-            <tbody>
-              {nutritionData.map((row) => (
-                <tr key={row.nutrient} className="border-b border-zinc-900">
-                  <td className="py-3 text-white font-bold text-xs">{row.nutrient}</td>
-                  <td className="py-3 text-orange-500 text-xs">{row.range}</td>
-                  <td className="py-3 text-zinc-500 text-xs hidden md:table-cell">{row.note}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      {/* Sourcing */}
-      <section className="border-b-2 border-zinc-800">
-        <div className="max-w-4xl mx-auto px-6 py-20">
-          <p className="text-xs text-orange-500 tracking-widest mb-4">// SOURCING</p>
-          <h2 className="text-3xl font-bold mb-10">Farm to table, no BS</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {sourcingFacts.map((fact) => (
-              <div key={fact.label} className="border border-zinc-800 p-5">
-                <p className="text-3xl font-bold text-orange-500">{fact.value}</p>
-                <p className="text-xs font-bold text-white mt-2">{fact.label}</p>
-                <p className="text-xs text-zinc-600 mt-1">{fact.detail}</p>
-              </div>
-            ))}
+      {/* Reservations */}
+      <section id="reserve" className="px-6 py-20">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-5xl md:text-6xl mb-6" style={{ fontFamily: "'Staatliches', sans-serif" }}>RESERVE YOUR SEAT</h2>
+          <p className="text-base text-white/50 mb-8 max-w-md mx-auto" style={{ fontFamily: "'Inter', sans-serif" }}>
+            We seat 36 guests per night. Walk-ins welcome but rarely successful. Book ahead.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <input type="email" placeholder="YOUR EMAIL" className="px-6 py-3 text-sm bg-transparent border border-white/40 text-white w-72 outline-none" style={{ fontFamily: "'Inter', sans-serif" }} />
+            <button className="px-8 py-3 text-sm bg-white text-black" style={{ fontFamily: "'Staatliches', sans-serif", fontSize: "16px" }}>RESERVE</button>
           </div>
         </div>
       </section>
 
-      {/* Order Form */}
-      <section className="border-b-2 border-zinc-800 bg-zinc-950">
-        <div className="max-w-2xl mx-auto px-6 py-20">
-          <p className="text-xs text-orange-500 tracking-widest mb-4">// ORDER</p>
-          <h2 className="text-2xl font-bold mb-8">Place your order</h2>
-          <div className="space-y-4">
-            <input type="text" placeholder="name_" className="w-full bg-black border border-zinc-800 px-4 py-3 text-sm text-white placeholder-zinc-600 outline-none focus:border-orange-500 font-mono" readOnly />
-            <input type="text" placeholder="email_" className="w-full bg-black border border-zinc-800 px-4 py-3 text-sm text-white placeholder-zinc-600 outline-none focus:border-orange-500 font-mono" readOnly />
-            <input type="text" placeholder="delivery_address_" className="w-full bg-black border border-zinc-800 px-4 py-3 text-sm text-white placeholder-zinc-600 outline-none focus:border-orange-500 font-mono" readOnly />
-            <textarea placeholder="order_notes_" className="w-full bg-black border border-zinc-800 px-4 py-3 text-sm text-white placeholder-zinc-600 outline-none focus:border-orange-500 font-mono h-24 resize-none" readOnly />
-            <span className="inline-block w-full text-center bg-orange-500 text-black font-bold py-3 text-sm cursor-pointer hover:bg-orange-400 transition-colors">SUBMIT_ORDER</span>
+      {/* Raw Footer */}
+      <footer className="border-t border-white/20 px-6 py-8">
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          <span className="text-xl tracking-wider" style={{ fontFamily: "'Staatliches', sans-serif" }}>FORGE</span>
+          <div className="flex gap-6 text-xs text-white/40" style={{ fontFamily: "'Inter', sans-serif" }}>
+            <span>214 FIRE LANE, EAST AUSTIN TX</span>
+            <span>WED-SUN 5PM-11PM</span>
           </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="border-t-2 border-zinc-800">
-        <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between items-center gap-6">
-          <span className="text-sm font-bold text-orange-500">RAW_FUEL</span>
-          <p className="text-xs text-zinc-600">No marketing fluff. Just food that&apos;s actually food.</p>
-          <p className="text-xs text-zinc-700">&copy; 2026 RAW_FUEL. All rights reserved.</p>
+          <p className="text-xs text-white/20" style={{ fontFamily: "'Inter', sans-serif" }}>&copy; 2025 FORGE FIRE KITCHEN</p>
         </div>
       </footer>
     </div>

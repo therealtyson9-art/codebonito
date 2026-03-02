@@ -1,237 +1,190 @@
 export default function DashboardLuxuryDemo() {
-  const stats = [
-    { label: "Portfolio Value", value: "$2.84M", change: "+8.4%", trend: "up" },
-    { label: "Monthly Returns", value: "$124,500", change: "+12.1%", trend: "up" },
-    { label: "Active Assets", value: "47", change: "+3", trend: "up" },
-    { label: "Risk Score", value: "Low", change: "Stable", trend: "neutral" },
+  const portfolioSummary = [
+    { label: "Portfolio Value", value: "$14.2M", change: "+8.4%", up: true },
+    { label: "Monthly Returns", value: "$342,800", change: "+2.41%", up: true },
+    { label: "Unrealized Gains", value: "$1.87M", change: "+12.3%", up: true },
+    { label: "Cash Position", value: "$2.1M", change: "-4.2%", up: false },
   ];
 
-  const navItems = [
-    { label: "Overview", active: true },
-    { label: "Portfolio", active: false },
-    { label: "Markets", active: false },
-    { label: "Analytics", active: false },
-    { label: "Transactions", active: false },
+  const assetAllocation = [
+    { asset: "US Equities", allocation: "34%", value: "$4,828,000", bar: 34, color: "#d4a053" },
+    { asset: "International Equities", allocation: "18%", value: "$2,556,000", bar: 18, color: "#b8860b" },
+    { asset: "Fixed Income", allocation: "22%", value: "$3,124,000", bar: 22, color: "#8b7355" },
+    { asset: "Real Estate", allocation: "12%", value: "$1,704,000", bar: 12, color: "#a0845c" },
+    { asset: "Alternative Investments", allocation: "8%", value: "$1,136,000", bar: 8, color: "#c9a96e" },
+    { asset: "Cash & Equivalents", allocation: "6%", value: "$852,000", bar: 6, color: "#e6c88a" },
   ];
 
-  const holdings = [
-    { asset: "Ethereum (ETH)", allocation: "32%", value: "$908,800", change: "+4.2%", trend: "up" },
-    { asset: "Treasury Bonds", allocation: "24%", value: "$681,600", change: "+1.1%", trend: "up" },
-    { asset: "Real Estate Fund", allocation: "18%", value: "$511,200", change: "+2.8%", trend: "up" },
-    { asset: "Gold Reserve", allocation: "14%", value: "$397,600", change: "-0.4%", trend: "down" },
-    { asset: "Private Equity", allocation: "8%", value: "$227,200", change: "+6.9%", trend: "up" },
-    { asset: "Cash & Equiv.", allocation: "4%", value: "$113,600", change: "0.0%", trend: "neutral" },
+  const marketOverview = [
+    { index: "S&P 500", value: "5,842.31", change: "+0.74%", up: true },
+    { index: "NASDAQ", value: "19,284.57", change: "+1.12%", up: true },
+    { index: "DOW 30", value: "43,127.84", change: "+0.38%", up: true },
+    { index: "10Y Treasury", value: "4.28%", change: "-0.05%", up: false },
+    { index: "Gold", value: "$2,847.20", change: "+0.92%", up: true },
+    { index: "EUR/USD", value: "1.0842", change: "-0.18%", up: false },
   ];
 
-  const performanceData = [
-    { month: "Sep", value: 42 },
-    { month: "Oct", value: 58 },
-    { month: "Nov", value: 51 },
-    { month: "Dec", value: 74 },
-    { month: "Jan", value: 68 },
-    { month: "Feb", value: 89 },
+  const recentTrades = [
+    { date: "Mar 1", action: "BUY", security: "AAPL", shares: "500", price: "$247.82", total: "$123,910", status: "Executed" },
+    { date: "Feb 28", action: "SELL", security: "TSLA", shares: "200", price: "$412.50", total: "$82,500", status: "Executed" },
+    { date: "Feb 27", action: "BUY", security: "MSFT", shares: "300", price: "$478.20", total: "$143,460", status: "Executed" },
+    { date: "Feb 26", action: "BUY", security: "BRK.B", shares: "150", price: "$524.30", total: "$78,645", status: "Executed" },
+    { date: "Feb 25", action: "SELL", security: "NVDA", shares: "100", price: "$892.40", total: "$89,240", status: "Executed" },
   ];
 
-  const recentActivity = [
-    { action: "Buy Order Executed", detail: "ETH -- 12.5 units at $3,240", time: "14 min ago", type: "buy" },
-    { action: "Dividend Received", detail: "Real Estate Fund -- $4,280", time: "2 hrs ago", type: "income" },
-    { action: "Rebalance Complete", detail: "Portfolio optimized to target allocation", time: "5 hrs ago", type: "system" },
-    { action: "Sell Order Executed", detail: "AAPL -- 150 shares at $198.40", time: "1 day ago", type: "sell" },
-    { action: "Wire Transfer", detail: "Incoming -- $50,000 from linked account", time: "2 days ago", type: "transfer" },
-  ];
-
-  const marketIndicators = [
-    { name: "S&P 500", value: "5,842.30", change: "+0.82%" },
-    { name: "NASDAQ", value: "18,721.50", change: "+1.14%" },
-    { name: "BTC/USD", value: "$97,240", change: "-0.31%" },
-    { name: "Gold", value: "$2,184", change: "+0.45%" },
-  ];
+  const sidebarItems = ["Overview", "Portfolio", "Markets", "Trading", "Research", "Tax Center"];
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white" style={{ fontFamily: "Inter, sans-serif" }}>
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
-      </head>
+    <div style={{ fontFamily: "'Inter', sans-serif", backgroundColor: "#0f172a" }} className="min-h-screen flex">
+      <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
 
-      {/* TOP NAV */}
-      <nav className="border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
-          <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#d4af37] to-[#b8962e] flex items-center justify-center text-[#0a0a0a] text-xs font-bold">A</div>
-            <span className="text-lg font-semibold tracking-wide" style={{ fontFamily: "'Playfair Display', serif" }}>Aurelius</span>
+      {/* Minimal Sidebar */}
+      <aside className="w-60 min-h-screen p-8 flex flex-col justify-between" style={{ borderRight: "1px solid #1e293b" }}>
+        <div>
+          <h1 className="text-xl tracking-widest mb-12" style={{ fontFamily: "'Gilda Display', serif", color: "#d4a053" }}>AURUM</h1>
+          <nav className="space-y-1">
+            {sidebarItems.map((item, i) => (
+              <div key={item} className="px-4 py-3 rounded-lg text-sm cursor-pointer transition-colors" style={{
+                backgroundColor: i === 0 ? "rgba(212, 160, 83, 0.1)" : "transparent",
+                color: i === 0 ? "#d4a053" : "#64748b",
+                fontWeight: i === 0 ? 500 : 300,
+              }}>
+                {item}
+              </div>
+            ))}
+          </nav>
+        </div>
+        <div className="pt-6" style={{ borderTop: "1px solid #1e293b" }}>
+          <p className="text-sm font-light" style={{ color: "#94a3b8" }}>Victoria Ashworth</p>
+          <p className="text-xs font-light mt-1" style={{ color: "#475569" }}>Private Wealth Client</p>
+        </div>
+      </aside>
+
+      {/* Main Content */}
+      <main className="flex-1 p-10">
+        <div className="max-w-6xl">
+          {/* Header */}
+          <div className="flex items-center justify-between mb-10">
+            <div>
+              <h2 className="text-2xl font-light tracking-wide" style={{ fontFamily: "'Gilda Display', serif", color: "#f1f5f9" }}>Executive Summary</h2>
+              <p className="text-sm font-light mt-2" style={{ color: "#64748b" }}>Portfolio performance as of March 1, 2026 | Market close</p>
+            </div>
+            <div className="flex gap-3">
+              <button className="px-5 py-2 rounded-lg text-sm font-light" style={{ border: "1px solid #1e293b", color: "#94a3b8" }}>Download Statement</button>
+              <button className="px-5 py-2 rounded-lg text-sm font-light" style={{ backgroundColor: "rgba(212, 160, 83, 0.15)", color: "#d4a053", border: "1px solid rgba(212, 160, 83, 0.3)" }}>Contact Advisor</button>
+            </div>
           </div>
-          <div className="hidden md:flex items-center space-x-1">
-            {navItems.map((item) => (
-              <div key={item.label} className={`px-5 py-2 text-sm rounded-full transition-all ${item.active ? "bg-white/10 text-[#d4af37] font-medium" : "text-white/50 hover:text-white/80"}`}>
-                {item.label}
+
+          {/* Portfolio Value Cards */}
+          <div className="grid grid-cols-4 gap-5 mb-10">
+            {portfolioSummary.map((item) => (
+              <div key={item.label} className="p-6 rounded-xl" style={{ backgroundColor: "#1e293b", border: "1px solid #334155" }}>
+                <p className="text-xs font-light uppercase tracking-widest mb-3" style={{ color: "#64748b" }}>{item.label}</p>
+                <p className="text-2xl font-light" style={{ color: "#f1f5f9" }}>{item.value}</p>
+                <p className="text-sm font-light mt-2" style={{ color: item.up ? "#4ade80" : "#f87171" }}>{item.change} this quarter</p>
               </div>
             ))}
           </div>
-          <div className="flex items-center space-x-4">
-            <div className="w-2 h-2 rounded-full bg-emerald-400 shadow-lg shadow-emerald-400/50" />
-            <div className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 flex items-center justify-center text-xs font-medium text-white/70">VC</div>
-          </div>
-        </div>
-      </nav>
 
-      {/* MARKET TICKER */}
-      <div className="border-b border-white/5 bg-white/[0.02]">
-        <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-          {marketIndicators.map((m) => (
-            <div key={m.name} className="flex items-center space-x-3">
-              <span className="text-xs text-white/40 font-medium">{m.name}</span>
-              <span className="text-xs font-semibold text-white/80">{m.value}</span>
-              <span className={`text-[11px] font-medium ${m.change.startsWith("+") ? "text-emerald-400" : m.change.startsWith("-") ? "text-red-400" : "text-white/40"}`}>{m.change}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        {/* HEADER */}
-        <div className="flex items-end justify-between mb-8">
-          <div>
-            <p className="text-xs text-[#d4af37] font-medium tracking-widest uppercase mb-1">Wealth Management</p>
-            <h1 className="text-3xl font-semibold tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>Portfolio Overview</h1>
-          </div>
-          <div className="flex items-center space-x-3">
-            <div className="text-xs text-white/40 font-medium bg-white/5 border border-white/10 px-4 py-2 rounded-full backdrop-blur-sm">Feb 28, 2026</div>
-            <div className="text-xs text-[#d4af37] font-medium bg-[#d4af37]/10 border border-[#d4af37]/20 px-4 py-2 rounded-full">Export Report</div>
-          </div>
-        </div>
-
-        {/* STAT CARDS */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          {stats.map((stat) => (
-            <div key={stat.label} className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 hover:bg-white/[0.07] transition-colors">
-              <p className="text-[11px] text-white/40 font-medium uppercase tracking-wider mb-2">{stat.label}</p>
-              <p className="text-2xl font-semibold text-white tracking-tight">{stat.value}</p>
-              <p className={`text-xs font-medium mt-2 ${stat.trend === "up" ? "text-emerald-400" : stat.trend === "down" ? "text-red-400" : "text-white/40"}`}>
-                {stat.change}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* CHART + ACTIVITY */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-8">
-          <div className="lg:col-span-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6">
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-sm font-semibold text-white/90" style={{ fontFamily: "'Playfair Display', serif" }}>Performance</h3>
-              <div className="flex space-x-1">
-                {["1M", "3M", "6M", "1Y", "All"].map((p) => (
-                  <span key={p} className={`px-3 py-1 text-[11px] font-medium rounded-full ${p === "6M" ? "bg-[#d4af37]/20 text-[#d4af37]" : "text-white/30 hover:text-white/60"}`}>{p}</span>
-                ))}
-              </div>
-            </div>
-            <div className="flex items-end space-x-2 h-44">
-              {performanceData.map((d) => (
-                <div key={d.month} className="flex-1 flex flex-col items-center">
-                  <div className="w-full rounded-lg bg-gradient-to-t from-[#d4af37]/60 to-[#d4af37]/20 border border-[#d4af37]/20" style={{ height: `${d.value * 1.7}px` }} />
-                  <span className="text-[10px] text-white/30 mt-2 font-medium">{d.month}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6">
-            <h3 className="text-sm font-semibold text-white/90 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>Recent Activity</h3>
-            <div className="space-y-0">
-              {recentActivity.map((item, i) => (
-                <div key={i} className="py-3 border-b border-white/5 last:border-0">
-                  <div className="flex items-center space-x-2 mb-1">
-                    <div className={`w-1.5 h-1.5 rounded-full ${item.type === "buy" ? "bg-emerald-400" : item.type === "sell" ? "bg-red-400" : item.type === "income" ? "bg-[#d4af37]" : "bg-white/30"}`} />
-                    <span className="text-xs font-medium text-white/80">{item.action}</span>
-                  </div>
-                  <p className="text-[11px] text-white/30 ml-3.5">{item.detail}</p>
-                  <p className="text-[10px] text-white/20 ml-3.5 mt-0.5">{item.time}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* ALLOCATION BARS */}
-        <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 mb-8">
-          <h3 className="text-sm font-semibold text-white/90 mb-5" style={{ fontFamily: "'Playfair Display', serif" }}>Asset Allocation</h3>
-          <div className="flex h-4 rounded-full overflow-hidden mb-4">
-            {[
-              { pct: 32, color: "bg-[#d4af37]" },
-              { pct: 24, color: "bg-[#d4af37]/70" },
-              { pct: 18, color: "bg-[#d4af37]/50" },
-              { pct: 14, color: "bg-[#d4af37]/30" },
-              { pct: 8, color: "bg-white/20" },
-              { pct: 4, color: "bg-white/10" },
-            ].map((seg, i) => (
-              <div key={i} className={`${seg.color}`} style={{ width: `${seg.pct}%` }} />
-            ))}
-          </div>
-          <div className="grid grid-cols-3 lg:grid-cols-6 gap-3">
-            {holdings.map((h) => (
-              <div key={h.asset} className="text-center">
-                <p className="text-[10px] text-white/30 font-medium">{h.asset.split("(")[0].trim()}</p>
-                <p className="text-sm font-semibold text-white/80 mt-0.5">{h.allocation}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* HOLDINGS TABLE */}
-        <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden">
-          <div className="flex items-center justify-between p-6 border-b border-white/5">
-            <h3 className="text-sm font-semibold text-white/90" style={{ fontFamily: "'Playfair Display', serif" }}>Holdings</h3>
-            <span className="text-[11px] text-[#d4af37] font-medium">View All Assets</span>
-          </div>
-          <table className="w-full">
-            <thead>
-              <tr className="border-b border-white/5">
-                {["Asset", "Allocation", "Value", "Change"].map((h) => (
-                  <th key={h} className="text-left px-6 py-3 text-[10px] font-medium text-white/30 uppercase tracking-wider">{h}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {holdings.map((row) => (
-                <tr key={row.asset} className="border-b border-white/[0.03] hover:bg-white/[0.03] transition-colors">
-                  <td className="px-6 py-4">
-                    <span className="text-sm font-medium text-white/80">{row.asset}</span>
-                  </td>
-                  <td className="px-6 py-4">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-16 h-1 bg-white/10 rounded-full overflow-hidden">
-                        <div className="h-full bg-[#d4af37] rounded-full" style={{ width: row.allocation }} />
-                      </div>
-                      <span className="text-xs text-white/50">{row.allocation}</span>
+          <div className="grid grid-cols-3 gap-6 mb-10">
+            {/* Asset Allocation */}
+            <div className="col-span-2 p-6 rounded-xl" style={{ backgroundColor: "#1e293b", border: "1px solid #334155" }}>
+              <h3 className="text-base font-light tracking-wide mb-6" style={{ fontFamily: "'Gilda Display', serif", color: "#f1f5f9" }}>Asset Allocation</h3>
+              <div className="space-y-4">
+                {assetAllocation.map((item) => (
+                  <div key={item.asset} className="flex items-center gap-4">
+                    <span className="text-sm font-light w-44" style={{ color: "#94a3b8" }}>{item.asset}</span>
+                    <div className="flex-1 h-2 rounded-full" style={{ backgroundColor: "#0f172a" }}>
+                      <div className="h-full rounded-full" style={{ width: `${item.bar * 2.5}%`, backgroundColor: item.color }} />
                     </div>
-                  </td>
-                  <td className="px-6 py-4 text-sm font-medium text-white/70">{row.value}</td>
-                  <td className="px-6 py-4">
-                    <span className={`text-xs font-medium ${row.trend === "up" ? "text-emerald-400" : row.trend === "down" ? "text-red-400" : "text-white/40"}`}>
-                      {row.change}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
+                    <span className="text-sm font-light w-12 text-right" style={{ color: "#d4a053" }}>{item.allocation}</span>
+                    <span className="text-sm font-light w-28 text-right" style={{ color: "#64748b" }}>{item.value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-      {/* FOOTER */}
-      <footer className="border-t border-white/5 mt-12">
-        <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#d4af37] to-[#b8962e]" />
-            <span className="text-xs text-white/30 font-medium">Aurelius Wealth Management</span>
+            {/* Market Overview */}
+            <div className="p-6 rounded-xl" style={{ backgroundColor: "#1e293b", border: "1px solid #334155" }}>
+              <h3 className="text-base font-light tracking-wide mb-6" style={{ fontFamily: "'Gilda Display', serif", color: "#f1f5f9" }}>Market Overview</h3>
+              <div className="space-y-4">
+                {marketOverview.map((item) => (
+                  <div key={item.index} className="flex items-center justify-between">
+                    <span className="text-sm font-light" style={{ color: "#94a3b8" }}>{item.index}</span>
+                    <div className="text-right">
+                      <span className="text-sm font-light" style={{ color: "#f1f5f9" }}>{item.value}</span>
+                      <span className="text-xs ml-2 font-light" style={{ color: item.up ? "#4ade80" : "#f87171" }}>{item.change}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="flex space-x-6">
-            {["Privacy", "Terms", "Support", "Contact"].map((link) => (
-              <span key={link} className="text-xs text-white/20 hover:text-white/50">{link}</span>
-            ))}
+
+          {/* Performance Chart Placeholder */}
+          <div className="p-6 rounded-xl mb-10" style={{ backgroundColor: "#1e293b", border: "1px solid #334155" }}>
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-base font-light tracking-wide" style={{ fontFamily: "'Gilda Display', serif", color: "#f1f5f9" }}>Portfolio Performance</h3>
+              <div className="flex gap-2">
+                {["1M", "3M", "YTD", "1Y", "ALL"].map((range) => (
+                  <button key={range} className="px-3 py-1 rounded-md text-xs font-light" style={{
+                    backgroundColor: range === "YTD" ? "rgba(212, 160, 83, 0.15)" : "transparent",
+                    color: range === "YTD" ? "#d4a053" : "#475569",
+                    border: range === "YTD" ? "1px solid rgba(212, 160, 83, 0.3)" : "1px solid transparent",
+                  }}>
+                    {range}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="h-44 flex items-end gap-1 px-2" style={{ backgroundColor: "#0f172a", borderRadius: "0.5rem" }}>
+              {[42, 45, 43, 48, 52, 49, 55, 58, 54, 60, 63, 58, 65, 68, 72, 70, 74, 78, 75, 82, 80, 85, 88, 92].map((h, i) => (
+                <div key={i} className="flex-1 rounded-t-sm" style={{ height: `${h}%`, backgroundColor: `rgba(212, 160, 83, ${0.3 + (i / 24) * 0.7})` }} />
+              ))}
+            </div>
           </div>
-          <p className="text-xs text-white/20">2026 Aurelius Capital LLC</p>
+
+          {/* Recent Trades */}
+          <div className="rounded-xl" style={{ backgroundColor: "#1e293b", border: "1px solid #334155" }}>
+            <div className="p-6 flex items-center justify-between" style={{ borderBottom: "1px solid #334155" }}>
+              <h3 className="text-base font-light tracking-wide" style={{ fontFamily: "'Gilda Display', serif", color: "#f1f5f9" }}>Recent Trades</h3>
+              <button className="text-sm font-light" style={{ color: "#d4a053" }}>View Trade History</button>
+            </div>
+            <table className="w-full text-sm">
+              <thead>
+                <tr style={{ borderBottom: "1px solid #334155" }}>
+                  {["Date", "Action", "Security", "Shares", "Price", "Total", "Status"].map((h) => (
+                    <th key={h} className="text-left px-6 py-3 font-light text-xs uppercase tracking-widest" style={{ color: "#475569" }}>{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {recentTrades.map((trade) => (
+                  <tr key={trade.date + trade.security} style={{ borderBottom: "1px solid #1a2332" }}>
+                    <td className="px-6 py-4 font-light" style={{ color: "#64748b" }}>{trade.date}</td>
+                    <td className="px-6 py-4 font-light" style={{ color: trade.action === "BUY" ? "#4ade80" : "#f87171" }}>{trade.action}</td>
+                    <td className="px-6 py-4 font-light" style={{ color: "#f1f5f9" }}>{trade.security}</td>
+                    <td className="px-6 py-4 font-light" style={{ color: "#94a3b8" }}>{trade.shares}</td>
+                    <td className="px-6 py-4 font-light" style={{ color: "#94a3b8" }}>{trade.price}</td>
+                    <td className="px-6 py-4 font-light" style={{ color: "#d4a053" }}>{trade.total}</td>
+                    <td className="px-6 py-4 font-light" style={{ color: "#64748b" }}>{trade.status}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
-      </footer>
+
+        {/* Footer */}
+        <div className="max-w-6xl mt-12 pt-6" style={{ borderTop: "1px solid #1e293b" }}>
+          <p className="text-xs font-light leading-relaxed" style={{ color: "#475569" }}>
+            Aurum Capital Wealth Management. Investment advisory services offered through Aurum Capital Advisors, LLC, a registered investment advisor.
+            Past performance does not guarantee future results. All investments involve risk including the possible loss of principal.
+            This dashboard is for informational purposes only and does not constitute investment advice.
+          </p>
+          <p className="text-xs font-light mt-3" style={{ color: "#334155" }}>SEC Registered | FINRA Member | SIPC Protected</p>
+        </div>
+      </main>
     </div>
   );
 }

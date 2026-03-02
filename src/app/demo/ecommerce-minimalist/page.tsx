@@ -1,183 +1,181 @@
 export default function EcommerceMinimalistDemo() {
   const products = [
-    { name: "Linen Relaxed Shirt", price: "$89", tag: "New" },
-    { name: "Organic Cotton Tee", price: "$45", tag: "" },
-    { name: "Merino Wool Cardigan", price: "$165", tag: "Best Seller" },
-    { name: "Slim Chino Pant", price: "$98", tag: "" },
-    { name: "Canvas Tote Bag", price: "$52", tag: "New" },
-    { name: "Leather Belt", price: "$68", tag: "" },
-    { name: "Cashmere Beanie", price: "$75", tag: "" },
-    { name: "Ribbed Tank Top", price: "$38", tag: "Sale" },
+    { name: "Hand-Thrown Ceramic Vase", price: "$78", image: "bg-stone-200", tag: "New Arrival" },
+    { name: "Woven Linen Table Runner", price: "$54", image: "bg-stone-300", tag: "" },
+    { name: "Olive Wood Serving Board", price: "$62", image: "bg-amber-100", tag: "Best Seller" },
+    { name: "Stoneware Dinner Set (4pc)", price: "$128", image: "bg-stone-200", tag: "" },
+    { name: "Brass Candle Holder Pair", price: "$45", image: "bg-amber-50", tag: "Limited" },
+    { name: "Organic Cotton Throw", price: "$96", image: "bg-stone-300", tag: "" },
   ];
 
-  const features = [
-    { title: "Free Shipping", desc: "On all orders over $75. No exceptions, no minimums on returns." },
-    { title: "Easy Returns", desc: "Changed your mind? Return within 30 days for a full refund." },
-    { title: "Sustainable", desc: "All materials ethically sourced. Carbon-neutral shipping since 2022." },
-    { title: "Quality Guarantee", desc: "Built to last. We stand behind every piece we make." },
+  const categories = [
+    { name: "Kitchen & Dining", count: 48, bg: "bg-stone-200" },
+    { name: "Living Room", count: 35, bg: "bg-amber-50" },
+    { name: "Bedroom & Bath", count: 27, bg: "bg-stone-100" },
+    { name: "Outdoor", count: 19, bg: "bg-amber-100" },
   ];
 
-  const testimonials = [
-    { name: "Sarah M.", text: "The quality is outstanding. I've been wearing the linen shirt weekly for six months and it only gets better." },
-    { name: "James R.", text: "Finally a brand that values simplicity. Clean designs, great fabrics, fair prices." },
-    { name: "Aiko T.", text: "My go-to for basics. Everything fits perfectly and the materials feel premium without the markup." },
-  ];
-
-  const navLinks = ["Shop", "Collections", "About", "Journal"];
-  const footerSections = [
-    { title: "Shop", links: ["All Products", "New Arrivals", "Best Sellers", "Sale"] },
-    { title: "Company", links: ["About Us", "Sustainability", "Careers", "Press"] },
-    { title: "Support", links: ["Contact", "Shipping", "Returns", "FAQ"] },
-    { title: "Connect", links: ["Instagram", "Twitter", "Pinterest", "Newsletter"] },
+  const featured = [
+    { name: "The Slow Morning Set", desc: "Handmade mug, pour-over, and tray", price: "$135" },
+    { name: "Weekend Linen Bundle", desc: "Duvet cover, pillowcases, and flat sheet", price: "$280" },
+    { name: "Earth & Fire Collection", desc: "Three artisan candles in ceramic vessels", price: "$89" },
   ];
 
   return (
-    <div className="min-h-screen bg-white text-gray-900" style={{ fontFamily: "Inter, sans-serif" }}>
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-      </head>
+    <div style={{ fontFamily: "'Jost', sans-serif", backgroundColor: "#fafaf9" }} className="min-h-screen">
+      <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
       {/* Announcement Bar */}
-      <div className="bg-gray-50 text-center py-2.5">
-        <p className="text-xs text-gray-500 tracking-wide">Free shipping on orders over $75 &mdash; Shop new arrivals</p>
+      <div style={{ backgroundColor: "#d97706" }} className="text-white text-center py-2 text-sm font-light tracking-wide">
+        Free shipping on orders over $100 | Handcrafted with care in small batches
       </div>
 
-      {/* Nav */}
-      <nav className="border-b border-gray-100">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center space-x-8">
-            <span className="text-lg font-semibold tracking-tight">EVRY</span>
-            <div className="hidden md:flex items-center space-x-6">
-              {navLinks.map((link) => (
-                <span key={link} className="text-sm text-gray-500 hover:text-gray-900 cursor-pointer transition-colors">{link}</span>
-              ))}
+      {/* Navigation */}
+      <nav className="bg-white border-b border-stone-200">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-8">
+            <span className="text-2xl font-semibold tracking-tight" style={{ color: "#d97706" }}>Kindred Goods</span>
+            <div className="hidden md:flex gap-6 text-sm font-medium text-stone-600">
+              <span className="hover:text-stone-900 cursor-pointer">Shop All</span>
+              <span className="hover:text-stone-900 cursor-pointer">New Arrivals</span>
+              <span className="hover:text-stone-900 cursor-pointer">Collections</span>
+              <span className="hover:text-stone-900 cursor-pointer">Our Story</span>
+              <span className="hover:text-stone-900 cursor-pointer">Journal</span>
             </div>
           </div>
-          <div className="flex items-center space-x-5">
-            <span className="text-sm text-gray-500 hover:text-gray-900 cursor-pointer transition-colors">Search</span>
-            <span className="text-sm text-gray-500 hover:text-gray-900 cursor-pointer transition-colors">Account</span>
-            <span className="text-sm text-gray-900 cursor-pointer">Cart (2)</span>
+          <div className="flex items-center gap-4 text-sm text-stone-600">
+            <span className="cursor-pointer">Search</span>
+            <span className="cursor-pointer">Account</span>
+            <span className="cursor-pointer font-medium" style={{ color: "#d97706" }}>Cart (0)</span>
           </div>
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="max-w-6xl mx-auto px-6 py-20 lg:py-28">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <p className="text-xs text-gray-400 tracking-widest uppercase mb-4">Spring 2025</p>
-            <h1 className="text-4xl lg:text-5xl font-light leading-tight mb-6 tracking-tight">
-              Less noise.<br />More substance.
-            </h1>
-            <p className="text-gray-400 leading-relaxed mb-8 max-w-md text-sm">
-              Thoughtfully designed essentials that simplify your wardrobe. Premium materials, clean lines, lasting quality.
-            </p>
-            <button className="h-11 px-8 text-sm font-medium bg-gray-900 text-white hover:bg-gray-800 transition-colors">
-              Shop Collection
-            </button>
-          </div>
-          <div className="bg-gray-50 aspect-[4/5] flex items-center justify-center">
-            <span className="text-gray-300 text-xs tracking-widest uppercase">Hero Image</span>
-          </div>
+      {/* Hero Product Grid */}
+      <section className="max-w-7xl mx-auto px-6 py-16">
+        <div className="text-center mb-12">
+          <p className="text-sm uppercase tracking-widest text-stone-400 mb-2">Curated for Thoughtful Living</p>
+          <h1 className="text-4xl md:text-5xl font-light text-stone-800 mb-4">Artisan Home Goods</h1>
+          <p className="text-stone-500 max-w-xl mx-auto">Every piece in our collection is made by independent artisans using traditional techniques and sustainably sourced materials.</p>
         </div>
-      </section>
-
-      {/* Product Grid */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
-        <div className="flex items-end justify-between mb-10">
-          <div>
-            <p className="text-xs text-gray-400 tracking-widest uppercase mb-2">Curated</p>
-            <h2 className="text-2xl font-light tracking-tight">New Arrivals</h2>
-          </div>
-          <span className="text-sm text-gray-400 hover:text-gray-900 cursor-pointer transition-colors">View all</span>
-        </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-10">
-          {products.map((product) => (
-            <div key={product.name} className="group cursor-pointer">
-              <div className="bg-gray-50 aspect-[3/4] mb-3 flex items-center justify-center relative group-hover:bg-gray-100 transition-colors duration-300">
-                <span className="text-gray-300 text-xs tracking-widest uppercase">Product</span>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+          {products.map((product, i) => (
+            <div key={i} className="group cursor-pointer">
+              <div className={`${product.image} aspect-square rounded-lg mb-3 relative overflow-hidden`}>
                 {product.tag && (
-                  <span className="absolute top-3 left-3 text-[10px] tracking-wider uppercase text-gray-500 bg-white px-2 py-0.5">{product.tag}</span>
+                  <span className="absolute top-3 left-3 text-xs font-medium px-2 py-1 rounded-full bg-white text-stone-700">{product.tag}</span>
                 )}
               </div>
-              <h3 className="text-sm font-normal text-gray-900 mb-1">{product.name}</h3>
-              <p className="text-sm text-gray-400">{product.price}</p>
+              <h3 className="text-sm font-medium text-stone-800">{product.name}</h3>
+              <p className="text-sm text-stone-500 mt-1">{product.price}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Features / Trust Badges */}
-      <section className="border-y border-gray-100 py-14">
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
-          {features.map((f) => (
-            <div key={f.title}>
-              <h3 className="text-sm font-medium text-gray-900 mb-2">{f.title}</h3>
-              <p className="text-xs text-gray-400 leading-relaxed">{f.desc}</p>
+      {/* Categories */}
+      <section className="max-w-7xl mx-auto px-6 py-12">
+        <h2 className="text-2xl font-light text-stone-800 mb-8 text-center">Shop by Room</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {categories.map((cat, i) => (
+            <div key={i} className={`${cat.bg} rounded-lg p-8 text-center cursor-pointer hover:shadow-md transition-shadow`}>
+              <h3 className="font-medium text-stone-800 mb-1">{cat.name}</h3>
+              <p className="text-sm text-stone-500">{cat.count} pieces</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
-        <p className="text-xs text-gray-400 tracking-widest uppercase mb-2 text-center">What people say</p>
-        <h2 className="text-2xl font-light tracking-tight text-center mb-12">Customer Reviews</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((t) => (
-            <div key={t.name} className="border border-gray-100 p-6">
-              <div className="flex items-center space-x-1 mb-4">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <span key={star} className="text-gray-900 text-xs">&#9733;</span>
-                ))}
+      {/* Featured Collection */}
+      <section className="bg-white py-16">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <p className="text-sm uppercase tracking-widest mb-2" style={{ color: "#d97706" }}>Curated Sets</p>
+            <h2 className="text-3xl font-light text-stone-800">Featured Collections</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {featured.map((item, i) => (
+              <div key={i} className="border border-stone-200 rounded-lg p-6 hover:border-amber-300 transition-colors cursor-pointer">
+                <div className="bg-stone-100 aspect-video rounded-md mb-4" />
+                <h3 className="font-medium text-stone-800 mb-1">{item.name}</h3>
+                <p className="text-sm text-stone-500 mb-3">{item.desc}</p>
+                <p className="text-sm font-medium" style={{ color: "#d97706" }}>From {item.price}</p>
               </div>
-              <p className="text-sm text-gray-500 leading-relaxed mb-4">&ldquo;{t.text}&rdquo;</p>
-              <p className="text-xs font-medium text-gray-900">{t.name}</p>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Values */}
+      <section className="max-w-7xl mx-auto px-6 py-16">
+        <div className="grid md:grid-cols-3 gap-8 text-center">
+          <div>
+            <p className="text-lg font-medium text-stone-800 mb-2">Ethically Sourced</p>
+            <p className="text-sm text-stone-500">We partner directly with artisans, ensuring fair wages and sustainable practices at every step.</p>
+          </div>
+          <div>
+            <p className="text-lg font-medium text-stone-800 mb-2">Small Batch Made</p>
+            <p className="text-sm text-stone-500">Each item is crafted in limited quantities, making every piece feel personal and intentional.</p>
+          </div>
+          <div>
+            <p className="text-lg font-medium text-stone-800 mb-2">Carbon Neutral Shipping</p>
+            <p className="text-sm text-stone-500">We offset 100% of our shipping emissions and use recycled, plastic-free packaging.</p>
+          </div>
         </div>
       </section>
 
       {/* Newsletter */}
-      <section className="bg-gray-50 py-16">
-        <div className="max-w-md mx-auto px-6 text-center">
-          <h2 className="text-xl font-light tracking-tight mb-3">Stay in the loop</h2>
-          <p className="text-sm text-gray-400 mb-6">New drops and exclusive offers. No spam, ever.</p>
-          <div className="flex">
-            <input
-              type="email"
-              placeholder="your@email.com"
-              className="flex-1 h-10 px-4 text-sm bg-white border border-gray-200 focus:outline-none focus:border-gray-400 placeholder:text-gray-300"
-              readOnly
-            />
-            <button className="h-10 px-6 text-sm font-medium bg-gray-900 text-white hover:bg-gray-800 transition-colors">
-              Subscribe
-            </button>
+      <section style={{ backgroundColor: "#d97706" }} className="py-16">
+        <div className="max-w-xl mx-auto px-6 text-center">
+          <h2 className="text-2xl font-light text-white mb-2">Join the Kindred Community</h2>
+          <p className="text-amber-100 text-sm mb-6">Get early access to new collections, artisan stories, and 10% off your first order.</p>
+          <div className="flex gap-2">
+            <input type="email" placeholder="Your email address" className="flex-1 px-4 py-3 rounded-lg text-sm border-0 focus:outline-none" />
+            <button className="bg-stone-900 text-white px-6 py-3 rounded-lg text-sm font-medium hover:bg-stone-800">Subscribe</button>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-gray-100 py-14 px-6">
-        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-10">
-          {footerSections.map((section) => (
-            <div key={section.title}>
-              <h4 className="text-xs font-medium text-gray-900 uppercase tracking-wider mb-4">{section.title}</h4>
-              <div className="space-y-2.5">
-                {section.links.map((link) => (
-                  <p key={link} className="text-sm text-gray-400 hover:text-gray-900 cursor-pointer transition-colors">{link}</p>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="max-w-6xl mx-auto mt-12 pt-8 border-t border-gray-100 flex flex-col md:flex-row items-center justify-between gap-4">
-          <span className="text-xs text-gray-300">&copy; 2025 EVRY. All rights reserved.</span>
-          <div className="flex items-center space-x-6">
-            {["Privacy", "Terms", "Accessibility"].map((link) => (
-              <span key={link} className="text-xs text-gray-300 hover:text-gray-500 cursor-pointer transition-colors">{link}</span>
-            ))}
+      <footer className="bg-stone-900 text-stone-400 py-16">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8">
+          <div>
+            <h3 className="text-white font-semibold mb-4" style={{ color: "#d97706" }}>Kindred Goods</h3>
+            <p className="text-sm leading-relaxed">Thoughtfully curated home goods from independent artisans around the world. Based in Portland, Oregon.</p>
           </div>
+          <div>
+            <h4 className="text-white text-sm font-medium mb-4">Shop</h4>
+            <div className="space-y-2 text-sm">
+              <p className="cursor-pointer hover:text-white">New Arrivals</p>
+              <p className="cursor-pointer hover:text-white">Best Sellers</p>
+              <p className="cursor-pointer hover:text-white">Collections</p>
+              <p className="cursor-pointer hover:text-white">Gift Cards</p>
+              <p className="cursor-pointer hover:text-white">Sale</p>
+            </div>
+          </div>
+          <div>
+            <h4 className="text-white text-sm font-medium mb-4">Company</h4>
+            <div className="space-y-2 text-sm">
+              <p className="cursor-pointer hover:text-white">Our Story</p>
+              <p className="cursor-pointer hover:text-white">Artisan Partners</p>
+              <p className="cursor-pointer hover:text-white">Sustainability</p>
+              <p className="cursor-pointer hover:text-white">Journal</p>
+              <p className="cursor-pointer hover:text-white">Careers</p>
+            </div>
+          </div>
+          <div>
+            <h4 className="text-white text-sm font-medium mb-4">Support</h4>
+            <div className="space-y-2 text-sm">
+              <p className="cursor-pointer hover:text-white">Shipping & Returns</p>
+              <p className="cursor-pointer hover:text-white">Care Guide</p>
+              <p className="cursor-pointer hover:text-white">FAQ</p>
+              <p className="cursor-pointer hover:text-white">Contact Us</p>
+              <p className="cursor-pointer hover:text-white">Privacy Policy</p>
+            </div>
+          </div>
+        </div>
+        <div className="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-stone-800 text-sm text-center">
+          <p>&copy; 2025 Kindred Goods. All rights reserved. Made with intention.</p>
         </div>
       </footer>
     </div>

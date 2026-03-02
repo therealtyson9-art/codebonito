@@ -1,188 +1,195 @@
 export default function FoodCorporateDemo() {
-  const navLinks = ["Services", "Menu Packages", "About", "Food Safety", "Contact"]
+  const menuHighlights = {
+    breads: [
+      { name: "Sourdough Boule", price: "$7.50", description: "Our signature 48-hour fermented sourdough with a crackling crust and open, tangy crumb." },
+      { name: "Multigrain Loaf", price: "$8.25", description: "Seven grains and seeds including flax, sunflower, and millet. Hearty and nutritious." },
+      { name: "Olive Focaccia", price: "$6.75", description: "Rosemary-scented flatbread studded with Kalamata olives and finished with sea salt." },
+    ],
+    pastries: [
+      { name: "Almond Croissant", price: "$4.95", description: "Twice-baked with frangipane cream and toasted almond slices. Our best seller since day one." },
+      { name: "Morning Bun", price: "$4.50", description: "Orange zest and cinnamon sugar wrapped in laminated dough. Served warm every morning." },
+    ],
+    sandwiches: [
+      { name: "Turkey & Brie", price: "$12.50", description: "Roasted turkey, brie, arugula, and cranberry mustard on house-baked ciabatta." },
+      { name: "Caprese Panini", price: "$11.00", description: "Fresh mozzarella, heirloom tomato, basil pesto on pressed sourdough." },
+    ],
+    drinks: [
+      { name: "House Drip Coffee", price: "$3.25", description: "Single-origin beans roasted weekly by our partner roaster, Sunbird Coffee." },
+      { name: "Golden Turmeric Latte", price: "$5.50", description: "Oat milk, turmeric, ginger, and honey. Warm, golden, and anti-inflammatory." },
+    ],
+  }
 
-  const services = [
-    { title: "Corporate Catering", desc: "Daily meal programs, meeting lunches, and executive dining services for offices of any size. Customized menus that keep your team energized.", icon: "🏢" },
-    { title: "Event Planning", desc: "Full-service catering for conferences, product launches, and corporate galas. From hors d'oeuvres to plated five-course dinners.", icon: "🎪" },
-    { title: "Meal Programs", desc: "Ongoing weekly or monthly meal plans for hospitals, schools, and senior living facilities with rotating seasonal menus.", icon: "📋" },
-    { title: "Dietary Consulting", desc: "On-staff registered dietitians who design menus meeting specific nutritional requirements, allergen protocols, and cultural preferences.", icon: "🥗" },
+  const locations = [
+    { city: "Portland", address: "412 NW 23rd Ave", hours: "6am-7pm" },
+    { city: "Seattle", address: "1901 Pike Place", hours: "6am-6pm" },
+    { city: "San Francisco", address: "789 Valencia St", hours: "6:30am-7pm" },
+    { city: "Denver", address: "2100 Larimer St", hours: "6am-6pm" },
+    { city: "Austin", address: "1504 South Congress", hours: "7am-7pm" },
+    { city: "Nashville", address: "601 12th Ave S", hours: "6:30am-6pm" },
   ]
 
-  const packages = [
-    { name: "Essential", price: "$28", unit: "per person", features: ["Choice of 3 entrees", "2 sides included", "Beverages & water", "Standard service ware", "Setup & cleanup"], highlight: false },
-    { name: "Premium", price: "$45", unit: "per person", features: ["Choice of 5 entrees", "3 sides & salad bar", "Full beverage service", "Premium service ware", "Dedicated staff", "Custom signage"], highlight: true },
-    { name: "Executive", price: "$72", unit: "per person", features: ["Fully custom menu", "Unlimited sides & stations", "Wine & cocktail service", "Fine china & linens", "Chef on-site", "Event coordinator", "Floral arrangements"], highlight: false },
+  const cateringPackages = [
+    { name: "Breakfast Board", serves: "10-15", price: "$95", items: "Assorted pastries, seasonal fruit, yogurt parfaits, house granola, orange juice" },
+    { name: "Sandwich Platter", serves: "8-12", price: "$120", items: "Mixed sandwich selection on house breads, house-made chips, pickles, cookie assortment" },
+    { name: "Bread & Spread", serves: "15-20", price: "$75", items: "Three artisan loaves, whipped butter, olive tapenade, honey, seasonal jam" },
   ]
-
-  const certifications = [
-    { name: "HACCP Certified", desc: "Hazard Analysis and Critical Control Points compliance across all operations" },
-    { name: "ServSafe Accredited", desc: "All kitchen staff hold current ServSafe food handler certifications" },
-    { name: "SQF Level 2", desc: "Safe Quality Food certification for manufacturing and distribution" },
-    { name: "Organic Certified", desc: "USDA Organic certification for our organic menu line" },
-  ]
-
-  const clients = ["Fortune 500 Tech Co.", "Regional Medical Center", "State University System", "National Law Firm", "Downtown Hotel Group", "City School District"]
 
   return (
-    <div className="min-h-screen bg-white text-gray-700" style={{ fontFamily: "Inter, sans-serif" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <div style={{ backgroundColor: "#faf8f5", fontFamily: "'Assistant', sans-serif" }} className="min-h-screen">
+      <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-      {/* Navigation */}
-      <nav className="bg-blue-800 text-white">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <span className="text-lg font-semibold tracking-wide">Cornerstone Food Services</span>
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <span key={link} className="text-sm text-blue-200 hover:text-white cursor-pointer transition-colors">{link}</span>
-            ))}
+      {/* Standard Nav */}
+      <nav className="border-b" style={{ borderColor: "#e8e2da" }}>
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full" style={{ backgroundColor: "#7c4a2d" }} />
+            <span className="text-xl font-bold" style={{ color: "#7c4a2d", fontFamily: "'Assistant', sans-serif" }}>Golden Grain Bakeries</span>
           </div>
-          <span className="px-5 py-2 bg-white text-blue-800 text-sm font-medium rounded cursor-pointer hover:bg-blue-50 transition-colors">Request Quote</span>
+          <div className="hidden md:flex items-center gap-8 text-sm" style={{ color: "#7c4a2d", fontFamily: "'Assistant', sans-serif", fontWeight: 500 }}>
+            <a href="#story" className="hover:opacity-70">Our Story</a>
+            <a href="#menu" className="hover:opacity-70">Menu</a>
+            <a href="#locations" className="hover:opacity-70">Locations</a>
+            <a href="#catering" className="hover:opacity-70">Catering</a>
+            <a href="#franchise" className="hover:opacity-70">Franchise</a>
+            <a href="#careers" className="hover:opacity-70">Careers</a>
+          </div>
+          <button className="px-5 py-2 text-sm text-white rounded-md font-semibold" style={{ backgroundColor: "#7c4a2d" }}>Order Online</button>
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-blue-800 via-blue-900 to-blue-950 text-white">
-        <div className="max-w-5xl mx-auto px-6 py-28 text-center">
-          <p className="text-sm text-blue-300 mb-4 font-medium">Trusted by 200+ Organizations Nationwide</p>
-          <h1 className="text-4xl md:text-5xl font-semibold leading-tight">Catering solutions for<br />every occasion</h1>
-          <p className="text-lg text-blue-200 mt-6 max-w-xl mx-auto">Professional food service management, corporate catering, and event dining backed by 25 years of operational excellence.</p>
-          <div className="mt-10 flex justify-center gap-4">
-            <span className="px-8 py-3 bg-white text-blue-800 text-sm font-semibold rounded cursor-pointer hover:bg-blue-50 transition-colors">Get a Proposal</span>
-            <span className="px-8 py-3 border border-blue-400 text-blue-200 text-sm rounded cursor-pointer hover:border-white hover:text-white transition-colors">Our Services</span>
+      {/* Restaurant Chain Hero */}
+      <section className="max-w-7xl mx-auto px-6 py-16">
+        <div className="rounded-xl overflow-hidden relative" style={{ backgroundColor: "#f0ebe3", height: "380px" }}>
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-8">
+            <p className="text-sm font-semibold uppercase tracking-wider mb-3" style={{ color: "#a06b3f" }}>12 Locations Across the West</p>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: "#7c4a2d", fontFamily: "'Assistant', sans-serif" }}>
+              Baked Fresh. Every Morning.<br />Every Location.
+            </h1>
+            <p className="text-lg max-w-xl" style={{ color: "#a06b3f", fontFamily: "'Assistant', sans-serif", fontWeight: 300 }}>
+              Real sourdough. Real butter. Real people. Golden Grain has been your neighborhood bakery since 2011.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Services */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
-        <div className="text-center mb-14">
-          <p className="text-sm text-blue-700 font-medium mb-2">What We Offer</p>
-          <h2 className="text-3xl font-semibold text-gray-900">Comprehensive Food Services</h2>
-        </div>
-        <div className="grid md:grid-cols-2 gap-8">
-          {services.map((svc) => (
-            <div key={svc.title} className="border border-gray-200 rounded-lg p-8 hover:shadow-md transition-shadow">
-              <span className="text-2xl">{svc.icon}</span>
-              <h3 className="text-lg font-semibold text-gray-900 mt-4">{svc.title}</h3>
-              <p className="text-sm text-gray-500 mt-3 leading-relaxed">{svc.desc}</p>
-            </div>
-          ))}
+      {/* Our Story */}
+      <section id="story" className="max-w-4xl mx-auto px-6 py-16">
+        <div className="text-center">
+          <p className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: "#a06b3f" }}>Since 2011</p>
+          <h2 className="text-3xl font-bold mb-8" style={{ color: "#7c4a2d", fontFamily: "'Assistant', sans-serif" }}>Our Story</h2>
+          <p className="text-base leading-relaxed mb-6" style={{ color: "#8a6540", fontWeight: 300 }}>
+            Golden Grain started as a single bakery in Portland with a 20-year-old sourdough starter, a used deck oven, and a belief that great bread should not cost $12 a loaf. Founders Marta and Erik Lindgren met in culinary school, spent three years baking in Europe, and came home determined to make artisan-quality bread accessible to every neighborhood.
+          </p>
+          <p className="text-base leading-relaxed" style={{ color: "#8a6540", fontWeight: 300 }}>
+            Today we operate twelve bakeries across six cities. Every location bakes from scratch daily using the same starter, the same flour from Cairnspring Mills, and the same commitment to honest ingredients. We have never used dough conditioners, artificial preservatives, or frozen parbakes. If it is in our case, it was made that morning by the team behind the counter.
+          </p>
         </div>
       </section>
 
-      {/* Menu Packages */}
-      <section className="bg-gray-50">
-        <div className="max-w-6xl mx-auto px-6 py-20">
-          <div className="text-center mb-14">
-            <p className="text-sm text-blue-700 font-medium mb-2">Pricing</p>
-            <h2 className="text-3xl font-semibold text-gray-900">Menu Packages</h2>
-            <p className="text-gray-500 mt-3">Minimum 20 guests. All packages include dietary accommodations upon request.</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {packages.map((pkg) => (
-              <div key={pkg.name} className={`rounded-lg p-8 ${pkg.highlight ? "bg-blue-800 text-white ring-2 ring-blue-800" : "bg-white border border-gray-200"}`}>
-                <h3 className={`text-xl font-semibold ${pkg.highlight ? "text-white" : "text-gray-900"}`}>{pkg.name}</h3>
-                <div className="mt-4">
-                  <span className={`text-4xl font-bold ${pkg.highlight ? "text-white" : "text-blue-800"}`}>{pkg.price}</span>
-                  <span className={`text-sm ml-1 ${pkg.highlight ? "text-blue-200" : "text-gray-400"}`}>{pkg.unit}</span>
-                </div>
-                <ul className="mt-6 space-y-3">
-                  {pkg.features.map((f) => (
-                    <li key={f} className={`text-sm flex items-start gap-2 ${pkg.highlight ? "text-blue-100" : "text-gray-600"}`}>
-                      <span className={pkg.highlight ? "text-blue-300" : "text-blue-600"}>&#10003;</span> {f}
-                    </li>
-                  ))}
-                </ul>
-                <span className={`inline-block w-full text-center mt-8 py-3 text-sm font-medium rounded cursor-pointer transition-colors ${pkg.highlight ? "bg-white text-blue-800 hover:bg-blue-50" : "bg-blue-800 text-white hover:bg-blue-700"}`}>
-                  Request Quote
-                </span>
+      {/* Menu Highlights */}
+      <section id="menu" className="py-16" style={{ backgroundColor: "#f0ebe3" }}>
+        <div className="max-w-7xl mx-auto px-6">
+          <p className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: "#a06b3f" }}>From Our Ovens</p>
+          <h2 className="text-3xl font-bold mb-12" style={{ color: "#7c4a2d", fontFamily: "'Assistant', sans-serif" }}>Menu Highlights</h2>
+
+          <div className="grid md:grid-cols-2 gap-10">
+            {Object.entries(menuHighlights).map(([category, items]) => (
+              <div key={category}>
+                <h3 className="text-lg font-bold uppercase tracking-wide mb-4" style={{ color: "#7c4a2d" }}>{category}</h3>
+                {items.map((item) => (
+                  <div key={item.name} className="flex justify-between items-start py-3 border-b" style={{ borderColor: "#e0d8cc" }}>
+                    <div className="flex-1 pr-4">
+                      <p className="text-sm font-semibold" style={{ color: "#7c4a2d" }}>{item.name}</p>
+                      <p className="text-xs mt-1" style={{ color: "#a06b3f", fontWeight: 300 }}>{item.description}</p>
+                    </div>
+                    <span className="text-sm font-semibold" style={{ color: "#7c4a2d" }}>{item.price}</span>
+                  </div>
+                ))}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Client Logos */}
-      <section className="border-y border-gray-200">
-        <div className="max-w-6xl mx-auto px-6 py-14">
-          <p className="text-center text-sm text-gray-400 mb-8">Trusted by organizations across healthcare, education, and enterprise</p>
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-6">
-            {clients.map((client) => (
-              <div key={client} className="h-16 bg-gray-100 rounded flex items-center justify-center">
-                <span className="text-xs text-gray-400 text-center px-2">{client}</span>
+      {/* Locations */}
+      <section id="locations" className="max-w-7xl mx-auto px-6 py-16">
+        <p className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: "#a06b3f" }}>Find Us</p>
+        <h2 className="text-3xl font-bold mb-12" style={{ color: "#7c4a2d", fontFamily: "'Assistant', sans-serif" }}>Our Locations</h2>
+        <div className="rounded-xl mb-8" style={{ backgroundColor: "#f0ebe3", height: "200px" }}>
+          <div className="h-full flex items-center justify-center text-sm" style={{ color: "#a06b3f" }}>Map Placeholder &mdash; 12 Locations Across 6 Cities</div>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {locations.map((loc) => (
+            <div key={loc.city} className="rounded-lg p-5 border" style={{ borderColor: "#e8e2da" }}>
+              <h3 className="text-base font-bold mb-1" style={{ color: "#7c4a2d" }}>{loc.city}</h3>
+              <p className="text-sm" style={{ color: "#a06b3f", fontWeight: 300 }}>{loc.address}</p>
+              <p className="text-xs mt-1" style={{ color: "#b89070" }}>Open {loc.hours}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Catering */}
+      <section id="catering" className="py-16" style={{ backgroundColor: "#f0ebe3" }}>
+        <div className="max-w-5xl mx-auto px-6">
+          <p className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: "#a06b3f" }}>For Groups</p>
+          <h2 className="text-3xl font-bold mb-12" style={{ color: "#7c4a2d", fontFamily: "'Assistant', sans-serif" }}>Catering Services</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {cateringPackages.map((pkg) => (
+              <div key={pkg.name} className="bg-white rounded-lg p-6">
+                <h3 className="text-lg font-bold mb-1" style={{ color: "#7c4a2d" }}>{pkg.name}</h3>
+                <p className="text-sm mb-3" style={{ color: "#a06b3f" }}>Serves {pkg.serves} &middot; {pkg.price}</p>
+                <p className="text-xs leading-relaxed" style={{ color: "#8a6540", fontWeight: 300 }}>{pkg.items}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Food Safety */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
-        <div className="text-center mb-14">
-          <p className="text-sm text-blue-700 font-medium mb-2">Compliance</p>
-          <h2 className="text-3xl font-semibold text-gray-900">Food Safety Certifications</h2>
+      {/* Franchise Info */}
+      <section id="franchise" className="max-w-4xl mx-auto px-6 py-16 text-center">
+        <p className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: "#a06b3f" }}>Grow With Us</p>
+        <h2 className="text-3xl font-bold mb-6" style={{ color: "#7c4a2d", fontFamily: "'Assistant', sans-serif" }}>Franchise Opportunities</h2>
+        <p className="text-base leading-relaxed mb-8" style={{ color: "#8a6540", fontWeight: 300 }}>
+          We are selectively expanding to new markets. Golden Grain franchise partners receive full training at our Portland headquarters, ongoing supply chain support, and access to our proprietary sourdough starter. We are looking for operators who care about community, quality, and early mornings.
+        </p>
+        <button className="px-8 py-3 text-sm text-white rounded-md font-semibold" style={{ backgroundColor: "#7c4a2d" }}>Request Franchise Info</button>
+      </section>
+
+      {/* Careers */}
+      <section id="careers" className="py-16" style={{ backgroundColor: "#7c4a2d" }}>
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <p className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: "#d4a87a" }}>Join the Team</p>
+          <h2 className="text-3xl font-bold text-white mb-4" style={{ fontFamily: "'Assistant', sans-serif" }}>We Are Hiring</h2>
+          <p className="text-base mb-8" style={{ color: "#d4a87a", fontWeight: 300 }}>
+            Bakers, baristas, shift leads, and bakery managers across all twelve locations. Competitive pay, health benefits, and all the bread you can carry home.
+          </p>
+          <button className="px-8 py-3 text-sm font-semibold rounded-md" style={{ backgroundColor: "#faf8f5", color: "#7c4a2d" }}>View Open Positions</button>
         </div>
-        <div className="grid md:grid-cols-2 gap-6">
-          {certifications.map((cert) => (
-            <div key={cert.name} className="flex items-start gap-4 border border-gray-200 rounded-lg p-6">
-              <span className="text-blue-700 mt-0.5">&#9679;</span>
-              <div>
-                <h4 className="font-semibold text-gray-900">{cert.name}</h4>
-                <p className="text-sm text-gray-500 mt-1">{cert.desc}</p>
+      </section>
+
+      {/* Corporate Footer */}
+      <footer className="border-t" style={{ borderColor: "#e8e2da" }}>
+        <div className="max-w-7xl mx-auto px-6 py-10">
+          <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-8">
+            <div>
+              <h4 className="font-bold text-base mb-2" style={{ color: "#7c4a2d" }}>Golden Grain Bakeries</h4>
+              <p className="text-sm" style={{ color: "#a06b3f", fontWeight: 300 }}>Artisan baking for every neighborhood since 2011.</p>
+            </div>
+            <div className="flex gap-8 text-sm" style={{ color: "#a06b3f", fontWeight: 500 }}>
+              <div className="space-y-1">
+                <p>Portland (3)</p><p>Seattle (2)</p><p>San Francisco (2)</p>
+              </div>
+              <div className="space-y-1">
+                <p>Denver (2)</p><p>Austin (2)</p><p>Nashville (1)</p>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Multi-location Map */}
-      <section className="bg-gray-50">
-        <div className="max-w-6xl mx-auto px-6 py-20">
-          <div className="text-center mb-10">
-            <p className="text-sm text-blue-700 font-medium mb-2">Coverage</p>
-            <h2 className="text-3xl font-semibold text-gray-900">We Serve 12 Metro Areas</h2>
           </div>
-          <div className="h-64 bg-gray-200 rounded-lg flex items-center justify-center">
-            <span className="text-gray-400 text-sm">Interactive service area map</span>
-          </div>
-          <p className="text-center text-sm text-gray-500 mt-6">Operating commercial kitchens in New York, Chicago, Los Angeles, Houston, Phoenix, Philadelphia, San Antonio, San Diego, Dallas, Denver, Seattle, and Miami.</p>
-        </div>
-      </section>
-
-      {/* Contact */}
-      <section className="max-w-4xl mx-auto px-6 py-20">
-        <div className="text-center mb-10">
-          <p className="text-sm text-blue-700 font-medium mb-2">Get in Touch</p>
-          <h2 className="text-3xl font-semibold text-gray-900">Request a Consultation</h2>
-          <p className="text-gray-500 mt-3">Our team responds within one business day.</p>
-        </div>
-        <div className="grid md:grid-cols-2 gap-4 max-w-2xl mx-auto">
-          <input type="text" placeholder="Company Name" className="px-4 py-3 border border-gray-300 rounded text-sm outline-none focus:border-blue-600" readOnly />
-          <input type="text" placeholder="Contact Name" className="px-4 py-3 border border-gray-300 rounded text-sm outline-none focus:border-blue-600" readOnly />
-          <input type="text" placeholder="Email Address" className="px-4 py-3 border border-gray-300 rounded text-sm outline-none focus:border-blue-600" readOnly />
-          <input type="text" placeholder="Phone Number" className="px-4 py-3 border border-gray-300 rounded text-sm outline-none focus:border-blue-600" readOnly />
-          <textarea placeholder="Tell us about your needs..." className="px-4 py-3 border border-gray-300 rounded text-sm outline-none focus:border-blue-600 md:col-span-2 h-24 resize-none" readOnly />
-          <span className="md:col-span-2 text-center py-3 bg-blue-800 text-white text-sm font-medium rounded cursor-pointer hover:bg-blue-700 transition-colors">Submit Inquiry</span>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white">
-        <div className="max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-3 gap-8">
-          <div>
-            <span className="text-lg font-semibold">Cornerstone Food Services</span>
-            <p className="text-sm text-gray-400 mt-2">Professional food service management and catering since 2001.</p>
-          </div>
-          <div>
-            <p className="text-sm font-medium mb-3">Contact</p>
-            <p className="text-sm text-gray-400">info@cornerstonefoodservices.com</p>
-            <p className="text-sm text-gray-400 mt-1">(800) 555-0198</p>
-            <p className="text-sm text-gray-400 mt-1">200 Commerce Drive, Suite 400, Chicago, IL 60601</p>
-          </div>
-          <div>
-            <p className="text-sm font-medium mb-3">Certifications</p>
-            <p className="text-sm text-gray-400">HACCP &middot; ServSafe &middot; SQF Level 2 &middot; USDA Organic</p>
-            <p className="text-xs text-gray-600 mt-4">&copy; 2026 Cornerstone Food Services, Inc. All rights reserved.</p>
+          <div className="border-t pt-6 flex flex-col md:flex-row justify-between items-center gap-4" style={{ borderColor: "#e8e2da" }}>
+            <p className="text-xs" style={{ color: "#b89070" }}>&copy; 2025 Golden Grain Bakeries, LLC. All rights reserved.</p>
+            <div className="flex gap-6 text-xs" style={{ color: "#b89070" }}>
+              <span>Privacy</span><span>Terms</span><span>Accessibility</span><span>Press</span>
+            </div>
           </div>
         </div>
       </footer>

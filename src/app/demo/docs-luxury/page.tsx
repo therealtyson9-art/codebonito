@@ -1,304 +1,177 @@
 export default function DocsLuxuryDemo() {
-  const sidebarSections = [
-    {
-      title: "Foundations",
-      items: [
-        { label: "Introduction", active: true },
-        { label: "Installation", active: false },
-        { label: "Architecture", active: false },
-        { label: "Configuration", active: false },
-      ],
-    },
-    {
-      title: "Essentials",
-      items: [
-        { label: "Authentication", active: false },
-        { label: "Data Models", active: false },
-        { label: "Queries", active: false },
-        { label: "Mutations", active: false },
-      ],
-    },
-    {
-      title: "Advanced",
-      items: [
-        { label: "Subscriptions", active: false },
-        { label: "Middleware", active: false },
-        { label: "Caching", active: false },
-        { label: "Federation", active: false },
-      ],
-    },
-    {
-      title: "Operations",
-      items: [
-        { label: "Deployment", active: false },
-        { label: "Monitoring", active: false },
-        { label: "Security", active: false },
-        { label: "Scaling", active: false },
-      ],
-    },
-  ];
-
-  const tocItems = ["Introduction", "Philosophy", "Getting Started", "Schema Definition", "Resolvers", "Configuration Reference"];
-
-  const configOptions = [
-    { param: "schema", type: "string", default: "'./schema.graphql'", desc: "Path to your schema definition file" },
-    { param: "port", type: "number", default: "4000", desc: "Server port for the GraphQL endpoint" },
-    { param: "cors", type: "boolean", default: "true", desc: "Enable cross-origin resource sharing" },
-    { param: "introspection", type: "boolean", default: "false", desc: "Allow schema introspection in production" },
-    { param: "depth_limit", type: "number", default: "10", desc: "Maximum query nesting depth" },
-  ];
-
-  const principles = [
-    { title: "Type Safety", desc: "Every query is validated against your schema at compile time, eliminating runtime errors before they reach production." },
-    { title: "Performance", desc: "Intelligent query planning and automatic batching ensure optimal database access patterns out of the box." },
-    { title: "Developer Experience", desc: "Thoughtful defaults, comprehensive error messages, and first-class IDE support for a seamless workflow." },
-  ];
-
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-[#a8a8a8]" style={{ fontFamily: "Inter, sans-serif" }}>
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-      </head>
+    <div style={{ fontFamily: "'Cardo', serif", backgroundColor: "#faf3e8" }} className="min-h-screen">
+      <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap&family=Inter:wght@300;400&display=swap" rel="stylesheet" />
 
-      {/* Top Nav */}
-      <nav className="sticky top-0 z-50 bg-[#0a0a0a]/95 backdrop-blur border-b border-[#1a1a1a]">
-        <div className="max-w-[88rem] mx-auto px-8 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-10">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 border border-[#d4af37] flex items-center justify-center">
-                <span className="text-[#d4af37] text-sm font-semibold" style={{ fontFamily: "Playfair Display, serif" }}>A</span>
-              </div>
-              <span className="text-sm font-medium text-[#e0e0e0] tracking-wide">Aurelius</span>
-            </div>
-            <div className="hidden md:flex items-center gap-8">
-              {["Documentation", "API", "Guides", "Community"].map((item, i) => (
-                <span key={item} className={`text-[13px] cursor-pointer transition-colors ${i === 0 ? "text-[#d4af37]" : "text-[#555] hover:text-[#999]"}`}>{item}</span>
-              ))}
-            </div>
-          </div>
-          <div className="flex items-center gap-5">
-            <div className="hidden md:flex items-center h-9 w-60 border border-[#1a1a1a] bg-[#111] rounded-sm px-4 gap-2">
-              <svg className="w-3.5 h-3.5 text-[#333]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-              <span className="text-[13px] text-[#333]">Search...</span>
-              <span className="ml-auto text-[10px] text-[#333] border border-[#222] px-1.5 py-0.5" style={{ fontFamily: "JetBrains Mono, monospace" }}>/</span>
-            </div>
-            <span className="text-[13px] text-[#444] hover:text-[#d4af37] cursor-pointer transition-colors">GitHub</span>
-          </div>
+      {/* Header */}
+      <header className="border-b px-8 py-5 flex items-center justify-between" style={{ borderColor: "#e8dcc8" }}>
+        <div className="flex items-center gap-4">
+          <span className="text-2xl font-bold italic" style={{ color: "#7f1d1d" }}>Artisan</span>
+          <span className="text-sm" style={{ fontFamily: "'Inter', sans-serif", color: "#a8967a" }}>Content Management System</span>
         </div>
-      </nav>
+        <nav className="flex items-center gap-6 text-sm" style={{ fontFamily: "'Inter', sans-serif", color: "#a8967a" }}>
+          <a>Documentation</a>
+          <a>Guides</a>
+          <a>API</a>
+          <a>Changelog</a>
+        </nav>
+      </header>
 
-      <div className="max-w-[88rem] mx-auto flex">
-        {/* Sidebar */}
-        <aside className="hidden lg:block w-60 flex-shrink-0 border-r border-[#1a1a1a] sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto py-8 px-6">
-          {sidebarSections.map((section) => (
-            <div key={section.title} className="mb-8">
-              <h4 className="text-[11px] font-medium text-[#555] uppercase tracking-[0.15em] mb-3" style={{ fontFamily: "Inter, sans-serif" }}>{section.title}</h4>
-              <div className="space-y-0.5">
-                {section.items.map((item) => (
-                  <div key={item.label} className={`py-2 px-3 text-[13px] cursor-pointer transition-all ${item.active ? "text-[#d4af37] border-l-2 border-[#d4af37] -ml-px font-medium" : "text-[#444] hover:text-[#888] border-l border-transparent"}`}>
-                    {item.label}
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
+      <div className="flex">
+        {/* Chapter Nav Sidebar */}
+        <aside className="w-64 border-r p-8 min-h-screen hidden lg:block" style={{ borderColor: "#e8dcc8" }}>
+          <p className="text-xs uppercase tracking-widest mb-6 font-bold" style={{ fontFamily: "'Inter', sans-serif", color: "#a8967a" }}>Chapters</p>
+          <ul className="space-y-3 text-sm">
+            <li className="font-bold" style={{ color: "#7f1d1d" }}>I. Introduction</li>
+            <li style={{ color: "#78716c" }}>II. Installation</li>
+            <li style={{ color: "#78716c" }}>III. Content Modeling</li>
+            <li style={{ color: "#78716c" }}>IV. Media Library</li>
+            <li style={{ color: "#78716c" }}>V. Templating Engine</li>
+            <li style={{ color: "#78716c" }}>VI. User Roles</li>
+            <li style={{ color: "#78716c" }}>VII. Workflows</li>
+            <li style={{ color: "#78716c" }}>VIII. API Reference</li>
+            <li style={{ color: "#78716c" }}>IX. Configuration</li>
+            <li style={{ color: "#78716c" }}>X. Glossary</li>
+          </ul>
+          <div className="mt-8 pt-6 border-t" style={{ borderColor: "#e8dcc8" }}>
+            <p className="text-xs mb-3" style={{ fontFamily: "'Inter', sans-serif", color: "#a8967a" }}>Edition</p>
+            <p className="text-sm italic" style={{ color: "#7f1d1d" }}>Third Edition</p>
+            <p className="text-xs mt-1" style={{ color: "#a8967a" }}>Spring 2026</p>
+          </div>
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 min-w-0 px-10 lg:px-20 py-14 max-w-3xl">
-          <div className="flex items-center gap-2 text-[13px] text-[#333] mb-10">
-            {["Docs", "Foundations", "Introduction"].map((crumb, i, arr) => (
-              <span key={crumb} className="flex items-center gap-2">
-                <span className={i === arr.length - 1 ? "text-[#888]" : "hover:text-[#d4af37] cursor-pointer transition-colors"}>{crumb}</span>
-                {i < arr.length - 1 && <span className="text-[#222]">/</span>}
-              </span>
-            ))}
-          </div>
-
-          <h1 className="text-[32px] font-semibold text-[#f0f0f0] mb-4 tracking-tight" style={{ fontFamily: "Playfair Display, serif" }}>Introduction</h1>
-          <div className="w-12 h-px bg-[#d4af37] mb-6" />
-          <p className="text-[15px] text-[#777] leading-[1.8] mb-10">
-            Aurelius is a GraphQL server framework crafted for developers who value precision, performance, and elegance. Build APIs that are as refined as the experiences they power.
-          </p>
-
-          {/* Callout */}
-          <div className="border border-[#1a1a1a] bg-[#111] p-6 mb-12">
-            <div className="flex items-start gap-4">
-              <div className="w-1 h-full min-h-[2rem] bg-[#d4af37] flex-shrink-0 self-stretch" />
-              <div>
-                <p className="text-[13px] text-[#888] leading-[1.8]">
-                  This documentation covers Aurelius v5. For previous versions, consult the <span className="text-[#d4af37] cursor-pointer">version archive</span>.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <h2 className="text-xl font-semibold text-[#e0e0e0] mb-4 mt-14" style={{ fontFamily: "Playfair Display, serif" }}>Philosophy</h2>
-          <div className="w-8 h-px bg-[#222] mb-6" />
-          <p className="text-[13px] text-[#666] leading-[1.8] mb-8">
-            Every design decision in Aurelius is guided by three principles:
-          </p>
-          <div className="space-y-4 mb-12">
-            {principles.map((p, i) => (
-              <div key={p.title} className="border border-[#1a1a1a] p-5 hover:border-[#d4af37]/20 transition-colors">
-                <div className="flex items-start gap-4">
-                  <span className="text-[#d4af37] text-sm font-medium mt-0.5" style={{ fontFamily: "Playfair Display, serif" }}>0{i + 1}</span>
-                  <div>
-                    <h3 className="text-[14px] font-medium text-[#ccc] mb-1">{p.title}</h3>
-                    <p className="text-[13px] text-[#555] leading-[1.7]">{p.desc}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <h2 className="text-xl font-semibold text-[#e0e0e0] mb-4 mt-14" style={{ fontFamily: "Playfair Display, serif" }}>Getting Started</h2>
-          <div className="w-8 h-px bg-[#222] mb-6" />
-          <p className="text-[13px] text-[#666] leading-[1.8] mb-5">
-            Install Aurelius and create your first schema in minutes.
-          </p>
-          <div className="bg-[#111] border border-[#1a1a1a] overflow-hidden mb-8">
-            <div className="flex items-center justify-between px-5 py-2.5 border-b border-[#1a1a1a]">
-              <span className="text-[11px] text-[#444]" style={{ fontFamily: "JetBrains Mono, monospace" }}>Terminal</span>
-              <span className="text-[11px] text-[#333] cursor-pointer hover:text-[#666] transition-colors">Copy</span>
-            </div>
-            <pre className="p-5 text-[13px] leading-[1.8] overflow-x-auto" style={{ fontFamily: "JetBrains Mono, monospace" }}>
-<span className="text-[#555]">$</span> <span className="text-[#d4af37]">npm install aurelius</span>{"\n"}<span className="text-[#555]">$</span> <span className="text-[#888]">npx aurelius init</span>
-            </pre>
-          </div>
-
-          <h2 className="text-xl font-semibold text-[#e0e0e0] mb-4 mt-14" style={{ fontFamily: "Playfair Display, serif" }}>Schema Definition</h2>
-          <div className="w-8 h-px bg-[#222] mb-6" />
-          <p className="text-[13px] text-[#666] leading-[1.8] mb-5">
-            Define your data model with an expressive, type-safe schema language.
-          </p>
-          <div className="bg-[#111] border border-[#1a1a1a] overflow-hidden mb-8">
-            <div className="flex items-center justify-between px-5 py-2.5 border-b border-[#1a1a1a]">
-              <span className="text-[11px] text-[#444]" style={{ fontFamily: "JetBrains Mono, monospace" }}>schema.graphql</span>
-              <span className="text-[11px] text-[#333] cursor-pointer hover:text-[#666] transition-colors">Copy</span>
-            </div>
-            <pre className="p-5 text-[13px] leading-[1.8] overflow-x-auto" style={{ fontFamily: "JetBrains Mono, monospace" }}>
-<span className="text-[#d4af37]">type</span> <span className="text-[#e0e0e0]">User</span> {"{"}{"\n"}{"  "}<span className="text-[#888]">id</span>: <span className="text-[#d4af37]">ID!</span>{"\n"}{"  "}<span className="text-[#888]">name</span>: <span className="text-[#d4af37]">String!</span>{"\n"}{"  "}<span className="text-[#888]">email</span>: <span className="text-[#d4af37]">String!</span>{"\n"}{"  "}<span className="text-[#888]">role</span>: <span className="text-[#d4af37]">Role!</span>{"\n"}{"  "}<span className="text-[#888]">createdAt</span>: <span className="text-[#d4af37]">DateTime!</span>{"\n"}{"}"}{"\n"}{"\n"}<span className="text-[#d4af37]">enum</span> <span className="text-[#e0e0e0]">Role</span> {"{"}{"\n"}{"  "}<span className="text-[#888]">ADMIN</span>{"\n"}{"  "}<span className="text-[#888]">EDITOR</span>{"\n"}{"  "}<span className="text-[#888]">VIEWER</span>{"\n"}{"}"}
-            </pre>
-          </div>
-
-          <h2 className="text-xl font-semibold text-[#e0e0e0] mb-4 mt-14" style={{ fontFamily: "Playfair Display, serif" }}>Resolvers</h2>
-          <div className="w-8 h-px bg-[#222] mb-6" />
-          <p className="text-[13px] text-[#666] leading-[1.8] mb-5">
-            Implement resolver functions to connect your schema to your data sources.
-          </p>
-          <div className="bg-[#111] border border-[#1a1a1a] overflow-hidden mb-10">
-            <div className="flex items-center justify-between px-5 py-2.5 border-b border-[#1a1a1a]">
-              <span className="text-[11px] text-[#444]" style={{ fontFamily: "JetBrains Mono, monospace" }}>resolvers.ts</span>
-              <span className="text-[11px] text-[#333] cursor-pointer hover:text-[#666] transition-colors">Copy</span>
-            </div>
-            <pre className="p-5 text-[13px] leading-[1.8] overflow-x-auto" style={{ fontFamily: "JetBrains Mono, monospace" }}>
-<span className="text-[#d4af37]">import</span> <span className="text-[#e0e0e0]">{"{ defineResolvers }"}</span> <span className="text-[#d4af37]">from</span> <span className="text-[#888]">&apos;aurelius&apos;</span>{"\n"}{"\n"}<span className="text-[#d4af37]">export default</span> <span className="text-[#e0e0e0]">defineResolvers</span>({"{"}{"\n"}{"  "}Query: {"{"}{"\n"}{"    "}<span className="text-[#888]">users</span>: <span className="text-[#d4af37]">async</span> (_, args, ctx) =&gt; {"{"}{"\n"}{"      "}<span className="text-[#d4af37]">return</span> ctx.db.user.<span className="text-[#888]">findMany</span>({"{"}{"\n"}{"        "}where: {"{"} role: args.role {"}"},){"\n"}{"        "}orderBy: {"{"} createdAt: <span className="text-[#888]">&apos;desc&apos;</span> {"}"},){"\n"}{"      "}{"}"});{"\n"}{"    "}{"}"},{"\n"}{"  "}{"}"},{"\n"}{"}"});
-            </pre>
-          </div>
-
-          {/* Warning callout */}
-          <div className="border-l-2 border-[#d4af37]/40 bg-[#d4af37]/5 pl-5 pr-5 py-4 mb-10">
-            <p className="text-[11px] text-[#d4af37] uppercase tracking-[0.15em] font-medium mb-2">Security Notice</p>
-            <p className="text-[13px] text-[#666] leading-[1.7]">
-              Always validate and sanitize user input in resolvers. Enable query depth limiting and cost analysis to prevent abuse.
+        <main className="flex-1 max-w-3xl mx-auto px-10 py-14">
+          {/* Book-Style Hero */}
+          <section className="mb-16 text-center">
+            <p className="text-xs uppercase tracking-[0.3em] mb-4" style={{ fontFamily: "'Inter', sans-serif", color: "#a8967a" }}>Chapter I</p>
+            <h1 className="text-5xl font-bold mb-4 italic" style={{ color: "#7f1d1d" }}>Introduction</h1>
+            <div className="w-16 h-0.5 mx-auto mb-6" style={{ backgroundColor: "#7f1d1d" }}></div>
+            <p className="text-lg leading-relaxed max-w-xl mx-auto" style={{ color: "#78716c" }}>
+              Artisan CMS is a premium content management platform designed for publishers, luxury brands, and editorial teams who demand excellence in every detail of their digital presence.
             </p>
-          </div>
+          </section>
 
-          <h2 className="text-xl font-semibold text-[#e0e0e0] mb-4 mt-14" style={{ fontFamily: "Playfair Display, serif" }}>Configuration Reference</h2>
-          <div className="w-8 h-px bg-[#222] mb-6" />
-          <div className="border border-[#1a1a1a] overflow-hidden mb-12">
-            <table className="w-full text-left">
-              <thead>
-                <tr className="border-b border-[#1a1a1a] bg-[#111]">
-                  {["Parameter", "Type", "Default", "Description"].map((h) => (
-                    <th key={h} className="text-[11px] font-medium text-[#555] uppercase tracking-[0.1em] px-5 py-3">{h}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {configOptions.map((row) => (
-                  <tr key={row.param} className="border-b border-[#141414] last:border-0">
-                    <td className="px-5 py-3 text-[13px] text-[#d4af37]" style={{ fontFamily: "JetBrains Mono, monospace" }}>{row.param}</td>
-                    <td className="px-5 py-3 text-[13px] text-[#555]" style={{ fontFamily: "JetBrains Mono, monospace" }}>{row.type}</td>
-                    <td className="px-5 py-3 text-[13px] text-[#444]" style={{ fontFamily: "JetBrains Mono, monospace" }}>{row.default}</td>
-                    <td className="px-5 py-3 text-[13px] text-[#666]">{row.desc}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          {/* Next Steps */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
-            {[
-              { title: "Installation Guide", desc: "Set up your development environment" },
-              { title: "API Reference", desc: "Explore the complete API surface" },
-            ].map((card) => (
-              <div key={card.title} className="border border-[#1a1a1a] p-5 cursor-pointer hover:border-[#d4af37]/30 transition-all group">
-                <h3 className="text-[14px] font-medium text-[#ccc] group-hover:text-[#d4af37] transition-colors mb-1" style={{ fontFamily: "Playfair Display, serif" }}>{card.title}</h3>
-                <p className="text-[12px] text-[#444]">{card.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Prev/Next */}
-          <div className="border-t border-[#1a1a1a] pt-6 flex justify-between">
-            <div />
-            <div className="text-right">
-              <p className="text-[11px] text-[#333] mb-1 uppercase tracking-wider">Next</p>
-              <span className="text-[13px] text-[#d4af37] cursor-pointer hover:text-[#e5c04b] transition-colors" style={{ fontFamily: "Playfair Display, serif" }}>Installation &rarr;</span>
-            </div>
-          </div>
-        </main>
-
-        {/* Right TOC */}
-        <aside className="hidden xl:block w-52 flex-shrink-0 border-l border-[#1a1a1a] sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto py-14 px-6">
-          <h4 className="text-[11px] font-medium text-[#444] uppercase tracking-[0.15em] mb-4">On this page</h4>
-          <div className="space-y-2.5">
-            {tocItems.map((item, i) => (
-              <div key={item} className={`text-[13px] cursor-pointer transition-colors ${i === 0 ? "text-[#d4af37] font-medium" : "text-[#333] hover:text-[#777]"}`}>
-                {item}
-              </div>
-            ))}
-          </div>
-        </aside>
-      </div>
-
-      {/* Footer */}
-      <footer className="border-t border-[#1a1a1a] mt-20">
-        <div className="max-w-[88rem] mx-auto px-8 py-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-10">
-            {[
-              { heading: "Product", links: ["Features", "Pricing", "Enterprise", "Changelog"] },
-              { heading: "Resources", links: ["Documentation", "API Reference", "Tutorials", "Examples"] },
-              { heading: "Company", links: ["About", "Blog", "Careers", "Contact"] },
-              { heading: "Legal", links: ["Privacy Policy", "Terms of Service", "Security", "Compliance"] },
-            ].map((col) => (
-              <div key={col.heading}>
-                <h4 className="text-[11px] font-medium text-[#555] uppercase tracking-[0.15em] mb-4">{col.heading}</h4>
-                <div className="space-y-2.5">
-                  {col.links.map((link) => (
-                    <p key={link} className="text-[13px] text-[#333] hover:text-[#d4af37] cursor-pointer transition-colors">{link}</p>
-                  ))}
+          {/* Table of Contents */}
+          <section className="mb-16 border rounded-lg p-8" style={{ borderColor: "#e8dcc8", backgroundColor: "#fdf8f0" }}>
+            <h2 className="text-xl font-bold mb-6 text-center" style={{ color: "#7f1d1d" }}>Table of Contents</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {[
+                "1.1 Philosophy and Design Principles",
+                "1.2 System Requirements",
+                "1.3 Architecture Overview",
+                "1.4 Quick Installation Guide",
+                "1.5 Your First Content Model",
+                "1.6 Publishing Workflow",
+                "1.7 Theme Customization",
+                "1.8 Deployment Options",
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-3 text-sm py-1" style={{ borderBottom: "1px dotted #e8dcc8" }}>
+                  <span style={{ color: "#7f1d1d" }}>{item.split(" ")[0]}</span>
+                  <span className="flex-1" style={{ color: "#78716c" }}>{item.split(" ").slice(1).join(" ")}</span>
                 </div>
-              </div>
-            ))}
-          </div>
-          <div className="border-t border-[#1a1a1a] pt-6 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-6 h-6 border border-[#d4af37]/40 flex items-center justify-center">
-                <span className="text-[#d4af37] text-[10px]" style={{ fontFamily: "Playfair Display, serif" }}>A</span>
-              </div>
-              <span className="text-[12px] text-[#333]">&copy; 2024 Aurelius. All rights reserved.</span>
-            </div>
-            <div className="flex gap-5">
-              {["GitHub", "Twitter", "Discord"].map((s) => (
-                <span key={s} className="text-[12px] text-[#333] hover:text-[#d4af37] cursor-pointer transition-colors">{s}</span>
               ))}
             </div>
-          </div>
-        </div>
+          </section>
+
+          {/* Guide Sections */}
+          <section className="mb-16">
+            <h2 className="text-2xl font-bold mb-2 italic" style={{ color: "#7f1d1d" }}>Philosophy and Design Principles</h2>
+            <div className="w-10 h-0.5 mb-6" style={{ backgroundColor: "#7f1d1d" }}></div>
+            <p className="leading-relaxed mb-4" style={{ color: "#78716c" }}>
+              Artisan was conceived with the belief that content management should be an act of craftsmanship, not compromise. Every interface, every workflow, and every API endpoint has been considered with the care of a master artisan shaping their finest work.
+            </p>
+            <p className="leading-relaxed mb-4" style={{ color: "#78716c" }}>
+              The platform separates content structure from presentation through a modular architecture. Content models define the shape of your data. Templates control the visual rendering. Workflows govern the editorial process from draft through review to publication.
+            </p>
+            <blockquote className="border-l-4 pl-6 my-8 italic" style={{ borderColor: "#7f1d1d", color: "#7f1d1d" }}>
+              &ldquo;The details are not the details. They make the design.&rdquo; — Charles Eames
+            </blockquote>
+            <p className="leading-relaxed" style={{ color: "#78716c" }}>
+              Artisan ships with zero assumptions about your content. There are no default post types, no mandatory taxonomies, and no prescribed URL structures. You begin with a blank canvas and compose exactly the content architecture your project demands.
+            </p>
+          </section>
+
+          <section className="mb-16">
+            <h2 className="text-2xl font-bold mb-2 italic" style={{ color: "#7f1d1d" }}>Architecture Overview</h2>
+            <div className="w-10 h-0.5 mb-6" style={{ backgroundColor: "#7f1d1d" }}></div>
+            <p className="leading-relaxed mb-4" style={{ color: "#78716c" }}>
+              The Artisan runtime comprises four layers: the Content Layer stores structured data in a versioned document store with full revision history. The Media Layer handles asset ingestion, transformation, and delivery via a built-in CDN. The Presentation Layer renders content through a Twig-based templating engine with inheritance and partials. The API Layer exposes all functionality through RESTful and GraphQL endpoints.
+            </p>
+            <div className="grid grid-cols-2 gap-4 mt-6">
+              <div className="border rounded-lg p-5" style={{ borderColor: "#e8dcc8" }}>
+                <h3 className="font-bold italic mb-2" style={{ color: "#7f1d1d" }}>Content Layer</h3>
+                <p className="text-sm" style={{ color: "#78716c" }}>Versioned document store with field-level diffing, branch-based editing, and merge conflict resolution for collaborative workflows.</p>
+              </div>
+              <div className="border rounded-lg p-5" style={{ borderColor: "#e8dcc8" }}>
+                <h3 className="font-bold italic mb-2" style={{ color: "#7f1d1d" }}>Media Layer</h3>
+                <p className="text-sm" style={{ color: "#78716c" }}>On-the-fly image transformations, responsive breakpoint generation, and WebP/AVIF conversion with global CDN distribution.</p>
+              </div>
+              <div className="border rounded-lg p-5" style={{ borderColor: "#e8dcc8" }}>
+                <h3 className="font-bold italic mb-2" style={{ color: "#7f1d1d" }}>Presentation Layer</h3>
+                <p className="text-sm" style={{ color: "#78716c" }}>Twig-based templating with layout inheritance, reusable partials, and a live preview mode that renders changes in real time.</p>
+              </div>
+              <div className="border rounded-lg p-5" style={{ borderColor: "#e8dcc8" }}>
+                <h3 className="font-bold italic mb-2" style={{ color: "#7f1d1d" }}>API Layer</h3>
+                <p className="text-sm" style={{ color: "#78716c" }}>RESTful and GraphQL endpoints with fine-grained permissions, cursor-based pagination, and webhook integrations for external systems.</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Configuration Reference */}
+          <section className="mb-16">
+            <h2 className="text-2xl font-bold mb-2 italic" style={{ color: "#7f1d1d" }}>Configuration Reference</h2>
+            <div className="w-10 h-0.5 mb-6" style={{ backgroundColor: "#7f1d1d" }}></div>
+            <div className="space-y-4">
+              {[
+                { key: "site.title", type: "string", desc: "The display name of your Artisan installation, shown in the admin panel header and default meta tags." },
+                { key: "content.revisions", type: "integer", desc: "Maximum number of content revisions retained per entry. Set to -1 for unlimited history. Default: 50." },
+                { key: "media.max_upload_size", type: "string", desc: "Maximum file upload size. Accepts values like '50MB' or '1GB'. Applies to all media types uniformly." },
+                { key: "media.cdn_origin", type: "string", desc: "Base URL for the CDN origin server. All media assets are served through this endpoint with automatic cache headers." },
+                { key: "auth.session_ttl", type: "integer", desc: "Session duration in seconds for admin panel users. Default: 86400 (24 hours)." },
+                { key: "auth.mfa_required", type: "boolean", desc: "Require multi-factor authentication for all admin users. Default: false. Recommended for production." },
+                { key: "api.rate_limit", type: "integer", desc: "Maximum API requests per minute per authenticated client. Default: 300." },
+              ].map((cfg) => (
+                <div key={cfg.key} className="border-b pb-3" style={{ borderColor: "#e8dcc8" }}>
+                  <div className="flex items-center gap-3 mb-1">
+                    <span className="font-bold text-sm" style={{ fontFamily: "'Inter', sans-serif", color: "#7f1d1d" }}>{cfg.key}</span>
+                    <span className="text-xs px-2 py-0.5 rounded" style={{ backgroundColor: "#f5ebe0", color: "#a8967a", fontFamily: "'Inter', sans-serif" }}>{cfg.type}</span>
+                  </div>
+                  <p className="text-sm" style={{ color: "#78716c" }}>{cfg.desc}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Glossary */}
+          <section className="mb-16">
+            <h2 className="text-2xl font-bold mb-2 italic" style={{ color: "#7f1d1d" }}>Glossary</h2>
+            <div className="w-10 h-0.5 mb-6" style={{ backgroundColor: "#7f1d1d" }}></div>
+            <div className="space-y-3 text-sm">
+              {[
+                { term: "Content Model", def: "A schema definition that describes the structure, fields, and validation rules for a type of content within Artisan." },
+                { term: "Blueprint", def: "A reusable configuration package that bundles content models, templates, and workflows for rapid project scaffolding." },
+                { term: "Revision", def: "An immutable snapshot of a content entry at a specific point in time, enabling full version history and rollback." },
+                { term: "Workspace", def: "An isolated environment within Artisan for managing content across different teams, brands, or publication channels." },
+                { term: "Webhook", def: "An HTTP callback triggered by content lifecycle events such as publish, update, archive, or delete operations." },
+                { term: "Locale", def: "A language and region identifier used for content localization. Artisan supports unlimited locales per workspace with fallback chains." },
+                { term: "Slug", def: "A URL-safe identifier derived from a content entry title, used for human-readable permalink construction." },
+              ].map((item) => (
+                <div key={item.term} className="flex gap-4">
+                  <span className="w-36 shrink-0 font-bold italic" style={{ color: "#7f1d1d" }}>{item.term}</span>
+                  <span style={{ color: "#78716c" }}>{item.def}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+        </main>
+      </div>
+
+      {/* Book-Style Footer */}
+      <footer className="border-t px-8 py-5 flex items-center justify-between text-sm" style={{ borderColor: "#e8dcc8" }}>
+        <span className="italic" style={{ color: "#a8967a" }}>Artisan CMS Documentation</span>
+        <span style={{ fontFamily: "'Inter', sans-serif", color: "#a8967a" }}>Page 1 of 42</span>
+        <span className="italic" style={{ color: "#a8967a" }}>Edition 3.0 — Spring 2026</span>
       </footer>
     </div>
   );

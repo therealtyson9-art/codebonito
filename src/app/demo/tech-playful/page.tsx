@@ -1,148 +1,166 @@
 export default function TechPlayfulDemo() {
-  const features = [
-    { emoji: "🚀", title: "Instant Deploys", desc: "Push to main and watch your app go live in seconds. Zero config, zero stress, maximum velocity." },
-    { emoji: "🧩", title: "Plugin Ecosystem", desc: "Over 500 community plugins ready to snap into your project. Auth, payments, email -- all one install away." },
-    { emoji: "🎨", title: "Visual Editor", desc: "Drag, drop, and ship. Build beautiful interfaces without fighting CSS. Your designers will love you." },
-    { emoji: "🔮", title: "AI Copilot", desc: "An intelligent assistant that writes tests, fixes bugs, and suggests optimizations while you code." },
-    { emoji: "⚡", title: "Edge Runtime", desc: "Your code runs where your users are. 200+ locations worldwide, sub-10ms response times everywhere." },
-    { emoji: "🛡️", title: "Built-in Security", desc: "Automatic HTTPS, DDoS protection, and vulnerability scanning. Security that just works, out of the box." },
-  ]
-  const integrations = [
-    { name: "React", color: "bg-cyan-100 text-cyan-700" },
-    { name: "Vue", color: "bg-green-100 text-green-700" },
-    { name: "Svelte", color: "bg-orange-100 text-orange-700" },
-    { name: "Next.js", color: "bg-slate-100 text-slate-700" },
-    { name: "Tailwind", color: "bg-sky-100 text-sky-700" },
-    { name: "Prisma", color: "bg-indigo-100 text-indigo-700" },
-    { name: "Stripe", color: "bg-purple-100 text-purple-700" },
-    { name: "Supabase", color: "bg-emerald-100 text-emerald-700" },
-  ]
+  const tools = [
+    { name: "Forge Studio", desc: "A visual code editor that turns your ideas into production-ready components. Drag, connect, and deploy without leaving your browser.", tag: "Design", gradient: "from-pink-500 to-rose-500" },
+    { name: "Spark CLI", desc: "One command to scaffold, build, and ship. Smart defaults that work for side projects and production apps alike. Zero config until you need it.", tag: "Tooling", gradient: "from-violet-500 to-purple-500" },
+    { name: "Prism UI", desc: "300+ accessible components with built-in animations, dark mode, and responsive variants. Copy, paste, and customize to your heart's content.", tag: "Components", gradient: "from-cyan-500 to-blue-500" },
+    { name: "Nebula Deploy", desc: "Push to any branch and get a preview URL in seconds. Automatic SSL, edge caching, and rollbacks. Your staging environment, supercharged.", tag: "Infra", gradient: "from-amber-500 to-orange-500" },
+  ];
+
   const stats = [
-    { number: "12,400+", label: "Contributors" },
-    { number: "48.2K", label: "GitHub Stars" },
-    { number: "6,800+", label: "Forks" },
-    { number: "2M+", label: "Downloads/month" },
-  ]
-  const testimonials = [
-    { name: "Alex Rivera", handle: "@alexcodes", text: "Switched our entire startup to Spark and honestly? Best decision we made all year. The DX is unreal.", avatar: "🧑‍💻" },
-    { name: "Priya Sharma", handle: "@priyabuilds", text: "The plugin ecosystem saved us months of work. We went from idea to launch in 3 weeks flat.", avatar: "👩‍🔬" },
-    { name: "Jordan Lee", handle: "@jordanships", text: "I have tried every framework out there. Spark is the first one that actually made me enjoy writing code again.", avatar: "🧑‍🎨" },
-  ]
+    { number: "180K+", label: "Developers" },
+    { number: "2.4M", label: "Projects Built" },
+    { number: "500+", label: "Plugins" },
+    { number: "92", label: "Countries" },
+  ];
+
+  const gallery = [
+    { name: "SoundScape", creator: "@melodev", desc: "A spatial audio visualizer built with Prism UI and WebGL" },
+    { name: "TaskFlow", creator: "@buildwithsara", desc: "Kanban meets calendar -- project management reimagined" },
+    { name: "GreenLens", creator: "@eco_coder", desc: "Plant identification app with AI-powered care guides" },
+    { name: "TypeRacer Pro", creator: "@keysmash", desc: "Competitive typing game with real-time multiplayer" },
+    { name: "BudgetBuddy", creator: "@findev", desc: "Personal finance tracker with smart categorization" },
+    { name: "CodePen Clone", creator: "@webwizard", desc: "Live HTML/CSS/JS playground built entirely on Pixelforge" },
+  ];
+
+  const pricing = [
+    { name: "Hobby", price: "Free", features: ["Unlimited projects", "Community support", "1 GB deploy storage", "Shared compute"] },
+    { name: "Pro", price: "$19/mo", features: ["Everything in Hobby", "Priority builds", "10 GB deploy storage", "Custom domains", "Team collaboration"], popular: true },
+    { name: "Team", price: "$49/mo", features: ["Everything in Pro", "Dedicated compute", "Audit logs", "SSO", "SLA guarantee"] },
+  ];
+
   return (
-    <div className="min-h-screen bg-white" style={{ fontFamily: "Poppins, sans-serif" }}>
-      <head><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" /></head>
-      <nav className="border-b border-slate-100">
-        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center space-x-8">
-            <span className="text-xl font-bold bg-gradient-to-r from-purple-500 via-cyan-500 to-pink-500 bg-clip-text text-transparent">Spark</span>
-            <div className="hidden md:flex space-x-6">
-              {["Features", "Plugins", "Community", "Docs", "Blog"].map((l) => (
-                <span key={l} className="text-sm text-slate-500 hover:text-slate-900 cursor-pointer transition-colors font-medium">{l}</span>
+    <>
+      <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700&display=swap" rel="stylesheet" />
+      <div style={{ fontFamily: "'Gabarito', sans-serif", background: "linear-gradient(135deg, #06b6d4 0%, #6366f1 50%, #8b5cf6 100%)" }} className="min-h-screen text-white">
+        {/* Floating Nav */}
+        <nav className="p-6">
+          <div className="max-w-6xl mx-auto bg-white/10 backdrop-blur-md rounded-2xl px-6 py-3 flex items-center justify-between">
+            <span className="text-xl font-bold">Pixelforge</span>
+            <div className="hidden md:flex gap-6 text-sm font-medium text-white/80">
+              <a href="#" className="hover:text-white">Tools</a>
+              <a href="#" className="hover:text-white">Community</a>
+              <a href="#" className="hover:text-white">Showcase</a>
+              <a href="#" className="hover:text-white">Pricing</a>
+              <a href="#" className="hover:text-white">Blog</a>
+            </div>
+            <a href="#" className="bg-white text-indigo-600 px-5 py-2 rounded-xl text-sm font-semibold">Start Free</a>
+          </div>
+        </nav>
+
+        {/* 3D Icon Hero */}
+        <section className="py-24 px-6 text-center relative overflow-hidden">
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
+            <div className="grid grid-cols-5 gap-12 text-6xl" style={{ transform: "perspective(800px) rotateX(15deg) rotateY(-5deg)" }}>
+              {["</>", "{}", "=>", "//", "[ ]", "( )", "&&", "||", "++", "##", "**", "::", "->", "!=", "~~", "@", "$", "%", "^", "&", "?:", "<<", ">>", "!!", ";;"].map((icon, i) => (
+                <span key={i} className="block" style={{ transform: `translateZ(${Math.sin(i) * 40}px)`, opacity: 0.3 + (i % 5) * 0.15 }}>{icon}</span>
               ))}
             </div>
           </div>
-          <div className="flex items-center space-x-3">
-            <button className="h-10 px-4 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Sign in</button>
-            <button className="h-10 px-6 text-sm font-semibold text-white bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 rounded-full transition-all">Get Started Free</button>
-          </div>
-        </div>
-      </nav>
-      <section className="max-w-6xl mx-auto px-4 py-24 text-center">
-        <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-purple-50 text-purple-600 text-sm font-medium mb-6">New: AI Copilot is here!</div>
-        <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 mb-6 leading-tight">Code magic<br />happens here!</h1>
-        <p className="text-lg text-slate-500 max-w-2xl mx-auto mb-8 leading-relaxed">The developer platform that makes building apps ridiculously fun. Ship faster, break less, and actually enjoy the process.</p>
-        <div className="flex justify-center space-x-3">
-          <button className="h-12 px-8 text-sm font-semibold text-white bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 rounded-full transition-all shadow-lg shadow-purple-500/25">Start building</button>
-          <button className="h-12 px-8 text-sm font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-full transition-colors">See it in action</button>
-        </div>
-      </section>
-      <section className="max-w-6xl mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-slate-900 text-center mb-3">Packed with superpowers</h2>
-        <p className="text-slate-500 text-center mb-12">Everything you need, nothing you don&apos;t.</p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {features.map((f) => (
-            <div key={f.title} className="bg-white rounded-2xl p-6 border border-slate-200 hover:border-purple-200 hover:shadow-lg hover:shadow-purple-500/5 transition-all">
-              <div className="text-3xl mb-3">{f.emoji}</div>
-              <h3 className="text-lg font-semibold text-slate-900 mb-2">{f.title}</h3>
-              <p className="text-sm text-slate-500 leading-relaxed">{f.desc}</p>
+          <div className="relative z-10 max-w-3xl mx-auto">
+            <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-medium mb-8">New: Nebula Deploy v3 is here</div>
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">Build cool stuff,<br />ship it fast</h1>
+            <p className="text-xl text-white/80 mb-10 max-w-xl mx-auto">The creative developer platform with everything you need to go from idea to production. Tools that spark joy, not frustration.</p>
+            <div className="flex gap-4 justify-center">
+              <a href="#" className="bg-white text-indigo-600 px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-shadow">Get Started Free</a>
+              <a href="#" className="border-2 border-white/40 px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-colors">Watch Demo</a>
             </div>
-          ))}
-        </div>
-      </section>
-      <section className="max-w-6xl mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-slate-900 text-center mb-3">Try it yourself</h2>
-        <p className="text-slate-500 text-center mb-8">See how easy it is to build with Spark.</p>
-        <div className="max-w-3xl mx-auto bg-gradient-to-br from-purple-50 via-white to-cyan-50 rounded-2xl border border-slate-200 p-8 text-center">
-          <div className="text-4xl mb-4">🎮</div>
-          <h3 className="text-lg font-semibold text-slate-900 mb-2">Interactive Playground</h3>
-          <p className="text-sm text-slate-500 mb-6">Build a full-stack app in your browser. No sign-up required.</p>
-          <button className="h-10 px-6 text-sm font-semibold text-white bg-gradient-to-r from-purple-500 to-pink-500 rounded-full transition-all hover:from-purple-600 hover:to-pink-600">Launch Playground</button>
-        </div>
-      </section>
-      <section className="max-w-6xl mx-auto px-4 py-16 text-center">
-        <h2 className="text-3xl font-bold text-slate-900 mb-8">Works with everything</h2>
-        <div className="flex flex-wrap justify-center gap-3">
-          {integrations.map((i) => (
-            <span key={i.name} className={`px-5 py-2.5 rounded-full text-sm font-medium ${i.color}`}>{i.name}</span>
-          ))}
-        </div>
-      </section>
-      <section className="bg-gradient-to-r from-purple-500 via-cyan-500 to-pink-500 py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-white text-center mb-12">Built by the community</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {stats.map((s) => (
-              <div key={s.label} className="text-center">
-                <div className="text-3xl font-extrabold text-white mb-1">{s.number}</div>
-                <div className="text-sm text-white/80">{s.label}</div>
-              </div>
-            ))}
           </div>
-        </div>
-      </section>
-      <section className="max-w-6xl mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-slate-900 text-center mb-12">Developers love Spark</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t) => (
-            <div key={t.name} className="bg-white rounded-2xl p-6 border border-slate-200">
-              <p className="text-sm text-slate-600 mb-4 leading-relaxed">&ldquo;{t.text}&rdquo;</p>
-              <div className="flex items-center space-x-3">
-                <div className="text-2xl">{t.avatar}</div>
-                <div>
-                  <div className="text-sm font-semibold text-slate-900">{t.name}</div>
-                  <div className="text-xs text-purple-500">{t.handle}</div>
+        </section>
+
+        {/* Tools */}
+        <section className="py-20 px-6">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-4xl font-bold text-center mb-4">Your creative toolkit</h2>
+            <p className="text-center text-white/70 mb-14 max-w-xl mx-auto">Four powerful tools that work together seamlessly. Use one or all of them -- they play nice together.</p>
+            <div className="grid md:grid-cols-2 gap-6">
+              {tools.map((t, i) => (
+                <div key={i} className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:bg-white/15 transition-colors">
+                  <span className={`text-xs font-bold px-3 py-1 rounded-full bg-gradient-to-r ${t.gradient} inline-block mb-4`}>{t.tag}</span>
+                  <h3 className="text-2xl font-bold mb-3">{t.name}</h3>
+                  <p className="text-white/70 leading-relaxed">{t.desc}</p>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
-      <section className="max-w-6xl mx-auto px-4 py-12">
-        <div className="bg-slate-900 rounded-2xl p-12 text-center">
-          <div className="text-4xl mb-4">💜</div>
-          <h2 className="text-3xl font-bold text-white mb-3">Proudly open source</h2>
-          <p className="text-slate-400 max-w-lg mx-auto mb-6">Spark is MIT licensed and built in the open. Contribute, customize, and make it yours.</p>
-          <div className="flex justify-center space-x-3">
-            <button className="h-10 px-6 text-sm font-semibold text-slate-900 bg-white hover:bg-slate-100 rounded-full transition-colors">Star on GitHub</button>
-            <button className="h-10 px-6 text-sm font-medium text-slate-300 border border-slate-600 hover:border-slate-400 rounded-full transition-colors">Read the code</button>
           </div>
-        </div>
-      </section>
-      <section className="max-w-6xl mx-auto px-4 py-20 text-center">
-        <h2 className="text-4xl font-extrabold text-slate-900 mb-4">Ready to spark joy in your code?</h2>
-        <p className="text-slate-500 mb-8 max-w-lg mx-auto">Join 100,000+ happy developers. Free forever for personal projects.</p>
-        <button className="h-14 px-10 text-base font-semibold text-white bg-gradient-to-r from-purple-500 via-cyan-500 to-pink-500 hover:from-purple-600 hover:via-cyan-600 hover:to-pink-600 rounded-full transition-all shadow-lg shadow-purple-500/25">Get started -- it&apos;s free!</button>
-      </section>
-      <footer className="border-t border-slate-100">
-        <div className="max-w-6xl mx-auto px-4 py-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <span className="text-sm text-slate-400">&copy; 2026 Spark Labs. Made with love.</span>
-          <div className="flex space-x-6 text-sm text-slate-400">
-            {["Privacy", "Terms", "GitHub", "Discord", "Twitter"].map((l) => (
-              <span key={l} className="hover:text-slate-900 cursor-pointer transition-colors">{l}</span>
-            ))}
+        </section>
+
+        {/* Community Stats */}
+        <section className="py-16 px-6">
+          <div className="max-w-6xl mx-auto bg-white/10 backdrop-blur-sm rounded-3xl p-12">
+            <h2 className="text-3xl font-bold text-center mb-10">A community of builders</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              {stats.map((s, i) => (
+                <div key={i}>
+                  <div className="text-4xl md:text-5xl font-bold mb-2">{s.number}</div>
+                  <div className="text-white/60 text-sm font-medium">{s.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </footer>
-    </div>
-  )
+        </section>
+
+        {/* Showcase */}
+        <section className="py-20 px-6">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-4xl font-bold text-center mb-4">Built with Pixelforge</h2>
+            <p className="text-center text-white/70 mb-14">Incredible projects from our community. Get inspired, fork, and make it your own.</p>
+            <div className="grid md:grid-cols-3 gap-6">
+              {gallery.map((g, i) => (
+                <div key={i} className="bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10">
+                  <div className="h-36 bg-white/5 flex items-center justify-center text-white/30 text-sm">Preview</div>
+                  <div className="p-5">
+                    <div className="flex items-center justify-between mb-2"><h3 className="font-bold">{g.name}</h3><span className="text-xs text-white/50">{g.creator}</span></div>
+                    <p className="text-sm text-white/60">{g.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Pricing */}
+        <section className="py-20 px-6">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-4xl font-bold text-center mb-14">Simple, honest pricing</h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              {pricing.map((p, i) => (
+                <div key={i} className={`rounded-2xl p-8 ${p.popular ? "bg-white text-gray-900 shadow-2xl scale-105" : "bg-white/10 backdrop-blur-sm border border-white/10"}`}>
+                  {p.popular && <span className="text-xs font-bold px-3 py-1 rounded-full bg-indigo-100 text-indigo-600 mb-4 inline-block">Most Popular</span>}
+                  <h3 className="text-xl font-bold">{p.name}</h3>
+                  <div className="text-3xl font-bold mt-3 mb-6">{p.price}</div>
+                  <ul className="space-y-3">{p.features.map((f, j) => <li key={j} className={`text-sm flex items-center gap-2 ${p.popular ? "text-gray-600" : "text-white/70"}`}><span className={p.popular ? "text-indigo-500" : ""}>&#10003;</span> {f}</li>)}</ul>
+                  <a href="#" className={`block text-center mt-8 py-3 rounded-xl font-semibold text-sm ${p.popular ? "bg-indigo-600 text-white" : "bg-white/20 hover:bg-white/30"}`}>Choose Plan</a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Discord CTA */}
+        <section className="py-20 px-6">
+          <div className="max-w-3xl mx-auto text-center bg-white/10 backdrop-blur-sm rounded-3xl p-14 border border-white/10">
+            <div className="text-5xl mb-6">&#128172;</div>
+            <h2 className="text-4xl font-bold mb-4">Join the conversation</h2>
+            <p className="text-white/70 mb-8 max-w-md mx-auto">Our Discord server is where builders share ideas, get help, and show off what they have made. 28,000+ members and growing.</p>
+            <a href="#" className="inline-block bg-[#5865F2] px-8 py-4 rounded-xl font-bold text-lg">Join Our Discord</a>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="py-12 px-6 border-t border-white/10">
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-white/50">
+            <span className="font-bold text-lg text-white">Pixelforge</span>
+            <div className="flex gap-6">
+              <a href="#" className="hover:text-white">Twitter</a>
+              <a href="#" className="hover:text-white">Discord</a>
+              <a href="#" className="hover:text-white">GitHub</a>
+              <a href="#" className="hover:text-white">YouTube</a>
+              <a href="#" className="hover:text-white">Blog</a>
+            </div>
+            <span>&copy; 2026 Pixelforge. Built with love.</span>
+          </div>
+        </footer>
+      </div>
+    </>
+  );
 }

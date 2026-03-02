@@ -1,176 +1,162 @@
 export default function ConsultingPlayfulDemo() {
-  const services = [
-    { icon: "🎯", title: "Strategy & Planning", desc: "We help you figure out where you want to go and map the smartest route to get there." },
-    { icon: "⚡", title: "Growth Acceleration", desc: "Revenue feeling stuck? We find the hidden levers and pull them with you." },
-    { icon: "🔄", title: "Process Optimization", desc: "We untangle your workflows so your team can stop firefighting and start building." },
-    { icon: "🤝", title: "Team & Culture", desc: "Great strategy needs great people. We help you build teams that actually love Mondays." },
-    { icon: "📊", title: "Data & Insights", desc: "Turn your data from a dusty spreadsheet into your most powerful decision-making tool." },
-    { icon: "🚀", title: "Launch Support", desc: "Taking something new to market? We have been there 200+ times and counting." },
-  ]
+  const workshops = [
+    { title: "Innovation Sprint", duration: "2 days", size: "8-15 people", desc: "A fast-paced workshop where your team generates, tests, and prototypes new product ideas in just 48 hours.", emoji: "🚀" },
+    { title: "Customer Journey Mapping", duration: "1 day", size: "6-12 people", desc: "Walk in your customers' shoes and uncover the moments that matter most to loyalty and growth.", emoji: "🗺️" },
+    { title: "Team Alignment Lab", duration: "Half day", size: "5-20 people", desc: "Get everyone on the same page with our interactive strategy alignment session using visual frameworks.", emoji: "🧩" },
+    { title: "Culture Design Workshop", duration: "2 days", size: "10-25 people", desc: "Define the rituals, values, and behaviors that will shape your company culture as you scale.", emoji: "🌱" },
+  ];
 
-  const process = [
-    { num: 1, title: "Chat & Coffee", desc: "We kick things off with a casual discovery call to understand your world, your goals, and what keeps you up at night.", color: "#8b5cf6" },
-    { num: 2, title: "Deep Dive", desc: "Our team digs into your data, talks to your people, and maps out exactly what is going on under the hood.", color: "#f59e0b" },
-    { num: 3, title: "Game Plan", desc: "We build you a clear, actionable roadmap with priorities, timelines, and realistic milestones you can actually hit.", color: "#8b5cf6" },
-    { num: 4, title: "Make It Happen", desc: "We roll up our sleeves and work alongside your team to bring the plan to life. No hand-off, just hands-on.", color: "#f59e0b" },
-  ]
+  const caseStudies = [
+    { client: "A meal-kit startup", challenge: "High churn after the first month", result: "Redesigned onboarding experience reduced churn by 41% and increased NPS from 32 to 67.", color: "#8b5cf6" },
+    { client: "A regional credit union", challenge: "Members avoiding digital banking", result: "Created a human-centered app experience that drove 73% digital adoption in 6 months.", color: "#ec4899" },
+    { client: "A children's hospital", challenge: "Stressful patient intake process", result: "Designed a playful, tablet-based check-in flow that reduced parent anxiety scores by 55%.", color: "#f59e0b" },
+  ];
 
   const team = [
-    { name: "Alex Rivera", role: "Chief Strategist", vibe: "Big-picture thinker, amateur chef, believes every problem has a creative solution", color: "bg-violet-100" },
-    { name: "Priya Sharma", role: "Growth Lead", vibe: "Data whisperer, marathon runner, turns metrics into magic", color: "bg-amber-100" },
-    { name: "Jordan Lee", role: "Operations Expert", vibe: "Process nerd (proudly), dog parent, makes chaos organized", color: "bg-violet-100" },
-    { name: "Sam Okonkwo", role: "Culture Coach", vibe: "People person, podcast host, believes happy teams build better things", color: "bg-amber-100" },
-  ]
+    { name: "Maya Torres", role: "Founder & Lead Facilitator", bio: "Former IDEO designer with 14 years of human-centered design experience. Obsessed with sticky notes and breakthroughs.", emoji: "🎨" },
+    { name: "Ben Nakamura", role: "Strategy Director", bio: "Ex-Google product strategist who believes the best solutions come from the people closest to the problem.", emoji: "🧠" },
+    { name: "Zara Ahmed", role: "Research Lead", bio: "Behavioral scientist and ethnographer who has conducted research in 23 countries for organizations of every size.", emoji: "🔍" },
+    { name: "Leo Kowalski", role: "Visual Thinker", bio: "Graphic recorder and visual facilitator who turns messy brainstorms into beautiful, actionable frameworks.", emoji: "✏️" },
+  ];
 
-  const successStories = [
-    { company: "BrightPath Education", result: "Grew from 50 to 500 students in one year", reaction: "🎉", quote: "They made scaling feel easy and fun!" },
-    { company: "GreenLeaf Organics", result: "Doubled revenue while cutting costs by 30%", reaction: "🌟", quote: "Our team actually looked forward to strategy meetings." },
-    { company: "PixelForge Studios", result: "Launched 3 new products in 6 months", reaction: "🚀", quote: "They brought the energy we did not know we needed." },
-  ]
-
-  const faqs = [
-    { q: "How much does it cost?", a: "Every engagement is different. We offer a free discovery call to understand your needs and provide a clear, no-surprise quote." },
-    { q: "How long does a typical project take?", a: "Most projects run 3 to 6 months, but we have done focused sprints in as little as 4 weeks. It depends on the scope." },
-    { q: "Do you work with small businesses?", a: "Absolutely! We love working with businesses of all sizes. Some of our best work has been with scrappy startups and growing teams." },
-    { q: "What makes you different from other consultants?", a: "We actually stick around to help implement. No 200-page reports that gather dust. We are in the trenches with you." },
-  ]
+  const tools = [
+    { name: "Design Sprints", desc: "Google Ventures-style rapid prototyping" },
+    { name: "Jobs to Be Done", desc: "Understanding why customers really buy" },
+    { name: "Empathy Mapping", desc: "Seeing the world through user eyes" },
+    { name: "Service Blueprints", desc: "Mapping the full customer experience" },
+    { name: "Assumption Testing", desc: "Kill bad ideas before they cost money" },
+    { name: "Visual Facilitation", desc: "Making meetings actually productive" },
+  ];
 
   return (
-    <div className="min-h-screen bg-white text-slate-800" style={{ fontFamily: "Poppins, sans-serif" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <div style={{ fontFamily: "'Nunito', sans-serif" }} className="min-h-screen">
+      <link href="https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
 
-      {/* Nav */}
-      <nav className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
-        <span className="text-xl font-bold">spark<span style={{ color: "#8b5cf6" }}>.</span>consulting</span>
-        <div className="hidden md:flex items-center space-x-8">
-          {["Services", "Process", "Team", "Stories", "FAQ"].map((item) => (
-            <span key={item} className="text-sm text-slate-500 hover:text-slate-800 cursor-pointer transition-colors font-medium">{item}</span>
-          ))}
-        </div>
-        <span className="text-sm font-semibold text-white px-5 py-2.5 rounded-full cursor-pointer" style={{ backgroundColor: "#8b5cf6" }}>Free Call</span>
-      </nav>
-
-      {/* Hero */}
-      <section className="max-w-6xl mx-auto px-6 pt-20 pb-28 text-center">
-        <div className="inline-block px-4 py-1.5 rounded-full text-sm font-medium mb-6" style={{ backgroundColor: "#f59e0b20", color: "#d97706" }}>
-          Trusted by 200+ happy businesses
-        </div>
-        <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-          Let&apos;s make your<br />business <span style={{ color: "#8b5cf6" }}>awesome</span>!
-        </h1>
-        <p className="mt-6 text-lg text-slate-500 max-w-lg mx-auto leading-relaxed">
-          We are friendly consultants who actually care about your success. No jargon, no egos, just real results.
-        </p>
-        <div className="mt-10 flex justify-center gap-4">
-          <span className="inline-block px-8 py-3.5 text-sm font-semibold text-white rounded-full cursor-pointer shadow-lg" style={{ backgroundColor: "#8b5cf6" }}>Book a Free Discovery Call</span>
-          <span className="inline-block px-8 py-3.5 text-sm font-semibold border-2 rounded-full cursor-pointer" style={{ borderColor: "#f59e0b", color: "#d97706" }}>See Our Work</span>
-        </div>
-      </section>
-
-      {/* Services */}
-      <section className="bg-violet-50 py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-4">How We Can Help</h2>
-          <p className="text-center text-slate-500 mb-16 max-w-md mx-auto">Whatever challenge you are facing, we have probably seen it before and know how to fix it.</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {services.map((s) => (
-              <div key={s.title} className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow">
-                <span className="text-3xl">{s.icon}</span>
-                <h3 className="text-lg font-semibold mt-4 mb-2">{s.title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">{s.desc}</p>
-              </div>
-            ))}
+      <div style={{ backgroundColor: "#faf5ff" }}>
+        {/* Playful Nav */}
+        <nav className="px-8 py-5 flex items-center justify-between max-w-6xl mx-auto">
+          <span style={{ fontFamily: "'Sniglet', cursive", fontSize: "24px", fontWeight: 800, color: "#7c3aed" }}>Puzzle Consulting</span>
+          <div className="hidden md:flex gap-6 text-sm font-semibold" style={{ color: "#7c3aed" }}>
+            <a href="#" className="hover:underline">Workshops</a>
+            <a href="#" className="hover:underline">Case Studies</a>
+            <a href="#" className="hover:underline">Team</a>
+            <a href="#" className="hover:underline">Tools</a>
           </div>
-        </div>
-      </section>
+          <button className="px-5 py-2 rounded-full text-white font-bold text-sm" style={{ backgroundColor: "#7c3aed" }}>Let&apos;s Talk!</button>
+        </nav>
 
-      {/* Process */}
-      <section className="max-w-6xl mx-auto px-6 py-24">
-        <h2 className="text-3xl font-bold text-center mb-4">How It Works</h2>
-        <p className="text-center text-slate-500 mb-16 max-w-md mx-auto">Four simple steps from &quot;help!&quot; to &quot;heck yes!&quot;</p>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-          {process.map((p) => (
-            <div key={p.num} className="text-center">
-              <div className="w-16 h-16 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6" style={{ backgroundColor: p.color }}>
-                {p.num}
-              </div>
-              <h3 className="text-lg font-semibold mb-3">{p.title}</h3>
-              <p className="text-sm text-slate-500 leading-relaxed">{p.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Team */}
-      <section className="py-24" style={{ backgroundColor: "#f59e0b10" }}>
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-4">Meet the Team</h2>
-          <p className="text-center text-slate-500 mb-16 max-w-md mx-auto">Real people who genuinely love helping businesses grow.</p>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {team.map((m) => (
-              <div key={m.name} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <div className={`aspect-square ${m.color}`} />
-                <div className="p-6">
-                  <h3 className="text-base font-semibold">{m.name}</h3>
-                  <p className="text-sm font-medium mt-1" style={{ color: "#8b5cf6" }}>{m.role}</p>
-                  <p className="text-xs text-slate-400 mt-3 leading-relaxed">{m.vibe}</p>
+        {/* Approach Diagram Hero */}
+        <section className="max-w-6xl mx-auto px-8 py-20 text-center">
+          <h1 style={{ fontFamily: "'Sniglet', cursive", fontSize: "48px", fontWeight: 800, color: "#7c3aed", lineHeight: 1.2 }} className="mb-6">We solve puzzles other consultants can&apos;t.</h1>
+          <p className="text-lg max-w-2xl mx-auto mb-12" style={{ color: "#6b7280" }}>Puzzle Consulting uses design thinking to tackle your trickiest business challenges. We bring the sticky notes, the energy, and the frameworks. You bring the problems.</p>
+          <div className="flex flex-wrap justify-center gap-4 mb-10">
+            {["Discover", "Define", "Ideate", "Prototype", "Test"].map((step, i) => (
+              <div key={step} className="flex items-center gap-2">
+                <div className="w-20 h-20 rounded-2xl flex flex-col items-center justify-center text-white font-bold" style={{ backgroundColor: ["#7c3aed", "#8b5cf6", "#a78bfa", "#c4b5fd", "#7c3aed"][i] }}>
+                  <span className="text-2xl">{["🔎", "🎯", "💡", "🔧", "✅"][i]}</span>
+                  <span className="text-xs mt-1">{step}</span>
                 </div>
+                {i < 4 && <span className="text-2xl" style={{ color: "#c4b5fd" }}>→</span>}
               </div>
             ))}
           </div>
-        </div>
-      </section>
+          <button className="px-8 py-4 rounded-full text-white font-bold text-lg" style={{ backgroundColor: "#7c3aed" }}>Book a Discovery Call</button>
+        </section>
 
-      {/* Success Stories */}
-      <section className="max-w-6xl mx-auto px-6 py-24">
-        <h2 className="text-3xl font-bold text-center mb-4">Happy Clients, Real Results</h2>
-        <p className="text-center text-slate-500 mb-16 max-w-md mx-auto">Do not take our word for it. Here is what happened for businesses like yours.</p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {successStories.map((s) => (
-            <div key={s.company} className="border-2 border-slate-100 rounded-2xl p-8 text-center hover:border-violet-200 transition-colors">
-              <span className="text-4xl">{s.reaction}</span>
-              <h3 className="text-lg font-semibold mt-4">{s.company}</h3>
-              <p className="text-sm font-medium mt-2" style={{ color: "#8b5cf6" }}>{s.result}</p>
-              <p className="text-sm text-slate-400 mt-4 italic">&ldquo;{s.quote}&rdquo;</p>
+        {/* Our Workshops */}
+        <section className="py-16" style={{ backgroundColor: "#f3e8ff" }}>
+          <div className="max-w-6xl mx-auto px-8">
+            <h2 style={{ fontFamily: "'Sniglet', cursive", fontSize: "32px", fontWeight: 800, color: "#7c3aed" }} className="text-center mb-10">Our Workshops</h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              {workshops.map((w) => (
+                <div key={w.title} className="bg-white rounded-2xl p-6 shadow-sm">
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="text-3xl">{w.emoji}</span>
+                    <div>
+                      <h3 className="font-bold text-lg" style={{ color: "#7c3aed" }}>{w.title}</h3>
+                      <p className="text-xs" style={{ color: "#a78bfa" }}>{w.duration} &middot; {w.size}</p>
+                    </div>
+                  </div>
+                  <p className="text-sm leading-relaxed" style={{ color: "#6b7280" }}>{w.desc}</p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+        </section>
 
-      {/* CTA */}
-      <section className="text-white py-20 px-6 rounded-3xl mx-6 mb-12" style={{ backgroundColor: "#8b5cf6" }}>
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to get started?</h2>
-          <p className="text-violet-200 mb-10 max-w-md mx-auto">Book a free 30-minute discovery call. No pressure, no pitch deck, just a friendly chat about your business.</p>
-          <span className="inline-block px-8 py-3.5 text-sm font-semibold rounded-full cursor-pointer" style={{ backgroundColor: "#f59e0b", color: "#78350f" }}>Book Your Free Call Now</span>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="max-w-3xl mx-auto px-6 py-24">
-        <h2 className="text-3xl font-bold text-center mb-14">Frequently Asked Questions</h2>
-        <div className="space-y-6">
-          {faqs.map((f) => (
-            <div key={f.q} className="border border-slate-200 rounded-xl p-6">
-              <h3 className="text-base font-semibold">{f.q}</h3>
-              <p className="text-sm text-slate-500 mt-3 leading-relaxed">{f.a}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-slate-50 py-10 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-          <span className="text-lg font-bold">spark<span style={{ color: "#8b5cf6" }}>.</span>consulting</span>
-          <div className="flex space-x-8">
-            {["Instagram", "LinkedIn", "Twitter", "TikTok"].map((s) => (
-              <span key={s} className="text-xs text-slate-400 hover:text-slate-800 cursor-pointer transition-colors font-medium">{s}</span>
+        {/* Case Studies */}
+        <section className="max-w-6xl mx-auto px-8 py-16">
+          <h2 style={{ fontFamily: "'Sniglet', cursive", fontSize: "32px", fontWeight: 800, color: "#7c3aed" }} className="text-center mb-10">Puzzles We&apos;ve Solved</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {caseStudies.map((c) => (
+              <div key={c.client} className="bg-white rounded-2xl p-6 shadow-sm border-t-4" style={{ borderColor: c.color }}>
+                <h3 className="font-bold mb-1" style={{ color: c.color }}>{c.client}</h3>
+                <p className="text-xs font-semibold mb-3" style={{ color: "#9ca3af" }}>Challenge: {c.challenge}</p>
+                <p className="text-sm leading-relaxed" style={{ color: "#6b7280" }}>{c.result}</p>
+              </div>
             ))}
           </div>
-          <span className="text-xs text-slate-400">&copy; 2026 Spark Consulting. Made with heart.</span>
-        </div>
-      </footer>
+        </section>
+
+        {/* The Team */}
+        <section className="py-16" style={{ backgroundColor: "#f3e8ff" }}>
+          <div className="max-w-6xl mx-auto px-8">
+            <h2 style={{ fontFamily: "'Sniglet', cursive", fontSize: "32px", fontWeight: 800, color: "#7c3aed" }} className="text-center mb-10">Meet the Puzzlers</h2>
+            <div className="grid md:grid-cols-4 gap-6">
+              {team.map((t) => (
+                <div key={t.name} className="bg-white rounded-2xl p-5 text-center shadow-sm">
+                  <div className="w-16 h-16 rounded-full mx-auto mb-3 flex items-center justify-center text-3xl" style={{ backgroundColor: "#ede9fe" }}>{t.emoji}</div>
+                  <h3 className="font-bold text-sm" style={{ color: "#7c3aed" }}>{t.name}</h3>
+                  <p className="text-xs mb-2" style={{ color: "#a78bfa" }}>{t.role}</p>
+                  <p className="text-xs leading-relaxed" style={{ color: "#6b7280" }}>{t.bio}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Tools We Use */}
+        <section className="max-w-6xl mx-auto px-8 py-16">
+          <h2 style={{ fontFamily: "'Sniglet', cursive", fontSize: "32px", fontWeight: 800, color: "#7c3aed" }} className="text-center mb-10">Our Toolkit</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {tools.map((t) => (
+              <div key={t.name} className="bg-white rounded-xl p-5 shadow-sm text-center">
+                <h3 className="font-bold text-sm mb-1" style={{ color: "#7c3aed" }}>{t.name}</h3>
+                <p className="text-xs" style={{ color: "#9ca3af" }}>{t.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="max-w-6xl mx-auto px-8 py-20 text-center">
+          <h2 style={{ fontFamily: "'Sniglet', cursive", fontSize: "40px", fontWeight: 800, color: "#7c3aed" }} className="mb-4">Got a puzzle? Let&apos;s solve it together.</h2>
+          <p className="text-lg mb-8 max-w-xl mx-auto" style={{ color: "#6b7280" }}>Every great solution starts with a conversation. Tell us what you&apos;re working on and we&apos;ll show you how design thinking can help.</p>
+          <button className="px-8 py-4 rounded-full text-white font-bold text-lg" style={{ backgroundColor: "#7c3aed" }}>Start the Conversation</button>
+        </section>
+
+        {/* Footer */}
+        <footer className="py-10" style={{ backgroundColor: "#7c3aed" }}>
+          <div className="max-w-6xl mx-auto px-8 grid md:grid-cols-3 gap-8 text-white">
+            <div>
+              <h4 style={{ fontFamily: "'Sniglet', cursive", fontWeight: 800 }} className="text-lg mb-3">Puzzle Consulting 🧩</h4>
+              <p className="text-sm opacity-80">Design thinking for businesses that want to think differently.</p>
+            </div>
+            <div>
+              <h4 className="font-bold mb-3">Say Hello 👋</h4>
+              <p className="text-sm opacity-80">hello@puzzleconsulting.co</p>
+              <p className="text-sm opacity-80">(503) 555-0199</p>
+              <p className="text-sm opacity-80">Portland, OR</p>
+            </div>
+            <div>
+              <h4 className="font-bold mb-3">Follow Us 💜</h4>
+              <p className="text-sm opacity-80">Instagram / LinkedIn / Dribbble / Medium</p>
+              <p className="text-sm opacity-80 mt-2">Subscribe to our newsletter for workshop announcements and design thinking tips!</p>
+            </div>
+          </div>
+          <div className="text-center text-sm text-white opacity-60 mt-8">&copy; 2026 Puzzle Consulting. Made with 💜 in Portland.</div>
+        </footer>
+      </div>
     </div>
-  )
+  );
 }

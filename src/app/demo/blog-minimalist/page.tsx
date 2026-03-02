@@ -1,164 +1,172 @@
 export default function BlogMinimalistDemo() {
-  const posts = [
-    { title: "The Quiet Revolution of Server Components", excerpt: "React Server Components are fundamentally changing how we think about data fetching, bundle sizes, and the boundary between client and server. Here is what two years of production use has taught us.", category: "Engineering", date: "Feb 24, 2026", readTime: "8 min read" },
-    { title: "Why Typography Still Matters More Than You Think", excerpt: "In an era of AI-generated content, the craft of setting type well has become a competitive advantage that separates thoughtful products from everything else.", category: "Design", date: "Feb 18, 2026", readTime: "5 min read" },
-    { title: "Building a Second Brain with Plain Text Files", excerpt: "Forget complex apps and proprietary formats. A folder of markdown files, a good editor, and a simple naming convention is all you need for a knowledge system that lasts decades.", category: "Productivity", date: "Feb 12, 2026", readTime: "11 min read" },
-    { title: "The Case Against Premature Abstraction", excerpt: "We have been conditioned to abstract early and often. But the best codebases I have worked in share a common trait: they tolerate duplication far longer than you would expect.", category: "Engineering", date: "Feb 5, 2026", readTime: "6 min read" },
-    { title: "Designing for the Peripheral Gaze", excerpt: "Most interface design focuses on direct attention. But the most effective dashboards and monitoring tools are designed for the corner of your eye.", category: "Design", date: "Jan 29, 2026", readTime: "7 min read" },
-    { title: "What I Learned from 500 Technical Interviews", excerpt: "After five years of conducting interviews at a growing startup, I have developed strong opinions about what actually predicts engineering success and what is just noise.", category: "Career", date: "Jan 22, 2026", readTime: "9 min read" },
+  const recentArticles = [
+    {
+      title: "On Letting Go of Productivity Guilt",
+      excerpt: "We have been conditioned to measure our worth by output. But what happens when we stop counting and start noticing?",
+      date: "Feb 26, 2026",
+      readTime: "7 min read",
+    },
+    {
+      title: "A Week Without Screens After Sunset",
+      excerpt: "I replaced my evening scroll with candlelight, handwriting, and long conversations. The first three days were unbearable.",
+      date: "Feb 19, 2026",
+      readTime: "5 min read",
+    },
+    {
+      title: "The Case for Doing One Thing at a Time",
+      excerpt: "Multitasking is not a skill. It is a coping mechanism for a culture that confuses busyness with meaning.",
+      date: "Feb 12, 2026",
+      readTime: "6 min read",
+    },
+    {
+      title: "Why I Stopped Meal Prepping and Started Cooking",
+      excerpt: "Efficiency had turned my kitchen into a factory. Slowing down turned it back into a place of nourishment.",
+      date: "Feb 5, 2026",
+      readTime: "8 min read",
+    },
+    {
+      title: "Walking as a Creative Practice",
+      excerpt: "Nietzsche, Thoreau, and Woolf all knew it. The best ideas arrive on foot, never at a desk.",
+      date: "Jan 29, 2026",
+      readTime: "4 min read",
+    },
   ];
 
-  const categories = ["All", "Engineering", "Design", "Productivity", "Career", "Opinion"];
-
-  const tocItems = ["Server Components", "Typography", "Plain Text Systems", "Abstraction Patterns", "Peripheral Design", "Interview Insights"];
-
   return (
-    <div className="min-h-screen bg-white" style={{ fontFamily: "Inter, sans-serif" }}>
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-      </head>
+    <div style={{ fontFamily: "'Spectral', serif", backgroundColor: "#faf8f5", color: "#57534e" }} className="min-h-screen">
+      <link
+        href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet"
+      />
 
-      {/* Nav */}
-      <nav className="border-b border-slate-100">
-        <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
-          <span className="text-lg font-semibold tracking-tight text-slate-900">the notebook</span>
-          <div className="hidden md:flex items-center space-x-8">
-            {["Writing", "Archive", "About", "Subscribe"].map((link) => (
-              <span key={link} className="text-sm text-slate-500 hover:text-slate-900 transition-colors cursor-pointer">{link}</span>
-            ))}
-          </div>
-          <div className="md:hidden text-sm text-slate-500 cursor-pointer">Menu</div>
-        </div>
-      </nav>
-
-      {/* Hero / Featured */}
-      <section className="max-w-6xl mx-auto px-6 pt-20 pb-16">
-        <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-4">Featured Essay</p>
-        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 leading-[1.15] max-w-3xl tracking-tight">
-          The Quiet Revolution of Server Components
-        </h1>
-        <p className="mt-6 text-lg text-slate-500 leading-relaxed max-w-2xl font-light">
-          React Server Components are fundamentally changing how we think about data fetching, bundle sizes, and the boundary between client and server. Here is what two years of production use has taught us.
+      {/* Logo Header */}
+      <header className="pt-12 pb-8 text-center">
+        <p className="text-sm tracking-[0.3em] uppercase" style={{ color: "#a8a29e" }}>
+          Est. 2023
         </p>
-        <div className="mt-6 flex items-center space-x-4 text-sm text-slate-400">
-          <span>Feb 24, 2026</span>
-          <span className="w-1 h-1 bg-slate-300 rounded-full" />
-          <span>8 min read</span>
-          <span className="w-1 h-1 bg-slate-300 rounded-full" />
-          <span>Engineering</span>
+        <h1 className="text-4xl md:text-5xl font-light mt-2 tracking-tight" style={{ color: "#44403c" }}>
+          The Analog
+        </h1>
+        <p className="mt-2 text-sm italic" style={{ color: "#a8a29e" }}>
+          A journal for slower living
+        </p>
+        <div className="w-12 h-px mx-auto mt-6" style={{ backgroundColor: "#d6d3d1" }} />
+      </header>
+
+      {/* Large Title Hero Post */}
+      <section className="max-w-2xl mx-auto px-6 py-16 text-center">
+        <p className="text-xs tracking-[0.2em] uppercase mb-6" style={{ color: "#a8a29e" }}>
+          Latest Essay
+        </p>
+        <h2 className="text-3xl md:text-5xl font-light leading-tight mb-6" style={{ color: "#44403c" }}>
+          The Quiet Art of Paying Attention
+        </h2>
+        <p className="text-lg leading-relaxed font-light max-w-xl mx-auto mb-8">
+          In a world engineered for distraction, the ability to simply notice what is in front of you has become
+          a radical act. This essay explores how reclaiming your attention changes not just what you see, but
+          who you become. From morning rituals to the practice of boredom, we trace the path back to presence.
+        </p>
+        <div className="flex items-center justify-center gap-4 text-sm" style={{ color: "#a8a29e" }}>
+          <span>March 1, 2026</span>
+          <span className="w-1 h-1 rounded-full" style={{ backgroundColor: "#d6d3d1" }} />
+          <span>12 min read</span>
         </div>
-        <div className="mt-8 h-px bg-slate-100" />
+        <a href="#" className="inline-block mt-8 text-sm tracking-wide border-b pb-1 transition-colors" style={{ color: "#78716c", borderColor: "#d6d3d1" }}>
+          Continue Reading
+        </a>
       </section>
 
-      {/* Content: Posts + Sidebar */}
-      <section className="max-w-6xl mx-auto px-6 pb-24">
-        <div className="flex flex-col lg:flex-row gap-16">
-          {/* Post List */}
-          <div className="flex-1">
-            <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-8">Recent Writing</p>
-            <div className="space-y-0">
-              {posts.map((post, i) => (
-                <div key={i} className="py-8 border-b border-slate-50 group cursor-pointer">
-                  <div className="flex items-center space-x-3 mb-3">
-                    <span className="text-xs text-slate-400">{post.category}</span>
-                    <span className="w-1 h-1 bg-slate-200 rounded-full" />
-                    <span className="text-xs text-slate-400">{post.readTime}</span>
-                  </div>
-                  <h3 className="text-xl font-semibold text-slate-900 group-hover:text-slate-600 transition-colors leading-snug">
-                    {post.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-slate-400 leading-relaxed font-light line-clamp-2">
-                    {post.excerpt}
-                  </p>
-                  <p className="mt-3 text-xs text-slate-300">{post.date}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+      <div className="w-16 h-px mx-auto" style={{ backgroundColor: "#d6d3d1" }} />
 
-          {/* Sidebar */}
-          <aside className="lg:w-64 flex-shrink-0">
-            <div className="lg:sticky lg:top-20 space-y-10">
-              {/* TOC */}
-              <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-4">On This Page</p>
-                <div className="space-y-2">
-                  {tocItems.map((item, i) => (
-                    <div key={i} className="flex items-center space-x-3 group cursor-pointer">
-                      <span className="text-xs text-slate-300 font-mono">{String(i + 1).padStart(2, "0")}</span>
-                      <span className="text-sm text-slate-500 group-hover:text-slate-900 transition-colors">{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Categories */}
-              <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-4">Categories</p>
-                <div className="flex flex-wrap gap-2">
-                  {categories.map((cat) => (
-                    <span key={cat} className="text-xs px-3 py-1.5 text-slate-500 border border-slate-100 hover:border-slate-300 hover:text-slate-900 transition-colors cursor-pointer">
-                      {cat}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Newsletter */}
-              <div className="pt-6 border-t border-slate-100">
-                <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-2">Newsletter</p>
-                <p className="text-sm text-slate-500 leading-relaxed mb-4 font-light">
-                  A weekly letter on building software with care. No spam, unsubscribe anytime.
-                </p>
-                <div className="flex flex-col space-y-2">
-                  <div className="h-10 border border-slate-200 flex items-center px-3">
-                    <span className="text-sm text-slate-300">your@email.com</span>
-                  </div>
-                  <div className="h-10 bg-slate-900 text-white text-sm flex items-center justify-center cursor-pointer hover:bg-slate-800 transition-colors">
-                    Subscribe
-                  </div>
-                </div>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      {/* Reading Recommendation */}
-      <section className="bg-slate-50">
-        <div className="max-w-6xl mx-auto px-6 py-16">
-          <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-6">If You Enjoyed This</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { title: "On Naming Things Well", date: "Jan 15, 2026", category: "Engineering" },
-              { title: "The Slow Web Movement", date: "Jan 8, 2026", category: "Opinion" },
-              { title: "Refactoring as a Thinking Tool", date: "Dec 29, 2025", category: "Engineering" },
-            ].map((rec, i) => (
-              <div key={i} className="group cursor-pointer">
-                <span className="text-xs text-slate-300 font-mono">{String(i + 1).padStart(2, "0")}</span>
-                <h4 className="mt-2 text-base font-semibold text-slate-900 group-hover:text-slate-600 transition-colors">
-                  {rec.title}
+      {/* Recent Articles */}
+      <section className="max-w-2xl mx-auto px-6 py-16">
+        <h3 className="text-xs tracking-[0.2em] uppercase text-center mb-12" style={{ color: "#a8a29e" }}>
+          Recent Writing
+        </h3>
+        <div className="space-y-10">
+          {recentArticles.map((article, i) => (
+            <article key={i} className="group cursor-pointer">
+              <div className="flex items-baseline justify-between mb-2">
+                <h4 className="text-xl font-normal group-hover:underline" style={{ color: "#44403c" }}>
+                  {article.title}
                 </h4>
-                <p className="mt-1 text-xs text-slate-400">{rec.category} &middot; {rec.date}</p>
               </div>
-            ))}
-          </div>
+              <p className="text-base font-light leading-relaxed mb-3">
+                {article.excerpt}
+              </p>
+              <div className="flex gap-3 text-xs" style={{ color: "#a8a29e" }}>
+                <span>{article.date}</span>
+                <span>{article.readTime}</span>
+              </div>
+              {i < recentArticles.length - 1 && (
+                <div className="w-full h-px mt-10" style={{ backgroundColor: "#e7e5e4" }} />
+              )}
+            </article>
+          ))}
         </div>
+      </section>
+
+      <div className="w-16 h-px mx-auto" style={{ backgroundColor: "#d6d3d1" }} />
+
+      {/* About the Writer */}
+      <section className="max-w-xl mx-auto px-6 py-16 text-center">
+        <h3 className="text-xs tracking-[0.2em] uppercase mb-8" style={{ color: "#a8a29e" }}>
+          About the Writer
+        </h3>
+        <div className="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center text-xl font-light" style={{ backgroundColor: "#e7e5e4", color: "#78716c" }}>
+          EM
+        </div>
+        <h4 className="text-2xl font-light mb-4" style={{ color: "#44403c" }}>
+          Elena Moreno
+        </h4>
+        <p className="text-base font-light leading-relaxed mb-4">
+          I write about attention, rest, and the things we overlook when we move too fast. After a decade
+          in advertising, I left to study contemplative psychology and have been writing from a small
+          town in Portugal ever since. The Analog is my attempt to share what slowing down has taught me.
+        </p>
+        <p className="text-sm italic" style={{ color: "#a8a29e" }}>
+          Author of &ldquo;Stillness Is Not Laziness&rdquo; (Riverhead Books, 2025)
+        </p>
+      </section>
+
+      <div className="w-16 h-px mx-auto" style={{ backgroundColor: "#d6d3d1" }} />
+
+      {/* Newsletter Subscribe */}
+      <section className="max-w-md mx-auto px-6 py-16 text-center">
+        <h3 className="text-2xl font-light mb-3" style={{ color: "#44403c" }}>
+          Letters from The Analog
+        </h3>
+        <p className="text-sm font-light mb-8" style={{ color: "#a8a29e" }}>
+          A short essay delivered every Sunday morning. No links, no promotions. Just words worth sitting with.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-3">
+          <input
+            type="email"
+            placeholder="your@email.com"
+            className="flex-1 px-4 py-3 text-sm border rounded-none focus:outline-none"
+            style={{ borderColor: "#d6d3d1", backgroundColor: "transparent", color: "#57534e" }}
+          />
+          <button
+            className="px-6 py-3 text-sm tracking-wide transition-opacity hover:opacity-80"
+            style={{ backgroundColor: "#57534e", color: "#faf8f5" }}
+          >
+            Subscribe
+          </button>
+        </div>
+        <p className="text-xs mt-4" style={{ color: "#a8a29e" }}>
+          Join 12,400 readers. Unsubscribe anytime.
+        </p>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-100">
-        <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row items-start md:items-center justify-between">
-          <div>
-            <span className="text-sm font-semibold text-slate-900 tracking-tight">the notebook</span>
-            <p className="mt-1 text-xs text-slate-400">Thoughts on building software with intention.</p>
-          </div>
-          <div className="mt-4 md:mt-0 flex items-center space-x-6">
-            {["RSS", "Twitter", "GitHub", "Email"].map((link) => (
-              <span key={link} className="text-xs text-slate-400 hover:text-slate-900 transition-colors cursor-pointer">{link}</span>
-            ))}
-          </div>
-        </div>
+      <footer className="py-12 text-center">
+        <div className="w-8 h-px mx-auto mb-6" style={{ backgroundColor: "#d6d3d1" }} />
+        <p className="text-xs tracking-wide" style={{ color: "#a8a29e" }}>
+          The Analog &copy; 2026
+        </p>
+        <p className="text-xs mt-2" style={{ color: "#d6d3d1" }}>
+          Written with care in Cascais, Portugal
+        </p>
       </footer>
     </div>
   );

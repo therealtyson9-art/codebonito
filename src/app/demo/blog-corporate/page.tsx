@@ -1,173 +1,242 @@
 export default function BlogCorporateDemo() {
-  const posts = [
-    { title: "How We Reduced API Latency by 60% with Edge Caching", excerpt: "Our engineering team spent three months rearchitecting our API layer to leverage edge computing. Here is the full breakdown of our approach, the tradeoffs we made, and the results we measured.", category: "Engineering", author: "Sarah Chen", role: "Staff Engineer", initials: "SC", date: "Feb 25, 2026", readTime: "10 min", featured: true },
-    { title: "The Product Manager's Guide to Technical Debt", excerpt: "Technical debt is not a failure of engineering. It is a business decision that needs to be managed like any other form of leverage.", category: "Product", author: "Marcus Rivera", role: "VP of Product", initials: "MR", date: "Feb 20, 2026", readTime: "7 min", featured: false },
-    { title: "Building Accessible Components from Day One", excerpt: "Accessibility retrofits are expensive and incomplete. We redesigned our component library with WCAG 2.2 AA compliance built into every primitive.", category: "Design", author: "Aisha Okonkwo", role: "Design Lead", initials: "AO", date: "Feb 15, 2026", readTime: "8 min", featured: false },
-    { title: "Migrating 2 Million Users to Passkeys", excerpt: "Password-based authentication is a liability. Here is how we rolled out passkey support to our entire user base without a single forced migration.", category: "Security", author: "James Park", role: "Security Engineer", initials: "JP", date: "Feb 10, 2026", readTime: "12 min", featured: false },
-    { title: "Why We Switched from Scrum to Shape Up", excerpt: "After three years of two-week sprints, our team was shipping features but losing the ability to think strategically. Shape Up gave us room to breathe.", category: "Process", author: "Elena Volkov", role: "Engineering Manager", initials: "EV", date: "Feb 5, 2026", readTime: "6 min", featured: false },
-    { title: "Observability Beyond Logs: A Practical Framework", excerpt: "Logs, metrics, and traces are necessary but not sufficient. True observability requires understanding the questions you need to answer during an incident.", category: "Engineering", author: "Sarah Chen", role: "Staff Engineer", initials: "SC", date: "Jan 30, 2026", readTime: "9 min", featured: false },
+  const categories = ["All", "Climate Policy", "ESG Reporting", "Green Tech", "Supply Chain", "Leadership"];
+
+  const articles = [
+    {
+      title: "How Scope 3 Emissions Reporting Is Reshaping Supply Chains",
+      excerpt: "New SEC disclosure rules are forcing companies to measure emissions across their entire value chain. Early adopters share lessons from the first year of compliance.",
+      category: "ESG Reporting",
+      author: "Dr. Priya Mehta",
+      role: "Chief Sustainability Officer",
+      initials: "PM",
+      date: "Feb 28, 2026",
+      readTime: "9 min",
+    },
+    {
+      title: "The Business Case for Biodiversity Credits",
+      excerpt: "Carbon offsets dominated the last decade. Biodiversity credits are emerging as the next frontier, with a projected market value of $12 billion by 2030.",
+      category: "Climate Policy",
+      author: "James Okafor",
+      role: "Policy Analyst",
+      initials: "JO",
+      date: "Feb 22, 2026",
+      readTime: "7 min",
+    },
+    {
+      title: "Why Your Green Tech Investment Strategy Needs a Rewrite",
+      excerpt: "Cleantech venture funding hit $47 billion in 2025, but 60 percent went to just three categories. We analyze where the underserved opportunities are.",
+      category: "Green Tech",
+      author: "Lena Eriksson",
+      role: "Investment Director",
+      initials: "LE",
+      date: "Feb 16, 2026",
+      readTime: "11 min",
+    },
+    {
+      title: "Building a Circular Supply Chain from Scratch",
+      excerpt: "A mid-size electronics manufacturer replaced 80 percent of its virgin materials with recycled inputs in 18 months. Here is their operational blueprint.",
+      category: "Supply Chain",
+      author: "Carlos Diaz",
+      role: "Operations Lead",
+      initials: "CD",
+      date: "Feb 10, 2026",
+      readTime: "8 min",
+    },
+    {
+      title: "The CEO Playbook for Climate Transition Planning",
+      excerpt: "Transition plans are no longer optional. Regulators, investors, and employees all expect a credible roadmap. Five CEOs share how they built theirs.",
+      category: "Leadership",
+      author: "Amara Johnson",
+      role: "Managing Editor",
+      initials: "AJ",
+      date: "Feb 4, 2026",
+      readTime: "10 min",
+    },
+    {
+      title: "Water Risk Is the Climate Risk Nobody Is Pricing",
+      excerpt: "Drought, contamination, and scarcity are threatening $2.6 trillion in global assets. Why water disclosure is the next ESG battleground.",
+      category: "Climate Policy",
+      author: "Dr. Ravi Anand",
+      role: "Environmental Economist",
+      initials: "RA",
+      date: "Jan 28, 2026",
+      readTime: "6 min",
+    },
   ];
 
-  const categories = ["All Posts", "Engineering", "Product", "Design", "Security", "Process"];
-
-  const relatedPosts = [
-    { title: "Kubernetes Cost Optimization: Lessons from Scale", author: "James Park", readTime: "5 min" },
-    { title: "Design Tokens in Practice: A Case Study", author: "Aisha Okonkwo", readTime: "7 min" },
-    { title: "Remote Team Rituals That Actually Work", author: "Elena Volkov", readTime: "4 min" },
+  const contributors = [
+    { name: "Dr. Priya Mehta", role: "Chief Sustainability Officer at Vestas", initials: "PM" },
+    { name: "James Okafor", role: "Senior Policy Analyst, World Resources Institute", initials: "JO" },
+    { name: "Lena Eriksson", role: "Director of Climate Investments, Nordstern Capital", initials: "LE" },
   ];
-
-  const featured = posts[0];
 
   return (
-    <div className="min-h-screen bg-slate-50" style={{ fontFamily: "Inter, sans-serif" }}>
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-      </head>
+    <div style={{ fontFamily: "'Noto Sans', sans-serif", backgroundColor: "#f9fafb", color: "#374151" }} className="min-h-screen">
+      <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
 
-      {/* Nav */}
-      <nav className="bg-white border-b border-slate-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
-              <span className="text-white text-sm font-bold">N</span>
-            </div>
-            <span className="text-lg font-bold text-slate-900">NexusHub</span>
-            <span className="text-xs text-slate-400 ml-1">Blog</span>
+      {/* Breadcrumb Nav */}
+      <nav className="border-b" style={{ borderColor: "#e5e7eb" }}>
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: "#166534" }}>GS</div>
+            <span className="text-lg font-semibold" style={{ color: "#166534" }}>GreenShift Insights</span>
           </div>
-          <div className="hidden md:flex items-center space-x-6">
-            {["Engineering", "Product", "Design", "Company"].map((link) => (
-              <span key={link} className="text-sm text-slate-600 hover:text-blue-500 transition-colors cursor-pointer">{link}</span>
-            ))}
-            <span className="text-sm bg-blue-500 text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-blue-600 transition-colors">Subscribe</span>
+          <div className="hidden md:flex items-center gap-1 text-sm text-gray-400">
+            <span>Home</span>
+            <span>/</span>
+            <span>Blog</span>
+            <span>/</span>
+            <span className="font-medium" style={{ color: "#166534" }}>All Articles</span>
           </div>
         </div>
       </nav>
 
-      {/* Featured Post */}
-      <section className="bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="flex flex-col lg:flex-row gap-12 items-start">
-            <div className="flex-1">
-              <span className="inline-block text-xs font-semibold text-blue-500 bg-blue-50 px-3 py-1 rounded-full mb-4">{featured.category}</span>
-              <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight">{featured.title}</h1>
-              <p className="mt-4 text-lg text-slate-500 leading-relaxed">{featured.excerpt}</p>
-              <div className="mt-6 flex items-center space-x-4">
-                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-sm font-semibold text-blue-600">{featured.initials}</div>
-                <div>
-                  <p className="text-sm font-semibold text-slate-900">{featured.author}</p>
-                  <p className="text-xs text-slate-400">{featured.role} &middot; {featured.date} &middot; {featured.readTime}</p>
+      {/* Featured Article Hero */}
+      <section className="max-w-6xl mx-auto px-6 py-12">
+        <div className="rounded-xl overflow-hidden" style={{ backgroundColor: "#166534" }}>
+          <div className="grid md:grid-cols-2">
+            <div className="p-8 md:p-12 flex flex-col justify-center text-white">
+              <span className="text-xs font-semibold tracking-wider uppercase opacity-80 mb-4">Featured Article</span>
+              <h1 className="text-2xl md:text-4xl font-bold leading-tight mb-4">
+                The Global South Is Leading the Next Wave of Climate Innovation
+              </h1>
+              <p className="text-sm leading-relaxed opacity-90 mb-6">
+                From solar microgrids in Kenya to mangrove restoration in Indonesia, developing nations
+                are building climate solutions that wealthy countries are now racing to replicate.
+                A deep dive into the technologies, policies, and entrepreneurs driving change from the bottom up.
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold">AJ</div>
+                <div className="text-xs">
+                  <div className="font-medium">Amara Johnson</div>
+                  <div className="opacity-70">March 1, 2026 &middot; 14 min read</div>
                 </div>
               </div>
             </div>
-            <div className="lg:w-96 w-full h-56 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl flex items-center justify-center flex-shrink-0">
-              <span className="text-blue-300 text-sm">Featured Illustration</span>
+            <div className="h-48 md:h-auto flex items-center justify-center" style={{ backgroundColor: "#14532d" }}>
+              <div className="text-center text-white/30 text-sm">
+                <div className="text-4xl mb-2">&#9883;</div>
+                <div>Featured Image</div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Categories */}
-      <section className="bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center space-x-2 overflow-x-auto">
+      {/* Category Filters */}
+      <section className="max-w-6xl mx-auto px-6 pb-8">
+        <div className="flex flex-wrap gap-2">
           {categories.map((cat, i) => (
-            <span key={cat} className={`text-sm px-4 py-2 rounded-full whitespace-nowrap cursor-pointer transition-colors ${i === 0 ? "bg-blue-500 text-white font-medium" : "text-slate-500 hover:bg-slate-100"}`}>
+            <button
+              key={cat}
+              className="px-4 py-2 rounded-full text-sm font-medium transition-colors"
+              style={i === 0
+                ? { backgroundColor: "#166534", color: "#ffffff" }
+                : { backgroundColor: "#e5e7eb", color: "#6b7280" }
+              }
+            >
               {cat}
-            </span>
+            </button>
           ))}
         </div>
       </section>
 
-      {/* Posts + Sidebar */}
-      <section className="max-w-7xl mx-auto px-6 py-12">
-        <div className="flex flex-col lg:flex-row gap-12">
-          {/* Post Grid */}
-          <div className="flex-1">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {posts.slice(1).map((post, i) => (
-                <div key={i} className="bg-white rounded-xl border border-slate-200 p-6 hover:shadow-lg hover:border-blue-200 transition-all cursor-pointer group">
-                  <div className="flex items-center space-x-2 mb-3">
-                    <span className="text-xs font-medium text-blue-500 bg-blue-50 px-2.5 py-0.5 rounded-full">{post.category}</span>
-                    <span className="text-xs text-slate-400">{post.readTime}</span>
-                  </div>
-                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug mb-2">{post.title}</h3>
-                  <p className="text-sm text-slate-500 leading-relaxed line-clamp-3 mb-4">{post.excerpt}</p>
-                  <div className="flex items-center space-x-3 pt-4 border-t border-slate-100">
-                    <div className="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-xs font-semibold text-slate-500">{post.initials}</div>
-                    <div>
-                      <p className="text-xs font-medium text-slate-700">{post.author}</p>
-                      <p className="text-xs text-slate-400">{post.date}</p>
-                    </div>
-                  </div>
+      {/* Article Grid */}
+      <section className="max-w-6xl mx-auto px-6 pb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {articles.map((article, i) => (
+            <article key={i} className="bg-white rounded-lg border p-6 hover:shadow-md transition-shadow cursor-pointer" style={{ borderColor: "#e5e7eb" }}>
+              <span className="inline-block text-xs font-semibold px-2 py-1 rounded mb-4" style={{ backgroundColor: "#dcfce7", color: "#166534" }}>
+                {article.category}
+              </span>
+              <h3 className="text-lg font-semibold mb-2 leading-snug" style={{ color: "#111827" }}>
+                {article.title}
+              </h3>
+              <p className="text-sm leading-relaxed mb-4 text-gray-500">
+                {article.excerpt}
+              </p>
+              <div className="flex items-center gap-3 pt-4 border-t" style={{ borderColor: "#f3f4f6" }}>
+                <div className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white" style={{ backgroundColor: "#166534" }}>
+                  {article.initials}
                 </div>
-              ))}
-            </div>
+                <div className="text-xs text-gray-400">
+                  <span className="font-medium text-gray-600">{article.author}</span> &middot; {article.readTime}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* Expert Contributors */}
+      <section className="border-t border-b py-12" style={{ borderColor: "#e5e7eb" }}>
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-xs font-semibold tracking-wider uppercase mb-8" style={{ color: "#166534" }}>
+            Expert Contributors
+          </h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {contributors.map((person, i) => (
+              <div key={i} className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold text-white shrink-0" style={{ backgroundColor: "#166534" }}>
+                  {person.initials}
+                </div>
+                <div>
+                  <div className="text-sm font-semibold" style={{ color: "#111827" }}>{person.name}</div>
+                  <div className="text-xs text-gray-400">{person.role}</div>
+                </div>
+              </div>
+            ))}
           </div>
+        </div>
+      </section>
 
-          {/* Sidebar */}
-          <aside className="lg:w-80 flex-shrink-0 space-y-8">
-            {/* Newsletter */}
-            <div className="bg-blue-500 rounded-xl p-6 text-white">
-              <h3 className="text-lg font-bold mb-2">Stay in the loop</h3>
-              <p className="text-sm text-blue-100 mb-4">Get the latest engineering and product insights delivered to your inbox every Thursday.</p>
-              <div className="space-y-2">
-                <div className="h-10 bg-white/20 rounded-lg flex items-center px-3">
-                  <span className="text-sm text-white/60">name@company.com</span>
-                </div>
-                <div className="h-10 bg-white text-blue-600 font-semibold text-sm rounded-lg flex items-center justify-center cursor-pointer hover:bg-blue-50 transition-colors">
-                  Subscribe
-                </div>
-              </div>
-              <p className="text-xs text-blue-200 mt-3">Join 14,000+ subscribers. Unsubscribe anytime.</p>
-            </div>
-
-            {/* Related Posts */}
-            <div className="bg-white rounded-xl border border-slate-200 p-6">
-              <h3 className="text-sm font-bold text-slate-900 mb-4">Trending This Week</h3>
-              <div className="space-y-4">
-                {relatedPosts.map((post, i) => (
-                  <div key={i} className="flex items-start space-x-3 group cursor-pointer">
-                    <span className="text-2xl font-extrabold text-slate-200 leading-none">{i + 1}</span>
-                    <div>
-                      <p className="text-sm font-medium text-slate-700 group-hover:text-blue-500 transition-colors leading-snug">{post.title}</p>
-                      <p className="text-xs text-slate-400 mt-1">{post.author} &middot; {post.readTime}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Tags */}
-            <div className="bg-white rounded-xl border border-slate-200 p-6">
-              <h3 className="text-sm font-bold text-slate-900 mb-4">Popular Topics</h3>
-              <div className="flex flex-wrap gap-2">
-                {["React", "Infrastructure", "Design Systems", "DevOps", "TypeScript", "Leadership", "API Design", "Testing"].map((tag) => (
-                  <span key={tag} className="text-xs text-slate-500 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-full hover:border-blue-300 hover:text-blue-500 cursor-pointer transition-colors">{tag}</span>
-                ))}
-              </div>
-            </div>
-          </aside>
+      {/* Newsletter */}
+      <section className="max-w-6xl mx-auto px-6 py-12">
+        <div className="rounded-lg p-8 text-center" style={{ backgroundColor: "#f0fdf4" }}>
+          <h3 className="text-xl font-semibold mb-2" style={{ color: "#166534" }}>Stay ahead of the sustainability curve</h3>
+          <p className="text-sm text-gray-500 mb-6 max-w-md mx-auto">
+            Join 34,000 professionals receiving our weekly analysis of ESG trends, climate policy, and green technology.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <input type="email" placeholder="work@company.com" className="flex-1 px-4 py-2.5 text-sm border rounded-lg focus:outline-none" style={{ borderColor: "#d1d5db" }} />
+            <button className="px-6 py-2.5 text-sm font-medium text-white rounded-lg" style={{ backgroundColor: "#166534" }}>
+              Subscribe
+            </button>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-slate-200">
-        <div className="max-w-7xl mx-auto px-6 py-12">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
-                <span className="text-white text-sm font-bold">N</span>
-              </div>
-              <div>
-                <span className="text-sm font-bold text-slate-900">NexusHub Engineering Blog</span>
-                <p className="text-xs text-slate-400">Insights from the team building the future of collaboration.</p>
-              </div>
-            </div>
-            <div className="flex items-center space-x-6">
-              {["Twitter", "LinkedIn", "GitHub", "RSS", "Careers"].map((link) => (
-                <span key={link} className="text-xs text-slate-400 hover:text-blue-500 transition-colors cursor-pointer">{link}</span>
-              ))}
-            </div>
+      <footer className="border-t py-10" style={{ borderColor: "#e5e7eb" }}>
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-4 gap-8 text-sm">
+          <div>
+            <div className="font-semibold mb-3" style={{ color: "#166534" }}>GreenShift Insights</div>
+            <p className="text-xs text-gray-400 leading-relaxed">Independent analysis at the intersection of business and sustainability.</p>
           </div>
+          <div>
+            <div className="font-medium mb-3 text-gray-600">Topics</div>
+            <ul className="space-y-2 text-xs text-gray-400">
+              <li>Climate Policy</li><li>ESG Reporting</li><li>Green Tech</li>
+            </ul>
+          </div>
+          <div>
+            <div className="font-medium mb-3 text-gray-600">Company</div>
+            <ul className="space-y-2 text-xs text-gray-400">
+              <li>About Us</li><li>Contributors</li><li>Advertise</li>
+            </ul>
+          </div>
+          <div>
+            <div className="font-medium mb-3 text-gray-600">Legal</div>
+            <ul className="space-y-2 text-xs text-gray-400">
+              <li>Privacy Policy</li><li>Terms of Service</li><li>Cookie Settings</li>
+            </ul>
+          </div>
+        </div>
+        <div className="max-w-6xl mx-auto px-6 mt-8 pt-6 border-t text-xs text-gray-400" style={{ borderColor: "#f3f4f6" }}>
+          &copy; 2026 GreenShift Media, Inc. All rights reserved.
         </div>
       </footer>
     </div>

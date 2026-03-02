@@ -1,144 +1,174 @@
 export default function TravelBrutalistDemo() {
-  const coordinates = [
-    { code: "TYO", name: "TOKYO", lat: "35.6762N", lng: "139.6503E", status: "OPEN", temp: "18C", flights: "3/day" },
-    { code: "REK", name: "REYKJAVIK", lat: "64.1466N", lng: "21.9426W", status: "OPEN", temp: "2C", flights: "1/day" },
-    { code: "NBO", name: "NAIROBI", lat: "1.2921S", lng: "36.8219E", status: "OPEN", temp: "26C", flights: "2/day" },
-    { code: "BOG", name: "BOGOTA", lat: "4.7110N", lng: "74.0721W", status: "OPEN", temp: "14C", flights: "2/day" },
-    { code: "TBS", name: "TBILISI", lat: "41.7151N", lng: "44.8271E", status: "OPEN", temp: "12C", flights: "1/day" },
+  const destinations = [
+    { name: "MONGOLIA", code: "ULN", terrain: "Steppe", temp: "-20 to 35C", note: "Sleep in gers with eagle hunters. No wifi. No roads. Just sky.", price: "$3,200" },
+    { name: "PATAGONIA", code: "EZE", terrain: "Glacial", temp: "-5 to 15C", note: "Trek Torres del Paine until your legs give out. Then keep going.", price: "$2,800" },
+    { name: "ETHIOPIA", code: "ADD", terrain: "Highland", temp: "10 to 25C", note: "Rock-hewn churches, coffee ceremonies, and the Danakil Depression.", price: "$2,400" },
+    { name: "SVALBARD", code: "LYR", terrain: "Arctic", temp: "-30 to 7C", note: "Polar bears outnumber people. Bring courage, not luggage.", price: "$4,100" },
+    { name: "BORNEO", code: "BKI", terrain: "Jungle", temp: "24 to 33C", note: "Orangutans, cave networks, and headhunter heritage trails.", price: "$2,600" },
   ]
-  const catalog = [
-    { id: "RT-001", name: "Trans-Siberian Crossing", days: 14, price: "$3,200", diff: "HARD", note: "Moscow to Vladivostok by rail. No flights. No shortcuts." },
-    { id: "RT-002", name: "Sahara Traverse", days: 10, price: "$2,800", diff: "EXTREME", note: "Camel caravan from Marrakech to Merzouga. Sleep under stars." },
-    { id: "RT-003", name: "Patagonia Circuit", days: 12, price: "$2,400", diff: "MODERATE", note: "Torres del Paine loop. Glaciers, wind, silence." },
-    { id: "RT-004", name: "Mekong Drift", days: 8, price: "$1,600", diff: "EASY", note: "Slow boat from Luang Prabang south. River time." },
+
+  const rules = [
+    "NO RESORTS. If it has a pool bar, we are not going.",
+    "PACK LIGHT. One bag. If you cannot carry it running, leave it.",
+    "EAT LOCAL. Street food only. Your stomach will adapt or you will.",
+    "NO ITINERARIES. We have directions, not schedules.",
+    "LEAVE NO TRACE. Take photos, leave footprints, carry out everything.",
+    "TALK TO STRANGERS. The best stories start with 'excuse me.'",
   ]
-  const routes = [
-    { from: "JFK", to: "NRT", dist: "6,739mi", time: "14h 10m", cost: "$847", stops: "0" },
-    { from: "LAX", to: "KEF", dist: "4,249mi", time: "9h 40m", cost: "$612", stops: "0" },
-    { from: "ORD", to: "JRO", dist: "8,306mi", time: "17h 55m", cost: "$1,104", stops: "1" },
-    { from: "MIA", to: "BOG", dist: "1,788mi", time: "3h 50m", cost: "$328", stops: "0" },
-    { from: "SFO", to: "TBS", dist: "7,181mi", time: "15h 30m", cost: "$936", stops: "1" },
+
+  const calendar = [
+    { month: "MAR 2025", trip: "Mongolia: Eagle Festival", spots: 4, status: "FILLING" },
+    { month: "MAY 2025", trip: "Patagonia: End-to-End Trek", spots: 2, status: "ALMOST GONE" },
+    { month: "JUL 2025", trip: "Svalbard: Midnight Sun", spots: 6, status: "OPEN" },
+    { month: "SEP 2025", trip: "Ethiopia: Omo Valley", spots: 5, status: "OPEN" },
+    { month: "NOV 2025", trip: "Borneo: Rainforest Deep", spots: 1, status: "LAST SPOT" },
   ]
-  const packingList = [
-    "1x passport (valid 6mo+)", "1x photocopy of passport", "2x quick-dry shirts", "1x rain shell", "1x headlamp",
-    "1x water purification tabs", "1x first-aid kit (basic)", "1x power bank 20000mAh", "1x universal adapter", "cash (USD, local)",
+
+  const gear = [
+    { item: "60L PACK", brand: "Osprey Atmos", note: "The only bag you need. Period." },
+    { item: "HEADLAMP", brand: "Petzl Actik", note: "Because you will be somewhere without electricity." },
+    { item: "WATER FILTER", brand: "Sawyer Squeeze", note: "Drink from any river. Seriously." },
+    { item: "MERINO SOCKS", brand: "Darn Tough", note: "Your feet are everything. Treat them right." },
   ]
+
   return (
-    <div className="min-h-screen bg-black text-white" style={{ fontFamily: "'Space Mono', monospace" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-      <nav className="border-b border-neutral-800">
-        <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
-          <span className="text-sm font-bold tracking-widest" style={{ color: "#22c55e" }}>[DEPARTURE]</span>
-          <div className="hidden md:flex space-x-6 text-xs text-neutral-500">
-            <span className="hover:text-white cursor-pointer">COORDINATES</span>
-            <span className="hover:text-white cursor-pointer">CATALOG</span>
-            <span className="hover:text-white cursor-pointer">ROUTES</span>
-            <span className="hover:text-white cursor-pointer">PACK</span>
+    <div style={{ backgroundColor: "#ec4899", fontFamily: "'Bungee', 'Inter', sans-serif" }} className="min-h-screen text-black">
+      <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+
+      {/* Stamp Nav */}
+      <nav className="flex items-center justify-between px-6 py-4 border-b-4 border-black">
+        <div className="flex items-center gap-3">
+          <div className="border-4 border-black px-3 py-1 rotate-[-2deg]">
+            <span className="text-2xl" style={{ fontFamily: "'Bungee', sans-serif" }}>PASSPORT PUNKS</span>
           </div>
-          <span className="text-xs text-neutral-600">SYS.ONLINE</span>
         </div>
+        <div className="hidden md:flex items-center gap-6 text-sm" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500 }}>
+          <a href="#destinations" className="underline underline-offset-4">DESTINATIONS</a>
+          <a href="#rules" className="underline underline-offset-4">THE RULES</a>
+          <a href="#calendar" className="underline underline-offset-4">CALENDAR</a>
+          <a href="#join" className="underline underline-offset-4">JOIN</a>
+        </div>
+        <button className="bg-black text-white px-5 py-2 text-sm" style={{ fontFamily: "'Bungee', sans-serif" }}>APPLY</button>
       </nav>
-      <section className="max-w-6xl mx-auto px-4 py-32">
-        <h1 className="text-8xl font-bold leading-none tracking-tighter">GO.<br/>NOW.</h1>
-        <p className="text-neutral-500 text-sm mt-6 max-w-md">No resorts. No guided tours. No hand-holding. Just raw coordinates and a departure time. The rest is on you.</p>
-        <div className="mt-8 flex space-x-4">
-          <button className="h-10 px-6 text-xs font-bold border border-white text-white hover:bg-white hover:text-black transition-colors">[ENTER]</button>
-          <button className="h-10 px-6 text-xs font-bold text-neutral-500 border border-neutral-700 hover:border-neutral-400 transition-colors">[MANUAL]</button>
+
+      {/* Passport Stamp Hero */}
+      <section className="px-6 py-20 text-center">
+        <div className="max-w-4xl mx-auto">
+          <div className="inline-block border-4 border-black p-8 rotate-[-1deg] mb-8" style={{ borderRadius: "50%" }}>
+            <p className="text-lg" style={{ fontFamily: "'Inter', sans-serif" }}>EST. 2019</p>
+          </div>
+          <h1 className="text-6xl md:text-8xl leading-none mb-6" style={{ fontFamily: "'Bungee', sans-serif" }}>
+            TRAVEL IS<br />NOT TOURISM
+          </h1>
+          <p className="text-xl max-w-xl mx-auto mb-8" style={{ fontFamily: "'Inter', sans-serif" }}>
+            We go where guidebooks end. No five-star hotels. No airport transfers. Just raw, unfiltered planet Earth.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            {["MONGOLIA", "PATAGONIA", "SVALBARD"].map((stamp) => (
+              <div key={stamp} className="border-4 border-black px-4 py-2 rotate-[2deg]" style={{ fontFamily: "'Bungee', sans-serif" }}>
+                {stamp}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
-      <section className="border-t border-neutral-800">
-        <div className="max-w-6xl mx-auto px-4 py-16">
-          <h2 className="text-xs tracking-widest mb-8" style={{ color: "#22c55e" }}>// DESTINATION_COORDINATES</h2>
+
+      {/* Destinations */}
+      <section id="destinations" className="px-6 py-16 bg-black text-white">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-4xl mb-12" style={{ fontFamily: "'Bungee', sans-serif" }}>WHERE WE GO</h2>
+          {destinations.map((dest, i) => (
+            <div key={dest.code} className="border-b-2 border-white py-8 flex flex-col md:flex-row md:items-center gap-4">
+              <div className="flex items-center gap-4 md:w-1/3">
+                <span className="text-3xl" style={{ fontFamily: "'Bungee', sans-serif", color: "#ec4899" }}>{dest.code}</span>
+                <span className="text-xl" style={{ fontFamily: "'Bungee', sans-serif" }}>{dest.name}</span>
+              </div>
+              <div className="md:w-1/2">
+                <p className="text-sm mb-1" style={{ fontFamily: "'Inter', sans-serif" }}>{dest.note}</p>
+                <p className="text-xs opacity-60" style={{ fontFamily: "'Inter', sans-serif" }}>{dest.terrain} &middot; {dest.temp}</p>
+              </div>
+              <div className="md:w-1/6 text-right">
+                <span className="text-xl" style={{ fontFamily: "'Bungee', sans-serif", color: "#ec4899" }}>{dest.price}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* The Rules */}
+      <section id="rules" className="px-6 py-16">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl mb-4" style={{ fontFamily: "'Bungee', sans-serif" }}>THE RULES</h2>
+          <p className="text-base mb-12" style={{ fontFamily: "'Inter', sans-serif" }}>Non-negotiable. Read them. Live them. Or stay home.</p>
           <div className="space-y-4">
-            {coordinates.map((c) => (
-              <div key={c.code} className="flex flex-wrap items-center justify-between border-b border-neutral-900 pb-3 text-xs">
-                <span className="font-bold text-lg tracking-wider w-16">{c.code}</span>
-                <span className="text-neutral-400 w-28">{c.name}</span>
-                <span className="text-neutral-600">{c.lat}</span>
-                <span className="text-neutral-600">{c.lng}</span>
-                <span style={{ color: "#22c55e" }}>{c.status}</span>
-                <span className="text-neutral-500">{c.temp}</span>
-                <span className="text-neutral-600">{c.flights}</span>
+            {rules.map((rule, i) => (
+              <div key={i} className="flex items-start gap-4 border-4 border-black p-4" style={{ transform: `rotate(${i % 2 === 0 ? -0.5 : 0.5}deg)` }}>
+                <span className="text-3xl" style={{ fontFamily: "'Bungee', sans-serif" }}>0{i + 1}</span>
+                <p className="text-base pt-1" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500 }}>{rule}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
-      <section className="border-t border-neutral-800 bg-neutral-950">
-        <div className="max-w-6xl mx-auto px-4 py-16">
-          <h2 className="text-xs tracking-widest mb-8" style={{ color: "#22c55e" }}>// TRIP_CATALOG</h2>
-          <div className="space-y-6">
-            {catalog.map((t) => (
-              <div key={t.id} className="border border-neutral-800 p-5">
-                <div className="flex flex-wrap items-center justify-between mb-2">
-                  <span className="text-xs text-neutral-600">{t.id}</span>
-                  <span className="text-xs font-bold" style={{ color: t.diff === "EXTREME" ? "#ef4444" : t.diff === "HARD" ? "#f59e0b" : "#22c55e" }}>{t.diff}</span>
-                </div>
-                <h3 className="text-lg font-bold mb-1">{t.name}</h3>
-                <p className="text-sm text-neutral-500 mb-3">{t.note}</p>
-                <div className="flex space-x-6 text-xs text-neutral-600">
-                  <span>{t.days} days</span>
-                  <span>{t.price}</span>
-                </div>
+
+      {/* Trip Calendar */}
+      <section id="calendar" className="px-6 py-16 bg-black text-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl mb-12" style={{ fontFamily: "'Bungee', sans-serif" }}>UPCOMING TRIPS</h2>
+          {calendar.map((trip) => (
+            <div key={trip.month} className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white py-6 gap-2">
+              <span className="text-lg" style={{ fontFamily: "'Bungee', sans-serif", color: "#ec4899" }}>{trip.month}</span>
+              <span className="text-sm flex-1 sm:ml-8" style={{ fontFamily: "'Inter', sans-serif" }}>{trip.trip}</span>
+              <div className="flex items-center gap-4">
+                <span className="text-xs px-3 py-1 border border-white" style={{ fontFamily: "'Inter', sans-serif" }}>{trip.spots} SPOTS</span>
+                <span className="text-xs" style={{ fontFamily: "'Bungee', sans-serif", color: trip.status === "LAST SPOT" ? "#fbbf24" : "#ec4899" }}>{trip.status}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Gear List */}
+      <section className="px-6 py-16">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl mb-12" style={{ fontFamily: "'Bungee', sans-serif" }}>GEAR LIST</h2>
+          <div className="grid sm:grid-cols-2 gap-6">
+            {gear.map((g) => (
+              <div key={g.item} className="border-4 border-black p-6">
+                <h3 className="text-xl mb-1" style={{ fontFamily: "'Bungee', sans-serif" }}>{g.item}</h3>
+                <p className="text-sm mb-2" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500 }}>{g.brand}</p>
+                <p className="text-sm opacity-80" style={{ fontFamily: "'Inter', sans-serif" }}>{g.note}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
-      <section className="border-t border-neutral-800">
-        <div className="max-w-6xl mx-auto px-4 py-16">
-          <h2 className="text-xs tracking-widest mb-8" style={{ color: "#22c55e" }}>// ROUTE_DATA</h2>
-          <div className="overflow-x-auto">
-            <table className="w-full text-xs">
-              <thead><tr className="text-left text-neutral-600 border-b border-neutral-800">
-                <th className="pb-3 pr-6">ORIGIN</th><th className="pb-3 pr-6">DEST</th><th className="pb-3 pr-6">DIST</th><th className="pb-3 pr-6">TIME</th><th className="pb-3 pr-6">COST</th><th className="pb-3">STOPS</th>
-              </tr></thead>
-              <tbody>
-                {routes.map((r) => (
-                  <tr key={r.from + r.to} className="border-b border-neutral-900">
-                    <td className="py-3 pr-6 font-bold">{r.from}</td>
-                    <td className="py-3 pr-6 font-bold">{r.to}</td>
-                    <td className="py-3 pr-6 text-neutral-400">{r.dist}</td>
-                    <td className="py-3 pr-6 text-neutral-400">{r.time}</td>
-                    <td className="py-3 pr-6" style={{ color: "#22c55e" }}>{r.cost}</td>
-                    <td className="py-3 text-neutral-500">{r.stops}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+
+      {/* Join the Collective */}
+      <section id="join" className="px-6 py-20 bg-black text-white text-center">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-5xl md:text-6xl mb-6" style={{ fontFamily: "'Bungee', sans-serif" }}>JOIN THE COLLECTIVE</h2>
+          <p className="text-base mb-8 max-w-lg mx-auto" style={{ fontFamily: "'Inter', sans-serif" }}>
+            We accept 200 new members per year. Applications open quarterly. Tell us where you have been and where you need to go.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <input type="email" placeholder="YOUR EMAIL" className="px-6 py-3 text-sm bg-white text-black w-72" style={{ fontFamily: "'Inter', sans-serif" }} />
+            <button className="px-8 py-3 text-sm" style={{ backgroundColor: "#ec4899", fontFamily: "'Bungee', sans-serif" }}>APPLY NOW</button>
           </div>
         </div>
       </section>
-      <section className="border-t border-neutral-800 bg-neutral-950">
-        <div className="max-w-6xl mx-auto px-4 py-16">
-          <h2 className="text-xs tracking-widest mb-8" style={{ color: "#22c55e" }}>// PACKING_LIST</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-            {packingList.map((item, i) => (
-              <div key={i} className="flex items-center space-x-3 text-sm text-neutral-400 py-1">
-                <span className="text-xs text-neutral-700">[{String(i).padStart(2, "0")}]</span>
-                <span>{item}</span>
-              </div>
-            ))}
-          </div>
-          <p className="text-xs text-neutral-700 mt-6">* One bag. Max 7kg carry-on. No checked luggage.</p>
+
+      {/* Stamp Footer */}
+      <footer className="px-6 py-8 border-t-4 border-black flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="border-4 border-black px-3 py-1 rotate-[-1deg]">
+          <span className="text-sm" style={{ fontFamily: "'Bungee', sans-serif" }}>PASSPORT PUNKS</span>
         </div>
-      </section>
-      <section className="border-t border-neutral-800">
-        <div className="max-w-6xl mx-auto px-4 py-20 text-center">
-          <h2 className="text-xs tracking-widest mb-4" style={{ color: "#22c55e" }}>// BOOK_DEPARTURE</h2>
-          <p className="text-neutral-500 text-sm mb-8 max-w-md mx-auto">Enter your code. Pick a date. Show up at the gate. That is the entire process.</p>
-          <div className="flex justify-center space-x-3">
-            <div className="w-40 h-10 border border-neutral-700 bg-neutral-950" />
-            <button className="h-10 px-8 text-xs font-bold text-black transition-colors" style={{ backgroundColor: "#22c55e" }}>[BOOK]</button>
-          </div>
-          <p className="text-xs text-neutral-700 mt-4">No refunds. No cancellations. Commit or stay home.</p>
+        <div className="flex gap-6 text-xs" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500 }}>
+          <span>47 COUNTRIES</span>
+          <span>1,200 MEMBERS</span>
+          <span>0 RESORTS</span>
         </div>
-      </section>
-      <footer className="border-t border-neutral-800">
-        <div className="max-w-6xl mx-auto px-4 py-8 flex justify-between items-center text-xs text-neutral-700">
-          <span>[DEPARTURE] v3.1.0</span>
-          <span>&copy; 2026 // ALL_RIGHTS_RESERVED</span>
-        </div>
+        <p className="text-xs" style={{ fontFamily: "'Inter', sans-serif" }}>&copy; 2025 PASSPORT PUNKS COLLECTIVE</p>
       </footer>
     </div>
   )

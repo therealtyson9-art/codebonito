@@ -1,174 +1,157 @@
 export default function FoodLuxuryDemo() {
-  const navLinks = ["Collections", "Our Chefs", "Tasting Boxes", "Private Events"]
-
   const collections = [
-    { name: "Charcuterie", origin: "Emilia-Romagna, Italy", story: "Our master salumiere sources prosciutto aged 24 months in the hills of Parma, paired with artisanal coppa and bresaola from heritage-breed pigs raised on chestnut and whey." },
-    { name: "Chocolate", origin: "Chuao, Venezuela", story: "Single-origin cacao from the remote Chuao Valley, hand-harvested by the same families for five generations. Each bar is stone-ground for 72 hours to develop its signature floral complexity." },
-    { name: "Wine", origin: "Burgundy, France", story: "Small-production vintages from biodynamic estates across the Cote d'Or. Our sommelier selects fewer than 200 bottles per vintage, favoring terroir expression over commercial appeal." },
-    { name: "Cheese", origin: "Swiss Alps & Loire Valley", story: "Cave-aged Gruyere from alpine dairies and delicate chevre from the Loire, each wheel turned by hand. Our affineur visits every producer personally to ensure peak maturation." },
+    { name: "Les Classiques", pieces: 12, price: "from $48", description: "Our foundation collection. Paris-Brest with praline mousseline, tarte au citron with Italian meringue, and the Saint-Honor\u00e9 that earned our first Michelin mention." },
+    { name: "Jardin Sauvage", pieces: 8, price: "from $62", description: "Floral-infused creations using lavender from Provence, Damask rose, and elderflower. Each piece is a meditation on the garden translated into pastry." },
+    { name: "Noir Collection", pieces: 6, price: "from $55", description: "Single-origin chocolate from Ecuador, Madagascar, and Vietnam. Ganaches layered with smoked salt, yuzu, and tonka bean. For the serious palate." },
+    { name: "Les Saisons", pieces: 10, price: "from $72", description: "A quarterly collection that changes with the harvest. Spring brings rhubarb and verbena. Autumn delivers quince and chestnut. Always ephemeral, always memorable." },
   ]
 
-  const chefs = [
-    { name: "Chef Isabelle Fontaine", title: "Executive Culinary Director", bio: "Trained at Le Cordon Bleu Paris and honed her craft at three-Michelin-star establishments in Lyon and Copenhagen. Isabelle brings 18 years of fine dining experience to every curated collection, with a philosophy rooted in provenance and restraint." },
-    { name: "Chef Takeshi Morimoto", title: "Head of Fermentation & Preservation", bio: "A master of koji, miso, and traditional preservation techniques, Takeshi spent a decade apprenticing in Kyoto before joining our team. His expertise in umami development and natural fermentation transforms our charcuterie and cheese pairings." },
+  const seasonalSpecials = [
+    { name: "Galette des Rois", available: "January", description: "Traditional puff pastry with almond frangipane, golden crown included. A centuries-old celebration of Epiphany." },
+    { name: "Fraisier Printanier", available: "April - June", description: "Genoise sponge layered with mousseline cream and Gariguette strawberries from the Loire Valley." },
+    { name: "B\u00fbche de No\u00ebl", available: "December", description: "Our holiday centerpiece. Chestnut mousse, candied cranberry, and a mirror glaze that captures winter light." },
   ]
 
-  const tastingBoxes = [
-    { name: "The Discovery", price: "$95", desc: "A curated introduction to our world", items: ["Selection of 3 artisanal cheeses", "Prosciutto di Parma (100g)", "Single-origin chocolate bar", "House-made preserves", "Artisan crackers & breadsticks"], serves: "Serves 2" },
-    { name: "The Connoisseur", price: "$165", desc: "Our most popular collection", items: ["Selection of 5 rare cheeses", "Charcuterie board (4 varieties)", "Two chocolate bars with tasting notes", "Half bottle of curated wine", "Seasonal fruit compote", "Hand-harvested honeycomb"], serves: "Serves 4" },
-    { name: "The Grand Reserve", price: "$295", desc: "An extraordinary culinary journey", items: ["Selection of 7 aged cheeses", "Full charcuterie spread (6 varieties)", "Chocolate tasting collection (6 origins)", "Full bottle of reserve wine", "Truffle-infused accompaniments", "Personalized tasting guide", "Engraved wooden presentation board"], serves: "Serves 6-8" },
+  const privateEvents = [
+    { event: "Wedding Towers", description: "Bespoke croquembouche and tiered entremet designs. Consultations begin six months in advance with our head p\u00e2tissier." },
+    { event: "Corporate Gifting", description: "Custom boxes of 12, 24, or 48 pieces with branded packaging. Minimum order four weeks prior." },
+    { event: "Private Masterclass", description: "An intimate three-hour session in our atelier for up to eight guests. Learn lamination, tempering, and plating from our team." },
   ]
 
   return (
-    <div className="min-h-screen bg-[#1a0f0a] text-[#c4a882]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
+    <div style={{ backgroundColor: "#4a0e1c", fontFamily: "'Cormorant Upright', serif" }} className="min-h-screen">
+      <link href="https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300;400;500;600;700&display=swap&family=Inter:wght@300;400&display=swap" rel="stylesheet" />
 
-      {/* Navigation */}
-      <nav className="border-b border-[#2a1f18]">
-        <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-          <span className="text-2xl font-light tracking-[0.15em] text-[#d4a574]">MAISON TERROIR</span>
-          <div className="hidden md:flex items-center space-x-10">
-            {navLinks.map((link) => (
-              <span key={link} className="text-sm tracking-wider text-[#8a7560] hover:text-[#d4a574] cursor-pointer transition-colors">{link}</span>
-            ))}
-          </div>
-          <span className="px-6 py-2.5 border border-[#d4a574] text-[#d4a574] text-sm tracking-wider cursor-pointer hover:bg-[#d4a574] hover:text-[#1a0f0a] transition-all">Reserve</span>
+      {/* Refined Nav */}
+      <nav className="max-w-6xl mx-auto px-8 py-6 flex items-center justify-between">
+        <span className="text-2xl tracking-wider" style={{ color: "#d4a053", fontFamily: "'Cormorant Upright', serif", fontWeight: 600 }}>Maison Laurent</span>
+        <div className="hidden md:flex items-center gap-8 text-sm" style={{ color: "#d4a053", fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>
+          <a href="#collections" className="hover:opacity-70 transition-opacity">Collections</a>
+          <a href="#seasonal" className="hover:opacity-70 transition-opacity">Seasonal</a>
+          <a href="#maison" className="hover:opacity-70 transition-opacity">La Maison</a>
+          <a href="#events" className="hover:opacity-70 transition-opacity">Private Events</a>
+          <a href="#bespoke" className="hover:opacity-70 transition-opacity">Order Bespoke</a>
         </div>
+        <button className="px-5 py-2 text-sm border" style={{ borderColor: "#d4a053", color: "#d4a053", fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>R&eacute;server</button>
       </nav>
 
-      {/* Hero */}
-      <section className="relative">
-        <div className="h-[75vh] bg-gradient-to-b from-[#2a1a10] via-[#1a0f0a] to-[#1a0f0a] flex items-center justify-center">
-          <div className="text-center max-w-2xl px-6">
-            <p className="text-xs tracking-[0.4em] uppercase text-[#8a7560] mb-8">Artisanal Provisions Since 2014</p>
-            <h1 className="text-5xl md:text-7xl font-light text-[#d4a574] leading-tight italic">
-              Curated culinary<br />excellence
-            </h1>
-            <p className="text-lg text-[#8a7560] font-light mt-8 max-w-md mx-auto leading-relaxed">
-              Rare ingredients and time-honored traditions, assembled with reverence for the craft.
-            </p>
-            <div className="mt-12 flex justify-center gap-6">
-              <span className="px-10 py-3.5 bg-[#d4a574] text-[#1a0f0a] text-sm tracking-wider font-medium cursor-pointer hover:bg-[#c4955a] transition-colors">Explore Collections</span>
-              <span className="px-10 py-3.5 border border-[#3a2a1e] text-[#8a7560] text-sm tracking-wider cursor-pointer hover:border-[#d4a574] hover:text-[#d4a574] transition-all">Our Story</span>
-            </div>
+      {/* Plated Cuisine Hero */}
+      <section className="max-w-5xl mx-auto px-8 py-20">
+        <div className="text-center">
+          <p className="text-sm tracking-[0.3em] uppercase mb-6" style={{ color: "#8a6a3a", fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>P&acirc;tisserie &middot; Chocolaterie &middot; Confiserie</p>
+          <h1 className="text-5xl md:text-7xl leading-tight mb-8" style={{ color: "#d4a053", fontFamily: "'Cormorant Upright', serif", fontWeight: 700 }}>
+            The art of<br />French pastry
+          </h1>
+          <p className="text-lg max-w-lg mx-auto leading-relaxed" style={{ color: "#c09050", fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>
+            Since 1987, Maison Laurent has crafted p&acirc;tisseries that honor tradition while embracing the unexpected. Every creation begins with the finest ingredients and ends with wonder.
+          </p>
+        </div>
+        <div className="mt-16 rounded-lg overflow-hidden" style={{ backgroundColor: "#3a0a16", height: "300px" }}>
+          <div className="h-full flex items-center justify-center">
+            <p className="text-sm tracking-widest" style={{ color: "#8a6a3a", fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>Plated Masterpiece</p>
           </div>
         </div>
       </section>
 
-      {/* Artisanal Collections */}
-      <section className="max-w-4xl mx-auto px-6 py-24">
-        <div className="text-center mb-20">
-          <p className="text-xs tracking-[0.4em] uppercase text-[#8a7560] mb-4">The Collections</p>
-          <h2 className="text-4xl font-light text-[#d4a574] italic">Artisanal Provisions</h2>
+      {/* The Art of Patisserie */}
+      <section className="max-w-4xl mx-auto px-8 py-16">
+        <div className="border-t border-b py-16 text-center" style={{ borderColor: "#6b2030" }}>
+          <p className="text-sm tracking-[0.3em] uppercase mb-6" style={{ color: "#8a6a3a", fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>Philosophy</p>
+          <h2 className="text-3xl md:text-4xl mb-8" style={{ color: "#d4a053", fontFamily: "'Cormorant Upright', serif", fontWeight: 600 }}>
+            Precision is poetry
+          </h2>
+          <p className="text-base leading-loose" style={{ color: "#c09050", fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>
+            A croissant requires 27 folds, three days of rest, and the patience to let butter and dough become one. A ganache demands tempering within two degrees. A sugar cage must be spun in under ninety seconds before it crystallizes. These are not recipes. They are disciplines. At Maison Laurent, every p&acirc;tissier apprentices for three years before they place a single creation in our vitrine. We do not rush excellence.
+          </p>
         </div>
-        <div className="space-y-16">
-          {collections.map((col, i) => (
-            <div key={col.name} className={`grid md:grid-cols-2 gap-12 items-center ${i % 2 === 1 ? "md:direction-rtl" : ""}`}>
-              <div className="h-64 bg-gradient-to-br from-[#2a1a10] to-[#1f1510] rounded border border-[#2a1f18]" />
-              <div>
-                <p className="text-xs tracking-[0.3em] uppercase text-[#8a7560] mb-2">{col.origin}</p>
-                <h3 className="text-3xl font-light text-[#d4a574] italic mb-4">{col.name}</h3>
-                <p className="text-sm text-[#8a7560] leading-relaxed">{col.story}</p>
+      </section>
+
+      {/* Signature Collections */}
+      <section id="collections" className="max-w-5xl mx-auto px-8 py-16">
+        <p className="text-sm tracking-[0.3em] uppercase mb-4" style={{ color: "#8a6a3a", fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>Discover</p>
+        <h2 className="text-3xl mb-12" style={{ color: "#d4a053", fontFamily: "'Cormorant Upright', serif", fontWeight: 600 }}>Signature Collections</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {collections.map((col) => (
+            <div key={col.name} className="p-8 rounded-lg" style={{ backgroundColor: "#3a0a16" }}>
+              <div className="flex justify-between items-start mb-4">
+                <h3 className="text-2xl" style={{ color: "#d4a053", fontFamily: "'Cormorant Upright', serif", fontWeight: 600 }}>{col.name}</h3>
+                <span className="text-sm" style={{ color: "#8a6a3a", fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>{col.price}</span>
               </div>
+              <p className="text-sm mb-3" style={{ color: "#8a6a3a", fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>{col.pieces} pi&egrave;ces</p>
+              <p className="text-sm leading-relaxed" style={{ color: "#c09050", fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>{col.description}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Chef Profiles */}
-      <section className="border-y border-[#2a1f18]">
-        <div className="max-w-4xl mx-auto px-6 py-24">
-          <div className="text-center mb-16">
-            <p className="text-xs tracking-[0.4em] uppercase text-[#8a7560] mb-4">Our Artisans</p>
-            <h2 className="text-4xl font-light text-[#d4a574] italic">Master Chefs</h2>
-          </div>
-          <div className="grid md:grid-cols-2 gap-12">
-            {chefs.map((chef) => (
-              <div key={chef.name}>
-                <div className="h-56 bg-gradient-to-b from-[#2a1a10] to-[#1f1510] rounded border border-[#2a1f18] mb-6" />
-                <h3 className="text-xl text-[#d4a574] font-light">{chef.name}</h3>
-                <p className="text-xs tracking-[0.2em] uppercase text-[#8a7560] mt-1">{chef.title}</p>
-                <p className="text-sm text-[#8a7560] mt-4 leading-relaxed">{chef.bio}</p>
+      {/* Seasonal Specials */}
+      <section id="seasonal" className="max-w-4xl mx-auto px-8 py-16">
+        <p className="text-sm tracking-[0.3em] uppercase mb-4" style={{ color: "#8a6a3a", fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>Limited</p>
+        <h2 className="text-3xl mb-12" style={{ color: "#d4a053", fontFamily: "'Cormorant Upright', serif", fontWeight: 600 }}>Seasonal Specials</h2>
+        <div className="space-y-8">
+          {seasonalSpecials.map((item) => (
+            <div key={item.name} className="border-t pt-8" style={{ borderColor: "#6b2030" }}>
+              <div className="flex flex-col md:flex-row md:items-start justify-between gap-3 mb-3">
+                <h3 className="text-xl" style={{ color: "#d4a053", fontFamily: "'Cormorant Upright', serif", fontWeight: 500 }}>{item.name}</h3>
+                <span className="text-xs tracking-widest" style={{ color: "#8a6a3a", fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>{item.available}</span>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Tasting Boxes */}
-      <section className="max-w-5xl mx-auto px-6 py-24">
-        <div className="text-center mb-16">
-          <p className="text-xs tracking-[0.4em] uppercase text-[#8a7560] mb-4">Curated Experiences</p>
-          <h2 className="text-4xl font-light text-[#d4a574] italic">Tasting Boxes</h2>
-          <p className="text-sm text-[#8a7560] mt-4">Each box is assembled by hand and shipped in temperature-controlled packaging.</p>
-        </div>
-        <div className="grid md:grid-cols-3 gap-8">
-          {tastingBoxes.map((box) => (
-            <div key={box.name} className="border border-[#2a1f18] p-8 hover:border-[#d4a574] transition-colors">
-              <h3 className="text-xl text-[#d4a574] font-light italic">{box.name}</h3>
-              <p className="text-xs text-[#8a7560] mt-1">{box.desc}</p>
-              <div className="mt-4 mb-6">
-                <span className="text-3xl font-light text-[#d4a574]">{box.price}</span>
-                <span className="text-xs text-[#6a5a48] ml-2">{box.serves}</span>
-              </div>
-              <ul className="space-y-2">
-                {box.items.map((item) => (
-                  <li key={item} className="text-sm text-[#8a7560] flex items-start gap-2">
-                    <span className="text-[#d4a574] text-xs mt-1">&#9830;</span> {item}
-                  </li>
-                ))}
-              </ul>
-              <span className="inline-block w-full text-center mt-8 py-3 border border-[#d4a574] text-[#d4a574] text-sm tracking-wider cursor-pointer hover:bg-[#d4a574] hover:text-[#1a0f0a] transition-all">Select</span>
+              <p className="text-sm leading-relaxed" style={{ color: "#c09050", fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>{item.description}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Sourcing Philosophy */}
-      <section className="bg-[#150c07]">
-        <div className="max-w-3xl mx-auto px-6 py-24 text-center">
-          <p className="text-xs tracking-[0.4em] uppercase text-[#8a7560] mb-4">Philosophy</p>
-          <h2 className="text-4xl font-light text-[#d4a574] italic mb-8">Sourcing with Intention</h2>
-          <p className="text-[#8a7560] leading-relaxed mb-6">
-            Every ingredient in our collection has a story. We travel to the source -- walking the alpine pastures where our cheese is made, visiting the cacao forests of Venezuela, tasting at the estates where our wines are born.
-          </p>
-          <p className="text-[#8a7560] leading-relaxed">
-            We believe that extraordinary food cannot be rushed or industrialized. Our producers are artisans who measure their craft in generations, not quarterly reports. When you open a Maison Terroir box, you taste the patience and pride of people who have devoted their lives to a single pursuit of perfection.
-          </p>
+      {/* The Maison */}
+      <section id="maison" className="max-w-4xl mx-auto px-8 py-16 text-center">
+        <div className="w-24 h-24 rounded-full mx-auto mb-8" style={{ border: "1px solid #6b2030" }}>
+          <div className="w-full h-full rounded-full flex items-center justify-center">
+            <span className="text-xs" style={{ color: "#8a6a3a", fontFamily: "'Inter', sans-serif" }}>ML</span>
+          </div>
         </div>
+        <p className="text-sm tracking-[0.3em] uppercase mb-4" style={{ color: "#8a6a3a", fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>Heritage</p>
+        <h2 className="text-3xl mb-8" style={{ color: "#d4a053", fontFamily: "'Cormorant Upright', serif", fontWeight: 600 }}>La Maison</h2>
+        <p className="text-base leading-loose" style={{ color: "#c09050", fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>
+          Founded by Chef Isabelle Laurent in 1987, Maison Laurent began as a small atelier on Rue du Faubourg Saint-Honor&eacute; in Paris. Isabelle trained under Gaston Len&ocirc;tre and spent a decade perfecting the balance between classical technique and personal expression. Today, the maison operates from a restored townhouse in the West Village, where a team of twelve p&acirc;tissiers continues the tradition of handcrafted excellence. Every creation is assembled, glazed, and finished by hand. We produce no more than 200 pieces per day.
+        </p>
       </section>
 
       {/* Private Events */}
-      <section className="border-t border-[#2a1f18]">
-        <div className="max-w-4xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-16 items-center">
-          <div>
-            <p className="text-xs tracking-[0.4em] uppercase text-[#8a7560] mb-4">Bespoke Experiences</p>
-            <h2 className="text-3xl font-light text-[#d4a574] italic mb-6">Private Tastings &amp; Events</h2>
-            <p className="text-sm text-[#8a7560] leading-relaxed mb-4">
-              Host an unforgettable evening with a guided tasting led by our chefs and sommeliers. From intimate dinners for six to corporate events for fifty, each experience is tailored to your palate and occasion.
-            </p>
-            <p className="text-sm text-[#8a7560] leading-relaxed mb-8">
-              Private events include a custom menu designed in consultation with Chef Fontaine, sommelier-selected wine pairings, and a take-home gift box for every guest.
-            </p>
-            <span className="px-8 py-3 border border-[#d4a574] text-[#d4a574] text-sm tracking-wider cursor-pointer hover:bg-[#d4a574] hover:text-[#1a0f0a] transition-all">Inquire About Private Events</span>
-          </div>
-          <div className="h-80 bg-gradient-to-br from-[#2a1a10] to-[#1f1510] rounded border border-[#2a1f18]" />
+      <section id="events" className="max-w-4xl mx-auto px-8 py-16">
+        <p className="text-sm tracking-[0.3em] uppercase mb-4" style={{ color: "#8a6a3a", fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>Services</p>
+        <h2 className="text-3xl mb-12" style={{ color: "#d4a053", fontFamily: "'Cormorant Upright', serif", fontWeight: 600 }}>Private Events</h2>
+        <div className="space-y-6">
+          {privateEvents.map((ev) => (
+            <div key={ev.event} className="p-8 rounded-lg" style={{ backgroundColor: "#3a0a16" }}>
+              <h3 className="text-xl mb-3" style={{ color: "#d4a053", fontFamily: "'Cormorant Upright', serif", fontWeight: 500 }}>{ev.event}</h3>
+              <p className="text-sm leading-relaxed" style={{ color: "#c09050", fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>{ev.description}</p>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-[#2a1f18]">
-        <div className="max-w-6xl mx-auto px-6 py-14 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div>
-            <span className="text-xl font-light tracking-[0.15em] text-[#d4a574]">MAISON TERROIR</span>
-            <p className="text-xs text-[#6a5a48] mt-2">Artisanal provisions, curated with care</p>
+      {/* Order Bespoke */}
+      <section id="bespoke" className="max-w-3xl mx-auto px-8 py-16 text-center">
+        <p className="text-sm tracking-[0.3em] uppercase mb-4" style={{ color: "#8a6a3a", fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>Commission</p>
+        <h2 className="text-3xl mb-6" style={{ color: "#d4a053", fontFamily: "'Cormorant Upright', serif", fontWeight: 600 }}>Order Bespoke</h2>
+        <p className="text-base mb-10 leading-relaxed" style={{ color: "#c09050", fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>
+          For celebrations that demand the extraordinary. Share your vision and our head p&acirc;tissier will design a creation entirely for you. Consultations by appointment.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <input type="email" placeholder="your@email.com" className="px-6 py-3 text-sm border outline-none w-64 bg-transparent" style={{ borderColor: "#6b2030", color: "#d4a053", fontFamily: "'Inter', sans-serif" }} />
+          <button className="px-8 py-3 text-sm" style={{ backgroundColor: "#d4a053", color: "#4a0e1c", fontFamily: "'Inter', sans-serif", fontWeight: 500 }}>Request Consultation</button>
+        </div>
+      </section>
+
+      {/* Refined Footer */}
+      <footer className="max-w-5xl mx-auto px-8 py-10 border-t" style={{ borderColor: "#6b2030" }}>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          <span className="text-lg tracking-wider" style={{ color: "#d4a053", fontFamily: "'Cormorant Upright', serif", fontWeight: 600 }}>Maison Laurent</span>
+          <div className="flex flex-col md:flex-row items-center gap-6 text-xs" style={{ color: "#8a6a3a", fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>
+            <span>82 Perry Street, West Village, New York</span>
+            <span>Tue&ndash;Sat: 10am&ndash;7pm &middot; Sun: 10am&ndash;4pm</span>
+            <span>Mon: Ferm&eacute;</span>
           </div>
-          <div className="text-xs text-[#6a5a48] space-x-8">
-            <span className="cursor-pointer hover:text-[#d4a574]">Instagram</span>
-            <span className="cursor-pointer hover:text-[#d4a574]">Newsletter</span>
-            <span className="cursor-pointer hover:text-[#d4a574]">concierge@maisonterroir.com</span>
-          </div>
-          <p className="text-xs text-[#4a3a28]">&copy; 2026 Maison Terroir. All rights reserved.</p>
+          <p className="text-xs" style={{ color: "#6b2030", fontFamily: "'Inter', sans-serif" }}>&copy; 2025 Maison Laurent P&acirc;tisserie</p>
         </div>
       </footer>
     </div>

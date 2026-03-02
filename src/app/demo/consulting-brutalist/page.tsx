@@ -1,169 +1,155 @@
 export default function ConsultingBrutalistDemo() {
-  const metrics = [
-    { value: "$2.3B", label: "CLIENT VALUE DELIVERED" },
-    { value: "340+", label: "ENGAGEMENTS COMPLETED" },
-    { value: "98%", label: "CLIENT RETENTION RATE" },
-    { value: "14", label: "YEARS IN OPERATION" },
-  ]
+  const industries = [
+    { name: "RETAIL", desc: "We tore apart a legacy department store chain's operations and rebuilt them for the DTC era. Revenue up 210%.", icon: "🏬" },
+    { name: "FINTECH", desc: "Took a stagnant banking app and turned it into the fastest-growing neobank in Latin America in 14 months.", icon: "💳" },
+    { name: "HEALTHCARE", desc: "Demolished a hospital network's 1990s patient flow model and built a system that cut wait times by 68%.", icon: "🏥" },
+    { name: "LOGISTICS", desc: "Rewired a freight company's entire routing system. They now move 40% more cargo with the same fleet.", icon: "🚛" },
+  ];
+
+  const results = [
+    { number: "$3.1B", label: "VALUE CREATED" },
+    { number: "412", label: "COMPANIES TRANSFORMED" },
+    { number: "68%", label: "AVG COST REDUCTION" },
+    { number: "14", label: "COUNTRIES" },
+  ];
 
   const methodology = [
-    { id: "001", title: "DIAGNOSTIC AUDIT", body: "We disassemble your operations down to first principles. No frameworks borrowed from textbooks. Raw data analysis, stakeholder pressure-testing, and unfiltered assessment of where you actually stand versus where you think you stand." },
-    { id: "002", title: "INTERVENTION DESIGN", body: "We architect solutions that are specific to your dysfunction. No slide decks that collect dust. Every recommendation comes with an implementation timeline, resource allocation model, and a kill switch if assumptions prove wrong." },
-    { id: "003", title: "EXECUTION & MEASUREMENT", body: "We embed with your teams and stay until the numbers move. Weekly performance dashboards. No vanity metrics. If it cannot be measured, it does not exist in our methodology." },
-  ]
+    { phase: "01", name: "DEMOLISH", desc: "We rip apart your current model. No sacred cows. We find every assumption that is costing you money and expose it." },
+    { phase: "02", name: "REBUILD", desc: "We design a new operating model from scratch, pressure-tested against your market reality and growth ambitions." },
+    { phase: "03", name: "IGNITE", desc: "We don't leave you with a deck. We embed with your team and execute until the numbers move." },
+  ];
 
-  const teamRegistry = [
-    { id: "TR-001", name: "MARCUS COLE", title: "FOUNDING PARTNER", focus: "OPERATIONAL RESTRUCTURING", tenure: "14 YRS" },
-    { id: "TR-002", name: "HANA VOSS", title: "MANAGING DIRECTOR", focus: "DIGITAL INFRASTRUCTURE", tenure: "9 YRS" },
-    { id: "TR-003", name: "RAFAEL ORTEGA", title: "SENIOR PARTNER", focus: "FINANCIAL STRATEGY", tenure: "11 YRS" },
-    { id: "TR-004", name: "DIANA CHEN", title: "PARTNER", focus: "CHANGE ARCHITECTURE", tenure: "7 YRS" },
-    { id: "TR-005", name: "ALEXEI PETROV", title: "DIRECTOR", focus: "DATA & ANALYTICS", tenure: "5 YRS" },
-  ]
+  const testimonials = [
+    { quote: "BLAZE walked in, told us everything we were doing wrong, and then actually fixed it. Revenue doubled in 11 months.", author: "CEO, Series C SaaS Company" },
+    { quote: "They don't sugarcoat anything. That's exactly what we needed. Our board was finally hearing the truth.", author: "CFO, Public Retail Chain" },
+    { quote: "I've worked with McKinsey, BCG, and Deloitte. BLAZE delivered more in 90 days than all of them combined.", author: "COO, Healthcare Network" },
+  ];
 
-  const engagements = [
-    { model: "SPRINT", duration: "4-8 WEEKS", scope: "Single problem, rapid diagnosis and intervention", rate: "$45K/WEEK" },
-    { model: "EMBEDDED", duration: "3-12 MONTHS", scope: "Full operational transformation with on-site team", rate: "$180K/MONTH" },
-    { model: "RETAINER", duration: "ONGOING", scope: "Strategic advisory, board-level counsel, quarterly reviews", rate: "$35K/MONTH" },
-  ]
-
-  const caseData = [
-    { ref: "CD-2025-041", client: "INDUSTRIAL MANUFACTURER [REDACTED]", problem: "38% margin erosion over 3 fiscal years", outcome: "Restored to 22% EBITDA margin in 14 months" },
-    { ref: "CD-2025-027", client: "SERIES C FINTECH [REDACTED]", problem: "Failed to scale past 200 employees without quality collapse", outcome: "Restructured org to support 600+ with zero service degradation" },
-    { ref: "CD-2024-089", client: "REGIONAL HEALTH NETWORK [REDACTED]", problem: "$90M annual waste in supply chain operations", outcome: "Recovered $64M annually through procurement redesign" },
-  ]
+  const founders = [
+    { name: "RICO BLAZE", title: "Co-Founder & CEO", bio: "Ex-BCG. Left big consulting because he was tired of billing for PowerPoint. Built three companies before founding BLAZE." },
+    { name: "TANYA KOVAL", title: "Co-Founder & COO", bio: "Former Amazon GM. Ran operations for a $2B division. Joins every engagement personally for the first 30 days." },
+  ];
 
   return (
-    <div className="min-h-screen bg-black text-white" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-      <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <div style={{ fontFamily: "'Inter', sans-serif" }} className="min-h-screen">
+      <link href="https://fonts.googleapis.com/css2?family=Secular+One&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
 
-      {/* Nav */}
-      <nav className="border-b border-neutral-800 px-6 py-4 flex items-center justify-between">
-        <span className="text-sm font-bold tracking-widest" style={{ color: "#06b6d4" }}>BLACKLINE_CONSULTING</span>
-        <div className="hidden md:flex items-center space-x-6">
-          {["METHODOLOGY", "TEAM", "ENGAGEMENT", "CONTACT"].map((item) => (
-            <span key={item} className="text-xs text-neutral-500 hover:text-white cursor-pointer transition-colors tracking-wider">{item}</span>
-          ))}
-        </div>
-        <span className="text-xs text-neutral-600">[MENU]</span>
-      </nav>
-
-      {/* Hero */}
-      <section className="px-6 py-32 border-b border-neutral-800">
-        <div className="max-w-5xl mx-auto">
-          <h1 className="text-5xl md:text-8xl font-bold leading-none tracking-tighter">
-            RESULTS.<br />NOT REPORTS.
-          </h1>
-          <p className="mt-8 text-sm text-neutral-500 max-w-lg leading-relaxed tracking-wide">
-            We are not here to validate what you already know. We are here to find what you are missing, fix what is broken, and leave when the job is done.
-          </p>
-        </div>
-      </section>
-
-      {/* Impact Metrics */}
-      <section className="border-b border-neutral-800 px-6 py-20">
-        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
-          {metrics.map((m) => (
-            <div key={m.label} className="border border-neutral-800 p-6">
-              <p className="text-3xl md:text-4xl font-bold" style={{ color: "#06b6d4" }}>{m.value}</p>
-              <p className="text-xs text-neutral-500 mt-3 tracking-wider">{m.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Methodology */}
-      <section className="border-b border-neutral-800 px-6 py-20">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-xs text-neutral-600 tracking-widest mb-12">// METHODOLOGY</p>
-          {methodology.map((m) => (
-            <div key={m.id} className="border-t border-neutral-800 py-10">
-              <div className="flex items-start gap-6">
-                <span className="text-xs text-neutral-600 mt-1">{m.id}</span>
-                <div>
-                  <h3 className="text-lg font-bold tracking-wider" style={{ color: "#06b6d4" }}>{m.title}</h3>
-                  <p className="text-sm text-neutral-400 mt-4 leading-relaxed max-w-2xl">{m.body}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Team Registry */}
-      <section className="border-b border-neutral-800 px-6 py-20">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-xs text-neutral-600 tracking-widest mb-12">// TEAM REGISTRY</p>
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-sm">
-              <thead>
-                <tr className="border-b border-neutral-700">
-                  {["ID", "NAME", "TITLE", "FOCUS", "TENURE"].map((h) => (
-                    <th key={h} className="py-3 pr-6 text-xs text-neutral-600 tracking-widest font-normal">{h}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {teamRegistry.map((t) => (
-                  <tr key={t.id} className="border-b border-neutral-800 hover:bg-neutral-900 transition-colors">
-                    <td className="py-4 pr-6 text-xs text-neutral-600">{t.id}</td>
-                    <td className="py-4 pr-6 font-medium">{t.name}</td>
-                    <td className="py-4 pr-6 text-neutral-400">{t.title}</td>
-                    <td className="py-4 pr-6 text-xs" style={{ color: "#06b6d4" }}>{t.focus}</td>
-                    <td className="py-4 text-neutral-500">{t.tenure}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+      <div style={{ backgroundColor: "#f97316", color: "#000000" }}>
+        {/* Block Nav */}
+        <nav className="flex items-center justify-between px-6 py-4 border-b-4 border-black">
+          <span style={{ fontFamily: "'Secular One', sans-serif", fontSize: "24px" }}>BLAZE</span>
+          <div className="hidden md:flex gap-6 text-sm font-medium uppercase">
+            <a href="#">Industries</a>
+            <a href="#">Results</a>
+            <a href="#">Method</a>
+            <a href="#">Founders</a>
           </div>
-        </div>
-      </section>
+          <button className="px-5 py-2 bg-black text-white text-sm font-medium uppercase">Book a Session</button>
+        </nav>
 
-      {/* Engagement Models */}
-      <section className="border-b border-neutral-800 px-6 py-20">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-xs text-neutral-600 tracking-widest mb-12">// ENGAGEMENT MODELS</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
-            {engagements.map((e) => (
-              <div key={e.model} className="border border-neutral-800 p-8">
-                <p className="text-xl font-bold" style={{ color: "#06b6d4" }}>{e.model}</p>
-                <p className="text-xs text-neutral-600 mt-2 tracking-wider">{e.duration}</p>
-                <p className="text-sm text-neutral-400 mt-6 leading-relaxed">{e.scope}</p>
-                <p className="text-lg font-bold mt-6">{e.rate}</p>
+        {/* Manifesto Hero */}
+        <section className="px-6 py-24 max-w-5xl mx-auto">
+          <h1 style={{ fontFamily: "'Secular One', sans-serif", fontSize: "56px", lineHeight: 1.1 }} className="mb-8">YOUR BUSINESS<br />IS BROKEN.<br />WE FIX IT.</h1>
+          <p className="text-lg max-w-2xl mb-8 leading-relaxed">BLAZE Consulting doesn&apos;t polish what&apos;s already failing. We tear down what isn&apos;t working and rebuild it stronger, faster, and leaner. If you want comfort, hire someone else. If you want results, call us.</p>
+          <button className="px-8 py-4 bg-black text-white text-sm font-medium uppercase tracking-wider">Get Blazed</button>
+        </section>
+
+        {/* Industries We Wreck */}
+        <section className="px-6 py-16 border-t-4 border-black">
+          <h2 style={{ fontFamily: "'Secular One', sans-serif", fontSize: "32px" }} className="text-center mb-12">INDUSTRIES WE WRECK (AND REBUILD)</h2>
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
+            {industries.map((ind) => (
+              <div key={ind.name} className="border-4 border-black p-8 bg-white">
+                <div className="flex items-center gap-4 mb-4">
+                  <span className="text-4xl">{ind.icon}</span>
+                  <h3 style={{ fontFamily: "'Secular One', sans-serif", fontSize: "22px" }}>{ind.name}</h3>
+                </div>
+                <p className="text-sm leading-relaxed">{ind.desc}</p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Case Data */}
-      <section className="border-b border-neutral-800 px-6 py-20">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-xs text-neutral-600 tracking-widest mb-12">// CASE DATA</p>
-          {caseData.map((c) => (
-            <div key={c.ref} className="border-t border-neutral-800 py-8">
-              <div className="flex flex-col md:flex-row md:items-start gap-6">
-                <span className="text-xs text-neutral-600 shrink-0 w-28">{c.ref}</span>
-                <div className="flex-1">
-                  <p className="text-sm font-medium">{c.client}</p>
-                  <p className="text-xs text-neutral-500 mt-2">PROBLEM: {c.problem}</p>
-                  <p className="text-xs mt-1" style={{ color: "#06b6d4" }}>OUTCOME: {c.outcome}</p>
+        {/* Results */}
+        <section className="px-6 py-16 bg-black text-white">
+          <h2 style={{ fontFamily: "'Secular One', sans-serif", fontSize: "32px" }} className="text-center mb-12" >THE NUMBERS DON&apos;T LIE</h2>
+          <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+            {results.map((r) => (
+              <div key={r.label} className="text-center">
+                <div style={{ fontFamily: "'Secular One', sans-serif", fontSize: "42px", color: "#f97316" }}>{r.number}</div>
+                <div className="text-xs uppercase tracking-wider mt-2" style={{ color: "#9ca3af" }}>{r.label}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Methodology */}
+        <section className="px-6 py-16 border-t-4 border-black">
+          <h2 style={{ fontFamily: "'Secular One', sans-serif", fontSize: "32px" }} className="text-center mb-12">THE BLAZE METHOD</h2>
+          <div className="max-w-4xl mx-auto space-y-8">
+            {methodology.map((m) => (
+              <div key={m.phase} className="border-4 border-black p-8 flex gap-8 items-start">
+                <span style={{ fontFamily: "'Secular One', sans-serif", fontSize: "48px", lineHeight: 1 }}>{m.phase}</span>
+                <div>
+                  <h3 style={{ fontFamily: "'Secular One', sans-serif", fontSize: "22px" }} className="mb-2">{m.name}</h3>
+                  <p className="text-sm leading-relaxed">{m.desc}</p>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="px-6 py-10">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-          <div>
-            <span className="text-xs font-bold tracking-widest" style={{ color: "#06b6d4" }}>BLACKLINE_CONSULTING</span>
-            <p className="text-xs text-neutral-600 mt-1">INQUIRIES: ENGAGE@BLACKLINE.CO</p>
+            ))}
           </div>
-          <p className="text-xs text-neutral-700">&copy; 2026 BLACKLINE CONSULTING GROUP. ALL RIGHTS RESERVED.</p>
-        </div>
-      </footer>
+        </section>
+
+        {/* Testimonials */}
+        <section className="px-6 py-16 border-t-4 border-black">
+          <h2 style={{ fontFamily: "'Secular One', sans-serif", fontSize: "32px" }} className="text-center mb-12">WHAT CLIENTS SAY</h2>
+          <div className="max-w-4xl mx-auto space-y-6">
+            {testimonials.map((t) => (
+              <div key={t.author} className="border-4 border-black p-8 bg-white">
+                <p className="text-base leading-relaxed mb-4" style={{ fontStyle: "italic" }}>&ldquo;{t.quote}&rdquo;</p>
+                <p className="text-xs uppercase tracking-wider font-medium" style={{ color: "#6b7280" }}>&mdash; {t.author}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Founders */}
+        <section className="px-6 py-16 border-t-4 border-black">
+          <h2 style={{ fontFamily: "'Secular One', sans-serif", fontSize: "32px" }} className="text-center mb-12">THE FOUNDERS</h2>
+          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+            {founders.map((f) => (
+              <div key={f.name} className="border-4 border-black p-8 bg-white">
+                <div className="w-full h-40 mb-6 bg-black flex items-center justify-center">
+                  <span className="text-5xl">🔥</span>
+                </div>
+                <h3 style={{ fontFamily: "'Secular One', sans-serif", fontSize: "20px" }} className="mb-1">{f.name}</h3>
+                <p className="text-xs uppercase tracking-wider mb-3" style={{ color: "#6b7280" }}>{f.title}</p>
+                <p className="text-sm leading-relaxed">{f.bio}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Book a Session CTA */}
+        <section className="px-6 py-20 bg-black text-center">
+          <h2 style={{ fontFamily: "'Secular One', sans-serif", fontSize: "36px", color: "#f97316" }} className="mb-6">STOP OPTIMIZING.<br />START TRANSFORMING.</h2>
+          <p className="text-sm mb-8 max-w-md mx-auto" style={{ color: "#9ca3af" }}>Book a 30-minute no-BS session with a BLAZE founder. If we can&apos;t find $1M in value in the first call, we&apos;ll buy you dinner.</p>
+          <button className="px-10 py-4 text-sm font-medium uppercase tracking-wider" style={{ backgroundColor: "#f97316", color: "#000" }}>Book a Session</button>
+        </section>
+
+        {/* Footer */}
+        <footer className="border-t-4 border-black px-6 py-8">
+          <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <span style={{ fontFamily: "'Secular One', sans-serif", fontSize: "16px" }}>BLAZE CONSULTING</span>
+            <div className="text-xs uppercase tracking-wider flex gap-6">
+              <a href="#">LinkedIn</a>
+              <a href="#">Twitter</a>
+              <a href="#">Careers</a>
+              <a href="#">Legal</a>
+            </div>
+            <span className="text-xs">&copy; 2026 BLAZE. NO RIGHTS RESERVED. JUST RESULTS.</span>
+          </div>
+        </footer>
+      </div>
     </div>
-  )
+  );
 }

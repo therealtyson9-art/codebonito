@@ -1,157 +1,176 @@
 export default function EducationBrutalistDemo() {
-  const courses = [
-    { code: "CS101", title: "Introduction to Computer Science", credits: 4, instructor: "Prof. Nakamura", schedule: "MWF 09:00-10:15", seats: "32/40" },
-    { code: "MATH201", title: "Linear Algebra & Applications", credits: 3, instructor: "Prof. Volkov", schedule: "TTh 13:00-14:30", seats: "28/35" },
-    { code: "ENG105", title: "Rhetoric & Composition", credits: 3, instructor: "Prof. Adeyemi", schedule: "MWF 11:00-12:15", seats: "19/25" },
-    { code: "PHYS301", title: "Quantum Mechanics I", credits: 4, instructor: "Prof. Lindqvist", schedule: "TTh 09:00-10:30", seats: "15/20" },
-  ]
+  const skillTrees = [
+    {
+      title: "FRONTEND",
+      skills: ["HTML & CSS", "JavaScript ES6+", "React.js", "TypeScript", "Next.js", "Testing"],
+      color: "#00d4ff",
+    },
+    {
+      title: "BACKEND",
+      skills: ["Node.js", "Python", "Databases", "REST APIs", "GraphQL", "Auth & Security"],
+      color: "#ff00e5",
+    },
+    {
+      title: "DEVOPS",
+      skills: ["Git & GitHub", "Docker", "CI/CD", "AWS Cloud", "Kubernetes", "Monitoring"],
+      color: "#39ff14",
+    },
+  ];
 
-  const faculty = [
-    { name: "Yuki Nakamura", dept: "Computer Science", title: "Associate Professor", publications: 47, hIndex: 22 },
-    { name: "Alexei Volkov", dept: "Mathematics", title: "Full Professor", publications: 83, hIndex: 31 },
-    { name: "Adaeze Adeyemi", dept: "English", title: "Assistant Professor", publications: 19, hIndex: 12 },
-    { name: "Erik Lindqvist", dept: "Physics", title: "Full Professor", publications: 112, hIndex: 45 },
-    { name: "Clara Reyes", dept: "Biology", title: "Associate Professor", publications: 56, hIndex: 27 },
-  ]
+  const leaderboard = [
+    { rank: 1, name: "xN1GHTH4WKx", xp: 48750, level: 42, badge: "LEGENDARY" },
+    { rank: 2, name: "c0deSamurai", xp: 45200, level: 39, badge: "EPIC" },
+    { rank: 3, name: "bitCrusher99", xp: 42100, level: 37, badge: "EPIC" },
+    { rank: 4, name: "devDragon_", xp: 39800, level: 35, badge: "RARE" },
+    { rank: 5, name: "pixelNinja42", xp: 37500, level: 33, badge: "RARE" },
+  ];
 
-  const stats = [
-    { label: "RESEARCH PAPERS PUBLISHED", value: "2,847" },
-    { label: "ACTIVE GRANTS (USD)", value: "$34.2M" },
-    { label: "PATENTS FILED", value: "189" },
-    { label: "PHD CANDIDATES", value: "412" },
-  ]
-
-  const calendar = [
-    { date: "AUG 26", event: "Fall Semester Begins" },
-    { date: "SEP 02", event: "Add/Drop Deadline" },
-    { date: "OCT 14-18", event: "Midterm Examinations" },
-    { date: "NOV 25-29", event: "Thanksgiving Recess" },
-    { date: "DEC 09-20", event: "Final Examinations" },
-    { date: "JAN 13", event: "Spring Semester Begins" },
-  ]
+  const achievements = [
+    { icon: "🏆", name: "FIRST BLOOD", desc: "Complete your first challenge" },
+    { icon: "⚡", name: "SPEED DEMON", desc: "Solve a problem in under 60 seconds" },
+    { icon: "🔥", name: "ON FIRE", desc: "Complete a 30-day streak" },
+    { icon: "💀", name: "BOSS SLAYER", desc: "Beat all boss challenges in a track" },
+    { icon: "🌟", name: "PERFECTIONIST", desc: "Score 100% on 10 quizzes" },
+    { icon: "🎮", name: "MULTIPLAYER", desc: "Win 5 head-to-head code battles" },
+  ];
 
   return (
-    <div className="min-h-screen bg-black text-white" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-      <head><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet" /></head>
+    <div style={{ fontFamily: "'Inter', sans-serif" }} className="min-h-screen" >
+      <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
 
-      <nav className="border-b border-neutral-800">
-        <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
-          <span className="text-sm font-bold text-green-500 tracking-widest">BLACKBOX_UNIVERSITY</span>
-          <div className="hidden md:flex items-center space-x-6">
-            <span className="text-xs text-neutral-500 hover:text-green-500 cursor-pointer transition-colors uppercase tracking-wider">Catalog</span>
-            <span className="text-xs text-neutral-500 hover:text-green-500 cursor-pointer transition-colors uppercase tracking-wider">Faculty</span>
-            <span className="text-xs text-neutral-500 hover:text-green-500 cursor-pointer transition-colors uppercase tracking-wider">Research</span>
-            <span className="text-xs text-neutral-500 hover:text-green-500 cursor-pointer transition-colors uppercase tracking-wider">Apply</span>
+      <div style={{ backgroundColor: "#0a0a0a", color: "#00d4ff" }}>
+        {/* Pixel Nav */}
+        <nav className="border-b-4 px-6 py-4 flex items-center justify-between" style={{ borderColor: "#00d4ff" }}>
+          <span style={{ fontFamily: "'Press Start 2P', cursive", fontSize: "14px" }}>CODE QUEST</span>
+          <div className="hidden md:flex gap-6 text-xs font-medium uppercase tracking-wider" style={{ color: "#00d4ff" }}>
+            <a href="#">Skill Trees</a>
+            <a href="#">Leaderboard</a>
+            <a href="#">Achievements</a>
+            <a href="#">Pricing</a>
           </div>
-        </div>
-      </nav>
+          <button className="text-xs px-4 py-2 border-2 font-medium" style={{ borderColor: "#00d4ff", color: "#00d4ff" }}>LOG IN</button>
+        </nav>
 
-      <section className="max-w-6xl mx-auto px-4 py-24">
-        <h1 className="text-6xl font-bold leading-none mb-6">LEARN.<br />BUILD.<br />SHIP.</h1>
-        <p className="text-neutral-500 text-sm max-w-lg mb-8">No fluff. No hand-holding. We teach you to think critically, build real systems, and ship work that matters. Applications for Fall 2026 are open.</p>
-        <button className="px-6 py-3 text-xs font-bold uppercase tracking-widest bg-green-500 text-black hover:bg-green-400 transition-colors">Apply Now &rarr;</button>
-      </section>
+        {/* 8-bit Hero */}
+        <section className="px-6 py-20 text-center">
+          <div className="max-w-3xl mx-auto">
+            <div className="mb-8 flex justify-center">
+              <div className="w-64 h-48 border-4 flex items-center justify-center" style={{ borderColor: "#00d4ff", backgroundColor: "#111" }}>
+                <span style={{ fontFamily: "'Press Start 2P', cursive", fontSize: "10px", color: "#00d4ff" }}>&gt; PIXEL ART HERO &lt;</span>
+              </div>
+            </div>
+            <h1 style={{ fontFamily: "'Press Start 2P', cursive", fontSize: "28px", lineHeight: "1.6" }} className="mb-6">LEVEL UP YOUR CODE SKILLS</h1>
+            <p className="text-base mb-8 max-w-xl mx-auto" style={{ color: "#9ca3af" }}>The gamified coding bootcamp where every lesson is a quest, every project is a boss battle, and every skill you learn earns XP.</p>
+            <button className="px-8 py-4 text-sm font-bold uppercase tracking-wider" style={{ backgroundColor: "#00d4ff", color: "#0a0a0a" }}>START YOUR QUEST</button>
+          </div>
+        </section>
 
-      <section className="border-t border-neutral-800">
-        <div className="max-w-6xl mx-auto px-4 py-16">
-          <h2 className="text-xs font-bold text-green-500 uppercase tracking-widest mb-8">// COURSE CATALOG</h2>
-          <div className="space-y-4">
-            {courses.map((c) => (
-              <div key={c.code} className="border border-neutral-800 p-4 hover:border-green-500 transition-colors">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-                  <div>
-                    <span className="text-green-500 font-bold text-sm">{c.code}</span>
-                    <span className="text-neutral-500 text-sm ml-2">// {c.credits} credits</span>
-                    <h3 className="text-white text-sm font-bold mt-1">{c.title}</h3>
-                  </div>
-                  <div className="text-right text-xs text-neutral-500 space-y-1">
-                    <p>{c.instructor}</p>
-                    <p>{c.schedule}</p>
-                    <p>Seats: {c.seats}</p>
-                  </div>
+        {/* Skill Trees */}
+        <section className="px-6 py-16">
+          <h2 style={{ fontFamily: "'Press Start 2P', cursive", fontSize: "18px" }} className="text-center mb-12">SKILL TREES</h2>
+          <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
+            {skillTrees.map((tree) => (
+              <div key={tree.title} className="border-2 p-6" style={{ borderColor: tree.color }}>
+                <h3 style={{ fontFamily: "'Press Start 2P', cursive", fontSize: "14px", color: tree.color }} className="mb-6">{tree.title}</h3>
+                <ul className="space-y-3">
+                  {tree.skills.map((skill, i) => (
+                    <li key={skill} className="flex items-center gap-3 text-sm">
+                      <span className="w-6 h-6 flex items-center justify-center text-xs border" style={{ borderColor: tree.color, color: tree.color }}>
+                        {i + 1}
+                      </span>
+                      <span style={{ color: "#e5e7eb" }}>{skill}</span>
+                      <span className="ml-auto text-xs" style={{ color: tree.color }}>{(i + 1) * 500} XP</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Leaderboard */}
+        <section className="px-6 py-16">
+          <h2 style={{ fontFamily: "'Press Start 2P', cursive", fontSize: "18px" }} className="text-center mb-12">LEADERBOARD</h2>
+          <div className="max-w-2xl mx-auto border-2" style={{ borderColor: "#00d4ff" }}>
+            {leaderboard.map((player) => (
+              <div key={player.rank} className="flex items-center justify-between px-6 py-4 border-b" style={{ borderColor: "#1a1a2e" }}>
+                <div className="flex items-center gap-4">
+                  <span style={{ fontFamily: "'Press Start 2P', cursive", fontSize: "12px", color: player.rank <= 3 ? "#fbbf24" : "#6b7280" }}>#{player.rank}</span>
+                  <span className="text-sm font-medium" style={{ color: "#e5e7eb" }}>{player.name}</span>
+                </div>
+                <div className="flex items-center gap-6 text-xs">
+                  <span style={{ color: "#00d4ff" }}>LVL {player.level}</span>
+                  <span style={{ color: "#9ca3af" }}>{player.xp.toLocaleString()} XP</span>
+                  <span className="px-2 py-1 text-xs" style={{ fontFamily: "'Press Start 2P', cursive", fontSize: "8px", color: player.badge === "LEGENDARY" ? "#fbbf24" : player.badge === "EPIC" ? "#a855f7" : "#00d4ff" }}>{player.badge}</span>
                 </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="border-t border-neutral-800">
-        <div className="max-w-6xl mx-auto px-4 py-16">
-          <h2 className="text-xs font-bold text-green-500 uppercase tracking-widest mb-8">// FACULTY REGISTRY</h2>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-neutral-800 text-left">
-                  <th className="py-3 pr-4 text-xs text-neutral-500 uppercase tracking-wider">Name</th>
-                  <th className="py-3 pr-4 text-xs text-neutral-500 uppercase tracking-wider">Department</th>
-                  <th className="py-3 pr-4 text-xs text-neutral-500 uppercase tracking-wider">Title</th>
-                  <th className="py-3 pr-4 text-xs text-neutral-500 uppercase tracking-wider">Publications</th>
-                  <th className="py-3 text-xs text-neutral-500 uppercase tracking-wider">h-Index</th>
-                </tr>
-              </thead>
-              <tbody>
-                {faculty.map((f) => (
-                  <tr key={f.name} className="border-b border-neutral-900 hover:bg-neutral-900 transition-colors">
-                    <td className="py-3 pr-4 text-white font-bold">{f.name}</td>
-                    <td className="py-3 pr-4 text-neutral-400">{f.dept}</td>
-                    <td className="py-3 pr-4 text-neutral-400">{f.title}</td>
-                    <td className="py-3 pr-4 text-green-500">{f.publications}</td>
-                    <td className="py-3 text-green-500">{f.hIndex}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-t border-neutral-800 bg-neutral-950">
-        <div className="max-w-6xl mx-auto px-4 py-16">
-          <h2 className="text-xs font-bold text-green-500 uppercase tracking-widest mb-8">// RESEARCH OUTPUT</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {stats.map((s) => (
-              <div key={s.label}>
-                <p className="text-3xl font-bold text-white mb-1">{s.value}</p>
-                <p className="text-xs text-neutral-500 uppercase tracking-wider">{s.label}</p>
+        {/* Achievements */}
+        <section className="px-6 py-16">
+          <h2 style={{ fontFamily: "'Press Start 2P', cursive", fontSize: "18px" }} className="text-center mb-12">ACHIEVEMENTS</h2>
+          <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-4">
+            {achievements.map((a) => (
+              <div key={a.name} className="border-2 p-4 text-center" style={{ borderColor: "#1f2937" }}>
+                <div className="text-3xl mb-2">{a.icon}</div>
+                <h3 style={{ fontFamily: "'Press Start 2P', cursive", fontSize: "10px", color: "#00d4ff" }} className="mb-2">{a.name}</h3>
+                <p className="text-xs" style={{ color: "#6b7280" }}>{a.desc}</p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="border-t border-neutral-800">
-        <div className="max-w-6xl mx-auto px-4 py-16">
-          <h2 className="text-xs font-bold text-green-500 uppercase tracking-widest mb-8">// ACADEMIC CALENDAR 2026-2027</h2>
-          <div className="space-y-3">
-            {calendar.map((c) => (
-              <div key={c.event} className="flex items-center space-x-4 text-sm">
-                <span className="text-green-500 font-bold w-24 flex-shrink-0">{c.date}</span>
-                <span className="text-neutral-300">{c.event}</span>
-              </div>
-            ))}
+        {/* Pricing */}
+        <section className="px-6 py-16">
+          <h2 style={{ fontFamily: "'Press Start 2P', cursive", fontSize: "18px" }} className="text-center mb-12">CHOOSE YOUR PATH</h2>
+          <div className="max-w-3xl mx-auto grid md:grid-cols-2 gap-8">
+            <div className="border-2 p-8" style={{ borderColor: "#374151" }}>
+              <h3 style={{ fontFamily: "'Press Start 2P', cursive", fontSize: "14px", color: "#9ca3af" }} className="mb-2">FREE</h3>
+              <div className="text-3xl font-bold mb-6" style={{ color: "#e5e7eb" }}>$0<span className="text-sm font-normal" style={{ color: "#6b7280" }}>/forever</span></div>
+              <ul className="space-y-3 text-sm" style={{ color: "#9ca3af" }}>
+                <li>+ 20 beginner challenges</li>
+                <li>+ Community forums</li>
+                <li>+ Basic skill tracking</li>
+                <li>+ Weekly coding puzzles</li>
+              </ul>
+            </div>
+            <div className="border-2 p-8" style={{ borderColor: "#00d4ff" }}>
+              <h3 style={{ fontFamily: "'Press Start 2P', cursive", fontSize: "14px", color: "#00d4ff" }} className="mb-2">PREMIUM</h3>
+              <div className="text-3xl font-bold mb-6" style={{ color: "#e5e7eb" }}>$29<span className="text-sm font-normal" style={{ color: "#6b7280" }}>/month</span></div>
+              <ul className="space-y-3 text-sm" style={{ color: "#9ca3af" }}>
+                <li>+ 500+ challenges & projects</li>
+                <li>+ Boss battles & code wars</li>
+                <li>+ 1-on-1 mentor sessions</li>
+                <li>+ Verified certificates</li>
+                <li>+ Priority leaderboard</li>
+              </ul>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="border-t border-neutral-800 bg-green-500">
-        <div className="max-w-6xl mx-auto px-4 py-16">
-          <h2 className="text-2xl font-bold text-black mb-4">READY TO APPLY?</h2>
-          <p className="text-sm text-black/70 mb-6 max-w-lg">Application deadline for Fall 2026: March 15. Early decision: November 1. We review every application with equal rigor.</p>
-          <button className="px-6 py-3 text-xs font-bold uppercase tracking-widest bg-black text-green-500 hover:bg-neutral-900 transition-colors">Start Application &rarr;</button>
-        </div>
-      </section>
+        {/* Start Quest CTA */}
+        <section className="px-6 py-20 text-center border-t-4" style={{ borderColor: "#00d4ff" }}>
+          <h2 style={{ fontFamily: "'Press Start 2P', cursive", fontSize: "22px" }} className="mb-6">READY PLAYER ONE?</h2>
+          <p className="text-sm mb-8 max-w-md mx-auto" style={{ color: "#6b7280" }}>Your coding adventure begins now. Join 25,000+ questers who are leveling up their dev careers.</p>
+          <button className="px-10 py-4 text-sm font-bold uppercase tracking-wider" style={{ backgroundColor: "#00d4ff", color: "#0a0a0a" }}>BEGIN QUEST</button>
+        </section>
 
-      <footer className="border-t border-neutral-800">
-        <div className="max-w-6xl mx-auto px-4 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <span className="text-xs text-neutral-600">&copy; 2026 BLACKBOX UNIVERSITY. ALL RIGHTS RESERVED.</span>
-          <div className="flex space-x-6 text-xs text-neutral-600">
-            <span className="hover:text-green-500 cursor-pointer transition-colors">PRIVACY</span>
-            <span className="hover:text-green-500 cursor-pointer transition-colors">TERMS</span>
-            <span className="hover:text-green-500 cursor-pointer transition-colors">STATUS</span>
+        {/* Footer */}
+        <footer className="border-t-2 px-6 py-8" style={{ borderColor: "#1f2937" }}>
+          <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <span style={{ fontFamily: "'Press Start 2P', cursive", fontSize: "10px", color: "#374151" }}>CODE QUEST &copy; 2026</span>
+            <div className="flex gap-6 text-xs" style={{ color: "#374151" }}>
+              <a href="#">TERMS</a>
+              <a href="#">PRIVACY</a>
+              <a href="#">DISCORD</a>
+              <a href="#">GITHUB</a>
+            </div>
+            <span style={{ fontFamily: "'Press Start 2P', cursive", fontSize: "8px", color: "#374151" }}>GAME OVER? NEVER.</span>
           </div>
-        </div>
-      </footer>
+        </footer>
+      </div>
     </div>
-  )
+  );
 }

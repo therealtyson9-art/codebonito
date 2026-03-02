@@ -1,201 +1,167 @@
 export default function RestaurantBrutalistDemo() {
-  const menuItems = [
-    { id: "001", name: "BONE MARROW", desc: "Roasted split bones, parsley salad, grilled sourdough, coarse salt", price: "$19" },
-    { id: "002", name: "BEEF TARTARE", desc: "Hand-chopped sirloin, egg yolk, capers, Dijon, toast points", price: "$22" },
-    { id: "003", name: "GRILLED OCTOPUS", desc: "Charred tentacle, chickpea purée, smoked paprika oil, lemon", price: "$24" },
-    { id: "004", name: "FRENCH ONION SOUP", desc: "48-hour broth, caramelized onions, Gruyère, crusty bread", price: "$16" },
-    { id: "005", name: "DRY-AGED RIBEYE 16OZ", desc: "Cast-iron seared, bone-in, garlic butter, hand-cut frites", price: "$58" },
-    { id: "006", name: "WHOLE ROASTED BRANZINO", desc: "Mediterranean sea bass, charred lemon, olive oil, capers", price: "$42" },
-    { id: "007", name: "LAMB SHANK", desc: "Slow-braised 8 hours, root vegetable mash, rosemary jus", price: "$44" },
-    { id: "008", name: "PORK CHOP", desc: "Double-cut Berkshire, apple mostarda, braised cabbage, jus", price: "$38" },
-    { id: "009", name: "MUSHROOM BOURGUIGNON", desc: "Mixed wild mushrooms, pearl onions, red wine, mashed potato", price: "$28" },
-    { id: "010", name: "CHOCOLATE NEMESIS", desc: "Dense flourless cake, crème fraîche, espresso", price: "$14" },
-    { id: "011", name: "BURNT BASQUE CHEESECAKE", desc: "Torched top, vanilla cream, macerated strawberries", price: "$15" },
-    { id: "012", name: "AFFOGATO", desc: "Double espresso, house vanilla gelato, amaretti crumble", price: "$12" },
+  const meats = [
+    { name: "BRISKET", desc: "14-hour oak-smoked Texas-style, bark so thick it crunches, served by the half pound", price: "$18/half lb" },
+    { name: "PULLED PORK", desc: "Hickory-smoked shoulder, hand-pulled, vinegar mop sauce on the side", price: "$14/half lb" },
+    { name: "BEEF RIBS", desc: "Dino-sized short ribs, salt & pepper rub, 12 hours over pecan wood", price: "$24/bone" },
+    { name: "SMOKED TURKEY", desc: "Whole heritage bird brined in sweet tea, smoked over cherry wood", price: "$15/half lb" },
+    { name: "HOT LINKS", desc: "House-ground pork & beef sausage, cayenne kick, natural casing snap", price: "$12/link" },
   ]
 
-  const reviews = [
-    { who: "TIMEOUT NYC", quote: "THE MOST HONEST FOOD IN BROOKLYN. NO GIMMICKS. NO FOAM. JUST FIRE AND IRON." },
-    { who: "EATER", quote: "RAW, UNCOMPROMISING, DELICIOUS. THE ANTIDOTE TO EVERYTHING OVERDESIGNED." },
-    { who: "BON APPÉTIT", quote: "IF BRUTALISM WERE A RESTAURANT, THIS WOULD BE THE BLUEPRINT." },
+  const sides = [
+    { name: "LOADED COLESLAW", price: "$6" },
+    { name: "SMOKED MAC & CHEESE", price: "$8" },
+    { name: "JALAPE\u00d1O CORNBREAD", price: "$5" },
+    { name: "PICKLED ONIONS & CUKES", price: "$4" },
+    { name: "PIT BEANS", price: "$6" },
+    { name: "POTATO SALAD", price: "$6" },
   ]
 
-  const hours = [
-    { day: "MON", time: "CLOSED" },
-    { day: "TUE-THU", time: "17:00–23:00" },
-    { day: "FRI-SAT", time: "17:00–00:00" },
-    { day: "SUN", time: "16:00–22:00" },
+  const sauces = [
+    { name: "ORIGINAL", heat: "\u2605", desc: "Tomato, brown sugar, black pepper" },
+    { name: "CAROLINA GOLD", heat: "\u2605", desc: "Mustard base, tangy, vinegar finish" },
+    { name: "TEXAS HEAT", heat: "\u2605\u2605\u2605", desc: "Ancho & ghost pepper, smoky fire" },
+    { name: "WHITE LIGHTNING", heat: "\u2605\u2605", desc: "Alabama white sauce, mayo, horseradish" },
   ]
 
   return (
-    <div className="min-h-screen bg-white text-black" style={{ fontFamily: "Space Mono, monospace" }}>
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-      </head>
+    <div className="min-h-screen" style={{ backgroundColor: "#d4a574", fontFamily: "Inter, sans-serif" }}>
+      <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
 
-      {/* Navigation */}
-      <nav className="border-b-4 border-black">
-        <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-          <span className="text-2xl font-bold tracking-tight uppercase">SLAB</span>
-          <div className="hidden md:flex items-center space-x-8">
-            {["MENU", "ABOUT", "PRESS", "CONTACT"].map((link) => (
-              <span key={link} className="text-xs font-bold uppercase cursor-pointer hover:bg-black hover:text-white px-2 py-1 transition-colors">
-                {link}
-              </span>
-            ))}
-          </div>
-          <span className="text-xs font-bold uppercase border-2 border-black px-4 py-2 cursor-pointer hover:bg-black hover:text-white transition-colors">
-            BOOK NOW
-          </span>
+      {/* Stamp Nav */}
+      <nav className="max-w-5xl mx-auto px-6 py-6 flex flex-wrap items-center justify-between gap-4">
+        <span className="text-3xl -rotate-2" style={{ fontFamily: "Permanent Marker, cursive", color: "#991b1b" }}>SMOKE & BARREL</span>
+        <div className="flex flex-wrap gap-3">
+          {["THE PIT", "PROCESS", "CATERING", "EVENTS", "FIND US"].map((item) => (
+            <span
+              key={item}
+              className="px-4 py-2 text-xs font-medium tracking-widest border-2 rotate-1 cursor-pointer hover:-rotate-1 transition-transform"
+              style={{ borderColor: "#991b1b", color: "#991b1b", borderStyle: "dashed" }}
+            >
+              {item}
+            </span>
+          ))}
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="border-b-4 border-black">
-        <div className="max-w-6xl mx-auto px-6 py-24 md:py-32">
-          <div className="grid md:grid-cols-2 gap-12 items-end">
-            <div>
-              <p className="text-xs font-bold mb-4">BROOKLYN, NY — EST. 2019</p>
-              <h1 className="text-6xl md:text-8xl font-bold uppercase leading-none tracking-tighter">
-                FIRE.<br />IRON.<br />FOOD.
-              </h1>
-            </div>
-            <div>
-              <div className="h-72 bg-black" />
-              <p className="text-xs mt-4 leading-relaxed">
-                NO RESERVATIONS SYSTEM. NO INSTAGRAM WALL. NO TRUFFLE OIL.
-                JUST PROPERLY SOURCED MEAT AND VEGETABLES, COOKED OVER
-                OPEN FLAME. SHOW UP. SIT DOWN. EAT.
-              </p>
-            </div>
-          </div>
+      {/* Chalkboard Hero */}
+      <section className="mx-6 my-8 p-10 md:p-16 rounded-sm text-center" style={{ backgroundColor: "#1a1a1a" }}>
+        <p className="text-sm tracking-[0.3em] uppercase mb-4" style={{ color: "#d4a574" }}>EST. 2018 &middot; LOW & SLOW</p>
+        <h1 className="text-5xl md:text-7xl mb-6 -rotate-1" style={{ fontFamily: "Permanent Marker, cursive", color: "#e8d5b7" }}>
+          REAL SMOKE.<br />NO SHORTCUTS.
+        </h1>
+        <p className="text-lg max-w-xl mx-auto" style={{ color: "#a0896e" }}>
+          We get up at 3 AM so you don&apos;t have to. Oak, hickory, pecan &mdash; every cut gets the wood it deserves and the time it needs.
+        </p>
+        <div className="mt-8 inline-block px-8 py-3 border-2 text-sm font-medium tracking-widest cursor-pointer" style={{ borderColor: "#d4a574", color: "#d4a574" }}>
+          SEE TODAY&apos;S BOARD
         </div>
       </section>
 
-      {/* Menu */}
-      <section className="border-b-4 border-black">
-        <div className="max-w-6xl mx-auto px-6 py-16">
-          <div className="border-b-2 border-black pb-4 mb-8 flex justify-between items-baseline">
-            <h2 className="text-3xl font-bold uppercase">MENU</h2>
-            <span className="text-xs">PRICES IN USD / UPDATED WEEKLY</span>
-          </div>
-          <div className="font-mono">
-            <div className="grid grid-cols-[auto_1fr_auto] gap-x-6 text-xs border-b-2 border-black pb-2 mb-4">
-              <span className="font-bold">NO.</span>
-              <span className="font-bold">ITEM</span>
-              <span className="font-bold text-right">PRICE</span>
-            </div>
-            {menuItems.map((item) => (
-              <div key={item.id} className="grid grid-cols-[auto_1fr_auto] gap-x-6 py-3 border-b border-black/20 hover:bg-black hover:text-white transition-colors px-1">
-                <span className="text-xs font-bold w-8">{item.id}</span>
-                <div>
-                  <span className="text-sm font-bold">{item.name}</span>
-                  <p className="text-xs mt-0.5 opacity-60">{item.desc}</p>
-                </div>
-                <span className="text-sm font-bold text-right">{item.price}</span>
-              </div>
-            ))}
-          </div>
-          <p className="text-xs mt-6 opacity-50">
-            * ALL PROTEINS SOURCED FROM LOCAL FARMS WITHIN 100MI. MENU SUBJECT TO CHANGE BASED ON AVAILABILITY. NO SUBSTITUTIONS.
-          </p>
-        </div>
-      </section>
+      {/* The Pit Menu - Meats */}
+      <section className="max-w-4xl mx-auto px-6 py-16">
+        <h2 className="text-4xl mb-2 text-center -rotate-1" style={{ fontFamily: "Permanent Marker, cursive", color: "#991b1b" }}>THE PIT MENU</h2>
+        <p className="text-center text-sm mb-12" style={{ color: "#6b4423" }}>Sold by weight. First come, first served. When it&apos;s gone, it&apos;s gone.</p>
 
-      {/* About */}
-      <section className="border-b-4 border-black bg-black text-white">
-        <div className="max-w-6xl mx-auto px-6 py-20">
-          <h2 className="text-3xl font-bold uppercase mb-8 border-b-2 border-white pb-4">ABOUT</h2>
-          <div className="grid md:grid-cols-2 gap-12">
+        <h3 className="text-xl mb-6 border-b-2 pb-2" style={{ fontFamily: "Permanent Marker, cursive", color: "#991b1b", borderColor: "#991b1b" }}>SMOKED MEATS</h3>
+        {meats.map((item) => (
+          <div key={item.name} className="flex justify-between items-start mb-5">
             <div>
-              <p className="text-sm leading-relaxed mb-4">
-                SLAB WAS BUILT IN A FORMER AUTO BODY SHOP IN RED HOOK. WE KEPT THE CONCRETE FLOORS,
-                THE STEEL BEAMS, AND THE INDUSTRIAL EXHAUST. WE ADDED A WOOD-FIRED GRILL, A CAST-IRON
-                KITCHEN, AND 47 SEATS.
-              </p>
-              <p className="text-sm leading-relaxed">
-                CHEF MARCUS COLE SPENT 6 YEARS COOKING IN BUENOS AIRES ASADOS AND BASQUE COUNTRY GRILLS
-                BEFORE OPENING SLAB. THE PHILOSOPHY IS SIMPLE: START WITH THE BEST INGREDIENT, APPLY HEAT,
-                DON&apos;T OVERTHINK IT.
-              </p>
+              <p className="font-medium text-sm tracking-wide" style={{ color: "#991b1b" }}>{item.name}</p>
+              <p className="text-sm mt-1" style={{ color: "#6b4423" }}>{item.desc}</p>
             </div>
-            <div className="h-64 bg-white/10 border-2 border-white/20" />
+            <span className="text-sm font-medium ml-6 whitespace-nowrap" style={{ color: "#991b1b" }}>{item.price}</span>
           </div>
+        ))}
+
+        {/* Sides */}
+        <h3 className="text-xl mb-6 mt-14 border-b-2 pb-2" style={{ fontFamily: "Permanent Marker, cursive", color: "#991b1b", borderColor: "#991b1b" }}>SIDES</h3>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {sides.map((item) => (
+            <div key={item.name} className="flex justify-between items-center p-3 border-2" style={{ borderColor: "#991b1b", borderStyle: "dashed" }}>
+              <span className="text-xs font-medium tracking-wide" style={{ color: "#991b1b" }}>{item.name}</span>
+              <span className="text-xs font-medium" style={{ color: "#6b4423" }}>{item.price}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Sauces */}
+        <h3 className="text-xl mb-6 mt-14 border-b-2 pb-2" style={{ fontFamily: "Permanent Marker, cursive", color: "#991b1b", borderColor: "#991b1b" }}>HOUSE SAUCES</h3>
+        <div className="grid md:grid-cols-2 gap-4">
+          {sauces.map((s) => (
+            <div key={s.name} className="p-4 border-2" style={{ borderColor: "#991b1b" }}>
+              <p className="font-medium text-sm" style={{ color: "#991b1b" }}>{s.name} <span className="ml-2">{s.heat}</span></p>
+              <p className="text-sm mt-1" style={{ color: "#6b4423" }}>{s.desc}</p>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Press / Reviews */}
-      <section className="border-b-4 border-black">
-        <div className="max-w-6xl mx-auto px-6 py-16">
-          <h2 className="text-3xl font-bold uppercase mb-8 border-b-2 border-black pb-4">PRESS</h2>
-          <div className="space-y-8">
-            {reviews.map((r) => (
-              <div key={r.who} className="border-2 border-black p-6">
-                <p className="text-lg font-bold leading-snug mb-4">&quot;{r.quote}&quot;</p>
-                <p className="text-xs font-bold">— {r.who}</p>
+      {/* Our Process */}
+      <section className="py-16 px-6" style={{ backgroundColor: "#c49660" }}>
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-4xl mb-8 rotate-1" style={{ fontFamily: "Permanent Marker, cursive", color: "#991b1b" }}>OUR PROCESS</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { step: "01", title: "THE RUB", text: "Salt, pepper, garlic, and our secret 11-spice blend applied 12 hours before the cook." },
+              { step: "02", title: "THE SMOKE", text: "All-wood fire. No gas assist. We split our own logs from sustainably harvested Texas post oak." },
+              { step: "03", title: "THE REST", text: "Every brisket rests for a minimum of 2 hours in a warm holding cabinet. Patience is the final ingredient." },
+            ].map((item) => (
+              <div key={item.step}>
+                <p className="text-5xl mb-3" style={{ fontFamily: "Permanent Marker, cursive", color: "#991b1b" }}>{item.step}</p>
+                <p className="font-medium text-sm tracking-widest mb-2" style={{ color: "#991b1b" }}>{item.title}</p>
+                <p className="text-sm" style={{ color: "#5c3a1e" }}>{item.text}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact / Hours */}
-      <section className="border-b-4 border-black">
-        <div className="max-w-6xl mx-auto px-6 py-16">
-          <div className="grid md:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-3xl font-bold uppercase mb-8 border-b-2 border-black pb-4">HOURS</h2>
-              <div className="space-y-3">
-                {hours.map((h) => (
-                  <div key={h.day} className="flex justify-between text-sm border-b border-black/20 pb-2">
-                    <span className="font-bold">{h.day}</span>
-                    <span>{h.time}</span>
-                  </div>
-                ))}
+      {/* Catering */}
+      <section className="max-w-3xl mx-auto px-6 py-16 text-center">
+        <h2 className="text-4xl mb-4 -rotate-1" style={{ fontFamily: "Permanent Marker, cursive", color: "#991b1b" }}>CATERING</h2>
+        <p className="text-sm mb-6 max-w-xl mx-auto" style={{ color: "#6b4423" }}>
+          Feed your crew the real deal. We cater events from 20 to 500 people. Full-service or drop-off.
+          Whole hogs, brisket by the flat, and sides by the gallon. Custom menus for weddings, corporate events, and backyard blowouts.
+        </p>
+        <span className="inline-block px-8 py-3 text-sm font-medium tracking-widest cursor-pointer border-2" style={{ borderColor: "#991b1b", color: "#991b1b" }}>
+          GET A QUOTE
+        </span>
+      </section>
+
+      {/* Events */}
+      <section className="px-6 py-16" style={{ backgroundColor: "#c49660" }}>
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-4xl mb-8 rotate-1" style={{ fontFamily: "Permanent Marker, cursive", color: "#991b1b" }}>EVENTS</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { name: "THURSDAY BLUES NIGHT", desc: "Live Delta blues, $5 longnecks, smoked wings special. 7 PM till late." },
+              { name: "SATURDAY PIT TOURS", desc: "Go behind the smoke. Free walkthrough of our pit room every Saturday at noon." },
+              { name: "MONTHLY WHOLE HOG", desc: "First Sunday of each month. We smoke a whole heritage hog. It sells out. Come early." },
+              { name: "KIDS EAT FREE SUNDAY", desc: "One free kids plate per adult entree. Because family matters around here." },
+            ].map((evt) => (
+              <div key={evt.name} className="p-5 border-2 text-left" style={{ borderColor: "#991b1b", borderStyle: "dashed" }}>
+                <p className="font-medium text-sm tracking-wide mb-2" style={{ color: "#991b1b" }}>{evt.name}</p>
+                <p className="text-sm" style={{ color: "#5c3a1e" }}>{evt.desc}</p>
               </div>
-            </div>
-            <div>
-              <h2 className="text-3xl font-bold uppercase mb-8 border-b-2 border-black pb-4">FIND US</h2>
-              <div className="space-y-3 text-sm">
-                <p className="font-bold">185 VAN BRUNT ST</p>
-                <p className="font-bold">RED HOOK, BROOKLYN NY 11231</p>
-                <p className="mt-4">(718) 555-0199</p>
-                <p>EAT@SLABNYC.COM</p>
-              </div>
-              <div className="mt-8">
-                <span className="text-xs font-bold uppercase border-2 border-black px-6 py-3 inline-block cursor-pointer hover:bg-black hover:text-white transition-colors">
-                  GET DIRECTIONS
-                </span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Reservation CTA */}
-      <section className="bg-black text-white border-b-4 border-black">
-        <div className="max-w-6xl mx-auto px-6 py-16 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold uppercase mb-4">WALK-INS PREFERRED.</h2>
-          <p className="text-sm mb-8 opacity-70">
-            BUT IF YOU MUST PLAN AHEAD, LARGE PARTIES (6+) CAN RESERVE BY PHONE ONLY.
-          </p>
-          <div className="inline-block border-2 border-white px-8 py-3 text-sm font-bold cursor-pointer hover:bg-white hover:text-black transition-colors">
-            CALL (718) 555-0199
-          </div>
-        </div>
+      {/* Find Us */}
+      <section className="max-w-3xl mx-auto px-6 py-16 text-center">
+        <h2 className="text-4xl mb-6 -rotate-2" style={{ fontFamily: "Permanent Marker, cursive", color: "#991b1b" }}>FIND US</h2>
+        <p className="font-medium" style={{ color: "#991b1b" }}>820 Congress Avenue, Austin, TX 78701</p>
+        <p className="text-sm mt-2" style={{ color: "#6b4423" }}>Tue&ndash;Thu: 11 AM &ndash; 9 PM</p>
+        <p className="text-sm" style={{ color: "#6b4423" }}>Fri&ndash;Sat: 11 AM &ndash; 10 PM</p>
+        <p className="text-sm" style={{ color: "#6b4423" }}>Sun: 11 AM &ndash; 8 PM &middot; Mon: CLOSED (we rest too)</p>
+        <p className="text-sm mt-4" style={{ color: "#6b4423" }}>(512) 555-0247</p>
       </section>
 
       {/* Footer */}
-      <footer>
-        <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <span className="text-xs font-bold">&copy; 2026 SLAB. ALL RIGHTS RESERVED.</span>
-          <div className="flex space-x-6">
-            {["INSTAGRAM", "TWITTER"].map((s) => (
-              <span key={s} className="text-xs font-bold cursor-pointer hover:underline">{s}</span>
-            ))}
-          </div>
-          <span className="text-xs opacity-50">NO WIFI. NO EXCEPTIONS.</span>
-        </div>
+      <footer className="px-6 py-8 text-center border-t-2" style={{ borderColor: "#991b1b" }}>
+        <p className="text-lg -rotate-1" style={{ fontFamily: "Permanent Marker, cursive", color: "#991b1b" }}>SMOKE & BARREL ~ AUSTIN, TX</p>
+        <p className="text-xs mt-3" style={{ color: "#6b4423" }}>Hand-smoked. Hand-pulled. No bull. &copy; 2025</p>
       </footer>
     </div>
   )

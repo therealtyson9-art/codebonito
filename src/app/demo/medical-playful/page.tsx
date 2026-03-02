@@ -1,186 +1,173 @@
 export default function MedicalPlayfulDemo() {
-  const navLinks = ["Services", "Our Doctors", "Health Tips", "Book Visit"]
   const services = [
-    { emoji: "\ud83e\ude7a", title: "Well-Child Visits", desc: "Regular check-ups to track growth, development milestones, and vaccinations from newborn through adolescence.", color: "bg-teal-50 border-teal-200" },
-    { emoji: "\ud83e\udda0", title: "Sick Visits", desc: "Same-day appointments for fevers, ear infections, coughs, rashes, and other childhood illnesses.", color: "bg-orange-50 border-orange-200" },
-    { emoji: "\ud83d\udc89", title: "Immunizations", desc: "Full CDC-recommended vaccine schedule administered by our gentle, experienced nursing team.", color: "bg-pink-50 border-pink-200" },
-    { emoji: "\ud83e\udde0", title: "Behavioral Health", desc: "Screening and support for ADHD, anxiety, and developmental concerns in a judgment-free environment.", color: "bg-purple-50 border-purple-200" },
-    { emoji: "\ud83c\udf4e", title: "Nutrition Guidance", desc: "Age-appropriate dietary advice for picky eaters, food allergies, and healthy growth habits.", color: "bg-green-50 border-green-200" },
-    { emoji: "\ud83d\ude34", title: "Sleep Consultations", desc: "Help for bedtime struggles, night waking, and establishing healthy sleep routines for every age.", color: "bg-blue-50 border-blue-200" },
+    { emoji: "\ud83d\udc76", title: "Well-Child Visits", desc: "Regular check-ups to track growth, development milestones, and vaccinations from newborn through adolescence. We make every visit fun and stress-free.", color: "#ccfbf1" },
+    { emoji: "\ud83e\ude7a", title: "Vaccinations", desc: "Stay up to date with childhood immunizations. Our gentle approach and reward stickers make shots a breeze for even the most nervous little ones.", color: "#fef3c7" },
+    { emoji: "\ud83e\uddb7", title: "Pediatric Dental", desc: "Cleanings, sealants, fluoride treatments, and cavity care in a colorful, kid-friendly dental suite with ceiling-mounted TVs and treasure chest prizes.", color: "#fce7f3" },
+    { emoji: "\ud83e\ude7b", title: "Sick Day Visits", desc: "Same-day appointments for fevers, ear infections, coughs, rashes, tummy troubles, and other childhood illnesses. Walk-ins welcome.", color: "#e0e7ff" },
+    { emoji: "\ud83e\udde0", title: "Behavioral Health", desc: "Compassionate screening and support for ADHD, anxiety, learning differences, and social-emotional development in a safe, judgment-free space.", color: "#f3e8ff" },
+    { emoji: "\ud83c\udf4e", title: "Nutrition Counseling", desc: "Personalized nutrition plans for picky eaters, food allergies, childhood obesity, and healthy growth. Fun cooking tips the whole family will love.", color: "#dcfce7" },
   ]
-  const doctors = [
-    { name: "Dr. Maya Rodriguez", specialty: "Pediatric Medicine", experience: "14 years", color: "border-teal-400", bg: "bg-teal-50", fun: "Collects rubber ducks" },
-    { name: "Dr. James Okonkwo", specialty: "Adolescent Medicine", experience: "11 years", color: "border-orange-400", bg: "bg-orange-50", fun: "Plays ukulele for patients" },
-    { name: "Dr. Lisa Nakamura", specialty: "Developmental Pediatrics", experience: "9 years", color: "border-pink-400", bg: "bg-pink-50", fun: "Runs a kids book club" },
+
+  const team = [
+    { name: "Dr. Maya Rodriguez, MD", role: "Lead Pediatrician", bio: "Board-certified with 14 years of experience. Dr. Maya believes every child deserves to feel safe and heard during their visit." },
+    { name: "Dr. Chris Tanaka, DDS", role: "Pediatric Dentist", bio: "Specializes in making dental visits fun. Known for his magic tricks and collection of over 200 rubber ducks." },
+    { name: "Nurse Priya Kapoor, RN", role: "Head Nurse", bio: "A kid-whisperer with 10 years in pediatric nursing. Priya has a gift for calming anxious little patients with stories." },
   ]
-  const healthTips = [
-    { emoji: "\ud83d\udca7", tip: "Kids aged 4-8 need about 5 cups of water daily. Add fruit slices to make it fun!" },
-    { emoji: "\ud83c\udfbd", tip: "Children should get at least 60 minutes of physical activity every day, even on school days." },
-    { emoji: "\ud83d\udca4", tip: "School-age kids need 9-12 hours of sleep. A consistent bedtime routine makes all the difference." },
-    { emoji: "\ud83e\uddfc", tip: "Teach kids to wash hands for 20 seconds, about the time it takes to sing the ABCs twice." },
-  ]
-  const testimonials = [
-    { name: "Jennifer T.", text: "My daughter used to cry at every doctor visit. Now she asks when we can go back! Dr. Rodriguez is a miracle worker.", stars: 5 },
-    { name: "Marcus & Diane W.", text: "We switched to Sunny Peds after our son was diagnosed with ADHD. The entire team has been incredibly supportive and thorough.", stars: 5 },
-    { name: "Sarah K.", text: "The online booking is so easy, and they always run on time. Plus, my toddler loves the play area in the waiting room.", stars: 5 },
+
+  const faqs = [
+    { q: "What ages do you see?", a: "We welcome patients from newborn through age 18. We also offer transitional care guidance for teens moving to adult providers." },
+    { q: "Do you accept walk-ins?", a: "Yes! We reserve same-day appointment slots every morning and accept walk-ins for sick visits throughout the day." },
+    { q: "Is the dental office separate?", a: "Our dental suite is right inside our clinic, so you can schedule both a check-up and a cleaning in one trip." },
+    { q: "What insurance do you accept?", a: "We accept most major plans including Medicaid, CHIP, Blue Cross, Aetna, and United. Call us to verify your coverage." },
   ]
 
   return (
-    <div className="min-h-screen bg-white" style={{ fontFamily: "Nunito, sans-serif" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <div style={{ fontFamily: "'Quicksand', sans-serif", backgroundColor: "#ecfdf5" }} className="min-h-screen">
+      <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-      {/* Nav */}
-      <nav className="border-b border-slate-100">
-        <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-          <span className="text-xl font-extrabold tracking-tight text-teal-600">Sunny<span className="text-orange-500">Peds</span> <span className="text-2xl">&#9788;</span></span>
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <span key={link} className="text-sm font-semibold text-slate-500 hover:text-teal-600 cursor-pointer">{link}</span>
-            ))}
-          </div>
-          <span className="text-sm font-bold text-white bg-teal-500 px-5 py-2.5 rounded-full cursor-pointer hover:bg-teal-600">Book a Visit</span>
+      {/* Rounded Pill Nav */}
+      <nav className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <span className="text-3xl">&#x1F31F;</span>
+          <h1 style={{ color: "#14b8a6" }} className="text-2xl font-bold">Bright Smiles Pediatrics</h1>
+        </div>
+        <div className="flex items-center gap-3">
+          {["Services", "Our Team", "Parents", "FAQ"].map((link) => (
+            <span key={link} className="px-4 py-2 rounded-full text-sm font-semibold text-gray-600 hover:bg-teal-100 cursor-pointer transition-colors">{link}</span>
+          ))}
+          <span style={{ backgroundColor: "#14b8a6" }} className="px-5 py-2 rounded-full text-sm font-bold text-white cursor-pointer">Book a Visit</span>
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-teal-50 via-white to-orange-50">
-        <div className="max-w-5xl mx-auto px-6 pt-20 pb-24 text-center">
-          <div className="text-6xl mb-6">&#127752;</div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-slate-800 leading-tight mb-4">
-            Little patients,<br /><span className="text-teal-600">big smiles.</span>
-          </h1>
-          <p className="text-lg text-slate-500 max-w-md mx-auto mb-10 leading-relaxed">
-            A pediatric practice where kids feel safe, parents feel heard, and every visit ends happier than it started.
+      {/* Friendly Hero */}
+      <section className="max-w-6xl mx-auto px-6 py-16 flex items-center gap-12">
+        <div className="w-1/2">
+          <p style={{ color: "#14b8a6" }} className="text-sm font-bold uppercase tracking-widest mb-3">Pediatric Care That Feels Like Play</p>
+          <h2 style={{ color: "#134e4a" }} className="text-5xl font-bold leading-tight mb-6">Where Little Patients Get Big Smiles</h2>
+          <p className="text-gray-600 text-lg leading-relaxed mb-8">
+            At Bright Smiles Pediatrics, we believe healthcare should be a positive experience for every child.
+            Our colorful clinic, gentle team, and playful approach make check-ups something kids actually
+            look forward to.
           </p>
-          <div className="flex justify-center items-center space-x-3">
-            <span className="h-12 px-8 flex items-center text-sm font-bold text-white bg-teal-500 rounded-full cursor-pointer hover:bg-teal-600">Schedule Appointment</span>
-            <span className="h-12 px-8 flex items-center text-sm font-bold text-teal-600 border-2 border-teal-200 rounded-full cursor-pointer hover:bg-teal-50">Meet Our Doctors</span>
+          <div className="flex gap-4">
+            <span style={{ backgroundColor: "#14b8a6" }} className="px-6 py-3 rounded-full font-bold text-white cursor-pointer">Schedule an Appointment</span>
+            <span style={{ color: "#14b8a6", borderColor: "#14b8a6" }} className="border-2 px-6 py-3 rounded-full font-bold cursor-pointer">Take a Virtual Tour</span>
           </div>
-          <p className="text-xs text-slate-400 mt-4">Now accepting patients ages 0 to 18</p>
+        </div>
+        <div className="w-1/2 flex justify-center">
+          <div style={{ backgroundColor: "#ccfbf1" }} className="w-96 h-80 rounded-3xl flex items-center justify-center text-teal-400 text-sm">
+            [ Friendly Illustration of Kids Playing ]
+          </div>
         </div>
       </section>
 
       {/* Services */}
-      <section className="max-w-5xl mx-auto px-6 py-20">
-        <div className="text-center mb-14">
-          <h2 className="text-3xl font-extrabold text-slate-800 mb-2">What we do best</h2>
-          <p className="text-slate-500 max-w-md mx-auto">From first check-ups to teenage years, we have your family covered.</p>
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <div className="text-center mb-12">
+          <h3 style={{ color: "#134e4a" }} className="text-4xl font-bold mb-3">Our Services</h3>
+          <p className="text-gray-500 text-base">Everything your child needs under one happy roof</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {services.map((s) => (
-            <div key={s.title} className={`border-2 ${s.color} rounded-2xl p-6`}>
-              <div className="text-3xl mb-3">{s.emoji}</div>
-              <h3 className="text-base font-bold text-slate-800 mb-2">{s.title}</h3>
-              <p className="text-sm text-slate-500 leading-relaxed">{s.desc}</p>
+        <div className="grid grid-cols-3 gap-6">
+          {services.map((svc) => (
+            <div key={svc.title} style={{ backgroundColor: svc.color }} className="rounded-2xl p-6 hover:scale-105 transition-transform cursor-pointer">
+              <span className="text-4xl block mb-3">{svc.emoji}</span>
+              <h4 style={{ color: "#134e4a" }} className="text-lg font-bold mb-2">{svc.title}</h4>
+              <p className="text-gray-600 text-sm leading-relaxed">{svc.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Doctors */}
-      <section className="bg-gradient-to-b from-white to-teal-50/30">
-        <div className="max-w-5xl mx-auto px-6 py-20">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl font-extrabold text-slate-800 mb-2">Meet our awesome doctors</h2>
-            <p className="text-slate-500 max-w-md mx-auto">Board-certified pediatricians who genuinely love what they do.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {doctors.map((d) => (
-              <div key={d.name} className={`border-4 ${d.color} rounded-3xl overflow-hidden`}>
-                <div className={`w-full aspect-square ${d.bg}`}></div>
-                <div className="p-6 text-center">
-                  <p className="text-lg font-bold text-slate-800">{d.name}</p>
-                  <p className="text-sm text-teal-600 font-semibold mt-0.5">{d.specialty}</p>
-                  <p className="text-xs text-slate-400 mt-1">{d.experience} of experience</p>
-                  <div className="mt-3 inline-block bg-orange-50 text-orange-600 text-xs font-semibold px-3 py-1 rounded-full">
-                    Fun fact: {d.fun}
-                  </div>
-                </div>
+      {/* Meet the Team */}
+      <section style={{ backgroundColor: "#f0fdfa" }} className="py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <h3 style={{ color: "#134e4a" }} className="text-4xl font-bold text-center mb-10">Meet the Team</h3>
+          <div className="grid grid-cols-3 gap-8">
+            {team.map((member) => (
+              <div key={member.name} className="bg-white rounded-2xl p-6 text-center shadow-sm">
+                <div style={{ backgroundColor: "#ccfbf1" }} className="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center text-3xl">&#x1F60A;</div>
+                <h4 style={{ color: "#134e4a" }} className="font-bold text-lg">{member.name}</h4>
+                <p style={{ color: "#14b8a6" }} className="text-sm font-semibold mb-3">{member.role}</p>
+                <p className="text-gray-500 text-sm leading-relaxed">{member.bio}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Health Tips */}
-      <section className="max-w-5xl mx-auto px-6 py-20">
-        <div className="text-center mb-14">
-          <h2 className="text-3xl font-extrabold text-slate-800 mb-2">Healthy kids corner</h2>
-          <p className="text-slate-500 max-w-md mx-auto">Quick tips to keep your little ones thriving every day.</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {healthTips.map((t) => (
-            <div key={t.tip} className="flex items-start space-x-4 bg-slate-50 rounded-2xl p-5">
-              <span className="text-2xl flex-shrink-0">{t.emoji}</span>
-              <p className="text-sm text-slate-600 leading-relaxed">{t.tip}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Appointment Booking */}
-      <section className="bg-teal-500">
-        <div className="max-w-5xl mx-auto px-6 py-20">
-          <div className="max-w-lg mx-auto text-center">
-            <h2 className="text-3xl font-extrabold text-white mb-2">Ready to visit?</h2>
-            <p className="text-teal-100 mb-10">Book an appointment in under a minute. We will take it from there.</p>
-            <div className="bg-white rounded-3xl p-8 text-left">
-              <div className="grid grid-cols-2 gap-3 mb-3">
-                <input type="text" placeholder="Child's first name" className="h-11 px-4 text-sm border-2 border-slate-200 rounded-xl bg-white text-slate-800 placeholder-slate-400 outline-none focus:border-teal-400" />
-                <input type="text" placeholder="Child's last name" className="h-11 px-4 text-sm border-2 border-slate-200 rounded-xl bg-white text-slate-800 placeholder-slate-400 outline-none focus:border-teal-400" />
-              </div>
-              <input type="text" placeholder="Parent/guardian name" className="w-full h-11 px-4 text-sm border-2 border-slate-200 rounded-xl bg-white text-slate-800 placeholder-slate-400 outline-none focus:border-teal-400 mb-3" />
-              <input type="tel" placeholder="Phone number" className="w-full h-11 px-4 text-sm border-2 border-slate-200 rounded-xl bg-white text-slate-800 placeholder-slate-400 outline-none focus:border-teal-400 mb-3" />
-              <select className="w-full h-11 px-4 text-sm border-2 border-slate-200 rounded-xl bg-white text-slate-800 outline-none focus:border-teal-400 mb-4">
-                <option>Select visit type</option>
-                <option>Well-Child Visit</option>
-                <option>Sick Visit (Same Day)</option>
-                <option>Immunizations</option>
-                <option>Behavioral Screening</option>
-              </select>
-              <span className="w-full h-12 flex items-center justify-center text-sm font-bold text-white bg-teal-500 rounded-xl cursor-pointer hover:bg-teal-600">Book Appointment</span>
-            </div>
+      {/* Parent Resources */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <h3 style={{ color: "#134e4a" }} className="text-4xl font-bold text-center mb-10">Parent Resources</h3>
+        <div className="grid grid-cols-2 gap-6">
+          <div className="bg-white rounded-2xl p-8 shadow-sm">
+            <h4 style={{ color: "#14b8a6" }} className="font-bold text-lg mb-3">New Patient Checklist</h4>
+            <ul className="space-y-2 text-gray-600 text-sm">
+              <li>&#x2705; Bring your child's immunization records</li>
+              <li>&#x2705; Insurance card and photo ID</li>
+              <li>&#x2705; List of current medications or allergies</li>
+              <li>&#x2705; Previous medical records (if transferring)</li>
+              <li>&#x2705; Your child's favorite comfort item</li>
+            </ul>
+          </div>
+          <div className="bg-white rounded-2xl p-8 shadow-sm">
+            <h4 style={{ color: "#14b8a6" }} className="font-bold text-lg mb-3">Helpful Guides</h4>
+            <ul className="space-y-2 text-gray-600 text-sm">
+              <li>&#x1F4DA; Vaccination Schedule (Birth to 18)</li>
+              <li>&#x1F4DA; When to Visit the ER vs. Our Office</li>
+              <li>&#x1F4DA; Age-Appropriate Screen Time Guidelines</li>
+              <li>&#x1F4DA; Nutrition Tips for Picky Eaters</li>
+              <li>&#x1F4DA; Managing Childhood Anxiety at Home</li>
+            </ul>
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="max-w-5xl mx-auto px-6 py-20">
-        <div className="text-center mb-14">
-          <h2 className="text-3xl font-extrabold text-slate-800 mb-2">Parents love us</h2>
-          <p className="text-slate-500 max-w-md mx-auto">See why families across the city trust SunnyPeds with their children&apos;s health.</p>
+      {/* Book Appointment CTA */}
+      <section style={{ backgroundColor: "#14b8a6" }} className="py-14">
+        <div className="max-w-4xl mx-auto px-6 text-center text-white">
+          <h3 className="text-3xl font-bold mb-4">Ready to Schedule a Visit?</h3>
+          <p className="text-teal-100 text-lg mb-8">
+            New patients are always welcome. Book online in under 60 seconds or give us a call.
+          </p>
+          <div className="flex justify-center gap-4">
+            <span className="bg-white px-6 py-3 rounded-full font-bold cursor-pointer" style={{ color: "#14b8a6" }}>Book Online</span>
+            <span className="border-2 border-white px-6 py-3 rounded-full font-bold cursor-pointer">Call (555) 223-KIDS</span>
+          </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t) => (
-            <div key={t.name} className="bg-white border-2 border-slate-100 rounded-2xl p-6">
-              <div className="flex space-x-0.5 mb-3">
-                {Array.from({ length: t.stars }).map((_, i) => (
-                  <span key={i} className="text-orange-400 text-base">&#9733;</span>
-                ))}
-              </div>
-              <p className="text-sm text-slate-600 leading-relaxed mb-4">&ldquo;{t.text}&rdquo;</p>
-              <p className="text-sm font-bold text-slate-800">{t.name}</p>
+      </section>
+
+      {/* FAQ */}
+      <section className="max-w-4xl mx-auto px-6 py-16">
+        <h3 style={{ color: "#134e4a" }} className="text-3xl font-bold text-center mb-10">Frequently Asked Questions</h3>
+        <div className="space-y-4">
+          {faqs.map((faq) => (
+            <div key={faq.q} className="bg-white rounded-2xl p-6 shadow-sm">
+              <h4 style={{ color: "#134e4a" }} className="font-bold mb-2">{faq.q}</h4>
+              <p className="text-gray-600 text-sm leading-relaxed">{faq.a}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-slate-50 border-t border-slate-100">
-        <div className="max-w-5xl mx-auto px-6 py-10">
-          <div className="flex flex-col md:flex-row items-center justify-between">
+      {/* Friendly Footer */}
+      <footer style={{ backgroundColor: "#134e4a" }} className="text-white py-10">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex justify-between items-start mb-8">
             <div>
-              <span className="text-lg font-extrabold text-teal-600">Sunny<span className="text-orange-500">Peds</span></span>
-              <p className="text-xs text-slate-400 mt-1">456 Sunshine Lane, Suite 100 &middot; Austin, TX 78701</p>
-              <p className="text-xs text-slate-400">(512) 555-KIDS &middot; hello@sunnypeds.com</p>
+              <h4 className="text-xl font-bold mb-2">Bright Smiles Pediatrics</h4>
+              <p className="text-teal-300 text-sm">Making healthcare happy for kids and families</p>
             </div>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              {["Privacy", "Terms", "Accessibility", "Contact"].map((link) => (
-                <span key={link} className="text-sm text-slate-400 hover:text-teal-600 cursor-pointer">{link}</span>
-              ))}
+            <div className="text-right text-sm">
+              <p className="text-teal-200">456 Sunshine Boulevard, Suite 200</p>
+              <p className="text-teal-200">Greenfield, ST 30022</p>
+              <p className="text-white font-bold mt-2">(555) 223-KIDS (5437)</p>
+              <p className="text-teal-300">hello@brightsmilespeds.com</p>
             </div>
           </div>
-          <p className="text-xs text-slate-300 mt-6 text-center">&copy; 2026 SunnyPeds Pediatric Clinic. All rights reserved. This site does not provide medical advice.</p>
+          <div className="border-t border-teal-700 pt-4 flex justify-between items-center">
+            <p className="text-teal-400 text-xs">&copy; 2024 Bright Smiles Pediatrics. All rights reserved.</p>
+            <p className="text-teal-400 text-xs">Mon-Fri 8am-6pm &middot; Sat 9am-1pm &middot; Sun Closed</p>
+          </div>
         </div>
       </footer>
     </div>

@@ -1,163 +1,164 @@
 export default function BlogBrutalistDemo() {
-  const posts = [
-    { id: "001", title: "WEBASSEMBLY IS EATING THE BROWSER", category: "SYSTEMS", date: "2026-02-26", size: "4.2KB", excerpt: "The compile target nobody asked for is quietly becoming the runtime everybody needs. From Figma to Google Earth, WASM is rewriting what the browser can do." },
-    { id: "002", title: "DEATH OF THE PIXEL-PERFECT MOCKUP", category: "PROCESS", date: "2026-02-20", size: "3.8KB", excerpt: "Static design files are a communication bottleneck. The future is designing in code, in the browser, with real data. Here is how our team made the switch." },
-    { id: "003", title: "YOUR DEPENDENCIES ARE A LIABILITY", category: "SECURITY", date: "2026-02-14", size: "5.1KB", excerpt: "Every npm install is a trust decision. After auditing 200 production apps, the average project has 47 transitive dependencies with known vulnerabilities." },
-    { id: "004", title: "SQLITE IN PRODUCTION: A FIELD REPORT", category: "DATABASES", date: "2026-02-08", size: "6.3KB", excerpt: "We migrated our SaaS from Postgres to SQLite running on Fly.io. Latency dropped 80 percent. Here is everything that went right and wrong." },
-    { id: "005", title: "THE INTERNET USED TO BE FUN", category: "OPINION", date: "2026-02-01", size: "2.9KB", excerpt: "Somewhere between Web 2.0 and the algorithm age, we traded personal homepages and webrings for engagement metrics and infinite scroll." },
-    { id: "006", title: "MONOREPOS CONSIDERED HARMFUL", category: "TOOLING", date: "2026-01-25", size: "4.7KB", excerpt: "The monorepo trend conflates organizational problems with technical solutions. Most teams adopting monorepos are solving the wrong problem." },
+  const recentIssues = [
+    { id: "047", title: "APPLE KILLED THE HOME SCREEN AND NOBODY NOTICED", date: "2026-02-28", size: "3.9KB", tag: "MOBILE" },
+    { id: "046", title: "THE VC FUNDING WINTER IS OVER. THE ICE AGE IS NOT.", date: "2026-02-21", size: "5.2KB", tag: "STARTUPS" },
+    { id: "045", title: "WHY EVERY DATABASE COMPANY NOW SELLS AI", date: "2026-02-14", size: "4.1KB", tag: "INFRA" },
+    { id: "044", title: "REMOTE WORK WON. MIDDLE MANAGEMENT LOST.", date: "2026-02-07", size: "3.6KB", tag: "CULTURE" },
+    { id: "043", title: "RUST IN PRODUCTION: A TWO-YEAR POSTMORTEM", date: "2026-01-31", size: "6.8KB", tag: "SYSTEMS" },
+    { id: "042", title: "THE SAAS PRICING PAGE IS A DARK PATTERN", date: "2026-01-24", size: "4.4KB", tag: "PRODUCT" },
   ];
 
-  const categories = ["ALL", "SYSTEMS", "PROCESS", "SECURITY", "DATABASES", "OPINION", "TOOLING"];
+  const hotTakes = [
+    { take: "TypeScript strict mode should be the only mode.", author: "R. Vasquez" },
+    { take: "Most microservices architectures are distributed monoliths with extra latency.", author: "K. Otieno" },
+    { take: "The best documentation is the code you did not have to write.", author: "J. Lindqvist" },
+    { take: "AI code assistants are making junior devs faster and senior devs lazier.", author: "M. Tanaka" },
+  ];
 
   return (
-    <div className="min-h-screen bg-white text-black" style={{ fontFamily: "'Space Mono', monospace" }}>
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-      </head>
+    <div style={{ fontFamily: "'Courier Prime', monospace", backgroundColor: "#ffffff", color: "#1a1a1a" }} className="min-h-screen">
+      <link
+        href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet"
+      />
 
-      {/* Nav */}
-      <nav className="border-b-4 border-black">
-        <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between">
-          <span className="text-sm font-bold tracking-widest">RAW.TXT</span>
-          <div className="hidden md:flex items-center space-x-6">
-            {["INDEX", "ARCHIVE", "ABOUT", "RSS"].map((link) => (
-              <span key={link} className="text-xs tracking-widest hover:bg-black hover:text-white px-2 py-1 transition-colors cursor-pointer">{link}</span>
-            ))}
+      {/* Typewriter Nav */}
+      <nav className="border-b-2 border-black px-6 py-4">
+        <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-between">
+          <div className="text-2xl font-bold tracking-tight">THE DAILY BYTE</div>
+          <div className="flex gap-6 text-xs font-bold tracking-wider">
+            <a href="#" className="hover:line-through">ISSUES</a>
+            <a href="#" className="hover:line-through">HOT_TAKES</a>
+            <a href="#" className="hover:line-through">ABOUT.TXT</a>
+            <a href="#" className="hover:line-through" style={{ color: "#b91c1c" }}>SUBSCRIBE</a>
           </div>
-          <span className="md:hidden text-xs tracking-widest cursor-pointer">[MENU]</span>
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="border-b-4 border-black">
-        <div className="max-w-7xl mx-auto px-4 py-12">
-          <div className="flex items-baseline space-x-4 mb-6">
-            <span className="text-xs tracking-widest text-black/50">FILE://FEATURED</span>
-            <span className="text-xs tracking-widest text-black/50">{posts[0].date}</span>
-            <span className="text-xs tracking-widest text-black/50">{posts[0].size}</span>
+      {/* Newspaper Layout Hero */}
+      <section className="max-w-5xl mx-auto px-6 py-10 border-b-2 border-black">
+        <div className="text-xs mb-4" style={{ color: "#b91c1c" }}>
+          // ISSUE #048 &mdash; MARCH 01, 2026 &mdash; 5.7KB
+        </div>
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="md:col-span-2">
+            <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-6 uppercase">
+              THE BROWSER IS THE NEW OPERATING SYSTEM AND CHROME IS ITS MONOPOLY
+            </h1>
+            <p className="text-base leading-relaxed mb-4">
+              Google Chrome controls 65 percent of the global browser market. With WebGPU, WebNN, and
+              origin trials for hardware APIs, Chrome is no longer just rendering web pages. It is
+              becoming the runtime layer for the next generation of applications, and the DOJ antitrust
+              ruling may be the only thing standing between Google and total platform lock-in.
+            </p>
+            <p className="text-base leading-relaxed">
+              This week we break down the technical implications, interview three browser engine
+              engineers, and ask the question nobody in Mountain View wants to answer: what happens
+              when the web itself has a single vendor?
+            </p>
           </div>
-          <h1 className="text-3xl md:text-5xl font-bold leading-none tracking-tight uppercase">
-            {posts[0].title}
-          </h1>
-          <p className="mt-6 text-sm leading-relaxed max-w-2xl text-black/70">
-            {posts[0].excerpt}
+          <div className="border-l-2 border-black pl-6 hidden md:block">
+            <div className="text-xs font-bold mb-4" style={{ color: "#b91c1c" }}>ALSO IN THIS ISSUE:</div>
+            <ul className="space-y-4 text-sm">
+              <li className="border-b border-gray-300 pb-3">
+                <span className="font-bold">EU AI Act enforcement begins.</span> First fines expected by Q3. Compliance costs estimated at $2.4M per enterprise.
+              </li>
+              <li className="border-b border-gray-300 pb-3">
+                <span className="font-bold">Deno 5 ships with npm compat.</span> The Node.js alternative bets everything on backwards compatibility.
+              </li>
+              <li className="pb-3">
+                <span className="font-bold">Stack Overflow traffic down 38% YoY.</span> AI assistants are the new first stop for developer questions.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Recent Issues */}
+      <section className="max-w-5xl mx-auto px-6 py-10 border-b-2 border-black">
+        <h2 className="text-xs font-bold tracking-wider mb-6" style={{ color: "#b91c1c" }}>
+          $ ls -la /archive/recent/
+        </h2>
+        <div className="space-y-0">
+          {recentIssues.map((issue) => (
+            <a key={issue.id} href="#" className="flex items-baseline justify-between py-3 border-b border-gray-200 hover:bg-gray-50 group px-2 -mx-2">
+              <div className="flex items-baseline gap-4">
+                <span className="text-xs" style={{ color: "#b91c1c" }}>#{issue.id}</span>
+                <span className="text-sm font-bold group-hover:line-through">{issue.title}</span>
+              </div>
+              <div className="hidden sm:flex items-baseline gap-4 text-xs text-gray-400 shrink-0 ml-4">
+                <span>{issue.tag}</span>
+                <span>{issue.size}</span>
+                <span>{issue.date}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      {/* Hot Takes */}
+      <section className="max-w-5xl mx-auto px-6 py-10 border-b-2 border-black">
+        <h2 className="text-xs font-bold tracking-wider mb-6" style={{ color: "#b91c1c" }}>
+          $ cat /dev/hot-takes
+        </h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          {hotTakes.map((item, i) => (
+            <div key={i} className="border-2 border-black p-5">
+              <p className="text-base font-bold mb-3">&gt; &quot;{item.take}&quot;</p>
+              <p className="text-xs text-gray-500">&mdash; {item.author}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* About */}
+      <section className="max-w-5xl mx-auto px-6 py-10 border-b-2 border-black">
+        <h2 className="text-xs font-bold tracking-wider mb-6" style={{ color: "#b91c1c" }}>
+          $ cat /about.txt
+        </h2>
+        <div className="max-w-2xl">
+          <p className="text-sm leading-relaxed mb-4">
+            The Daily Byte is a weekly technology newsletter that cuts through the hype cycle.
+            No sponsored content. No affiliate links. No growth hacking. Just honest analysis
+            of the systems, incentives, and decisions shaping the tech industry.
           </p>
-          <div className="mt-6 inline-block border-2 border-black px-4 py-2 text-xs tracking-widest font-bold hover:bg-black hover:text-white transition-colors cursor-pointer">
-            READ_FILE &gt;
-          </div>
+          <p className="text-sm leading-relaxed">
+            Written by a rotating cast of engineers, product leaders, and industry skeptics
+            who have collectively shipped software to over 200 million users and regretted
+            at least half of it. Published every Friday since 2023.
+          </p>
         </div>
       </section>
 
-      {/* Categories */}
-      <section className="border-b-2 border-black">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex flex-wrap gap-0">
-          {categories.map((cat, i) => (
-            <span key={cat} className={`text-xs tracking-widest px-4 py-2 cursor-pointer border-r-2 border-black last:border-r-0 ${i === 0 ? "bg-black text-white font-bold" : "hover:bg-black/5"}`}>
-              [{cat}]
-            </span>
-          ))}
+      {/* Subscribe */}
+      <section className="max-w-5xl mx-auto px-6 py-10 border-b-2 border-black">
+        <h2 className="text-xs font-bold tracking-wider mb-6" style={{ color: "#b91c1c" }}>
+          $ subscribe --format=email
+        </h2>
+        <div className="flex flex-col sm:flex-row gap-3 max-w-lg">
+          <input
+            type="email"
+            placeholder="dev@yourdomain.com"
+            className="flex-1 px-4 py-3 text-sm border-2 border-black focus:outline-none"
+            style={{ fontFamily: "'Courier Prime', monospace" }}
+          />
+          <button
+            className="px-6 py-3 text-sm font-bold tracking-wider border-2 transition-colors"
+            style={{ backgroundColor: "#b91c1c", borderColor: "#b91c1c", color: "#ffffff" }}
+          >
+            SEND
+          </button>
         </div>
-      </section>
-
-      {/* Posts Grid */}
-      <section className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
-          {posts.map((post, i) => (
-            <div key={post.id} className={`border-2 border-black p-6 cursor-pointer hover:bg-black hover:text-white transition-colors group ${i % 2 === 0 ? "md:border-r-0" : ""} ${i < posts.length - 2 ? "border-b-0 md:border-b-2" : ""} ${i < posts.length - 1 ? "border-b-0 md:border-b-2" : ""}`} style={{ borderBottom: i >= posts.length - 2 ? "2px solid black" : "0", ...(i < posts.length - 2 ? {} : {}) }}>
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs tracking-widest text-black/40 group-hover:text-white/50">#{post.id}</span>
-                <span className="text-xs tracking-widest text-black/40 group-hover:text-white/50">{post.size}</span>
-              </div>
-              <div className="text-xs tracking-widest mb-3 font-bold">[{post.category}]</div>
-              <h3 className="text-lg font-bold leading-tight uppercase mb-3">{post.title}</h3>
-              <p className="text-xs leading-relaxed text-black/60 group-hover:text-white/70 mb-4">{post.excerpt}</p>
-              <div className="flex items-center justify-between">
-                <span className="text-xs tracking-widest text-black/40 group-hover:text-white/50">{post.date}</span>
-                <span className="text-xs tracking-widest font-bold">&gt;&gt;</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Newsletter */}
-      <section className="border-t-4 border-b-4 border-black">
-        <div className="max-w-7xl mx-auto px-4 py-12">
-          <div className="border-2 border-black p-8">
-            <pre className="text-xs text-black/50 mb-4">$ cat /subscribe.txt</pre>
-            <h2 className="text-2xl font-bold uppercase tracking-tight mb-2">JOIN THE FEED</h2>
-            <p className="text-sm text-black/60 mb-6 max-w-lg">Raw, unfiltered dispatches about systems, tools, and the craft of building software. Delivered to your terminal. No tracking pixels.</p>
-            <div className="flex flex-col sm:flex-row gap-0 max-w-md">
-              <div className="flex-1 border-2 border-black h-12 flex items-center px-4">
-                <span className="text-sm text-black/30">user@domain.com_</span>
-              </div>
-              <div className="border-2 border-black border-l-0 sm:border-l-0 border-t-0 sm:border-t-2 h-12 px-6 flex items-center justify-center bg-black text-white text-xs tracking-widest font-bold cursor-pointer hover:bg-white hover:text-black transition-colors">
-                SUBSCRIBE
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Terminal Section */}
-      <section className="max-w-7xl mx-auto px-4 py-12">
-        <pre className="text-xs text-black/40 leading-loose">
-{`$ ls -la /archive/
-total ${posts.length}
-${posts.map((p) => `drwxr-xr-x  ${p.date}  ${p.size.padEnd(8)} ${p.title.toLowerCase().replace(/ /g, "-").slice(0, 40)}.md`).join("\n")}`}
-        </pre>
-      </section>
-
-      {/* Stats Bar */}
-      <section className="border-t-2 border-b-2 border-black">
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-0">
-          {[
-            { label: "POSTS", value: "127" },
-            { label: "WORDS", value: "284K" },
-            { label: "READERS", value: "9.2K" },
-            { label: "UPTIME", value: "99.97%" },
-          ].map((stat, i) => (
-            <div
-              key={stat.label}
-              className={`py-6 px-4 ${i < 3 ? "border-r-2 border-black" : ""} text-center`}
-            >
-              <div className="text-2xl font-bold tracking-tight">{stat.value}</div>
-              <div className="text-xs tracking-widest text-black/40 mt-1">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Recent Dispatches */}
-      <section className="max-w-7xl mx-auto px-4 py-12">
-        <div className="text-xs tracking-widest text-black/40 mb-6">$ tail -3 /dispatches.log</div>
-        <div className="space-y-4">
-          {[
-            { msg: "Shipped a new post on WASM runtime performance benchmarks", ts: "2026-02-26 14:32:01 UTC" },
-            { msg: "Fixed broken links in the dependency audit article", ts: "2026-02-22 09:17:44 UTC" },
-            { msg: "Updated SQLite field report with six-month follow-up data", ts: "2026-02-15 21:08:12 UTC" },
-          ].map((entry, i) => (
-            <div key={i} className="flex items-start space-x-4">
-              <span className="text-xs tracking-widest text-black/30 whitespace-nowrap">{entry.ts}</span>
-              <span className="text-xs text-black/60">{entry.msg}</span>
-            </div>
-          ))}
-        </div>
+        <p className="text-xs mt-3 text-gray-400">
+          28,700 subscribers. Fridays only. Unsubscribe: rm -rf /subscription
+        </p>
       </section>
 
       {/* Footer */}
-      <footer className="border-t-4 border-black">
-        <div className="max-w-7xl mx-auto px-4 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <div>
-            <span className="text-xs tracking-widest font-bold">RAW.TXT</span>
-            <p className="text-xs text-black/40 mt-1">NO COOKIES. NO TRACKERS. JUST TEXT.</p>
-          </div>
-          <div className="flex items-center space-x-4">
-            {["SRC", "RSS", "PGP", "COLOPHON"].map((link) => (
-              <span key={link} className="text-xs tracking-widest text-black/40 hover:text-black cursor-pointer">[{link}]</span>
-            ))}
-          </div>
+      <footer className="max-w-5xl mx-auto px-6 py-8">
+        <div className="flex flex-wrap items-baseline justify-between text-xs text-gray-400">
+          <span>THE DAILY BYTE &copy; 2026</span>
+          <span>EOF</span>
         </div>
       </footer>
     </div>

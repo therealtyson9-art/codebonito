@@ -1,167 +1,172 @@
 export default function LegalPlayfulDemo() {
   const services = [
-    { icon: "📋", title: "Business Formation", desc: "Starting an LLC, corporation, or partnership? We handle the paperwork so you can focus on building your dream." },
-    { icon: "🏠", title: "Real Estate Closings", desc: "Buying or selling a home shouldn't feel overwhelming. We walk you through every step of the closing process." },
-    { icon: "📝", title: "Wills & Estate Planning", desc: "Protect your family's future with clear, affordable estate plans that actually make sense." },
-    { icon: "⚖️", title: "Small Claims & Disputes", desc: "Neighbor disputes, contract issues, or warranty claims. We help you resolve problems without the drama." },
-    { icon: "👨‍👩‍👧", title: "Family Law", desc: "Divorce, custody, and support agreements handled with compassion and common sense." },
-    { icon: "💼", title: "Employment Issues", desc: "Wrongful termination, wage disputes, or workplace harassment. We stand up for working people." },
+    { icon: "\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc66", title: "Family Law", desc: "Divorce, custody, adoption, and child support. We handle sensitive family matters with empathy, clear communication, and a focus on what is best for your children." },
+    { icon: "\ud83d\udee1\ufe0f", title: "Consumer Rights", desc: "Debt collection harassment, unfair billing, warranty disputes, and lemon law claims. We stand up to corporations that take advantage of everyday people." },
+    { icon: "\ud83d\udcbc", title: "Employment Law", desc: "Wrongful termination, wage theft, discrimination, and hostile work environments. If your employer crossed the line, we help you fight back." },
+    { icon: "\ud83c\udfe0", title: "Housing Disputes", desc: "Eviction defense, security deposit recovery, habitability complaints, and landlord-tenant mediation. Everyone deserves a safe, fair place to live." },
+    { icon: "\ud83d\udcb3", title: "Debt Defense", desc: "Credit card lawsuits, medical debt negotiation, and bankruptcy guidance. We help you understand your options and find a path forward." },
+    { icon: "\ud83d\udcdd", title: "Small Claims Help", desc: "Document preparation, case strategy, and coaching for small claims court. You do not need a fortune to get justice." },
+  ]
+
+  const process = [
+    { step: "1", title: "Free Consultation", desc: "Tell us what happened in a relaxed, no-pressure phone call or video chat. We listen first, advise second, and never pressure you into hiring us." },
+    { step: "2", title: "Case Review", desc: "Our team reviews the facts, gathers documents, and researches the law that applies to your situation. Within 48 hours, you will have a clear picture." },
+    { step: "3", title: "Strategy & Action", desc: "We present your options in plain language — no legal jargon. Together we choose a path, whether that is negotiation, mediation, or litigation." },
+    { step: "4", title: "Resolution", desc: "We push for the best possible outcome, keeping you informed at every step. Most of our cases resolve in 60-90 days without going to trial." },
+  ]
+
+  const clientStories = [
+    { name: "Maria G.", quote: "FairPath helped me get full custody of my two kids after a really difficult divorce. They treated me like family the entire time.", type: "Family Law" },
+    { name: "James T.", quote: "A debt collector was calling me ten times a day. FairPath made it stop and got me a $4,500 settlement for the harassment.", type: "Consumer Rights" },
+    { name: "Priya K.", quote: "My employer owed me six months of overtime. I was scared to speak up, but FairPath handled everything. I got every dollar back.", type: "Employment Law" },
   ]
 
   const faqs = [
-    { q: "How much does a consultation cost?", a: "Your first 30-minute consultation is completely free. No obligation, no pressure. We just want to understand your situation and see if we can help." },
-    { q: "Do I really need a lawyer for this?", a: "Maybe, maybe not! That's exactly what the free consultation is for. Sometimes a quick conversation saves you from a much bigger problem down the road." },
-    { q: "How long will my case take?", a: "It depends on the complexity, but we pride ourselves on moving quickly. Simple matters like wills or LLC formation can be done in 1-2 weeks. Litigation varies." },
-    { q: "What are your fees like?", a: "We offer flat-fee pricing for most services, so you always know what to expect. No surprise bills, no billable hour anxiety. We'll quote you upfront." },
-    { q: "Can we meet virtually?", a: "Absolutely! We handle most consultations over video call. If you prefer in-person, our office is in downtown Portland with easy parking nearby." },
-  ]
-
-  const attorneys = [
-    { name: "Sarah Greenfield", title: "Founder & Lead Attorney", specialty: "Business & Real Estate", color: "bg-teal-100" },
-    { name: "Mike Patel", title: "Associate Attorney", specialty: "Family Law & Estate Planning", color: "bg-orange-100" },
-    { name: "Jenny Nakamura", title: "Associate Attorney", specialty: "Employment & Disputes", color: "bg-teal-50" },
-  ]
-
-  const testimonials = [
-    { quote: "I was dreading the whole legal process, but Sarah made it so easy. She explained everything in plain English and even followed up after to make sure I was doing okay.", author: "Ryan M.", stars: 5, context: "LLC Formation" },
-    { quote: "Mike helped me navigate a really tough custody situation with patience and kindness. I never felt judged, and he always returned my calls the same day.", author: "Amanda K.", stars: 5, context: "Family Law" },
-    { quote: "Flat fees! I cannot stress enough how nice it is to know exactly what you're paying. No surprises. The team at Greenfield is genuinely different.", author: "Carlos D.", stars: 5, context: "Estate Planning" },
+    { q: "How much does a consultation cost?", a: "Nothing. Your first consultation is completely free, whether by phone, video, or in person. We want to understand your situation before we talk about fees." },
+    { q: "Do you work on contingency?", a: "For consumer rights and employment cases, yes — you pay nothing unless we win. Family law and housing matters are billed at affordable flat rates." },
+    { q: "How quickly can you start on my case?", a: "In most situations, we can begin working on your case within 24-48 hours of our initial consultation. Urgent matters are handled same-day." },
+    { q: "Do I need to come to your office?", a: "Not at all. We handle most consultations and case updates over phone or video. In-person meetings are available but never required." },
   ]
 
   return (
-    <div className="min-h-screen bg-white text-gray-800" style={{ fontFamily: "Poppins, sans-serif" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <div style={{ fontFamily: "'Signika', sans-serif", backgroundColor: "#eff6ff" }} className="min-h-screen">
+      <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-      {/* Nav */}
-      <nav className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
-        <span className="text-xl font-semibold" style={{ color: "#0d9488" }}>greenfield<span className="text-gray-400 font-light"> legal</span></span>
-        <div className="hidden md:flex items-center space-x-8">
-          {["Services", "Our Team", "FAQ", "Reviews"].map((item) => (
-            <span key={item} className="text-sm text-gray-500 hover:text-gray-900 cursor-pointer transition-colors">{item}</span>
-          ))}
+      {/* Rounded Nav */}
+      <nav className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <span style={{ color: "#6366f1" }} className="text-2xl font-bold">FairPath</span>
+          <span className="text-gray-400 font-light text-xl">Legal</span>
         </div>
-        <span className="text-sm font-medium text-white px-6 py-2.5 rounded-full cursor-pointer transition-colors" style={{ backgroundColor: "#0d9488" }}>Free Consultation</span>
+        <div className="flex items-center gap-3">
+          {["How We Help", "Our Process", "Stories", "FAQ"].map((link) => (
+            <span key={link} className="px-4 py-2 rounded-full text-sm font-medium text-gray-600 hover:bg-indigo-100 cursor-pointer transition-colors">{link}</span>
+          ))}
+          <span style={{ backgroundColor: "#6366f1" }} className="px-5 py-2 rounded-full text-sm font-semibold text-white cursor-pointer">Free Consultation</span>
+        </div>
       </nav>
 
-      {/* Hero */}
-      <section className="max-w-6xl mx-auto px-6 pt-20 pb-24 text-center">
-        <div className="inline-block px-4 py-1.5 rounded-full text-xs font-medium mb-6" style={{ backgroundColor: "#f0fdfa", color: "#0d9488" }}>
-          Serving Portland since 2015
+      {/* Friendly Icons Hero */}
+      <section className="max-w-6xl mx-auto px-6 py-20 text-center">
+        <div className="flex justify-center gap-4 text-4xl mb-8">
+          <span>&#x2696;&#xFE0F;</span><span>&#x1F91D;</span><span>&#x1F4AA;</span><span>&#x2764;&#xFE0F;</span>
         </div>
-        <h1 className="text-4xl md:text-6xl font-bold leading-tight text-gray-900">
-          Legal help that actually<br /><span style={{ color: "#0d9488" }}>makes sense.</span>
-        </h1>
-        <p className="mt-6 text-lg text-gray-400 max-w-xl mx-auto leading-relaxed font-light">
-          No confusing jargon. No surprise bills. Just honest, approachable legal services for real people and small businesses.
+        <h2 style={{ color: "#1e1b4b" }} className="text-5xl font-bold leading-tight mb-6 max-w-3xl mx-auto">
+          Legal Help That Actually Feels Helpful
+        </h2>
+        <p className="text-gray-500 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+          FairPath Legal was built for real people with real problems. No stuffy offices, no
+          confusing jargon, no surprise bills. Just straightforward legal help from attorneys
+          who genuinely care about your outcome.
         </p>
-        <div className="mt-10 flex justify-center gap-4">
-          <span className="px-8 py-3 text-sm font-medium text-white rounded-full cursor-pointer transition-colors hover:opacity-90" style={{ backgroundColor: "#0d9488" }}>Book a Free Consultation</span>
-          <span className="px-8 py-3 text-sm font-medium text-gray-700 bg-gray-100 rounded-full cursor-pointer hover:bg-gray-200 transition-colors">See Our Services</span>
+        <div className="flex justify-center gap-4">
+          <span style={{ backgroundColor: "#6366f1" }} className="px-8 py-3 rounded-full font-semibold text-white cursor-pointer">Get Your Free Consultation</span>
+          <span style={{ color: "#6366f1", borderColor: "#6366f1" }} className="border-2 px-8 py-3 rounded-full font-semibold cursor-pointer">See How We Work</span>
         </div>
       </section>
 
-      {/* Services */}
-      <section className="bg-gray-50 py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-4 text-gray-900">What We Can Help With</h2>
-          <p className="text-center text-gray-400 mb-16 max-w-md mx-auto">Straightforward legal services with transparent pricing. No hourly billing surprises.</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {services.map((s) => (
-              <div key={s.title} className="bg-white p-8 rounded-2xl border border-gray-100 hover:border-teal-200 hover:shadow-md transition-all">
-                <span className="text-3xl">{s.icon}</span>
-                <h3 className="text-lg font-semibold mt-4 mb-2 text-gray-900">{s.title}</h3>
-                <p className="text-sm text-gray-400 leading-relaxed">{s.desc}</p>
+      {/* How We Help */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <div className="text-center mb-12">
+          <h3 style={{ color: "#1e1b4b" }} className="text-4xl font-bold mb-3">How We Help</h3>
+          <p className="text-gray-500">Affordable legal services for the issues that matter most</p>
+        </div>
+        <div className="grid grid-cols-3 gap-6">
+          {services.map((svc) => (
+            <div key={svc.title} className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+              <span className="text-3xl block mb-3">{svc.icon}</span>
+              <h4 style={{ color: "#1e1b4b" }} className="text-lg font-bold mb-2">{svc.title}</h4>
+              <p className="text-gray-500 text-sm leading-relaxed">{svc.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Our Process */}
+      <section style={{ backgroundColor: "#e0e7ff" }} className="py-16">
+        <div className="max-w-5xl mx-auto px-6">
+          <h3 style={{ color: "#1e1b4b" }} className="text-4xl font-bold text-center mb-12">Our Process</h3>
+          <div className="grid grid-cols-4 gap-6">
+            {process.map((p) => (
+              <div key={p.step} className="text-center">
+                <div style={{ backgroundColor: "#6366f1" }} className="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center text-white font-bold text-lg">{p.step}</div>
+                <h4 style={{ color: "#1e1b4b" }} className="font-bold mb-2">{p.title}</h4>
+                <p className="text-gray-600 text-sm leading-relaxed">{p.desc}</p>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Client Stories */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <h3 style={{ color: "#1e1b4b" }} className="text-4xl font-bold text-center mb-12">Client Stories</h3>
+        <div className="grid grid-cols-3 gap-6">
+          {clientStories.map((story) => (
+            <div key={story.name} className="bg-white rounded-2xl p-6 shadow-sm">
+              <div className="flex items-center gap-1 mb-4">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <span key={star} style={{ color: "#fbbf24" }} className="text-lg">&#x2605;</span>
+                ))}
+              </div>
+              <p className="text-gray-600 text-sm leading-relaxed mb-4 italic">&ldquo;{story.quote}&rdquo;</p>
+              <div className="flex items-center justify-between">
+                <span style={{ color: "#1e1b4b" }} className="font-bold text-sm">{story.name}</span>
+                <span style={{ color: "#6366f1" }} className="text-xs font-semibold">{story.type}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Free Consultation CTA */}
+      <section style={{ backgroundColor: "#6366f1" }} className="py-14">
+        <div className="max-w-4xl mx-auto px-6 text-center text-white">
+          <h3 className="text-3xl font-bold mb-4">Not Sure Where to Start?</h3>
+          <p className="text-indigo-200 text-lg mb-8 max-w-xl mx-auto">
+            Tell us what is going on. Our team will review your situation and let you know
+            your options — completely free, no strings attached.
+          </p>
+          <span className="bg-white px-8 py-3 rounded-full font-bold cursor-pointer" style={{ color: "#6366f1" }}>Schedule Your Free Call</span>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="max-w-3xl mx-auto px-6 py-24">
-        <h2 className="text-3xl font-bold text-center mb-4 text-gray-900">Common Questions</h2>
-        <p className="text-center text-gray-400 mb-12">The stuff people actually want to know before hiring a lawyer.</p>
+      <section className="max-w-4xl mx-auto px-6 py-16">
+        <h3 style={{ color: "#1e1b4b" }} className="text-3xl font-bold text-center mb-10">Frequently Asked Questions</h3>
         <div className="space-y-4">
           {faqs.map((faq) => (
-            <div key={faq.q} className="border border-gray-100 rounded-xl p-6 hover:border-teal-200 transition-colors">
-              <h3 className="text-base font-semibold text-gray-900">{faq.q}</h3>
-              <p className="text-sm text-gray-400 mt-3 leading-relaxed">{faq.a}</p>
+            <div key={faq.q} className="bg-white rounded-2xl p-6 shadow-sm">
+              <h4 style={{ color: "#1e1b4b" }} className="font-bold mb-2">{faq.q}</h4>
+              <p className="text-gray-500 text-sm leading-relaxed">{faq.a}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Attorneys */}
-      <section className="bg-gray-50 py-24">
+      {/* Friendly Footer with Reviews */}
+      <footer style={{ backgroundColor: "#1e1b4b" }} className="text-white py-10">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-4 text-gray-900">Meet the Team</h2>
-          <p className="text-center text-gray-400 mb-16">Real people who genuinely care about your case.</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {attorneys.map((att) => (
-              <div key={att.name} className="text-center">
-                <div className={`w-40 h-40 ${att.color} rounded-full mx-auto mb-6`} />
-                <h3 className="text-lg font-semibold text-gray-900">{att.name}</h3>
-                <p className="text-sm text-gray-500 mt-1">{att.title}</p>
-                <p className="text-xs mt-2 px-3 py-1 rounded-full inline-block" style={{ backgroundColor: "#f0fdfa", color: "#0d9488" }}>{att.specialty}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto px-6 text-center rounded-3xl py-16 mx-6" style={{ backgroundColor: "#0d9488" }}>
-          <h2 className="text-3xl md:text-4xl font-bold text-white">Your first consultation is free.</h2>
-          <p className="text-white/70 mt-4 max-w-md mx-auto">No commitment, no pressure. Let&apos;s just talk about what&apos;s going on and figure out the best path forward together.</p>
-          <div className="mt-8">
-            <span className="inline-block px-10 py-3.5 text-sm font-semibold rounded-full cursor-pointer transition-colors bg-white hover:bg-gray-100" style={{ color: "#0d9488" }}>Schedule Your Free Call</span>
-          </div>
-          <p className="text-white/50 text-xs mt-4">Or call us directly at (503) 555-0127</p>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="max-w-6xl mx-auto px-6 py-24">
-        <h2 className="text-3xl font-bold text-center mb-4 text-gray-900">What Our Clients Say</h2>
-        <p className="text-center text-gray-400 mb-16">Honest reviews from real clients.</p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((t) => (
-            <div key={t.author} className="bg-gray-50 p-8 rounded-2xl">
-              <div className="flex gap-1 mb-4">
-                {Array.from({ length: t.stars }).map((_, i) => (
-                  <span key={i} className="text-orange-400 text-lg">&#9733;</span>
-                ))}
-              </div>
-              <p className="text-sm text-gray-600 leading-relaxed">&ldquo;{t.quote}&rdquo;</p>
-              <div className="mt-6 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full" style={{ backgroundColor: "#0d9488", opacity: 0.2 }} />
-                <div>
-                  <p className="text-sm font-semibold text-gray-900">{t.author}</p>
-                  <p className="text-xs text-gray-400">{t.context}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-50 border-t border-gray-100">
-        <div className="max-w-6xl mx-auto px-6 py-12">
-          <div className="flex flex-col md:flex-row justify-between items-start gap-8">
+          <div className="flex justify-between items-start mb-8">
             <div>
-              <span className="text-lg font-semibold" style={{ color: "#0d9488" }}>greenfield<span className="text-gray-400 font-light"> legal</span></span>
-              <p className="text-xs text-gray-400 mt-2 max-w-xs">Making legal services accessible, affordable, and actually understandable since 2015.</p>
+              <h4 className="text-xl font-bold mb-2">FairPath Legal</h4>
+              <p className="text-indigo-300 text-sm">Legal help for real people, real problems.</p>
+              <p className="text-indigo-400 text-xs mt-2">321 Main Street, Suite 100, Greenfield, ST 30045</p>
             </div>
-            <div className="flex flex-wrap gap-8">
-              {["Privacy", "Terms", "Accessibility", "Disclaimer"].map((link) => (
-                <span key={link} className="text-xs text-gray-400 hover:text-gray-900 cursor-pointer transition-colors">{link}</span>
-              ))}
+            <div className="text-right">
+              <p className="text-white font-bold">(555) 800-FAIR (3247)</p>
+              <p className="text-indigo-300 text-sm">hello@fairpathlegal.com</p>
+              <div className="flex items-center justify-end gap-1 mt-2">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <span key={star} style={{ color: "#fbbf24" }} className="text-sm">&#x2605;</span>
+                ))}
+                <span className="text-indigo-300 text-xs ml-1">4.9/5 from 280+ reviews</span>
+              </div>
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-gray-200 text-center">
-            <span className="text-xs text-gray-300">&copy; 2026 Greenfield Legal LLC. Portland, Oregon. Attorney advertising.</span>
+          <div className="border-t border-indigo-800 pt-4 flex justify-between items-center">
+            <p className="text-indigo-400 text-xs">&copy; 2024 FairPath Legal. All rights reserved.</p>
+            <p className="text-indigo-400 text-xs">Licensed in ST, NY, CA &middot; Free consultations available</p>
           </div>
         </div>
       </footer>

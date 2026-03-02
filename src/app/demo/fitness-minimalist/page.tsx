@@ -1,159 +1,159 @@
 export default function FitnessMinimalistDemo() {
-  const navLinks = ["Classes", "Trainers", "Membership", "Contact"]
+  const navLinks = ["Programs", "Coaches", "Stories", "Membership", "Join"]
 
-  const classes = [
-    { name: "HIIT", time: "Mon / Wed / Fri — 6:00 AM", duration: "45 min", level: "All Levels" },
-    { name: "Yoga Flow", time: "Tue / Thu — 7:00 AM", duration: "60 min", level: "Beginner" },
-    { name: "Spin", time: "Mon / Wed / Fri — 12:00 PM", duration: "45 min", level: "Intermediate" },
-    { name: "Boxing", time: "Tue / Thu / Sat — 5:30 PM", duration: "60 min", level: "All Levels" },
-    { name: "Pilates", time: "Mon / Wed — 9:00 AM", duration: "50 min", level: "Beginner" },
-    { name: "CrossFit", time: "Tue / Thu / Sat — 6:30 AM", duration: "60 min", level: "Advanced" },
+  const programs = [
+    { name: "5K Kickstart", duration: "8 Weeks", pace: "Beginner-friendly", desc: "Build your foundation with structured walk-run intervals, proper form drills, and gradual mileage increases. Perfect for those new to running or returning after a break." },
+    { name: "10K Breakthrough", duration: "10 Weeks", pace: "Intermediate", desc: "Push past the 5K plateau with tempo runs, hill repeats, and speed sessions designed to build endurance and shave minutes off your personal record." },
+    { name: "Marathon Mastery", duration: "16 Weeks", pace: "Advanced", desc: "A periodized plan covering base building, peak mileage weeks, and a strategic taper. Includes nutrition guidance and race-day strategy for your best 26.2." },
+    { name: "Trail Running", duration: "12 Weeks", pace: "All Levels", desc: "Take your running off-road with terrain-specific training, elevation gain programming, and technical descending skills. Explore local trails with group runs every Saturday." },
   ]
 
-  const trainers = [
-    { name: "Marcus Chen", specialty: "Strength & Conditioning", experience: "12 years", cert: "CSCS, NSCA-CPT" },
-    { name: "Ava Rodriguez", specialty: "Yoga & Mobility", experience: "8 years", cert: "RYT-500, FMS" },
-    { name: "Derek Williams", specialty: "Boxing & HIIT", experience: "10 years", cert: "NASM-CPT, USA Boxing" },
+  const coaches = [
+    { name: "Marcus Chen", specialty: "Marathon & Ultra", bio: "Former Division I track athlete with 15 years of coaching experience. Has guided over 200 runners to their first marathon finish and holds a 2:38 personal best.", record: "2:38 PR" },
+    { name: "Lena Okafor", specialty: "Speed & Track", bio: "USATF Level 2 certified coach specializing in interval training and race-pace development. Known for her data-driven approach to improving split times.", record: "USATF L2" },
+    { name: "David Reyes", specialty: "Trail & Endurance", bio: "Ultramarathon finisher and certified wilderness guide. Blends strength conditioning with trail-specific skills to prepare runners for any terrain.", record: "100mi Finisher" },
+  ]
+
+  const stories = [
+    { name: "Sarah M.", result: "First Marathon — 4:12:33", quote: "Stride gave me the structure I needed. Marcus helped me believe I could actually finish 26.2 miles, and I did it faster than I ever imagined." },
+    { name: "James T.", result: "10K PR — 41:08", quote: "I shaved 6 minutes off my 10K in just 10 weeks. The interval sessions were tough, but Coach Lena knew exactly when to push and when to pull back." },
+    { name: "Priya K.", result: "Couch to 5K — 28:45", quote: "I had never run more than a mile in my life. The 5K Kickstart program made it feel achievable from day one. Now I run four times a week." },
   ]
 
   const plans = [
-    { name: "Basic", price: "$29", period: "/month", features: ["Gym floor access", "Locker room", "2 group classes/week", "Basic fitness assessment"] },
-    { name: "Standard", price: "$49", period: "/month", features: ["Unlimited gym access", "All group classes", "1 personal training session/month", "Nutrition guide", "Sauna access"], popular: true },
-    { name: "Premium", price: "$79", period: "/month", features: ["24/7 unlimited access", "All group classes", "4 personal training sessions/month", "Custom meal plan", "Recovery suite", "Guest passes"] },
+    { name: "Solo Runner", price: "$59", period: "/month", features: ["Personalized training plan", "Weekly plan adjustments", "Access to group runs", "Mobile app tracking"] },
+    { name: "Coached", price: "$119", period: "/month", features: ["Everything in Solo Runner", "1-on-1 coaching sessions (2x/mo)", "Video gait analysis", "Race-day strategy planning", "Nutrition guidance"], popular: true },
+    { name: "Elite", price: "$199", period: "/month", features: ["Everything in Coached", "Unlimited coaching sessions", "Strength & mobility programming", "Recovery protocol", "Priority race registration"] },
   ]
 
   return (
-    <div className="min-h-screen bg-white text-slate-800" style={{ fontFamily: "Inter, sans-serif" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <div style={{ fontFamily: "'Exo 2', sans-serif" }} className="min-h-screen bg-white text-gray-900">
+      <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-      {/* Navigation */}
-      <nav className="border-b border-slate-100">
-        <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-          <span className="text-xl font-bold tracking-tight text-slate-900">IRON<span className="text-red-500">FORGE</span></span>
-          <div className="hidden md:flex items-center space-x-10">
-            {navLinks.map((link) => (
-              <span key={link} className="text-sm text-slate-500 hover:text-slate-900 cursor-pointer transition-colors">{link}</span>
-            ))}
-          </div>
-          <span className="px-5 py-2 bg-red-500 text-white text-sm font-medium cursor-pointer hover:bg-red-600 transition-colors">Join Now</span>
+      {/* Nav */}
+      <nav className="flex items-center justify-between px-8 py-5 border-b border-gray-100">
+        <div className="text-2xl font-bold tracking-tight" style={{ color: "#059669" }}>Stride</div>
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <a key={link} href="#" className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">{link}</a>
+          ))}
         </div>
+        <button className="text-sm font-semibold text-white px-5 py-2 rounded-full" style={{ backgroundColor: "#059669" }}>Start Running</button>
       </nav>
 
       {/* Hero */}
-      <section className="relative">
-        <div className="h-[70vh] bg-gradient-to-br from-slate-100 via-white to-slate-50 flex items-center justify-center">
-          <div className="text-center max-w-2xl px-6">
-            <p className="text-xs tracking-[0.3em] uppercase text-red-500 mb-6 font-medium">Est. 2019 — Downtown Portland</p>
-            <h1 className="text-5xl md:text-6xl font-light text-slate-900 leading-tight">Transform your body,<br />transform your life.</h1>
-            <p className="text-lg text-slate-500 font-light mt-8 max-w-md mx-auto leading-relaxed">Functional training, expert coaching, and a community that pushes you to be your best — every single day.</p>
-            <div className="mt-10 flex justify-center gap-4">
-              <span className="inline-block px-8 py-3 bg-slate-900 text-white text-sm cursor-pointer hover:bg-slate-800 transition-colors">Start Free Trial</span>
-              <span className="inline-block px-8 py-3 border border-slate-300 text-slate-700 text-sm cursor-pointer hover:border-slate-500 transition-colors">View Schedule</span>
-            </div>
+      <section className="relative flex items-center justify-center py-32 px-8" style={{ backgroundColor: "#f0fdf4" }}>
+        <div className="max-w-3xl text-center">
+          <p className="text-sm font-semibold uppercase tracking-widest mb-4" style={{ color: "#059669" }}>Running & Endurance Training</p>
+          <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">Every Mile<br />Starts With One Step</h1>
+          <p className="text-lg text-gray-600 mb-8 max-w-xl mx-auto">Stride is a running and endurance training studio for athletes at every level. Expert coaching, structured programs, and a community that moves forward together.</p>
+          <div className="flex gap-4 justify-center">
+            <button className="text-white font-semibold px-8 py-3 rounded-full" style={{ backgroundColor: "#059669" }}>Find Your Program</button>
+            <button className="font-semibold px-8 py-3 rounded-full border-2" style={{ borderColor: "#059669", color: "#059669" }}>Free Trial Run</button>
           </div>
         </div>
       </section>
 
-      {/* Class Schedule */}
-      <section className="max-w-6xl mx-auto px-6 py-24">
-        <div className="text-center mb-16">
-          <p className="text-xs tracking-[0.3em] uppercase text-red-500 mb-3 font-medium">Weekly Schedule</p>
-          <h2 className="text-4xl font-light text-slate-900">Class Schedule</h2>
-          <p className="text-slate-500 mt-4 font-light">Six signature classes designed to challenge every part of your fitness</p>
-        </div>
-        <div className="grid md:grid-cols-3 gap-6">
-          {classes.map((cls) => (
-            <div key={cls.name} className="border border-slate-100 p-6 hover:border-red-200 transition-colors">
-              <h3 className="text-lg font-semibold text-slate-900 mb-1">{cls.name}</h3>
-              <p className="text-sm text-slate-400 mb-3">{cls.time}</p>
-              <div className="flex justify-between text-sm">
-                <span className="text-slate-500">{cls.duration}</span>
-                <span className="text-red-500 font-medium">{cls.level}</span>
+      {/* Programs */}
+      <section className="py-20 px-8 max-w-6xl mx-auto">
+        <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: "#059669" }}>Training Programs</p>
+        <h2 className="text-3xl font-bold mb-12">Choose Your Distance</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {programs.map((p) => (
+            <div key={p.name} className="border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-shadow">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-xl font-bold">{p.name}</h3>
+                <span className="text-xs font-semibold px-3 py-1 rounded-full text-white" style={{ backgroundColor: "#059669" }}>{p.pace}</span>
               </div>
+              <p className="text-sm text-gray-500 mb-3">{p.duration} program</p>
+              <p className="text-gray-600 leading-relaxed">{p.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Trainers */}
-      <section className="bg-slate-50">
-        <div className="max-w-6xl mx-auto px-6 py-24">
-          <div className="text-center mb-16">
-            <p className="text-xs tracking-[0.3em] uppercase text-red-500 mb-3 font-medium">Expert Team</p>
-            <h2 className="text-4xl font-light text-slate-900">Our Trainers</h2>
-          </div>
+      {/* Coaches */}
+      <section className="py-20 px-8" style={{ backgroundColor: "#f0fdf4" }}>
+        <div className="max-w-6xl mx-auto">
+          <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: "#059669" }}>Coaching Team</p>
+          <h2 className="text-3xl font-bold mb-12">Run With the Best</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            {trainers.map((trainer) => (
-              <div key={trainer.name} className="bg-white p-8 border border-slate-100">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-slate-200 to-slate-300 mb-6" />
-                <h3 className="text-lg font-semibold text-slate-900">{trainer.name}</h3>
-                <p className="text-red-500 text-sm font-medium mt-1">{trainer.specialty}</p>
-                <p className="text-sm text-slate-400 mt-3">{trainer.experience} experience</p>
-                <p className="text-xs text-slate-400 mt-1">{trainer.cert}</p>
+            {coaches.map((c) => (
+              <div key={c.name} className="bg-white rounded-xl p-8 shadow-sm">
+                <div className="w-20 h-20 rounded-full mb-6 flex items-center justify-center text-white text-xl font-bold" style={{ backgroundColor: "#059669" }}>
+                  {c.name.split(" ").map((n) => n[0]).join("")}
+                </div>
+                <h3 className="text-lg font-bold mb-1">{c.name}</h3>
+                <p className="text-sm font-medium mb-1" style={{ color: "#059669" }}>{c.specialty}</p>
+                <p className="text-xs text-gray-400 mb-4">{c.record}</p>
+                <p className="text-gray-600 text-sm leading-relaxed">{c.bio}</p>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Success Stories */}
+      <section className="py-20 px-8 max-w-6xl mx-auto">
+        <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: "#059669" }}>Success Stories</p>
+        <h2 className="text-3xl font-bold mb-12">Runners Who Found Their Stride</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {stories.map((s) => (
+            <div key={s.name} className="border-l-4 pl-6 py-2" style={{ borderColor: "#059669" }}>
+              <p className="text-gray-600 italic mb-4 leading-relaxed">&ldquo;{s.quote}&rdquo;</p>
+              <p className="font-bold text-sm">{s.name}</p>
+              <p className="text-sm" style={{ color: "#059669" }}>{s.result}</p>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* Membership Plans */}
-      <section className="max-w-6xl mx-auto px-6 py-24">
-        <div className="text-center mb-16">
-          <p className="text-xs tracking-[0.3em] uppercase text-red-500 mb-3 font-medium">Pricing</p>
-          <h2 className="text-4xl font-light text-slate-900">Membership Plans</h2>
-          <p className="text-slate-500 mt-4 font-light">No contracts. Cancel anytime. Start with a free 7-day trial.</p>
-        </div>
-        <div className="grid md:grid-cols-3 gap-8">
-          {plans.map((plan) => (
-            <div key={plan.name} className={`border p-8 ${plan.popular ? "border-red-500 relative" : "border-slate-100"}`}>
-              {plan.popular && <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-red-500 text-white text-xs px-4 py-1 font-medium">Most Popular</span>}
-              <h3 className="text-lg font-semibold text-slate-900">{plan.name}</h3>
-              <div className="mt-4 mb-6">
-                <span className="text-4xl font-light text-slate-900">{plan.price}</span>
-                <span className="text-slate-400 text-sm">{plan.period}</span>
+      <section className="py-20 px-8" style={{ backgroundColor: "#f0fdf4" }}>
+        <div className="max-w-6xl mx-auto">
+          <p className="text-sm font-semibold uppercase tracking-widest mb-2 text-center" style={{ color: "#059669" }}>Membership Plans</p>
+          <h2 className="text-3xl font-bold mb-12 text-center">Invest in Your Finish Line</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {plans.map((p) => (
+              <div key={p.name} className={`bg-white rounded-xl p-8 ${p.popular ? "ring-2 shadow-lg" : "shadow-sm"}`} style={p.popular ? {} : {}}>
+                {p.popular && <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#059669" }}>Most Popular</p>}
+                <h3 className="text-xl font-bold mb-2">{p.name}</h3>
+                <p className="text-4xl font-bold mb-1">{p.price}<span className="text-base font-normal text-gray-400">{p.period}</span></p>
+                <ul className="mt-6 space-y-3">
+                  {p.features.map((f) => (
+                    <li key={f} className="flex items-start gap-2 text-sm text-gray-600">
+                      <span style={{ color: "#059669" }} className="font-bold mt-0.5">&#10003;</span>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <button className="mt-8 w-full py-3 rounded-full font-semibold text-sm" style={p.popular ? { backgroundColor: "#059669", color: "white" } : { border: "2px solid #059669", color: "#059669" }}>
+                  Get Started
+                </button>
               </div>
-              <ul className="space-y-3 mb-8">
-                {plan.features.map((f) => (
-                  <li key={f} className="text-sm text-slate-500 flex items-start gap-2">
-                    <span className="text-red-500 mt-0.5">&#10003;</span> {f}
-                  </li>
-                ))}
-              </ul>
-              <span className={`block text-center py-3 text-sm cursor-pointer transition-colors ${plan.popular ? "bg-red-500 text-white hover:bg-red-600" : "bg-slate-900 text-white hover:bg-slate-800"}`}>Get Started</span>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Join Form */}
-      <section className="bg-slate-900 text-white">
-        <div className="max-w-3xl mx-auto px-6 py-24 text-center">
-          <p className="text-xs tracking-[0.3em] uppercase text-red-400 mb-3">Get Started</p>
-          <h2 className="text-4xl font-light mb-4">Ready to Transform?</h2>
-          <p className="text-slate-400 font-light mb-10 max-w-md mx-auto">Sign up for your free 7-day trial. No credit card required. Just show up and put in the work.</p>
-          <div className="max-w-md mx-auto grid grid-cols-2 gap-4 mb-6">
-            <input type="text" placeholder="First Name" className="px-4 py-3 bg-slate-800 border border-slate-700 text-sm text-white placeholder-slate-500 outline-none focus:border-red-500" readOnly />
-            <input type="text" placeholder="Last Name" className="px-4 py-3 bg-slate-800 border border-slate-700 text-sm text-white placeholder-slate-500 outline-none focus:border-red-500" readOnly />
-            <input type="text" placeholder="Email Address" className="col-span-2 px-4 py-3 bg-slate-800 border border-slate-700 text-sm text-white placeholder-slate-500 outline-none focus:border-red-500" readOnly />
-            <input type="text" placeholder="Phone" className="col-span-2 px-4 py-3 bg-slate-800 border border-slate-700 text-sm text-white placeholder-slate-500 outline-none focus:border-red-500" readOnly />
-          </div>
-          <span className="inline-block px-10 py-3 bg-red-500 hover:bg-red-600 text-white text-sm cursor-pointer transition-colors font-medium">Claim Free Trial</span>
-        </div>
+      {/* Join CTA */}
+      <section className="py-20 px-8 text-center text-white" style={{ backgroundColor: "#059669" }}>
+        <h2 className="text-4xl font-bold mb-4">Ready to Run?</h2>
+        <p className="text-lg opacity-90 mb-8 max-w-lg mx-auto">Join Stride today and take the first step toward your next personal best. Your first group run is free.</p>
+        <button className="bg-white font-semibold px-10 py-3 rounded-full" style={{ color: "#059669" }}>Join Stride Free</button>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-100">
-        <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div>
-            <span className="text-lg font-bold tracking-tight text-slate-900">IRON<span className="text-red-500">FORGE</span></span>
-            <p className="text-sm text-slate-400 mt-1">523 SE Division St, Portland, OR 97202</p>
+      <footer className="py-12 px-8 border-t border-gray-100">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="text-xl font-bold" style={{ color: "#059669" }}>Stride</div>
+          <div className="flex gap-6 text-sm text-gray-500">
+            <a href="#" className="hover:text-gray-900">Instagram</a>
+            <a href="#" className="hover:text-gray-900">Strava</a>
+            <a href="#" className="hover:text-gray-900">YouTube</a>
+            <a href="#" className="hover:text-gray-900">Twitter</a>
           </div>
-          <div className="text-sm text-slate-400 space-x-8">
-            <span className="cursor-pointer hover:text-slate-700">Instagram</span>
-            <span className="cursor-pointer hover:text-slate-700">YouTube</span>
-            <span className="cursor-pointer hover:text-slate-700">(503) 555-0187</span>
-          </div>
-          <p className="text-xs text-slate-300">&copy; 2026 IronForge Fitness. All rights reserved.</p>
+          <p className="text-sm text-gray-400">&copy; 2025 Stride Running Studio. All rights reserved.</p>
         </div>
       </footer>
     </div>

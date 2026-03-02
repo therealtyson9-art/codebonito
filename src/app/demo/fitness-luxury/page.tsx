@@ -1,80 +1,73 @@
 export default function FitnessLuxuryDemo() {
-  const navLinks = ["Programs", "Membership", "Facilities", "Trainers"]
+  const navLinks = ["Amenities", "Membership", "Trainers", "Experience"]
 
-  const programs = [
-    { name: "Personal Concierge Training", desc: "Your dedicated performance coach designs every session around your evolving goals, recovery status, and schedule. Available at your convenience, in-club or private residence." },
-    { name: "Recovery Suite", desc: "Cryotherapy, infrared sauna, compression therapy, and cold plunge protocols guided by our recovery specialists. Restore, recover, repeat." },
-    { name: "Private Coaching", desc: "One-on-one instruction in a private studio with soundproofing and dedicated equipment. Zero distractions. Maximum focus." },
-    { name: "Nutrition Planning", desc: "Board-certified nutritionists create bespoke meal plans calibrated to your training load, preferences, and biomarker data." },
+  const amenities = [
+    { name: "Aquatic Center", icon: "POOL", desc: "A 25-meter heated lap pool with underwater lighting, a hydrotherapy spa, and a cold plunge circuit. Private swim lessons and aqua fitness classes available by appointment." },
+    { name: "Spa & Recovery", icon: "SPA", desc: "Full-service spa featuring infrared saunas, eucalyptus steam rooms, cryotherapy, and licensed massage therapists. Complimentary with Platinum and Black memberships." },
+    { name: "Personal Training Suites", icon: "PT", desc: "Private, sound-insulated training rooms with premium equipment. Each suite is reserved exclusively for you and your trainer during your session." },
+    { name: "The Brasserie", icon: "DINE", desc: "An in-club restaurant serving chef-prepared meals designed by our sports nutritionist. Organic ingredients, performance-focused menus, and a curated wine selection." },
   ]
 
   const tiers = [
-    { name: "Elite", price: "$199", period: "/month", features: ["Full facility access", "Group classes", "Recovery suite (4x/month)", "Valet parking", "Towel service & amenities"], tier: "I" },
-    { name: "Platinum", price: "$349", period: "/month", features: ["Everything in Elite", "8 personal training sessions", "Unlimited recovery suite", "Nutrition consultation", "Guest privileges", "Priority booking"], popular: true, tier: "II" },
-    { name: "Royal", price: "$599", period: "/month", features: ["Everything in Platinum", "Unlimited personal training", "Private studio access", "Concierge scheduling", "Quarterly health assessment", "Complimentary spa services", "Private locker"], tier: "III" },
+    { name: "Gold", price: "$295", period: "/month", features: ["Full gym and pool access", "Group fitness classes", "Locker with laundry service", "Guest passes (2/month)", "Brasserie dining (10% off)"] },
+    { name: "Platinum", price: "$495", period: "/month", features: ["Everything in Gold", "Personal training (4 sessions/mo)", "Spa & recovery access", "Priority class booking", "Brasserie dining (25% off)", "Valet parking"], popular: true },
+    { name: "Black", price: "$895", period: "/month", features: ["Everything in Platinum", "Unlimited personal training", "Private training suite", "In-home training sessions", "Full spa & cryo included", "Concierge services", "Exclusive member events"] },
   ]
 
   const trainers = [
-    { name: "Alexander Voss", title: "Director of Performance", background: "Former Olympic athletics coach. 18 years of elite-level programming for executives and professional athletes." },
-    { name: "Isabella Thornton", title: "Head of Recovery Science", background: "Doctorate in Sports Physiology from Stanford. Specializes in longevity protocols and regenerative wellness." },
-    { name: "David Nakamura", title: "Senior Training Specialist", background: "Certified Strength & Conditioning Specialist with 14 years training Fortune 500 executives and touring artists." },
+    { name: "Isabelle Fontaine", specialty: "Barre & Pilates Sculpt", bio: "Classically trained dancer turned fitness expert. Isabelle brings precision, grace, and an eye for posture correction to every session. Certified in STOTT Pilates and Xtend Barre.", years: "14 years" },
+    { name: "Darius Cole", specialty: "Strength & Hypertrophy", bio: "Former professional rugby player with a degree in exercise science. Darius designs evidence-based programs for clients seeking aesthetic and athletic results.", years: "10 years" },
+    { name: "Ayumi Tanaka", specialty: "Holistic Wellness & Yoga", bio: "500-hour RYT with training in Ayurvedic medicine. Ayumi integrates breathwork, meditation, and movement to help clients find balance in demanding lifestyles.", years: "12 years" },
   ]
 
-  const facilities = [
-    "25,000 sq ft premium training floor",
-    "Olympic-grade free weight section",
-    "Private coaching studios",
-    "Infrared sauna & cold plunge suite",
-    "Cryotherapy chamber",
-    "Eucalyptus steam room",
-    "Members-only lounge & cafe",
-    "Valet parking",
+  const experiences = [
+    { title: "Morning Rituals", time: "6:00 AM", desc: "Begin your day with sunrise yoga on our rooftop terrace, followed by a cold plunge and a fresh-pressed juice from The Brasserie." },
+    { title: "Performance Hour", time: "12:00 PM", desc: "A midday training session in your private suite, followed by a recovery circuit through the sauna, steam, and cryotherapy." },
+    { title: "Evening Retreat", time: "7:00 PM", desc: "Wind down with a 60-minute deep tissue massage, a eucalyptus steam session, and a three-course performance dinner." },
   ]
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f] text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+    <div style={{ fontFamily: "'Josefin Sans', sans-serif" }} className="min-h-screen text-white" >
+      <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-      {/* Navigation */}
-      <nav className="border-b border-white/10">
-        <div className="max-w-6xl mx-auto px-6 h-24 flex items-center justify-between">
-          <span className="text-xl tracking-[0.2em] font-light" style={{ color: "#d4af37" }}>AURUM</span>
-          <div className="hidden md:flex items-center space-x-10">
-            {navLinks.map((link) => (
-              <span key={link} className="text-sm text-white/40 hover:text-white cursor-pointer transition-colors" style={{ fontFamily: "Inter, sans-serif" }}>{link}</span>
-            ))}
-          </div>
-          <span className="px-6 py-2.5 text-sm tracking-wider cursor-pointer transition-colors border" style={{ fontFamily: "Inter, sans-serif", borderColor: "#d4af37", color: "#d4af37" }}>Request Membership</span>
+      {/* Sleek Nav */}
+      <nav className="flex items-center justify-between px-10 py-6" style={{ backgroundColor: "#1c1917" }}>
+        <div className="text-2xl font-light tracking-widest" style={{ color: "#d4a053" }}>&Eacute;lite Athletics Club</div>
+        <div className="hidden md:flex items-center gap-10">
+          {navLinks.map((link) => (
+            <a key={link} href="#" className="text-sm font-light tracking-wider text-gray-400 hover:text-white transition-colors">{link}</a>
+          ))}
         </div>
+        <button className="text-xs font-semibold tracking-widest px-6 py-2 border" style={{ borderColor: "#d4a053", color: "#d4a053" }}>INQUIRE</button>
       </nav>
 
-      {/* Hero */}
-      <section className="relative">
-        <div className="h-[80vh] bg-gradient-to-b from-[#0a0a0f] via-[#12121a] to-[#0a0a0f] flex items-center justify-center">
-          <div className="text-center max-w-3xl px-6">
-            <p className="text-xs tracking-[0.4em] uppercase mb-8" style={{ fontFamily: "Inter, sans-serif", color: "#d4af37" }}>Portland&apos;s Premier Private Fitness Club</p>
-            <h1 className="text-5xl md:text-7xl font-light leading-tight">Elevate your<br />performance.</h1>
-            <p className="text-lg text-white/40 font-light mt-8 max-w-lg mx-auto leading-relaxed" style={{ fontFamily: "Inter, sans-serif" }}>Where world-class training meets uncompromising luxury. By invitation and application only.</p>
-            <div className="mt-12 flex justify-center gap-6">
-              <span className="inline-block px-10 py-4 text-sm tracking-wider cursor-pointer transition-colors" style={{ fontFamily: "Inter, sans-serif", backgroundColor: "#d4af37", color: "#0a0a0f" }}>Schedule a Private Tour</span>
-            </div>
+      {/* Premium Hero */}
+      <section className="py-32 px-8 text-center" style={{ backgroundColor: "#1c1917" }}>
+        <div className="max-w-3xl mx-auto">
+          <div className="w-16 h-px mx-auto mb-8" style={{ backgroundColor: "#d4a053" }} />
+          <p className="text-sm font-light tracking-[0.3em] uppercase mb-6" style={{ color: "#d4a053" }}>Members-Only Athletic Club</p>
+          <h1 className="text-5xl md:text-6xl font-light leading-tight mb-8">Where Excellence<br />Meets Exclusivity</h1>
+          <p className="text-lg font-light text-gray-400 mb-10 max-w-xl mx-auto">A private fitness sanctuary for those who demand the finest in training, recovery, and lifestyle. Limited to 300 members.</p>
+          <div className="flex gap-6 justify-center">
+            <button className="text-sm font-semibold tracking-wider px-8 py-3" style={{ backgroundColor: "#d4a053", color: "#1c1917" }}>Request Membership</button>
+            <button className="text-sm font-light tracking-wider px-8 py-3 border border-gray-700 text-gray-300">Virtual Tour</button>
           </div>
         </div>
       </section>
 
-      {/* Elite Programs */}
-      <section className="border-t border-white/5">
-        <div className="max-w-6xl mx-auto px-6 py-28">
-          <div className="text-center mb-20">
-            <p className="text-xs tracking-[0.4em] uppercase mb-4" style={{ fontFamily: "Inter, sans-serif", color: "#d4af37" }}>Our Programs</p>
-            <h2 className="text-4xl font-light">Elite Training Experiences</h2>
-          </div>
-          <div className="grid md:grid-cols-2 gap-12">
-            {programs.map((prog) => (
-              <div key={prog.name} className="border border-white/10 p-10 hover:border-white/20 transition-colors">
-                <div className="w-px h-8 mb-8" style={{ backgroundColor: "#d4af37" }} />
-                <h3 className="text-xl font-light mb-4">{prog.name}</h3>
-                <p className="text-sm text-white/40 leading-relaxed" style={{ fontFamily: "Inter, sans-serif" }}>{prog.desc}</p>
+      {/* Amenities */}
+      <section className="py-24 px-8" style={{ backgroundColor: "#141210" }}>
+        <div className="max-w-6xl mx-auto">
+          <p className="text-sm font-light tracking-[0.3em] uppercase mb-3" style={{ color: "#d4a053" }}>Club Amenities</p>
+          <h2 className="text-3xl font-light mb-16">Every Detail, Considered</h2>
+          <div className="grid md:grid-cols-2 gap-10">
+            {amenities.map((a) => (
+              <div key={a.name} className="flex gap-6">
+                <div className="w-14 h-14 border flex-shrink-0 flex items-center justify-center text-xs font-semibold tracking-wider" style={{ borderColor: "#d4a053", color: "#d4a053" }}>{a.icon}</div>
+                <div>
+                  <h3 className="text-xl font-medium mb-2">{a.name}</h3>
+                  <p className="text-sm font-light text-gray-400 leading-relaxed">{a.desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -82,92 +75,86 @@ export default function FitnessLuxuryDemo() {
       </section>
 
       {/* Membership Tiers */}
-      <section className="bg-[#08080d] border-t border-white/5">
-        <div className="max-w-6xl mx-auto px-6 py-28">
-          <div className="text-center mb-20">
-            <p className="text-xs tracking-[0.4em] uppercase mb-4" style={{ fontFamily: "Inter, sans-serif", color: "#d4af37" }}>Membership</p>
-            <h2 className="text-4xl font-light">Select Your Tier</h2>
-          </div>
+      <section className="py-24 px-8" style={{ backgroundColor: "#1c1917" }}>
+        <div className="max-w-6xl mx-auto">
+          <p className="text-sm font-light tracking-[0.3em] uppercase mb-3 text-center" style={{ color: "#d4a053" }}>Membership</p>
+          <h2 className="text-3xl font-light mb-16 text-center">Select Your Tier</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            {tiers.map((tier) => (
-              <div key={tier.name} className={`border p-10 ${tier.popular ? "border-[#d4af37]" : "border-white/10"} relative`}>
-                {tier.popular && <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-xs px-6 py-1 tracking-wider" style={{ fontFamily: "Inter, sans-serif", backgroundColor: "#d4af37", color: "#0a0a0f" }}>Recommended</span>}
-                <p className="text-xs text-white/20 mb-2" style={{ fontFamily: "Inter, sans-serif" }}>TIER {tier.tier}</p>
-                <h3 className="text-2xl font-light">{tier.name}</h3>
-                <div className="mt-6 mb-8">
-                  <span className="text-4xl font-light" style={{ color: "#d4af37" }}>{tier.price}</span>
-                  <span className="text-white/30 text-sm" style={{ fontFamily: "Inter, sans-serif" }}>{tier.period}</span>
-                </div>
-                <ul className="space-y-3 mb-10">
-                  {tier.features.map((f) => (
-                    <li key={f} className="text-sm text-white/50 flex items-start gap-3" style={{ fontFamily: "Inter, sans-serif" }}>
-                      <span style={{ color: "#d4af37" }}>&#8212;</span> {f}
+            {tiers.map((t) => (
+              <div key={t.name} className={`p-10 border ${t.popular ? "border-opacity-100" : "border-gray-800"}`} style={t.popular ? { borderColor: "#d4a053" } : {}}>
+                {t.popular && <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-4" style={{ color: "#d4a053" }}>Recommended</p>}
+                <h3 className="text-2xl font-light mb-3">{t.name}</h3>
+                <p className="text-4xl font-light mb-1">{t.price}<span className="text-sm text-gray-500">{t.period}</span></p>
+                <div className="w-8 h-px my-6" style={{ backgroundColor: "#d4a053" }} />
+                <ul className="space-y-3">
+                  {t.features.map((f) => (
+                    <li key={f} className="text-sm font-light text-gray-400 flex items-start gap-3">
+                      <span className="mt-1 text-xs" style={{ color: "#d4a053" }}>&#9670;</span> {f}
                     </li>
                   ))}
                 </ul>
-                <span className={`block text-center py-3 text-sm tracking-wider cursor-pointer transition-colors ${tier.popular ? "text-[#0a0a0f]" : "text-white border border-white/20 hover:border-white/40"}`} style={{ fontFamily: "Inter, sans-serif", ...(tier.popular ? { backgroundColor: "#d4af37" } : {}) }}>Apply Now</span>
+                <button className="mt-10 w-full py-3 text-sm font-semibold tracking-wider" style={t.popular ? { backgroundColor: "#d4a053", color: "#1c1917" } : { border: "1px solid #d4a053", color: "#d4a053" }}>
+                  Apply Now
+                </button>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Facility */}
-      <section className="border-t border-white/5">
-        <div className="max-w-6xl mx-auto px-6 py-28">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div>
-              <p className="text-xs tracking-[0.4em] uppercase mb-4" style={{ fontFamily: "Inter, sans-serif", color: "#d4af37" }}>The Club</p>
-              <h2 className="text-4xl font-light mb-8">A Space Unlike Any Other</h2>
-              <p className="text-sm text-white/40 leading-relaxed mb-10" style={{ fontFamily: "Inter, sans-serif" }}>Every detail of Aurum has been designed to elevate your training experience. From the hand-selected equipment to the curated ambient environment, this is a space built for focused, purposeful work.</p>
-              <ul className="space-y-3">
-                {facilities.map((f) => (
-                  <li key={f} className="text-sm text-white/50 flex items-start gap-3" style={{ fontFamily: "Inter, sans-serif" }}>
-                    <span style={{ color: "#d4af37" }}>&#9670;</span> {f}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="h-[500px] bg-gradient-to-b from-[#1a1a25] to-[#0d0d14] border border-white/5" />
-          </div>
-        </div>
+      {/* Virtual Tour CTA */}
+      <section className="py-20 px-8 text-center" style={{ backgroundColor: "#d4a053" }}>
+        <h2 className="text-4xl font-light mb-4" style={{ color: "#1c1917" }}>Experience the Club</h2>
+        <p className="text-base mb-8" style={{ color: "#3d2e15" }}>Take an immersive virtual walkthrough of our facilities, from the training floor to The Brasserie.</p>
+        <button className="text-sm font-semibold tracking-wider px-10 py-3" style={{ backgroundColor: "#1c1917", color: "#d4a053" }}>Start Virtual Tour</button>
       </section>
 
-      {/* Trainers */}
-      <section className="bg-[#08080d] border-t border-white/5">
-        <div className="max-w-6xl mx-auto px-6 py-28">
-          <div className="text-center mb-20">
-            <p className="text-xs tracking-[0.4em] uppercase mb-4" style={{ fontFamily: "Inter, sans-serif", color: "#d4af37" }}>Our Team</p>
-            <h2 className="text-4xl font-light">World-Class Professionals</h2>
-          </div>
+      {/* Personal Trainers */}
+      <section className="py-24 px-8" style={{ backgroundColor: "#141210" }}>
+        <div className="max-w-6xl mx-auto">
+          <p className="text-sm font-light tracking-[0.3em] uppercase mb-3" style={{ color: "#d4a053" }}>Our Trainers</p>
+          <h2 className="text-3xl font-light mb-16">World-Class Expertise</h2>
           <div className="grid md:grid-cols-3 gap-10">
             {trainers.map((t) => (
-              <div key={t.name} className="text-center">
-                <div className="w-32 h-32 rounded-full mx-auto mb-8 bg-gradient-to-b from-[#1a1a25] to-[#0d0d14] border border-white/10" />
-                <h3 className="text-xl font-light">{t.name}</h3>
-                <p className="text-xs tracking-wider mt-2" style={{ fontFamily: "Inter, sans-serif", color: "#d4af37" }}>{t.title}</p>
-                <p className="text-sm text-white/35 mt-4 leading-relaxed" style={{ fontFamily: "Inter, sans-serif" }}>{t.background}</p>
+              <div key={t.name} className="border-t pt-8" style={{ borderColor: "#d4a053" }}>
+                <h3 className="text-xl font-medium mb-1">{t.name}</h3>
+                <p className="text-sm mb-1" style={{ color: "#d4a053" }}>{t.specialty}</p>
+                <p className="text-xs text-gray-600 mb-4">{t.years}</p>
+                <p className="text-sm font-light text-gray-400 leading-relaxed">{t.bio}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-white/5">
-        <div className="max-w-6xl mx-auto px-6 py-16 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="text-center md:text-left">
-            <span className="text-lg tracking-[0.2em] font-light" style={{ color: "#d4af37" }}>AURUM</span>
-            <p className="text-xs text-white/20 mt-3" style={{ fontFamily: "Inter, sans-serif" }}>1200 NW Marshall St, Portland, OR 97209</p>
-            <p className="text-xs text-white/20 mt-1" style={{ fontFamily: "Inter, sans-serif" }}>By appointment only</p>
+      {/* The Club Experience */}
+      <section className="py-24 px-8" style={{ backgroundColor: "#1c1917" }}>
+        <div className="max-w-4xl mx-auto">
+          <p className="text-sm font-light tracking-[0.3em] uppercase mb-3" style={{ color: "#d4a053" }}>A Day at &Eacute;lite</p>
+          <h2 className="text-3xl font-light mb-16">The Club Experience</h2>
+          <div className="space-y-12">
+            {experiences.map((e) => (
+              <div key={e.title} className="flex gap-8 items-start">
+                <div className="text-sm font-light tracking-wider flex-shrink-0 w-24 text-right" style={{ color: "#d4a053" }}>{e.time}</div>
+                <div className="w-px h-16 flex-shrink-0" style={{ backgroundColor: "#d4a053" }} />
+                <div>
+                  <h3 className="text-lg font-medium mb-2">{e.title}</h3>
+                  <p className="text-sm font-light text-gray-400 leading-relaxed">{e.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
-          <div className="text-xs text-white/20 space-x-8" style={{ fontFamily: "Inter, sans-serif" }}>
-            <span className="cursor-pointer hover:text-white/50">Instagram</span>
-            <span className="cursor-pointer hover:text-white/50">LinkedIn</span>
-            <span className="cursor-pointer hover:text-white/50">(503) 555-0200</span>
-          </div>
-          <p className="text-xs text-white/10" style={{ fontFamily: "Inter, sans-serif" }}>&copy; 2026 Aurum Private Fitness Club. All rights reserved.</p>
         </div>
+      </section>
+
+      {/* Refined Footer */}
+      <footer className="py-12 px-10 border-t border-gray-800" style={{ backgroundColor: "#1c1917" }}>
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="text-lg font-light tracking-widest" style={{ color: "#d4a053" }}>&Eacute;lite Athletics Club</div>
+          <p className="text-xs font-light text-gray-600 text-center">One Park Avenue, Penthouse Level &mdash; By appointment and membership only</p>
+          <a href="#" className="text-xs font-semibold tracking-wider" style={{ color: "#d4a053" }}>Membership Inquiry &rarr;</a>
+        </div>
+        <p className="text-center text-xs text-gray-700 mt-8">&copy; 2025 &Eacute;lite Athletics Club. All rights reserved.</p>
       </footer>
     </div>
   )

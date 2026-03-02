@@ -1,174 +1,170 @@
 export default function FitnessBrutalistDemo() {
-  const programs = [
-    { name: "STRENGTH", desc: "Compound lifts. Progressive overload. Barbell fundamentals. Squat, bench, deadlift, overhead press. 4 days a week. No machines. No shortcuts.", sets: "5x5 PROTOCOL" },
-    { name: "ENDURANCE", desc: "Long-distance conditioning. Rowing, running, assault bike. Build your aerobic base. Break your mental ceiling. 3-5 sessions per week.", sets: "60-90 MIN SESSIONS" },
-    { name: "HIIT", desc: "High intensity interval training. 30 seconds on, 15 seconds off. Kettlebells, battle ropes, box jumps, burpees. Get comfortable being uncomfortable.", sets: "20 MIN CIRCUITS" },
-    { name: "POWERLIFTING", desc: "Competition-level coaching. Squat, bench, deadlift specialization. Peaking cycles. Meet preparation. RPE-based programming for serious lifters only.", sets: "12-WEEK CYCLES" },
-  ]
-
-  const trainers = [
-    { name: "JAKE MORRISON", role: "HEAD COACH / STRENGTH", years: "14 YRS", total: "CSCS, USAW-L2" },
-    { name: "NINA KOWALSKI", role: "ENDURANCE / CONDITIONING", years: "9 YRS", total: "NASM-CPT, CF-L3" },
-    { name: "RAY SANTOS", role: "HIIT / BOXING", years: "11 YRS", total: "ACE-CPT, USA BOXING" },
-    { name: "TASHA OKAFOR", role: "POWERLIFTING / MOBILITY", years: "8 YRS", total: "NSCA-CPT, USAPL" },
-  ]
-
-  const rules = [
-    "Leave your ego at the door.",
-    "Rerack your weights. Every. Single. Time.",
-    "Bring a towel. Wipe your equipment down.",
-    "No phone calls on the gym floor.",
-    "Respect the equipment. Respect the space.",
-    "If you're not sweating, you're not working.",
-    "Chalk is fine. Chalk clouds are not.",
-    "Spot when asked. Ask when needed.",
-  ]
+  const navLinks = ["WOD", "PROGRAMS", "COACHES", "PRICING", "JOIN"]
 
   const stats = [
-    { number: "2,847", label: "ACTIVE MEMBERS" },
-    { number: "142", label: "CLASSES / WEEK" },
-    { number: "24/7", label: "ACCESS" },
-    { number: "15,000", label: "SQ FT" },
+    { number: "500+", label: "MEMBERS STRONG" },
+    { number: "12", label: "CERTIFIED COACHES" },
+    { number: "6AM-10PM", label: "OPEN DAILY" },
+    { number: "15K+", label: "WODS COMPLETED" },
+  ]
+
+  const wod = {
+    name: "DEVIL'S PLAYGROUND",
+    type: "FOR TIME",
+    movements: [
+      "21-15-9 Deadlifts (225/155 lb)",
+      "21-15-9 Handstand Push-Ups",
+      "400m Run after each round",
+    ],
+    timeCap: "18:00 CAP",
+    scaling: "Scale deadlifts to 60% 1RM. Pike push-ups substitute for HSPU. Run can be 500m row.",
+  }
+
+  const programs = [
+    { name: "STRENGTH", desc: "Compound lifts. Progressive overload. Squat, bench, deadlift, overhead press. Five sets of five. No machines. No ego. Just iron.", protocol: "5x5 PROTOCOL" },
+    { name: "METCON", desc: "Metabolic conditioning that breaks you down and builds you back. AMRAPs, EMOMs, and chippers designed to test every energy system.", protocol: "HIGH INTENSITY" },
+    { name: "OLYMPIC LIFTING", desc: "Snatch and clean & jerk technique work with dedicated platforms and bumper plates. Learn the most technical movements in fitness.", protocol: "SKILL FOCUSED" },
+    { name: "ENGINE BUILDER", desc: "Long-duration aerobic capacity work. Rowing, biking, running, swimming. Build the gas tank that powers everything else you do.", protocol: "60-90 MIN" },
+  ]
+
+  const coaches = [
+    { name: "COACH TANK", cert: "CF-L3 | USAW", specialty: "Strength & Power", years: "11 YRS", bio: "Former powerlifting national qualifier. Specializes in building raw strength through proven barbell programming." },
+    { name: "COACH RIVAS", cert: "CF-L2 | NASM-CPT", specialty: "MetCon & Competition", years: "8 YRS", bio: "Three-time CrossFit Regional athlete. Programs competition-style workouts and coaches our competitive team." },
+    { name: "COACH WADE", cert: "CF-L2 | FMS", specialty: "Mobility & Movement", years: "6 YRS", bio: "Movement quality specialist. Every athlete he coaches moves better, recovers faster, and stays injury-free longer." },
+  ]
+
+  const pricing = [
+    { name: "DROP-IN", price: "$25", period: "SINGLE CLASS", features: ["One WOD session", "Equipment included", "No commitment"] },
+    { name: "UNLIMITED", price: "$179", period: "/MONTH", features: ["Unlimited classes", "Open gym access", "Benchmark tracking", "Community events"], popular: true },
+    { name: "COMPETE", price: "$249", period: "/MONTH", features: ["Everything in Unlimited", "Competition programming", "1-on-1 coaching (2x/mo)", "Nutrition consult", "Video review"] },
   ]
 
   return (
-    <div className="min-h-screen bg-black text-white" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-      <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+    <div style={{ fontFamily: "'Teko', sans-serif" }} className="min-h-screen bg-black text-white">
+      <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
 
-      {/* Navigation */}
-      <nav className="border-b border-white/20">
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <span className="text-sm font-bold tracking-widest">BLACKBOX<span className="text-rose-500">_GYM</span></span>
-          <div className="hidden md:flex items-center space-x-8">
-            <span className="text-xs text-white/50 hover:text-white cursor-pointer">[PROGRAMS]</span>
-            <span className="text-xs text-white/50 hover:text-white cursor-pointer">[TRAINERS]</span>
-            <span className="text-xs text-white/50 hover:text-white cursor-pointer">[PRICING]</span>
-            <span className="text-xs text-white/50 hover:text-white cursor-pointer">[RULES]</span>
-          </div>
-          <span className="text-xs border border-rose-500 text-rose-500 px-4 py-2 cursor-pointer hover:bg-rose-500 hover:text-black transition-colors">ENTER_</span>
+      {/* Angular Nav */}
+      <nav className="relative flex items-center justify-between px-8 py-4 border-b border-gray-800" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 85%)" }}>
+        <div className="text-3xl font-bold tracking-widest" style={{ color: "#dc2626" }}>IRON DISTRICT</div>
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <a key={link} href="#" className="text-sm font-medium tracking-widest text-gray-400 hover:text-white transition-colors" style={{ fontFamily: "'Inter', sans-serif" }}>{link}</a>
+          ))}
         </div>
+        <button className="text-sm font-bold tracking-widest px-6 py-2 text-black" style={{ backgroundColor: "#dc2626", fontFamily: "'Inter', sans-serif" }}>ENTER</button>
       </nav>
 
-      {/* Hero */}
-      <section className="border-b border-white/20">
-        <div className="max-w-7xl mx-auto px-6 py-32">
-          <h1 className="text-6xl md:text-8xl font-extrabold leading-none tracking-tighter">
-            NO EXCUSES.<br />
-            <span className="text-rose-500">NO LIMITS.</span>
-          </h1>
-          <p className="text-white/40 text-sm mt-8 max-w-lg leading-relaxed">
-            Raw iron. Real work. A warehouse gym in Southeast Portland built for people who want results, not aesthetics. We don&apos;t have mirrors. We have platforms.
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-px mt-16 bg-white/10">
-            {stats.map((stat) => (
-              <div key={stat.label} className="bg-black p-8 text-center">
-                <p className="text-3xl font-bold text-rose-500">{stat.number}</p>
-                <p className="text-xs text-white/40 mt-2">{stat.label}</p>
+      {/* Bold Numbers Hero */}
+      <section className="py-24 px-8 border-b border-gray-800">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-7xl md:text-9xl font-bold leading-none tracking-tight mb-8">NO<br />WEAKNESS<br /><span style={{ color: "#dc2626" }}>ALLOWED.</span></h1>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
+            {stats.map((s) => (
+              <div key={s.label}>
+                <div className="text-5xl md:text-6xl font-bold" style={{ color: "#dc2626" }}>{s.number}</div>
+                <div className="text-xs tracking-widest text-gray-500 mt-2" style={{ fontFamily: "'Inter', sans-serif" }}>{s.label}</div>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* WOD of the Day */}
+      <section className="py-16 px-8 border-b border-gray-800" style={{ backgroundColor: "#0a0a0a" }}>
+        <div className="max-w-4xl mx-auto">
+          <div className="flex items-center gap-4 mb-8">
+            <span className="text-xs font-bold tracking-widest px-3 py-1 text-black" style={{ backgroundColor: "#dc2626", fontFamily: "'Inter', sans-serif" }}>TODAY&apos;S WOD</span>
+            <span className="text-xs tracking-widest text-gray-500" style={{ fontFamily: "'Inter', sans-serif" }}>{wod.timeCap}</span>
+          </div>
+          <h2 className="text-5xl font-bold mb-2">{wod.name}</h2>
+          <p className="text-xl text-gray-500 mb-8">{wod.type}</p>
+          <div className="space-y-3 mb-8">
+            {wod.movements.map((m) => (
+              <div key={m} className="text-lg text-gray-300 border-l-2 pl-4" style={{ borderColor: "#dc2626", fontFamily: "'Inter', sans-serif" }}>{m}</div>
+            ))}
+          </div>
+          <p className="text-xs text-gray-600" style={{ fontFamily: "'Inter', sans-serif" }}>SCALING: {wod.scaling}</p>
         </div>
       </section>
 
       {/* Programs */}
-      <section className="border-b border-white/20">
-        <div className="max-w-7xl mx-auto px-6 py-24">
-          <p className="text-xs text-white/30 mb-2">// WORKOUT_PROGRAMS</p>
-          <h2 className="text-3xl font-bold mb-16">CHOOSE YOUR <span className="text-rose-500">PROTOCOL</span></h2>
-          <div className="space-y-px">
-            {programs.map((prog) => (
-              <div key={prog.name} className="border border-white/10 p-8 hover:border-rose-500/50 transition-colors">
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold">{prog.name}<span className="text-rose-500">_</span></h3>
-                    <p className="text-sm text-white/40 mt-3 leading-relaxed max-w-2xl">{prog.desc}</p>
-                  </div>
-                  <span className="text-xs border border-white/20 px-4 py-2 text-white/50 self-start whitespace-nowrap">{prog.sets}</span>
+      <section className="py-20 px-8 border-b border-gray-800">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-5xl font-bold mb-12">PROGRAMS</h2>
+          <div className="grid md:grid-cols-2 gap-1">
+            {programs.map((p) => (
+              <div key={p.name} className="border border-gray-800 p-8 hover:border-red-600 transition-colors">
+                <div className="flex justify-between items-start mb-4">
+                  <h3 className="text-3xl font-bold">{p.name}</h3>
+                  <span className="text-xs tracking-widest text-gray-600" style={{ fontFamily: "'Inter', sans-serif" }}>{p.protocol}</span>
                 </div>
+                <p className="text-sm text-gray-400 leading-relaxed" style={{ fontFamily: "'Inter', sans-serif" }}>{p.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Trainer Registry */}
-      <section className="border-b border-white/20">
-        <div className="max-w-7xl mx-auto px-6 py-24">
-          <p className="text-xs text-white/30 mb-2">// TRAINER_REGISTRY</p>
-          <h2 className="text-3xl font-bold mb-16">THE <span className="text-rose-500">ROSTER</span></h2>
-          <div className="border border-white/20">
-            <div className="grid grid-cols-4 gap-px bg-white/10 text-xs text-white/30 p-4 border-b border-white/20">
-              <span>NAME</span><span>SPECIALTY</span><span>EXPERIENCE</span><span>CERTS</span>
-            </div>
-            {trainers.map((t) => (
-              <div key={t.name} className="grid grid-cols-4 gap-px p-4 border-b border-white/5 hover:bg-white/5 transition-colors">
-                <span className="text-sm font-bold">{t.name}</span>
-                <span className="text-sm text-white/50">{t.role}</span>
-                <span className="text-sm text-rose-500">{t.years}</span>
-                <span className="text-xs text-white/30">{t.total}</span>
+      {/* Coaches */}
+      <section className="py-20 px-8 border-b border-gray-800" style={{ backgroundColor: "#0a0a0a" }}>
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-5xl font-bold mb-12">THE COACHES</h2>
+          <div className="grid md:grid-cols-3 gap-1">
+            {coaches.map((c) => (
+              <div key={c.name} className="border border-gray-800 p-8">
+                <div className="w-16 h-16 border-2 mb-6 flex items-center justify-center text-2xl font-bold" style={{ borderColor: "#dc2626", color: "#dc2626" }}>
+                  {c.name.split(" ")[1][0]}
+                </div>
+                <h3 className="text-2xl font-bold mb-1">{c.name}</h3>
+                <p className="text-xs tracking-widest text-gray-600 mb-1" style={{ fontFamily: "'Inter', sans-serif" }}>{c.cert}</p>
+                <p className="text-xs tracking-widest mb-4" style={{ color: "#dc2626", fontFamily: "'Inter', sans-serif" }}>{c.specialty} &mdash; {c.years}</p>
+                <p className="text-sm text-gray-400 leading-relaxed" style={{ fontFamily: "'Inter', sans-serif" }}>{c.bio}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Membership */}
-      <section className="border-b border-white/20">
-        <div className="max-w-7xl mx-auto px-6 py-24">
-          <p className="text-xs text-white/30 mb-2">// MEMBERSHIP_TIERS</p>
-          <h2 className="text-3xl font-bold mb-16">RAW <span className="text-rose-500">PRICING</span></h2>
-          <div className="grid md:grid-cols-3 gap-px bg-white/10">
-            <div className="bg-black p-8 border border-white/10">
-              <p className="text-xs text-white/30 mb-4">TIER_01</p>
-              <h3 className="text-xl font-bold">OPEN FLOOR</h3>
-              <p className="text-4xl font-bold text-rose-500 mt-4">$35<span className="text-sm text-white/30">/mo</span></p>
-              <p className="text-xs text-white/40 mt-4 leading-relaxed">Gym floor access. Free weights. Cardio equipment. No classes. No frills.</p>
-            </div>
-            <div className="bg-black p-8 border border-rose-500">
-              <p className="text-xs text-rose-500 mb-4">TIER_02 [RECOMMENDED]</p>
-              <h3 className="text-xl font-bold">FULL ACCESS</h3>
-              <p className="text-4xl font-bold text-rose-500 mt-4">$65<span className="text-sm text-white/30">/mo</span></p>
-              <p className="text-xs text-white/40 mt-4 leading-relaxed">Everything. All classes. All hours. Locker. Open gym. Programming included.</p>
-            </div>
-            <div className="bg-black p-8 border border-white/10">
-              <p className="text-xs text-white/30 mb-4">TIER_03</p>
-              <h3 className="text-xl font-bold">COACHED</h3>
-              <p className="text-4xl font-bold text-rose-500 mt-4">$120<span className="text-sm text-white/30">/mo</span></p>
-              <p className="text-xs text-white/40 mt-4 leading-relaxed">Full access + 4 PT sessions/month. Custom programming. Nutrition consult. Priority booking.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Rules */}
-      <section className="border-b border-white/20">
-        <div className="max-w-7xl mx-auto px-6 py-24">
-          <p className="text-xs text-white/30 mb-2">// GYM_RULES.txt</p>
-          <h2 className="text-3xl font-bold mb-16">THE <span className="text-rose-500">CODE</span></h2>
-          <div className="grid md:grid-cols-2 gap-4">
-            {rules.map((rule, i) => (
-              <div key={i} className="flex items-start gap-4 border border-white/5 p-4">
-                <span className="text-rose-500 text-xs font-bold mt-0.5">{String(i + 1).padStart(2, "0")}</span>
-                <p className="text-sm text-white/70">{rule}</p>
+      {/* Pricing */}
+      <section className="py-20 px-8 border-b border-gray-800">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-5xl font-bold mb-12">PRICING</h2>
+          <div className="grid md:grid-cols-3 gap-1">
+            {pricing.map((p) => (
+              <div key={p.name} className={`border p-8 ${p.popular ? "border-red-600" : "border-gray-800"}`}>
+                {p.popular && <div className="text-xs font-bold tracking-widest mb-4" style={{ color: "#dc2626", fontFamily: "'Inter', sans-serif" }}>MOST CHOSEN</div>}
+                <h3 className="text-3xl font-bold mb-1">{p.name}</h3>
+                <div className="text-5xl font-bold mb-1" style={{ color: "#dc2626" }}>{p.price}</div>
+                <p className="text-xs tracking-widest text-gray-600 mb-8" style={{ fontFamily: "'Inter', sans-serif" }}>{p.period}</p>
+                <ul className="space-y-3">
+                  {p.features.map((f) => (
+                    <li key={f} className="text-sm text-gray-400 flex items-center gap-2" style={{ fontFamily: "'Inter', sans-serif" }}>
+                      <span style={{ color: "#dc2626" }}>&#9632;</span> {f}
+                    </li>
+                  ))}
+                </ul>
+                <button className="mt-8 w-full py-3 text-sm font-bold tracking-widest" style={p.popular ? { backgroundColor: "#dc2626", color: "white", fontFamily: "'Inter', sans-serif" } : { border: "1px solid #dc2626", color: "#dc2626", fontFamily: "'Inter', sans-serif" }}>
+                  {p.popular ? "JOIN NOW" : "SELECT"}
+                </button>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div>
-            <span className="text-sm font-bold tracking-widest">BLACKBOX<span className="text-rose-500">_GYM</span></span>
-            <p className="text-xs text-white/20 mt-2">1847 SE Industrial Way, Portland, OR 97202</p>
-          </div>
-          <div className="text-xs text-white/30 space-x-6">
-            <span className="cursor-pointer hover:text-white">INSTAGRAM</span>
-            <span className="cursor-pointer hover:text-white">YOUTUBE</span>
-            <span className="cursor-pointer hover:text-white">(503) 555-0199</span>
-          </div>
-          <p className="text-xs text-white/10">&copy; 2026 BLACKBOX_GYM. NO RIGHTS RESERVED.</p>
+      {/* No Excuses CTA */}
+      <section className="py-24 px-8 text-center" style={{ backgroundColor: "#dc2626" }}>
+        <h2 className="text-6xl md:text-8xl font-bold text-black mb-4">NO EXCUSES.</h2>
+        <p className="text-lg text-black opacity-70 mb-8 max-w-md mx-auto" style={{ fontFamily: "'Inter', sans-serif" }}>Your first class is free. Walk in. Sign the waiver. Show up. That&apos;s it.</p>
+        <button className="bg-black text-white text-sm font-bold tracking-widest px-10 py-4" style={{ fontFamily: "'Inter', sans-serif" }}>CLAIM FREE CLASS</button>
+      </section>
+
+      {/* Raw Footer */}
+      <footer className="py-8 px-8 border-t border-gray-800">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="text-xl font-bold tracking-widest" style={{ color: "#dc2626" }}>IRON DISTRICT</div>
+          <p className="text-xs tracking-widest text-gray-600" style={{ fontFamily: "'Inter', sans-serif" }}>1847 INDUSTRIAL BLVD, UNIT 4 &mdash; OPEN 6AM-10PM DAILY</p>
+          <p className="text-xs text-gray-700" style={{ fontFamily: "'Inter', sans-serif" }}>&copy; 2025 IRON DISTRICT. ALL RIGHTS RESERVED.</p>
         </div>
       </footer>
     </div>

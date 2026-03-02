@@ -1,187 +1,151 @@
 export default function EcommerceBrutalistDemo() {
-  const products = [
-    { name: "UTILITY JACKET", price: "$120.00", id: "UTL-001", stock: 14 },
-    { name: "RAW DENIM PANT", price: "$95.00", id: "RDP-002", stock: 8 },
-    { name: "HEAVY COTTON TEE", price: "$48.00", id: "HCT-003", stock: 31 },
-    { name: "CANVAS BACKPACK", price: "$78.00", id: "CVB-004", stock: 5 },
-    { name: "WORK BOOT", price: "$185.00", id: "WBT-005", stock: 12 },
-    { name: "WOOL WATCH CAP", price: "$32.00", id: "WWC-006", stock: 22 },
-    { name: "CARGO SHORT", price: "$65.00", id: "CGS-007", stock: 0 },
-    { name: "SHOP APRON", price: "$55.00", id: "SHP-008", stock: 17 },
+  const drops = [
+    { name: "UTILITY CARGO PANT", price: "$110", sku: "UCP-041", status: "IN STOCK" },
+    { name: "OVERSIZED GRAPHIC TEE", price: "$58", sku: "OGT-077", status: "LOW STOCK" },
+    { name: "DISTRESSED DENIM JACKET", price: "$185", sku: "DDJ-019", status: "IN STOCK" },
+    { name: "TACTICAL VEST", price: "$142", sku: "TAV-033", status: "PRE-ORDER" },
+    { name: "RAW HEM HOODIE", price: "$95", sku: "RHH-088", status: "IN STOCK" },
+    { name: "CHAIN LINK BELT", price: "$45", sku: "CLB-055", status: "IN STOCK" },
   ];
 
-  const marqueeItems = ["FREE SHIPPING OVER $100", "NO RETURNS NO REFUNDS", "MADE IN USA", "RAW GOODS ONLY", "EST. 2019"];
+  const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
 
-  const testimonials = [
-    { name: "D. KOWALSKI", text: "NO FRILLS. JUST QUALITY PRODUCT. EXACTLY WHAT I WANTED.", location: "BROOKLYN, NY" },
-    { name: "M. OKONKWO", text: "BOUGHT THE JACKET. WORE IT EVERY DAY FOR A YEAR. STILL HOLDS UP.", location: "CHICAGO, IL" },
-    { name: "R. TANAKA", text: "FINALLY A BRAND THAT DOESN'T TRY TO BE SOMETHING IT ISN'T.", location: "PORTLAND, OR" },
-  ];
-
-  const features = [
-    { label: "SHIPPING", value: "2-5 BUSINESS DAYS // FREE OVER $100" },
-    { label: "MATERIALS", value: "DEADSTOCK + ORGANIC // SOURCED DOMESTICALLY" },
-    { label: "WARRANTY", value: "LIFETIME REPAIR // NO QUESTIONS ASKED" },
-    { label: "PACKAGING", value: "ZERO PLASTIC // RECYCLED CARDBOARD ONLY" },
-  ];
-
-  const footerCols = [
-    { title: "SHOP", links: ["ALL PRODUCTS", "NEW STOCK", "RESTOCKS", "ARCHIVE"] },
-    { title: "INFO", links: ["ABOUT", "PROCESS", "STOCKISTS", "WHOLESALE"] },
-    { title: "HELP", links: ["SIZING", "SHIPPING", "CONTACT", "FAQ"] },
+  const collageItems = [
+    { name: "DECONSTRUCTED BOMBER", price: "$220", rotation: "rotate-2", offset: "mt-0" },
+    { name: "SLASH CROP TOP", price: "$65", rotation: "-rotate-3", offset: "mt-8" },
+    { name: "WAXED CANVAS BAG", price: "$130", rotation: "rotate-1", offset: "mt-4" },
+    { name: "PLATFORM BOOT", price: "$195", rotation: "-rotate-2", offset: "mt-12" },
   ];
 
   return (
-    <div className="min-h-screen bg-white text-black" style={{ fontFamily: "Space Mono, monospace" }}>
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-      </head>
+    <div style={{ fontFamily: "'Inter', sans-serif" }} className="min-h-screen bg-black text-white">
+      <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
 
-      {/* Marquee Bar */}
-      <div className="bg-black text-white py-2 overflow-hidden">
-        <div className="flex items-center space-x-8 whitespace-nowrap">
-          {marqueeItems.concat(marqueeItems).map((item, i) => (
-            <span key={i} className="text-xs tracking-widest">{item} &mdash;</span>
-          ))}
+      {/* Full-Width Hero */}
+      <section style={{ backgroundColor: "#dc2626" }} className="min-h-screen flex flex-col justify-center px-6 md:px-16 relative overflow-hidden">
+        <div className="absolute top-6 left-6 md:left-16">
+          <span style={{ fontFamily: "'Anton', sans-serif" }} className="text-white text-3xl tracking-wider">REBEL</span>
         </div>
-      </div>
-
-      {/* Nav */}
-      <nav className="border-b-4 border-black">
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <span className="text-xl font-bold tracking-tight">RAW/GOODS</span>
-          <div className="hidden md:flex items-center space-x-6">
-            {["SHOP", "ABOUT", "STOCKISTS", "JOURNAL"].map((link) => (
-              <span key={link} className="text-xs font-bold tracking-widest hover:bg-black hover:text-white px-2 py-1 cursor-pointer transition-colors">{link}</span>
-            ))}
-          </div>
-          <div className="flex items-center space-x-4">
-            <span className="text-xs font-bold tracking-widest hover:bg-black hover:text-white px-2 py-1 cursor-pointer transition-colors">SEARCH</span>
-            <span className="border-2 border-black px-3 py-1 text-xs font-bold tracking-widest hover:bg-black hover:text-white cursor-pointer transition-colors">CART [3]</span>
-          </div>
+        <div className="absolute top-6 right-6 md:right-16 text-sm">
+          <span className="border border-white px-4 py-2 cursor-pointer hover:bg-white hover:text-red-600 transition-colors">CART [0]</span>
         </div>
-      </nav>
-
-      {/* Hero */}
-      <section className="border-b-4 border-black">
-        <div className="max-w-7xl mx-auto px-6 py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-2 gap-0">
-          <div className="border-r-0 lg:border-r-4 border-black pr-0 lg:pr-12 flex flex-col justify-center">
-            <p className="text-xs tracking-widest mb-4">COLLECTION_005 // SPRING 2025</p>
-            <h1 className="text-4xl lg:text-6xl font-bold leading-none mb-6 tracking-tight uppercase">
-              No trends.<br />No hype.<br />Just goods.
-            </h1>
-            <p className="text-sm leading-relaxed mb-8 max-w-md">
-              Workwear-inspired essentials built from deadstock fabrics and organic materials. Every piece is cut, sewn, and finished in Los Angeles.
-            </p>
-            <button className="self-start border-4 border-black px-8 py-3 text-sm font-bold tracking-widest uppercase hover:bg-black hover:text-white transition-colors">
-              SHOP NOW
-            </button>
-          </div>
-          <div className="bg-black aspect-square lg:aspect-auto flex items-center justify-center mt-8 lg:mt-0">
-            <span className="text-white text-xs tracking-widest">[ HERO IMAGE ]</span>
-          </div>
+        <h1 style={{ fontFamily: "'Anton', sans-serif" }} className="text-7xl md:text-[12rem] leading-none text-white uppercase">
+          Wear<br />The<br />Revolt
+        </h1>
+        <p className="text-white text-lg md:text-xl mt-8 max-w-md font-light">
+          Drop 04 is live. Streetwear for the ones who never asked for permission. Limited runs. No restocks.
+        </p>
+        <div className="mt-8">
+          <span className="bg-white text-sm font-medium px-8 py-4 cursor-pointer" style={{ color: "#dc2626" }}>SHOP DROP 04</span>
         </div>
       </section>
 
-      {/* Product Grid */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
-        <div className="flex items-end justify-between mb-8 border-b-2 border-black pb-4">
-          <h2 className="text-2xl font-bold tracking-tight uppercase">ALL PRODUCTS</h2>
-          <span className="text-xs tracking-widest">{products.length} ITEMS</span>
-        </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-0">
-          {products.map((product) => (
-            <div key={product.id} className="border-2 border-black p-4 cursor-pointer hover:bg-black hover:text-white transition-colors group">
-              <div className="bg-gray-100 group-hover:bg-gray-800 aspect-square mb-4 flex items-center justify-center">
-                <span className="text-gray-400 group-hover:text-gray-500 text-xs tracking-widest">[IMG]</span>
+      {/* Product Collage */}
+      <section className="bg-black py-20 px-6 md:px-16">
+        <h2 style={{ fontFamily: "'Anton', sans-serif" }} className="text-5xl md:text-7xl text-white mb-12 uppercase">Collage</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {collageItems.map((item, i) => (
+            <div key={i} className={`${item.rotation} ${item.offset} cursor-pointer group`}>
+              <div className="aspect-[3/4] border-2 border-white mb-3 relative" style={{ backgroundColor: "#dc2626" }}>
+                <span className="absolute bottom-2 left-2 text-xs bg-black text-white px-2 py-1">{item.price}</span>
               </div>
-              <p className="text-[10px] tracking-widest text-gray-500 group-hover:text-gray-400 mb-1">{product.id}</p>
-              <h3 className="text-xs font-bold tracking-wider mb-2">{product.name}</h3>
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-bold">{product.price}</span>
-                <span className={`text-[10px] tracking-widest ${product.stock === 0 ? "text-red-600" : "text-gray-500 group-hover:text-gray-400"}`}>
-                  {product.stock === 0 ? "SOLD OUT" : `${product.stock} LEFT`}
-                </span>
-              </div>
+              <p style={{ fontFamily: "'Anton', sans-serif" }} className="text-white text-sm tracking-wider">{item.name}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Features */}
-      <section className="border-y-4 border-black">
-        <div className="max-w-7xl mx-auto px-6">
-          {features.map((f, i) => (
-            <div key={f.label} className={`py-6 flex flex-col md:flex-row md:items-center justify-between ${i < features.length - 1 ? "border-b-2 border-black" : ""}`}>
-              <span className="text-xs font-bold tracking-widest mb-2 md:mb-0">{f.label}</span>
-              <span className="text-xs tracking-wider text-gray-600">{f.value}</span>
-            </div>
-          ))}
+      {/* Manifesto */}
+      <section className="border-y-4 border-white py-20 px-6 md:px-16" style={{ backgroundColor: "#dc2626" }}>
+        <div className="max-w-4xl">
+          <h2 style={{ fontFamily: "'Anton', sans-serif" }} className="text-5xl md:text-8xl uppercase text-white leading-tight mb-8">
+            Manifesto
+          </h2>
+          <p className="text-white text-lg md:text-2xl leading-relaxed font-light">
+            REBEL was born in a garage in 2019. No investors. No board meetings. Just raw fabric, screen printers, and
+            a refusal to make clothes that look like everything else. We produce in runs of 200 or less. When it is gone,
+            it is gone. We do not chase trends. We do not do collabs for clout. Every thread is a middle finger to fast
+            fashion and the machine that feeds it.
+          </p>
+          <p className="text-white text-lg md:text-2xl leading-relaxed font-light mt-6">
+            If you are here, you already know. Welcome to the revolt.
+          </p>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
-        <h2 className="text-2xl font-bold tracking-tight uppercase mb-8 border-b-2 border-black pb-4">FIELD REPORTS</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
-          {testimonials.map((t) => (
-            <div key={t.name} className="border-2 border-black p-6">
-              <p className="text-sm leading-relaxed mb-6">&ldquo;{t.text}&rdquo;</p>
-              <div className="border-t-2 border-black pt-4">
-                <p className="text-xs font-bold tracking-widest">{t.name}</p>
-                <p className="text-[10px] tracking-widest text-gray-500">{t.location}</p>
+      {/* New Drops Grid */}
+      <section className="bg-black py-20 px-6 md:px-16">
+        <h2 style={{ fontFamily: "'Anton', sans-serif" }} className="text-5xl md:text-7xl text-white mb-4 uppercase">New Drops</h2>
+        <p className="text-neutral-400 mb-12 text-sm">DROP 04 / SPRING 2025 / LIMITED QUANTITIES</p>
+        <div className="grid md:grid-cols-3 gap-px bg-white">
+          {drops.map((item, i) => (
+            <div key={i} className="bg-black p-6 cursor-pointer hover:bg-neutral-900 transition-colors">
+              <div className="aspect-square border border-neutral-700 mb-4 flex items-center justify-center">
+                <span style={{ fontFamily: "'Anton', sans-serif" }} className="text-neutral-700 text-6xl">{String(i + 1).padStart(2, "0")}</span>
               </div>
+              <p style={{ fontFamily: "'Anton', sans-serif" }} className="text-white text-lg tracking-wider">{item.name}</p>
+              <div className="flex justify-between items-center mt-2">
+                <span className="text-white">{item.price}</span>
+                <span className="text-xs text-neutral-500">{item.sku}</span>
+              </div>
+              <span className={`text-xs mt-2 inline-block px-2 py-1 ${item.status === "LOW STOCK" ? "bg-yellow-600" : item.status === "PRE-ORDER" ? "bg-neutral-700" : "bg-neutral-800"} text-white`}>
+                {item.status}
+              </span>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Newsletter */}
-      <section className="border-y-4 border-black py-12">
-        <div className="max-w-xl mx-auto px-6 text-center">
-          <h2 className="text-xl font-bold tracking-tight uppercase mb-2">GET ON THE LIST</h2>
-          <p className="text-xs tracking-wider text-gray-600 mb-6">RESTOCK ALERTS + NEW DROP NOTIFICATIONS. NO SPAM. UNSUBSCRIBE ANYTIME.</p>
-          <div className="flex">
-            <input
-              type="email"
-              placeholder="EMAIL@ADDRESS.COM"
-              className="flex-1 h-12 px-4 text-xs tracking-wider border-4 border-black border-r-0 bg-transparent placeholder:text-gray-400 focus:outline-none"
-              readOnly
-            />
-            <button className="h-12 px-6 text-xs font-bold tracking-widest bg-black text-white border-4 border-black hover:bg-white hover:text-black transition-colors">
-              SUBMIT
-            </button>
+      {/* Size Guide */}
+      <section className="border-t-4 border-white py-16 px-6 md:px-16 bg-black">
+        <h2 style={{ fontFamily: "'Anton', sans-serif" }} className="text-4xl text-white mb-8 uppercase">Size Guide</h2>
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-sm">
+            <thead>
+              <tr className="border-b border-neutral-700">
+                <th className="py-3 pr-8 text-neutral-400 font-normal">SIZE</th>
+                <th className="py-3 pr-8 text-neutral-400 font-normal">CHEST (in)</th>
+                <th className="py-3 pr-8 text-neutral-400 font-normal">WAIST (in)</th>
+                <th className="py-3 text-neutral-400 font-normal">LENGTH (in)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sizes.map((size, i) => (
+                <tr key={i} className="border-b border-neutral-800 text-white">
+                  <td className="py-3 pr-8 font-medium">{size}</td>
+                  <td className="py-3 pr-8">{34 + i * 2}</td>
+                  <td className="py-3 pr-8">{28 + i * 2}</td>
+                  <td className="py-3">{27 + i}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-neutral-500 text-xs mt-4">All REBEL pieces run oversized. When in doubt, size down. Measurements taken flat.</p>
+      </section>
+
+      {/* Mailing List */}
+      <section style={{ backgroundColor: "#dc2626" }} className="py-16 px-6 md:px-16">
+        <div className="max-w-2xl">
+          <h2 style={{ fontFamily: "'Anton', sans-serif" }} className="text-4xl md:text-6xl text-white uppercase mb-4">
+            Get Drop Alerts
+          </h2>
+          <p className="text-white font-light mb-8">No spam. No lifestyle content. Just a single email when new product goes live. Subscribers get 15-minute early access.</p>
+          <div className="flex gap-0">
+            <input type="email" placeholder="EMAIL ADDRESS" className="flex-1 bg-black text-white px-6 py-4 text-sm border-2 border-white focus:outline-none placeholder-neutral-500" />
+            <button className="bg-white text-sm font-medium px-8 py-4 border-2 border-white" style={{ color: "#dc2626", fontFamily: "'Anton', sans-serif", letterSpacing: "0.05em" }}>JOIN</button>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-10">
-          <div>
-            <span className="text-lg font-bold tracking-tight">RAW/GOODS</span>
-            <p className="text-xs tracking-wider text-gray-500 mt-3 leading-relaxed">
-              LOS ANGELES, CA<br />EST. 2019
-            </p>
-          </div>
-          {footerCols.map((col) => (
-            <div key={col.title}>
-              <h4 className="text-xs font-bold tracking-widest mb-4">{col.title}</h4>
-              <div className="space-y-2">
-                {col.links.map((link) => (
-                  <p key={link} className="text-xs tracking-wider text-gray-500 hover:text-black cursor-pointer transition-colors">{link}</p>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="max-w-7xl mx-auto mt-12 pt-6 border-t-2 border-black flex flex-col md:flex-row items-center justify-between gap-4">
-          <span className="text-[10px] tracking-widest text-gray-500">&copy; 2025 RAW/GOODS. ALL RIGHTS RESERVED.</span>
-          <div className="flex items-center space-x-6">
-            {["PRIVACY", "TERMS", "ACCESSIBILITY"].map((link) => (
-              <span key={link} className="text-[10px] tracking-widest text-gray-500 hover:text-black cursor-pointer transition-colors">{link}</span>
-            ))}
-          </div>
+      <footer className="bg-black border-t-2 border-white py-6 px-6 md:px-16 flex flex-col md:flex-row justify-between items-center text-sm text-neutral-500">
+        <span style={{ fontFamily: "'Anton', sans-serif" }} className="text-white text-lg tracking-wider">REBEL</span>
+        <span>&copy; 2025 REBEL. NO RESTOCKS. NO APOLOGIES.</span>
+        <div className="flex gap-6 mt-4 md:mt-0">
+          <span className="cursor-pointer hover:text-white">TERMS</span>
+          <span className="cursor-pointer hover:text-white">PRIVACY</span>
+          <span className="cursor-pointer hover:text-white">CONTACT</span>
         </div>
       </footer>
     </div>

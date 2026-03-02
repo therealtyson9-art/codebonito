@@ -1,134 +1,139 @@
-export default function RealEstateMinimalistDemo() {
-  const properties = [
-    { address: "412 Maple Ridge Drive, Austin, TX", price: "$685,000", beds: 3, baths: 2, sqft: "2,150", tag: "New Listing" },
-    { address: "88 Oceanview Terrace, Santa Monica, CA", price: "$1,275,000", beds: 4, baths: 3, sqft: "3,400", tag: "Open House" },
-    { address: "1600 Elm Street, Denver, CO", price: "$520,000", beds: 3, baths: 2, sqft: "1,890", tag: "Price Reduced" },
-  ]
+export default function RealestateMinimalistDemo() {
+  const navLinks = ["Listings", "Neighborhoods", "Sustainability", "Agents", "Contact"]
 
-  const agents = [
-    { name: "Caroline Hayes", title: "Senior Agent", specialization: "Residential Sales", closed: "142 transactions", phone: "(512) 555-0178" },
-    { name: "Marcus Rivera", title: "Buyer Specialist", specialization: "First-Time Buyers", closed: "98 transactions", phone: "(512) 555-0234" },
+  const listings = [
+    { address: "142 Cedar Grove Lane, Portland, OR", price: "$685,000", beds: 3, baths: 2, sqft: "2,150", tag: "LEED Certified", desc: "Solar-equipped craftsman with native landscaping, rainwater collection, and an energy-efficient heat pump system." },
+    { address: "28 Willow Creek Drive, Eugene, OR", price: "$520,000", beds: 4, baths: 3, sqft: "2,800", tag: "Net-Zero Ready", desc: "Modern farmhouse with triple-pane windows, cellulose insulation, and a 12kW solar array producing near-zero utility bills." },
+    { address: "709 Alder Street, Bend, OR", price: "$475,000", beds: 2, baths: 2, sqft: "1,640", tag: "New Listing", desc: "Contemporary cottage with reclaimed wood finishes, low-VOC paints, and a certified organic community garden." },
+    { address: "55 Fern Valley Road, Ashland, OR", price: "$892,000", beds: 5, baths: 4, sqft: "3,400", tag: "Open House", desc: "Passive house design with geothermal heating, EV charging, and floor-to-ceiling windows framing mountain views." },
   ]
 
   const neighborhoods = [
-    { name: "South Congress", vibe: "Eclectic and walkable with boutique shops, live music, and some of Austin's best food trucks.", avgPrice: "$610K" },
-    { name: "Westlake Hills", vibe: "Upscale family-friendly area with top-rated schools, scenic trails, and lake access.", avgPrice: "$1.2M" },
-    { name: "East Austin", vibe: "Creative district experiencing rapid growth with new restaurants, galleries, and modern townhomes.", avgPrice: "$485K" },
+    { name: "Alberta Arts District", city: "Portland", highlight: "Walkable streets, local galleries, farm-to-table restaurants, and a thriving community market every Saturday." },
+    { name: "South Eugene", city: "Eugene", highlight: "Tree-lined avenues near the University of Oregon with excellent schools, bike paths, and access to Spencer Butte trails." },
+    { name: "Old Mill District", city: "Bend", highlight: "Riverfront living with boutique shopping, craft breweries, and year-round outdoor recreation at your doorstep." },
+    { name: "Railroad District", city: "Ashland", highlight: "Historic charm near the Oregon Shakespeare Festival with locally owned shops, organic cafes, and mountain proximity." },
   ]
 
-  const testimonials = [
-    { quote: "Haven made the entire process stress-free. Caroline found us our dream home in two weeks and negotiated below asking price.", author: "David & Rachel Kim", location: "South Congress" },
-    { quote: "As a first-time buyer, I was nervous about the process. Marcus walked me through every step and found a place I genuinely love.", author: "Emily Torres", location: "East Austin" },
+  const agents = [
+    { name: "Clara Nguyen", title: "Principal Broker", bio: "15 years specializing in sustainable properties across the Pacific Northwest. Clara holds a LEED Green Associate credential and has closed over $120M in eco-certified homes.", photo: "CN" },
+    { name: "Eli Whitaker", title: "Buyer Specialist", bio: "Former environmental engineer turned real estate advisor. Eli helps first-time buyers navigate energy audits, green certifications, and sustainable financing options.", photo: "EW" },
+    { name: "Mariana Reyes", title: "Listing Agent", bio: "Known for her staging expertise and marketing strategy, Mariana showcases each property's green features to attract environmentally conscious buyers.", photo: "MR" },
+  ]
+
+  const certifications = [
+    { name: "LEED Certified", desc: "Leadership in Energy and Environmental Design — the most widely used green building rating system in the world." },
+    { name: "Energy Star", desc: "EPA-certified homes that are at least 10% more energy efficient than standard new construction." },
+    { name: "Passive House", desc: "Ultra-low energy buildings that require minimal heating and cooling, reducing carbon footprint by up to 90%." },
+    { name: "Net-Zero Ready", desc: "Homes designed to produce as much energy as they consume annually through on-site renewable generation." },
   ]
 
   return (
-    <div className="min-h-screen bg-white text-slate-800" style={{ fontFamily: "Inter, sans-serif" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <div style={{ fontFamily: "'Albert Sans', sans-serif" }} className="min-h-screen bg-white text-gray-900">
+      <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-      {/* Nav */}
-      <nav className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
-        <span className="text-xl font-semibold tracking-tight">HAVEN</span>
-        <div className="hidden md:flex items-center space-x-10">
-          {["Properties", "Neighborhoods", "Agents", "About", "Contact"].map((item) => (
-            <span key={item} className="text-sm text-slate-500 hover:text-slate-900 cursor-pointer transition-colors">{item}</span>
+      {/* Search-Bar Nav */}
+      <nav className="flex items-center justify-between px-8 py-4 border-b border-gray-100">
+        <div className="text-xl font-bold tracking-tight" style={{ color: "#6b8f71" }}>Greenleaf Realty</div>
+        <div className="hidden md:flex items-center gap-6">
+          {navLinks.map((link) => (
+            <a key={link} href="#" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">{link}</a>
           ))}
         </div>
-        <span className="text-sm font-medium px-5 py-2 border border-slate-200 hover:bg-slate-50 cursor-pointer transition-colors rounded">List Your Home</span>
+        <div className="flex items-center gap-3">
+          <input type="text" placeholder="Search by city, zip, or address..." className="text-sm px-4 py-2 border border-gray-200 rounded-full w-64 focus:outline-none focus:border-gray-400" />
+          <button className="text-sm font-semibold text-white px-5 py-2 rounded-full" style={{ backgroundColor: "#6b8f71" }}>Search</button>
+        </div>
       </nav>
 
       {/* Hero */}
-      <section className="max-w-6xl mx-auto px-6 pt-24 pb-20">
-        <h1 className="text-5xl md:text-7xl font-light leading-tight tracking-tight">Find your next home</h1>
-        <p className="mt-6 text-lg text-slate-400 max-w-lg font-light">Curated properties in Austin and beyond. We believe finding the right home should feel effortless.</p>
+      <section className="py-28 px-8 text-center" style={{ backgroundColor: "#f0f7f1" }}>
+        <div className="max-w-3xl mx-auto">
+          <p className="text-sm font-semibold uppercase tracking-widest mb-4" style={{ color: "#6b8f71" }}>Eco-Friendly Real Estate</p>
+          <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">Find a Home That Respects the Earth</h1>
+          <p className="text-lg text-gray-500 mb-8 max-w-xl mx-auto">Greenleaf Realty specializes in sustainable, energy-efficient, and environmentally certified properties across the Pacific Northwest.</p>
+          <button className="text-white font-semibold px-8 py-3 rounded-full" style={{ backgroundColor: "#6b8f71" }}>Browse All Listings</button>
+        </div>
       </section>
 
-      {/* Featured Properties */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
-        <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-12">Featured Properties</p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {properties.map((p) => (
-            <div key={p.address} className="group cursor-pointer">
-              <div className="aspect-[4/3] bg-slate-100 rounded-sm mb-4 relative">
-                <span className="absolute top-3 left-3 text-xs font-medium px-2 py-1 rounded" style={{ backgroundColor: "#16a34a", color: "white" }}>{p.tag}</span>
+      {/* Featured Listings */}
+      <section className="py-20 px-8 max-w-6xl mx-auto">
+        <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: "#6b8f71" }}>Featured Listings</p>
+        <h2 className="text-3xl font-bold mb-12">Homes That Make a Difference</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {listings.map((l) => (
+            <div key={l.address} className="border border-gray-100 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="h-48 flex items-center justify-center" style={{ backgroundColor: "#f0f7f1" }}>
+                <span className="text-xs font-bold tracking-widest px-3 py-1 rounded-full text-white" style={{ backgroundColor: "#6b8f71" }}>{l.tag}</span>
               </div>
-              <p className="text-xl font-semibold" style={{ color: "#16a34a" }}>{p.price}</p>
-              <p className="text-sm text-slate-600 mt-1">{p.address}</p>
-              <div className="flex items-center space-x-4 mt-2 text-xs text-slate-400">
-                <span>{p.beds} Beds</span>
-                <span>{p.baths} Baths</span>
-                <span>{p.sqft} sqft</span>
+              <div className="p-6">
+                <p className="text-2xl font-bold mb-1" style={{ color: "#6b8f71" }}>{l.price}</p>
+                <p className="text-sm font-medium text-gray-900 mb-2">{l.address}</p>
+                <p className="text-xs text-gray-500 mb-3">{l.beds} bed &middot; {l.baths} bath &middot; {l.sqft} sq ft</p>
+                <p className="text-sm text-gray-600 leading-relaxed">{l.desc}</p>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Property Search */}
-      <section className="bg-slate-50 py-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-8">Find Your Property</p>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="flex flex-col">
-              <label className="text-xs text-slate-500 mb-2">Location</label>
-              <div className="border border-slate-200 rounded px-4 py-3 text-sm text-slate-400 bg-white">Austin, TX</div>
-            </div>
-            <div className="flex flex-col">
-              <label className="text-xs text-slate-500 mb-2">Price Range</label>
-              <div className="border border-slate-200 rounded px-4 py-3 text-sm text-slate-400 bg-white">$300K - $1.5M</div>
-            </div>
-            <div className="flex flex-col">
-              <label className="text-xs text-slate-500 mb-2">Bedrooms</label>
-              <div className="border border-slate-200 rounded px-4 py-3 text-sm text-slate-400 bg-white">2+</div>
-            </div>
-            <div className="flex items-end">
-              <span className="w-full text-center py-3 text-sm font-medium text-white rounded cursor-pointer transition-colors" style={{ backgroundColor: "#16a34a" }}>Search Properties</span>
-            </div>
+      {/* Neighborhoods */}
+      <section className="py-20 px-8" style={{ backgroundColor: "#f0f7f1" }}>
+        <div className="max-w-6xl mx-auto">
+          <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: "#6b8f71" }}>Neighborhood Guide</p>
+          <h2 className="text-3xl font-bold mb-12">Explore Our Communities</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {neighborhoods.map((n) => (
+              <div key={n.name} className="bg-white rounded-xl p-8 shadow-sm">
+                <h3 className="text-lg font-bold mb-1">{n.name}</h3>
+                <p className="text-sm font-medium mb-3" style={{ color: "#6b8f71" }}>{n.city}, Oregon</p>
+                <p className="text-sm text-gray-600 leading-relaxed">{n.highlight}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Agent Profiles */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
-        <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-12">Our Agents</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+      {/* Sustainability */}
+      <section className="py-20 px-8 text-white" style={{ backgroundColor: "#6b8f71" }}>
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-sm font-semibold uppercase tracking-widest mb-3 opacity-80">Our Commitment</p>
+          <h2 className="text-3xl font-bold mb-6">Real Estate With a Purpose</h2>
+          <p className="text-lg opacity-90 leading-relaxed mb-8">Every transaction at Greenleaf includes a complimentary home energy audit. We donate 1% of every commission to reforestation nonprofits and partner exclusively with eco-certified inspectors and contractors. Sustainability is not a feature we market — it is the foundation of everything we do.</p>
+          <div className="flex gap-12 justify-center text-center">
+            <div><p className="text-3xl font-bold">1,200+</p><p className="text-sm opacity-70">Homes Sold</p></div>
+            <div><p className="text-3xl font-bold">$8.2M</p><p className="text-sm opacity-70">Energy Savings</p></div>
+            <div><p className="text-3xl font-bold">45K</p><p className="text-sm opacity-70">Trees Planted</p></div>
+          </div>
+        </div>
+      </section>
+
+      {/* Agents */}
+      <section className="py-20 px-8 max-w-6xl mx-auto">
+        <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: "#6b8f71" }}>Our Agents</p>
+        <h2 className="text-3xl font-bold mb-12">Meet the Team</h2>
+        <div className="grid md:grid-cols-3 gap-8">
           {agents.map((a) => (
-            <div key={a.name} className="flex gap-6">
-              <div className="w-24 h-24 bg-slate-100 rounded-full flex-shrink-0" />
-              <div>
-                <h3 className="text-lg font-medium">{a.name}</h3>
-                <p className="text-sm font-medium mt-1" style={{ color: "#16a34a" }}>{a.title}</p>
-                <p className="text-xs text-slate-400 mt-2">{a.specialization} &middot; {a.closed}</p>
-                <p className="text-xs text-slate-400 mt-1">{a.phone}</p>
-              </div>
+            <div key={a.name} className="text-center">
+              <div className="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-lg font-bold" style={{ backgroundColor: "#6b8f71" }}>{a.photo}</div>
+              <h3 className="text-lg font-bold">{a.name}</h3>
+              <p className="text-sm mb-3" style={{ color: "#6b8f71" }}>{a.title}</p>
+              <p className="text-sm text-gray-600 leading-relaxed">{a.bio}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Neighborhood Guide */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
-        <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-12">Neighborhood Guide</p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {neighborhoods.map((n) => (
-            <div key={n.name} className="border border-slate-100 rounded p-6 hover:shadow-sm transition-shadow">
-              <h3 className="text-lg font-medium">{n.name}</h3>
-              <p className="text-sm text-slate-400 mt-2 leading-relaxed">{n.vibe}</p>
-              <p className="text-sm font-semibold mt-4" style={{ color: "#16a34a" }}>Avg. {n.avgPrice}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="bg-slate-50 py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-12">Client Testimonials</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {testimonials.map((t) => (
-              <div key={t.author}>
-                <p className="text-lg font-light leading-relaxed text-slate-600 italic">&ldquo;{t.quote}&rdquo;</p>
-                <p className="text-sm mt-6 font-medium">{t.author}</p>
-                <p className="text-xs text-slate-400">{t.location}</p>
+      {/* Green Certifications */}
+      <section className="py-20 px-8" style={{ backgroundColor: "#f0f7f1" }}>
+        <div className="max-w-6xl mx-auto">
+          <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: "#6b8f71" }}>Green Certifications</p>
+          <h2 className="text-3xl font-bold mb-12">What We Look For</h2>
+          <div className="grid md:grid-cols-4 gap-6">
+            {certifications.map((c) => (
+              <div key={c.name} className="bg-white rounded-xl p-6 shadow-sm">
+                <h3 className="text-sm font-bold mb-2" style={{ color: "#6b8f71" }}>{c.name}</h3>
+                <p className="text-xs text-gray-600 leading-relaxed">{c.desc}</p>
               </div>
             ))}
           </div>
@@ -136,28 +141,21 @@ export default function RealEstateMinimalistDemo() {
       </section>
 
       {/* Contact */}
-      <section className="max-w-6xl mx-auto px-6 py-24 text-center">
-        <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-6">Get in Touch</p>
-        <h2 className="text-3xl md:text-5xl font-light tracking-tight">Ready to find your home?</h2>
-        <p className="text-slate-400 mt-4 text-sm max-w-md mx-auto">Schedule a consultation with one of our agents. No pressure, just honest guidance.</p>
-        <div className="mt-8">
-          <span className="inline-block px-8 py-3 text-sm font-medium text-white cursor-pointer transition-colors rounded" style={{ backgroundColor: "#16a34a" }}>Schedule a Consultation</span>
+      <section className="py-20 px-8 text-center bg-white">
+        <h2 className="text-3xl font-bold mb-4">Ready to Find Your Green Home?</h2>
+        <p className="text-gray-500 mb-8 max-w-lg mx-auto">Whether you are buying, selling, or simply exploring sustainable living, our team is here to help you every step of the way.</p>
+        <div className="flex gap-4 justify-center">
+          <button className="text-white font-semibold px-10 py-3 rounded-full" style={{ backgroundColor: "#6b8f71" }}>Contact Us</button>
+          <button className="font-semibold px-10 py-3 rounded-full border-2" style={{ borderColor: "#6b8f71", color: "#6b8f71" }}>Schedule a Tour</button>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-100">
-        <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-          <div>
-            <span className="text-sm font-semibold">HAVEN</span>
-            <p className="text-xs text-slate-400 mt-1">Real estate done simply. Austin, Texas.</p>
-          </div>
-          <div className="flex space-x-8">
-            {["Properties", "Agents", "About", "Privacy"].map((s) => (
-              <span key={s} className="text-xs text-slate-400 hover:text-slate-900 cursor-pointer transition-colors">{s}</span>
-            ))}
-          </div>
-          <span className="text-xs text-slate-300">&copy; 2026 Haven Real Estate</span>
+      <footer className="py-10 px-8 border-t border-gray-100">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="text-lg font-bold" style={{ color: "#6b8f71" }}>Greenleaf Realty</div>
+          <p className="text-xs text-gray-400">MLS# OR-2024-GL &middot; Licensed in Oregon &middot; Equal Housing Opportunity</p>
+          <p className="text-xs text-gray-400">&copy; 2025 Greenleaf Realty. All rights reserved.</p>
         </div>
       </footer>
     </div>

@@ -1,175 +1,173 @@
 export default function LandingMinimalistDemo() {
   return (
-    <div className="min-h-screen bg-white text-slate-900" style={{ fontFamily: "Inter, sans-serif" }}>
+    <div className="min-h-screen" style={{ fontFamily: "'Space Grotesk', sans-serif", backgroundColor: "#fafafa", color: "#1a1a1a" }}>
       <head>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </head>
 
-      {/* Nav */}
-      <nav className="border-b border-slate-100">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <span className="text-lg font-semibold tracking-tight">linear.</span>
-          <div className="hidden md:flex items-center space-x-8">
-            {["Product", "Features", "Pricing", "Company"].map((item) => (
-              <span key={item} className="text-sm text-slate-500 hover:text-slate-900 cursor-pointer transition-colors">{item}</span>
-            ))}
+      {/* Dot Navigation */}
+      <nav className="fixed right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3">
+        {["Hero", "How", "Features", "Pricing", "Testimonials", "CTA"].map((label, i) => (
+          <div key={i} className="group relative flex items-center justify-end">
+            <span className="mr-3 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: "#0d9488" }}>{label}</span>
+            <div className="w-3 h-3 rounded-full border-2 transition-colors" style={{ borderColor: "#0d9488", backgroundColor: i === 0 ? "#0d9488" : "transparent" }} />
           </div>
-          <div className="flex items-center space-x-4">
-            <span className="text-sm text-slate-500 hover:text-slate-900 cursor-pointer">Sign in</span>
-            <button className="h-9 px-4 text-sm font-medium bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors">
-              Get Started
-            </button>
-          </div>
-        </div>
+        ))}
       </nav>
 
-      {/* Hero */}
-      <section className="max-w-6xl mx-auto px-6 pt-24 pb-20">
-        <div className="max-w-3xl mx-auto text-center">
-          <div className="inline-flex items-center space-x-2 border border-slate-200 rounded-full px-3 py-1 mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-            <span className="text-xs text-slate-500 font-medium">Now available for teams</span>
-          </div>
-          <h1 className="text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] mb-6">
-            Build products with
-            <br />
-            less complexity
-          </h1>
-          <p className="text-lg text-slate-500 leading-relaxed max-w-xl mx-auto mb-10">
-            A streamlined workspace for modern teams. Plan, track, and ship software without the overhead of traditional project management tools.
-          </p>
-          <div className="flex items-center justify-center gap-3">
-            <button className="h-11 px-6 text-sm font-medium bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors">
-              Start for free
-            </button>
-            <button className="h-11 px-6 text-sm font-medium text-slate-600 border border-slate-200 rounded-lg hover:border-slate-300 transition-colors">
-              View demo
-            </button>
-          </div>
+      {/* Centered Headline Hero */}
+      <section className="min-h-screen flex flex-col items-center justify-center text-center px-6">
+        <p className="text-sm font-medium tracking-widest uppercase mb-6" style={{ color: "#0d9488" }}>Video Editing, Reimagined</p>
+        <h1 className="text-5xl md:text-7xl font-bold leading-tight max-w-4xl mb-6">
+          Create stunning videos in <span style={{ color: "#0d9488" }}>half the time</span>
+        </h1>
+        <p className="text-lg md:text-xl max-w-2xl mb-10 text-gray-500 font-light leading-relaxed">
+          Frameflow is the AI-powered video editor that professionals trust to deliver broadcast-quality content without the complexity of traditional tools.
+        </p>
+        <div className="flex gap-4">
+          <button className="px-8 py-3 rounded-full text-white font-medium transition-transform hover:scale-105" style={{ backgroundColor: "#0d9488" }}>Start Free Trial</button>
+          <button className="px-8 py-3 rounded-full font-medium border-2 transition-colors hover:bg-gray-100" style={{ borderColor: "#0d9488", color: "#0d9488" }}>Watch Demo</button>
         </div>
+        <p className="mt-6 text-sm text-gray-400">No credit card required. 14-day free trial.</p>
       </section>
 
-      {/* Logos */}
-      <section className="border-y border-slate-100">
-        <div className="max-w-6xl mx-auto px-6 py-10">
-          <p className="text-xs text-slate-400 text-center uppercase tracking-widest mb-8">Trusted by teams at</p>
-          <div className="flex items-center justify-center flex-wrap gap-x-12 gap-y-4">
-            {["Vercel", "Stripe", "Notion", "Figma", "Linear", "Raycast"].map((logo) => (
-              <span key={logo} className="text-sm font-medium text-slate-300">{logo}</span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Bento Features Grid */}
-      <section className="max-w-6xl mx-auto px-6 py-24">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-semibold tracking-tight mb-4">Everything you need, nothing you don&apos;t</h2>
-          <p className="text-slate-500 max-w-lg mx-auto">Purpose-built features that help your team focus on building great products instead of managing tools.</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {/* Large card */}
-          <div className="md:col-span-2 bg-slate-50 rounded-2xl p-8 border border-slate-100">
-            <div className="w-8 h-8 rounded-lg bg-slate-200 flex items-center justify-center mb-4">
-              <span className="text-xs text-slate-500">&#9638;</span>
-            </div>
-            <h3 className="text-lg font-semibold mb-2">Issue Tracking</h3>
-            <p className="text-sm text-slate-500 leading-relaxed max-w-md">Create, assign, and track issues with a keyboard-first interface designed for speed. Bulk operations, filters, and views that adapt to your workflow.</p>
-          </div>
-          <div className="bg-slate-50 rounded-2xl p-8 border border-slate-100">
-            <div className="w-8 h-8 rounded-lg bg-slate-200 flex items-center justify-center mb-4">
-              <span className="text-xs text-slate-500">&#9670;</span>
-            </div>
-            <h3 className="text-lg font-semibold mb-2">Cycles</h3>
-            <p className="text-sm text-slate-500 leading-relaxed">Automate sprint planning with smart cycles that roll over incomplete work and surface blockers.</p>
-          </div>
-          <div className="bg-slate-50 rounded-2xl p-8 border border-slate-100">
-            <div className="w-8 h-8 rounded-lg bg-slate-200 flex items-center justify-center mb-4">
-              <span className="text-xs text-slate-500">&#9651;</span>
-            </div>
-            <h3 className="text-lg font-semibold mb-2">Roadmaps</h3>
-            <p className="text-sm text-slate-500 leading-relaxed">Visualize your product direction with timeline views that connect daily work to long-term goals.</p>
-          </div>
-          {/* Large card */}
-          <div className="md:col-span-2 bg-slate-50 rounded-2xl p-8 border border-slate-100">
-            <div className="w-8 h-8 rounded-lg bg-slate-200 flex items-center justify-center mb-4">
-              <span className="text-xs text-slate-500">&#9672;</span>
-            </div>
-            <h3 className="text-lg font-semibold mb-2">Integrations</h3>
-            <p className="text-sm text-slate-500 leading-relaxed max-w-md">Connect with GitHub, GitLab, Slack, Figma, and 50 more tools your team already uses. Two-way sync keeps everything in context.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Social Proof / Metrics */}
-      <section className="bg-slate-50 border-y border-slate-100">
-        <div className="max-w-6xl mx-auto px-6 py-20">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { value: "12,000+", label: "Teams" },
-              { value: "2.4M", label: "Issues tracked" },
-              { value: "99.99%", label: "Uptime" },
-              { value: "< 50ms", label: "Avg response" },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-3xl font-semibold tracking-tight">{stat.value}</div>
-                <div className="text-sm text-slate-400 mt-1">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="max-w-6xl mx-auto px-6 py-24">
-        <h2 className="text-3xl font-semibold tracking-tight text-center mb-14">Loved by teams everywhere</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* How It Works */}
+      <section className="py-24 px-6 max-w-5xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">How Frameflow Works</h2>
+        <p className="text-center text-gray-500 mb-16 max-w-xl mx-auto">Three simple steps from raw footage to polished content ready for any platform.</p>
+        <div className="grid md:grid-cols-3 gap-12">
           {[
-            { quote: "We migrated from Jira in a single afternoon. The speed difference alone was worth it. Our entire engineering team is more productive.", author: "Sarah Chen", role: "VP Engineering, Raycast", avatar: "SC" },
-            { quote: "The keyboard shortcuts and command palette make this feel like a tool built by developers, for developers. No unnecessary clicks.", author: "Marcus Rivera", role: "CTO, Draftbit", avatar: "MR" },
-            { quote: "Finally a project management tool that gets out of the way. We spend less time managing work and more time doing it.", author: "Emi Tanaka", role: "Lead Engineer, Resend", avatar: "ET" },
-          ].map((t) => (
-            <div key={t.author} className="rounded-2xl border border-slate-100 p-6">
-              <p className="text-sm text-slate-600 leading-relaxed mb-6">&ldquo;{t.quote}&rdquo;</p>
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-xs font-medium text-slate-500">{t.avatar}</div>
-                <div>
-                  <p className="text-sm font-medium">{t.author}</p>
-                  <p className="text-xs text-slate-400">{t.role}</p>
-                </div>
-              </div>
+            { step: "01", title: "Import Your Footage", desc: "Drag and drop clips from any source. Frameflow supports over 40 video formats including ProRes, H.265, and RAW files from major camera brands." },
+            { step: "02", title: "Let AI Assist", desc: "Our intelligent timeline analyzes your footage, suggests cuts, color grades scenes automatically, and syncs audio to visual beats with precision." },
+            { step: "03", title: "Export Anywhere", desc: "Render in 4K, 8K, or optimized formats for YouTube, Instagram, TikTok, and broadcast. One click, every platform covered." },
+          ].map((item, i) => (
+            <div key={i} className="text-center">
+              <span className="text-6xl font-bold" style={{ color: "#0d9488", opacity: 0.3 }}>{item.step}</span>
+              <h3 className="text-xl font-semibold mt-4 mb-3">{item.title}</h3>
+              <p className="text-gray-500 leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="max-w-6xl mx-auto px-6 pb-24">
-        <div className="bg-slate-900 rounded-2xl p-12 lg:p-16 text-center">
-          <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight text-white mb-4">Start building better products</h2>
-          <p className="text-slate-400 mb-8 max-w-md mx-auto">Free for small teams. No credit card required. Set up in under two minutes.</p>
-          <div className="flex items-center justify-center gap-3">
-            <button className="h-11 px-6 text-sm font-medium bg-white text-slate-900 rounded-lg hover:bg-slate-100 transition-colors">
-              Get started free
-            </button>
-            <button className="h-11 px-6 text-sm font-medium text-slate-400 border border-slate-700 rounded-lg hover:border-slate-500 transition-colors">
-              Talk to sales
-            </button>
+      {/* Features List */}
+      <section className="py-24 px-6" style={{ backgroundColor: "#f0fdfa" }}>
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Everything You Need to Edit</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              { title: "AI-Powered Cuts", desc: "Machine learning identifies the best moments in your footage and assembles a rough cut in seconds." },
+              { title: "Real-Time Collaboration", desc: "Work with your team simultaneously. Comments, annotations, and version history built right in." },
+              { title: "Color Science Engine", desc: "Professional LUT support with AI color matching that maintains consistency across every scene." },
+              { title: "Magnetic Timeline", desc: "Clips snap together intelligently. No more gaps, no more sync drift, no more frustration." },
+              { title: "Audio Ducking & Mixing", desc: "Automatic audio leveling detects dialogue and adjusts music and effects for broadcast-ready sound." },
+              { title: "Cloud Rendering", desc: "Offload heavy renders to our GPU farm. Continue editing while your exports process in the background." },
+            ].map((feature, i) => (
+              <div key={i} className="flex gap-4 p-6 rounded-xl bg-white shadow-sm">
+                <div className="w-2 h-2 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: "#0d9488" }} />
+                <div>
+                  <h3 className="font-semibold text-lg mb-1">{feature.title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">{feature.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
+      {/* Pricing Comparison */}
+      <section className="py-24 px-6 max-w-5xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Simple, Transparent Pricing</h2>
+        <p className="text-center text-gray-500 mb-16">No hidden fees. Scale up or down anytime.</p>
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            { name: "Starter", price: "$19", period: "/mo", features: ["1080p export", "5 projects", "10GB cloud storage", "Basic AI cuts", "Email support"], highlight: false },
+            { name: "Pro", price: "$49", period: "/mo", features: ["4K export", "Unlimited projects", "100GB cloud storage", "Full AI suite", "Priority support", "Team collaboration"], highlight: true },
+            { name: "Studio", price: "$129", period: "/mo", features: ["8K export", "Unlimited everything", "1TB cloud storage", "Custom AI models", "Dedicated account manager", "API access"], highlight: false },
+          ].map((plan, i) => (
+            <div key={i} className={`rounded-2xl p-8 ${plan.highlight ? "text-white shadow-xl scale-105" : "bg-white shadow-sm border border-gray-100"}`} style={plan.highlight ? { backgroundColor: "#0d9488" } : {}}>
+              <h3 className="text-xl font-semibold mb-2">{plan.name}</h3>
+              <div className="flex items-baseline gap-1 mb-6">
+                <span className="text-4xl font-bold">{plan.price}</span>
+                <span className={`text-sm ${plan.highlight ? "text-white/70" : "text-gray-400"}`}>{plan.period}</span>
+              </div>
+              <ul className="space-y-3">
+                {plan.features.map((f, j) => (
+                  <li key={j} className={`text-sm flex items-center gap-2 ${plan.highlight ? "text-white/90" : "text-gray-600"}`}>
+                    <span>&#10003;</span> {f}
+                  </li>
+                ))}
+              </ul>
+              <button className={`mt-8 w-full py-3 rounded-full font-medium transition-transform hover:scale-105 ${plan.highlight ? "bg-white" : ""}`} style={plan.highlight ? { color: "#0d9488" } : { backgroundColor: "#0d9488", color: "white" }}>
+                {plan.highlight ? "Start Pro Trial" : "Get Started"}
+              </button>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-24 px-6" style={{ backgroundColor: "#f0fdfa" }}>
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Trusted by Creators Worldwide</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { quote: "Frameflow cut our post-production time by 60%. We went from a two-week turnaround to five days on a 30-minute documentary.", name: "Sarah Chen", role: "Documentary Filmmaker" },
+              { quote: "The AI color matching is genuinely magic. I shoot in mixed lighting constantly and Frameflow makes everything look cohesive without manual grading.", name: "Marcus Rivera", role: "Wedding Videographer" },
+              { quote: "I switched our entire newsroom from Premiere to Frameflow. The collaboration features alone saved us from version control nightmares.", name: "Anja Kowalski", role: "News Director, Channel 7" },
+            ].map((t, i) => (
+              <div key={i} className="bg-white rounded-xl p-8 shadow-sm">
+                <p className="text-gray-600 leading-relaxed mb-6 text-sm">&ldquo;{t.quote}&rdquo;</p>
+                <div>
+                  <p className="font-semibold">{t.name}</p>
+                  <p className="text-sm text-gray-400">{t.role}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-24 px-6 text-center">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Workflow?</h2>
+          <p className="text-gray-500 mb-10 leading-relaxed">Join over 50,000 video professionals who have made the switch to faster, smarter editing with Frameflow.</p>
+          <button className="px-12 py-4 rounded-full text-white font-medium text-lg transition-transform hover:scale-105" style={{ backgroundColor: "#0d9488" }}>Start Your Free Trial Today</button>
+          <p className="mt-4 text-sm text-gray-400">14 days free. Cancel anytime. No questions asked.</p>
+        </div>
+      </section>
+
       {/* Footer */}
-      <footer className="border-t border-slate-100">
-        <div className="max-w-6xl mx-auto px-6 py-10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <span className="text-sm text-slate-400">&copy; 2025 Linear Inc. All rights reserved.</span>
-            <div className="flex items-center space-x-6">
-              {["Twitter", "GitHub", "Discord", "Blog", "Changelog"].map((link) => (
-                <span key={link} className="text-sm text-slate-400 hover:text-slate-600 cursor-pointer transition-colors">{link}</span>
-              ))}
+      <footer className="border-t border-gray-200 py-12 px-6">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between gap-8">
+          <div>
+            <h3 className="text-xl font-bold mb-4">Frameflow</h3>
+            <p className="text-gray-400 text-sm max-w-xs">Professional video editing powered by artificial intelligence. Based in San Francisco, serving creators globally.</p>
+          </div>
+          <div className="flex gap-16">
+            <div>
+              <h4 className="font-semibold mb-3 text-sm">Product</h4>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li>Features</li>
+                <li>Pricing</li>
+                <li>Changelog</li>
+                <li>API Docs</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-3 text-sm">Company</h4>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li>About</li>
+                <li>Blog</li>
+                <li>Careers</li>
+                <li>Contact</li>
+              </ul>
             </div>
           </div>
+        </div>
+        <div className="max-w-5xl mx-auto mt-10 pt-6 border-t border-gray-100 text-center text-xs text-gray-400">
+          &copy; 2025 Frameflow, Inc. All rights reserved.
         </div>
       </footer>
     </div>

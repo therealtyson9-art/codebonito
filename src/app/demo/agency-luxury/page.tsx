@@ -1,187 +1,216 @@
 export default function AgencyLuxuryDemo() {
-  const services = [
-    { title: "Brand Architecture", desc: "We sculpt brand identities that command attention and endure beyond trends. Every touchpoint is curated to reflect the essence of your vision." },
-    { title: "Digital Experiences", desc: "Immersive digital environments designed with cinematic precision. We craft interfaces that feel as intentional as the finest editorial spreads." },
-    { title: "Strategic Positioning", desc: "Market intelligence and brand strategy that places you exactly where you belong \u2014 at the pinnacle of your category." },
-    { title: "Content Direction", desc: "From photography art direction to editorial storytelling, we create content that elevates your brand narrative to an art form." },
-  ]
+  const navItems = ["Campaigns", "Philosophy", "Awards", "Press", "Inquiry"];
 
-  const caseStudies = [
-    { client: "Maison Aurel", category: "Luxury Fashion House", desc: "A complete brand reimagining for a heritage Parisian fashion house, merging 80 years of tradition with contemporary digital presence.", year: "2026" },
-    { client: "The Carrington", category: "Private Members Club", desc: "Crafting the identity and digital experience for London\u2019s most exclusive new private members club, from concept to grand opening.", year: "2025" },
-    { client: "Voss & Sterling", category: "Fine Jewellery", desc: "An editorial e-commerce experience that increased average order value by 340% while preserving the brand\u2019s artisanal intimacy.", year: "2025" },
-  ]
+  const campaigns = [
+    {
+      title: "The Silence Collection",
+      client: "Maison Aurelian",
+      year: "2024",
+      category: "Fashion Film & Campaign",
+      description: "A cinematic exploration of absence and longing for Maison Aurelian's autumn couture line. Shot across three continents in natural light, the campaign earned a Cannes Lions Grand Prix and redefined how luxury fashion communicates restraint.",
+    },
+    {
+      title: "Architecture of Scent",
+      client: "Oud Celestia",
+      year: "2024",
+      category: "Brand Identity & Launch",
+      description: "Complete creative direction for the launch of a niche fragrance house. From naming to bottle design to a flagship retail concept in Paris, every element was orchestrated to evoke the sensation of walking through ancient stone corridors at dawn.",
+    },
+    {
+      title: "Eternal Return",
+      client: "Patek Laurent",
+      year: "2023",
+      category: "Editorial & Film",
+      description: "A year-long editorial project for a heritage watchmaker, documenting the passage of time through the lens of generational craftsmanship. The resulting 12-minute film premiered at Art Basel and has been acquired by three museum collections.",
+    },
+  ];
 
-  const team = [
-    { name: "Isabelle Fontaine", role: "Founder & Creative Director", bio: "Former creative lead at Herm\u00e8s Digital. 15 years shaping luxury brand narratives." },
-    { name: "Alexander Voss", role: "Design Director", bio: "Trained in Swiss typography. Obsessed with the intersection of restraint and impact." },
-    { name: "Naomi Sato", role: "Strategy Partner", bio: "Ex-Bain consultant specializing in luxury positioning and market architecture." },
-    { name: "Marcus Webb", role: "Technical Director", bio: "Builds digital experiences with the precision of fine watchmaking. Every millisecond matters." },
-  ]
+  const awards = [
+    { name: "Cannes Lions Grand Prix", count: "3x", category: "Film & Luxury" },
+    { name: "D&AD Black Pencil", count: "1x", category: "Art Direction" },
+    { name: "The One Show Gold", count: "7x", category: "Integrated Campaign" },
+    { name: "ADC Annual Awards", count: "12x", category: "Design & Typography" },
+    { name: "TDC Certificate of Excellence", count: "5x", category: "Type Design" },
+    { name: "Communication Arts", count: "9x", category: "Advertising & Design" },
+  ];
 
-  const testimonials = [
-    { quote: "They understood the weight of our heritage and translated it into something breathtakingly modern without losing a single thread of who we are.", author: "Cl\u00e9ment Aurel", title: "Creative Director, Maison Aurel" },
-    { quote: "The level of craft and intentionality was unlike anything we\u2019ve experienced. Every detail was considered, every choice deliberate.", author: "Victoria Ashworth", title: "Founder, The Carrington" },
-  ]
-
-  const clients = ["Maison Aurel", "The Carrington", "Voss & Sterling", "Atelier Noir", "Belvedere Group", "Crest & Co"]
+  const press = [
+    { publication: "Wallpaper*", quote: "Noir & Blanc operates at the intersection of art and commerce where very few agencies dare to tread." },
+    { publication: "The New York Times Style", quote: "The creative direction firm that luxury brands call when they want to be taken seriously by the art world." },
+    { publication: "Monocle", quote: "Understated, uncompromising, and utterly distinctive. Noir & Blanc has carved a niche that others can only admire from a distance." },
+    { publication: "Financial Times HTSI", quote: "In an industry obsessed with noise, Noir & Blanc has built a reputation on the power of silence." },
+  ];
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white" style={{ fontFamily: "Inter, sans-serif" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+    <div className="min-h-screen" style={{ fontFamily: "'Italiana', serif", backgroundColor: "#1a1a1a", color: "#e5e5e5" }}>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Italiana&family=Inter:wght@300;400&display=swap"
+        rel="stylesheet"
+      />
 
-      {/* Nav */}
-      <nav className="max-w-7xl mx-auto px-8 py-8 flex items-center justify-between">
-        <span className="text-lg tracking-[0.3em] uppercase text-[#d4af37]" style={{ fontFamily: "Playfair Display, serif" }}>Atelier</span>
-        <div className="hidden md:flex items-center space-x-12">
-          {["Portfolio", "Services", "Studio", "Contact"].map((item) => (
-            <span key={item} className="text-xs uppercase tracking-[0.2em] text-white/40 hover:text-[#d4af37] cursor-pointer transition-colors duration-500">{item}</span>
-          ))}
+      {/* Overlay Nav */}
+      <nav className="absolute top-0 left-0 right-0 z-10">
+        <div className="max-w-7xl mx-auto px-8 py-8 flex items-center justify-between">
+          <span className="text-xl tracking-widest uppercase">Noir & Blanc</span>
+          <div className="hidden md:flex items-center space-x-10">
+            {navItems.map((item) => (
+              <span
+                key={item}
+                className="text-xs tracking-widest uppercase cursor-pointer opacity-60 hover:opacity-100 transition-opacity"
+                style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300 }}
+              >
+                {item}
+              </span>
+            ))}
+          </div>
         </div>
-        <span className="text-xs uppercase tracking-[0.2em] text-white/40 hover:text-[#d4af37] cursor-pointer transition-colors duration-500">Inquire</span>
       </nav>
 
-      {/* Hero */}
-      <section className="max-w-7xl mx-auto px-8 pt-32 pb-40">
-        <div className="max-w-4xl">
-          <p className="text-xs uppercase tracking-[0.3em] text-[#d4af37] mb-8">Creative studio for discerning brands</p>
-          <h1 className="text-6xl md:text-8xl leading-[0.9] tracking-tight" style={{ fontFamily: "Playfair Display, serif" }}>
-            Where vision<br />meets <em className="text-[#d4af37]">mastery</em>.
-          </h1>
-          <p className="mt-12 text-base text-white/40 max-w-md leading-relaxed font-light">
-            We partner with a select number of luxury brands each year, dedicating the depth of attention that exceptional work demands.
+      {/* Cinematic Reel Hero */}
+      <section className="relative h-screen flex items-center justify-center" style={{ backgroundColor: "#111" }}>
+        <div className="absolute inset-0 opacity-20" style={{ background: "radial-gradient(ellipse at center, #333 0%, transparent 70%)" }} />
+        <div className="relative text-center px-6">
+          <p className="text-xs tracking-[0.4em] uppercase mb-8 opacity-50" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>
+            Creative Direction for the Discerning
           </p>
-          <div className="mt-12 flex items-center space-x-8">
-            <span className="px-8 py-4 border border-[#d4af37] text-[#d4af37] text-xs uppercase tracking-[0.2em] hover:bg-[#d4af37] hover:text-[#0a0a0a] cursor-pointer transition-all duration-500">View Portfolio</span>
-            <span className="text-xs uppercase tracking-[0.2em] text-white/30 hover:text-[#d4af37] cursor-pointer transition-colors duration-500">Our Approach &rarr;</span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl tracking-wide leading-tight max-w-4xl mx-auto">
+            Where vision becomes legacy
+          </h1>
+          <p className="mt-8 text-sm tracking-wider max-w-lg mx-auto leading-relaxed opacity-60" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>
+            Noir & Blanc is a luxury creative direction agency for brands that understand
+            the difference between being seen and being remembered.
+          </p>
+          <div className="mt-12">
+            <span className="text-xs tracking-[0.3em] uppercase cursor-pointer opacity-50 hover:opacity-100 transition-opacity border-b pb-2" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, borderColor: "#e5e5e540" }}>
+              View Selected Work
+            </span>
           </div>
         </div>
       </section>
 
-      {/* Divider */}
-      <div className="max-w-7xl mx-auto px-8"><div className="border-t border-white/10" /></div>
-
-      {/* Services */}
-      <section className="max-w-7xl mx-auto px-8 py-32">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-16">
-          <div className="md:col-span-4">
-            <p className="text-xs uppercase tracking-[0.3em] text-[#d4af37] mb-4">Expertise</p>
-            <h2 className="text-4xl leading-tight" style={{ fontFamily: "Playfair Display, serif" }}>Crafted with<br />precision.</h2>
-          </div>
-          <div className="md:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-12">
-            {services.map((s) => (
-              <div key={s.title} className="group">
-                <div className="w-8 h-px bg-[#d4af37] mb-6 group-hover:w-16 transition-all duration-500" />
-                <h3 className="text-lg font-light mb-3" style={{ fontFamily: "Playfair Display, serif" }}>{s.title}</h3>
-                <p className="text-sm text-white/35 leading-relaxed font-light">{s.desc}</p>
+      {/* Selected Campaigns */}
+      <section className="py-24 md:py-32">
+        <div className="max-w-6xl mx-auto px-8">
+          <p className="text-xs tracking-[0.3em] uppercase mb-20 opacity-40" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>
+            Selected Campaigns
+          </p>
+          <div className="space-y-28">
+            {campaigns.map((campaign, i) => (
+              <div key={i} className="grid md:grid-cols-2 gap-12 items-start">
+                <div className="aspect-[16/10] flex items-center justify-center" style={{ backgroundColor: "#222" }}>
+                  <span className="text-xs tracking-widest uppercase opacity-30" style={{ fontFamily: "'Inter', sans-serif" }}>
+                    {campaign.category}
+                  </span>
+                </div>
+                <div className="py-4">
+                  <p className="text-xs tracking-[0.2em] uppercase opacity-40 mb-4" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>
+                    {campaign.client} &mdash; {campaign.year}
+                  </p>
+                  <h3 className="text-2xl md:text-3xl tracking-wide mb-6">{campaign.title}</h3>
+                  <p className="text-sm leading-[1.8] opacity-60" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>
+                    {campaign.description}
+                  </p>
+                  <span className="inline-block mt-8 text-xs tracking-[0.2em] uppercase cursor-pointer opacity-40 hover:opacity-100 transition-opacity border-b pb-1" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, borderColor: "#e5e5e530" }}>
+                    Explore Campaign
+                  </span>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Divider */}
-      <div className="max-w-7xl mx-auto px-8"><div className="border-t border-white/10" /></div>
-
-      {/* Case Studies */}
-      <section className="max-w-7xl mx-auto px-8 py-32">
-        <p className="text-xs uppercase tracking-[0.3em] text-[#d4af37] mb-20">Selected Work</p>
-        <div className="space-y-0">
-          {caseStudies.map((cs) => (
-            <div key={cs.client} className="group py-16 border-b border-white/5 cursor-pointer hover:border-white/20 transition-all duration-500">
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-                <div className="md:col-span-2">
-                  <span className="text-xs text-white/20 uppercase tracking-wider">{cs.year}</span>
-                </div>
-                <div className="md:col-span-5">
-                  <h3 className="text-3xl font-light group-hover:text-[#d4af37] transition-colors duration-500" style={{ fontFamily: "Playfair Display, serif" }}>{cs.client}</h3>
-                  <p className="text-xs uppercase tracking-[0.15em] text-white/30 mt-2">{cs.category}</p>
-                </div>
-                <div className="md:col-span-4">
-                  <p className="text-sm text-white/35 leading-relaxed font-light">{cs.desc}</p>
-                </div>
-                <div className="md:col-span-1 flex justify-end">
-                  <span className="text-xs text-white/20 group-hover:text-[#d4af37] transition-colors duration-500">&rarr;</span>
-                </div>
-              </div>
-            </div>
-          ))}
+      {/* Philosophy */}
+      <section className="py-24 border-t border-b" style={{ borderColor: "#ffffff10" }}>
+        <div className="max-w-3xl mx-auto px-8 text-center">
+          <p className="text-xs tracking-[0.3em] uppercase mb-12 opacity-40" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>
+            Philosophy
+          </p>
+          <h2 className="text-3xl md:text-4xl tracking-wide leading-relaxed mb-10">
+            True luxury is the courage to leave space for meaning
+          </h2>
+          <p className="text-sm leading-[2] opacity-50 max-w-xl mx-auto" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>
+            We believe that the most powerful creative work is born from restraint, not excess.
+            Every project begins with a single question: what is the one essential truth this brand
+            must convey? Everything that does not serve that truth is removed. What remains is
+            not minimalism for its own sake, but clarity earned through discipline. Our work does not
+            shout. It does not chase. It arrives, and it endures.
+          </p>
         </div>
       </section>
 
-      {/* Team */}
-      <section className="bg-[#111111] py-32">
-        <div className="max-w-7xl mx-auto px-8">
-          <p className="text-xs uppercase tracking-[0.3em] text-[#d4af37] mb-20">The Studio</p>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-            {team.map((m) => (
-              <div key={m.name} className="group">
-                <div className="aspect-[3/4] bg-gradient-to-b from-[#1a1a1a] to-[#0f0f0f] mb-6 group-hover:from-[#1a1a18] group-hover:to-[#0f0f0d] transition-all duration-500" />
-                <h3 className="text-sm font-light" style={{ fontFamily: "Playfair Display, serif" }}>{m.name}</h3>
-                <p className="text-xs text-[#d4af37] mt-1 uppercase tracking-[0.15em]">{m.role}</p>
-                <p className="text-xs text-white/25 mt-3 leading-relaxed font-light">{m.bio}</p>
+      {/* Awards */}
+      <section className="py-24">
+        <div className="max-w-5xl mx-auto px-8">
+          <p className="text-xs tracking-[0.3em] uppercase mb-16 opacity-40" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>
+            Recognition
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-x-12 gap-y-10">
+            {awards.map((award, i) => (
+              <div key={i}>
+                <p className="text-2xl md:text-3xl tracking-wide">{award.count}</p>
+                <p className="text-sm mt-2 opacity-70">{award.name}</p>
+                <p className="text-xs mt-1 opacity-30" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>
+                  {award.category}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="max-w-7xl mx-auto px-8 py-32">
-        <p className="text-xs uppercase tracking-[0.3em] text-[#d4af37] mb-20">Client Words</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
-          {testimonials.map((t) => (
-            <div key={t.author}>
-              <p className="text-xl font-light leading-relaxed text-white/60 italic" style={{ fontFamily: "Playfair Display, serif" }}>&ldquo;{t.quote}&rdquo;</p>
-              <div className="mt-8">
-                <div className="w-8 h-px bg-[#d4af37] mb-4" />
-                <p className="text-sm font-light">{t.author}</p>
-                <p className="text-xs text-white/25 mt-1">{t.title}</p>
+      {/* Press */}
+      <section className="py-24 border-t" style={{ borderColor: "#ffffff10" }}>
+        <div className="max-w-4xl mx-auto px-8">
+          <p className="text-xs tracking-[0.3em] uppercase mb-16 opacity-40" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>
+            Press
+          </p>
+          <div className="space-y-14">
+            {press.map((item, i) => (
+              <div key={i} className="border-b pb-10" style={{ borderColor: "#ffffff08" }}>
+                <p className="text-xs tracking-[0.2em] uppercase opacity-30 mb-4" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>
+                  {item.publication}
+                </p>
+                <p className="text-lg md:text-xl tracking-wide leading-relaxed opacity-70 italic">
+                  &ldquo;{item.quote}&rdquo;
+                </p>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Client Logos */}
-      <div className="max-w-7xl mx-auto px-8"><div className="border-t border-white/10" /></div>
-      <section className="max-w-7xl mx-auto px-8 py-20">
-        <div className="flex flex-wrap justify-center items-center gap-16">
-          {clients.map((name) => (
-            <span key={name} className="text-xs uppercase tracking-[0.25em] text-white/15 hover:text-[#d4af37] cursor-pointer transition-colors duration-500">{name}</span>
-          ))}
-        </div>
-      </section>
-
-      {/* Contact CTA */}
-      <section className="max-w-7xl mx-auto px-8 py-32 text-center">
-        <p className="text-xs uppercase tracking-[0.3em] text-[#d4af37] mb-8">Begin</p>
-        <h2 className="text-5xl md:text-7xl leading-[0.9]" style={{ fontFamily: "Playfair Display, serif" }}>
-          Every masterpiece<br />starts with a <em className="text-[#d4af37]">conversation</em>.
-        </h2>
-        <p className="text-sm text-white/30 mt-8 max-w-md mx-auto font-light leading-relaxed">
-          We accept a limited number of engagements annually. If you believe your brand deserves extraordinary attention, we would be honored to hear from you.
-        </p>
-        <div className="mt-12">
-          <span className="inline-block px-10 py-4 border border-[#d4af37] text-[#d4af37] text-xs uppercase tracking-[0.2em] hover:bg-[#d4af37] hover:text-[#0a0a0a] cursor-pointer transition-all duration-500">Schedule a Private Consultation</span>
+      {/* Inquiry */}
+      <section className="py-28 text-center">
+        <div className="max-w-2xl mx-auto px-8">
+          <p className="text-xs tracking-[0.3em] uppercase mb-8 opacity-40" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>
+            Begin a Conversation
+          </p>
+          <h2 className="text-3xl md:text-4xl tracking-wide leading-relaxed mb-8">
+            For inquiries and commissions
+          </h2>
+          <p className="text-sm leading-[1.8] opacity-50 mb-12" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>
+            We accept a carefully considered number of projects each year. If you believe there is
+            an alignment between your vision and our approach, we welcome the conversation.
+          </p>
+          <span className="text-xs tracking-[0.3em] uppercase cursor-pointer opacity-50 hover:opacity-100 transition-opacity border-b pb-2" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, borderColor: "#e5e5e540" }}>
+            studio@noiretblanc.com
+          </span>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-8 py-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
-          <div>
-            <span className="text-sm tracking-[0.3em] uppercase text-[#d4af37]" style={{ fontFamily: "Playfair Display, serif" }}>Atelier</span>
-            <p className="text-xs text-white/20 mt-2 font-light">Paris &middot; London &middot; New York</p>
-          </div>
-          <div className="flex space-x-10">
-            {["Instagram", "LinkedIn", "Behance"].map((s) => (
-              <span key={s} className="text-xs text-white/20 hover:text-[#d4af37] cursor-pointer transition-colors duration-500 uppercase tracking-[0.15em]">{s}</span>
-            ))}
-          </div>
-          <span className="text-xs text-white/15 font-light">&copy; 2026 Atelier Creative Studio</span>
+      <footer className="border-t py-10 px-8" style={{ borderColor: "#ffffff08" }}>
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+          <span className="text-sm tracking-widest uppercase opacity-60">Noir & Blanc</span>
+          <p className="text-xs opacity-30" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>
+            Paris &middot; New York &middot; Tokyo
+          </p>
+          <p className="text-xs opacity-20" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>
+            &copy; 2024 Noir & Blanc. All rights reserved.
+          </p>
         </div>
       </footer>
     </div>
-  )
+  );
 }

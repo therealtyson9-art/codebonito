@@ -1,204 +1,194 @@
 export default function EcommerceLuxuryDemo() {
-  const products = [
-    { name: "Silk Draped Blazer", price: "$2,450", category: "Outerwear" },
-    { name: "Cashmere Knit Top", price: "$980", category: "Knitwear" },
-    { name: "Tailored Wool Trousers", price: "$1,200", category: "Bottoms" },
-    { name: "Leather Clutch Bag", price: "$1,850", category: "Accessories" },
-    { name: "Embroidered Midi Dress", price: "$3,600", category: "Dresses" },
-    { name: "Gold Chain Necklace", price: "$4,200", category: "Jewelry" },
-    { name: "Suede Ankle Boots", price: "$1,680", category: "Footwear" },
-    { name: "Merino Wool Scarf", price: "$540", category: "Accessories" },
+  const collection = [
+    { name: "Nuit Eternelle", type: "Eau de Parfum", price: "$285", size: "75ml", notes: "Black orchid, aged oud, Tahitian vanilla" },
+    { name: "Jardin Secret", type: "Eau de Parfum", price: "$245", size: "75ml", notes: "Damascus rose, white musk, morning dew" },
+    { name: "Ambre Sacre", type: "Parfum", price: "$340", size: "50ml", notes: "Amber resin, sandalwood, saffron, leather" },
+    { name: "Lumiere d'Or", type: "Eau de Toilette", price: "$195", size: "100ml", notes: "Bergamot, jasmine absolute, golden woods" },
   ];
 
-  const categories = ["New Arrivals", "Ready-to-Wear", "Accessories", "Footwear", "Jewelry", "Sale"];
+  const ingredients = [
+    { name: "Grasse Rose", origin: "Provence, France", desc: "Hand-picked at dawn during the six-week harvest, yielding the purest rose absolute in perfumery." },
+    { name: "Mysore Sandalwood", origin: "Karnataka, India", desc: "Aged over sixty years for unparalleled depth and creamy warmth in our oriental compositions." },
+    { name: "Calabrian Bergamot", origin: "Reggio Calabria, Italy", desc: "Cold-pressed from sun-ripened fruit, providing luminous, sparkling citrus top notes." },
+  ];
+
+  const testimonials = [
+    { name: "Isabelle M.", location: "Paris", text: "Nuit Eternelle is the fragrance I reach for on every significant evening. It lingers beautifully and draws compliments without effort." },
+    { name: "Thomas K.", location: "London", text: "The craftsmanship is evident from the moment you hold the bottle. Ambre Sacre has become my signature scent." },
+    { name: "Sofia R.", location: "Milan", text: "Jardin Secret captures something rare, a sense of intimacy and beauty that I have never found in another house." },
+  ];
+
+  const boutiques = [
+    { city: "Paris", address: "12 Rue du Faubourg Saint-Honore, 75008", hours: "Mon-Sat 10:00-19:00" },
+    { city: "London", address: "27 New Bond Street, Mayfair, W1S 2RL", hours: "Mon-Sat 10:00-18:30" },
+    { city: "New York", address: "680 Madison Avenue, 10065", hours: "Mon-Sat 10:00-19:00, Sun 12:00-17:00" },
+  ];
 
   return (
-    <div className="min-h-screen bg-stone-950 text-amber-50" style={{ fontFamily: "Outfit, sans-serif" }}>
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
-      </head>
+    <div style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, backgroundColor: "#000" }} className="min-h-screen text-white">
+      <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet" />
 
-      {/* Top Bar */}
-      <div className="bg-amber-200/10 text-center py-2">
-        <p className="text-xs tracking-[0.2em] text-amber-200/70 uppercase">Complimentary shipping on orders over $500</p>
-      </div>
-
-      {/* Nav */}
-      <nav className="border-b border-amber-200/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
-          <div className="hidden md:flex items-center space-x-8">
-            {categories.slice(0, 3).map((cat) => (
-              <span key={cat} className="text-xs tracking-[0.15em] uppercase text-amber-200/60 hover:text-amber-200 cursor-pointer transition-colors">{cat}</span>
-            ))}
+      {/* Minimal Nav */}
+      <nav className="fixed top-0 w-full z-50 px-8 py-6 flex items-center justify-between" style={{ backgroundColor: "rgba(0,0,0,0.85)", backdropFilter: "blur(12px)" }}>
+        <div className="flex items-center gap-6">
+          <div className="flex flex-col gap-1 cursor-pointer">
+            <span className="block w-6 h-px" style={{ backgroundColor: "#d4a574" }} />
+            <span className="block w-4 h-px" style={{ backgroundColor: "#d4a574" }} />
+            <span className="block w-6 h-px" style={{ backgroundColor: "#d4a574" }} />
           </div>
-          <h1 className="text-2xl tracking-[0.3em] uppercase" style={{ fontFamily: "Cormorant Garamond, serif", fontWeight: 600 }}>
-            Maison Aurelle
-          </h1>
-          <div className="hidden md:flex items-center space-x-8">
-            <span className="text-xs tracking-[0.15em] uppercase text-amber-200/60 hover:text-amber-200 cursor-pointer transition-colors">Account</span>
-            <span className="text-xs tracking-[0.15em] uppercase text-amber-200/60 hover:text-amber-200 cursor-pointer transition-colors">Wishlist</span>
-            <span className="text-xs tracking-[0.15em] uppercase text-amber-200/60 hover:text-amber-200 cursor-pointer transition-colors">Bag (2)</span>
-          </div>
+          <span className="text-xs uppercase tracking-widest hidden md:inline" style={{ color: "#d4a574" }}>Menu</span>
+        </div>
+        <span style={{ fontFamily: "'Bodoni Moda', serif", color: "#d4a574" }} className="text-2xl md:text-3xl tracking-wide">
+          Maison Riviere
+        </span>
+        <div className="flex items-center gap-6 text-xs uppercase tracking-widest" style={{ color: "#d4a574" }}>
+          <span className="hidden md:inline cursor-pointer">Search</span>
+          <span className="cursor-pointer">Bag (0)</span>
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="relative">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-32 lg:py-44 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <p className="text-xs tracking-[0.2em] uppercase text-amber-200/50 mb-6">Autumn/Winter 2024</p>
-            <h2 className="text-5xl lg:text-7xl leading-[1.1] mb-8 text-amber-50" style={{ fontFamily: "Cormorant Garamond, serif", fontWeight: 300 }}>
-              The Art of<br />Quiet Luxury
-            </h2>
-            <p className="text-amber-200/50 leading-relaxed mb-10 max-w-md text-sm">
-              Discover our latest collection — where timeless silhouettes meet exceptional craftsmanship. Each piece is designed to transcend seasons and trends.
-            </p>
-            <button className="h-12 px-10 text-xs tracking-[0.2em] uppercase font-medium border border-amber-200/40 text-amber-200 hover:bg-amber-200 hover:text-stone-950 transition-all duration-500">
-              Explore Collection
-            </button>
-          </div>
-          <div className="bg-stone-900 aspect-[3/4] rounded-sm flex items-center justify-center">
-            <span className="text-amber-200/20 text-xs tracking-widest uppercase">Campaign Image</span>
-          </div>
-        </div>
-      </section>
-
-      {/* Categories */}
-      <section className="border-y border-amber-200/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-6 flex items-center justify-center space-x-12 overflow-x-auto">
-          {categories.map((cat) => (
-            <span key={cat} className="text-xs tracking-[0.15em] uppercase text-amber-200/40 hover:text-amber-200 cursor-pointer transition-colors whitespace-nowrap">
-              {cat}
-            </span>
-          ))}
-        </div>
-      </section>
-
-      {/* Products */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-12 py-24">
-        <div className="text-center mb-16">
-          <p className="text-xs tracking-[0.2em] uppercase text-amber-200/40 mb-4">Curated Selection</p>
-          <h2 className="text-4xl lg:text-5xl text-amber-50" style={{ fontFamily: "Cormorant Garamond, serif", fontWeight: 400 }}>
-            New Arrivals
-          </h2>
-        </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          {products.map((product) => (
-            <div key={product.name} className="group cursor-pointer">
-              <div className="bg-stone-900 aspect-[3/4] rounded-sm mb-4 flex items-center justify-center group-hover:bg-stone-800 transition-colors duration-500">
-                <span className="text-amber-200/15 text-xs tracking-widest uppercase">Product</span>
-              </div>
-              <p className="text-[10px] tracking-[0.15em] uppercase text-amber-200/40 mb-1">{product.category}</p>
-              <h3 className="text-sm font-light text-amber-50 mb-1 group-hover:text-amber-200 transition-colors">{product.name}</h3>
-              <p className="text-sm text-amber-200/60">{product.price}</p>
-            </div>
-          ))}
-        </div>
-        <div className="text-center mt-16">
-          <button className="h-11 px-10 text-xs tracking-[0.2em] uppercase font-medium border border-amber-200/30 text-amber-200/70 hover:bg-amber-200 hover:text-stone-950 transition-all duration-500">
-            View All Products
-          </button>
-        </div>
-      </section>
-
-      {/* Editorial */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-12 py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 bg-stone-900 aspect-[16/9] rounded-sm flex items-center justify-center">
-            <span className="text-amber-200/15 text-xs tracking-widest uppercase">Editorial Image</span>
-          </div>
-          <div className="flex flex-col justify-center">
-            <p className="text-xs tracking-[0.2em] uppercase text-amber-200/40 mb-6">The Journal</p>
-            <h3 className="text-3xl mb-4 text-amber-50" style={{ fontFamily: "Cormorant Garamond, serif", fontWeight: 400 }}>
-              Behind the Atelier
-            </h3>
-            <p className="text-sm text-amber-200/40 leading-relaxed mb-8">
-              Step inside our Parisian atelier and discover the meticulous process behind each garment. From hand-selected fabrics to final stitch.
-            </p>
-            <span className="text-xs tracking-[0.15em] uppercase text-amber-200/60 hover:text-amber-200 cursor-pointer transition-colors">
-              Read More &rarr;
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* Features */}
-      <section className="border-y border-amber-200/10 py-16">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-4 gap-12 text-center">
-          {[
-            { title: "Craftsmanship", desc: "Handmade by master artisans in our Parisian atelier" },
-            { title: "Sustainability", desc: "Ethically sourced materials with full supply chain transparency" },
-            { title: "Heritage", desc: "Rooted in 40 years of French haute couture tradition" },
-            { title: "Service", desc: "Personal styling consultations and white-glove delivery" },
-          ].map((f) => (
-            <div key={f.title}>
-              <h3 className="text-xs tracking-[0.2em] uppercase text-amber-200/70 mb-3">{f.title}</h3>
-              <p className="text-xs text-amber-200/30 leading-relaxed">{f.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Newsletter */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-12 py-24 text-center">
-        <h2 className="text-3xl lg:text-4xl mb-4 text-amber-50" style={{ fontFamily: "Cormorant Garamond, serif", fontWeight: 400 }}>
-          Join the Maison
-        </h2>
-        <p className="text-sm text-amber-200/40 mb-8 max-w-md mx-auto">
-          Be the first to discover new collections, exclusive events, and the stories behind our craft.
+      {/* Single Product Spotlight Hero */}
+      <section className="min-h-screen flex flex-col items-center justify-center px-8 pt-24 pb-16 text-center relative">
+        <p className="text-xs uppercase tracking-[0.3em] mb-8" style={{ color: "#d4a574" }}>The New Signature</p>
+        <div className="w-48 h-72 rounded-sm mb-10" style={{ backgroundColor: "#1a1a1a", border: "1px solid #d4a574" }} />
+        <h1 style={{ fontFamily: "'Bodoni Moda', serif" }} className="text-5xl md:text-7xl font-normal mb-4 tracking-wide">
+          Nuit Eternelle
+        </h1>
+        <p style={{ color: "#d4a574", fontFamily: "'Bodoni Moda', serif", fontStyle: "italic" }} className="text-lg md:text-xl mb-6">
+          Eau de Parfum | 75ml
         </p>
-        <div className="flex justify-center max-w-md mx-auto">
-          <input
-            type="email"
-            placeholder="Your email address"
-            className="flex-1 h-11 px-4 bg-transparent border border-amber-200/20 text-sm text-amber-50 placeholder:text-amber-200/20 focus:outline-none focus:border-amber-200/50"
-            readOnly
-          />
-          <button className="h-11 px-8 text-xs tracking-[0.15em] uppercase font-medium bg-amber-200 text-stone-950 hover:bg-amber-100 transition-colors">
-            Subscribe
+        <p className="text-neutral-400 max-w-lg mx-auto text-sm leading-relaxed mb-10">
+          A nocturnal composition of rare black orchid and aged oud, softened by the warmth of Tahitian vanilla.
+          Each bottle is hand-finished in our Grasse atelier and numbered as part of a limited annual edition.
+        </p>
+        <div className="flex gap-4">
+          <button className="text-xs uppercase tracking-[0.2em] px-10 py-4 border" style={{ borderColor: "#d4a574", color: "#d4a574" }}>
+            Discover
           </button>
+          <button className="text-xs uppercase tracking-[0.2em] px-10 py-4" style={{ backgroundColor: "#d4a574", color: "#000" }}>
+            Add to Bag — $285
+          </button>
+        </div>
+      </section>
+
+      {/* The Story */}
+      <section className="py-24 px-8" style={{ backgroundColor: "#0a0a0a" }}>
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="text-xs uppercase tracking-[0.3em] mb-6" style={{ color: "#d4a574" }}>Our Heritage</p>
+          <h2 style={{ fontFamily: "'Bodoni Moda', serif" }} className="text-3xl md:text-5xl mb-8 tracking-wide">The Art of Scent</h2>
+          <p className="text-neutral-400 text-sm leading-loose mb-6">
+            Founded in 1962 by master perfumer Henri Riviere, Maison Riviere has spent six decades devoted to a
+            singular pursuit: capturing emotion in fragrance. From our atelier in Grasse, the historic heart of
+            French perfumery, every composition is developed over months of careful refinement.
+          </p>
+          <p className="text-neutral-400 text-sm leading-loose">
+            We source the rarest ingredients from their places of origin. We work in small batches, never
+            compromising quality for scale. Each fragrance in our collection tells a complete story, one that
+            unfolds on the skin throughout the day, revealing new facets with every passing hour.
+          </p>
+        </div>
+      </section>
+
+      {/* Collection Grid */}
+      <section className="py-24 px-8">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-xs uppercase tracking-[0.3em] mb-4" style={{ color: "#d4a574" }}>The Collection</p>
+            <h2 style={{ fontFamily: "'Bodoni Moda', serif" }} className="text-3xl md:text-4xl tracking-wide">Four Fragrances</h2>
+          </div>
+          <div className="grid md:grid-cols-4 gap-8">
+            {collection.map((item, i) => (
+              <div key={i} className="text-center cursor-pointer group">
+                <div className="aspect-[3/4] mb-6 transition-all duration-500 group-hover:scale-105" style={{ backgroundColor: "#111", border: "1px solid #222" }} />
+                <h3 style={{ fontFamily: "'Bodoni Moda', serif" }} className="text-lg tracking-wide mb-1">{item.name}</h3>
+                <p className="text-xs uppercase tracking-wider text-neutral-500 mb-2">{item.type} | {item.size}</p>
+                <p className="text-xs text-neutral-600 mb-3 italic" style={{ fontFamily: "'Bodoni Moda', serif" }}>{item.notes}</p>
+                <p style={{ color: "#d4a574" }} className="text-sm">{item.price}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Ingredients */}
+      <section className="py-24 px-8" style={{ backgroundColor: "#0a0a0a" }}>
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-xs uppercase tracking-[0.3em] mb-4" style={{ color: "#d4a574" }}>Sourced With Care</p>
+            <h2 style={{ fontFamily: "'Bodoni Moda', serif" }} className="text-3xl md:text-4xl tracking-wide">The Finest Ingredients</h2>
+          </div>
+          <div className="space-y-12">
+            {ingredients.map((ing, i) => (
+              <div key={i} className="flex flex-col md:flex-row gap-8 items-start border-b border-neutral-800 pb-12">
+                <div className="w-24 h-24 rounded-full flex-shrink-0" style={{ backgroundColor: "#111", border: "1px solid #d4a574" }} />
+                <div>
+                  <h3 style={{ fontFamily: "'Bodoni Moda', serif" }} className="text-xl mb-1">{ing.name}</h3>
+                  <p className="text-xs uppercase tracking-wider mb-3" style={{ color: "#d4a574" }}>{ing.origin}</p>
+                  <p className="text-neutral-400 text-sm leading-relaxed">{ing.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-24 px-8">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-xs uppercase tracking-[0.3em] mb-4" style={{ color: "#d4a574" }}>Voices</p>
+            <h2 style={{ fontFamily: "'Bodoni Moda', serif" }} className="text-3xl md:text-4xl tracking-wide">From Our Patrons</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-12">
+            {testimonials.map((t, i) => (
+              <div key={i} className="text-center">
+                <p style={{ fontFamily: "'Bodoni Moda', serif", fontStyle: "italic" }} className="text-neutral-300 leading-relaxed mb-6">
+                  &ldquo;{t.text}&rdquo;
+                </p>
+                <p className="text-sm" style={{ color: "#d4a574" }}>{t.name}</p>
+                <p className="text-xs text-neutral-600 mt-1">{t.location}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Boutique Locations */}
+      <section className="py-24 px-8" style={{ backgroundColor: "#0a0a0a" }}>
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-xs uppercase tracking-[0.3em] mb-4" style={{ color: "#d4a574" }}>Visit Us</p>
+            <h2 style={{ fontFamily: "'Bodoni Moda', serif" }} className="text-3xl md:text-4xl tracking-wide">Our Boutiques</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {boutiques.map((b, i) => (
+              <div key={i} className="text-center p-8 border border-neutral-800">
+                <h3 style={{ fontFamily: "'Bodoni Moda', serif" }} className="text-xl mb-3">{b.city}</h3>
+                <p className="text-neutral-400 text-sm mb-2">{b.address}</p>
+                <p className="text-xs" style={{ color: "#d4a574" }}>{b.hours}</p>
+                <button className="mt-6 text-xs uppercase tracking-[0.15em] border px-6 py-2" style={{ borderColor: "#d4a574", color: "#d4a574" }}>
+                  Book Appointment
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-amber-200/10 py-16 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12">
-          <div>
-            <h4 className="text-xs tracking-[0.15em] uppercase text-amber-200/60 mb-4">Shop</h4>
-            <div className="space-y-2">
-              {["New Arrivals", "Ready-to-Wear", "Accessories", "Sale"].map((item) => (
-                <p key={item} className="text-xs text-amber-200/30 hover:text-amber-200/60 cursor-pointer transition-colors">{item}</p>
-              ))}
-            </div>
+      <footer className="border-t border-neutral-800 py-16 px-8">
+        <div className="max-w-5xl mx-auto flex flex-col items-center text-center">
+          <span style={{ fontFamily: "'Bodoni Moda', serif", color: "#d4a574" }} className="text-2xl tracking-wide mb-6">
+            Maison Riviere
+          </span>
+          <div className="flex gap-8 mb-8 text-xs uppercase tracking-[0.15em] text-neutral-500">
+            <span className="cursor-pointer hover:text-white">Collection</span>
+            <span className="cursor-pointer hover:text-white">Heritage</span>
+            <span className="cursor-pointer hover:text-white">Boutiques</span>
+            <span className="cursor-pointer hover:text-white">Contact</span>
+            <span className="cursor-pointer hover:text-white">Careers</span>
           </div>
-          <div>
-            <h4 className="text-xs tracking-[0.15em] uppercase text-amber-200/60 mb-4">About</h4>
-            <div className="space-y-2">
-              {["Our Story", "Atelier", "Sustainability", "Careers"].map((item) => (
-                <p key={item} className="text-xs text-amber-200/30 hover:text-amber-200/60 cursor-pointer transition-colors">{item}</p>
-              ))}
-            </div>
-          </div>
-          <div>
-            <h4 className="text-xs tracking-[0.15em] uppercase text-amber-200/60 mb-4">Help</h4>
-            <div className="space-y-2">
-              {["Shipping", "Returns", "Size Guide", "Contact"].map((item) => (
-                <p key={item} className="text-xs text-amber-200/30 hover:text-amber-200/60 cursor-pointer transition-colors">{item}</p>
-              ))}
-            </div>
-          </div>
-          <div>
-            <h4 className="text-xs tracking-[0.15em] uppercase text-amber-200/60 mb-4">Follow</h4>
-            <div className="space-y-2">
-              {["Instagram", "Pinterest", "TikTok", "YouTube"].map((item) => (
-                <p key={item} className="text-xs text-amber-200/30 hover:text-amber-200/60 cursor-pointer transition-colors">{item}</p>
-              ))}
-            </div>
-          </div>
-        </div>
-        <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-amber-200/5 flex items-center justify-between">
-          <span className="text-xs text-amber-200/20">&copy; 2024 Maison Aurelle. All rights reserved.</span>
-          <span className="text-xs text-amber-200/20 tracking-[0.3em] uppercase" style={{ fontFamily: "Cormorant Garamond, serif" }}>Maison Aurelle</span>
+          <p className="text-xs text-neutral-700">&copy; 2025 Maison Riviere. Grasse, France. All rights reserved.</p>
         </div>
       </footer>
     </div>

@@ -1,212 +1,191 @@
 export default function EcommercePlayfulDemo() {
-  const products = [
-    { name: "Cloud Nine Sneakers", price: "$79", oldPrice: "$99", emoji: "👟", color: "from-pink-400 to-rose-400", tag: "Hot" },
-    { name: "Sunshine Bucket Hat", price: "$34", oldPrice: "", emoji: "🎩", color: "from-yellow-300 to-amber-400", tag: "New" },
-    { name: "Rainbow Crossbody Bag", price: "$56", oldPrice: "", emoji: "🌈", color: "from-violet-400 to-purple-400", tag: "" },
-    { name: "Fizzy Pop Sunglasses", price: "$42", oldPrice: "$55", emoji: "🕶️", color: "from-cyan-400 to-teal-400", tag: "Sale" },
-    { name: "Daydream Hoodie", price: "$68", oldPrice: "", emoji: "☁️", color: "from-blue-400 to-indigo-400", tag: "Fave" },
-    { name: "Confetti Socks Pack", price: "$18", oldPrice: "", emoji: "🧦", color: "from-orange-400 to-red-400", tag: "" },
-    { name: "Bubblegum Scrunchie Set", price: "$12", oldPrice: "", emoji: "🎀", color: "from-pink-300 to-fuchsia-400", tag: "Best" },
-    { name: "Starlight Phone Case", price: "$28", oldPrice: "$35", emoji: "✨", color: "from-emerald-400 to-green-400", tag: "Sale" },
+  const snackCategories = [
+    { name: "Salty & Crunchy", emoji: "🥨", count: 24, color: "#fbbf24" },
+    { name: "Sweet Treats", emoji: "🍫", count: 31, color: "#f472b6" },
+    { name: "Healthy Bites", emoji: "🥗", count: 18, color: "#34d399" },
+    { name: "International Flavors", emoji: "🌍", count: 27, color: "#60a5fa" },
+    { name: "Spicy & Bold", emoji: "🌶️", count: 15, color: "#f87171" },
+    { name: "Drinks & Sips", emoji: "🧃", count: 20, color: "#a78bfa" },
   ];
 
-  const features = [
-    { emoji: "🚀", title: "Lightning Shipping", desc: "Most orders arrive in 2-3 days. We ship fast because waiting is boring!" },
-    { emoji: "💖", title: "Love It Guarantee", desc: "Not vibing with it? Send it back within 30 days, no questions asked." },
-    { emoji: "🌍", title: "Planet Friendly", desc: "Eco packaging, carbon-neutral shipping. Looking cute AND saving the planet." },
-    { emoji: "🎁", title: "Free Gift Wrapping", desc: "Every order comes wrapped in our signature confetti tissue paper!" },
+  const reviews = [
+    { name: "Maya T.", rating: 5, text: "My kids go WILD when the Snack Planet box arrives. It is basically a holiday every month.", avatar: "🦊" },
+    { name: "Jake R.", rating: 5, text: "Finally, a subscription that does not send the same boring stuff. Every box is a genuine surprise.", avatar: "🐻" },
+    { name: "Priya S.", rating: 4, text: "The international snacks are incredible. I tried Japanese rice crackers and now I am hooked for life.", avatar: "🐱" },
   ];
 
-  const testimonials = [
-    { name: "Luna S.", text: "The sneakers are SO comfy and the colors are even better in person! Already ordered two more pairs.", stars: 5, avatar: "🦊" },
-    { name: "Kai M.", text: "Best online shopping experience ever. The packaging alone made my entire week. So fun!", stars: 5, avatar: "🐻" },
-    { name: "Zara P.", text: "I get compliments every time I wear the bucket hat. The quality is amazing for the price!", stars: 5, avatar: "🦋" },
+  const faqs = [
+    { q: "How many snacks are in each box?", a: "Every box contains 12 to 15 full-size snacks from around the world. No tiny sample packs here!" },
+    { q: "Can I choose my snacks?", a: "Our Orbit and Galaxy plans let you set flavor preferences and dietary restrictions. We handle the rest!" },
+    { q: "What if I have allergies?", a: "We take allergies seriously. Flag any allergens in your profile and we will make sure your box is safe." },
+    { q: "Can I skip a month?", a: "Absolutely! Skip, pause, or cancel anytime from your dashboard. No questions asked, no fees." },
   ];
 
-  const navItems = ["New In", "Best Sellers", "Sale", "Collections"];
-  const footerSections = [
-    { title: "Shop", links: ["New Arrivals", "Best Sellers", "Sale", "Gift Cards", "Bundles"] },
-    { title: "Help", links: ["FAQ", "Shipping", "Returns", "Size Guide", "Contact Us"] },
-    { title: "About", links: ["Our Story", "Sustainability", "Blog", "Careers", "Collabs"] },
-    { title: "Follow Us", links: ["Instagram", "TikTok", "YouTube", "Pinterest", "Discord"] },
+  const plans = [
+    { name: "Starter", emoji: "🚀", price: "$24", period: "/month", snacks: "8-10 snacks", features: ["Curated mix", "Free shipping", "Cancel anytime"] },
+    { name: "Orbit", emoji: "🪐", price: "$34", period: "/month", snacks: "12-15 snacks", features: ["Flavor preferences", "Exclusive items", "Free shipping", "Early access"], popular: true },
+    { name: "Galaxy", emoji: "🌌", price: "$49", period: "/month", snacks: "18-22 snacks", features: ["Full customization", "Premium imports", "Free shipping", "Merch included", "Priority support"] },
   ];
 
   return (
-    <div className="min-h-screen bg-orange-50 text-gray-900" style={{ fontFamily: "Nunito, sans-serif" }}>
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-      </head>
+    <div style={{ fontFamily: "'Fredoka', sans-serif", backgroundColor: "#f7fee7" }} className="min-h-screen">
+      <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-      {/* Fun Top Bar */}
-      <div className="bg-gradient-to-r from-pink-400 via-violet-400 to-cyan-400 text-center py-2.5">
-        <p className="text-xs font-bold text-white tracking-wide">FREE SHIPPING on orders $50+ !! Use code YAYY for 10% off your first order</p>
-      </div>
-
-      {/* Nav */}
-      <nav className="bg-white/80 backdrop-blur-sm border-b border-orange-200/50 sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center space-x-8">
-            <span className="text-2xl font-black bg-gradient-to-r from-pink-500 via-violet-500 to-cyan-500 bg-clip-text text-transparent">popshop</span>
-            <div className="hidden md:flex items-center space-x-1">
-              {navItems.map((item) => (
-                <span key={item} className="text-sm font-bold text-gray-600 hover:text-pink-500 px-3 py-2 rounded-full hover:bg-pink-50 cursor-pointer transition-all">{item}</span>
-              ))}
-            </div>
+      {/* Icon Nav */}
+      <nav className="bg-white shadow-sm sticky top-0 z-50">
+        <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+          <span className="text-2xl font-bold" style={{ color: "#f97316" }}>🪐 Snack Planet</span>
+          <div className="hidden md:flex gap-6 text-sm font-medium text-gray-600">
+            <span className="cursor-pointer hover:text-gray-900">🍿 Snacks</span>
+            <span className="cursor-pointer hover:text-gray-900">📦 How It Works</span>
+            <span className="cursor-pointer hover:text-gray-900">💰 Pricing</span>
+            <span className="cursor-pointer hover:text-gray-900">⭐ Reviews</span>
+            <span className="cursor-pointer hover:text-gray-900">❓ FAQ</span>
           </div>
-          <div className="flex items-center space-x-3">
-            <span className="text-sm font-bold text-gray-600 hover:text-pink-500 cursor-pointer transition-colors">Search</span>
-            <span className="text-sm font-bold text-gray-600 hover:text-pink-500 cursor-pointer transition-colors">Account</span>
-            <span className="bg-gradient-to-r from-pink-500 to-violet-500 text-white text-sm font-bold px-4 py-2 rounded-full cursor-pointer hover:shadow-lg hover:shadow-pink-200 transition-all">
-              Cart (4)
-            </span>
-          </div>
+          <button className="text-white text-sm font-semibold px-5 py-2 rounded-full" style={{ backgroundColor: "#f97316" }}>Get Started</button>
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="max-w-6xl mx-auto px-6 py-14 lg:py-20">
-        <div className="bg-gradient-to-br from-violet-100 via-pink-50 to-cyan-100 rounded-3xl p-10 lg:p-16 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <div>
-            <span className="inline-block bg-yellow-300 text-yellow-900 text-xs font-extrabold px-3 py-1 rounded-full mb-4">NEW DROP ALERT</span>
-            <h1 className="text-4xl lg:text-5xl font-black leading-tight mb-4 text-gray-900">
-              Color your world, one outfit at a time
-            </h1>
-            <p className="text-gray-500 leading-relaxed mb-8 max-w-md font-medium">
-              Fun, bold, feel-good fashion that does not take itself too seriously. Made with love, worn with joy.
-            </p>
-            <div className="flex items-center space-x-3">
-              <button className="h-12 px-8 text-sm font-extrabold bg-gradient-to-r from-pink-500 to-violet-500 text-white rounded-full hover:shadow-lg hover:shadow-pink-200 transition-all">
-                Shop the Drop
-              </button>
-              <button className="h-12 px-8 text-sm font-bold border-2 border-gray-300 text-gray-600 rounded-full hover:border-pink-400 hover:text-pink-500 transition-all">
-                Watch Lookbook
-              </button>
+      {/* Bouncy Hero */}
+      <section className="max-w-6xl mx-auto px-6 py-20 text-center">
+        <p className="text-sm font-medium uppercase tracking-wider mb-3" style={{ color: "#f97316" }}>The snack subscription that slaps</p>
+        <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+          Snacks From<br />
+          <span style={{ color: "#f97316" }}>Every Corner</span><br />
+          Of The Planet
+        </h1>
+        <p className="text-gray-600 text-lg max-w-xl mx-auto mb-8">
+          A monthly box of 12-15 wild, wonderful, and ridiculously tasty snacks from over 40 countries. No boring chips allowed.
+        </p>
+        <div className="flex justify-center gap-4">
+          <button className="text-white font-semibold px-8 py-4 rounded-full text-lg shadow-lg hover:shadow-xl transition-shadow" style={{ backgroundColor: "#f97316" }}>Start Snacking</button>
+          <button className="bg-white font-semibold px-8 py-4 rounded-full text-lg shadow border border-gray-200 text-gray-700">See Snacks</button>
+        </div>
+        <div className="flex justify-center gap-8 mt-12 text-sm text-gray-500">
+          <span>🌍 40+ countries</span>
+          <span>📦 Free shipping</span>
+          <span>🔄 Skip anytime</span>
+          <span>⭐ 4.9 rating</span>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="bg-white py-16">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold text-gray-900 mb-12">How It Works</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div>
+              <div className="text-5xl mb-4">📋</div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">1. Pick Your Plan</h3>
+              <p className="text-gray-500">Choose from Starter, Orbit, or Galaxy based on how much snacking you need in your life.</p>
             </div>
-          </div>
-          <div className="bg-white/50 aspect-square rounded-2xl flex items-center justify-center">
-            <span className="text-6xl">🎉</span>
+            <div>
+              <div className="text-5xl mb-4">🎉</div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">2. We Curate</h3>
+              <p className="text-gray-500">Our snack scouts source the tastiest finds from around the world and pack them with care.</p>
+            </div>
+            <div>
+              <div className="text-5xl mb-4">😋</div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">3. Devour & Repeat</h3>
+              <p className="text-gray-500">Rip open your box, discover new favorites, and look forward to next month's delivery.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Product Grid */}
-      <section className="max-w-6xl mx-auto px-6 py-10">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl font-black text-gray-900">trending right now</h2>
-          <p className="text-sm text-gray-400 font-medium mt-2">the stuff everyone is obsessed with</p>
+      {/* Snack Categories */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Explore Snack Categories</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {snackCategories.map((cat, i) => (
+            <div key={i} className="bg-white rounded-2xl p-6 text-center cursor-pointer hover:shadow-lg transition-shadow border-2 border-transparent hover:border-orange-200">
+              <div className="text-4xl mb-3">{cat.emoji}</div>
+              <h3 className="font-semibold text-gray-900">{cat.name}</h3>
+              <p className="text-sm text-gray-500 mt-1">{cat.count} snacks</p>
+            </div>
+          ))}
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
-          {products.map((product) => (
-            <div key={product.name} className="bg-white rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-pink-100 hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
-              <div className={`bg-gradient-to-br ${product.color} aspect-square flex items-center justify-center relative`}>
-                <span className="text-5xl group-hover:scale-110 transition-transform duration-300">{product.emoji}</span>
-                {product.tag && (
-                  <span className="absolute top-3 right-3 bg-white text-gray-900 text-[10px] font-extrabold px-2.5 py-1 rounded-full shadow-sm">{product.tag}</span>
-                )}
-              </div>
-              <div className="p-4">
-                <h3 className="text-sm font-bold text-gray-900 mb-1">{product.name}</h3>
-                <div className="flex items-center space-x-2">
-                  <span className="text-lg font-extrabold text-gray-900">{product.price}</span>
-                  {product.oldPrice && (
-                    <span className="text-sm text-gray-400 line-through">{product.oldPrice}</span>
-                  )}
+      </section>
+
+      {/* Reviews */}
+      <section className="bg-white py-16">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">What Snackers Say</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {reviews.map((review, i) => (
+              <div key={i} className="rounded-2xl p-6 border border-gray-100 shadow-sm" style={{ backgroundColor: "#f7fee7" }}>
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-3xl">{review.avatar}</span>
+                  <div>
+                    <p className="font-semibold text-gray-900">{review.name}</p>
+                    <p className="text-yellow-500 text-sm">{"⭐".repeat(review.rating)}</p>
+                  </div>
                 </div>
+                <p className="text-gray-600 text-sm leading-relaxed">{review.text}</p>
               </div>
-            </div>
-          ))}
-        </div>
-        <div className="text-center mt-10">
-          <button className="h-11 px-8 text-sm font-bold border-2 border-gray-300 text-gray-600 rounded-full hover:border-pink-400 hover:text-pink-500 transition-all">
-            See Everything
-          </button>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Features */}
-      <section className="max-w-6xl mx-auto px-6 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {features.map((f) => (
-            <div key={f.title} className="bg-white rounded-2xl p-6 text-center hover:shadow-lg hover:shadow-violet-100 transition-all">
-              <span className="text-3xl block mb-3">{f.emoji}</span>
-              <h3 className="text-sm font-extrabold text-gray-900 mb-2">{f.title}</h3>
-              <p className="text-xs text-gray-400 leading-relaxed">{f.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="max-w-6xl mx-auto px-6 py-14">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl font-black text-gray-900">happy customers</h2>
-          <p className="text-sm text-gray-400 font-medium mt-2">real reviews from real people</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t) => (
-            <div key={t.name} className="bg-white rounded-2xl p-6 hover:shadow-lg hover:shadow-cyan-100 transition-all">
-              <div className="flex items-center space-x-0.5 mb-3">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <span key={star} className="text-yellow-400 text-sm">&#9733;</span>
+      {/* Pricing */}
+      <section className="max-w-5xl mx-auto px-6 py-16">
+        <h2 className="text-3xl font-bold text-gray-900 mb-3 text-center">Pick Your Plan</h2>
+        <p className="text-gray-500 text-center mb-10">All plans include free shipping and a satisfaction guarantee.</p>
+        <div className="grid md:grid-cols-3 gap-6">
+          {plans.map((plan, i) => (
+            <div key={i} className={`bg-white rounded-2xl p-8 text-center border-2 ${plan.popular ? "border-orange-400 shadow-xl relative" : "border-gray-100"}`}>
+              {plan.popular && (
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-bold text-white px-4 py-1 rounded-full" style={{ backgroundColor: "#f97316" }}>Most Popular</span>
+              )}
+              <div className="text-4xl mb-2">{plan.emoji}</div>
+              <h3 className="text-xl font-bold text-gray-900">{plan.name}</h3>
+              <p className="text-sm text-gray-500 mt-1">{plan.snacks}</p>
+              <div className="mt-4 mb-6">
+                <span className="text-4xl font-bold" style={{ color: "#f97316" }}>{plan.price}</span>
+                <span className="text-gray-400 text-sm">{plan.period}</span>
+              </div>
+              <ul className="text-sm text-gray-600 space-y-2 mb-6">
+                {plan.features.map((f, j) => (
+                  <li key={j}>✓ {f}</li>
                 ))}
-              </div>
-              <p className="text-sm text-gray-600 leading-relaxed mb-4">&ldquo;{t.text}&rdquo;</p>
-              <div className="flex items-center space-x-3">
-                <span className="text-2xl">{t.avatar}</span>
-                <span className="text-sm font-bold text-gray-900">{t.name}</span>
-              </div>
+              </ul>
+              <button className={`w-full py-3 rounded-full font-semibold text-sm ${plan.popular ? "text-white" : "text-gray-700 bg-gray-100 hover:bg-gray-200"}`} style={plan.popular ? { backgroundColor: "#f97316" } : {}}>
+                {plan.popular ? "Start Snacking" : "Choose Plan"}
+              </button>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Newsletter */}
-      <section className="max-w-6xl mx-auto px-6 py-10">
-        <div className="bg-gradient-to-r from-pink-400 via-violet-400 to-cyan-400 rounded-3xl p-10 lg:p-14 text-center">
-          <h2 className="text-2xl lg:text-3xl font-black text-white mb-3">join the fun club</h2>
-          <p className="text-sm text-white/80 font-medium mb-6 max-w-md mx-auto">
-            Get early access to new drops, exclusive discounts, and surprise gifts. We promise to only send the good stuff.
-          </p>
-          <div className="flex max-w-md mx-auto rounded-full overflow-hidden shadow-lg">
-            <input
-              type="email"
-              placeholder="your@email.com"
-              className="flex-1 h-12 px-6 text-sm bg-white text-gray-900 placeholder:text-gray-400 focus:outline-none"
-              readOnly
-            />
-            <button className="h-12 px-6 text-sm font-extrabold bg-gray-900 text-white hover:bg-gray-800 transition-colors">
-              Join!
-            </button>
+      {/* FAQ */}
+      <section className="bg-white py-16">
+        <div className="max-w-2xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+          <div className="space-y-6">
+            {faqs.map((faq, i) => (
+              <div key={i} className="border-b border-gray-100 pb-6">
+                <h3 className="font-semibold text-gray-900 mb-2">{faq.q}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{faq.a}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-gray-400 mt-14 py-14 px-6 rounded-t-3xl">
-        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-10">
-          <div className="col-span-2 md:col-span-1">
-            <span className="text-2xl font-black text-white">popshop</span>
-            <p className="text-xs leading-relaxed mt-3">Fun fashion for fun people. Making the world a little more colorful since 2021.</p>
-          </div>
-          {footerSections.map((section) => (
-            <div key={section.title}>
-              <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">{section.title}</h4>
-              <div className="space-y-2">
-                {section.links.map((link) => (
-                  <p key={link} className="text-xs text-gray-500 hover:text-pink-400 cursor-pointer transition-colors">{link}</p>
-                ))}
-              </div>
-            </div>
-          ))}
+      <footer className="py-12 px-6 text-center" style={{ backgroundColor: "#f97316" }}>
+        <p className="text-white text-2xl font-bold mb-2">🪐 Snack Planet</p>
+        <p className="text-orange-100 text-sm mb-6">Delivering happiness, one box at a time. 🍿🍫🥨🌶️🧃</p>
+        <div className="flex justify-center gap-6 text-sm text-orange-100 mb-6">
+          <span className="cursor-pointer hover:text-white">About</span>
+          <span className="cursor-pointer hover:text-white">Blog</span>
+          <span className="cursor-pointer hover:text-white">Careers</span>
+          <span className="cursor-pointer hover:text-white">Contact</span>
+          <span className="cursor-pointer hover:text-white">Terms</span>
+          <span className="cursor-pointer hover:text-white">Privacy</span>
         </div>
-        <div className="max-w-6xl mx-auto mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4">
-          <span className="text-xs text-gray-600">&copy; 2025 popshop. all rights reserved. made with love.</span>
-          <div className="flex items-center space-x-6">
-            {["Privacy", "Terms", "Cookies", "Accessibility"].map((link) => (
-              <span key={link} className="text-xs text-gray-600 hover:text-gray-400 cursor-pointer transition-colors">{link}</span>
-            ))}
-          </div>
-        </div>
+        <p className="text-orange-200 text-xs">&copy; 2025 Snack Planet Inc. Made with 🧡 for snack lovers everywhere.</p>
       </footer>
     </div>
   );

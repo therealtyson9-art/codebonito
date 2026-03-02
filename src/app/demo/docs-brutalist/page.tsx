@@ -1,256 +1,191 @@
 export default function DocsBrutalistDemo() {
-  const sidebarSections = [
-    {
-      title: "// INIT",
-      items: [
-        { label: "> introduction", active: true },
-        { label: "  installation", active: false },
-        { label: "  quick-start", active: false },
-        { label: "  project-setup", active: false },
-      ],
-    },
-    {
-      title: "// CORE",
-      items: [
-        { label: "  auth", active: false },
-        { label: "  routing", active: false },
-        { label: "  middleware", active: false },
-        { label: "  database", active: false },
-      ],
-    },
-    {
-      title: "// API",
-      items: [
-        { label: "  endpoints", active: false },
-        { label: "  websockets", active: false },
-        { label: "  streaming", active: false },
-        { label: "  webhooks", active: false },
-      ],
-    },
-    {
-      title: "// DEPLOY",
-      items: [
-        { label: "  docker", active: false },
-        { label: "  kubernetes", active: false },
-        { label: "  monitoring", active: false },
-        { label: "  debugging", active: false },
-      ],
-    },
-  ];
-
-  const tocItems = ["OVERVIEW", "SYSTEM REQUIREMENTS", "INSTALLATION", "CONFIGURATION", "FIRST REQUEST", "ERROR HANDLING"];
-
-  const envVars = [
-    { key: "NEXUS_API_KEY", type: "string", desc: "Your secret API key for authentication" },
-    { key: "NEXUS_REGION", type: "string", desc: "Deployment region (us-east, eu-west, ap-south)" },
-    { key: "NEXUS_PORT", type: "number", desc: "Server port (default: 3000)" },
-    { key: "NEXUS_LOG_LEVEL", type: "string", desc: "Logging verbosity (debug, info, warn, error)" },
-    { key: "NEXUS_DB_URL", type: "string", desc: "Database connection string" },
-  ];
-
-  const statusCodes = [
-    { code: "200", status: "OK", desc: "Request successful" },
-    { code: "201", status: "CREATED", desc: "Resource created" },
-    { code: "401", status: "UNAUTHORIZED", desc: "Invalid credentials" },
-    { code: "403", status: "FORBIDDEN", desc: "Insufficient permissions" },
-    { code: "500", status: "INTERNAL_ERR", desc: "Server error - retry" },
-  ];
-
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-[#b0b0b0]" style={{ fontFamily: "Space Mono, monospace" }}>
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-      </head>
+    <div style={{ fontFamily: "'Fira Code', monospace", backgroundColor: "#1a1a2e", color: "#e5e5e5" }} className="min-h-screen">
+      <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-      {/* Top Nav */}
-      <nav className="sticky top-0 z-50 bg-[#0a0a0a] border-b border-[#222]">
-        <div className="max-w-[90rem] mx-auto px-6 h-12 flex items-center justify-between">
-          <div className="flex items-center gap-8">
-            <span className="text-sm font-bold text-[#00ff00] tracking-widest">NEXUS_DOCS</span>
-            <div className="hidden md:flex items-center gap-6">
-              {["[docs]", "[api]", "[examples]", "[changelog]"].map((item, i) => (
-                <span key={item} className={`text-xs cursor-pointer ${i === 0 ? "text-[#00ff00]" : "text-[#555] hover:text-[#00ff00]"} transition-colors`}>{item}</span>
-              ))}
-            </div>
-          </div>
-          <div className="flex items-center gap-4">
-            <div className="hidden md:flex items-center h-7 w-60 border border-[#333] bg-[#111] px-3 gap-2">
-              <span className="text-xs text-[#333]">$</span>
-              <span className="text-xs text-[#333]">search...</span>
-              <span className="ml-auto text-[10px] text-[#333] border border-[#333] px-1">ctrl+k</span>
-            </div>
-            <span className="text-xs text-[#555] hover:text-[#00ff00] cursor-pointer">github</span>
-          </div>
+      {/* Flat Text Nav */}
+      <header className="border-b px-6 py-4 flex items-center justify-between" style={{ borderColor: "#f97316" }}>
+        <div className="flex items-center gap-2">
+          <span className="text-xl font-bold" style={{ color: "#f97316" }}>RAWAPI</span>
+          <span className="text-xs" style={{ color: "#6b7280" }}>//docs</span>
         </div>
-      </nav>
+        <nav className="flex items-center gap-6 text-xs uppercase tracking-widest">
+          <a style={{ color: "#f97316" }}>core</a>
+          <a style={{ color: "#e5e5e5" }}>functions</a>
+          <a style={{ color: "#e5e5e5" }}>errors</a>
+          <a style={{ color: "#e5e5e5" }}>community</a>
+          <a style={{ color: "#e5e5e5" }}>src</a>
+        </nav>
+      </header>
 
-      <div className="max-w-[90rem] mx-auto flex">
-        {/* Sidebar */}
-        <aside className="hidden lg:block w-56 flex-shrink-0 border-r border-[#222] sticky top-12 h-[calc(100vh-3rem)] overflow-y-auto py-6 px-4">
-          {sidebarSections.map((section) => (
-            <div key={section.title} className="mb-6">
-              <h4 className="text-[10px] text-[#00ff00] tracking-widest mb-2">{section.title}</h4>
-              <div className="space-y-0">
-                {section.items.map((item) => (
-                  <div key={item.label} className={`py-1 text-xs cursor-pointer transition-colors ${item.active ? "text-[#00ff00] font-bold" : "text-[#444] hover:text-[#888]"}`}>
-                    {item.label}
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-          <div className="border-t border-[#222] pt-4 mt-4">
-            <p className="text-[10px] text-[#333]">v3.2.1 | MIT License</p>
+      <main className="max-w-4xl mx-auto px-6 py-12">
+        {/* Code-Block Hero */}
+        <section className="mb-16">
+          <div className="mb-6">
+            <h1 className="text-3xl font-bold mb-2" style={{ color: "#f97316" }}>$ man rawapi</h1>
+            <p className="text-sm" style={{ color: "#6b7280" }}>Low-level systems programming interface. No abstractions. No magic.</p>
           </div>
-        </aside>
-
-        {/* Main Content */}
-        <main className="flex-1 min-w-0 px-8 lg:px-14 py-10">
-          <p className="text-[10px] text-[#333] tracking-widest mb-8">HOME / INIT / INTRODUCTION</p>
-
-          <h1 className="text-2xl font-bold text-[#00ff00] tracking-tight mb-2"># INTRODUCTION</h1>
-          <div className="w-full h-px bg-[#222] mb-6" />
-          <p className="text-sm text-[#777] leading-relaxed mb-8 max-w-2xl">
-            Nexus is a high-performance server framework for building real-time APIs. Zero dependencies. Sub-millisecond routing. Built for systems that cannot afford downtime.
-          </p>
-
-          {/* Warning callout */}
-          <div className="border border-[#ff0] bg-[#ff0]/5 p-4 mb-10 max-w-2xl">
-            <p className="text-xs text-[#ff0] font-bold mb-1">! WARNING</p>
-            <p className="text-xs text-[#888]">
-              Nexus v3 introduces breaking changes. If upgrading from v2, read the migration guide before proceeding.
-            </p>
+          <div className="p-6 rounded-none border" style={{ backgroundColor: "#0f0f1e", borderColor: "#333" }}>
+            <p className="text-xs mb-1" style={{ color: "#6b7280" }}>{"// rawapi_example.c"}</p>
+            <p><span style={{ color: "#f97316" }}>#include</span> {"<rawapi/core.h>"}</p>
+            <p><span style={{ color: "#f97316" }}>#include</span> {"<rawapi/mem.h>"}</p>
+            <p className="mt-2"><span style={{ color: "#a78bfa" }}>int</span> <span style={{ color: "#e5e5e5" }}>main</span>(<span style={{ color: "#a78bfa" }}>void</span>) {"{"}</p>
+            <p className="pl-4"><span style={{ color: "#a78bfa" }}>raw_ctx_t</span> *ctx = <span style={{ color: "#f97316" }}>raw_init</span>(RAW_DEFAULT);</p>
+            <p className="pl-4"><span style={{ color: "#a78bfa" }}>raw_buf_t</span> *buf = <span style={{ color: "#f97316" }}>raw_alloc</span>(ctx, 4096);</p>
+            <p className="pl-4"><span style={{ color: "#f97316" }}>raw_write</span>(buf, data, len);</p>
+            <p className="pl-4"><span style={{ color: "#f97316" }}>raw_flush</span>(ctx);</p>
+            <p className="pl-4"><span style={{ color: "#f97316" }}>raw_destroy</span>(ctx);</p>
+            <p className="pl-4"><span style={{ color: "#a78bfa" }}>return</span> 0;</p>
+            <p>{"}"}</p>
           </div>
+        </section>
 
-          <h2 className="text-lg font-bold text-[#ccc] mb-3 mt-10">## SYSTEM REQUIREMENTS</h2>
-          <div className="w-16 h-px bg-[#333] mb-4" />
-          <div className="space-y-1 mb-8 max-w-2xl">
-            {["Node.js >= 20.0.0", "npm >= 10 or pnpm >= 8", "Linux / macOS / WSL2", "Min 512MB RAM"].map((req) => (
-              <p key={req} className="text-xs text-[#666]">
-                <span className="text-[#00ff00] mr-2">[+]</span>{req}
+        {/* Core Concepts */}
+        <section className="mb-16">
+          <h2 className="text-xl font-bold mb-6 uppercase tracking-widest" style={{ color: "#f97316" }}>// Core Concepts</h2>
+          <div className="space-y-6">
+            <div className="border-l-2 pl-4" style={{ borderColor: "#f97316" }}>
+              <h3 className="font-bold mb-1" style={{ color: "#e5e5e5" }}>Contexts</h3>
+              <p className="text-sm" style={{ color: "#9ca3af" }}>
+                Every RAWAPI operation requires a context. Contexts manage memory arenas, file descriptors, and signal handlers. A context is thread-local by default; use raw_ctx_share() for cross-thread access with explicit locking.
               </p>
-            ))}
-          </div>
-
-          <h2 className="text-lg font-bold text-[#ccc] mb-3 mt-10">## INSTALLATION</h2>
-          <div className="w-16 h-px bg-[#333] mb-4" />
-          <p className="text-xs text-[#666] mb-4 max-w-2xl">Run the following in your terminal:</p>
-          <div className="bg-[#111] border border-[#222] mb-6 max-w-2xl">
-            <div className="flex items-center justify-between px-4 py-1.5 border-b border-[#222]">
-              <span className="text-[10px] text-[#444]">terminal</span>
-              <span className="text-[10px] text-[#333] cursor-pointer hover:text-[#666]">[copy]</span>
             </div>
-            <pre className="p-4 text-xs leading-relaxed overflow-x-auto">
-<span className="text-[#555]">$</span> <span className="text-[#00ff00]">npm install nexus-framework</span>{"\n"}<span className="text-[#555]">$</span> <span className="text-[#00ff00]">npx nexus init my-project</span>{"\n"}<span className="text-[#555]">$</span> <span className="text-[#888]">cd my-project && npm run dev</span>
-            </pre>
-          </div>
-
-          <p className="text-xs text-[#666] mb-4 max-w-2xl">Initialize the server in your entry file:</p>
-          <div className="bg-[#111] border border-[#222] mb-10 max-w-2xl">
-            <div className="flex items-center justify-between px-4 py-1.5 border-b border-[#222]">
-              <span className="text-[10px] text-[#444]">server.ts</span>
-              <span className="text-[10px] text-[#333] cursor-pointer hover:text-[#666]">[copy]</span>
+            <div className="border-l-2 pl-4" style={{ borderColor: "#f97316" }}>
+              <h3 className="font-bold mb-1" style={{ color: "#e5e5e5" }}>Buffers</h3>
+              <p className="text-sm" style={{ color: "#9ca3af" }}>
+                Buffers are fixed-size memory regions allocated from the context arena. They support zero-copy reads, scatter-gather I/O, and automatic alignment to cache-line boundaries. Buffers cannot be resized after allocation.
+              </p>
             </div>
-            <pre className="p-4 text-xs leading-relaxed overflow-x-auto">
-<span className="text-[#ff6b6b]">import</span> <span className="text-[#ccc]">{"{ Nexus }"}</span> <span className="text-[#ff6b6b]">from</span> <span className="text-[#00ff00]">&apos;nexus-framework&apos;</span>{"\n"}{"\n"}<span className="text-[#ff6b6b]">const</span> <span className="text-[#ccc]">app</span> = <span className="text-[#ff6b6b]">new</span> <span className="text-[#ccc]">Nexus</span>({"{"}){"\n"}{"  "}<span className="text-[#888]">port:</span> <span className="text-[#ff6b6b]">3000</span>,{"\n"}{"  "}<span className="text-[#888]">logLevel:</span> <span className="text-[#00ff00]">&apos;info&apos;</span>,{"\n"}{"}"}){"\n"}{"\n"}app.<span className="text-[#ccc]">get</span>(<span className="text-[#00ff00]">&apos;/health&apos;</span>, () =&gt; {"{"}){"\n"}{"  "}<span className="text-[#ff6b6b]">return</span> {"{"} <span className="text-[#888]">status:</span> <span className="text-[#00ff00]">&apos;ok&apos;</span>, <span className="text-[#888]">uptime:</span> process.uptime() {"}"}{"\n"}{"}"}){"\n"}{"\n"}app.<span className="text-[#ccc]">listen</span>()
-            </pre>
-          </div>
-
-          <h2 className="text-lg font-bold text-[#ccc] mb-3 mt-10">## CONFIGURATION</h2>
-          <div className="w-16 h-px bg-[#333] mb-4" />
-          <p className="text-xs text-[#666] mb-4 max-w-2xl">Set environment variables in your .env file:</p>
-          <div className="border border-[#222] mb-10 max-w-2xl">
-            <table className="w-full text-left">
-              <thead>
-                <tr className="border-b border-[#222]">
-                  {["VARIABLE", "TYPE", "DESCRIPTION"].map((h) => (
-                    <th key={h} className="text-[10px] text-[#555] tracking-widest px-4 py-2">{h}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {envVars.map((v) => (
-                  <tr key={v.key} className="border-b border-[#181818] last:border-0">
-                    <td className="px-4 py-2 text-xs text-[#00ff00]">{v.key}</td>
-                    <td className="px-4 py-2 text-xs text-[#555]">{v.type}</td>
-                    <td className="px-4 py-2 text-xs text-[#666]">{v.desc}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <h2 className="text-lg font-bold text-[#ccc] mb-3 mt-10">## ERROR HANDLING</h2>
-          <div className="w-16 h-px bg-[#333] mb-4" />
-          {/* Error callout */}
-          <div className="border border-[#ff0000]/30 bg-[#ff0000]/5 p-4 mb-6 max-w-2xl">
-            <p className="text-xs text-[#ff4444] font-bold mb-1">! CRITICAL</p>
-            <p className="text-xs text-[#888]">
-              Never expose stack traces in production. Set NEXUS_LOG_LEVEL=error and implement custom error handlers.
-            </p>
-          </div>
-          <div className="space-y-0 mb-10 max-w-2xl">
-            {statusCodes.map((s) => (
-              <div key={s.code} className="flex items-center border-b border-[#181818] last:border-0 py-2">
-                <span className="text-xs text-[#00ff00] w-12 flex-shrink-0">{s.code}</span>
-                <span className="text-xs text-[#888] w-32 flex-shrink-0">{s.status}</span>
-                <span className="text-xs text-[#555]">{s.desc}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Next links */}
-          <div className="border-t border-[#222] pt-6 flex justify-between max-w-2xl">
-            <div />
-            <div className="text-right">
-              <p className="text-[10px] text-[#333] mb-1">NEXT</p>
-              <span className="text-xs text-[#00ff00] cursor-pointer hover:underline">installation --&gt;</span>
+            <div className="border-l-2 pl-4" style={{ borderColor: "#f97316" }}>
+              <h3 className="font-bold mb-1" style={{ color: "#e5e5e5" }}>Pipelines</h3>
+              <p className="text-sm" style={{ color: "#9ca3af" }}>
+                Chain multiple operations into a pipeline for batch execution. The runtime fuses compatible operations and eliminates intermediate copies. Pipelines are submitted atomically to the kernel via io_uring.
+              </p>
+            </div>
+            <div className="border-l-2 pl-4" style={{ borderColor: "#f97316" }}>
+              <h3 className="font-bold mb-1" style={{ color: "#e5e5e5" }}>Arenas</h3>
+              <p className="text-sm" style={{ color: "#9ca3af" }}>
+                Memory arenas provide bump-pointer allocation with O(1) free. Each context owns one arena by default. Arena size is configurable at init time via RAW_ARENA_SIZE. When an arena is exhausted, raw_alloc returns NULL rather than falling back to malloc.
+              </p>
+            </div>
+            <div className="border-l-2 pl-4" style={{ borderColor: "#f97316" }}>
+              <h3 className="font-bold mb-1" style={{ color: "#e5e5e5" }}>Descriptors</h3>
+              <p className="text-sm" style={{ color: "#9ca3af" }}>
+                File descriptors are managed through the context. Use raw_open() and raw_close() instead of system calls directly. The context tracks descriptor lifetime and ensures cleanup on raw_destroy(), preventing resource leaks.
+              </p>
             </div>
           </div>
-        </main>
+        </section>
 
-        {/* Right TOC */}
-        <aside className="hidden xl:block w-48 flex-shrink-0 border-l border-[#222] sticky top-12 h-[calc(100vh-3rem)] overflow-y-auto py-10 px-5">
-          <h4 className="text-[10px] text-[#555] tracking-widest mb-4">// ON_THIS_PAGE</h4>
-          <div className="space-y-2">
-            {tocItems.map((item, i) => (
-              <div key={item} className={`text-[10px] tracking-wider cursor-pointer ${i === 0 ? "text-[#00ff00]" : "text-[#333] hover:text-[#666]"} transition-colors`}>
-                {item}
-              </div>
-            ))}
-          </div>
-        </aside>
-      </div>
-
-      {/* Footer */}
-      <footer className="border-t border-[#222] mt-16">
-        <div className="max-w-[90rem] mx-auto px-6 py-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+        {/* Function Reference Table */}
+        <section className="mb-16">
+          <h2 className="text-xl font-bold mb-6 uppercase tracking-widest" style={{ color: "#f97316" }}>// Function Reference</h2>
+          <div className="border" style={{ borderColor: "#333" }}>
+            <div className="grid grid-cols-3 text-xs uppercase tracking-widest p-3 border-b" style={{ borderColor: "#333", color: "#f97316", backgroundColor: "#0f0f1e" }}>
+              <span>Function</span>
+              <span>Signature</span>
+              <span>Description</span>
+            </div>
             {[
-              { heading: "// PRODUCT", links: ["features", "pricing", "changelog", "status"] },
-              { heading: "// RESOURCES", links: ["docs", "api-ref", "examples", "community"] },
-              { heading: "// COMPANY", links: ["about", "blog", "careers", "contact"] },
-              { heading: "// LEGAL", links: ["privacy", "terms", "security", "license"] },
-            ].map((col) => (
-              <div key={col.heading}>
-                <h4 className="text-[10px] text-[#00ff00] tracking-widest mb-3">{col.heading}</h4>
-                <div className="space-y-1.5">
-                  {col.links.map((link) => (
-                    <p key={link} className="text-xs text-[#333] hover:text-[#666] cursor-pointer transition-colors">{link}</p>
-                  ))}
-                </div>
+              { fn: "raw_init", sig: "(uint32_t flags) -> raw_ctx_t*", desc: "Initialize a new context with the given configuration flags" },
+              { fn: "raw_alloc", sig: "(raw_ctx_t*, size_t) -> raw_buf_t*", desc: "Allocate a buffer from the context memory arena" },
+              { fn: "raw_write", sig: "(raw_buf_t*, void*, size_t) -> ssize_t", desc: "Write data into buffer, returns bytes written or -1" },
+              { fn: "raw_read", sig: "(raw_buf_t*, void*, size_t) -> ssize_t", desc: "Read data from buffer into destination, returns bytes read" },
+              { fn: "raw_flush", sig: "(raw_ctx_t*) -> int", desc: "Flush all pending operations to their destinations" },
+              { fn: "raw_pipe", sig: "(raw_ctx_t*, raw_op_t*, int) -> int", desc: "Submit a pipeline of operations for batch execution" },
+              { fn: "raw_open", sig: "(raw_ctx_t*, char*, int) -> int", desc: "Open a file descriptor managed by the context" },
+              { fn: "raw_close", sig: "(raw_ctx_t*, int) -> int", desc: "Close a managed file descriptor and release resources" },
+              { fn: "raw_mmap", sig: "(raw_ctx_t*, size_t, int) -> void*", desc: "Memory-map a region tracked by the context arena" },
+              { fn: "raw_destroy", sig: "(raw_ctx_t*) -> void", desc: "Tear down context and release all associated resources" },
+            ].map((row) => (
+              <div key={row.fn} className="grid grid-cols-3 text-xs p-3 border-b" style={{ borderColor: "#222" }}>
+                <span style={{ color: "#f97316" }}>{row.fn}</span>
+                <span style={{ color: "#a78bfa" }}>{row.sig}</span>
+                <span style={{ color: "#9ca3af" }}>{row.desc}</span>
               </div>
             ))}
           </div>
-          <div className="border-t border-[#181818] pt-4 flex items-center justify-between">
-            <span className="text-[10px] text-[#333]">&copy; 2024 NEXUS SYSTEMS // ALL RIGHTS RESERVED</span>
-            <div className="flex gap-4">
-              {["github", "twitter", "discord"].map((s) => (
-                <span key={s} className="text-[10px] text-[#333] hover:text-[#00ff00] cursor-pointer transition-colors">{s}</span>
-              ))}
+        </section>
+
+        {/* Error Codes */}
+        <section className="mb-16">
+          <h2 className="text-xl font-bold mb-6 uppercase tracking-widest" style={{ color: "#f97316" }}>// Error Codes</h2>
+          <div className="space-y-2 text-sm">
+            {[
+              { code: "RAW_OK (0)", desc: "Operation completed successfully" },
+              { code: "RAW_ENOMEM (-1)", desc: "Arena out of memory, context cannot allocate" },
+              { code: "RAW_EIO (-2)", desc: "I/O error on underlying file descriptor" },
+              { code: "RAW_EINVAL (-3)", desc: "Invalid argument passed to function" },
+              { code: "RAW_EBUSY (-4)", desc: "Resource is locked by another thread" },
+              { code: "RAW_EPIPE (-5)", desc: "Pipeline submission failed, partial execution" },
+              { code: "RAW_ENOSYS (-6)", desc: "Operation not supported on this platform" },
+              { code: "RAW_ETIMEOUT (-7)", desc: "Operation exceeded the configured deadline" },
+              { code: "RAW_EOVERFLOW (-8)", desc: "Buffer write would exceed allocated capacity" },
+            ].map((err) => (
+              <div key={err.code} className="flex gap-4 p-2" style={{ backgroundColor: "#0f0f1e" }}>
+                <span className="w-52 shrink-0 font-bold" style={{ color: "#f97316" }}>{err.code}</span>
+                <span style={{ color: "#9ca3af" }}>{err.desc}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Build & Platform Support */}
+        <section className="mb-16">
+          <h2 className="text-xl font-bold mb-6 uppercase tracking-widest" style={{ color: "#f97316" }}>// Platform Support</h2>
+          <div className="p-5 border text-sm" style={{ borderColor: "#333", backgroundColor: "#0f0f1e" }}>
+            <div className="grid grid-cols-3 gap-4">
+              <div>
+                <p className="font-bold mb-2" style={{ color: "#f97316" }}>Linux</p>
+                <p style={{ color: "#9ca3af" }}>x86_64, aarch64</p>
+                <p style={{ color: "#9ca3af" }}>Kernel 5.10+ (io_uring)</p>
+                <p style={{ color: "#9ca3af" }}>glibc 2.31+, musl</p>
+              </div>
+              <div>
+                <p className="font-bold mb-2" style={{ color: "#f97316" }}>macOS</p>
+                <p style={{ color: "#9ca3af" }}>x86_64, arm64</p>
+                <p style={{ color: "#9ca3af" }}>macOS 13+ (kqueue fallback)</p>
+                <p style={{ color: "#9ca3af" }}>Xcode 14+ toolchain</p>
+              </div>
+              <div>
+                <p className="font-bold mb-2" style={{ color: "#f97316" }}>FreeBSD</p>
+                <p style={{ color: "#9ca3af" }}>x86_64, aarch64</p>
+                <p style={{ color: "#9ca3af" }}>FreeBSD 13+ (kqueue)</p>
+                <p style={{ color: "#9ca3af" }}>Clang 15+ or GCC 12+</p>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
+
+        {/* Community */}
+        <section className="mb-16">
+          <h2 className="text-xl font-bold mb-6 uppercase tracking-widest" style={{ color: "#f97316" }}>// Community</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="border p-5" style={{ borderColor: "#333" }}>
+              <h3 className="font-bold mb-2" style={{ color: "#e5e5e5" }}>IRC</h3>
+              <p className="text-xs" style={{ color: "#9ca3af" }}>#rawapi on Libera.Chat. Core maintainers are active daily. Logs available at logs.rawapi.dev.</p>
+            </div>
+            <div className="border p-5" style={{ borderColor: "#333" }}>
+              <h3 className="font-bold mb-2" style={{ color: "#e5e5e5" }}>Mailing List</h3>
+              <p className="text-xs" style={{ color: "#9ca3af" }}>rawapi-dev@lists.rawapi.dev for patches and RFCs. rawapi-users@ for usage questions and discussion.</p>
+            </div>
+            <div className="border p-5" style={{ borderColor: "#333" }}>
+              <h3 className="font-bold mb-2" style={{ color: "#e5e5e5" }}>Source</h3>
+              <p className="text-xs" style={{ color: "#9ca3af" }}>git.rawapi.dev/rawapi/core. Mirror on GitHub. Contributions require signed-off-by and passing CI.</p>
+            </div>
+          </div>
+          <div className="mt-6 p-4 border text-xs" style={{ borderColor: "#333", backgroundColor: "#0f0f1e" }}>
+            <p style={{ color: "#6b7280" }}>{"$ git clone git://git.rawapi.dev/rawapi/core.git"}</p>
+            <p style={{ color: "#6b7280" }}>{"$ cd core && make && make test"}</p>
+            <p style={{ color: "#6b7280" }}>{"$ sudo make install PREFIX=/usr/local"}</p>
+          </div>
+        </section>
+      </main>
+
+      {/* Terminal Footer */}
+      <footer className="border-t px-6 py-4 text-xs flex items-center justify-between" style={{ borderColor: "#333", color: "#6b7280" }}>
+        <span style={{ color: "#f97316" }}>rawapi@docs:~$</span>
+        <span>RAWAPI v0.9.3 | ISC License | Built with zero dependencies</span>
       </footer>
     </div>
   );

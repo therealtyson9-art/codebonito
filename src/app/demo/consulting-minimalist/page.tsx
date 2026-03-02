@@ -1,165 +1,154 @@
 export default function ConsultingMinimalistDemo() {
   const services = [
-    { title: "Strategy Consulting", desc: "We help organizations define clear strategic direction, identify growth opportunities, and build competitive advantages that endure." },
-    { title: "Operations Excellence", desc: "Streamlining workflows, reducing waste, and building resilient operational frameworks that scale with your ambition." },
-    { title: "Digital Transformation", desc: "Guiding enterprises through technology adoption with pragmatic roadmaps that deliver measurable business outcomes." },
-    { title: "Change Management", desc: "Aligning teams, culture, and processes to ensure strategic initiatives take hold and deliver lasting impact." },
-  ]
+    { title: "Strategy", desc: "We help organizations define where to play and how to win. From market entry to portfolio optimization, we bring clarity to your most consequential decisions." },
+    { title: "Operations", desc: "We redesign processes, supply chains, and organizational structures to unlock efficiency gains that compound year after year." },
+    { title: "Digital", desc: "We guide enterprises through technology adoption with pragmatic roadmaps that connect digital investment to measurable business outcomes." },
+  ];
 
   const caseStudies = [
-    { client: "NovaTech Industries", sector: "Manufacturing", metric: "42% reduction in operational costs", timeline: "18 months" },
-    { client: "Meridian Health Systems", sector: "Healthcare", metric: "$180M in recovered revenue", timeline: "24 months" },
-    { client: "Atlas Financial Group", sector: "Financial Services", metric: "3.2x improvement in processing speed", timeline: "12 months" },
-  ]
+    { client: "Global Retailer", industry: "Retail", result: "37% improvement in supply chain efficiency", summary: "Redesigned end-to-end logistics for a 2,000-store chain, reducing delivery times by 3 days and saving $140M annually." },
+    { client: "Series B SaaS Company", industry: "Technology", result: "4.2x revenue growth in 18 months", summary: "Developed go-to-market strategy and pricing model that accelerated enterprise adoption across three new verticals." },
+    { client: "Regional Health System", industry: "Healthcare", result: "22% reduction in operating costs", summary: "Streamlined clinical operations and administrative workflows across 12 hospitals while improving patient satisfaction scores." },
+  ];
 
   const team = [
-    { name: "Victoria Hargrove", role: "Managing Partner", bio: "20 years leading transformation at Fortune 100 companies" },
-    { name: "David Nakamura", role: "Senior Partner", bio: "Former McKinsey, specializing in operational excellence" },
-    { name: "Catherine Osei", role: "Partner, Digital Practice", bio: "Led $2B+ in digital transformation programs globally" },
-  ]
-
-  const process = [
-    { step: "01", title: "Discovery", desc: "Deep stakeholder interviews and data analysis to understand your current state and aspirations." },
-    { step: "02", title: "Analysis", desc: "Rigorous assessment of market dynamics, internal capabilities, and competitive positioning." },
-    { step: "03", title: "Strategy", desc: "Crafting actionable recommendations with clear milestones, owners, and success metrics." },
-    { step: "04", title: "Execution", desc: "Hands-on implementation support to ensure strategies translate into tangible business results." },
-  ]
+    { name: "Alexandra Voss", role: "Managing Partner", background: "Previously at Bain & Company. 18 years in strategy consulting across technology and healthcare." },
+    { name: "Marcus Chen", role: "Partner, Operations", background: "Former VP of Operations at Amazon. Specializes in supply chain transformation and lean methodology." },
+    { name: "Priya Anand", role: "Partner, Digital", background: "Ex-Google. Led digital transformation initiatives for Fortune 100 companies across four continents." },
+    { name: "Daniel Okafor", role: "Principal", background: "McKinsey alumnus. Deep expertise in private equity due diligence and post-merger integration." },
+  ];
 
   return (
-    <div className="min-h-screen bg-white text-slate-800" style={{ fontFamily: "Inter, sans-serif" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <div style={{ fontFamily: "'Urbanist', sans-serif" }} className="min-h-screen bg-white">
+      <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-      {/* Nav */}
-      <nav className="max-w-6xl mx-auto px-6 py-8 flex items-center justify-between">
-        <span className="text-lg font-semibold tracking-tight" style={{ color: "#6366f1" }}>APEX ADVISORY</span>
-        <div className="hidden md:flex items-center space-x-10">
-          {["Services", "Case Studies", "Team", "Contact"].map((item) => (
-            <span key={item} className="text-sm text-slate-500 hover:text-slate-900 cursor-pointer transition-colors">{item}</span>
-          ))}
+      {/* Minimal Nav */}
+      <nav className="px-8 py-6 flex items-center justify-between max-w-6xl mx-auto">
+        <span className="text-lg font-semibold tracking-tight" style={{ color: "#1f2937" }}>Clearpoint Advisory</span>
+        <div className="hidden md:flex gap-8 text-sm" style={{ color: "#6b7280" }}>
+          <a href="#" className="hover:text-gray-900">Services</a>
+          <a href="#" className="hover:text-gray-900">Work</a>
+          <a href="#" className="hover:text-gray-900">Team</a>
+          <a href="#" className="hover:text-gray-900">Contact</a>
         </div>
-        <span className="text-sm font-medium cursor-pointer px-5 py-2 rounded-md text-white" style={{ backgroundColor: "#6366f1" }}>Get Started</span>
+        <button className="text-sm font-medium px-5 py-2 rounded-md" style={{ backgroundColor: "#1f2937", color: "white" }}>Get in Touch</button>
       </nav>
 
-      {/* Hero */}
-      <section className="max-w-6xl mx-auto px-6 pt-28 pb-32">
-        <h1 className="text-5xl md:text-7xl font-light leading-tight tracking-tight text-slate-900">
-          Strategy that<br />drives results.
-        </h1>
-        <p className="mt-8 text-lg text-slate-400 max-w-lg font-light leading-relaxed">
-          Apex Advisory partners with ambitious organizations to solve their most complex challenges and unlock sustainable growth.
-        </p>
-        <div className="mt-10 flex gap-4">
-          <span className="inline-block px-6 py-3 text-sm font-medium text-white rounded-md cursor-pointer" style={{ backgroundColor: "#6366f1" }}>Schedule a Consultation</span>
-          <span className="inline-block px-6 py-3 text-sm font-medium text-slate-600 border border-slate-200 rounded-md cursor-pointer hover:border-slate-400 transition-colors">View Our Work</span>
+      {/* Bold Statement Hero */}
+      <section className="max-w-6xl mx-auto px-8 py-28">
+        <h1 className="text-6xl md:text-7xl font-bold leading-none mb-8" style={{ color: "#1f2937" }}>Clarity creates<br />momentum.</h1>
+        <p className="text-xl max-w-2xl leading-relaxed mb-10" style={{ color: "#6b7280" }}>Clearpoint Advisory partners with ambitious organizations to solve their hardest strategic problems. No jargon. No slide decks for the sake of slide decks. Just sharp thinking and measurable results.</p>
+        <button className="text-sm font-medium px-6 py-3 rounded-md" style={{ backgroundColor: "#1f2937", color: "white" }}>Start a Conversation</button>
+      </section>
+
+      {/* What We Do */}
+      <section className="py-20 border-t" style={{ borderColor: "#f3f4f6" }}>
+        <div className="max-w-6xl mx-auto px-8">
+          <h2 className="text-sm uppercase tracking-widest mb-12" style={{ color: "#9ca3af" }}>What We Do</h2>
+          <div className="grid md:grid-cols-3 gap-12">
+            {services.map((s) => (
+              <div key={s.title}>
+                <h3 className="text-2xl font-semibold mb-4" style={{ color: "#1f2937" }}>{s.title}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: "#6b7280" }}>{s.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Services */}
-      <section className="bg-slate-50 py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-4">What We Do</p>
-          <h2 className="text-3xl font-light text-slate-900 mb-16">Our Services</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
-            {services.map((s) => (
-              <div key={s.title} className="border-l-2 pl-6" style={{ borderColor: "#6366f1" }}>
-                <h3 className="text-lg font-medium mb-3">{s.title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">{s.desc}</p>
-              </div>
-            ))}
+      {/* Approach */}
+      <section className="py-20" style={{ backgroundColor: "#f9fafb" }}>
+        <div className="max-w-6xl mx-auto px-8 grid md:grid-cols-2 gap-16 items-center">
+          <div>
+            <h2 className="text-sm uppercase tracking-widest mb-6" style={{ color: "#9ca3af" }}>Our Approach</h2>
+            <h3 className="text-3xl font-semibold mb-6 leading-tight" style={{ color: "#1f2937" }}>We work differently because the old model is broken.</h3>
+            <p className="text-sm leading-relaxed mb-4" style={{ color: "#6b7280" }}>Traditional consulting delivers thick reports that collect dust. We embed with your team, pressure-test assumptions in real time, and stay until the strategy is working in practice, not just on paper.</p>
+            <p className="text-sm leading-relaxed" style={{ color: "#6b7280" }}>Our engagements are structured around 90-day sprints with clear milestones, weekly progress reviews, and full transparency on what is and is not working.</p>
+          </div>
+          <div className="space-y-6">
+            <div className="p-6 bg-white rounded-lg">
+              <h4 className="font-semibold mb-1" style={{ color: "#1f2937" }}>Diagnose</h4>
+              <p className="text-sm" style={{ color: "#6b7280" }}>We spend the first two weeks listening, asking hard questions, and mapping the real problem.</p>
+            </div>
+            <div className="p-6 bg-white rounded-lg">
+              <h4 className="font-semibold mb-1" style={{ color: "#1f2937" }}>Design</h4>
+              <p className="text-sm" style={{ color: "#6b7280" }}>We co-create solutions with your leadership team, not in isolation from your corner office.</p>
+            </div>
+            <div className="p-6 bg-white rounded-lg">
+              <h4 className="font-semibold mb-1" style={{ color: "#1f2937" }}>Deliver</h4>
+              <p className="text-sm" style={{ color: "#6b7280" }}>We stay through implementation to ensure the strategy translates into tangible business results.</p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Case Studies */}
-      <section className="max-w-6xl mx-auto px-6 py-24">
-        <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-4">Results</p>
-        <h2 className="text-3xl font-light text-slate-900 mb-16">Case Studies</h2>
-        <div className="space-y-0">
-          {caseStudies.map((cs) => (
-            <div key={cs.client} className="py-10 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer hover:pl-2 transition-all">
-              <div>
-                <h3 className="text-2xl font-light text-slate-900">{cs.client}</h3>
-                <p className="text-sm text-slate-400 mt-1">{cs.sector}</p>
+      <section className="py-20 border-t" style={{ borderColor: "#f3f4f6" }}>
+        <div className="max-w-6xl mx-auto px-8">
+          <h2 className="text-sm uppercase tracking-widest mb-12" style={{ color: "#9ca3af" }}>Selected Work</h2>
+          <div className="space-y-12">
+            {caseStudies.map((c) => (
+              <div key={c.client} className="grid md:grid-cols-3 gap-8 pb-12 border-b" style={{ borderColor: "#f3f4f6" }}>
+                <div>
+                  <p className="text-xs uppercase tracking-wider mb-1" style={{ color: "#9ca3af" }}>{c.industry}</p>
+                  <h3 className="text-xl font-semibold" style={{ color: "#1f2937" }}>{c.client}</h3>
+                </div>
+                <div>
+                  <p className="text-sm leading-relaxed" style={{ color: "#6b7280" }}>{c.summary}</p>
+                </div>
+                <div className="flex items-center">
+                  <p className="text-lg font-semibold" style={{ color: "#1f2937" }}>{c.result}</p>
+                </div>
               </div>
-              <div className="text-right">
-                <p className="text-lg font-medium" style={{ color: "#6366f1" }}>{cs.metric}</p>
-                <p className="text-xs text-slate-400 mt-1">{cs.timeline} engagement</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Team */}
-      <section className="bg-slate-50 py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-4">Leadership</p>
-          <h2 className="text-3xl font-light text-slate-900 mb-16">Our Partners</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {team.map((m) => (
-              <div key={m.name}>
-                <div className="aspect-[4/5] bg-slate-200 rounded-md mb-6" />
-                <h3 className="text-base font-medium">{m.name}</h3>
-                <p className="text-sm mt-1" style={{ color: "#6366f1" }}>{m.role}</p>
-                <p className="text-sm text-slate-400 mt-2">{m.bio}</p>
+      <section className="py-20" style={{ backgroundColor: "#f9fafb" }}>
+        <div className="max-w-6xl mx-auto px-8">
+          <h2 className="text-sm uppercase tracking-widest mb-12" style={{ color: "#9ca3af" }}>The Team</h2>
+          <div className="grid md:grid-cols-4 gap-8">
+            {team.map((t) => (
+              <div key={t.name}>
+                <div className="w-full h-48 rounded-lg mb-4 flex items-center justify-center" style={{ backgroundColor: "#e5e7eb" }}>
+                  <span className="text-3xl">👤</span>
+                </div>
+                <h3 className="font-semibold" style={{ color: "#1f2937" }}>{t.name}</h3>
+                <p className="text-xs mb-2" style={{ color: "#9ca3af" }}>{t.role}</p>
+                <p className="text-xs leading-relaxed" style={{ color: "#6b7280" }}>{t.background}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Process */}
-      <section className="max-w-6xl mx-auto px-6 py-24">
-        <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-4">How We Work</p>
-        <h2 className="text-3xl font-light text-slate-900 mb-16">Our Process</h2>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-          {process.map((p) => (
-            <div key={p.step}>
-              <span className="text-4xl font-light" style={{ color: "#6366f1" }}>{p.step}</span>
-              <h3 className="text-lg font-medium mt-4 mb-3">{p.title}</h3>
-              <p className="text-sm text-slate-500 leading-relaxed">{p.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Client Logos */}
-      <section className="border-y border-slate-100 py-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-10 text-center">Trusted by Industry Leaders</p>
-          <div className="flex flex-wrap justify-center items-center gap-14">
-            {["NovaTech", "Meridian", "Atlas", "Pinnacle", "Veritas", "Cascade"].map((name) => (
-              <span key={name} className="text-sm text-slate-300 font-medium tracking-wider uppercase">{name}</span>
-            ))}
+      {/* Get in Touch */}
+      <section className="max-w-6xl mx-auto px-8 py-24">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div>
+            <h2 className="text-4xl font-bold mb-6" style={{ color: "#1f2937" }}>Let&apos;s talk about what&apos;s next.</h2>
+            <p className="text-sm leading-relaxed" style={{ color: "#6b7280" }}>Whether you have a specific challenge or just want to explore how we might work together, we&apos;d welcome the conversation.</p>
           </div>
-        </div>
-      </section>
-
-      {/* Contact CTA */}
-      <section className="max-w-6xl mx-auto px-6 py-32 text-center">
-        <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-6">Ready to Begin?</p>
-        <h2 className="text-4xl md:text-5xl font-light tracking-tight text-slate-900">Let&apos;s discuss your<br />next strategic move.</h2>
-        <p className="text-slate-400 mt-6 text-sm font-light max-w-md mx-auto">We work with a select number of clients each year. Reach out to explore how Apex Advisory can accelerate your growth.</p>
-        <div className="mt-10">
-          <span className="inline-block px-8 py-3 text-sm font-medium text-white rounded-md cursor-pointer" style={{ backgroundColor: "#6366f1" }}>Contact Us</span>
+          <div>
+            <button className="w-full py-4 text-sm font-medium rounded-md mb-4" style={{ backgroundColor: "#1f2937", color: "white" }}>Schedule a Call</button>
+            <p className="text-xs text-center" style={{ color: "#9ca3af" }}>hello@clearpointadvisory.com &middot; (415) 555-0142</p>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-100">
-        <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-          <div>
-            <span className="text-sm font-semibold" style={{ color: "#6366f1" }}>APEX ADVISORY</span>
-            <p className="text-xs text-slate-400 mt-1">Management consulting for the modern enterprise</p>
+      <footer className="border-t py-8" style={{ borderColor: "#f3f4f6" }}>
+        <div className="max-w-6xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <span className="text-xs" style={{ color: "#9ca3af" }}>&copy; 2026 Clearpoint Advisory LLC. All rights reserved.</span>
+          <div className="flex gap-6 text-xs" style={{ color: "#9ca3af" }}>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">LinkedIn</a>
           </div>
-          <div className="flex space-x-8">
-            {["LinkedIn", "Twitter", "Insights Blog"].map((s) => (
-              <span key={s} className="text-xs text-slate-400 hover:text-slate-900 cursor-pointer transition-colors">{s}</span>
-            ))}
-          </div>
-          <span className="text-xs text-slate-300">&copy; 2026 Apex Advisory Group</span>
         </div>
       </footer>
     </div>
-  )
+  );
 }

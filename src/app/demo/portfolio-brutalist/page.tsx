@@ -1,184 +1,144 @@
+import { Bebas_Neue } from 'next/font/google'
+
+const bebasNeue = Bebas_Neue({ subsets: ['latin'], weight: '400' })
+
 export default function PortfolioBrutalistDemo() {
+  const works = [
+    { title: 'RIOT FEST 2024', category: 'POSTER DESIGN', description: 'Three-color risograph poster series for Chicago music festival. 500 copies, sold out in 48 hours.' },
+    { title: 'DEADSTOCK ZINE', category: 'EDITORIAL', description: '48-page independent publication on sneaker culture and anti-consumerism. Printed on recycled stock.' },
+    { title: 'NEON BUTCHER', category: 'BRAND IDENTITY', description: 'Full identity system for underground electronic music label. Logo, type, merch, vinyl sleeves.' },
+    { title: 'CONCRETE POETRY', category: 'INSTALLATION', description: 'Large-scale typographic murals in abandoned warehouses across Detroit and Chicago.' },
+    { title: 'VOID MAGAZINE', category: 'ART DIRECTION', description: 'Art direction for quarterly digital arts magazine. Covers, layouts, and typography system.' },
+    { title: 'RAW POWER GYM', category: 'BRANDING', description: 'No-nonsense identity for powerlifting gym. Stencil type, industrial colors, custom iconography.' },
+  ]
+
   return (
-    <div className="min-h-screen bg-white text-black" style={{ fontFamily: "'Space Mono', monospace" }}>
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-      </head>
-
-      {/* NAV */}
-      <nav className="border-b-4 border-black">
-        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-          <span className="text-xl font-bold uppercase tracking-widest">MRKV.STUDIO</span>
-          <div className="hidden md:flex items-center space-x-8">
-            <span className="text-sm uppercase tracking-wider cursor-pointer hover:bg-[#FFE500] px-2 py-1 transition-colors">Work</span>
-            <span className="text-sm uppercase tracking-wider cursor-pointer hover:bg-[#FFE500] px-2 py-1 transition-colors">About</span>
-            <span className="text-sm uppercase tracking-wider cursor-pointer hover:bg-[#FFE500] px-2 py-1 transition-colors">Process</span>
-            <span className="text-sm uppercase tracking-wider cursor-pointer hover:bg-[#FFE500] px-2 py-1 transition-colors">Contact</span>
-          </div>
-          <span className="bg-black text-white px-4 py-2 text-xs uppercase tracking-widest cursor-pointer hover:bg-[#FFE500] hover:text-black transition-colors">Hire Me</span>
-        </div>
-      </nav>
-
-      {/* HERO */}
-      <section className="border-b-4 border-black">
-        <div className="max-w-7xl mx-auto px-4 py-24 md:py-32">
-          <p className="text-sm uppercase tracking-widest mb-4 text-neutral-500">Digital Designer & Developer // Berlin, DE</p>
-          <h1 className="text-5xl md:text-8xl font-bold uppercase leading-none mb-8">
-            I BUILD<br />
-            <span className="bg-[#FFE500] px-2">DIGITAL</span><br />
-            THINGS*
-          </h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-            <p className="text-sm max-w-md border-l-4 border-black pl-4">
-              *Websites, apps, brand systems, and digital experiences that refuse to blend in. Based in Berlin. Available worldwide.
-            </p>
-            <div className="flex items-end">
-              <div className="grid grid-cols-3 gap-4 text-center">
-                <div>
-                  <p className="text-3xl font-bold">8+</p>
-                  <p className="text-xs uppercase tracking-widest text-neutral-500">Years</p>
-                </div>
-                <div>
-                  <p className="text-3xl font-bold">60+</p>
-                  <p className="text-xs uppercase tracking-widest text-neutral-500">Projects</p>
-                </div>
-                <div>
-                  <p className="text-3xl font-bold">14</p>
-                  <p className="text-xs uppercase tracking-widest text-neutral-500">Countries</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SELECTED WORK */}
-      <section className="border-b-4 border-black">
-        <div className="max-w-7xl mx-auto px-4 py-16">
-          <h2 className="text-3xl font-bold uppercase tracking-wider mb-12 border-b-4 border-black pb-4 inline-block">SELECTED WORK</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
-            {[
-              { num: "001", title: "VOLTA ENERGY", type: "BRAND IDENTITY + WEB", year: "2025", desc: "Complete rebrand for a Berlin-based renewable energy startup. New visual system, website, and marketing collateral that broke industry conventions." },
-              { num: "002", title: "NEON RECORDS", type: "E-COMMERCE + UI", year: "2025", desc: "Online record store with a brutalist interface. Custom filtering system, vinyl preview player, and a checkout flow that actually works." },
-              { num: "003", title: "ARCH COLLECTIVE", type: "PORTFOLIO SITE", year: "2024", desc: "Architecture firm portfolio featuring full-bleed imagery, project timelines, and an interactive building explorer built with Three.js." },
-              { num: "004", title: "PULSE FITNESS", type: "APP DESIGN", year: "2024", desc: "Workout tracking app with bold typography and high-contrast UI. Designed for readability mid-rep. 50k downloads in the first month." },
-            ].map((project) => (
-              <div key={project.num} className="border-4 border-black p-6 hover:bg-[#FFE500] transition-colors cursor-pointer group">
-                <div className="flex justify-between items-start mb-4">
-                  <span className="text-xs tracking-widest text-neutral-400 group-hover:text-black">{project.num}</span>
-                  <span className="text-xs tracking-widest">{project.year}</span>
-                </div>
-                <h3 className="text-2xl font-bold uppercase mb-2">{project.title}</h3>
-                <p className="text-xs uppercase tracking-widest mb-4 text-neutral-500 group-hover:text-black">{project.type}</p>
-                <p className="text-sm leading-relaxed">{project.desc}</p>
-              </div>
+    <div className={`min-h-screen bg-yellow-400 text-black ${bebasNeue.className}`}>
+      {/* Sidebar nav */}
+      <div className="flex min-h-screen">
+        <nav className="hidden md:flex flex-col justify-between w-16 bg-black text-yellow-400 fixed top-0 left-0 h-full z-50 items-center py-8">
+          <span className="text-sm tracking-widest" style={{ writingMode: 'vertical-rl' }}>MAX GRUBER</span>
+          <div className="flex flex-col gap-6 items-center">
+            {['W', 'A', 'M', 'C'].map(l => (
+              <a key={l} href="#" className="text-xs hover:text-white transition-colors">{l}</a>
             ))}
           </div>
-        </div>
-      </section>
+          <span className="text-[10px] tracking-widest" style={{ writingMode: 'vertical-rl' }}>2026</span>
+        </nav>
 
-      {/* ABOUT / SKILLS */}
-      <section className="border-b-4 border-black">
-        <div className="max-w-7xl mx-auto px-4 py-16 grid grid-cols-1 md:grid-cols-2 gap-0">
-          <div className="border-4 border-black p-8">
-            <h2 className="text-3xl font-bold uppercase tracking-wider mb-6">ABOUT</h2>
-            <p className="text-sm leading-relaxed mb-4">
-              I am Mika Volkov, a multidisciplinary designer and developer with 8 years of experience crafting digital products that challenge the status quo. I do not do safe. I do not do boring.
-            </p>
-            <p className="text-sm leading-relaxed mb-4">
-              Previously at Studio Feixen, Huge Inc., and R/GA. Now independent and selective about the projects I take on. If your brief says &quot;clean and corporate,&quot; I am probably not your person.
-            </p>
-            <p className="text-sm leading-relaxed">
-              If your brief says &quot;we want something no one has seen before&quot; -- let us talk.
-            </p>
-          </div>
-          <div className="border-4 border-black border-l-0 md:border-l-0 p-8 bg-black text-white">
-            <h2 className="text-3xl font-bold uppercase tracking-wider mb-6">TOOLS</h2>
-            <div className="space-y-3">
-              {[
-                { skill: "FIGMA / DESIGN SYSTEMS", level: "\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591 90%" },
-                { skill: "REACT / NEXT.JS", level: "\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591 85%" },
-                { skill: "THREE.JS / WEBGL", level: "\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591 70%" },
-                { skill: "MOTION / GSAP", level: "\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591 75%" },
-                { skill: "TYPESCRIPT", level: "\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591 85%" },
-                { skill: "BRAND STRATEGY", level: "\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591 90%" },
-              ].map((s) => (
-                <div key={s.skill}>
-                  <p className="text-xs uppercase tracking-widest mb-1">{s.skill}</p>
-                  <p className="text-xs text-[#FFE500]">{s.level}</p>
+        <div className="flex-1 md:ml-16">
+          {/* Mobile nav */}
+          <nav className="md:hidden flex items-center justify-between px-6 py-4 bg-black text-yellow-400">
+            <span className="text-lg tracking-wider">MAX GRUBER</span>
+            <span className="text-xs tracking-widest">MENU</span>
+          </nav>
+
+          {/* Full-bleed hero */}
+          <section className="px-6 md:px-12 pt-20 pb-24 md:pt-32 md:pb-32">
+            <h1 className="text-7xl md:text-[9rem] lg:text-[12rem] leading-[0.85] tracking-tight">
+              GRAPHIC<br />
+              DESIGNER<br />
+              <span className="bg-black text-yellow-400 px-2">& MAKER</span>
+            </h1>
+            <div className="mt-12 flex items-center gap-8 font-sans font-normal">
+              <span className="text-sm tracking-widest">CHICAGO, IL</span>
+              <span className="text-sm text-black/50">—</span>
+              <span className="text-sm tracking-widest">AVAILABLE FOR WORK</span>
+            </div>
+          </section>
+
+          {/* Work showcase raw grid */}
+          <section className="px-6 md:px-12 pb-20">
+            <div className="flex items-center gap-4 mb-12">
+              <h2 className="text-2xl tracking-widest">SELECTED WORK</h2>
+              <div className="flex-1 h-0.5 bg-black" />
+            </div>
+            <div className="grid md:grid-cols-2 gap-0">
+              {works.map((w, i) => (
+                <div key={w.title} className={`border-2 border-black p-8 ${i % 3 === 0 ? 'bg-black text-yellow-400' : ''} group hover:bg-black hover:text-yellow-400 transition-colors`}>
+                  <span className="text-xs tracking-[0.3em] font-sans font-normal">{w.category}</span>
+                  <h3 className="text-4xl md:text-5xl tracking-tight mt-3 mb-4">{w.title}</h3>
+                  <p className="text-sm font-sans font-normal leading-relaxed opacity-70">{w.description}</p>
+                  <div className="mt-6 flex items-center gap-2">
+                    <span className="text-xs tracking-[0.2em]">VIEW PROJECT</span>
+                    <span className="text-lg">→</span>
+                  </div>
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
 
-      {/* PROCESS */}
-      <section className="border-b-4 border-black bg-neutral-100">
-        <div className="max-w-7xl mx-auto px-4 py-16">
-          <h2 className="text-3xl font-bold uppercase tracking-wider mb-12 border-b-4 border-black pb-4 inline-block">PROCESS</h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-0">
-            {[
-              { num: "01", title: "DISCOVERY", desc: "We sit down. You talk. I listen. I ask uncomfortable questions about your goals, your audience, and why your current solution is not working." },
-              { num: "02", title: "STRATEGY", desc: "Research, competitive analysis, and positioning. I figure out where you sit in the market and where you should be. Then I map the path between the two." },
-              { num: "03", title: "EXECUTION", desc: "Design and development happen in parallel. You see progress in real time. No big reveal after six weeks of silence. Iteration is constant." },
-              { num: "04", title: "LAUNCH", desc: "We ship it. I stick around for two weeks post-launch to monitor, tweak, and make sure everything holds up under real-world conditions." },
-            ].map((step) => (
-              <div key={step.num} className="border-4 border-black p-6">
-                <span className="text-4xl font-bold text-neutral-300">{step.num}</span>
-                <h3 className="text-lg font-bold uppercase mt-4 mb-3">{step.title}</h3>
-                <p className="text-sm leading-relaxed">{step.desc}</p>
+          {/* Manifesto */}
+          <section className="px-6 md:px-12 py-20 bg-black text-yellow-400">
+            <div className="max-w-4xl">
+              <div className="flex items-center gap-4 mb-12">
+                <h2 className="text-2xl tracking-widest">MANIFESTO</h2>
+                <div className="flex-1 h-0.5 bg-yellow-400" />
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+              <p className="text-3xl md:text-5xl leading-tight tracking-tight mb-8">
+                I DON&apos;T MAKE THINGS PRETTY.<br />
+                I MAKE THINGS THAT HIT YOU<br />
+                IN THE GUT.
+              </p>
+              <p className="text-base font-sans font-normal text-yellow-400/60 leading-relaxed max-w-2xl">
+                Design should provoke, question, and refuse to be ignored. I work at the intersection of graphic design,
+                typography, and print culture. Every project starts with the question: does this need to exist? If yes,
+                it better be unforgettable.
+              </p>
+            </div>
+          </section>
 
-      {/* TESTIMONIALS */}
-      <section className="border-b-4 border-black">
-        <div className="max-w-7xl mx-auto px-4 py-16">
-          <h2 className="text-3xl font-bold uppercase tracking-wider mb-12">WHAT THEY SAY</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
-            {[
-              { quote: "Mika delivered something we never could have imagined. The site traffic doubled within a week of launch, and every competitor started copying us.", name: "LENA HARTMANN", role: "CEO, VOLTA ENERGY" },
-              { quote: "Working with Mika is like strapping a rocket to your brand. Uncomfortable at first, then exhilarating. Our conversion rate jumped 340% after the redesign.", name: "TOMASZ KROL", role: "FOUNDER, NEON RECORDS" },
-              { quote: "Most designers show you what you expect. Mika shows you what you need. The final product was nothing like the brief -- and it was ten times better.", name: "SARAH CHEN", role: "CREATIVE DIRECTOR, ARCH COLLECTIVE" },
-            ].map((t) => (
-              <div key={t.name} className="border-4 border-black p-6">
-                <p className="text-sm leading-relaxed mb-6">&quot;{t.quote}&quot;</p>
-                <div className="border-t-4 border-black pt-4">
-                  <p className="text-xs font-bold uppercase tracking-widest">{t.name}</p>
-                  <p className="text-xs uppercase tracking-widest text-neutral-500">{t.role}</p>
+          {/* About */}
+          <section className="px-6 md:px-12 py-20">
+            <div className="grid md:grid-cols-2 gap-12">
+              <div>
+                <div className="flex items-center gap-4 mb-8">
+                  <h2 className="text-2xl tracking-widest">ABOUT</h2>
+                  <div className="flex-1 h-0.5 bg-black" />
+                </div>
+                <p className="text-base font-sans font-normal leading-relaxed text-black/70">
+                  Max Gruber is a Chicago-based graphic designer specializing in print, editorial,
+                  and brand identity for independent music, arts, and culture. With over a decade of
+                  experience, his work has been featured in Print Magazine, It&apos;s Nice That, and the
+                  Type Directors Club annual.
+                </p>
+              </div>
+              <div>
+                <div className="flex items-center gap-4 mb-8">
+                  <h2 className="text-2xl tracking-widest">CLIENTS</h2>
+                  <div className="flex-1 h-0.5 bg-black" />
+                </div>
+                <div className="grid grid-cols-2 gap-3 font-sans font-normal">
+                  {['Pitchfork', 'Nike ACG', 'Rough Trade', 'The Vinyl Factory', 'Resident Advisor', 'Ace Hotel', 'Vice Media', 'Carhartt WIP'].map(c => (
+                    <span key={c} className="text-sm text-black/60">{c}</span>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </div>
+          </section>
 
-      {/* CTA */}
-      <section className="bg-[#FFE500] border-b-4 border-black">
-        <div className="max-w-7xl mx-auto px-4 py-20 text-center">
-          <h2 className="text-4xl md:text-6xl font-bold uppercase mb-4">GOT A PROJECT?</h2>
-          <p className="text-sm uppercase tracking-widest mb-8">I am currently accepting new clients for Q3 2026.</p>
-          <span className="inline-block bg-black text-white px-8 py-4 text-sm uppercase tracking-widest cursor-pointer hover:bg-white hover:text-black transition-colors border-4 border-black">
-            START A CONVERSATION
-          </span>
-        </div>
-      </section>
+          {/* Contact */}
+          <section className="px-6 md:px-12 py-16 border-t-4 border-black">
+            <div className="flex flex-col md:flex-row justify-between items-start gap-8">
+              <div>
+                <h2 className="text-4xl tracking-tight mb-4">LET&apos;S WORK</h2>
+                <a href="mailto:max@gruberdesign.co" className="text-xl font-sans font-normal underline">max@gruberdesign.co</a>
+              </div>
+              <div className="flex gap-6">
+                {['Instagram', 'Arena', 'Twitter'].map(l => (
+                  <a key={l} href="#" className="text-sm font-sans font-normal tracking-widest uppercase hover:underline">{l}</a>
+                ))}
+              </div>
+            </div>
+          </section>
 
-      {/* FOOTER */}
-      <footer className="border-t-0">
-        <div className="max-w-7xl mx-auto px-4 py-8 flex flex-col md:flex-row justify-between items-center">
-          <span className="text-xs uppercase tracking-widest mb-4 md:mb-0">&copy; 2026 MRKV.STUDIO -- ALL RIGHTS RESERVED</span>
-          <div className="flex space-x-6">
-            <span className="text-xs uppercase tracking-widest cursor-pointer hover:bg-[#FFE500] px-2 py-1 transition-colors">Twitter</span>
-            <span className="text-xs uppercase tracking-widest cursor-pointer hover:bg-[#FFE500] px-2 py-1 transition-colors">Dribbble</span>
-            <span className="text-xs uppercase tracking-widest cursor-pointer hover:bg-[#FFE500] px-2 py-1 transition-colors">GitHub</span>
-            <span className="text-xs uppercase tracking-widest cursor-pointer hover:bg-[#FFE500] px-2 py-1 transition-colors">LinkedIn</span>
-          </div>
+          {/* Footer */}
+          <footer className="px-6 md:px-12 py-6 bg-black text-yellow-400 flex justify-between items-center">
+            <span className="text-sm tracking-widest">MAX GRUBER</span>
+            <span className="text-xs font-sans font-normal tracking-widest">© 2026 ALL RIGHTS RESERVED</span>
+          </footer>
         </div>
-      </footer>
+      </div>
     </div>
   )
 }

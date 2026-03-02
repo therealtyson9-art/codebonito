@@ -1,134 +1,158 @@
 export default function TravelMinimalistDemo() {
   const destinations = [
-    { name: "Kyoto", country: "Japan", price: "$1,299", desc: "Ancient temples, bamboo groves, and the art of the tea ceremony in Japan's cultural heart.", tag: "Cultural" },
-    { name: "Santorini", country: "Greece", price: "$1,549", desc: "Sun-bleached cliffs, sapphire waters, and sunsets that paint the Aegean in gold.", tag: "Romantic" },
-    { name: "Patagonia", country: "Argentina", price: "$2,199", desc: "Untamed glaciers, rugged peaks, and windswept plains at the edge of the world.", tag: "Adventure" },
-    { name: "Marrakech", country: "Morocco", price: "$989", desc: "Spice-scented souks, intricate mosaics, and the pulse of North African tradition.", tag: "Exotic" },
+    { name: "Marrakech", country: "Morocco", price: "$1,480", duration: "8 days", description: "Wander through ochre medinas, sip mint tea on hidden rooftops, and lose yourself in the souks of the Red City." },
+    { name: "Kyoto", country: "Japan", price: "$2,150", duration: "10 days", description: "Follow ancient pilgrimage trails through bamboo groves, stone gardens, and temples draped in morning mist." },
+    { name: "Oaxaca", country: "Mexico", price: "$1,290", duration: "7 days", description: "Taste mezcal at its source, learn ancestral cooking techniques, and explore ruins perched above emerald valleys." },
+    { name: "Faro", country: "Portugal", price: "$1,120", duration: "6 days", description: "Discover the Algarve's secret coastline, limestone caves carved by the Atlantic, and fishing villages frozen in time." },
   ]
-  const tripTypes = [
-    { name: "Adventure", icon: "&#9968;", desc: "Hiking, diving, and adrenaline-fueled itineraries for thrill seekers." },
-    { name: "Cultural", icon: "&#127983;", desc: "Immerse yourself in local history, art, cuisine, and traditions." },
-    { name: "Luxury", icon: "&#9733;", desc: "Five-star stays, private transfers, and curated fine dining." },
-    { name: "Family", icon: "&#127968;", desc: "Kid-friendly activities, relaxed pacing, and unforgettable bonding." },
+
+  const guides = [
+    { name: "Amara Osei", region: "West Africa", specialty: "Cultural immersion & textile trails", years: 12 },
+    { name: "Kenji Tanaka", region: "East Asia", specialty: "Contemplative journeys & forest bathing", years: 8 },
+    { name: "Lucia Ferrara", region: "Mediterranean", specialty: "Slow travel & coastal foraging", years: 15 },
   ]
-  const reviews = [
-    { name: "Elena M.", trip: "Kyoto Cultural Tour", text: "Every detail was thoughtfully planned. From the private tea ceremony to the hidden shrine walks, it felt like we had a friend showing us the real Japan.", rating: 5 },
-    { name: "James & Sarah K.", trip: "Santorini Honeymoon", text: "Wanderlust turned our honeymoon into something magical. The cliffside suite, the private catamaran at sunset -- pure perfection.", rating: 5 },
-    { name: "David R.", trip: "Patagonia Trek", text: "I've traveled with a dozen agencies. None come close to the level of care and local expertise Wanderlust brings to adventure travel.", rating: 5 },
+
+  const packingTips = [
+    { item: "Merino base layer", reason: "Regulates temperature from desert mornings to mountain evenings. One layer, every climate." },
+    { item: "Linen wrap scarf", reason: "Sun protection, blanket on overnight trains, and respectful cover for temple visits." },
+    { item: "Leather journal", reason: "Your phone will die. Your journal will outlast every trip and become the story itself." },
+    { item: "Collapsible water bottle", reason: "Refill stations are everywhere once you start looking. Lighter pack, less plastic." },
   ]
+
   return (
-    <div className="min-h-screen bg-white text-slate-800" style={{ fontFamily: "Inter, sans-serif" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-      <nav className="border-b border-slate-200">
-        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-          <span className="text-xl font-semibold tracking-wide" style={{ color: "#0d9488" }}>WANDERLUST</span>
-          <div className="hidden md:flex space-x-6">
-            <span className="text-sm text-slate-500 hover:text-slate-900 cursor-pointer transition-colors">Destinations</span>
-            <span className="text-sm text-slate-500 hover:text-slate-900 cursor-pointer transition-colors">Trip Types</span>
-            <span className="text-sm text-slate-500 hover:text-slate-900 cursor-pointer transition-colors">Reviews</span>
-            <span className="text-sm text-slate-500 hover:text-slate-900 cursor-pointer transition-colors">Plan a Trip</span>
-          </div>
-          <button className="h-10 px-6 text-sm font-medium text-white rounded-md transition-colors" style={{ backgroundColor: "#0d9488" }}>Book Now</button>
+    <div style={{ backgroundColor: "#f5f0e8", fontFamily: "'Questrial', 'Inter', sans-serif" }} className="min-h-screen">
+      <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+      {/* Explorer Nav */}
+      <nav className="flex items-center justify-between px-8 py-6 max-w-6xl mx-auto">
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 rounded-full" style={{ backgroundColor: "#78593a" }} />
+          <span className="text-xl tracking-wide" style={{ color: "#78593a", fontFamily: "'Questrial', sans-serif" }}>Wayfare</span>
         </div>
+        <div className="hidden md:flex items-center gap-8 text-sm" style={{ color: "#78593a" }}>
+          <a href="#trips" className="hover:opacity-70 transition-opacity">Curated Trips</a>
+          <a href="#guides" className="hover:opacity-70 transition-opacity">Guides</a>
+          <a href="#philosophy" className="hover:opacity-70 transition-opacity">Philosophy</a>
+          <a href="#book" className="hover:opacity-70 transition-opacity">Book</a>
+        </div>
+        <button className="px-5 py-2 text-sm rounded-full text-white" style={{ backgroundColor: "#78593a" }}>Begin Journey</button>
       </nav>
-      <section className="max-w-6xl mx-auto px-4 py-28 text-center">
-        <p className="text-sm font-medium tracking-widest uppercase mb-4" style={{ color: "#0d9488" }}>Travel with purpose</p>
-        <h1 className="text-5xl font-bold text-slate-900 mb-6 leading-tight">Discover the world,<br/>your way</h1>
-        <p className="text-lg text-slate-500 max-w-2xl mx-auto mb-8">Handcrafted itineraries, local guides, and seamless logistics so you can focus on what matters most -- the experience.</p>
-        <div className="flex justify-center space-x-3">
-          <button className="h-12 px-8 text-sm font-medium text-white rounded-md transition-colors" style={{ backgroundColor: "#0d9488" }}>Explore Destinations</button>
-          <button className="h-12 px-8 text-sm font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-md transition-colors">How It Works</button>
-        </div>
-      </section>
-      <section className="max-w-6xl mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-slate-900 text-center mb-3">Featured Destinations</h2>
-        <p className="text-slate-500 text-center mb-12">Our most-loved trips, curated by travel experts</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {destinations.map((d) => (
-            <div key={d.name} className="rounded-xl border border-slate-200 overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="h-48 flex items-center justify-center" style={{ backgroundColor: "#0d948812" }}>
-                <span className="text-sm font-medium tracking-widest uppercase" style={{ color: "#0d9488" }}>{d.country}</span>
-              </div>
-              <div className="p-5">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-lg font-semibold text-slate-900">{d.name}</h3>
-                  <span className="text-xs px-2 py-1 rounded-full text-white" style={{ backgroundColor: "#0d9488" }}>{d.tag}</span>
-                </div>
-                <p className="text-sm text-slate-500 mb-4">{d.desc}</p>
-                <p className="text-lg font-semibold" style={{ color: "#0d9488" }}>From {d.price} <span className="text-xs text-slate-400 font-normal">per person</span></p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-      <section className="bg-slate-50 py-20">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-slate-900 text-center mb-12">Find Your Kind of Trip</h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {tripTypes.map((t) => (
-              <div key={t.name} className="bg-white rounded-xl p-6 border border-slate-200 text-center hover:border-teal-300 transition-colors">
-                <div className="text-3xl mb-3" dangerouslySetInnerHTML={{ __html: t.icon }} />
-                <h3 className="text-lg font-semibold text-slate-900 mb-2">{t.name}</h3>
-                <p className="text-sm text-slate-500">{t.desc}</p>
-              </div>
+
+      {/* Map Hero Placeholder */}
+      <section className="max-w-6xl mx-auto px-8 py-16">
+        <div className="rounded-2xl overflow-hidden relative" style={{ backgroundColor: "#e8dfd3", height: "420px" }}>
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-8">
+            <p className="text-sm tracking-widest uppercase mb-4" style={{ color: "#78593a", fontFamily: "'Inter', sans-serif" }}>Curated since 2016</p>
+            <h1 className="text-5xl md:text-6xl leading-tight mb-6" style={{ color: "#78593a", fontFamily: "'Questrial', sans-serif" }}>
+              Travel is not about<br />the destination
+            </h1>
+            <p className="text-lg max-w-lg" style={{ color: "#9a7d5e", fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>
+              We design journeys that slow you down, open your senses, and return you home changed. No checklists. No rush. Just the world, unfolding.
+            </p>
+          </div>
+          <div className="absolute bottom-6 left-6 flex gap-3">
+            {["Marrakech", "Kyoto", "Oaxaca", "Faro"].map((pin) => (
+              <span key={pin} className="px-3 py-1 rounded-full text-xs text-white" style={{ backgroundColor: "#78593a" }}>{pin}</span>
             ))}
           </div>
         </div>
       </section>
-      <section className="max-w-6xl mx-auto px-4 py-20">
-        <h2 className="text-3xl font-bold text-slate-900 text-center mb-12">What Travelers Say</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {reviews.map((r) => (
-            <div key={r.name} className="rounded-xl border border-slate-200 p-6">
-              <div className="flex mb-3">{Array.from({ length: r.rating }).map((_, i) => (<span key={i} className="text-amber-400 text-sm mr-0.5">&#9733;</span>))}</div>
-              <p className="text-sm text-slate-600 mb-4 italic">&ldquo;{r.text}&rdquo;</p>
-              <p className="text-sm font-semibold text-slate-900">{r.name}</p>
-              <p className="text-xs text-slate-400">{r.trip}</p>
+
+      {/* Curated Trips */}
+      <section id="trips" className="max-w-6xl mx-auto px-8 py-16">
+        <p className="text-sm tracking-widest uppercase mb-2" style={{ color: "#9a7d5e" }}>Explore</p>
+        <h2 className="text-3xl mb-12" style={{ color: "#78593a", fontFamily: "'Questrial', sans-serif" }}>Curated Trips</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {destinations.map((dest) => (
+            <div key={dest.name} className="rounded-xl p-8" style={{ backgroundColor: "#ece5d9" }}>
+              <div className="flex justify-between items-start mb-4">
+                <div>
+                  <h3 className="text-2xl" style={{ color: "#78593a", fontFamily: "'Questrial', sans-serif" }}>{dest.name}</h3>
+                  <p className="text-sm" style={{ color: "#9a7d5e" }}>{dest.country} &middot; {dest.duration}</p>
+                </div>
+                <span className="text-xl font-light" style={{ color: "#78593a" }}>{dest.price}</span>
+              </div>
+              <p className="text-sm leading-relaxed mb-6" style={{ color: "#78593a", fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>{dest.description}</p>
+              <button className="text-sm underline underline-offset-4" style={{ color: "#78593a" }}>View itinerary</button>
             </div>
           ))}
         </div>
       </section>
-      <section className="bg-slate-50 py-20">
-        <div className="max-w-2xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-slate-900 mb-3">Plan Your Next Trip</h2>
-          <p className="text-slate-500 mb-8">Tell us where you want to go and we will craft a custom itinerary.</p>
-          <div className="bg-white rounded-xl border border-slate-200 p-6 text-left space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div><label className="text-xs font-medium text-slate-600 block mb-1">Destination</label><div className="h-10 rounded-md border border-slate-200 bg-slate-50" /></div>
-              <div><label className="text-xs font-medium text-slate-600 block mb-1">Travel Dates</label><div className="h-10 rounded-md border border-slate-200 bg-slate-50" /></div>
+
+      {/* Travel Philosophy */}
+      <section id="philosophy" className="max-w-6xl mx-auto px-8 py-16">
+        <div className="rounded-2xl p-12 md:p-16 text-center" style={{ backgroundColor: "#78593a" }}>
+          <p className="text-sm tracking-widest uppercase mb-4" style={{ color: "#d4c4a8" }}>Our Philosophy</p>
+          <h2 className="text-3xl md:text-4xl mb-8 text-white" style={{ fontFamily: "'Questrial', sans-serif" }}>
+            Fewer places. Deeper roots.
+          </h2>
+          <p className="text-base max-w-2xl mx-auto leading-relaxed" style={{ color: "#d4c4a8", fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>
+            We believe a single conversation with a ceramic maker in Fez reveals more than ten cities in ten days ever could. Wayfare trips are designed around connection, not collection. We partner with local families, artisans, and conservationists who share their world with you, not a performance of it. Every journey is limited to eight travelers because intimacy cannot scale.
+          </p>
+        </div>
+      </section>
+
+      {/* Featured Guides */}
+      <section id="guides" className="max-w-6xl mx-auto px-8 py-16">
+        <p className="text-sm tracking-widest uppercase mb-2" style={{ color: "#9a7d5e" }}>Meet</p>
+        <h2 className="text-3xl mb-12" style={{ color: "#78593a", fontFamily: "'Questrial', sans-serif" }}>Featured Guides</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {guides.map((guide) => (
+            <div key={guide.name} className="text-center">
+              <div className="w-24 h-24 rounded-full mx-auto mb-4" style={{ backgroundColor: "#d4c4a8" }} />
+              <h3 className="text-lg mb-1" style={{ color: "#78593a", fontFamily: "'Questrial', sans-serif" }}>{guide.name}</h3>
+              <p className="text-sm mb-1" style={{ color: "#9a7d5e" }}>{guide.region}</p>
+              <p className="text-xs" style={{ color: "#b09a7a", fontFamily: "'Inter', sans-serif" }}>{guide.specialty} &middot; {guide.years} years</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div><label className="text-xs font-medium text-slate-600 block mb-1">Travelers</label><div className="h-10 rounded-md border border-slate-200 bg-slate-50" /></div>
-              <div><label className="text-xs font-medium text-slate-600 block mb-1">Budget Range</label><div className="h-10 rounded-md border border-slate-200 bg-slate-50" /></div>
+          ))}
+        </div>
+      </section>
+
+      {/* Packing Tips */}
+      <section className="max-w-6xl mx-auto px-8 py-16">
+        <p className="text-sm tracking-widest uppercase mb-2" style={{ color: "#9a7d5e" }}>Prepare</p>
+        <h2 className="text-3xl mb-12" style={{ color: "#78593a", fontFamily: "'Questrial', sans-serif" }}>Packing Wisdom</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          {packingTips.map((tip, i) => (
+            <div key={i} className="flex gap-4 p-6 rounded-xl" style={{ backgroundColor: "#ece5d9" }}>
+              <span className="text-2xl font-light" style={{ color: "#b09a7a" }}>0{i + 1}</span>
+              <div>
+                <h3 className="text-base mb-1" style={{ color: "#78593a", fontFamily: "'Questrial', sans-serif" }}>{tip.item}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: "#9a7d5e", fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>{tip.reason}</p>
+              </div>
             </div>
-            <div><label className="text-xs font-medium text-slate-600 block mb-1">Special Requests</label><div className="h-24 rounded-md border border-slate-200 bg-slate-50" /></div>
-            <button className="w-full h-11 text-sm font-medium text-white rounded-md transition-colors" style={{ backgroundColor: "#0d9488" }}>Start Planning</button>
+          ))}
+        </div>
+      </section>
+
+      {/* Book a Trip CTA */}
+      <section id="book" className="max-w-6xl mx-auto px-8 py-16">
+        <div className="rounded-2xl p-12 text-center" style={{ backgroundColor: "#ece5d9" }}>
+          <h2 className="text-3xl mb-4" style={{ color: "#78593a", fontFamily: "'Questrial', sans-serif" }}>Ready to go slowly?</h2>
+          <p className="text-base max-w-lg mx-auto mb-8" style={{ color: "#9a7d5e", fontFamily: "'Inter', sans-serif", fontWeight: 300 }}>
+            Tell us when you want to leave, how long you want to be gone, and what draws you. We handle the rest.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <input type="email" placeholder="your@email.com" className="px-6 py-3 rounded-full text-sm border-0 outline-none w-64" style={{ backgroundColor: "#f5f0e8", color: "#78593a" }} />
+            <button className="px-8 py-3 rounded-full text-sm text-white" style={{ backgroundColor: "#78593a" }}>Start Planning</button>
           </div>
         </div>
       </section>
-      <section className="py-16">
-        <div className="max-w-xl mx-auto px-4 text-center">
-          <h2 className="text-2xl font-bold text-slate-900 mb-3">Stay Inspired</h2>
-          <p className="text-sm text-slate-500 mb-6">Travel tips, destination guides, and exclusive deals delivered to your inbox every week.</p>
-          <div className="flex space-x-2">
-            <div className="flex-1 h-11 rounded-md border border-slate-200 bg-slate-50" />
-            <button className="h-11 px-6 text-sm font-medium text-white rounded-md transition-colors" style={{ backgroundColor: "#0d9488" }}>Subscribe</button>
+
+      {/* Footer */}
+      <footer className="max-w-6xl mx-auto px-8 py-12 border-t" style={{ borderColor: "#d4c4a8" }}>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-full" style={{ backgroundColor: "#78593a" }} />
+            <span className="text-sm" style={{ color: "#78593a" }}>Wayfare</span>
           </div>
-          <p className="text-xs text-slate-400 mt-2">No spam. Unsubscribe anytime.</p>
-        </div>
-      </section>
-      <footer className="border-t border-slate-200">
-        <div className="max-w-6xl mx-auto px-4 py-10">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div><span className="text-lg font-semibold" style={{ color: "#0d9488" }}>WANDERLUST</span><p className="text-xs text-slate-400 mt-2">Crafting journeys since 2014.</p></div>
-            <div><h4 className="text-xs font-semibold text-slate-900 uppercase tracking-wide mb-3">Explore</h4><div className="space-y-2 text-sm text-slate-500"><p className="cursor-pointer hover:text-slate-900">Destinations</p><p className="cursor-pointer hover:text-slate-900">Trip Types</p><p className="cursor-pointer hover:text-slate-900">Last-Minute Deals</p></div></div>
-            <div><h4 className="text-xs font-semibold text-slate-900 uppercase tracking-wide mb-3">Company</h4><div className="space-y-2 text-sm text-slate-500"><p className="cursor-pointer hover:text-slate-900">About Us</p><p className="cursor-pointer hover:text-slate-900">Travel Journal</p><p className="cursor-pointer hover:text-slate-900">Careers</p></div></div>
-            <div><h4 className="text-xs font-semibold text-slate-900 uppercase tracking-wide mb-3">Support</h4><div className="space-y-2 text-sm text-slate-500"><p className="cursor-pointer hover:text-slate-900">Help Center</p><p className="cursor-pointer hover:text-slate-900">Travel Insurance</p><p className="cursor-pointer hover:text-slate-900">Contact</p></div></div>
+          <div className="flex gap-6 text-xs" style={{ color: "#9a7d5e" }}>
+            <span>ASTA Verified</span>
+            <span>IATA Accredited</span>
+            <span>B-Corp Certified</span>
+            <span>Carbon Neutral Since 2020</span>
           </div>
-          <div className="border-t border-slate-200 mt-8 pt-6 flex justify-between items-center">
-            <span className="text-xs text-slate-400">&copy; 2026 Wanderlust Travel Co. All rights reserved.</span>
-            <div className="flex space-x-4 text-xs text-slate-400"><span className="cursor-pointer hover:text-slate-700">Privacy</span><span className="cursor-pointer hover:text-slate-700">Terms</span></div>
-          </div>
+          <p className="text-xs" style={{ color: "#b09a7a" }}>&copy; 2025 Wayfare Travel Co.</p>
         </div>
       </footer>
     </div>
