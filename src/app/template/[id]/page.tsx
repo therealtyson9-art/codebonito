@@ -265,12 +265,12 @@ export default function TemplateDetailPage({
             if (demoUrl) {
               return (
                 <div className="relative overflow-hidden rounded-xl border border-border/40">
-                  <div className="relative aspect-[16/10] overflow-hidden">
+                  <div className="relative w-full overflow-hidden rounded-t-xl bg-white" style={{ height: "450px" }}>
                     <iframe
                       src={demoUrl}
                       title={template.name + " preview"}
-                      className="h-[600px] w-[1200px] origin-top-left scale-[0.5] border-0"
-                      style={{ width: "1200px", height: "600px", transform: "scale(0.5)", transformOrigin: "top left" }}
+                      className="absolute left-0 top-0 border-0"
+                      style={{ width: "1440px", height: "900px", transform: "scale(0.45)", transformOrigin: "top left" }}
                     />
                   </div>
                   <a
