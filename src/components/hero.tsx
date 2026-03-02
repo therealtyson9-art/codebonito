@@ -66,28 +66,104 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Before/After Slider */}
+        {/* Before/After Slider with REAL content */}
         <div className={`mx-auto mt-20 max-w-4xl transition-all duration-1000 delay-300 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}>
           <p className="mb-4 text-center text-sm font-medium uppercase tracking-widest text-gray-500">Same AI prompt. Different result.</p>
           <div ref={sliderRef} className="relative aspect-[16/9] cursor-col-resize overflow-hidden rounded-2xl border border-white/10 bg-gray-900 shadow-2xl shadow-brand-blue/10 select-none"
             onMouseDown={() => setDragging(true)}
             onTouchMove={(e) => { if (!sliderRef.current) return; const rect = sliderRef.current.getBoundingClientRect(); setSliderPos(Math.max(0, Math.min(100, ((e.touches[0].clientX - rect.left) / rect.width) * 100))); }}>
-            {/* Before — Generic */}
-            <div className="absolute inset-0 bg-white p-6 sm:p-10">
-              <div className="flex items-center gap-2 mb-6"><div className="h-3 w-3 rounded-full bg-red-400" /><div className="h-3 w-3 rounded-full bg-yellow-400" /><div className="h-3 w-3 rounded-full bg-green-400" /><div className="ml-4 h-5 w-48 rounded bg-gray-200" /></div>
-              <div className="flex items-center gap-6 mb-4"><div className="h-4 w-16 rounded bg-gray-200" /><div className="h-4 w-16 rounded bg-gray-200" /><div className="h-4 w-16 rounded bg-gray-200" /><div className="ml-auto h-8 w-24 rounded bg-gray-300" /></div>
-              <div className="mt-8 text-center"><div className="mx-auto h-6 w-3/4 rounded bg-gray-200 mb-3" /><div className="mx-auto h-4 w-1/2 rounded bg-gray-100 mb-8" /><div className="mx-auto h-10 w-32 rounded bg-gray-300 mb-10" /><div className="grid grid-cols-3 gap-4"><div className="h-20 rounded bg-gray-100" /><div className="h-20 rounded bg-gray-100" /><div className="h-20 rounded bg-gray-100" /></div></div>
-              <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-xs sm:text-sm font-mono text-gray-400 bg-white/80 px-3 py-1 rounded-full">Without Code Bonito 😐</p>
-            </div>
-            {/* After — Code Bonito */}
-            <div className="absolute inset-0 overflow-hidden" style={{ clipPath: `inset(0 ${100-sliderPos}% 0 0)` }}>
-              <div className="h-full w-full bg-gradient-to-br from-[#0f172a] via-[#1e1b4b] to-[#0c0a09] p-6 sm:p-10">
-                <div className="flex items-center gap-2 mb-6"><div className="h-3 w-3 rounded-full bg-red-400" /><div className="h-3 w-3 rounded-full bg-yellow-400" /><div className="h-3 w-3 rounded-full bg-green-400" /><div className="ml-4 h-5 w-48 rounded bg-white/10" /></div>
-                <div className="flex items-center gap-6 mb-4"><div className="h-4 w-16 rounded bg-white/20" /><div className="h-4 w-16 rounded bg-white/20" /><div className="h-4 w-16 rounded bg-white/20" /><div className="ml-auto h-8 w-24 rounded-lg bg-gradient-to-r from-violet-500 to-blue-500" /></div>
-                <div className="mt-8 text-center"><div className="mx-auto h-6 w-3/4 rounded bg-gradient-to-r from-blue-400/40 to-violet-400/40 mb-3" /><div className="mx-auto h-4 w-1/2 rounded bg-white/10 mb-8" /><div className="mx-auto h-10 w-32 rounded-lg bg-gradient-to-r from-amber-400 to-orange-500 mb-10 shadow-lg shadow-amber-500/20" /><div className="grid grid-cols-3 gap-4"><div className="h-20 rounded-xl bg-gradient-to-br from-blue-500/20 to-violet-500/20 ring-1 ring-white/10" /><div className="h-20 rounded-xl bg-gradient-to-br from-violet-500/20 to-pink-500/20 ring-1 ring-white/10" /><div className="h-20 rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-500/20 ring-1 ring-white/10" /></div></div>
-                <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-xs sm:text-sm font-mono text-white/70 bg-white/10 backdrop-blur px-3 py-1 rounded-full">With Code Bonito ✨</p>
+            
+            {/* BEFORE — Realistic generic AI site */}
+            <div className="absolute inset-0 bg-white overflow-hidden">
+              <div className="h-full w-full" style={{ fontFamily: "system-ui, sans-serif" }}>
+                {/* Browser chrome */}
+                <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 border-b border-gray-200">
+                  <div className="h-2.5 w-2.5 rounded-full bg-red-400" />
+                  <div className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
+                  <div className="h-2.5 w-2.5 rounded-full bg-green-400" />
+                  <div className="ml-3 flex-1 h-5 rounded bg-white border border-gray-200 flex items-center px-2">
+                    <span className="text-[8px] text-gray-400">mywebsite.com</span>
+                  </div>
+                </div>
+                {/* Generic nav */}
+                <div className="flex items-center justify-between px-6 py-3 border-b border-gray-100">
+                  <span className="text-[10px] font-bold text-gray-800">MyBusiness</span>
+                  <div className="flex gap-4">
+                    <span className="text-[8px] text-gray-500">Home</span>
+                    <span className="text-[8px] text-gray-500">About</span>
+                    <span className="text-[8px] text-gray-500">Services</span>
+                    <span className="text-[8px] text-gray-500">Contact</span>
+                  </div>
+                  <div className="h-4 w-12 rounded text-[7px] bg-gray-800 text-white flex items-center justify-center">Sign Up</div>
+                </div>
+                {/* Generic hero */}
+                <div className="px-6 py-8 text-center bg-gray-50">
+                  <p className="text-[14px] font-bold text-gray-800 leading-tight">Welcome to MyBusiness</p>
+                  <p className="text-[8px] text-gray-500 mt-1.5 max-w-[200px] mx-auto">We provide the best solutions for your business needs. Get started today.</p>
+                  <div className="flex gap-2 justify-center mt-3">
+                    <div className="h-5 w-16 rounded text-[7px] bg-blue-600 text-white flex items-center justify-center">Get Started</div>
+                    <div className="h-5 w-16 rounded text-[7px] border border-gray-300 text-gray-600 flex items-center justify-center">Learn More</div>
+                  </div>
+                </div>
+                {/* Generic 3-column */}
+                <div className="px-6 py-4">
+                  <div className="grid grid-cols-3 gap-3">
+                    <div className="p-3 border border-gray-200 rounded">
+                      <div className="h-3 w-3 rounded bg-blue-100 mb-1.5" />
+                      <p className="text-[7px] font-semibold text-gray-700">Feature One</p>
+                      <p className="text-[6px] text-gray-400 mt-0.5">Lorem ipsum dolor sit amet consectetur.</p>
+                    </div>
+                    <div className="p-3 border border-gray-200 rounded">
+                      <div className="h-3 w-3 rounded bg-blue-100 mb-1.5" />
+                      <p className="text-[7px] font-semibold text-gray-700">Feature Two</p>
+                      <p className="text-[6px] text-gray-400 mt-0.5">Lorem ipsum dolor sit amet consectetur.</p>
+                    </div>
+                    <div className="p-3 border border-gray-200 rounded">
+                      <div className="h-3 w-3 rounded bg-blue-100 mb-1.5" />
+                      <p className="text-[7px] font-semibold text-gray-700">Feature Three</p>
+                      <p className="text-[6px] text-gray-400 mt-0.5">Lorem ipsum dolor sit amet consectetur.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* Label */}
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10">
+                <span className="text-[10px] sm:text-xs font-mono text-gray-500 bg-white/90 border border-gray-200 px-3 py-1 rounded-full shadow-sm">
+                  Without Code Bonito 😐
+                </span>
               </div>
             </div>
+
+            {/* AFTER — Real template iframe */}
+            <div className="absolute inset-0 overflow-hidden" style={{ clipPath: `inset(0 ${100-sliderPos}% 0 0)` }}>
+              <div className="relative h-full w-full bg-black">
+                {/* Browser chrome */}
+                <div className="flex items-center gap-2 px-4 py-2 bg-gray-900 border-b border-gray-800">
+                  <div className="h-2.5 w-2.5 rounded-full bg-red-400" />
+                  <div className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
+                  <div className="h-2.5 w-2.5 rounded-full bg-green-400" />
+                  <div className="ml-3 flex-1 h-5 rounded bg-gray-800 border border-gray-700 flex items-center px-2">
+                    <span className="text-[8px] text-gray-400">luxuryestates.com</span>
+                  </div>
+                </div>
+                {/* Real demo iframe */}
+                <iframe
+                  src="/demo/realestate-luxury"
+                  title="Real Estate Luxury Template"
+                  className="pointer-events-none w-full border-0"
+                  style={{ height: "calc(100% - 28px)", width: "100%" }}
+                  tabIndex={-1}
+                  loading="eager"
+                />
+              </div>
+              {/* Label */}
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10">
+                <span className="text-[10px] sm:text-xs font-mono text-white/80 bg-white/10 backdrop-blur border border-white/20 px-3 py-1 rounded-full">
+                  With Code Bonito ✨
+                </span>
+              </div>
+            </div>
+
             {/* Slider handle */}
             <div className="absolute top-0 bottom-0 z-20 w-1 bg-white shadow-[0_0_12px_rgba(255,255,255,0.5)]" style={{ left: `${sliderPos}%` }}>
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-lg shadow-black/20">
