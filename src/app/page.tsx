@@ -38,21 +38,22 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/20 via-background to-background" />
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_80%_20%,_oklch(0.5_0.2_270)_0%,_transparent_50%)] opacity-10" />
+      <section className="relative overflow-hidden bg-white">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-blue/8 via-transparent to-transparent" />
+        <div className="absolute top-0 right-0 -z-10 h-96 w-96 rounded-full bg-brand-amber/5 blur-3xl" />
+        <div className="absolute bottom-0 left-0 -z-10 h-64 w-64 rounded-full bg-brand-blue/5 blur-3xl" />
         <div className="mx-auto max-w-7xl px-4 py-28 sm:px-6 sm:py-40 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <Badge
               variant="secondary"
-              className="mb-8 px-4 py-1.5 text-sm font-medium"
+              className="mb-8 border border-brand-amber/20 bg-brand-amber-light px-4 py-1.5 text-sm font-medium text-amber-800"
             >
-              <Sparkles className="mr-1.5 h-3.5 w-3.5" />
+              <Sparkles className="mr-1.5 h-3.5 w-3.5 text-brand-amber" />
               3 Free Templates + $2 Each
             </Badge>
-            <h1 className="text-5xl font-bold tracking-tight sm:text-7xl lg:text-8xl">
+            <h1 className="text-5xl font-bold tracking-tight text-foreground sm:text-7xl lg:text-8xl">
               Stop building{" "}
-              <span className="bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-brand-blue to-blue-400 bg-clip-text text-transparent">
                 generic
               </span>{" "}
               AI websites
@@ -63,7 +64,7 @@ export default function HomePage() {
               multi-platform support.
             </p>
             <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button asChild size="lg" className="h-12 px-8 text-base">
+              <Button asChild size="lg" className="h-12 px-8 text-base bg-brand-blue hover:bg-brand-blue/90 text-white shadow-md shadow-brand-blue/25">
                 <Link href="/browse">
                   Browse Templates <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -72,7 +73,7 @@ export default function HomePage() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="h-12 px-8 text-base"
+                className="h-12 px-8 text-base border-border hover:bg-secondary"
               >
                 <Link href="/upload">
                   <Upload className="mr-2 h-4 w-4" />
@@ -80,18 +81,24 @@ export default function HomePage() {
                 </Link>
               </Button>
             </div>
-            <div className="mt-12 flex items-center justify-center gap-8 text-sm text-muted-foreground">
+            <div className="mt-14 flex items-center justify-center gap-8 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
-                <Download className="h-4 w-4" />
-                <span>{totalDownloads.toLocaleString()}+ downloads</span>
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-blue/10">
+                  <Download className="h-3.5 w-3.5 text-brand-blue" />
+                </div>
+                <span className="font-medium">{totalDownloads.toLocaleString()}+ downloads</span>
               </div>
               <div className="flex items-center gap-2">
-                <Layers className="h-4 w-4" />
-                <span>{MOCK_TEMPLATES.length} templates</span>
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-blue/10">
+                  <Layers className="h-3.5 w-3.5 text-brand-blue" />
+                </div>
+                <span className="font-medium">{MOCK_TEMPLATES.length} templates</span>
               </div>
               <div className="flex items-center gap-2">
-                <Code2 className="h-4 w-4" />
-                <span>5 platforms</span>
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-blue/10">
+                  <Code2 className="h-3.5 w-3.5 text-brand-blue" />
+                </div>
+                <span className="font-medium">5 platforms</span>
               </div>
             </div>
           </div>
@@ -99,13 +106,13 @@ export default function HomePage() {
       </section>
 
       {/* Features */}
-      <section className="border-t border-border/40 py-28">
+      <section className="bg-[#fafafa] py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <Badge variant="outline" className="mb-4">
+            <Badge className="mb-4 border-brand-blue/20 bg-brand-blue-light text-brand-blue">
               Features
             </Badge>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
               Why Code Bonito?
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
@@ -148,13 +155,13 @@ export default function HomePage() {
       </section>
 
       {/* How It Works */}
-      <section className="border-t border-border/40 bg-card/50 py-28">
+      <section className="bg-white py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <Badge variant="outline" className="mb-4">
+            <Badge className="mb-4 border-brand-amber/20 bg-brand-amber-light text-amber-800">
               How It Works
             </Badge>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
               Three steps to beautiful
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
@@ -185,21 +192,21 @@ export default function HomePage() {
       </section>
 
       {/* Popular Templates */}
-      <section className="border-t border-border/40 py-28">
+      <section className="bg-[#fafafa] py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between">
             <div>
-              <Badge variant="outline" className="mb-4">
+              <Badge className="mb-4 border-brand-blue/20 bg-brand-blue-light text-brand-blue">
                 Popular
               </Badge>
-              <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
+              <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
                 Trending templates
               </h2>
               <p className="mt-4 text-lg text-muted-foreground">
                 The most downloaded templates this month.
               </p>
             </div>
-            <Button asChild variant="ghost" className="hidden sm:flex">
+            <Button asChild variant="ghost" className="hidden text-brand-blue hover:text-brand-blue/80 hover:bg-brand-blue/5 sm:flex">
               <Link href="/browse">
                 View all <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
@@ -212,8 +219,8 @@ export default function HomePage() {
                 href={`/template/${template.id}`}
                 className="group"
               >
-                <div className="overflow-hidden rounded-xl border border-border/40 bg-card transition-all hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5">
-                  <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+                <div className="overflow-hidden rounded-xl bg-white shadow-sm transition-all hover:shadow-lg hover:shadow-brand-blue/5 hover:-translate-y-0.5">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-gray-50">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={template.preview_url || ""}
@@ -221,15 +228,15 @@ export default function HomePage() {
                       className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                     {template.price_tier === "pro" ? (
-                      <Badge className="absolute right-3 top-3">$2</Badge>
+                      <Badge className="absolute right-3 top-3 bg-brand-blue text-white shadow-sm">$2</Badge>
                     ) : (
-                      <Badge className="absolute right-3 top-3 bg-green-600 hover:bg-green-700">
+                      <Badge className="absolute right-3 top-3 bg-emerald-500 text-white shadow-sm hover:bg-emerald-600">
                         FREE
                       </Badge>
                     )}
                   </div>
                   <div className="p-5">
-                    <h3 className="font-semibold">{template.name}</h3>
+                    <h3 className="font-semibold text-foreground">{template.name}</h3>
                     <p className="mt-1 line-clamp-1 text-sm text-muted-foreground">
                       {template.description}
                     </p>
@@ -263,13 +270,13 @@ export default function HomePage() {
       </section>
 
       {/* Pricing Preview */}
-      <section className="border-t border-border/40 bg-card/50 py-28">
+      <section className="bg-white py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <Badge variant="outline" className="mb-4">
+            <Badge className="mb-4 border-brand-blue/20 bg-brand-blue-light text-brand-blue">
               Pricing
             </Badge>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
               Simple, transparent pricing
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
@@ -277,14 +284,14 @@ export default function HomePage() {
             </p>
           </div>
           <div className="mx-auto mt-16 grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-2">
-            <Card className="flex flex-col border-border/40">
+            <Card className="flex flex-col border-border/60 bg-white shadow-sm">
               <CardHeader>
-                <CardTitle className="text-xl">Free</CardTitle>
+                <CardTitle className="text-xl text-foreground">Free</CardTitle>
                 <CardDescription>
                   Try 3 templates at no cost
                 </CardDescription>
                 <div className="mt-4">
-                  <span className="text-5xl font-bold">$0</span>
+                  <span className="text-5xl font-bold text-foreground">$0</span>
                   <span className="text-muted-foreground"> forever</span>
                 </div>
               </CardHeader>
@@ -303,17 +310,19 @@ export default function HomePage() {
               </CardFooter>
             </Card>
 
-            <Card className="relative flex flex-col border-primary">
-              <Badge className="absolute -top-3 left-1/2 -translate-x-1/2">
-                Pay Per Template
-              </Badge>
+            <Card className="relative flex flex-col border-brand-blue bg-white shadow-lg shadow-brand-blue/10">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                <Badge className="bg-brand-blue text-white shadow-sm px-4">
+                  Pay Per Template
+                </Badge>
+              </div>
               <CardHeader>
-                <CardTitle className="text-xl">Premium</CardTitle>
+                <CardTitle className="text-xl text-foreground">Premium</CardTitle>
                 <CardDescription>
                   Buy only the templates you need
                 </CardDescription>
                 <div className="mt-4">
-                  <span className="text-5xl font-bold">$2</span>
+                  <span className="text-5xl font-bold text-foreground">$2</span>
                   <span className="text-muted-foreground"> per template</span>
                 </div>
               </CardHeader>
@@ -327,7 +336,7 @@ export default function HomePage() {
                 </ul>
               </CardContent>
               <CardFooter>
-                <Button className="w-full" asChild>
+                <Button className="w-full bg-brand-blue hover:bg-brand-blue/90 text-white shadow-sm" asChild>
                   <Link href="/browse">
                     Browse Templates <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
@@ -339,11 +348,12 @@ export default function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="border-t border-border/40 py-28">
+      <section className="bg-[#fafafa] py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-2xl border border-border/40 bg-card px-8 py-20 text-center sm:px-16">
-            <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
-            <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
+          <div className="relative overflow-hidden rounded-2xl bg-white px-8 py-20 text-center shadow-lg shadow-brand-blue/5 sm:px-16">
+            <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-blue/5 via-transparent to-transparent" />
+            <div className="absolute top-0 right-0 -z-10 h-40 w-40 rounded-full bg-brand-amber/10 blur-3xl" />
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
               Ready to build something beautiful?
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
@@ -351,7 +361,7 @@ export default function HomePage() {
               Bonito templates.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button asChild size="lg" className="h-12 px-8 text-base">
+              <Button asChild size="lg" className="h-12 px-8 text-base bg-brand-blue hover:bg-brand-blue/90 text-white shadow-md shadow-brand-blue/25">
                 <Link href="/browse">
                   Browse Templates <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -382,11 +392,11 @@ function FeatureCard({
   description: string;
 }) {
   return (
-    <div className="group rounded-xl border border-border/40 bg-card p-8 transition-colors hover:border-primary/30">
-      <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary/15">
+    <div className="group rounded-xl bg-white p-8 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5">
+      <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-brand-blue/10 text-brand-blue">
         {icon}
       </div>
-      <h3 className="text-lg font-semibold">{title}</h3>
+      <h3 className="text-lg font-semibold text-foreground">{title}</h3>
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
         {description}
       </p>
@@ -406,14 +416,14 @@ function StepCard({
   description: string;
 }) {
   return (
-    <div className="relative rounded-xl border border-border/40 bg-card p-8 text-center">
-      <span className="font-mono text-xs font-bold tracking-widest text-primary/50">
+    <div className="relative rounded-xl bg-white p-8 text-center shadow-sm">
+      <span className="font-mono text-xs font-bold tracking-widest text-brand-amber">
         STEP {step}
       </span>
-      <div className="mx-auto mt-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
+      <div className="mx-auto mt-4 flex h-14 w-14 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue">
         {icon}
       </div>
-      <h3 className="mt-5 text-lg font-semibold">{title}</h3>
+      <h3 className="mt-5 text-lg font-semibold text-foreground">{title}</h3>
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
         {description}
       </p>
@@ -423,8 +433,8 @@ function StepCard({
 
 function PricingFeature({ children }: { children: React.ReactNode }) {
   return (
-    <li className="flex items-center gap-3 text-sm">
-      <Check className="h-4 w-4 shrink-0 text-primary" />
+    <li className="flex items-center gap-3 text-sm text-foreground">
+      <Check className="h-4 w-4 shrink-0 text-brand-blue" />
       {children}
     </li>
   );

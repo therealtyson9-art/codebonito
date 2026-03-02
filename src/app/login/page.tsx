@@ -36,18 +36,19 @@ function LoginForm() {
         <div className="mb-8 text-center">
           <Link
             href="/"
-            className="inline-block text-3xl font-bold tracking-tight"
+            className="inline-flex items-center gap-0.5 text-3xl font-bold tracking-tight text-foreground"
           >
-            Code<span className="text-primary">Bonito</span>
+            Code<span className="text-brand-blue">Bonito</span>
+            <span className="ml-0.5 inline-block h-2 w-2 rounded-full bg-brand-amber" />
           </Link>
           <p className="mt-3 text-muted-foreground">
             Sign in to access premium templates
           </p>
         </div>
 
-        <Card className="border-border/40">
+        <Card className="border-border/60 bg-white shadow-lg shadow-black/5">
           <CardHeader className="pb-4 text-center">
-            <CardTitle className="text-xl">Welcome back</CardTitle>
+            <CardTitle className="text-xl text-foreground">Welcome back</CardTitle>
             <CardDescription>
               Choose your preferred sign-in method
             </CardDescription>
@@ -60,7 +61,7 @@ function LoginForm() {
           <CardContent className="flex flex-col gap-3">
             <Button
               variant="outline"
-              className="h-12 w-full text-sm"
+              className="h-12 w-full text-sm border-border/60 bg-gray-900 text-white hover:bg-gray-800 hover:text-white"
               onClick={() => signInWithProvider("github")}
             >
               <svg
@@ -74,7 +75,7 @@ function LoginForm() {
             </Button>
             <Button
               variant="outline"
-              className="h-12 w-full text-sm"
+              className="h-12 w-full text-sm border-border/60 bg-white hover:bg-gray-50"
               onClick={() => signInWithProvider("google")}
             >
               <svg className="mr-2.5 h-5 w-5" viewBox="0 0 24 24">
@@ -100,7 +101,7 @@ function LoginForm() {
 
             <div className="relative my-2">
               <Separator />
-              <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-card px-3 text-xs text-muted-foreground">
+              <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-3 text-xs text-muted-foreground">
                 or
               </span>
             </div>
@@ -112,12 +113,12 @@ function LoginForm() {
         </Card>
 
         <div className="mt-6 flex items-center justify-center gap-2 text-sm text-muted-foreground">
-          <Sparkles className="h-3.5 w-3.5" />
+          <Sparkles className="h-3.5 w-3.5 text-brand-amber" />
           <span>
             Get{" "}
             <Link
               href="/pricing"
-              className="font-medium text-primary hover:underline"
+              className="font-medium text-brand-blue hover:underline"
             >
               Pro for $5/mo
             </Link>{" "}

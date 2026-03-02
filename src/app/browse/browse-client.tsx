@@ -54,7 +54,7 @@ export function BrowseClient({ templates }: { templates: Template[] }) {
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       {/* Header */}
       <div className="mb-10">
-        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+        <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
           Browse Templates
         </h1>
         <p className="mt-3 text-lg text-muted-foreground">
@@ -72,12 +72,12 @@ export function BrowseClient({ templates }: { templates: Template[] }) {
               placeholder="Search templates..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="pl-10"
+              className="pl-10 bg-white border-border/60"
             />
           </div>
           <div className="flex gap-3">
             <Select value={category} onValueChange={setCategory}>
-              <SelectTrigger className="w-full sm:w-[160px]">
+              <SelectTrigger className="w-full bg-white border-border/60 sm:w-[160px]">
                 <SelectValue placeholder="Category" />
               </SelectTrigger>
               <SelectContent>
@@ -90,7 +90,7 @@ export function BrowseClient({ templates }: { templates: Template[] }) {
               </SelectContent>
             </Select>
             <Select value={style} onValueChange={setStyle}>
-              <SelectTrigger className="w-full sm:w-[160px]">
+              <SelectTrigger className="w-full bg-white border-border/60 sm:w-[160px]">
                 <SelectValue placeholder="Style" />
               </SelectTrigger>
               <SelectContent>
@@ -103,7 +103,7 @@ export function BrowseClient({ templates }: { templates: Template[] }) {
               </SelectContent>
             </Select>
             <Select value={priceTier} onValueChange={setPriceTier}>
-              <SelectTrigger className="w-full sm:w-[130px]">
+              <SelectTrigger className="w-full bg-white border-border/60 sm:w-[130px]">
                 <SelectValue placeholder="Price" />
               </SelectTrigger>
               <SelectContent>
@@ -138,10 +138,10 @@ export function BrowseClient({ templates }: { templates: Template[] }) {
       {/* Results */}
       {filtered.length === 0 ? (
         <div className="flex flex-col items-center py-24 text-center">
-          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-muted">
+          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-secondary">
             <Search className="h-7 w-7 text-muted-foreground" />
           </div>
-          <h3 className="mt-6 text-lg font-semibold">No templates found</h3>
+          <h3 className="mt-6 text-lg font-semibold text-foreground">No templates found</h3>
           <p className="mt-2 max-w-sm text-sm text-muted-foreground">
             Try adjusting your search or filters to find what you&apos;re
             looking for.
@@ -159,7 +159,7 @@ export function BrowseClient({ templates }: { templates: Template[] }) {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="mt-2"
+                  className="mt-2 border-border/60 hover:bg-brand-blue/5 hover:text-brand-blue"
                   asChild
                 >
                   <Link

@@ -100,7 +100,7 @@ export default function TemplateDetailPage({
   if (loading) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+        <Loader2 className="h-8 w-8 animate-spin text-brand-blue" />
       </div>
     );
   }
@@ -109,11 +109,11 @@ export default function TemplateDetailPage({
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold">Template not found</h1>
+          <h1 className="text-2xl font-bold text-foreground">Template not found</h1>
           <p className="mt-2 text-muted-foreground">
             The template you&apos;re looking for doesn&apos;t exist.
           </p>
-          <Button asChild className="mt-6">
+          <Button asChild className="mt-6 bg-brand-blue hover:bg-brand-blue/90 text-white">
             <Link href="/browse">Back to Browse</Link>
           </Button>
         </div>
@@ -224,15 +224,15 @@ export default function TemplateDetailPage({
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       {/* Auth modal overlay */}
       {showAuthModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-          <div className="mx-4 w-full max-w-md rounded-xl border border-border bg-card p-8 shadow-2xl">
-            <h3 className="text-xl font-bold">Sign up free to copy</h3>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+          <div className="mx-4 w-full max-w-md rounded-xl border border-border/60 bg-white p-8 shadow-2xl">
+            <h3 className="text-xl font-bold text-foreground">Sign up free to copy</h3>
             <p className="mt-2 text-sm text-muted-foreground">
               Create a free account to purchase and copy premium template
               prompts.
             </p>
             <div className="mt-6 flex gap-3">
-              <Button asChild className="flex-1">
+              <Button asChild className="flex-1 bg-brand-blue hover:bg-brand-blue/90 text-white">
                 <Link href={`/login?redirect=/template/${template.id}`}>
                   Sign Up Free
                 </Link>
@@ -252,7 +252,7 @@ export default function TemplateDetailPage({
       {/* Back nav */}
       <Link
         href="/browse"
-        className="mb-8 inline-flex items-center text-sm text-muted-foreground transition-colors hover:text-foreground"
+        className="mb-8 inline-flex items-center text-sm text-muted-foreground transition-colors hover:text-brand-blue"
       >
         <ArrowLeft className="mr-2 h-4 w-4" />
         Back to Browse
@@ -265,7 +265,7 @@ export default function TemplateDetailPage({
             const demoUrl = getDemoUrl(template.slug);
             if (demoUrl) {
               return (
-                <div className="relative overflow-hidden rounded-xl border border-border/40">
+                <div className="relative overflow-hidden rounded-xl bg-white shadow-lg shadow-black/5">
                   <div className="relative w-full overflow-hidden rounded-t-xl bg-white" style={{ height: "450px" }}>
                     <iframe
                       src={demoUrl}
@@ -278,7 +278,7 @@ export default function TemplateDetailPage({
                     href={demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block border-t border-border/40 bg-card/50 px-4 py-2 text-center text-xs text-muted-foreground transition-colors hover:text-foreground"
+                    className="block border-t border-border/40 bg-gray-50 px-4 py-2 text-center text-xs text-muted-foreground transition-colors hover:text-brand-blue"
                   >
                     Open full preview ↗
                   </a>
@@ -286,9 +286,9 @@ export default function TemplateDetailPage({
               );
             }
             return (
-              <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-border/40 bg-muted">
+              <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-gray-50 shadow-lg shadow-black/5">
                 <Image
-                  src={template.preview_url || "https://placehold.co/800x600/1a1a1a/e0e0e0?text=Preview"}
+                  src={template.preview_url || "https://placehold.co/800x600/f3f4f6/6b7280?text=Preview"}
                   alt={template.name}
                   fill
                   className="object-cover"
@@ -300,12 +300,12 @@ export default function TemplateDetailPage({
 
           {/* Platform Tabs + Prompt Preview */}
           <div className="mt-8">
-            <h3 className="mb-4 text-lg font-semibold">
+            <h3 className="mb-4 text-lg font-semibold text-foreground">
               Personalize Your Prompt
             </h3>
 
             {/* Customization Form */}
-            <div className="mb-6 space-y-3 rounded-lg border border-border/40 bg-card p-4">
+            <div className="mb-6 space-y-3 rounded-xl bg-white p-5 shadow-sm">
               <div>
                 <label className="mb-1 block text-xs font-medium text-muted-foreground">
                   Business Name
@@ -317,7 +317,7 @@ export default function TemplateDetailPage({
                   onChange={(e) =>
                     setCustomization((prev) => ({ ...prev, businessName: e.target.value }))
                   }
-                  className="w-full rounded-md border border-border/40 bg-background px-3 py-2 text-sm placeholder:text-muted-foreground/50 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                  className="w-full rounded-lg border border-border/60 bg-white px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20"
                 />
               </div>
               <div>
@@ -331,7 +331,7 @@ export default function TemplateDetailPage({
                   onChange={(e) =>
                     setCustomization((prev) => ({ ...prev, businessDescription: e.target.value }))
                   }
-                  className="w-full rounded-md border border-border/40 bg-background px-3 py-2 text-sm placeholder:text-muted-foreground/50 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                  className="w-full rounded-lg border border-border/60 bg-white px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20"
                 />
               </div>
             </div>
@@ -341,14 +341,14 @@ export default function TemplateDetailPage({
             </h4>
 
             {/* Tabs */}
-            <div className="flex flex-wrap gap-1 rounded-lg border border-border/40 bg-muted/50 p-1">
+            <div className="flex flex-wrap gap-1 rounded-xl bg-gray-100 p-1">
               {template.platforms.map((platform) => (
                 <button
                   key={platform}
                   onClick={() => setActivePlatform(platform)}
-                  className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
+                  className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-all ${
                     activePlatform === platform
-                      ? "bg-background text-foreground shadow-sm"
+                      ? "bg-white text-foreground shadow-sm"
                       : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
@@ -358,7 +358,7 @@ export default function TemplateDetailPage({
             </div>
 
             {/* Prompt Preview */}
-            <div className="relative mt-4 rounded-lg border border-border/40 bg-card">
+            <div className="relative mt-4 overflow-hidden rounded-xl bg-gray-50 shadow-sm">
               <div className="max-h-48 overflow-hidden p-4">
                 <pre className="whitespace-pre-wrap font-mono text-xs leading-relaxed text-muted-foreground">
                   {canCopy
@@ -369,7 +369,7 @@ export default function TemplateDetailPage({
 
               {/* Blur overlay for paid unpurchased */}
               {!canCopy && (
-                <div className="absolute inset-0 flex items-end rounded-lg bg-gradient-to-t from-card via-card/95 to-transparent">
+                <div className="absolute inset-0 flex items-end rounded-xl bg-gradient-to-t from-gray-50 via-gray-50/95 to-transparent">
                   <div className="w-full p-4 text-center">
                     <Lock className="mx-auto mb-2 h-5 w-5 text-muted-foreground" />
                     <p className="text-sm text-muted-foreground">
@@ -383,7 +383,7 @@ export default function TemplateDetailPage({
             {/* Action Button */}
             <div className="mt-4">
               {isFree ? (
-                <Button className="w-full" onClick={handleCopy}>
+                <Button className="w-full bg-brand-blue hover:bg-brand-blue/90 text-white shadow-sm" onClick={handleCopy}>
                   {copiedPlatform === activePlatform ? (
                     <>
                       <Check className="mr-2 h-4 w-4" />
@@ -399,14 +399,14 @@ export default function TemplateDetailPage({
                 </Button>
               ) : !user && !checkingPurchase ? (
                 <Button
-                  className="w-full"
+                  className="w-full bg-brand-blue hover:bg-brand-blue/90 text-white shadow-sm"
                   onClick={() => setShowAuthModal(true)}
                 >
                   <Lock className="mr-2 h-4 w-4" />
                   Sign up free to copy
                 </Button>
               ) : purchased ? (
-                <Button className="w-full" onClick={handleCopy}>
+                <Button className="w-full bg-brand-blue hover:bg-brand-blue/90 text-white shadow-sm" onClick={handleCopy}>
                   {copiedPlatform === activePlatform ? (
                     <>
                       <Check className="mr-2 h-4 w-4" />
@@ -422,7 +422,7 @@ export default function TemplateDetailPage({
                 </Button>
               ) : !checkingPurchase ? (
                 <Button
-                  className="w-full"
+                  className="w-full bg-brand-blue hover:bg-brand-blue/90 text-white shadow-sm"
                   onClick={handlePurchase}
                   disabled={purchasing}
                 >
@@ -441,7 +441,7 @@ export default function TemplateDetailPage({
               <button
                 onClick={handleDownload}
                 disabled={downloading}
-                className="mt-3 flex w-full items-center justify-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                className="mt-3 flex w-full items-center justify-center gap-2 text-sm text-muted-foreground transition-colors hover:text-brand-blue"
               >
                 {downloading ? (
                   <Loader2 className="h-3.5 w-3.5 animate-spin" />
@@ -461,24 +461,24 @@ export default function TemplateDetailPage({
             <div>
               <div className="flex items-center gap-2">
                 {isFree ? (
-                  <Badge className="bg-green-600 hover:bg-green-700">
+                  <Badge className="bg-emerald-500 text-white hover:bg-emerald-600">
                     FREE
                   </Badge>
                 ) : (
-                  <Badge>$2</Badge>
+                  <Badge className="bg-brand-blue text-white">$2</Badge>
                 )}
                 <Badge variant="outline">{template.category}</Badge>
                 {template.style && (
                   <Badge variant="outline">{template.style}</Badge>
                 )}
               </div>
-              <h1 className="mt-4 text-3xl font-bold tracking-tight">
+              <h1 className="mt-4 text-3xl font-bold tracking-tight text-foreground">
                 {template.name}
               </h1>
               {purchased && !isFree && (
                 <Badge
                   variant="secondary"
-                  className="mt-2 bg-green-600/10 text-green-400"
+                  className="mt-2 bg-emerald-50 text-emerald-700 border border-emerald-200"
                 >
                   <Check className="mr-1 h-3 w-3" />
                   Purchased
@@ -517,21 +517,21 @@ export default function TemplateDetailPage({
 
               {/* Stats */}
               <div className="grid grid-cols-2 gap-3">
-                <div className="rounded-lg border border-border/40 bg-card p-3">
+                <div className="rounded-xl bg-white p-4 shadow-sm">
                   <div className="flex items-center gap-2 text-muted-foreground">
-                    <Download className="h-4 w-4" />
+                    <Download className="h-4 w-4 text-brand-blue" />
                     <span className="text-xs">Downloads</span>
                   </div>
-                  <p className="mt-1 text-lg font-semibold">
+                  <p className="mt-1 text-lg font-semibold text-foreground">
                     {template.downloads_count.toLocaleString()}
                   </p>
                 </div>
-                <div className="rounded-lg border border-border/40 bg-card p-3">
+                <div className="rounded-xl bg-white p-4 shadow-sm">
                   <div className="flex items-center gap-2 text-muted-foreground">
-                    <Calendar className="h-4 w-4" />
+                    <Calendar className="h-4 w-4 text-brand-amber" />
                     <span className="text-xs">Updated</span>
                   </div>
-                  <p className="mt-1 text-lg font-semibold">
+                  <p className="mt-1 text-lg font-semibold text-foreground">
                     {new Date(template.updated_at).toLocaleDateString("en-US", {
                       month: "short",
                       year: "numeric",
@@ -548,10 +548,10 @@ export default function TemplateDetailPage({
       {relatedTemplates.length > 0 && (
         <div className="mt-20">
           <div className="flex items-center justify-between">
-            <h2 className="text-xl font-bold">
+            <h2 className="text-xl font-bold text-foreground">
               More {template.category} templates
             </h2>
-            <Button asChild variant="ghost" size="sm">
+            <Button asChild variant="ghost" size="sm" className="text-brand-blue hover:text-brand-blue/80 hover:bg-brand-blue/5">
               <Link href="/browse">
                 View all <ArrowRight className="ml-1 h-3.5 w-3.5" />
               </Link>
@@ -564,12 +564,12 @@ export default function TemplateDetailPage({
                 href={`/template/${related.id}`}
                 className="group"
               >
-                <div className="overflow-hidden rounded-xl border border-border/40 bg-card transition-all hover:border-primary/50">
-                  <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+                <div className="overflow-hidden rounded-xl bg-white shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-gray-50">
                     <Image
                       src={
                         related.preview_url ||
-                        "https://placehold.co/800x600/1a1a1a/e0e0e0?text=Preview"
+                        "https://placehold.co/800x600/f3f4f6/6b7280?text=Preview"
                       }
                       alt={related.name}
                       fill
@@ -578,7 +578,7 @@ export default function TemplateDetailPage({
                     />
                   </div>
                   <div className="p-4">
-                    <h3 className="font-semibold">{related.name}</h3>
+                    <h3 className="font-semibold text-foreground">{related.name}</h3>
                     <p className="mt-1 line-clamp-1 text-sm text-muted-foreground">
                       {related.description}
                     </p>

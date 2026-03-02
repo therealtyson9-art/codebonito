@@ -14,9 +14,9 @@ import type { Template } from "@/types/database";
 export function TemplateCard({ template }: { template: Template }) {
   return (
     <Link href={`/template/${template.id}`}>
-      <Card className="group overflow-hidden transition-all hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5">
+      <Card className="group overflow-hidden border-border/60 bg-white shadow-sm transition-all hover:shadow-lg hover:shadow-brand-blue/5 hover:-translate-y-0.5">
         <CardHeader className="p-0">
-          <div className="relative aspect-[16/10] overflow-hidden bg-white">
+          <div className="relative aspect-[16/10] overflow-hidden bg-gray-50">
             {(() => {
               const demoUrl = getDemoUrl(template.slug);
               if (demoUrl) {
@@ -33,7 +33,7 @@ export function TemplateCard({ template }: { template: Template }) {
               }
               return (
                 <Image
-                  src={template.preview_url || "https://placehold.co/800x600/1a1a1a/e0e0e0?text=Preview"}
+                  src={template.preview_url || "https://placehold.co/800x600/f3f4f6/6b7280?text=Preview"}
                   alt={template.name}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -42,12 +42,12 @@ export function TemplateCard({ template }: { template: Template }) {
               );
             })()}
             {template.price_tier === "pro" ? (
-              <Badge className="absolute right-3 top-3 font-mono text-[10px] tracking-wider">
+              <Badge className="absolute right-3 top-3 bg-brand-blue text-white font-mono text-[10px] tracking-wider shadow-sm">
                 $2
               </Badge>
             ) : (
               <Badge
-                className="absolute right-3 top-3 bg-green-600 font-mono text-[10px] tracking-wider hover:bg-green-700"
+                className="absolute right-3 top-3 bg-emerald-500 text-white font-mono text-[10px] tracking-wider shadow-sm hover:bg-emerald-600"
               >
                 FREE
               </Badge>
@@ -56,7 +56,7 @@ export function TemplateCard({ template }: { template: Template }) {
         </CardHeader>
         <CardContent className="p-4">
           <div className="flex items-start justify-between gap-2">
-            <h3 className="font-semibold leading-snug">{template.name}</h3>
+            <h3 className="font-semibold leading-snug text-foreground">{template.name}</h3>
             <div className="flex items-center gap-1 text-xs text-muted-foreground">
               <Download className="h-3 w-3" />
               {template.downloads_count.toLocaleString()}
@@ -66,7 +66,7 @@ export function TemplateCard({ template }: { template: Template }) {
             {template.description}
           </p>
         </CardContent>
-        <CardFooter className="flex items-center justify-between border-t px-4 py-3">
+        <CardFooter className="flex items-center justify-between border-t border-border/40 px-4 py-3">
           <div className="flex gap-1.5">
             <Badge variant="secondary" className="text-xs">
               {template.category}

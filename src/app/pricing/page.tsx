@@ -11,7 +11,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
 import { Check, X, ArrowRight } from "lucide-react";
 import { PLANS } from "@/lib/stripe";
 
@@ -43,10 +42,10 @@ export default function PricingPage() {
     <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
       {/* Header */}
       <div className="mx-auto max-w-3xl text-center">
-        <Badge variant="outline" className="mb-4">
+        <Badge className="mb-4 border-brand-blue/20 bg-brand-blue-light text-brand-blue">
           Pricing
         </Badge>
-        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
+        <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl">
           Simple, transparent pricing
         </h1>
         <p className="mt-6 text-lg text-muted-foreground">
@@ -58,14 +57,14 @@ export default function PricingPage() {
       {/* Pricing Cards */}
       <div className="mx-auto mt-20 grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-2">
         {/* Free Plan */}
-        <Card className="flex flex-col border-border/40">
+        <Card className="flex flex-col border-border/60 bg-white shadow-sm">
           <CardHeader className="pb-4">
-            <CardTitle className="text-2xl">{PLANS.free.name}</CardTitle>
+            <CardTitle className="text-2xl text-foreground">{PLANS.free.name}</CardTitle>
             <CardDescription className="text-base">
               {PLANS.free.description}
             </CardDescription>
             <div className="mt-6">
-              <span className="text-6xl font-bold tracking-tight">$0</span>
+              <span className="text-6xl font-bold tracking-tight text-foreground">$0</span>
               <span className="ml-1 text-lg text-muted-foreground">
                 /month
               </span>
@@ -88,17 +87,19 @@ export default function PricingPage() {
         </Card>
 
         {/* Pro Plan */}
-        <Card className="relative flex flex-col border-primary shadow-lg shadow-primary/5">
-          <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 px-4">
-            Most Popular
-          </Badge>
+        <Card className="relative flex flex-col border-brand-blue bg-white shadow-lg shadow-brand-blue/10">
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+            <Badge className="bg-brand-amber text-amber-900 shadow-sm px-4 hover:bg-brand-amber">
+              Most Popular
+            </Badge>
+          </div>
           <CardHeader className="pb-4">
-            <CardTitle className="text-2xl">{PLANS.pro.name}</CardTitle>
+            <CardTitle className="text-2xl text-foreground">{PLANS.pro.name}</CardTitle>
             <CardDescription className="text-base">
               {PLANS.pro.description}
             </CardDescription>
             <div className="mt-6">
-              <span className="text-6xl font-bold tracking-tight">
+              <span className="text-6xl font-bold tracking-tight text-foreground">
                 ${PLANS.pro.price}
               </span>
               <span className="ml-1 text-lg text-muted-foreground">
@@ -119,7 +120,7 @@ export default function PricingPage() {
             </ul>
           </CardContent>
           <CardFooter className="pt-6">
-            <Button className="w-full h-12 text-base" onClick={handleCheckout}>
+            <Button className="w-full h-12 text-base bg-brand-blue hover:bg-brand-blue/90 text-white shadow-sm" onClick={handleCheckout}>
               Get Pro <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </CardFooter>
@@ -128,21 +129,21 @@ export default function PricingPage() {
 
       {/* Feature Comparison */}
       <div className="mx-auto mt-28 max-w-3xl">
-        <h2 className="text-center text-2xl font-bold tracking-tight sm:text-3xl">
+        <h2 className="text-center text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
           Feature comparison
         </h2>
         <p className="mt-3 text-center text-muted-foreground">
           Everything included at a glance.
         </p>
 
-        <div className="mt-12 overflow-hidden rounded-xl border border-border/40">
+        <div className="mt-12 overflow-hidden rounded-xl bg-white shadow-sm">
           {/* Table Header */}
-          <div className="grid grid-cols-3 border-b border-border/40 bg-card/80 px-6 py-4">
+          <div className="grid grid-cols-3 border-b border-border/40 bg-gray-50 px-6 py-4">
             <div className="text-sm font-medium text-muted-foreground">
               Feature
             </div>
-            <div className="text-center text-sm font-medium">Free</div>
-            <div className="text-center text-sm font-medium text-primary">
+            <div className="text-center text-sm font-medium text-foreground">Free</div>
+            <div className="text-center text-sm font-medium text-brand-blue">
               Pro
             </div>
           </div>
@@ -157,27 +158,27 @@ export default function PricingPage() {
                   : ""
               }`}
             >
-              <div className="text-sm">{feature.name}</div>
+              <div className="text-sm text-foreground">{feature.name}</div>
               <div className="flex justify-center">
                 {typeof feature.free === "boolean" ? (
                   feature.free ? (
-                    <Check className="h-4 w-4 text-primary" />
+                    <Check className="h-4 w-4 text-brand-blue" />
                   ) : (
-                    <X className="h-4 w-4 text-muted-foreground/40" />
+                    <X className="h-4 w-4 text-gray-300" />
                   )
                 ) : (
-                  <span className="text-sm">{feature.free}</span>
+                  <span className="text-sm text-foreground">{feature.free}</span>
                 )}
               </div>
               <div className="flex justify-center">
                 {typeof feature.pro === "boolean" ? (
                   feature.pro ? (
-                    <Check className="h-4 w-4 text-primary" />
+                    <Check className="h-4 w-4 text-brand-blue" />
                   ) : (
-                    <X className="h-4 w-4 text-muted-foreground/40" />
+                    <X className="h-4 w-4 text-gray-300" />
                   )
                 ) : (
-                  <span className="text-sm font-medium text-primary">
+                  <span className="text-sm font-medium text-brand-blue">
                     {feature.pro}
                   </span>
                 )}
@@ -189,15 +190,15 @@ export default function PricingPage() {
 
       {/* FAQ */}
       <div className="mx-auto mt-28 max-w-2xl text-center">
-        <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+        <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
           Questions?
         </h2>
         <p className="mt-4 text-muted-foreground">
-          Can I cancel anytime? <span className="text-foreground">Yes.</span>{" "}
+          Can I cancel anytime? <span className="font-medium text-foreground">Yes.</span>{" "}
           Are updates included?{" "}
-          <span className="text-foreground">Always.</span> Can I use templates
+          <span className="font-medium text-foreground">Always.</span> Can I use templates
           commercially?{" "}
-          <span className="text-foreground">Absolutely.</span>
+          <span className="font-medium text-foreground">Absolutely.</span>
         </p>
         <Button asChild variant="outline" className="mt-8">
           <Link href="/browse">
@@ -211,8 +212,8 @@ export default function PricingPage() {
 
 function PricingFeature({ children }: { children: React.ReactNode }) {
   return (
-    <li className="flex items-center gap-3 text-sm">
-      <Check className="h-4 w-4 shrink-0 text-primary" />
+    <li className="flex items-center gap-3 text-sm text-foreground">
+      <Check className="h-4 w-4 shrink-0 text-brand-blue" />
       {children}
     </li>
   );
