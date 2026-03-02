@@ -41,6 +41,7 @@ export function generatePrompt(
     bolt: "\n\n## Bolt Instructions\n- Complete React + Tailwind application\n- Include routing if needed\n- Interactive elements and animations\n- Deployment-ready",
     lovable: "\n\n## Lovable Instructions\n- React + Tailwind + shadcn/ui\n- Clean, maintainable code\n- Smooth transitions and hover states\n- Responsive design",
     "claude-code": "\n\n## Claude Code Instructions\n- Next.js app with TypeScript + Tailwind\n- Proper file structure and types\n- Error handling included\n- Production-ready",
+    "openclaw-agent": "\n\n## Instructions for Your AI Agent\nTell your agent exactly this — they will know what to do:\n\nBuild me a complete, beautiful website. Deploy it to Vercel when done.\nMake it responsive (works on phone and desktop).\nUse Next.js with Tailwind CSS.\nInclude all the sections: navigation, hero, features, testimonials, call-to-action, and footer.\nDon't use placeholder text — write real copy that sounds professional.\nMake sure it looks polished and ready to show clients.",
   };
 
   return base + (extras[platform] || "");

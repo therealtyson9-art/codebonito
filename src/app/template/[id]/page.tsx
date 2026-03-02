@@ -29,6 +29,7 @@ const PLATFORM_LABELS: Record<string, string> = {
   bolt: "Bolt",
   lovable: "Lovable",
   "claude-code": "Claude Code",
+  "openclaw-agent": "AI Agent (OpenClaw)",
 };
 
 export default function TemplateDetailPage({
