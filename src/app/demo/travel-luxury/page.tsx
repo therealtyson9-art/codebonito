@@ -1,148 +1,161 @@
 export default function TravelLuxuryDemo() {
+  const destinations = [
+    { name: 'Santorini, Greece', desc: 'Cliffside suites overlooking the caldera. Private sunset yacht cruises and wine cave tastings.', from: '$4,200/night' },
+    { name: 'Kyoto, Japan', desc: 'Historic ryokan stays with kaiseki dining. Temple gardens, geisha districts, and bamboo forest walks.', from: '$3,800/night' },
+    { name: 'Patagonia, Chile', desc: 'Remote luxury lodges at the edge of the world. Glacier treks, horseback rides, and stargazing.', from: '$5,100/night' },
+  ]
   const experiences = [
-    { name: "Private Island Retreat", location: "Maldives", desc: "Your own island, your own staff, your own timeline. Crystal lagoons, overwater pavilions, and absolute seclusion in the Indian Ocean.", duration: "7 nights", from: "$18,500" },
-    { name: "Great Migration Safari", location: "Tanzania & Kenya", desc: "Witness the wildebeest crossing from a private tented camp. Expert naturalist guides, bush dinners, and helicopter transfers between reserves.", duration: "10 nights", from: "$24,000" },
-    { name: "Mediterranean Yacht Charter", location: "French Riviera & Sardinia", desc: "A 40-meter yacht, a Michelin-trained chef, and the bluest water in Europe. Port-hop from Saint-Tropez to Porto Cervo at your own pace.", duration: "8 nights", from: "$32,000" },
-    { name: "Alpine Retreat", location: "Swiss Alps", desc: "A private chalet above Zermatt with panoramic Matterhorn views, a personal ski guide, spa treatments, and fondue by firelight.", duration: "5 nights", from: "$12,800" },
+    { icon: '🛥️', label: 'Private Yachts' },
+    { icon: '🍷', label: 'Wine & Dine' },
+    { icon: '🏔️', label: 'Adventure' },
+    { icon: '🧖', label: 'Spa & Wellness' },
+    { icon: '🎭', label: 'Cultural Tours' },
+    { icon: '✈️', label: 'Private Aviation' },
   ]
-  const accommodations = [
-    { name: "Aman Tokyo", location: "Tokyo, Japan", rate: "$1,450", desc: "Minimalist elegance in the heart of Otemachi. Floor-to-ceiling windows frame the Imperial Palace gardens and the city skyline beyond." },
-    { name: "Singita Sabora", location: "Serengeti, Tanzania", rate: "$2,800", desc: "A 1920s explorer-style tented camp where the Serengeti plains stretch endlessly from your private veranda. All-inclusive with twice-daily game drives." },
-    { name: "Claridge's Suite", location: "London, England", rate: "$3,200", desc: "Art Deco grandeur in Mayfair. Butler service, a private drawing room, and a legacy of hosting royalty since 1856." },
+  const stories = [
+    { quote: 'Meridian curated a once-in-a-lifetime anniversary trip through Japan. Every detail was flawless — from the private tea ceremony in Kyoto to the helicopter transfer to our ryokan.', author: 'Catherine & Edward L.', trip: 'Japan, 14 nights' },
+    { quote: 'We have traveled with Meridian three times now and each experience has surpassed the last. They understand luxury is not about excess — it is about intention.', author: 'The Harrington Family', trip: 'Patagonia, 10 nights' },
   ]
-  const services = [
-    { name: "Itinerary Design", desc: "Every journey is built from the ground up by our travel architects, tailored to your tastes, pace, and passions." },
-    { name: "Private Aviation", desc: "Charter flights, helicopter transfers, and seamless connections arranged with our network of vetted operators." },
-    { name: "Dining Reservations", desc: "Secured tables at the world's most exclusive restaurants, from three-star Michelin to hidden local gems." },
-    { name: "24/7 On-Trip Support", desc: "A dedicated concierge reachable around the clock, from rebooking a connection to arranging a last-minute spa." },
-  ]
-  const testimonials = [
-    { name: "Victoria & Edward H.", trip: "Maldives Private Island", text: "Aurelius does not arrange vacations -- they create alternate realities. Our island retreat was the single most extraordinary week of our lives." },
-    { name: "Rajan M.", trip: "Serengeti Safari", text: "I have traveled extensively, and nothing has come close to the level of access and intimacy Aurelius provided on the migration safari." },
-    { name: "Isabelle D.", trip: "Mediterranean Yacht", text: "The attention to detail was staggering. Our chef remembered my daughter's allergy from the intake form and every port stop was perfectly timed." },
-  ]
+  const partners = ['Four Seasons', 'Aman Resorts', 'Belmond', 'One&Only', 'Rosewood', 'Six Senses']
+
   return (
-    <div className="min-h-screen text-stone-300" style={{ fontFamily: "'Playfair Display', serif", backgroundColor: "#0a0a0f" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
-      <nav className="border-b border-white/10">
-        <div className="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between">
-          <span className="text-2xl font-medium tracking-wide" style={{ color: "#d4af37" }}>AURELIUS</span>
-          <div className="hidden md:flex space-x-10">
-            <span className="text-xs tracking-[0.2em] uppercase cursor-pointer text-stone-500 hover:text-white transition-colors" style={{ fontFamily: "Inter, sans-serif" }}>Experiences</span>
-            <span className="text-xs tracking-[0.2em] uppercase cursor-pointer text-stone-500 hover:text-white transition-colors" style={{ fontFamily: "Inter, sans-serif" }}>Accommodations</span>
-            <span className="text-xs tracking-[0.2em] uppercase cursor-pointer text-stone-500 hover:text-white transition-colors" style={{ fontFamily: "Inter, sans-serif" }}>Services</span>
+    <div className="min-h-screen" style={{ backgroundColor: '#1a1a2e', fontFamily: "'Montserrat', sans-serif", color: '#eae0d5' }}>
+      <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+      {/* Nav — overlay, uppercase */}
+      <nav className="absolute top-0 left-0 right-0 z-50">
+        <div className="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
+          <span className="text-lg tracking-[0.2em] uppercase" style={{ fontFamily: "'Cormorant Garamond', serif", color: '#c9b037' }}>Meridian</span>
+          <div className="hidden md:flex items-center gap-10">
+            {['Destinations', 'Experiences', 'Our Story', 'Inquire'].map(link => (
+              <a key={link} href="#" className="text-xs uppercase tracking-[0.15em] transition hover:opacity-70" style={{ color: '#eae0d5' }}>{link}</a>
+            ))}
           </div>
-          <button className="h-10 px-8 text-xs tracking-[0.2em] uppercase border transition-all" style={{ fontFamily: "Inter, sans-serif", color: "#d4af37", borderColor: "#d4af3750" }}>Inquire</button>
         </div>
       </nav>
-      <section className="max-w-4xl mx-auto px-4 py-36 text-center">
-        <div className="text-xs tracking-[0.4em] uppercase mb-8" style={{ fontFamily: "Inter, sans-serif", color: "#d4af3780" }}>Private Travel Concierge</div>
-        <h1 className="text-6xl font-medium text-white leading-tight">Bespoke journeys for the<br/><em style={{ color: "#d4af37" }}>discerning</em> traveler</h1>
-        <p className="text-lg text-stone-500 max-w-lg mx-auto mt-8 font-light" style={{ fontFamily: "Inter, sans-serif" }}>We do not sell trips. We design experiences for those who expect nothing less than extraordinary.</p>
-        <button className="mt-10 h-14 px-16 text-xs tracking-[0.2em] uppercase transition-all" style={{ fontFamily: "Inter, sans-serif", backgroundColor: "#d4af37", color: "#0a0a0f" }}>Begin Your Journey</button>
-      </section>
-      <section className="border-t border-white/5">
-        <div className="max-w-6xl mx-auto px-4 py-24">
-          <div className="text-center mb-16">
-            <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ fontFamily: "Inter, sans-serif", color: "#d4af37" }}>Curated Experiences</p>
-            <h2 className="text-4xl font-medium text-white">Signature Journeys</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {experiences.map((e) => (
-              <div key={e.name} className="border border-white/10 p-8 hover:border-white/20 transition-colors">
-                <p className="text-xs tracking-[0.2em] uppercase mb-4" style={{ fontFamily: "Inter, sans-serif", color: "#d4af37" }}>{e.location}</p>
-                <h3 className="text-2xl font-medium text-white mb-3">{e.name}</h3>
-                <p className="text-sm text-stone-500 mb-6 leading-relaxed" style={{ fontFamily: "Inter, sans-serif" }}>{e.desc}</p>
-                <div className="flex items-center justify-between border-t border-white/5 pt-4">
-                  <span className="text-xs text-stone-600" style={{ fontFamily: "Inter, sans-serif" }}>{e.duration}</span>
-                  <span className="text-sm" style={{ color: "#d4af37" }}>From {e.from}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+
+      {/* Hero — full viewport, thin gold border */}
+      <section className="relative min-h-screen flex items-center justify-center text-center px-6" style={{ background: 'linear-gradient(180deg, #1a1a2e 0%, #16213e 100%)' }}>
+        <div className="absolute inset-6 md:inset-12 border" style={{ borderColor: '#c9b03730' }} />
+        <div className="relative z-10 max-w-3xl">
+          <p className="text-xs uppercase tracking-[0.3em] mb-8" style={{ color: '#c9b037' }}>Bespoke Luxury Travel</p>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl leading-tight mb-8" style={{ fontFamily: "'Cormorant Garamond', serif", color: '#eae0d5' }}>
+            Travel Beyond<br />the Ordinary
+          </h1>
+          <p className="text-sm max-w-lg mx-auto mb-10 font-light leading-relaxed" style={{ color: '#8a8078' }}>
+            Meridian crafts singular journeys for travelers who seek depth over distance, meaning over mileage, and transformation over tourism.
+          </p>
+          <button className="px-10 py-3 text-xs uppercase tracking-[0.2em] font-medium border transition hover:bg-white/5" style={{ borderColor: '#c9b037', color: '#c9b037' }}>
+            Begin Your Journey
+          </button>
         </div>
       </section>
-      <section className="border-t border-white/5" style={{ backgroundColor: "#0d0d14" }}>
-        <div className="max-w-5xl mx-auto px-4 py-24">
-          <div className="text-center mb-16">
-            <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ fontFamily: "Inter, sans-serif", color: "#d4af37" }}>Where You Will Stay</p>
-            <h2 className="text-4xl font-medium text-white">Luxury Accommodations</h2>
-          </div>
+
+      {/* Destinations — full-width image cards */}
+      <section className="py-24 px-8">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-center text-2xl tracking-[0.15em] uppercase mb-16" style={{ fontFamily: "'Cormorant Garamond', serif", color: '#c9b037' }}>Destinations</h2>
           <div className="space-y-8">
-            {accommodations.map((a) => (
-              <div key={a.name} className="border border-white/10 p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-                <div className="flex-1">
-                  <h3 className="text-xl font-medium text-white mb-1">{a.name}</h3>
-                  <p className="text-xs tracking-wider uppercase text-stone-600 mb-3" style={{ fontFamily: "Inter, sans-serif" }}>{a.location}</p>
-                  <p className="text-sm text-stone-500 leading-relaxed" style={{ fontFamily: "Inter, sans-serif" }}>{a.desc}</p>
-                </div>
-                <div className="text-right flex-shrink-0">
-                  <p className="text-2xl font-medium" style={{ color: "#d4af37" }}>{a.rate}</p>
-                  <p className="text-xs text-stone-600" style={{ fontFamily: "Inter, sans-serif" }}>per night</p>
+            {destinations.map(d => (
+              <div key={d.name} className="relative overflow-hidden" style={{ backgroundColor: '#16213e' }}>
+                <div className="grid md:grid-cols-2">
+                  <div className="aspect-[16/9] md:aspect-auto flex items-center justify-center text-6xl" style={{ backgroundColor: '#1f2b47' }}>
+                    🌍
+                  </div>
+                  <div className="p-10 flex flex-col justify-center">
+                    <h3 className="text-2xl mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{d.name}</h3>
+                    <p className="text-sm leading-relaxed mb-6 font-light" style={{ color: '#8a8078' }}>{d.desc}</p>
+                    <p className="text-sm" style={{ color: '#c9b037' }}>From {d.from}</p>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
-      <section className="border-t border-white/5">
-        <div className="max-w-5xl mx-auto px-4 py-24">
-          <div className="text-center mb-16">
-            <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ fontFamily: "Inter, sans-serif", color: "#d4af37" }}>At Your Service</p>
-            <h2 className="text-4xl font-medium text-white">Concierge Services</h2>
+
+      {/* Experience types — icon grid */}
+      <section className="py-20 px-8" style={{ borderTop: '1px solid #c9b03720', borderBottom: '1px solid #c9b03720' }}>
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-center text-2xl tracking-[0.15em] uppercase mb-16" style={{ fontFamily: "'Cormorant Garamond', serif", color: '#c9b037' }}>Experiences</h2>
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-6 text-center">
+            {experiences.map(e => (
+              <div key={e.label}>
+                <span className="text-3xl block mb-3">{e.icon}</span>
+                <span className="text-xs uppercase tracking-wider" style={{ color: '#8a8078' }}>{e.label}</span>
+              </div>
+            ))}
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {services.map((s) => (
-              <div key={s.name} className="flex items-start space-x-4">
-                <div className="w-px h-12 flex-shrink-0 mt-1" style={{ backgroundColor: "#d4af37" }} />
+        </div>
+      </section>
+
+      {/* Luxury amenities — side-by-side */}
+      <section className="py-24 px-8">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+          <div className="aspect-[4/3] flex items-center justify-center text-5xl" style={{ backgroundColor: '#16213e' }}>🏨</div>
+          <div className="aspect-[4/3] flex items-center justify-center text-5xl" style={{ backgroundColor: '#16213e' }}>🍽️</div>
+        </div>
+        <div className="max-w-3xl mx-auto text-center mt-12">
+          <h3 className="text-xl mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", color: '#c9b037' }}>Uncompromising Luxury</h3>
+          <p className="text-sm font-light leading-relaxed" style={{ color: '#8a8078' }}>
+            From private transfers and dedicated concierges to Michelin-starred dining and bespoke excursions — every element of your journey is meticulously orchestrated.
+          </p>
+        </div>
+      </section>
+
+      {/* Guest Stories — editorial */}
+      <section className="py-24 px-8" style={{ backgroundColor: '#16213e' }}>
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-center text-2xl tracking-[0.15em] uppercase mb-16" style={{ fontFamily: "'Cormorant Garamond', serif", color: '#c9b037' }}>Guest Stories</h2>
+          <div className="space-y-16">
+            {stories.map(s => (
+              <blockquote key={s.author} className="text-center">
+                <p className="text-lg italic leading-relaxed mb-6" style={{ fontFamily: "'Cormorant Garamond', serif", color: '#eae0d5' }}>
+                  &ldquo;{s.quote}&rdquo;
+                </p>
                 <div>
-                  <h3 className="text-lg font-medium text-white mb-2">{s.name}</h3>
-                  <p className="text-sm text-stone-500 leading-relaxed" style={{ fontFamily: "Inter, sans-serif" }}>{s.desc}</p>
+                  <cite className="text-sm not-italic font-medium" style={{ color: '#c9b037' }}>{s.author}</cite>
+                  <p className="text-xs mt-1" style={{ color: '#6b6360' }}>{s.trip}</p>
                 </div>
-              </div>
+              </blockquote>
             ))}
           </div>
         </div>
       </section>
-      <section className="border-t border-white/5" style={{ backgroundColor: "#0d0d14" }}>
-        <div className="max-w-5xl mx-auto px-4 py-24">
-          <div className="text-center mb-16">
-            <p className="text-xs tracking-[0.3em] uppercase mb-3" style={{ fontFamily: "Inter, sans-serif", color: "#d4af37" }}>Client Reflections</p>
-            <h2 className="text-4xl font-medium text-white">Words from Our Guests</h2>
+
+      {/* Booking Inquiry */}
+      <section className="max-w-xl mx-auto px-8 py-24 text-center">
+        <h2 className="text-2xl tracking-[0.15em] uppercase mb-8" style={{ fontFamily: "'Cormorant Garamond', serif", color: '#c9b037' }}>Begin Planning</h2>
+        <form className="space-y-4">
+          <input type="text" placeholder="Full Name" className="w-full px-4 py-3 text-sm outline-none" style={{ backgroundColor: '#16213e', border: '1px solid #2a2a4a', color: '#eae0d5' }} />
+          <input type="email" placeholder="Email" className="w-full px-4 py-3 text-sm outline-none" style={{ backgroundColor: '#16213e', border: '1px solid #2a2a4a', color: '#eae0d5' }} />
+          <div className="grid grid-cols-2 gap-4">
+            <input type="text" placeholder="Destination" className="px-4 py-3 text-sm outline-none" style={{ backgroundColor: '#16213e', border: '1px solid #2a2a4a', color: '#eae0d5' }} />
+            <input type="text" placeholder="Travel Dates" className="px-4 py-3 text-sm outline-none" style={{ backgroundColor: '#16213e', border: '1px solid #2a2a4a', color: '#eae0d5' }} />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((t) => (
-              <div key={t.name} className="border border-white/10 p-8">
-                <p className="text-sm text-stone-400 italic leading-relaxed mb-6" style={{ fontFamily: "Inter, sans-serif" }}>&ldquo;{t.text}&rdquo;</p>
-                <p className="text-sm font-medium text-white">{t.name}</p>
-                <p className="text-xs mt-1" style={{ fontFamily: "Inter, sans-serif", color: "#d4af3780" }}>{t.trip}</p>
-              </div>
+          <textarea placeholder="Tell us about your ideal journey" rows={4} className="w-full px-4 py-3 text-sm outline-none resize-none" style={{ backgroundColor: '#16213e', border: '1px solid #2a2a4a', color: '#eae0d5' }} />
+          <button type="submit" className="w-full py-3 text-xs uppercase tracking-[0.2em] font-medium border" style={{ borderColor: '#c9b037', color: '#c9b037' }}>
+            Submit Inquiry
+          </button>
+        </form>
+      </section>
+
+      {/* Partner Brands */}
+      <section className="py-12 px-8" style={{ borderTop: '1px solid #c9b03720' }}>
+        <div className="max-w-5xl mx-auto">
+          <p className="text-center text-xs uppercase tracking-[0.2em] mb-8" style={{ color: '#6b6360' }}>Preferred Partners</p>
+          <div className="flex flex-wrap justify-center gap-10">
+            {partners.map(p => (
+              <span key={p} className="text-xs tracking-wider uppercase" style={{ color: '#4a4540' }}>{p}</span>
             ))}
           </div>
         </div>
       </section>
-      <section className="border-t border-white/5">
-        <div className="max-w-2xl mx-auto px-4 py-28 text-center">
-          <h2 className="text-4xl font-medium text-white mb-4">Begin a conversation</h2>
-          <p className="text-sm text-stone-500 mb-10" style={{ fontFamily: "Inter, sans-serif" }}>Every Aurelius journey starts with a personal consultation. Share your vision and we will bring it to life.</p>
-          <button className="h-14 px-20 text-xs tracking-[0.2em] uppercase transition-all hover:opacity-90" style={{ fontFamily: "Inter, sans-serif", backgroundColor: "#d4af37", color: "#0a0a0f" }}>Inquire Now</button>
-          <p className="text-xs text-stone-700 mt-6" style={{ fontFamily: "Inter, sans-serif" }}>By invitation and referral. Response within 24 hours.</p>
-        </div>
-      </section>
-      <footer className="border-t border-white/5">
-        <div className="max-w-6xl mx-auto px-4 py-12">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <span className="text-lg tracking-wide" style={{ color: "#d4af37" }}>AURELIUS</span>
-            <div className="flex space-x-8 text-xs tracking-[0.15em] uppercase text-stone-600" style={{ fontFamily: "Inter, sans-serif" }}>
-              <span className="cursor-pointer hover:text-stone-300 transition-colors">Privacy</span>
-              <span className="cursor-pointer hover:text-stone-300 transition-colors">Terms</span>
-              <span className="cursor-pointer hover:text-stone-300 transition-colors">Contact</span>
-            </div>
-          </div>
-          <div className="border-t border-white/5 mt-8 pt-6 text-center">
-            <span className="text-xs text-stone-700" style={{ fontFamily: "Inter, sans-serif" }}>&copy; 2026 Aurelius Travel. All rights reserved.</span>
-          </div>
-        </div>
+
+      {/* Footer */}
+      <footer className="py-10 text-center" style={{ borderTop: '1px solid #c9b03720' }}>
+        <p className="text-sm tracking-[0.2em] uppercase mb-2" style={{ fontFamily: "'Cormorant Garamond', serif", color: '#c9b037' }}>Meridian</p>
+        <p className="text-xs" style={{ color: '#4a4540' }}>New York | London | Singapore | Sydney</p>
       </footer>
     </div>
   )

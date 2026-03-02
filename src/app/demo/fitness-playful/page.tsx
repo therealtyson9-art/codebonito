@@ -1,177 +1,147 @@
 export default function FitnessPlayfulDemo() {
-  const navLinks = ["Classes", "Trainers", "Pricing", "Community"]
-
   const classes = [
-    { name: "Dance Cardio", emoji: "\ud83d\udc83", desc: "Shake it off and burn calories with high-energy dance routines set to the latest hits.", time: "Mon/Wed/Fri 6:30 PM", color: "bg-pink-100 border-pink-300 text-pink-700" },
-    { name: "Power Yoga", emoji: "\ud83e\uddd8", desc: "Build strength and flexibility in a flow that leaves you feeling centered and energized.", time: "Tue/Thu 7:00 AM", color: "bg-green-100 border-green-300 text-green-700" },
-    { name: "HIIT Party", emoji: "\ud83d\udd25", desc: "30 minutes of high-intensity intervals with music that slaps. Warning: you will sweat.", time: "Mon-Fri 12:00 PM", color: "bg-yellow-100 border-yellow-300 text-yellow-700" },
-    { name: "Spin & Grin", emoji: "\ud83d\udeb4", desc: "Indoor cycling with themed rides, disco lights, and instructors who bring the energy.", time: "Tue/Thu/Sat 5:30 PM", color: "bg-purple-100 border-purple-300 text-purple-700" },
-    { name: "Box Fit", emoji: "\ud83e\udd4a", desc: "Jab, cross, hook your way to a stronger you. No experience needed, just bring attitude.", time: "Mon/Wed/Sat 8:00 AM", color: "bg-red-100 border-red-300 text-red-700" },
-    { name: "Stretch & Chill", emoji: "\ud83c\udf3f", desc: "Wind down your week with deep stretches, foam rolling, and guided relaxation.", time: "Sun 10:00 AM", color: "bg-teal-100 border-teal-300 text-teal-700" },
+    { name: 'HIIT Burn', time: '6:00 AM', trainer: 'Coach Mia', color: '#ff6b35' },
+    { name: 'Power Yoga', time: '7:30 AM', trainer: 'Jay S.', color: '#7b2ff7' },
+    { name: 'Spin Cycle', time: '9:00 AM', trainer: 'Coach Dante', color: '#ff6b35' },
+    { name: 'Boxing Fit', time: '12:00 PM', trainer: 'Rosa L.', color: '#7b2ff7' },
+    { name: 'Pilates Core', time: '4:00 PM', trainer: 'Elena K.', color: '#ff6b35' },
+    { name: 'Dance Cardio', time: '6:30 PM', trainer: 'Coach Mia', color: '#7b2ff7' },
   ]
-
   const trainers = [
-    { name: "Coach Mia", specialty: "Dance & Cardio", vibe: "Brings the playlist, the energy, and the confetti.", color: "border-pink-400" },
-    { name: "Coach Jordan", specialty: "HIIT & Boxing", vibe: "Will make you laugh between burpees. Still makes you do the burpees.", color: "border-green-400" },
-    { name: "Coach Sam", specialty: "Yoga & Mobility", vibe: "The calm voice in the storm. Also makes incredible smoothies.", color: "border-yellow-400" },
+    { name: 'Coach Mia', specialty: 'HIIT & Dance', bio: 'Former pro dancer turned fitness coach. Brings the energy every session.' },
+    { name: 'Dante Brooks', specialty: 'Cycling & Strength', bio: 'Competitive cyclist. Believes everyone has a finish line in them.' },
+    { name: 'Rosa Linares', specialty: 'Boxing & MMA', bio: 'Amateur boxing champ. Makes fitness feel like a party.' },
+    { name: 'Jay Sandoval', specialty: 'Yoga & Mobility', bio: 'Yoga instructor for 8 years. Focused on breath and balance.' },
   ]
-
-  const plans = [
-    { name: "Starter", price: "$25", period: "/mo", features: ["5 classes per month", "Open gym access", "Locker room", "Welcome smoothie"], color: "bg-green-50 border-green-200", accent: "bg-green-500" },
-    { name: "All-In", price: "$45", period: "/mo", features: ["Unlimited classes", "Open gym 24/7", "Bring a friend free", "Monthly merch drop", "Recovery room"], popular: true, color: "bg-pink-50 border-pink-200", accent: "bg-pink-500" },
-    { name: "VIP Vibes", price: "$75", period: "/mo", features: ["Everything in All-In", "4 PT sessions/month", "Priority booking", "Nutrition coaching", "Sauna & cold plunge", "Free guest passes"], color: "bg-yellow-50 border-yellow-200", accent: "bg-yellow-500" },
+  const tiers = [
+    { name: 'Starter', price: '$29', period: '/mo', features: ['Gym floor access', '2 classes/week', 'Locker room'], highlighted: false },
+    { name: 'All-In', price: '$59', period: '/mo', features: ['Unlimited classes', 'Personal locker', 'Guest passes', 'Sauna access'], highlighted: true },
+    { name: 'Elite', price: '$99', period: '/mo', features: ['Everything in All-In', '4 PT sessions/mo', 'Nutrition coaching', 'Priority booking'], highlighted: false },
   ]
 
   return (
-    <div className="min-h-screen bg-white text-gray-800" style={{ fontFamily: "Poppins, sans-serif" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <div className="min-h-screen" style={{ backgroundColor: '#fefce8', fontFamily: "'Quicksand', sans-serif" }}>
+      <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-      {/* Navigation */}
-      <nav className="bg-white border-b-2 border-green-400">
-        <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-          <span className="text-2xl font-extrabold">
-            <span className="text-green-500">happy</span><span className="text-pink-500">fit</span>
-          </span>
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <span key={link} className="text-sm font-medium text-gray-500 hover:text-green-500 cursor-pointer transition-colors">{link}</span>
+      {/* Nav */}
+      <nav className="sticky top-0 z-50 backdrop-blur-md bg-white/70 shadow-sm">
+        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+          <span className="text-xl font-extrabold" style={{ fontFamily: "'Nunito', sans-serif", color: '#ff6b35' }}>PULSEFIT</span>
+          <div className="hidden md:flex items-center gap-4">
+            {['Classes', 'Trainers', 'Pricing', 'Gallery'].map(link => (
+              <a key={link} href="#" className="text-sm font-semibold px-4 py-2 rounded-full transition hover:opacity-80" style={{ color: '#4a3728' }}>{link}</a>
             ))}
+            <a href="#" className="text-sm font-bold text-white px-5 py-2 rounded-full" style={{ background: 'linear-gradient(135deg, #ff6b35, #7b2ff7)' }}>Join Now</a>
           </div>
-          <span className="px-6 py-2.5 bg-green-500 text-white text-sm font-semibold rounded-full cursor-pointer hover:bg-green-600 transition-colors">Join the Fun!</span>
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-green-50 via-pink-50 to-yellow-50">
-        <div className="max-w-6xl mx-auto px-6 py-24 text-center">
-          <p className="text-sm font-semibold text-pink-500 mb-4">Portland&apos;s most fun gym since 2020</p>
-          <h1 className="text-5xl md:text-7xl font-extrabold leading-tight">
-            Your <span className="text-green-500">happy place</span><br />for <span className="text-pink-500">gains!</span>
-          </h1>
-          <p className="text-lg text-gray-500 mt-6 max-w-lg mx-auto">Working out should feel like a celebration, not a chore. Come sweat, laugh, and get strong with the friendliest community in the Pacific Northwest.</p>
-          <div className="mt-10 flex justify-center gap-4">
-            <span className="px-8 py-3 bg-pink-500 text-white font-semibold rounded-full cursor-pointer hover:bg-pink-600 transition-colors">Try a Free Class</span>
-            <span className="px-8 py-3 border-2 border-green-400 text-green-600 font-semibold rounded-full cursor-pointer hover:bg-green-50 transition-colors">See Schedule</span>
+      {/* Hero — angled split */}
+      <section className="relative overflow-hidden py-24 px-6">
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #ff6b35 0%, #ff6b35 50%, #7b2ff7 50%, #7b2ff7 100%)', opacity: 0.1 }} />
+        <div className="relative max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h1 className="text-5xl md:text-6xl font-black leading-tight mb-6" style={{ fontFamily: "'Nunito', sans-serif", color: '#4a3728' }}>
+              Sweat. <span style={{ color: '#ff6b35' }}>Smile.</span> <span style={{ color: '#7b2ff7' }}>Repeat.</span>
+            </h1>
+            <p className="text-lg mb-8 font-medium" style={{ color: '#78716c' }}>
+              Fitness should be fun, not a chore. Join a community that celebrates every rep, every step, every drop of sweat.
+            </p>
+            <button className="text-white font-bold px-8 py-4 rounded-full text-sm transition hover:scale-105" style={{ background: 'linear-gradient(135deg, #ff6b35, #7b2ff7)' }}>
+              Start Your Free Trial
+            </button>
+          </div>
+          <div className="rounded-3xl aspect-square flex items-center justify-center text-8xl" style={{ backgroundColor: '#fff', border: '4px solid #ff6b35' }}>
+            💪
           </div>
         </div>
       </section>
 
-      {/* Classes */}
-      <section className="max-w-6xl mx-auto px-6 py-24">
-        <div className="text-center mb-16">
-          <p className="text-sm font-semibold text-pink-500 mb-2">What We Offer</p>
-          <h2 className="text-4xl font-extrabold text-gray-900">Pick Your Vibe</h2>
-          <p className="text-gray-500 mt-4">Every class is a party. Every workout is a win.</p>
-        </div>
-        <div className="grid md:grid-cols-3 gap-6">
-          {classes.map((cls) => (
-            <div key={cls.name} className={`border-2 rounded-2xl p-6 ${cls.color} hover:scale-105 transition-transform`}>
-              <span className="text-4xl">{cls.emoji}</span>
-              <h3 className="text-lg font-bold mt-3">{cls.name}</h3>
-              <p className="text-sm mt-2 opacity-80">{cls.desc}</p>
-              <p className="text-xs font-semibold mt-4 opacity-60">{cls.time}</p>
+      {/* Class Schedule */}
+      <section className="max-w-6xl mx-auto px-6 py-20">
+        <h2 className="text-3xl font-extrabold text-center mb-12" style={{ fontFamily: "'Nunito', sans-serif", color: '#4a3728' }}>Today&apos;s Classes</h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {classes.map(c => (
+            <div key={c.name + c.time} className="rounded-2xl p-5 bg-white transition hover:scale-[1.02]" style={{ borderLeft: `4px solid ${c.color}` }}>
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="font-bold" style={{ fontFamily: "'Nunito', sans-serif", color: '#4a3728' }}>{c.name}</h3>
+                <span className="text-xs font-bold px-2 py-1 rounded-full text-white" style={{ backgroundColor: c.color }}>{c.time}</span>
+              </div>
+              <p className="text-sm" style={{ color: '#78716c' }}>{c.trainer}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* Trainers */}
-      <section className="bg-gradient-to-r from-green-50 to-pink-50">
-        <div className="max-w-6xl mx-auto px-6 py-24">
-          <div className="text-center mb-16">
-            <p className="text-sm font-semibold text-green-500 mb-2">Meet the Crew</p>
-            <h2 className="text-4xl font-extrabold text-gray-900">Your Fave Coaches</h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {trainers.map((t) => (
-              <div key={t.name} className={`bg-white rounded-2xl p-8 border-4 ${t.color} text-center`}>
-                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-green-200 to-pink-200 mx-auto mb-6" />
-                <h3 className="text-xl font-bold text-gray-900">{t.name}</h3>
-                <p className="text-sm font-semibold text-pink-500 mt-1">{t.specialty}</p>
-                <p className="text-sm text-gray-500 mt-4 italic">&ldquo;{t.vibe}&rdquo;</p>
+      <section className="py-20" style={{ backgroundColor: '#fff' }}>
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl font-extrabold text-center mb-12" style={{ fontFamily: "'Nunito', sans-serif", color: '#4a3728' }}>Your Trainers</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {trainers.map(t => (
+              <div key={t.name} className="text-center">
+                <div className="w-28 h-28 rounded-full mx-auto mb-4 flex items-center justify-center text-4xl" style={{ background: 'linear-gradient(135deg, #ff6b35, #7b2ff7)' }}>
+                  <span className="bg-white w-24 h-24 rounded-full flex items-center justify-center text-3xl">🏋️</span>
+                </div>
+                <h3 className="font-bold" style={{ fontFamily: "'Nunito', sans-serif", color: '#4a3728' }}>{t.name}</h3>
+                <p className="text-xs font-semibold mb-2" style={{ color: '#7b2ff7' }}>{t.specialty}</p>
+                <p className="text-sm" style={{ color: '#78716c' }}>{t.bio}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Membership */}
-      <section className="max-w-6xl mx-auto px-6 py-24">
-        <div className="text-center mb-16">
-          <p className="text-sm font-semibold text-green-500 mb-2">Simple Pricing</p>
-          <h2 className="text-4xl font-extrabold text-gray-900">Pick Your Plan</h2>
-          <p className="text-gray-500 mt-4">No contracts. No hidden fees. Just good vibes and great workouts.</p>
-        </div>
-        <div className="grid md:grid-cols-3 gap-8">
-          {plans.map((plan) => (
-            <div key={plan.name} className={`border-2 rounded-2xl p-8 ${plan.color} relative ${plan.popular ? "scale-105 shadow-xl" : ""}`}>
-              {plan.popular && <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-pink-500 text-white text-xs px-4 py-1 rounded-full font-semibold">Most Popular</span>}
-              <h3 className="text-xl font-bold text-gray-900">{plan.name}</h3>
-              <div className="mt-4 mb-6">
-                <span className="text-5xl font-extrabold text-gray-900">{plan.price}</span>
-                <span className="text-gray-400">{plan.period}</span>
-              </div>
-              <ul className="space-y-3 mb-8">
-                {plan.features.map((f) => (
-                  <li key={f} className="text-sm text-gray-600 flex items-start gap-2">
-                    <span className="text-green-500 font-bold">+</span> {f}
-                  </li>
-                ))}
+      {/* Pricing */}
+      <section className="max-w-5xl mx-auto px-6 py-20">
+        <h2 className="text-3xl font-extrabold text-center mb-12" style={{ fontFamily: "'Nunito', sans-serif", color: '#4a3728' }}>Membership Plans</h2>
+        <div className="grid md:grid-cols-3 gap-6 items-stretch">
+          {tiers.map(t => (
+            <div key={t.name} className={`rounded-3xl p-8 text-center transition hover:scale-[1.03] ${t.highlighted ? 'text-white' : 'bg-white'}`}
+              style={t.highlighted ? { background: 'linear-gradient(135deg, #ff6b35, #7b2ff7)' } : { border: '2px solid #e5e5e5' }}>
+              <h3 className="font-bold text-lg mb-2" style={{ fontFamily: "'Nunito', sans-serif" }}>{t.name}</h3>
+              <p className="text-4xl font-black mb-1" style={{ fontFamily: "'Nunito', sans-serif" }}>{t.price}<span className="text-sm font-medium">{t.period}</span></p>
+              <ul className="text-sm space-y-2 mt-6 mb-8">
+                {t.features.map(f => <li key={f}>{f}</li>)}
               </ul>
-              <span className={`block text-center py-3 rounded-full text-sm font-semibold cursor-pointer text-white transition-colors ${plan.accent} hover:opacity-90`}>Choose {plan.name}</span>
+              <button className={`w-full py-3 rounded-full font-bold text-sm transition ${t.highlighted ? 'bg-white' : ''}`}
+                style={t.highlighted ? { color: '#ff6b35' } : { background: 'linear-gradient(135deg, #ff6b35, #7b2ff7)', color: '#fff' }}>
+                Get Started
+              </button>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Community / Social Proof */}
-      <section className="bg-green-500 text-white">
-        <div className="max-w-6xl mx-auto px-6 py-24 text-center">
-          <p className="text-green-100 text-sm font-semibold mb-4">Our Community</p>
-          <h2 className="text-5xl md:text-6xl font-extrabold">10,000+ happy members</h2>
-          <p className="text-green-100 mt-6 max-w-lg mx-auto text-lg">and counting! Join the fastest-growing fitness community in Portland.</p>
-          <div className="grid grid-cols-3 gap-8 mt-16 max-w-2xl mx-auto">
-            <div>
-              <p className="text-4xl font-extrabold">4.9</p>
-              <p className="text-green-200 text-sm mt-1">Google Rating</p>
+      {/* Gallery */}
+      <section className="max-w-6xl mx-auto px-6 py-20">
+        <h2 className="text-3xl font-extrabold text-center mb-12" style={{ fontFamily: "'Nunito', sans-serif", color: '#4a3728' }}>Life at PulseFit</h2>
+        <div className="columns-2 md:columns-3 gap-4 space-y-4">
+          {['🧘', '🥊', '🚴', '🏃', '🤸', '💃'].map((emoji, i) => (
+            <div key={i} className="rounded-2xl overflow-hidden flex items-center justify-center text-5xl break-inside-avoid" style={{ backgroundColor: i % 2 === 0 ? '#ffe8dc' : '#ede5ff', height: i % 3 === 0 ? '200px' : '150px' }}>
+              {emoji}
             </div>
-            <div>
-              <p className="text-4xl font-extrabold">98%</p>
-              <p className="text-green-200 text-sm mt-1">Would Recommend</p>
-            </div>
-            <div>
-              <p className="text-4xl font-extrabold">200+</p>
-              <p className="text-green-200 text-sm mt-1">Classes per Week</p>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* Fun CTA */}
-      <section className="bg-gradient-to-r from-pink-500 to-yellow-400 text-white">
-        <div className="max-w-4xl mx-auto px-6 py-20 text-center">
-          <h2 className="text-4xl md:text-5xl font-extrabold">Ready to feel amazing?</h2>
-          <p className="text-white/80 mt-4 text-lg">Your first class is on us. Seriously. Just show up and smile.</p>
-          <div className="mt-8 flex justify-center gap-4">
-            <span className="px-8 py-4 bg-white text-pink-600 font-bold rounded-full cursor-pointer hover:bg-pink-50 transition-colors text-lg">Claim Free Class</span>
-          </div>
+      {/* App CTA */}
+      <section className="mx-6 my-16 rounded-3xl py-16 px-8 text-center text-white" style={{ background: 'linear-gradient(135deg, #ff6b35, #7b2ff7)' }}>
+        <h2 className="text-3xl font-extrabold mb-4" style={{ fontFamily: "'Nunito', sans-serif" }}>Get the PulseFit App</h2>
+        <p className="mb-8 max-w-md mx-auto">Book classes, track workouts, and connect with your trainers — all from your phone.</p>
+        <div className="flex justify-center gap-4">
+          <button className="bg-white text-black font-bold px-6 py-3 rounded-full text-sm">App Store</button>
+          <button className="bg-white text-black font-bold px-6 py-3 rounded-full text-sm">Google Play</button>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white">
-        <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div>
-            <span className="text-xl font-extrabold"><span className="text-green-400">happy</span><span className="text-pink-400">fit</span></span>
-            <p className="text-sm text-gray-500 mt-1">821 NE Alberta St, Portland, OR 97211</p>
-          </div>
-          <div className="text-sm text-gray-500 space-x-6">
-            <span className="cursor-pointer hover:text-white">Instagram</span>
-            <span className="cursor-pointer hover:text-white">TikTok</span>
-            <span className="cursor-pointer hover:text-white">YouTube</span>
-            <span className="cursor-pointer hover:text-white">(503) 555-0176</span>
-          </div>
-          <p className="text-xs text-gray-600">&copy; 2026 HappyFit. All rights reserved. Stay awesome.</p>
+      <footer className="py-12 px-6" style={{ backgroundColor: '#ff6b35' }}>
+        <div className="max-w-6xl mx-auto text-center text-white">
+          <p className="font-extrabold text-xl mb-4" style={{ fontFamily: "'Nunito', sans-serif" }}>PULSEFIT</p>
+          <p className="text-sm mb-2">825 Energy Drive, Austin, TX 78701</p>
+          <p className="text-sm mb-4">(512) 555-0234 | hello@pulsefit.gym</p>
+          <p className="text-xs opacity-70">Open Daily 5AM – 11PM</p>
         </div>
       </footer>
     </div>

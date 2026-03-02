@@ -1,182 +1,176 @@
 export default function FoodPlayfulDemo() {
-  const categories = [
-    { name: "Pizza", emoji: "🍕", count: "14 items" },
-    { name: "Burgers", emoji: "🍔", count: "9 items" },
-    { name: "Sushi", emoji: "🍣", count: "18 items" },
-    { name: "Tacos", emoji: "🌮", count: "11 items" },
-    { name: "Noodles", emoji: "🍜", count: "12 items" },
-    { name: "Desserts", emoji: "🍰", count: "8 items" },
+  const menuHighlights = [
+    { name: 'Truffle Mushroom Flatbread', price: '$18', tag: 'Best Seller', desc: 'Wild mushroom medley, truffle cream, fontina, fresh thyme' },
+    { name: 'Honey Sriracha Wings', price: '$14', tag: 'Spicy', desc: 'Crispy jumbo wings, house honey-sriracha glaze, ranch drizzle' },
+    { name: 'Burrata Caprese', price: '$16', tag: 'Fresh', desc: 'Creamy burrata, heirloom tomatoes, basil oil, aged balsamic' },
+    { name: 'Wagyu Smash Burger', price: '$22', tag: 'Chef Pick', desc: 'Double smashed wagyu patties, aged cheddar, special sauce, brioche' },
+    { name: 'Lobster Mac & Cheese', price: '$26', tag: 'Indulgent', desc: 'Maine lobster, three-cheese sauce, panko crust, chive oil' },
+    { name: 'Tiramisu Jar', price: '$12', tag: 'Sweet', desc: 'Classic ladyfinger layers, espresso mascarpone, cocoa dust' },
   ]
-
-  const dishes = [
-    { name: "Smash Burger Deluxe", desc: "Double patty, melty American cheese, pickles, secret sauce, toasted brioche bun", price: "$14", tag: "Best Seller", tagColor: "bg-red-500" },
-    { name: "Spicy Tuna Crunch Roll", desc: "Fresh ahi tuna, sriracha mayo, tempura flakes, avocado, cucumber", price: "$16", tag: "New", tagColor: "bg-green-500" },
-    { name: "Loaded Nachos Supreme", desc: "Tri-color tortilla chips, cheddar, jalapenos, guac, sour cream, pico de gallo", price: "$12", tag: "Crowd Fave", tagColor: "bg-yellow-500" },
-    { name: "Truffle Mushroom Pizza", desc: "Wild mushroom medley, truffle oil, mozzarella, fresh thyme on sourdough crust", price: "$18", tag: "Chef Pick", tagColor: "bg-purple-500" },
-    { name: "Chicken Teriyaki Bowl", desc: "Grilled chicken, steamed rice, edamame, pickled carrot, teriyaki glaze, sesame", price: "$15", tag: "Healthy", tagColor: "bg-green-500" },
-    { name: "Churro Ice Cream Sandwich", desc: "Warm cinnamon churro waffles, vanilla bean ice cream, chocolate drizzle", price: "$9", tag: "Sweet Treat", tagColor: "bg-pink-500" },
-  ]
-
   const offers = [
-    { title: "First Order Free Delivery", desc: "No minimum order! Use code YUMMY1", bg: "bg-red-50 border-red-200" },
-    { title: "Family Bundle: Save 20%", desc: "Feed 4 people for the price of 3", bg: "bg-yellow-50 border-yellow-200" },
-    { title: "Lunch Special 11-2 PM", desc: "Any bowl + drink combo for $13", bg: "bg-green-50 border-green-200" },
+    { title: 'Happy Hour', time: 'Tue–Fri 4–6PM', desc: '$8 cocktails and half-price appetizers' },
+    { title: 'Wine Wednesday', time: 'Every Wednesday', desc: 'All bottles half price, all night long' },
+    { title: 'Brunch Special', time: 'Sat & Sun 10AM–2PM', desc: 'Bottomless mimosas with any entree for $15' },
   ]
-
-  const ratings = [
-    { name: "Alex", reaction: "😍", text: "The smash burger is INCREDIBLE. Best burger in the city, hands down!", stars: 5 },
-    { name: "Jess", reaction: "🤤", text: "Ordered the truffle pizza and I'm genuinely obsessed. Already planning my next order.", stars: 5 },
-    { name: "Sam", reaction: "🔥", text: "Delivery was super fast and everything was still hot. The nachos are dangerous!", stars: 5 },
-    { name: "Mia", reaction: "💯", text: "Love that they have healthy options that actually taste amazing. Teriyaki bowl is perfect.", stars: 5 },
-  ]
-
-  const funFacts = [
-    { number: "1M+", label: "Meals Delivered" },
-    { number: "4.9", label: "Average Rating" },
-    { number: "25 min", label: "Avg Delivery Time" },
-    { number: "200+", label: "Menu Items" },
+  const reviews = [
+    { stars: 5, text: 'The truffle flatbread is absolutely divine. We come back every week.', author: 'Jessica R.' },
+    { stars: 5, text: 'Best burger in the city, hands down. The wagyu patty melts in your mouth.', author: 'David T.' },
+    { stars: 4, text: 'Great atmosphere and the brunch special is unbeatable. Love this place.', author: 'Samantha L.' },
   ]
 
   return (
-    <div className="min-h-screen bg-white text-gray-800" style={{ fontFamily: "Poppins, sans-serif" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <div className="min-h-screen" style={{ backgroundColor: '#fef3c7', fontFamily: "'Nunito Sans', sans-serif", color: '#451a03' }}>
+      <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-      {/* Navigation */}
-      <nav className="bg-white border-b-2 border-red-100">
+      {/* Nav */}
+      <nav className="sticky top-0 z-50 shadow-sm" style={{ backgroundColor: '#fef3c7' }}>
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <span className="text-xl font-bold">🍴 <span className="text-red-500">Yum</span>Dash</span>
-          <div className="hidden md:flex items-center space-x-8">
-            <span className="text-sm text-gray-500 hover:text-red-500 cursor-pointer font-medium">Menu</span>
-            <span className="text-sm text-gray-500 hover:text-red-500 cursor-pointer font-medium">Deals</span>
-            <span className="text-sm text-gray-500 hover:text-red-500 cursor-pointer font-medium">Reviews</span>
-            <span className="text-sm text-gray-500 hover:text-red-500 cursor-pointer font-medium">Track Order</span>
+          <span className="text-2xl" style={{ fontFamily: "'Pacifico', cursive", color: '#dc2626' }}>Rosso</span>
+          <div className="hidden md:flex items-center gap-6">
+            {['Menu', 'Specials', 'Reserve', 'About'].map(link => (
+              <a key={link} href="#" className="text-sm font-semibold hover:underline underline-offset-4 transition" style={{ color: '#92400e' }}>{link}</a>
+            ))}
+            <button className="rounded-full px-5 py-2 text-sm font-bold text-white" style={{ backgroundColor: '#dc2626' }}>
+              Order Online
+            </button>
           </div>
-          <span className="px-5 py-2.5 bg-red-500 text-white text-sm font-semibold rounded-full cursor-pointer hover:bg-red-600 transition-colors">Order Now 🚀</span>
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-red-50 via-yellow-50 to-green-50">
-        <div className="max-w-5xl mx-auto px-6 py-24 text-center">
-          <span className="text-6xl">🍕🍔🍣🌮</span>
-          <h1 className="text-5xl md:text-6xl font-extrabold mt-6 leading-tight">
-            <span className="text-red-500">Yummy</span> food at<br />your <span className="text-yellow-500">doorstep!</span>
+      {/* Hero — large food image with handwritten text */}
+      <section className="relative py-32 px-6 text-center" style={{ backgroundColor: '#dc2626' }}>
+        <div className="absolute inset-0 flex items-center justify-center text-[120px] opacity-10">🍝</div>
+        <div className="relative z-10">
+          <h1 className="text-5xl md:text-7xl mb-6 text-white" style={{ fontFamily: "'Pacifico', cursive" }}>
+            Made with Love
           </h1>
-          <p className="text-lg text-gray-500 mt-5 max-w-md mx-auto">From cravings to your couch in under 30 minutes. Fresh, hot, and always delicious.</p>
-          <div className="mt-8 flex justify-center gap-3">
-            <span className="px-8 py-3.5 bg-red-500 text-white text-sm font-bold rounded-full cursor-pointer hover:bg-red-600 transition-colors shadow-lg shadow-red-200">Start Ordering</span>
-            <span className="px-8 py-3.5 bg-yellow-400 text-yellow-900 text-sm font-bold rounded-full cursor-pointer hover:bg-yellow-500 transition-colors shadow-lg shadow-yellow-200">See Deals</span>
-          </div>
+          <p className="text-lg max-w-lg mx-auto mb-8" style={{ color: '#fecaca' }}>
+            Handcrafted dishes, locally sourced ingredients, and a whole lot of heart. Come hungry, leave happy.
+          </p>
+          <button className="rounded-full px-8 py-3 text-sm font-bold" style={{ backgroundColor: '#fbbf24', color: '#451a03' }}>
+            View Full Menu
+          </button>
         </div>
       </section>
 
-      {/* Category Cards */}
-      <section className="max-w-5xl mx-auto px-6 py-16">
-        <h2 className="text-2xl font-bold text-center mb-10">What are you in the mood for? 🤔</h2>
-        <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
-          {categories.map((cat) => (
-            <div key={cat.name} className="bg-gray-50 rounded-2xl p-5 text-center hover:shadow-md hover:scale-105 transition-all cursor-pointer">
-              <span className="text-4xl">{cat.emoji}</span>
-              <h3 className="text-sm font-semibold mt-2">{cat.name}</h3>
-              <p className="text-xs text-gray-400 mt-0.5">{cat.count}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Popular Dishes */}
-      <section className="bg-gray-50">
-        <div className="max-w-5xl mx-auto px-6 py-16">
-          <h2 className="text-2xl font-bold text-center mb-10">Popular right now 🔥</h2>
-          <div className="grid md:grid-cols-2 gap-5">
-            {dishes.map((dish) => (
-              <div key={dish.name} className="bg-white rounded-2xl p-6 hover:shadow-md transition-shadow flex justify-between items-start">
-                <div className="flex-1 pr-4">
-                  <div className="flex items-center gap-2 mb-1">
-                    <h3 className="font-semibold text-gray-900">{dish.name}</h3>
-                    <span className={`text-xs text-white px-2 py-0.5 rounded-full font-medium ${dish.tagColor}`}>{dish.tag}</span>
-                  </div>
-                  <p className="text-sm text-gray-400 leading-relaxed">{dish.desc}</p>
-                </div>
-                <span className="text-lg font-bold text-red-500 whitespace-nowrap">{dish.price}</span>
+      {/* Menu Highlights */}
+      <section className="max-w-6xl mx-auto px-6 py-20">
+        <h2 className="text-3xl font-bold text-center mb-12" style={{ fontFamily: "'Pacifico', cursive", color: '#dc2626' }}>Menu Highlights</h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {menuHighlights.map(item => (
+            <div key={item.name} className="bg-white rounded-2xl p-6 shadow-md transition hover:rotate-1 hover:shadow-lg">
+              <div className="flex justify-between items-start mb-3">
+                <span className="text-xs font-bold px-2 py-1 rounded-full text-white" style={{ backgroundColor: '#dc2626' }}>{item.tag}</span>
+                <span className="text-lg font-bold" style={{ color: '#dc2626' }}>{item.price}</span>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Special Offers */}
-      <section className="max-w-5xl mx-auto px-6 py-16">
-        <h2 className="text-2xl font-bold text-center mb-10">Hot deals just for you 🎉</h2>
-        <div className="grid md:grid-cols-3 gap-5">
-          {offers.map((offer) => (
-            <div key={offer.title} className={`border rounded-2xl p-6 ${offer.bg}`}>
-              <h3 className="font-bold text-gray-900">{offer.title}</h3>
-              <p className="text-sm text-gray-500 mt-2">{offer.desc}</p>
+              <h3 className="font-bold text-lg mb-2" style={{ color: '#451a03' }}>{item.name}</h3>
+              <p className="text-sm" style={{ color: '#92400e' }}>{item.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Customer Ratings */}
-      <section className="bg-gradient-to-br from-yellow-50 to-red-50">
-        <div className="max-w-5xl mx-auto px-6 py-16">
-          <h2 className="text-2xl font-bold text-center mb-10">What people are saying 💬</h2>
-          <div className="grid md:grid-cols-2 gap-5">
-            {ratings.map((r) => (
-              <div key={r.name} className="bg-white rounded-2xl p-6">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-3xl">{r.reaction}</span>
-                  <div>
-                    <p className="font-semibold text-gray-900">{r.name}</p>
-                    <div className="flex gap-0.5">
-                      {Array.from({ length: r.stars }).map((_, i) => (
-                        <span key={i} className="text-yellow-400 text-sm">★</span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                <p className="text-sm text-gray-500 leading-relaxed">{r.text}</p>
-              </div>
-            ))}
+      {/* Chef Story */}
+      <section className="py-20" style={{ backgroundColor: '#451a03' }}>
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+          <div className="aspect-square rounded-2xl flex items-center justify-center text-8xl" style={{ backgroundColor: '#5c2d0e' }}>
+            👨‍🍳
+          </div>
+          <div>
+            <h2 className="text-3xl mb-4 text-white" style={{ fontFamily: "'Pacifico', cursive" }}>Meet Chef Marco</h2>
+            <p className="leading-relaxed mb-4" style={{ color: '#d6a87c' }}>
+              Born in Naples, trained in Lyon, and now cooking in your neighborhood. Chef Marco Benedetti brings 20 years of culinary passion to every plate at Rosso.
+            </p>
+            <p className="leading-relaxed" style={{ color: '#d6a87c' }}>
+              &ldquo;Food is memory. Every dish I create carries a story — from my grandmother&apos;s kitchen to your table.&rdquo;
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Fun Facts */}
-      <section className="max-w-5xl mx-auto px-6 py-16">
-        <h2 className="text-2xl font-bold text-center mb-10">We&apos;ve been busy! 🚀</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {funFacts.map((fact) => (
-            <div key={fact.label} className="text-center">
-              <p className="text-4xl font-extrabold text-red-500">{fact.number}</p>
-              <p className="text-sm text-gray-500 mt-1 font-medium">{fact.label}</p>
+      {/* Special Offers — ribbon banners */}
+      <section className="max-w-6xl mx-auto px-6 py-20">
+        <h2 className="text-3xl font-bold text-center mb-12" style={{ fontFamily: "'Pacifico', cursive", color: '#dc2626' }}>Specials</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          {offers.map(o => (
+            <div key={o.title} className="text-center bg-white rounded-2xl p-8 shadow-md relative overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-2" style={{ backgroundColor: '#fbbf24' }} />
+              <h3 className="text-xl font-bold mb-1" style={{ color: '#dc2626' }}>{o.title}</h3>
+              <p className="text-xs font-semibold mb-3" style={{ color: '#fbbf24' }}>{o.time}</p>
+              <p className="text-sm" style={{ color: '#92400e' }}>{o.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Order CTA */}
-      <section className="bg-red-500 text-white">
-        <div className="max-w-3xl mx-auto px-6 py-16 text-center">
-          <span className="text-5xl">😋</span>
-          <h2 className="text-3xl font-bold mt-4">Hungry yet?</h2>
-          <p className="text-red-100 mt-3 max-w-md mx-auto">Your next favorite meal is just a few taps away. Free delivery on your first order!</p>
-          <span className="inline-block mt-8 px-10 py-4 bg-white text-red-500 font-bold rounded-full cursor-pointer hover:bg-red-50 transition-colors shadow-lg text-lg">Let&apos;s Eat! 🍴</span>
+      {/* Reservations */}
+      <section className="max-w-2xl mx-auto px-6 py-20">
+        <h2 className="text-3xl font-bold text-center mb-8" style={{ fontFamily: "'Pacifico', cursive", color: '#dc2626' }}>Reserve a Table</h2>
+        <form className="bg-white rounded-2xl p-8 shadow-md space-y-4">
+          <div className="grid grid-cols-2 gap-4">
+            <input type="text" placeholder="Name" className="rounded-full px-4 py-3 text-sm outline-none" style={{ border: '2px solid #fef3c7' }} />
+            <input type="tel" placeholder="Phone" className="rounded-full px-4 py-3 text-sm outline-none" style={{ border: '2px solid #fef3c7' }} />
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <input type="date" className="rounded-full px-4 py-3 text-sm outline-none" style={{ border: '2px solid #fef3c7', color: '#92400e' }} />
+            <select className="rounded-full px-4 py-3 text-sm outline-none" style={{ border: '2px solid #fef3c7', color: '#92400e' }}>
+              <option>Party Size</option><option>2 guests</option><option>4 guests</option><option>6 guests</option><option>8+ guests</option>
+            </select>
+          </div>
+          <button type="submit" className="w-full rounded-full py-3 text-white font-bold text-sm" style={{ backgroundColor: '#dc2626' }}>
+            Reserve Now
+          </button>
+        </form>
+      </section>
+
+      {/* Gallery */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-3 gap-3">
+          {['🥗', '🍷', '🍰', '🥘', '🍝', '🍹'].map((emoji, i) => (
+            <div key={i} className="aspect-square rounded-xl flex items-center justify-center text-4xl" style={{ backgroundColor: i % 2 === 0 ? '#fee2e2' : '#fef9c3' }}>
+              {emoji}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Reviews */}
+      <section className="max-w-4xl mx-auto px-6 py-20">
+        <h2 className="text-3xl font-bold text-center mb-12" style={{ fontFamily: "'Pacifico', cursive", color: '#dc2626' }}>Guest Reviews</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          {reviews.map(r => (
+            <div key={r.author} className="bg-white rounded-2xl p-6 shadow-md text-center">
+              <p className="text-lg mb-3" style={{ color: '#fbbf24' }}>{'★'.repeat(r.stars)}{'☆'.repeat(5 - r.stars)}</p>
+              <p className="text-sm mb-4 italic" style={{ color: '#451a03' }}>&ldquo;{r.text}&rdquo;</p>
+              <p className="text-xs font-bold" style={{ color: '#dc2626' }}>— {r.author}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Location + Hours */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="rounded-2xl aspect-video flex items-center justify-center text-5xl" style={{ backgroundColor: '#fee2e2' }}>📍</div>
+          <div>
+            <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: "'Pacifico', cursive", color: '#dc2626' }}>Visit Us</h3>
+            <p className="font-semibold mb-1">412 Oak Street, Brooklyn, NY 11201</p>
+            <p className="text-sm mb-4" style={{ color: '#92400e' }}>(718) 555-0189 | hello@rossorestaurant.com</p>
+            <div className="text-sm space-y-1" style={{ color: '#92400e' }}>
+              <p>Monday – Thursday: 5:00 PM – 10:00 PM</p>
+              <p>Friday – Saturday: 5:00 PM – 11:30 PM</p>
+              <p>Sunday: 10:00 AM – 9:00 PM (Brunch from 10–2)</p>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-gray-100">
-        <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between items-center gap-6">
-          <span className="text-lg font-bold">🍴 <span className="text-red-500">Yum</span>Dash</span>
-          <div className="text-sm text-gray-400 space-x-6">
-            <span className="cursor-pointer hover:text-red-500">Instagram</span>
-            <span className="cursor-pointer hover:text-red-500">TikTok</span>
-            <span className="cursor-pointer hover:text-red-500">Twitter</span>
-            <span className="cursor-pointer hover:text-red-500">Support</span>
-          </div>
-          <p className="text-xs text-gray-300">&copy; 2026 YumDash. All rights reserved.</p>
+      <footer className="py-10 px-6" style={{ backgroundColor: '#dc2626' }}>
+        <div className="max-w-6xl mx-auto text-center text-white">
+          <p className="text-2xl mb-3" style={{ fontFamily: "'Pacifico', cursive" }}>Rosso</p>
+          <p className="text-sm opacity-80 mb-2">412 Oak Street, Brooklyn, NY 11201</p>
+          <p className="text-sm opacity-80">(718) 555-0189 | hello@rossorestaurant.com</p>
         </div>
       </footer>
     </div>

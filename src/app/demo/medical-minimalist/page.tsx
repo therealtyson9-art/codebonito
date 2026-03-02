@@ -1,186 +1,153 @@
 export default function MedicalMinimalistDemo() {
-  const navLinks = ["Services", "Doctors", "Appointments", "Insurance"]
+  const navLinks = ['Services', 'Our Doctors', 'Appointments']
   const services = [
-    { title: "Family Medicine", desc: "Comprehensive primary care for patients of all ages, from routine check-ups to chronic disease management." },
-    { title: "Pediatrics", desc: "Specialized care for infants, children, and adolescents with a focus on developmental milestones and preventive health." },
-    { title: "Dermatology", desc: "Expert diagnosis and treatment of skin conditions including eczema, acne, psoriasis, and skin cancer screenings." },
-    { title: "Lab Services", desc: "On-site blood work, urinalysis, and diagnostic testing with results available within 24 to 48 hours." },
+    { icon: '🫀', title: 'Cardiology', desc: 'Heart health monitoring and preventive care' },
+    { icon: '🧠', title: 'Neurology', desc: 'Brain and nervous system diagnostics' },
+    { icon: '🦴', title: 'Orthopedics', desc: 'Bone and joint treatment plans' },
+    { icon: '👶', title: 'Pediatrics', desc: 'Compassionate care for children' },
+    { icon: '🔬', title: 'Lab Services', desc: 'On-site blood work and testing' },
+    { icon: '💊', title: 'Pharmacy', desc: 'Convenient prescription filling' },
   ]
   const doctors = [
-    { name: "Dr. Sarah Chen", specialty: "Family Medicine", credentials: "MD, FAAFP", experience: "15 years", bg: "bg-blue-100" },
-    { name: "Dr. Michael Torres", specialty: "Pediatrics", credentials: "MD, FAAP", experience: "12 years", bg: "bg-blue-50" },
-    { name: "Dr. Amara Osei", specialty: "Dermatology", credentials: "MD, FAAD", experience: "10 years", bg: "bg-sky-50" },
+    { name: 'Dr. Sarah Chen', specialty: 'Cardiologist', exp: '15 years' },
+    { name: 'Dr. James Okafor', specialty: 'Neurologist', exp: '12 years' },
+    { name: 'Dr. Maria Santos', specialty: 'Pediatrician', exp: '10 years' },
+    { name: 'Dr. Raj Patel', specialty: 'Orthopedic Surgeon', exp: '18 years' },
   ]
   const testimonials = [
-    { name: "Rebecca H.", text: "Dr. Chen took the time to listen to every concern I had. I finally feel like I have a doctor who truly cares about my wellbeing.", rating: 5 },
-    { name: "James P.", text: "My kids actually look forward to their appointments with Dr. Torres. The entire staff makes them feel comfortable and safe.", rating: 5 },
-    { name: "Linda M.", text: "After years of struggling with eczema, Dr. Osei developed a treatment plan that changed my life. I cannot recommend this clinic enough.", rating: 5 },
+    { quote: 'The staff made me feel completely at ease. Best medical experience I have ever had.', author: 'Linda M.' },
+    { quote: 'Dr. Chen caught something three other doctors missed. I am forever grateful.', author: 'Robert K.' },
   ]
-  const insurancePartners = ["Blue Cross Blue Shield", "Aetna", "UnitedHealthcare", "Cigna", "Humana", "Medicare"]
-  const metrics = [
-    { value: "15K+", label: "Patients served" },
-    { value: "98%", label: "Patient satisfaction" },
-    { value: "24hr", label: "Avg lab results" },
-    { value: "12", label: "Years in practice" },
-  ]
+  const insuranceLogos = ['Aetna', 'Blue Cross', 'Cigna', 'UnitedHealth', 'Humana', 'Kaiser']
 
   return (
-    <div className="min-h-screen bg-white" style={{ fontFamily: "Inter, sans-serif" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <div className="min-h-screen" style={{ backgroundColor: '#f0f9ff', fontFamily: "'DM Sans', sans-serif" }}>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
 
       {/* Nav */}
-      <nav className="border-b border-slate-100">
-        <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-          <span className="text-lg font-semibold tracking-tight text-slate-900">Clarity<span className="text-blue-600">Health</span></span>
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <span key={link} className="text-sm text-slate-500 hover:text-slate-900 cursor-pointer">{link}</span>
+      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b" style={{ borderColor: '#e0f2fe' }}>
+        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+          <span className="text-xl font-bold" style={{ fontFamily: "'Inter', sans-serif", color: '#0c4a6e' }}>ClearPath Medical</span>
+          <div className="hidden md:flex items-center gap-8">
+            {navLinks.map(link => (
+              <a key={link} href="#" className="text-sm font-medium hover:opacity-70 transition" style={{ color: '#0c4a6e' }}>{link}</a>
             ))}
-          </div>
-          <div className="flex items-center space-x-4">
-            <span className="text-sm text-slate-500 cursor-pointer">Patient Portal</span>
-            <span className="text-sm font-medium text-white bg-blue-600 px-4 py-2 rounded-md cursor-pointer">Book Now</span>
+            <span className="text-sm font-medium" style={{ color: '#0ea5e9' }}>(415) 555-0192</span>
           </div>
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="max-w-5xl mx-auto px-6 pt-28 pb-20">
-        <p className="text-sm font-medium text-blue-600 tracking-wide uppercase mb-4">Accepting new patients</p>
-        <h1 className="text-5xl md:text-6xl font-bold text-slate-900 leading-tight tracking-tight mb-6">
-          Your health,<br />our priority.
-        </h1>
-        <p className="text-lg text-slate-500 max-w-lg mb-10 leading-relaxed">
-          Personalized, compassionate care for you and your family. From routine wellness visits to specialized treatment, we are here every step of the way.
-        </p>
-        <div className="flex items-center space-x-3">
-          <span className="h-11 px-6 flex items-center text-sm font-medium text-white bg-blue-600 rounded-md cursor-pointer">Schedule Appointment</span>
-          <span className="h-11 px-6 flex items-center text-sm font-medium text-blue-600 border border-blue-200 rounded-md cursor-pointer">Call (555) 234-5678</span>
+      {/* Hero — split layout */}
+      <section className="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6" style={{ fontFamily: "'Inter', sans-serif", color: '#0c4a6e' }}>
+            Healthcare that puts you first
+          </h1>
+          <p className="text-lg mb-8" style={{ color: '#0c4a6e' }}>
+            Modern medicine meets personal attention. Our board-certified physicians combine cutting-edge technology with genuine compassion to deliver care you can trust.
+          </p>
+          <button className="rounded-full px-8 py-3 text-white font-medium text-sm transition hover:opacity-90" style={{ backgroundColor: '#0ea5e9' }}>
+            Book an Appointment
+          </button>
+        </div>
+        <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ backgroundColor: '#bae6fd' }}>
+          <div className="w-full h-full flex items-center justify-center text-6xl">🩺</div>
         </div>
       </section>
 
-      {/* Metrics */}
-      <section className="border-y border-slate-100">
-        <div className="max-w-5xl mx-auto px-6 py-16 grid grid-cols-2 md:grid-cols-4 gap-8">
-          {metrics.map((m) => (
-            <div key={m.label} className="text-center">
-              <p className="text-3xl font-bold text-slate-900 tracking-tight">{m.value}</p>
-              <p className="text-sm text-slate-400 mt-1">{m.label}</p>
+      {/* Services — icon grid 2x3 */}
+      <section className="max-w-6xl mx-auto px-6 py-20">
+        <h2 className="text-3xl font-bold text-center mb-12" style={{ fontFamily: "'Inter', sans-serif", color: '#0c4a6e' }}>Our Services</h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map(s => (
+            <div key={s.title} className="rounded-xl p-6 bg-white" style={{ border: '1px solid #e0f2fe' }}>
+              <span className="text-3xl mb-4 block">{s.icon}</span>
+              <h3 className="font-semibold text-lg mb-2" style={{ fontFamily: "'Inter', sans-serif", color: '#0c4a6e' }}>{s.title}</h3>
+              <p className="text-sm" style={{ color: '#64748b' }}>{s.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Services */}
-      <section className="max-w-5xl mx-auto px-6 py-24">
-        <p className="text-sm font-medium text-blue-600 tracking-wide uppercase mb-3">Our Services</p>
-        <h2 className="text-3xl font-bold text-slate-900 tracking-tight mb-4">Comprehensive care under one roof</h2>
-        <p className="text-slate-500 max-w-lg mb-16">We offer a full range of medical services to keep you and your family healthy at every stage of life.</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-12">
-          {services.map((s) => (
-            <div key={s.title}>
-              <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center mb-4">
-                <div className="w-5 h-5 rounded bg-blue-200"></div>
-              </div>
-              <h3 className="text-base font-semibold text-slate-900 mb-2">{s.title}</h3>
-              <p className="text-sm text-slate-500 leading-relaxed">{s.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Doctors */}
-      <section className="border-t border-slate-100">
-        <div className="max-w-5xl mx-auto px-6 py-24">
-          <p className="text-sm font-medium text-blue-600 tracking-wide uppercase mb-3">Our Physicians</p>
-          <h2 className="text-3xl font-bold text-slate-900 tracking-tight mb-4">Meet your care team</h2>
-          <p className="text-slate-500 max-w-lg mb-14">Board-certified physicians dedicated to delivering evidence-based, patient-centered care.</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {doctors.map((d) => (
-              <div key={d.name}>
-                <div className={`w-full aspect-[4/5] rounded-lg ${d.bg} mb-4`}></div>
-                <p className="text-base font-semibold text-slate-900">{d.name}</p>
-                <p className="text-sm text-blue-600 mt-0.5">{d.specialty}</p>
-                <p className="text-sm text-slate-400 mt-0.5">{d.credentials} &middot; {d.experience}</p>
+      {/* Doctors — horizontal scroll */}
+      <section className="py-20" style={{ backgroundColor: '#e0f2fe' }}>
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl font-bold mb-10" style={{ fontFamily: "'Inter', sans-serif", color: '#0c4a6e' }}>Meet Our Doctors</h2>
+          <div className="flex gap-6 overflow-x-auto pb-4">
+            {doctors.map(d => (
+              <div key={d.name} className="min-w-[260px] bg-white rounded-xl p-6 flex-shrink-0" style={{ border: '1px solid #bae6fd' }}>
+                <div className="w-16 h-16 rounded-full mb-4 flex items-center justify-center text-2xl" style={{ backgroundColor: '#f0f9ff' }}>👤</div>
+                <h3 className="font-semibold" style={{ fontFamily: "'Inter', sans-serif", color: '#0c4a6e' }}>{d.name}</h3>
+                <p className="text-sm" style={{ color: '#0ea5e9' }}>{d.specialty}</p>
+                <p className="text-xs mt-1" style={{ color: '#94a3b8' }}>{d.exp} experience</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Appointment Form */}
-      <section className="border-t border-slate-100 bg-slate-50">
-        <div className="max-w-5xl mx-auto px-6 py-24">
-          <p className="text-sm font-medium text-blue-600 tracking-wide uppercase mb-3">Book Online</p>
-          <h2 className="text-3xl font-bold text-slate-900 tracking-tight mb-4">Schedule your visit</h2>
-          <p className="text-slate-500 max-w-lg mb-12">New and returning patients can request an appointment online. We will confirm your visit within one business day.</p>
-          <div className="max-w-lg">
-            <div className="grid grid-cols-2 gap-4 mb-4">
-              <input type="text" placeholder="First name" className="h-11 px-4 text-sm border border-slate-200 rounded-md bg-white text-slate-900 placeholder-slate-400 outline-none focus:border-blue-400" />
-              <input type="text" placeholder="Last name" className="h-11 px-4 text-sm border border-slate-200 rounded-md bg-white text-slate-900 placeholder-slate-400 outline-none focus:border-blue-400" />
-            </div>
-            <input type="email" placeholder="Email address" className="w-full h-11 px-4 text-sm border border-slate-200 rounded-md bg-white text-slate-900 placeholder-slate-400 outline-none focus:border-blue-400 mb-4" />
-            <input type="tel" placeholder="Phone number" className="w-full h-11 px-4 text-sm border border-slate-200 rounded-md bg-white text-slate-900 placeholder-slate-400 outline-none focus:border-blue-400 mb-4" />
-            <select className="w-full h-11 px-4 text-sm border border-slate-200 rounded-md bg-white text-slate-900 outline-none focus:border-blue-400 mb-4">
-              <option>Select a service</option>
-              <option>Family Medicine</option>
-              <option>Pediatrics</option>
-              <option>Dermatology</option>
-              <option>Lab Services</option>
-            </select>
-            <span className="inline-flex h-11 px-8 items-center text-sm font-medium text-white bg-blue-600 rounded-md cursor-pointer">Request Appointment</span>
-          </div>
-        </div>
+      {/* Appointment form */}
+      <section className="max-w-2xl mx-auto px-6 py-20">
+        <h2 className="text-3xl font-bold text-center mb-8" style={{ fontFamily: "'Inter', sans-serif", color: '#0c4a6e' }}>Book Your Visit</h2>
+        <form className="bg-white rounded-xl p-8 space-y-4" style={{ border: '1px solid #e0f2fe' }}>
+          <input type="text" placeholder="Full Name" className="w-full rounded-lg px-4 py-3 text-sm outline-none" style={{ border: '1px solid #e0f2fe', backgroundColor: '#f0f9ff' }} />
+          <input type="email" placeholder="Email Address" className="w-full rounded-lg px-4 py-3 text-sm outline-none" style={{ border: '1px solid #e0f2fe', backgroundColor: '#f0f9ff' }} />
+          <input type="tel" placeholder="Phone Number" className="w-full rounded-lg px-4 py-3 text-sm outline-none" style={{ border: '1px solid #e0f2fe', backgroundColor: '#f0f9ff' }} />
+          <select className="w-full rounded-lg px-4 py-3 text-sm outline-none" style={{ border: '1px solid #e0f2fe', backgroundColor: '#f0f9ff', color: '#64748b' }}>
+            <option>Select Department</option>
+            {services.map(s => <option key={s.title}>{s.title}</option>)}
+          </select>
+          <button type="submit" className="w-full rounded-full py-3 text-white font-medium text-sm" style={{ backgroundColor: '#0ea5e9' }}>
+            Request Appointment
+          </button>
+        </form>
       </section>
 
       {/* Testimonials */}
-      <section className="border-t border-slate-100">
-        <div className="max-w-5xl mx-auto px-6 py-24">
-          <p className="text-sm font-medium text-blue-600 tracking-wide uppercase mb-3">Patient Stories</p>
-          <h2 className="text-3xl font-bold text-slate-900 tracking-tight mb-14">What our patients say</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((t) => (
-              <div key={t.name} className="border border-slate-100 rounded-lg p-6">
-                <div className="flex space-x-0.5 mb-4">
-                  {Array.from({ length: t.rating }).map((_, i) => (
-                    <span key={i} className="text-blue-600 text-sm">&#9733;</span>
-                  ))}
-                </div>
-                <p className="text-sm text-slate-600 leading-relaxed mb-4">&ldquo;{t.text}&rdquo;</p>
-                <p className="text-sm font-semibold text-slate-900">{t.name}</p>
-              </div>
-            ))}
-          </div>
+      <section className="max-w-4xl mx-auto px-6 py-16 text-center">
+        <h2 className="text-3xl font-bold mb-10" style={{ fontFamily: "'Inter', sans-serif", color: '#0c4a6e' }}>Patient Stories</h2>
+        {testimonials.map(t => (
+          <blockquote key={t.author} className="mb-8">
+            <p className="text-xl italic mb-3" style={{ color: '#0c4a6e' }}>&ldquo;{t.quote}&rdquo;</p>
+            <cite className="text-sm not-italic font-medium" style={{ color: '#0ea5e9' }}>— {t.author}</cite>
+          </blockquote>
+        ))}
+      </section>
+
+      {/* Insurance logos */}
+      <section className="max-w-6xl mx-auto px-6 py-12">
+        <p className="text-center text-sm font-medium mb-6" style={{ color: '#94a3b8' }}>Insurance Partners</p>
+        <div className="flex flex-wrap justify-center gap-8">
+          {insuranceLogos.map(l => (
+            <span key={l} className="text-sm font-medium px-4 py-2 rounded-lg" style={{ color: '#0c4a6e', backgroundColor: '#e0f2fe' }}>{l}</span>
+          ))}
         </div>
       </section>
 
-      {/* Insurance Partners */}
-      <section className="border-t border-slate-100">
-        <div className="max-w-5xl mx-auto px-6 py-16">
-          <p className="text-sm font-medium text-slate-400 text-center mb-8">Accepted Insurance Providers</p>
-          <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-4">
-            {insurancePartners.map((p) => (
-              <span key={p} className="text-sm text-slate-300 font-medium">{p}</span>
-            ))}
-          </div>
+      {/* Location */}
+      <section className="max-w-6xl mx-auto px-6 py-16 text-center">
+        <h2 className="text-2xl font-bold mb-4" style={{ fontFamily: "'Inter', sans-serif", color: '#0c4a6e' }}>Find Us</h2>
+        <p className="text-sm mb-6" style={{ color: '#64748b' }}>742 Wellness Boulevard, Suite 200, San Francisco, CA 94110</p>
+        <div className="w-full h-64 rounded-xl" style={{ backgroundColor: '#bae6fd' }}>
+          <div className="w-full h-full flex items-center justify-center text-4xl">📍</div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-100">
-        <div className="max-w-5xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between">
+      <footer className="border-t py-12" style={{ borderColor: '#e0f2fe' }}>
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-8">
           <div>
-            <span className="text-sm font-semibold text-slate-900">Clarity<span className="text-blue-600">Health</span></span>
-            <p className="text-xs text-slate-400 mt-1">123 Wellness Avenue, Suite 200 &middot; Portland, OR 97201</p>
+            <h3 className="font-bold mb-2" style={{ fontFamily: "'Inter', sans-serif", color: '#0c4a6e' }}>ClearPath Medical</h3>
+            <p className="text-sm" style={{ color: '#64748b' }}>742 Wellness Blvd, Suite 200</p>
+            <p className="text-sm" style={{ color: '#64748b' }}>San Francisco, CA 94110</p>
+            <p className="text-sm mt-2" style={{ color: '#0ea5e9' }}>(415) 555-0192</p>
           </div>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            {["Privacy", "Terms", "Accessibility", "Contact"].map((link) => (
-              <span key={link} className="text-sm text-slate-400 hover:text-slate-600 cursor-pointer">{link}</span>
-            ))}
+          <div>
+            <h3 className="font-bold mb-2" style={{ fontFamily: "'Inter', sans-serif", color: '#0c4a6e' }}>Office Hours</h3>
+            <p className="text-sm" style={{ color: '#64748b' }}>Monday – Friday: 8:00 AM – 6:00 PM</p>
+            <p className="text-sm" style={{ color: '#64748b' }}>Saturday: 9:00 AM – 1:00 PM</p>
+            <p className="text-sm" style={{ color: '#64748b' }}>Sunday: Closed</p>
           </div>
-        </div>
-        <div className="max-w-5xl mx-auto px-6 pb-6">
-          <p className="text-xs text-slate-300">&copy; 2026 ClarityHealth Medical Group. All rights reserved. This site does not provide medical advice.</p>
         </div>
       </footer>
     </div>

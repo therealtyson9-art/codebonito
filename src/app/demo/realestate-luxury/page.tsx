@@ -1,161 +1,154 @@
 export default function RealEstateLuxuryDemo() {
-  const listings = [
-    { name: "The Pinnacle Penthouse", location: "Manhattan, New York", price: "$4,200,000", beds: 3, baths: 4, sqft: "4,800", feature: "360-degree skyline views from the 58th floor with private rooftop terrace" },
-    { name: "Ashford Manor Estate", location: "Greenwich, Connecticut", price: "$8,700,000", beds: 7, baths: 9, sqft: "12,500", feature: "Gated 8-acre estate with guest house, pool pavilion, and equestrian facilities" },
-    { name: "Villa Serenata", location: "Palm Beach, Florida", price: "$3,500,000", beds: 5, baths: 5, sqft: "6,200", feature: "Oceanfront Mediterranean villa with private dock and resort-style pool" },
+  const properties = [
+    { name: 'The Penthouse at One57', location: 'Midtown Manhattan', price: '$28,500,000', beds: 5, baths: 6, sqft: '6,200' },
+    { name: 'Cliffside Estate', location: 'Malibu, CA', price: '$42,000,000', beds: 7, baths: 9, sqft: '12,400' },
+    { name: 'Lake Geneva Villa', location: 'Lake Geneva, WI', price: '$8,750,000', beds: 6, baths: 5, sqft: '8,900' },
   ]
-
-  const services = [
-    { name: "Private Acquisitions", desc: "Access to exclusive off-market properties and pre-launch developments available only through our network." },
-    { name: "Concierge Relocation", desc: "White-glove moving coordination including interior design referrals, staff placement, and lifestyle setup." },
-    { name: "Investment Portfolio", desc: "Strategic real estate investment management across residential, commercial, and international markets." },
-    { name: "Valuation & Appraisal", desc: "Discreet, accurate market valuations conducted by certified appraisers with luxury market expertise." },
-  ]
-
-  const agents = [
-    { name: "Victoria Ashford", title: "Principal Broker", volume: "$320M lifetime sales", specialty: "Manhattan Penthouses & Townhouses" },
-    { name: "Sebastian Cross", title: "Senior Director", volume: "$245M lifetime sales", specialty: "Waterfront & Estate Properties" },
-    { name: "Isabelle Laurent", title: "International Liaison", volume: "$180M lifetime sales", specialty: "Global Clientele & Diplomatic Residences" },
-  ]
-
-  const cities = [
-    { city: "New York", properties: "48 exclusive listings" },
-    { city: "London", properties: "32 exclusive listings" },
-    { city: "Dubai", properties: "21 exclusive listings" },
-    { city: "Monaco", properties: "14 exclusive listings" },
+  const neighborhoods = ['Upper East Side', 'Beverly Hills', 'Palm Beach', 'Aspen', 'The Hamptons', 'Miami Beach']
+  const stats = [
+    { value: '$4.2B', label: 'Total Sales Volume' },
+    { value: '320+', label: 'Properties Sold' },
+    { value: '12', label: 'Years of Excellence' },
+    { value: '98%', label: 'Client Satisfaction' },
   ]
 
   return (
-    <div className="min-h-screen text-white" style={{ fontFamily: "'Playfair Display', serif", backgroundColor: "#0d1117" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+    <div className="min-h-screen" style={{ backgroundColor: '#0a0a0a', fontFamily: "'Lato', sans-serif", color: '#f5f5f5' }}>
+      <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
 
-      {/* Nav */}
-      <nav className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between border-b" style={{ borderColor: "#d4af3733" }}>
-        <span className="text-xl font-bold tracking-widest" style={{ color: "#d4af37" }}>AURELIAN</span>
-        <div className="hidden md:flex items-center space-x-10">
-          {["Collection", "Services", "Our Team", "Global", "Contact"].map((item) => (
-            <span key={item} className="text-sm cursor-pointer transition-colors hover:opacity-100 opacity-60" style={{ fontFamily: "Inter, sans-serif", color: "#d4af37" }}>{item}</span>
-          ))}
+      {/* Nav — transparent overlay */}
+      <nav className="absolute top-0 left-0 right-0 z-50">
+        <div className="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
+          <span className="text-lg tracking-widest uppercase" style={{ fontFamily: "'Cinzel', serif", color: '#d4af37' }}>Aurelian</span>
+          <div className="hidden md:flex items-center gap-10">
+            {['Properties', 'Neighborhoods', 'About', 'Contact'].map(link => (
+              <a key={link} href="#" className="text-xs uppercase tracking-widest transition hover:opacity-70" style={{ color: '#f5f5f5' }}>{link}</a>
+            ))}
+          </div>
         </div>
-        <span className="text-xs tracking-widest px-5 py-2 border cursor-pointer transition-colors hover:bg-white/5" style={{ borderColor: "#d4af37", color: "#d4af37", fontFamily: "Inter, sans-serif" }}>PRIVATE ACCESS</span>
       </nav>
 
-      {/* Hero */}
-      <section className="max-w-6xl mx-auto px-6 pt-28 pb-24 text-center">
-        <p className="text-xs uppercase tracking-[0.3em] mb-6 opacity-50" style={{ fontFamily: "Inter, sans-serif", color: "#d4af37" }}>The Art of Exceptional Living</p>
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
-          Extraordinary properties<br />for <span style={{ color: "#d4af37" }}>extraordinary</span> lives
-        </h1>
-        <p className="mt-8 text-base text-gray-400 max-w-lg mx-auto" style={{ fontFamily: "Inter, sans-serif" }}>A curated portfolio of the world&apos;s most distinguished residences, presented with the discretion and expertise your lifestyle demands.</p>
-        <div className="mt-10 flex justify-center gap-6">
-          <span className="px-8 py-3 text-sm tracking-wider cursor-pointer transition-colors" style={{ backgroundColor: "#d4af37", color: "#0d1117", fontFamily: "Inter, sans-serif" }}>View Collection</span>
-          <span className="px-8 py-3 text-sm tracking-wider border cursor-pointer transition-colors hover:bg-white/5" style={{ borderColor: "#d4af37", color: "#d4af37", fontFamily: "Inter, sans-serif" }}>Schedule Viewing</span>
+      {/* Hero — full screen dark */}
+      <section className="relative min-h-screen flex items-center justify-center text-center px-6" style={{ backgroundColor: '#0f0f0f' }}>
+        <div className="absolute inset-8 border" style={{ borderColor: '#d4af3730' }} />
+        <div className="relative z-10">
+          <p className="text-xs uppercase tracking-[0.3em] mb-6" style={{ color: '#d4af37' }}>Luxury Real Estate</p>
+          <h1 className="text-5xl md:text-7xl font-semibold leading-tight mb-8" style={{ fontFamily: "'Cinzel', serif", color: '#f5f5f5' }}>
+            Exceptional Properties<br />for Exceptional Lives
+          </h1>
+          <p className="text-sm max-w-xl mx-auto mb-10 font-light leading-relaxed" style={{ color: '#999999' }}>
+            Curating the world&apos;s most distinguished residences for discerning buyers who accept nothing less than extraordinary.
+          </p>
+          <button className="px-10 py-3 text-xs uppercase tracking-[0.2em] font-bold border transition hover:bg-white/5" style={{ borderColor: '#d4af37', color: '#d4af37', backgroundColor: 'transparent' }}>
+            View Collection
+          </button>
         </div>
       </section>
 
-      {/* Divider */}
-      <div className="max-w-xs mx-auto flex items-center gap-4 py-4">
-        <div className="flex-1 h-px" style={{ backgroundColor: "#d4af3733" }} />
-        <span style={{ color: "#d4af37" }} className="text-xs">&#9670;</span>
-        <div className="flex-1 h-px" style={{ backgroundColor: "#d4af3733" }} />
-      </div>
-
-      {/* Luxury Listings */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
-        <p className="text-xs uppercase tracking-[0.3em] mb-12 opacity-50" style={{ fontFamily: "Inter, sans-serif", color: "#d4af37" }}>Featured Collection</p>
-        <div className="space-y-10">
-          {listings.map((l) => (
-            <div key={l.name} className="border rounded-sm p-8 hover:border-opacity-60 transition-colors cursor-pointer" style={{ borderColor: "#d4af3740" }}>
-              <div className="flex flex-col md:flex-row justify-between gap-6">
-                <div className="flex-1">
-                  <h3 className="text-2xl md:text-3xl font-bold">{l.name}</h3>
-                  <p className="text-sm mt-2 opacity-60" style={{ fontFamily: "Inter, sans-serif" }}>{l.location}</p>
-                  <p className="text-sm mt-4 text-gray-400 leading-relaxed" style={{ fontFamily: "Inter, sans-serif" }}>{l.feature}</p>
-                  <div className="flex items-center space-x-6 mt-4 text-xs opacity-50" style={{ fontFamily: "Inter, sans-serif" }}>
-                    <span>{l.beds} Bedrooms</span>
-                    <span>{l.baths} Bathrooms</span>
-                    <span>{l.sqft} sqft</span>
-                  </div>
-                </div>
-                <div className="flex flex-col items-end justify-between">
-                  <p className="text-3xl font-bold" style={{ color: "#d4af37" }}>{l.price}</p>
-                  <span className="text-xs tracking-wider mt-4 px-4 py-2 border cursor-pointer transition-colors hover:bg-white/5" style={{ borderColor: "#d4af37", color: "#d4af37", fontFamily: "Inter, sans-serif" }}>REQUEST DETAILS</span>
-                </div>
+      {/* Featured Properties */}
+      <section className="max-w-7xl mx-auto px-8 py-24">
+        <h2 className="text-2xl tracking-wider text-center mb-16 uppercase" style={{ fontFamily: "'Cinzel', serif", color: '#d4af37' }}>Featured Properties</h2>
+        <div className="grid lg:grid-cols-3 gap-8">
+          {properties.map(p => (
+            <div key={p.name} className="group">
+              <div className="aspect-[4/3] mb-6 flex items-center justify-center text-5xl" style={{ backgroundColor: '#1a1a1a', border: '1px solid #d4af3720' }}>
+                🏛️
+              </div>
+              <p className="text-xs uppercase tracking-wider mb-2" style={{ color: '#d4af37' }}>{p.location}</p>
+              <h3 className="text-xl mb-3" style={{ fontFamily: "'Cinzel', serif" }}>{p.name}</h3>
+              <p className="text-2xl font-bold mb-3" style={{ color: '#d4af37' }}>{p.price}</p>
+              <div className="flex gap-4 text-xs" style={{ color: '#777777' }}>
+                <span>{p.beds} Beds</span>
+                <span>{p.baths} Baths</span>
+                <span>{p.sqft} SF</span>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Exclusive Services */}
-      <section className="py-20" style={{ backgroundColor: "#0a0e14" }}>
-        <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs uppercase tracking-[0.3em] mb-12 opacity-50" style={{ fontFamily: "Inter, sans-serif", color: "#d4af37" }}>Bespoke Services</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {services.map((s) => (
-              <div key={s.name} className="border-l-2 pl-6 py-3" style={{ borderColor: "#d4af37" }}>
-                <h3 className="text-xl font-bold">{s.name}</h3>
-                <p className="text-sm text-gray-400 mt-2 leading-relaxed" style={{ fontFamily: "Inter, sans-serif" }}>{s.desc}</p>
+      {/* Property Search */}
+      <section className="py-16 px-8" style={{ backgroundColor: '#111111' }}>
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-xl tracking-wider text-center mb-8 uppercase" style={{ fontFamily: "'Cinzel', serif", color: '#d4af37' }}>Find Your Residence</h2>
+          <div className="grid md:grid-cols-4 gap-4">
+            <select className="px-4 py-3 text-sm outline-none" style={{ backgroundColor: '#1a1a1a', border: '1px solid #333', color: '#999' }}>
+              <option>Location</option><option>New York</option><option>Los Angeles</option><option>Miami</option>
+            </select>
+            <select className="px-4 py-3 text-sm outline-none" style={{ backgroundColor: '#1a1a1a', border: '1px solid #333', color: '#999' }}>
+              <option>Price Range</option><option>$5M – $10M</option><option>$10M – $25M</option><option>$25M+</option>
+            </select>
+            <select className="px-4 py-3 text-sm outline-none" style={{ backgroundColor: '#1a1a1a', border: '1px solid #333', color: '#999' }}>
+              <option>Bedrooms</option><option>3+</option><option>5+</option><option>7+</option>
+            </select>
+            <button className="px-6 py-3 text-xs uppercase tracking-[0.2em] font-bold border" style={{ borderColor: '#d4af37', color: '#d4af37' }}>
+              Search
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Neighborhoods — horizontal scroll */}
+      <section className="py-24 px-8">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-2xl tracking-wider text-center mb-16 uppercase" style={{ fontFamily: "'Cinzel', serif", color: '#d4af37' }}>Neighborhoods</h2>
+          <div className="flex gap-6 overflow-x-auto pb-4">
+            {neighborhoods.map(n => (
+              <div key={n} className="min-w-[200px] flex-shrink-0 aspect-[3/4] flex items-end p-6" style={{ backgroundColor: '#1a1a1a', border: '1px solid #d4af3720' }}>
+                <span className="text-sm uppercase tracking-wider">{n}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Top Agents */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
-        <p className="text-xs uppercase tracking-[0.3em] mb-12 opacity-50" style={{ fontFamily: "Inter, sans-serif", color: "#d4af37" }}>Distinguished Advisors</p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {agents.map((a) => (
-            <div key={a.name} className="text-center">
-              <div className="w-28 h-28 rounded-full mx-auto mb-5 border-2" style={{ borderColor: "#d4af37", backgroundColor: "#1a1f2b" }} />
-              <h3 className="text-xl font-bold">{a.name}</h3>
-              <p className="text-xs mt-1" style={{ color: "#d4af37", fontFamily: "Inter, sans-serif" }}>{a.title}</p>
-              <p className="text-xs text-gray-500 mt-2" style={{ fontFamily: "Inter, sans-serif" }}>{a.volume}</p>
-              <p className="text-xs text-gray-500 mt-1" style={{ fontFamily: "Inter, sans-serif" }}>{a.specialty}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Private Viewings CTA */}
-      <section className="py-20 text-center" style={{ backgroundColor: "#d4af37" }}>
-        <div className="max-w-2xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold" style={{ color: "#0d1117" }}>Private Viewings by Appointment</h2>
-          <p className="text-sm mt-4 opacity-70" style={{ color: "#0d1117", fontFamily: "Inter, sans-serif" }}>Experience our properties in complete privacy. Each viewing is personally arranged by a senior advisor with full discretion guaranteed.</p>
-          <div className="mt-8">
-            <span className="inline-block px-8 py-3 text-sm tracking-wider font-medium cursor-pointer border-2" style={{ borderColor: "#0d1117", color: "#0d1117", fontFamily: "Inter, sans-serif" }}>ARRANGE A VIEWING</span>
+      {/* Agent Profile */}
+      <section className="py-24 px-8" style={{ backgroundColor: '#111111' }}>
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+          <div className="aspect-[3/4] flex items-center justify-center text-6xl" style={{ backgroundColor: '#1a1a1a', border: '1px solid #d4af3720' }}>👤</div>
+          <div>
+            <p className="text-xs uppercase tracking-wider mb-4" style={{ color: '#d4af37' }}>Lead Agent</p>
+            <h2 className="text-3xl mb-4" style={{ fontFamily: "'Cinzel', serif" }}>Victoria Ashworth</h2>
+            <p className="font-light leading-relaxed mb-6" style={{ color: '#999999' }}>
+              With over 15 years in luxury real estate and $2.1 billion in career sales, Victoria brings an unmatched network and negotiation expertise to every transaction.
+            </p>
+            <button className="px-8 py-3 text-xs uppercase tracking-[0.2em] font-bold border" style={{ borderColor: '#d4af37', color: '#d4af37' }}>
+              Schedule a Private Showing
+            </button>
           </div>
         </div>
       </section>
 
-      {/* Global Presence */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
-        <p className="text-xs uppercase tracking-[0.3em] mb-12 opacity-50" style={{ fontFamily: "Inter, sans-serif", color: "#d4af37" }}>Global Presence</p>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {cities.map((c) => (
-            <div key={c.city} className="text-center py-8 border rounded-sm" style={{ borderColor: "#d4af3730" }}>
-              <h3 className="text-2xl font-bold" style={{ color: "#d4af37" }}>{c.city}</h3>
-              <p className="text-xs text-gray-500 mt-2" style={{ fontFamily: "Inter, sans-serif" }}>{c.properties}</p>
+      {/* Stats */}
+      <section className="py-16 px-8" style={{ borderTop: '1px solid #d4af3730', borderBottom: '1px solid #d4af3730' }}>
+        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          {stats.map(s => (
+            <div key={s.label}>
+              <p className="text-3xl font-bold mb-1" style={{ fontFamily: "'Cinzel', serif", color: '#d4af37' }}>{s.value}</p>
+              <p className="text-xs uppercase tracking-wider" style={{ color: '#666666' }}>{s.label}</p>
             </div>
           ))}
         </div>
+      </section>
+
+      {/* Contact */}
+      <section className="max-w-xl mx-auto px-8 py-24 text-center">
+        <h2 className="text-2xl tracking-wider mb-8 uppercase" style={{ fontFamily: "'Cinzel', serif", color: '#d4af37' }}>Private Inquiry</h2>
+        <form className="space-y-4">
+          <input type="text" placeholder="Full Name" className="w-full px-4 py-3 text-sm outline-none" style={{ backgroundColor: '#1a1a1a', border: '1px solid #333', color: '#f5f5f5' }} />
+          <input type="email" placeholder="Email" className="w-full px-4 py-3 text-sm outline-none" style={{ backgroundColor: '#1a1a1a', border: '1px solid #333', color: '#f5f5f5' }} />
+          <input type="tel" placeholder="Phone" className="w-full px-4 py-3 text-sm outline-none" style={{ backgroundColor: '#1a1a1a', border: '1px solid #333', color: '#f5f5f5' }} />
+          <textarea placeholder="Tell us what you are looking for" rows={4} className="w-full px-4 py-3 text-sm outline-none resize-none" style={{ backgroundColor: '#1a1a1a', border: '1px solid #333', color: '#f5f5f5' }} />
+          <button type="submit" className="w-full py-3 text-xs uppercase tracking-[0.2em] font-bold border" style={{ borderColor: '#d4af37', color: '#d4af37' }}>
+            Submit Inquiry
+          </button>
+        </form>
       </section>
 
       {/* Footer */}
-      <footer className="border-t py-10 px-6" style={{ borderColor: "#d4af3720" }}>
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-          <div>
-            <span className="text-lg font-bold tracking-widest" style={{ color: "#d4af37" }}>AURELIAN</span>
-            <p className="text-xs text-gray-600 mt-1" style={{ fontFamily: "Inter, sans-serif" }}>Luxury real estate, defined.</p>
-          </div>
-          <div className="flex space-x-8">
-            {["Collection", "Services", "Press", "Privacy"].map((s) => (
-              <span key={s} className="text-xs text-gray-600 hover:text-gray-300 cursor-pointer transition-colors" style={{ fontFamily: "Inter, sans-serif" }}>{s}</span>
-            ))}
-          </div>
-          <span className="text-xs text-gray-700" style={{ fontFamily: "Inter, sans-serif" }}>&copy; 2026 Aurelian Properties International</span>
-        </div>
+      <footer className="py-8 text-center" style={{ borderTop: '1px solid #d4af3720' }}>
+        <p className="text-xs tracking-widest uppercase mb-2" style={{ color: '#d4af37' }}>Aurelian</p>
+        <p className="text-xs" style={{ color: '#555555' }}>Park Avenue, New York | Rodeo Drive, Beverly Hills | Collins Avenue, Miami</p>
       </footer>
     </div>
   )
