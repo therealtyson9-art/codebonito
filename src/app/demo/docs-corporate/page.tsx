@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function DocsCorporateDemo() {
   return (
     <div style={{ fontFamily: "'Source Sans 3', sans-serif" }} className="min-h-screen" >

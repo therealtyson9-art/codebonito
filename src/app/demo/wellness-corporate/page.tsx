@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function WellnessCorporateDemo() {
   const services = [
     { name: "Physical Therapy", desc: "Evidence-based rehabilitation for orthopedic injuries, post-surgical recovery, and chronic pain management. Our licensed PTs create personalized treatment plans using manual therapy, therapeutic exercise, and modalities.", icon: "PT" },

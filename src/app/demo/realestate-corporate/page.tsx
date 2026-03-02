@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function RealestateCorporateDemo() {
   const megaNav = {
     services: ["Leasing", "Sales", "Property Management", "Consulting"],

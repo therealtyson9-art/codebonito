@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function AgencyMinimalistDemo() {
   const navItems = [
     { label: "Work", active: true },

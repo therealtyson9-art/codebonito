@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function TechMinimalistDemo() {
   const endpoints = [
     { method: "GET", path: "/v2/datasets", description: "List all datasets in your workspace with pagination and filtering support." },

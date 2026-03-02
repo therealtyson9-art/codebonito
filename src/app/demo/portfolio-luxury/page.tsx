@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { Cormorant_Infant } from 'next/font/google'
 
 const cormorant = Cormorant_Infant({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700'] })

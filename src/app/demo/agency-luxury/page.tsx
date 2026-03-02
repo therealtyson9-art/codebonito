@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function AgencyLuxuryDemo() {
   const navItems = ["Campaigns", "Philosophy", "Awards", "Press", "Inquiry"];
 

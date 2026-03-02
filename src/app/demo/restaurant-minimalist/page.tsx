@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function RestaurantMinimalistDemo() {
   const appetizers = [
     { name: "Garden Beet Tartare", desc: "Roasted golden & red beets, pistachio crumble, chive oil, micro greens", price: "$16" },

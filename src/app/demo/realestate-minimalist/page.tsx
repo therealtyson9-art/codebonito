@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function RealestateMinimalistDemo() {
   const navLinks = ["Listings", "Neighborhoods", "Sustainability", "Agents", "Contact"]
 

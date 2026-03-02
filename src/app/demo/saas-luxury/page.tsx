@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { Tenor_Sans } from 'next/font/google'
 
 const tenorSans = Tenor_Sans({ subsets: ['latin'], weight: '400' })

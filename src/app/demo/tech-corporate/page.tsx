@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function TechCorporateDemo() {
   const solutions = [
     { title: "Elastic Compute", desc: "Auto-scaling compute instances with dedicated and bare-metal options. Deploy across 34 global regions with guaranteed 99.99% uptime SLAs and live migration support.", icon: "C" },

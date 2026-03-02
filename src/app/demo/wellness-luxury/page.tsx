@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function WellnessLuxuryDemo() {
   const treatments = [
     { name: "Forest Bathing Ritual", duration: "120 min", desc: "A guided sensory immersion through our 200-acre old-growth forest. Your therapist leads you through mindful walking, aromatic breathing stations, and a streamside meditation before returning to the spa for a warm herbal wrap." },

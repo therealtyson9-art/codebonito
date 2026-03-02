@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function EcommercePlayfulDemo() {
   const snackCategories = [
     { name: "Salty & Crunchy", emoji: "🥨", count: 24, color: "#fbbf24" },

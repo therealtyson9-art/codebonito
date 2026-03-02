@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function DashboardBrutalistDemo() {
   const systemStats = [
     { label: "CPU_LOAD", value: "47.3%", bar: 47 },

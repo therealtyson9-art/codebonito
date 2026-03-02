@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function MedicalBrutalistDemo() {
   const navLinks = ['SERVICES', 'TEAM', 'EMERGENCY', 'CONTACT']
   const services = [

@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { Rubik } from 'next/font/google'
 
 const rubik = Rubik({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700', '800'] })

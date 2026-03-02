@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function DashboardPlayfulDemo() {
   const gamifiedStats = [
     { label: "Total XP", value: "12,480", icon: "⚡", color: "#a855f7" },

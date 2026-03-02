@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function LandingBrutalistDemo() {
   return (
     <div className="min-h-screen text-black" style={{ fontFamily: "'Inter', sans-serif", backgroundColor: "#a3e635" }}>

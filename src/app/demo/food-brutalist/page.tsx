@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function FoodBrutalistDemo() {
   const menuMeats = [
     { name: "THE TOMAHAWK", weight: "32oz", cook: "Live fire, 8 min per side", price: "$68", description: "Bone-in ribeye. Dry-aged 45 days. Seasoned with salt and smoke. Nothing else." },

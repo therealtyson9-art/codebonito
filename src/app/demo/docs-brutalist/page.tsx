@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function DocsBrutalistDemo() {
   return (
     <div style={{ fontFamily: "'Fira Code', monospace", backgroundColor: "#1a1a2e", color: "#e5e5e5" }} className="min-h-screen">

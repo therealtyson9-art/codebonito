@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function RealestatePlayfulDemo() {
   const navLinks = ["How It Works", "Homes", "Calculator", "Stories", "Resources"]
 

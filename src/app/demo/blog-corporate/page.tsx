@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function BlogCorporateDemo() {
   const categories = ["All", "Climate Policy", "ESG Reporting", "Green Tech", "Supply Chain", "Leadership"];
 

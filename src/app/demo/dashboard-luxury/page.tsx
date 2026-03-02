@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function DashboardLuxuryDemo() {
   const portfolioSummary = [
     { label: "Portfolio Value", value: "$14.2M", change: "+8.4%", up: true },

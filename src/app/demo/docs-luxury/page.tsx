@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function DocsLuxuryDemo() {
   return (
     <div style={{ fontFamily: "'Cardo', serif", backgroundColor: "#faf3e8" }} className="min-h-screen">

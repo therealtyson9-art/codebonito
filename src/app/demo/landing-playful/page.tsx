@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function LandingPlayfulDemo() {
   return (
     <div className="min-h-screen" style={{ fontFamily: "'Comfortaa', cursive", backgroundColor: "#fff7ed", color: "#292524" }}>

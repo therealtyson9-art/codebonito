@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function WellnessBrutalistDemo() {
   const programs = [
     { code: "001", name: "INTERMITTENT FASTING", duration: "8-week protocol", desc: "Structured time-restricted eating with progressive fasting windows. Starts at 14:10, advances to 20:4. Includes refeed strategies, electrolyte protocols, and metabolic tracking. Your body already knows how to do this. We just remove the noise.", price: "$297" },

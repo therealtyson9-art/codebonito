@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function LegalMinimalistDemo() {
   const practiceAreas = [
     { title: "Corporate Law", desc: "Strategic counsel for business formation, governance, compliance, and complex commercial transactions. We guide companies from incorporation through IPO and beyond." },

@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function RestaurantCorporateDemo() {
   const restaurants = [
     { name: "Cornerstone Midtown", city: "New York", address: "350 Park Avenue, 2nd Floor, New York, NY 10022", cuisine: "Modern American", hours: "Mon-Sun 11:30 AM - 10:00 PM", seats: 180, desc: "Our flagship location in the heart of Midtown Manhattan, featuring a grand dining room with floor-to-ceiling windows overlooking Park Avenue." },

@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function LegalLuxuryDemo() {
   const practiceAreas = [
     { title: "Private Client Advisory", desc: "Bespoke counsel for ultra-high-net-worth individuals, family offices, and private trusts across multiple jurisdictions and generations." },

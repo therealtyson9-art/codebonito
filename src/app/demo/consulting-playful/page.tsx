@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function ConsultingPlayfulDemo() {
   const workshops = [
     { title: "Innovation Sprint", duration: "2 days", size: "8-15 people", desc: "A fast-paced workshop where your team generates, tests, and prototypes new product ideas in just 48 hours.", emoji: "🚀" },

@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function TravelBrutalistDemo() {
   const destinations = [
     { name: "MONGOLIA", code: "ULN", terrain: "Steppe", temp: "-20 to 35C", note: "Sleep in gers with eagle hunters. No wifi. No roads. Just sky.", price: "$3,200" },

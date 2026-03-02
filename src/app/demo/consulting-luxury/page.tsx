@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function ConsultingLuxuryDemo() {
   const practiceAreas = [
     { name: "CEO Advisory", desc: "Confidential counsel for chief executives navigating succession planning, activist shareholders, strategic pivots, and legacy-defining decisions that shape institutions for decades.", icon: "◆" },

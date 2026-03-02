@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function LegalCorporateDemo() {
   const practiceAreas = [
     { icon: '⚖️', title: 'Corporate Law', desc: 'Mergers, acquisitions, and governance advisory' },

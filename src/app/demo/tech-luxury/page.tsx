@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function TechLuxuryDemo() {
   const solutions = [
     { name: "Sentinel", desc: "Continuous endpoint monitoring with behavioral analysis and autonomous threat containment. Detects zero-day exploits before they execute.", tag: "Endpoint" },

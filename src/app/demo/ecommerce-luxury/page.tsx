@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function EcommerceLuxuryDemo() {
   const collection = [
     { name: "Nuit Eternelle", type: "Eau de Parfum", price: "$285", size: "75ml", notes: "Black orchid, aged oud, Tahitian vanilla" },

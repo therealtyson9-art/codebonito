@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function LegalPlayfulDemo() {
   const services = [
     { icon: "\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc66", title: "Family Law", desc: "Divorce, custody, adoption, and child support. We handle sensitive family matters with empathy, clear communication, and a focus on what is best for your children." },

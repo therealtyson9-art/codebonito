@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function WellnessMinimalistDemo() {
   const classes = [
     { name: "Seated Meditation", duration: "30 min", desc: "Guided awareness practice focusing on breath, body scan, and open monitoring. Suitable for complete beginners and experienced practitioners alike.", level: "All Levels" },

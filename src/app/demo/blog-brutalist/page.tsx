@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function BlogBrutalistDemo() {
   const recentIssues = [
     { id: "047", title: "APPLE KILLED THE HOME SCREEN AND NOBODY NOTICED", date: "2026-02-28", size: "3.9KB", tag: "MOBILE" },

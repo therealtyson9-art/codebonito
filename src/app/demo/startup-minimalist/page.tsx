@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function StartupMinimalistDemo() {
   const logos = ['Stripe', 'Vercel', 'Linear', 'Notion', 'Figma', 'Loom']
   const features = [

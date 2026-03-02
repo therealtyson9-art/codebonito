@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function RestaurantBrutalistDemo() {
   const meats = [
     { name: "BRISKET", desc: "14-hour oak-smoked Texas-style, bark so thick it crunches, served by the half pound", price: "$18/half lb" },

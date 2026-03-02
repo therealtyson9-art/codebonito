@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function FoodLuxuryDemo() {
   const collections = [
     { name: "Les Classiques", pieces: 12, price: "from $48", description: "Our foundation collection. Paris-Brest with praline mousseline, tarte au citron with Italian meringue, and the Saint-Honor\u00e9 that earned our first Michelin mention." },

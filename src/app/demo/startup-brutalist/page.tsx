@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function StartupBrutalistDemo() {
   const navItems = [
     { num: "01", label: "MANIFESTO" },

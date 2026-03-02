@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function StartupLuxuryDemo() {
   const navLinks = ["What We Do", "Solutions", "Results", "Leadership", "Inquire"]
 

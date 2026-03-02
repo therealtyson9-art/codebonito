@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function FoodMinimalistDemo() {
   const recipes = [
     { name: "Dashi Ochazuke", season: "Winter", time: "15 min", description: "Rice steeped in fragrant dashi broth with pickled plum, nori, and wasabi. The simplest meal, and often the most satisfying.", ingredients: "Steamed rice, kombu dashi, umeboshi, toasted nori, wasabi" },

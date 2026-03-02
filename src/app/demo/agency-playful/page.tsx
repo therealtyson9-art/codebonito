@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function AgencyPlayfulDemo() {
   const navItems = ["What We Do", "Wins", "The Crew", "Blog", "Hire Us"];
 

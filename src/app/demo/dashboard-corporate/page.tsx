@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function DashboardCorporateDemo() {
   const kpis = [
     { label: "Total Revenue", value: "$4,284,520", change: "+12.4%", up: true, prefix: "$" },

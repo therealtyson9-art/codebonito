@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function MedicalLuxuryDemo() {
   const treatments = [
     { title: "Integrative Medicine", desc: "A personalized blend of conventional medicine and evidence-based complementary therapies including acupuncture, naturopathy, and functional medicine." },

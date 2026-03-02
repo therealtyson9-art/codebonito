@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function RealestateBrutalistDemo() {
   const navLinks = ["DEVELOPMENTS", "DATA", "TEAM", "INVEST", "CONTACT"]
 

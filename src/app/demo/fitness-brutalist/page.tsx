@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function FitnessBrutalistDemo() {
   const navLinks = ["WOD", "PROGRAMS", "COACHES", "PRICING", "JOIN"]
 

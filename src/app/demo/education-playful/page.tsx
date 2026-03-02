@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function EducationPlayfulDemo() {
   const subjects = [
     { icon: "🔢", name: "Math", desc: "From counting to fractions, we make numbers fun with games, puzzles, and real-world adventures.", color: "#3b82f6" },

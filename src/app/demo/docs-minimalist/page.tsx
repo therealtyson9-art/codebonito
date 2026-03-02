@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function DocsMinimalistDemo() {
   return (
     <div style={{ fontFamily: "'Atkinson Hyperlegible', sans-serif", color: "#374151" }} className="min-h-screen bg-white">

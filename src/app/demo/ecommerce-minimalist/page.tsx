@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function EcommerceMinimalistDemo() {
   const products = [
     { name: "Hand-Thrown Ceramic Vase", price: "$78", image: "bg-stone-200", tag: "New Arrival" },

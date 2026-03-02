@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function MedicalCorporateDemo() {
   const departments = [
     { name: "Cardiology", icon: "heart", desc: "Advanced cardiac care including interventional procedures, electrophysiology, and heart failure management.", beds: 64 },

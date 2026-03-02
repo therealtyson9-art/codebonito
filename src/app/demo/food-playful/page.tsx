@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function FoodPlayfulDemo() {
   const menuHighlights = [
     { name: 'Truffle Mushroom Flatbread', price: '$18', tag: 'Best Seller', desc: 'Wild mushroom medley, truffle cream, fontina, fresh thyme' },

@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function RestaurantPlayfulDemo() {
   const ramen = [
     { name: "Tonkotsu Classic", desc: "18-hour pork bone broth, chashu, soft egg, bamboo shoots, nori, scallions", price: "$16", heat: 1 },

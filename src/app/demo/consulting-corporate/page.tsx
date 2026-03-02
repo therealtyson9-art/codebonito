@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function ConsultingCorporateDemo() {
   const services = [
     { name: "Strategy & Growth", desc: "Market entry, competitive positioning, corporate strategy, and growth roadmaps for enterprises navigating complexity.", icon: "📊" },

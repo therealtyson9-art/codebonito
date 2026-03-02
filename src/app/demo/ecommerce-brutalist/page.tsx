@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function EcommerceBrutalistDemo() {
   const drops = [
     { name: "UTILITY CARGO PANT", price: "$110", sku: "UCP-041", status: "IN STOCK" },

@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function LegalBrutalistDemo() {
   const practiceAreas = [
     { area: "TECH LITIGATION", desc: "Patent disputes. Trade secret theft. Software licensing wars. We litigate at the intersection of law and code." },

@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function EducationLuxuryDemo() {
   const programs = [
     { name: "Executive MBA", duration: "18 months", format: "Hybrid", desc: "An intensive program for senior leaders seeking to sharpen strategic acumen while continuing to lead their organizations." },

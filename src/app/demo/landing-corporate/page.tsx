@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function LandingCorporateDemo() {
   return (
     <div className="min-h-screen" style={{ fontFamily: "'Libre Franklin', sans-serif", backgroundColor: "#eff6ff", color: "#1e3a5f" }}>

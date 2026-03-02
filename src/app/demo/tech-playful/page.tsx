@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function TechPlayfulDemo() {
   const tools = [
     { name: "Forge Studio", desc: "A visual code editor that turns your ideas into production-ready components. Drag, connect, and deploy without leaving your browser.", tag: "Design", gradient: "from-pink-500 to-rose-500" },

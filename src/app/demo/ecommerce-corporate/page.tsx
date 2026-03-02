@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function EcommerceCorporateDemo() {
   const topRated = [
     { name: "ProDesk 27\" 4K Monitor", price: "$449.99", was: "$529.99", rating: "4.8", reviews: 342, badge: "Best Seller" },

@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function StartupPlayfulDemo() {
   const features = [
     { emoji: "~", title: "Draw Anything", desc: "Freehand sketches, sticky notes, flowcharts, wireframes, mind maps. If you can imagine it, Doodlepad can handle it. Our infinite canvas never runs out of space." },

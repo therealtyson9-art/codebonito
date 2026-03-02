@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { Outfit } from 'next/font/google'
 
 const outfit = Outfit({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700'] })

@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function EducationMinimalistDemo() {
   const courses = [
     { title: "Data Science Fundamentals", instructor: "Dr. Sarah Chen", students: 2340, rating: 4.9, category: "Technology" },

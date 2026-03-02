@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function DashboardMinimalistDemo() {
   const stats = [
     { label: "Monthly Revenue", value: "$128,430", change: "+14.2%", up: true },

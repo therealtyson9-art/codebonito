@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function ConsultingMinimalistDemo() {
   const services = [
     { title: "Strategy", desc: "We help organizations define where to play and how to win. From market entry to portfolio optimization, we bring clarity to your most consequential decisions." },

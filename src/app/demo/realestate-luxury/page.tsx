@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function RealEstateLuxuryDemo() {
   const properties = [
     { name: 'The Penthouse at One57', location: 'Midtown Manhattan', price: '$28,500,000', beds: 5, baths: 6, sqft: '6,200' },

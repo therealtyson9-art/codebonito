@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function AgencyBrutalistDemo() {
   const navBlocks = [
     { label: "ANTI-PORTFOLIO", color: "#dfff00", textColor: "#000" },

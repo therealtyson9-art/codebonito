@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function DocsPlayfulDemo() {
   return (
     <div style={{ fontFamily: "'Nunito Sans', sans-serif", backgroundColor: "#ecfdf5" }} className="min-h-screen">

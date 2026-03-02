@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function RestaurantLuxuryDemo() {
   const courses = [
     { number: "I", name: "Amuse-Bouche", desc: "Oyster leaf, yuzu pearl, champagne foam, edible gold", wine: "NV Krug Grande Cuv\u00e9e" },

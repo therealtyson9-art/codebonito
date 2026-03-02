@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function TravelPlayfulDemo() {
   const destinations = [
     { name: "Orlando", country: "USA", emoji: "🏰", price: "$899", badge: "Most Popular!", badgeColor: "#f97316", description: "Theme parks, splash zones, and character breakfasts that make every kid (and parent) feel like royalty." },

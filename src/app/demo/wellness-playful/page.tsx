@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function WellnessPlayfulDemo() {
   const productLines = [
     { name: "Face", tagline: "Glow from the inside out", desc: "Gentle cleansers, hydrating serums, and protective moisturizers crafted with botanical extracts. Every formula is pH-balanced and suitable for sensitive skin.", color: "#fce7f3", accent: "#ec4899" },

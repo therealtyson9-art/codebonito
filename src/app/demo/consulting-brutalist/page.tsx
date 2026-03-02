@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function ConsultingBrutalistDemo() {
   const industries = [
     { name: "RETAIL", desc: "We tore apart a legacy department store chain's operations and rebuilt them for the DTC era. Revenue up 210%.", icon: "🏬" },

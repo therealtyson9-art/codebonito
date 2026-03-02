@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function TravelMinimalistDemo() {
   const destinations = [
     { name: "Marrakech", country: "Morocco", price: "$1,480", duration: "8 days", description: "Wander through ochre medinas, sip mint tea on hidden rooftops, and lose yourself in the souks of the Red City." },

@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function BlogPlayfulDemo() {
   const tags = ["All", "Creativity", "Focus", "Habits", "Mindset", "Tools", "Journaling", "Collaboration"];
 

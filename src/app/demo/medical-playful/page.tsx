@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function MedicalPlayfulDemo() {
   const services = [
     { emoji: "\ud83d\udc76", title: "Well-Child Visits", desc: "Regular check-ups to track growth, development milestones, and vaccinations from newborn through adolescence. We make every visit fun and stress-free.", color: "#ccfbf1" },

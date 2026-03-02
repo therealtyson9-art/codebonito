@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function TravelLuxuryDemo() {
   const destinations = [
     { name: 'Santorini, Greece', desc: 'Cliffside suites overlooking the caldera. Private sunset yacht cruises and wine cave tastings.', from: '$4,200/night' },

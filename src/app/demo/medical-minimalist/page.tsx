@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function MedicalMinimalistDemo() {
   const navLinks = ['Services', 'Our Doctors', 'Appointments']
   const services = [

@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function EducationCorporateDemo() {
   const programs = [
     { name: 'Liberal Arts', color: '#2980b9', count: '14 majors', icon: '📚' },

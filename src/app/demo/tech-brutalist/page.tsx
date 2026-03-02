@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function TechBrutalistDemo() {
   const navLinks = ['products', 'specs', 'team', 'changelog', 'docs']
   const products = [

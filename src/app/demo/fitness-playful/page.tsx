@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function FitnessPlayfulDemo() {
   const classes = [
     { name: 'HIIT Burn', time: '6:00 AM', trainer: 'Coach Mia', color: '#ff6b35' },
