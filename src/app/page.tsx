@@ -21,6 +21,7 @@ import {
   Search,
   Package,
   Rocket,
+  Upload,
 } from "lucide-react";
 import { MOCK_TEMPLATES } from "@/lib/mock-data";
 
@@ -47,7 +48,7 @@ export default function HomePage() {
               className="mb-8 px-4 py-1.5 text-sm font-medium"
             >
               <Sparkles className="mr-1.5 h-3.5 w-3.5" />
-              Launch Special — Pro for $5/mo
+              3 Free Templates + $2 Each
             </Badge>
             <h1 className="text-5xl font-bold tracking-tight sm:text-7xl lg:text-8xl">
               Stop building{" "}
@@ -73,7 +74,10 @@ export default function HomePage() {
                 size="lg"
                 className="h-12 px-8 text-base"
               >
-                <Link href="/pricing">View Pricing</Link>
+                <Link href="/upload">
+                  <Upload className="mr-2 h-4 w-4" />
+                  Become a Creator
+                </Link>
               </Button>
             </div>
             <div className="mt-12 flex items-center justify-center gap-8 text-sm text-muted-foreground">
@@ -216,8 +220,12 @@ export default function HomePage() {
                       alt={template.name}
                       className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
-                    {template.price_tier === "pro" && (
-                      <Badge className="absolute right-3 top-3">PRO</Badge>
+                    {template.price_tier === "pro" ? (
+                      <Badge className="absolute right-3 top-3">$2</Badge>
+                    ) : (
+                      <Badge className="absolute right-3 top-3 bg-green-600 hover:bg-green-700">
+                        FREE
+                      </Badge>
                     )}
                   </div>
                   <div className="p-5">
@@ -273,55 +281,55 @@ export default function HomePage() {
               <CardHeader>
                 <CardTitle className="text-xl">Free</CardTitle>
                 <CardDescription>
-                  Perfect for trying out templates
+                  Try 3 templates at no cost
                 </CardDescription>
                 <div className="mt-4">
                   <span className="text-5xl font-bold">$0</span>
-                  <span className="text-muted-foreground">/month</span>
+                  <span className="text-muted-foreground"> forever</span>
                 </div>
               </CardHeader>
               <CardContent className="flex-1">
                 <ul className="space-y-3">
-                  <PricingFeature>5 free templates per month</PricingFeature>
-                  <PricingFeature>Web platform only</PricingFeature>
-                  <PricingFeature>Basic preview</PricingFeature>
-                  <PricingFeature>Community support</PricingFeature>
+                  <PricingFeature>3 free templates included</PricingFeature>
+                  <PricingFeature>All 5 platforms supported</PricingFeature>
+                  <PricingFeature>Copy prompts instantly</PricingFeature>
+                  <PricingFeature>No account required</PricingFeature>
                 </ul>
               </CardContent>
               <CardFooter>
                 <Button variant="outline" className="w-full" asChild>
-                  <Link href="/browse">Get Started</Link>
+                  <Link href="/browse">Browse Free Templates</Link>
                 </Button>
               </CardFooter>
             </Card>
 
             <Card className="relative flex flex-col border-primary">
               <Badge className="absolute -top-3 left-1/2 -translate-x-1/2">
-                Most Popular
+                Pay Per Template
               </Badge>
               <CardHeader>
-                <CardTitle className="text-xl">Pro</CardTitle>
+                <CardTitle className="text-xl">Premium</CardTitle>
                 <CardDescription>
-                  For serious developers and teams
+                  Buy only the templates you need
                 </CardDescription>
                 <div className="mt-4">
-                  <span className="text-5xl font-bold">$5</span>
-                  <span className="text-muted-foreground">/month</span>
+                  <span className="text-5xl font-bold">$2</span>
+                  <span className="text-muted-foreground"> per template</span>
                 </div>
               </CardHeader>
               <CardContent className="flex-1">
                 <ul className="space-y-3">
-                  <PricingFeature>Unlimited template access</PricingFeature>
-                  <PricingFeature>All platforms (Web, iOS, Android, Figma)</PricingFeature>
-                  <PricingFeature>Design tokens & manifest files</PricingFeature>
-                  <PricingFeature>Priority support</PricingFeature>
+                  <PricingFeature>47 premium templates</PricingFeature>
+                  <PricingFeature>All 5 platforms (Cursor, v0, Bolt, Lovable, Claude Code)</PricingFeature>
+                  <PricingFeature>Design tokens & ZIP download</PricingFeature>
+                  <PricingFeature>One-time payment, yours forever</PricingFeature>
                   <PricingFeature>New templates every week</PricingFeature>
                 </ul>
               </CardContent>
               <CardFooter>
                 <Button className="w-full" asChild>
-                  <Link href="/pricing">
-                    Get Pro <ArrowRight className="ml-2 h-4 w-4" />
+                  <Link href="/browse">
+                    Browse Templates <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
               </CardFooter>

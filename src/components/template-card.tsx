@@ -26,15 +26,13 @@ export function TemplateCard({ template }: { template: Template }) {
               className="object-cover transition-transform duration-300 group-hover:scale-105"
               unoptimized
             />
-            {template.price_tier === "pro" && (
+            {template.price_tier === "pro" ? (
               <Badge className="absolute right-3 top-3 font-mono text-[10px] tracking-wider">
-                PRO
+                $2
               </Badge>
-            )}
-            {template.price_tier === "free" && (
+            ) : (
               <Badge
-                variant="secondary"
-                className="absolute right-3 top-3 font-mono text-[10px] tracking-wider"
+                className="absolute right-3 top-3 bg-green-600 font-mono text-[10px] tracking-wider hover:bg-green-700"
               >
                 FREE
               </Badge>

@@ -75,12 +75,15 @@ function pickPlatforms(seed: string): string[] {
   return all.slice(0, count);
 }
 
-function isPro(seed: string): boolean {
-  let h = 0;
-  for (let i = 0; i < seed.length; i++) {
-    h = (Math.imul(41, h) + seed.charCodeAt(i)) | 0;
-  }
-  return (h >>> 0) % 100 < 60; // ~60% pro
+// These 3 templates are free; all others are paid ($2)
+const FREE_SLUGS = new Set([
+  "saas-minimalist",
+  "portfolio-minimalist",
+  "landing-minimalist",
+]);
+
+function isPro(slug: string): boolean {
+  return !FREE_SLUGS.has(slug);
 }
 
 // Category-specific placeholder colors for preview URLs

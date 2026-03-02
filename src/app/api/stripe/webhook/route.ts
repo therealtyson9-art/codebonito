@@ -31,36 +31,51 @@ export async function POST(request: Request) {
   switch (event.type) {
     case "checkout.session.completed": {
       const session = event.data.object as Stripe.Checkout.Session;
-      const userId = session.metadata?.user_id;
 
-      if (userId && session.subscription) {
-        const subscription = await getStripe().subscriptions.retrieve(
-          session.subscription as string
-        );
+      if (session.mode === "payment") {
+        // One-time template purchase
+        const userId = session.metadata?.userId;
+        const templateId = session.metadata?.templateId;
 
-        // Period dates are on subscription items in Stripe v20+
-        const item = subscription.items.data[0];
-        const periodStart = item?.current_period_start;
-        const periodEnd = item?.current_period_end;
+        if (userId && templateId) {
+          await supabase.from("purchases").insert({
+            user_id: userId,
+            template_id: templateId,
+            stripe_session_id: session.id,
+            amount: session.amount_total ?? 200,
+          });
+        }
+      } else if (session.mode === "subscription") {
+        // Pro subscription
+        const userId = session.metadata?.user_id;
 
-        await supabase.from("subscriptions").upsert({
-          user_id: userId,
-          stripe_subscription_id: subscription.id,
-          plan: "pro",
-          status: subscription.status,
-          current_period_start: periodStart
-            ? new Date(periodStart * 1000).toISOString()
-            : null,
-          current_period_end: periodEnd
-            ? new Date(periodEnd * 1000).toISOString()
-            : null,
-        });
+        if (userId && session.subscription) {
+          const subscription = await getStripe().subscriptions.retrieve(
+            session.subscription as string
+          );
 
-        // Update stripe_customer_id on profile
-        await supabase
-          .from("profiles")
-          .update({ stripe_customer_id: session.customer as string })
-          .eq("id", userId);
+          const item = subscription.items.data[0];
+          const periodStart = item?.current_period_start;
+          const periodEnd = item?.current_period_end;
+
+          await supabase.from("subscriptions").upsert({
+            user_id: userId,
+            stripe_subscription_id: subscription.id,
+            plan: "pro",
+            status: subscription.status,
+            current_period_start: periodStart
+              ? new Date(periodStart * 1000).toISOString()
+              : null,
+            current_period_end: periodEnd
+              ? new Date(periodEnd * 1000).toISOString()
+              : null,
+          });
+
+          await supabase
+            .from("profiles")
+            .update({ stripe_customer_id: session.customer as string })
+            .eq("id", userId);
+        }
       }
       break;
     }

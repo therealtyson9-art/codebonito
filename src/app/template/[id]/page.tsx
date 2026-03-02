@@ -1,14 +1,15 @@
 "use client";
 
 import { generatePrompt } from "@/lib/prompt-generator";
-import { use, useState } from "react";
+import { use, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { MOCK_TEMPLATES } from "@/lib/mock-data";
+import { createClient } from "@/lib/supabase/client";
 import {
   ArrowLeft,
   Download,
@@ -16,7 +17,19 @@ import {
   ArrowRight,
   Loader2,
   Lock,
+  Copy,
+  Check,
+  ShoppingCart,
 } from "lucide-react";
+import type { User } from "@supabase/supabase-js";
+
+const PLATFORM_LABELS: Record<string, string> = {
+  cursor: "Cursor",
+  v0: "v0",
+  bolt: "Bolt",
+  lovable: "Lovable",
+  "claude-code": "Claude Code",
+};
 
 export default function TemplateDetailPage({
   params,
@@ -26,9 +39,54 @@ export default function TemplateDetailPage({
   const { id } = use(params);
   const template = MOCK_TEMPLATES.find((t) => t.id === id);
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [downloading, setDownloading] = useState(false);
-  const [showUpgrade, setShowUpgrade] = useState(false);
   const [copiedPlatform, setCopiedPlatform] = useState<string | null>(null);
+  const [activePlatform, setActivePlatform] = useState<string>("");
+  const [user, setUser] = useState<User | null>(null);
+  const [purchased, setPurchased] = useState(false);
+  const [checkingPurchase, setCheckingPurchase] = useState(true);
+  const [purchasing, setPurchasing] = useState(false);
+  const [showAuthModal, setShowAuthModal] = useState(false);
+
+  // Initialize active platform
+  useEffect(() => {
+    if (template && template.platforms.length > 0 && !activePlatform) {
+      setActivePlatform(template.platforms[0]);
+    }
+  }, [template, activePlatform]);
+
+  // Check auth and purchase status
+  useEffect(() => {
+    const supabase = createClient();
+
+    async function checkStatus() {
+      const {
+        data: { user: currentUser },
+      } = await supabase.auth.getUser();
+      setUser(currentUser);
+
+      if (currentUser && id) {
+        const { data } = await supabase
+          .from("purchases")
+          .select("id")
+          .eq("user_id", currentUser.id)
+          .eq("template_id", id)
+          .limit(1)
+          .maybeSingle();
+        setPurchased(!!data);
+      }
+
+      setCheckingPurchase(false);
+    }
+
+    checkStatus();
+
+    // If returned from successful purchase
+    if (searchParams.get("purchased") === "true") {
+      setPurchased(true);
+    }
+  }, [id, searchParams]);
 
   if (!template) {
     return (
@@ -46,10 +104,69 @@ export default function TemplateDetailPage({
     );
   }
 
+  const isFree = template.price_tier === "free";
+  const canCopy = isFree || purchased;
+
+  const prompt = activePlatform
+    ? generatePrompt(template as Parameters<typeof generatePrompt>[0], activePlatform)
+    : "";
+
+  function handleCopy() {
+    if (!activePlatform) return;
+
+    if (isFree) {
+      doCopy();
+      return;
+    }
+
+    if (!user) {
+      setShowAuthModal(true);
+      return;
+    }
+
+    if (!purchased) return;
+
+    doCopy();
+  }
+
+  function doCopy() {
+    navigator.clipboard.writeText(prompt);
+    setCopiedPlatform(activePlatform);
+    setTimeout(() => setCopiedPlatform(null), 2000);
+  }
+
+  async function handlePurchase() {
+    if (!user) {
+      router.push(`/login?redirect=/template/${template!.id}`);
+      return;
+    }
+
+    setPurchasing(true);
+    try {
+      const res = await fetch("/api/stripe/purchase", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ templateId: template!.id }),
+      });
+
+      if (res.status === 401) {
+        router.push(`/login?redirect=/template/${template!.id}`);
+        return;
+      }
+
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      }
+    } catch {
+      // Network error
+    } finally {
+      setPurchasing(false);
+    }
+  }
+
   async function handleDownload() {
     setDownloading(true);
-    setShowUpgrade(false);
-
     try {
       const res = await fetch("/api/download", {
         method: "POST",
@@ -62,19 +179,8 @@ export default function TemplateDetailPage({
         return;
       }
 
-      if (res.status === 403) {
-        const data = await res.json();
-        if (data.upgrade) {
-          setShowUpgrade(true);
-        }
-        return;
-      }
+      if (!res.ok) return;
 
-      if (!res.ok) {
-        return;
-      }
-
-      // Response is a ZIP blob — trigger browser download
       const blob = await res.blob();
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -99,6 +205,33 @@ export default function TemplateDetailPage({
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      {/* Auth modal overlay */}
+      {showAuthModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+          <div className="mx-4 w-full max-w-md rounded-xl border border-border bg-card p-8 shadow-2xl">
+            <h3 className="text-xl font-bold">Sign up free to copy</h3>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Create a free account to purchase and copy premium template
+              prompts.
+            </p>
+            <div className="mt-6 flex gap-3">
+              <Button asChild className="flex-1">
+                <Link href={`/login?redirect=/template/${template.id}`}>
+                  Sign Up Free
+                </Link>
+              </Button>
+              <Button
+                variant="outline"
+                className="flex-1"
+                onClick={() => setShowAuthModal(false)}
+              >
+                Cancel
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Back nav */}
       <Link
         href="/browse"
@@ -124,27 +257,124 @@ export default function TemplateDetailPage({
             />
           </div>
 
-          {template.preview_mobile_url && (
-            <div className="mt-6 flex items-start gap-6">
-              <div className="relative aspect-[9/16] w-40 overflow-hidden rounded-xl border border-border/40 bg-muted">
-                <Image
-                  src={template.preview_mobile_url}
-                  alt={`${template.name} mobile`}
-                  fill
-                  className="object-cover"
-                  unoptimized
-                />
-              </div>
-              <div className="pt-2">
-                <Badge variant="outline" className="mb-2">
-                  Mobile Preview
-                </Badge>
-                <p className="text-sm text-muted-foreground">
-                  Fully responsive design optimized for mobile devices.
-                </p>
-              </div>
+          {/* Platform Tabs + Prompt Preview */}
+          <div className="mt-8">
+            <h3 className="mb-4 text-lg font-semibold">
+              Copy Prompt for Your Platform
+            </h3>
+
+            {/* Tabs */}
+            <div className="flex flex-wrap gap-1 rounded-lg border border-border/40 bg-muted/50 p-1">
+              {template.platforms.map((platform) => (
+                <button
+                  key={platform}
+                  onClick={() => setActivePlatform(platform)}
+                  className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
+                    activePlatform === platform
+                      ? "bg-background text-foreground shadow-sm"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {PLATFORM_LABELS[platform] || platform}
+                </button>
+              ))}
             </div>
-          )}
+
+            {/* Prompt Preview */}
+            <div className="relative mt-4 rounded-lg border border-border/40 bg-card">
+              <div className="max-h-48 overflow-hidden p-4">
+                <pre className="whitespace-pre-wrap font-mono text-xs leading-relaxed text-muted-foreground">
+                  {canCopy
+                    ? prompt.slice(0, 600) + (prompt.length > 600 ? "..." : "")
+                    : prompt.slice(0, 200)}
+                </pre>
+              </div>
+
+              {/* Blur overlay for paid unpurchased */}
+              {!canCopy && (
+                <div className="absolute inset-0 flex items-end rounded-lg bg-gradient-to-t from-card via-card/95 to-transparent">
+                  <div className="w-full p-4 text-center">
+                    <Lock className="mx-auto mb-2 h-5 w-5 text-muted-foreground" />
+                    <p className="text-sm text-muted-foreground">
+                      Purchase to view full prompt
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Action Button */}
+            <div className="mt-4">
+              {isFree ? (
+                <Button className="w-full" onClick={handleCopy}>
+                  {copiedPlatform === activePlatform ? (
+                    <>
+                      <Check className="mr-2 h-4 w-4" />
+                      Copied!
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="mr-2 h-4 w-4" />
+                      Copy {PLATFORM_LABELS[activePlatform] || activePlatform}{" "}
+                      Prompt
+                    </>
+                  )}
+                </Button>
+              ) : !user && !checkingPurchase ? (
+                <Button
+                  className="w-full"
+                  onClick={() => setShowAuthModal(true)}
+                >
+                  <Lock className="mr-2 h-4 w-4" />
+                  Sign up free to copy
+                </Button>
+              ) : purchased ? (
+                <Button className="w-full" onClick={handleCopy}>
+                  {copiedPlatform === activePlatform ? (
+                    <>
+                      <Check className="mr-2 h-4 w-4" />
+                      Copied!
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="mr-2 h-4 w-4" />
+                      Copy {PLATFORM_LABELS[activePlatform] || activePlatform}{" "}
+                      Prompt
+                    </>
+                  )}
+                </Button>
+              ) : !checkingPurchase ? (
+                <Button
+                  className="w-full"
+                  onClick={handlePurchase}
+                  disabled={purchasing}
+                >
+                  {purchasing ? (
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  ) : (
+                    <ShoppingCart className="mr-2 h-4 w-4" />
+                  )}
+                  Buy for $2
+                </Button>
+              ) : null}
+            </div>
+
+            {/* Download ZIP — secondary action */}
+            {canCopy && (
+              <button
+                onClick={handleDownload}
+                disabled={downloading}
+                className="mt-3 flex w-full items-center justify-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                {downloading ? (
+                  <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                ) : (
+                  <Download className="h-3.5 w-3.5" />
+                )}
+                Download ZIP with design tokens
+              </button>
+            )}
+          </div>
         </div>
 
         {/* Details Sidebar */}
@@ -153,10 +383,12 @@ export default function TemplateDetailPage({
             {/* Title & badges */}
             <div>
               <div className="flex items-center gap-2">
-                {template.price_tier === "pro" ? (
-                  <Badge>PRO</Badge>
+                {isFree ? (
+                  <Badge className="bg-green-600 hover:bg-green-700">
+                    FREE
+                  </Badge>
                 ) : (
-                  <Badge variant="secondary">FREE</Badge>
+                  <Badge>$2</Badge>
                 )}
                 <Badge variant="outline">{template.category}</Badge>
                 {template.style && (
@@ -166,6 +398,15 @@ export default function TemplateDetailPage({
               <h1 className="mt-4 text-3xl font-bold tracking-tight">
                 {template.name}
               </h1>
+              {purchased && !isFree && (
+                <Badge
+                  variant="secondary"
+                  className="mt-2 bg-green-600/10 text-green-400"
+                >
+                  <Check className="mr-1 h-3 w-3" />
+                  Purchased
+                </Badge>
+              )}
             </div>
 
             <Separator className="my-6" />
@@ -179,34 +420,23 @@ export default function TemplateDetailPage({
 
             {/* Metadata */}
             <div className="space-y-5">
-              {/* Platforms — Copy Prompt */}
+              {/* Supported Platforms */}
               <div>
                 <h3 className="mb-3 text-sm font-medium text-muted-foreground">
-                  Copy Prompt for Platform
+                  Supported Platforms
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {template.platforms.map((platform) => (
-                      <button
-                        key={platform}
-                        onClick={() => {
-                          const prompt = generatePrompt(template as any, platform);
-                          navigator.clipboard.writeText(prompt);
-                          setCopiedPlatform(platform);
-                          setTimeout(() => setCopiedPlatform(null), 2000);
-                        }}
-                        className={`flex items-center gap-2 rounded-lg border px-3 py-2 text-sm transition-colors ${
-                          copiedPlatform === platform
-                            ? "border-green-500 bg-green-500/10 text-green-400"
-                            : "border-border/40 bg-card hover:border-primary/50 hover:bg-primary/5"
-                        }`}
-                      >
-                        {copiedPlatform === platform ? "✓ Copied!" : `📋 ${platform}`}
-                      </button>
-                    ))}
+                    <Badge
+                      key={platform}
+                      variant="secondary"
+                      className="text-xs"
+                    >
+                      {PLATFORM_LABELS[platform] || platform}
+                    </Badge>
+                  ))}
                 </div>
-                <p className="mt-2 text-xs text-muted-foreground">Click to copy the prompt, then paste it into your platform</p>
               </div>
-
 
               {/* Stats */}
               <div className="grid grid-cols-2 gap-3">
@@ -233,55 +463,6 @@ export default function TemplateDetailPage({
                 </div>
               </div>
             </div>
-
-            <Separator className="my-6" />
-
-            {/* Download CTA */}
-            <Button
-              className="h-12 w-full text-base"
-              size="lg"
-              onClick={handleDownload}
-              disabled={downloading}
-            >
-              {downloading ? (
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              ) : (
-                <Download className="mr-2 h-4 w-4" />
-              )}
-              {template.price_tier === "pro"
-                ? "Download (Pro)"
-                : "Download Free"}
-            </Button>
-
-            {showUpgrade && (
-              <div className="mt-4 rounded-lg border border-primary/50 bg-primary/5 p-4">
-                <div className="flex items-center gap-2 text-sm font-medium">
-                  <Lock className="h-4 w-4 text-primary" />
-                  Pro subscription required
-                </div>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Upgrade to Pro for unlimited access to all templates.
-                </p>
-                <Button asChild size="sm" className="mt-3">
-                  <Link href="/pricing">
-                    Upgrade to Pro — $5/mo
-                    <ArrowRight className="ml-2 h-3.5 w-3.5" />
-                  </Link>
-                </Button>
-              </div>
-            )}
-
-            {template.price_tier === "pro" && !showUpgrade && (
-              <p className="mt-3 text-center text-xs text-muted-foreground">
-                Requires a{" "}
-                <Link
-                  href="/pricing"
-                  className="font-medium text-primary hover:underline"
-                >
-                  Pro subscription ($5/mo)
-                </Link>
-              </p>
-            )}
           </div>
         </div>
       </div>
