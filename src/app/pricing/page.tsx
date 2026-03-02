@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,29 +13,19 @@ import { Check, X, ArrowRight } from "lucide-react";
 import { PLANS } from "@/lib/stripe";
 
 const comparisonFeatures = [
-  { name: "Monthly template downloads", free: "5", pro: "Unlimited" },
-  { name: "Web templates", free: true, pro: true },
-  { name: "iOS & Android templates", free: false, pro: true },
-  { name: "Figma files", free: false, pro: true },
-  { name: "Design tokens & manifest", free: false, pro: true },
-  { name: "Source code access", free: true, pro: true },
-  { name: "Commercial license", free: true, pro: true },
-  { name: "Priority support", free: false, pro: true },
-  { name: "Early access to new templates", free: false, pro: true },
-  { name: "Creator tools (upload & earn)", free: false, pro: true },
+  { name: "Plantillas gratis al mes", free: "1", pro: "Compra cualquiera" },
+  { name: "Plantillas web", free: true, pro: true },
+  { name: "Plantillas iOS y Android", free: false, pro: true },
+  { name: "Archivos Figma", free: false, pro: true },
+  { name: "Design tokens y manifest", free: false, pro: true },
+  { name: "Acceso al código fuente", free: true, pro: true },
+  { name: "Licencia comercial", free: true, pro: true },
+  { name: "Soporte prioritario", free: false, pro: true },
+  { name: "Acceso anticipado a nuevas plantillas", free: false, pro: true },
+  { name: "Herramientas de creador (sube y gana)", free: false, pro: true },
 ];
 
 export default function PricingPage() {
-  async function handleCheckout() {
-    try {
-      const res = await fetch("/api/stripe/checkout", { method: "POST" });
-      const { url } = await res.json();
-      if (url) window.location.href = url;
-    } catch {
-      // In production, show toast error
-    }
-  }
-
   return (
     <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
       {/* Header */}
@@ -46,11 +34,11 @@ export default function PricingPage() {
           Pricing
         </Badge>
         <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl">
-          Simple, transparent pricing
+          Precios simples y transparentes
         </h1>
         <p className="mt-6 text-lg text-muted-foreground">
-          Start free with 5 templates a month. Upgrade to Pro for unlimited
-          access to every template, all platforms, and premium features.
+          1 plantilla gratis al mes (requiere registro). O compra cualquier
+          plantilla individualmente por $2 — sin suscripción.
         </p>
       </div>
 
@@ -72,21 +60,21 @@ export default function PricingPage() {
           </CardHeader>
           <CardContent className="flex-1 pt-4">
             <ul className="space-y-4">
-              <PricingFeature>5 free templates per month</PricingFeature>
-              <PricingFeature>Web platform only</PricingFeature>
-              <PricingFeature>Source code included</PricingFeature>
-              <PricingFeature>Commercial license</PricingFeature>
-              <PricingFeature>Community support</PricingFeature>
+              <PricingFeature>1 plantilla gratis al mes</PricingFeature>
+              <PricingFeature>Solo plataforma web</PricingFeature>
+              <PricingFeature>Código fuente incluido</PricingFeature>
+              <PricingFeature>Licencia comercial</PricingFeature>
+              <PricingFeature>Soporte de la comunidad</PricingFeature>
             </ul>
           </CardContent>
           <CardFooter className="pt-6">
             <Button variant="outline" className="w-full h-12 text-base" asChild>
-              <Link href="/browse">Browse Free Templates</Link>
+              <Link href="/login">Sign Up Free</Link>
             </Button>
           </CardFooter>
         </Card>
 
-        {/* Pro Plan */}
+        {/* Premium Plan */}
         <Card className="relative flex flex-col border-brand-blue bg-white shadow-lg shadow-brand-blue/10">
           <div className="absolute -top-3 left-1/2 -translate-x-1/2">
             <Badge className="bg-brand-amber text-amber-900 shadow-sm px-4 hover:bg-brand-amber">
@@ -103,25 +91,30 @@ export default function PricingPage() {
                 ${PLANS.pro.price}
               </span>
               <span className="ml-1 text-lg text-muted-foreground">
-                /month
+                /template
               </span>
             </div>
           </CardHeader>
           <CardContent className="flex-1 pt-4">
             <ul className="space-y-4">
-              <PricingFeature>Unlimited template access</PricingFeature>
-              <PricingFeature>All platforms (Web, iOS, Android, Figma)</PricingFeature>
-              <PricingFeature>Design tokens & manifest files</PricingFeature>
-              <PricingFeature>Source code included</PricingFeature>
-              <PricingFeature>Commercial license</PricingFeature>
-              <PricingFeature>Priority support</PricingFeature>
-              <PricingFeature>Early access to new templates</PricingFeature>
-              <PricingFeature>Creator tools (upload & earn)</PricingFeature>
+              <PricingFeature>Compra cualquier plantilla individualmente</PricingFeature>
+              <PricingFeature>Todas las plataformas (Cursor, v0, Bolt, Lovable, Claude Code, OpenClaw)</PricingFeature>
+              <PricingFeature>Design tokens y archivos manifest</PricingFeature>
+              <PricingFeature>Código fuente incluido</PricingFeature>
+              <PricingFeature>Licencia comercial</PricingFeature>
+              <PricingFeature>Soporte prioritario</PricingFeature>
+              <PricingFeature>Acceso anticipado a nuevas plantillas</PricingFeature>
+              <PricingFeature>Herramientas de creador (sube y gana)</PricingFeature>
             </ul>
+            <p className="mt-4 text-xs text-muted-foreground">
+              Suscripción ilimitada ($5/mes) próximamente
+            </p>
           </CardContent>
           <CardFooter className="pt-6">
-            <Button className="w-full h-12 text-base bg-brand-blue hover:bg-brand-blue/90 text-white shadow-sm" onClick={handleCheckout}>
-              Get Pro <ArrowRight className="ml-2 h-4 w-4" />
+            <Button className="w-full h-12 text-base bg-brand-blue hover:bg-brand-blue/90 text-white shadow-sm" asChild>
+              <Link href="/browse">
+                Browse Templates <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
           </CardFooter>
         </Card>
@@ -130,21 +123,21 @@ export default function PricingPage() {
       {/* Feature Comparison */}
       <div className="mx-auto mt-28 max-w-3xl">
         <h2 className="text-center text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-          Feature comparison
+          Comparación de planes
         </h2>
         <p className="mt-3 text-center text-muted-foreground">
-          Everything included at a glance.
+          Todo incluido de un vistazo.
         </p>
 
         <div className="mt-12 overflow-hidden rounded-xl bg-white shadow-sm">
           {/* Table Header */}
           <div className="grid grid-cols-3 border-b border-border/40 bg-gray-50 px-6 py-4">
             <div className="text-sm font-medium text-muted-foreground">
-              Feature
+              Característica
             </div>
             <div className="text-center text-sm font-medium text-foreground">Free</div>
             <div className="text-center text-sm font-medium text-brand-blue">
-              Pro
+              Premium
             </div>
           </div>
 
@@ -188,17 +181,27 @@ export default function PricingPage() {
         </div>
       </div>
 
+      {/* Individual purchase note */}
+      <div className="mx-auto mt-16 max-w-xl rounded-xl bg-brand-blue/5 border border-brand-blue/10 px-6 py-5 text-center">
+        <p className="text-sm font-medium text-foreground">
+          O compra cualquier plantilla individualmente por $2 — sin suscripción.
+        </p>
+        <p className="mt-1 text-xs text-muted-foreground">
+          Pago único. Tuya para siempre. Todas las plataformas incluidas.
+        </p>
+      </div>
+
       {/* FAQ */}
       <div className="mx-auto mt-28 max-w-2xl text-center">
         <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-          Questions?
+          ¿Preguntas?
         </h2>
         <p className="mt-4 text-muted-foreground">
-          Can I cancel anytime? <span className="font-medium text-foreground">Yes.</span>{" "}
-          Are updates included?{" "}
-          <span className="font-medium text-foreground">Always.</span> Can I use templates
-          commercially?{" "}
-          <span className="font-medium text-foreground">Absolutely.</span>
+          ¿Puedo comprar solo una plantilla? <span className="font-medium text-foreground">Sí, $2 cada una.</span>{" "}
+          ¿Incluye actualizaciones?{" "}
+          <span className="font-medium text-foreground">Siempre.</span> ¿Puedo usarlas
+          comercialmente?{" "}
+          <span className="font-medium text-foreground">Por supuesto.</span>
         </p>
         <Button asChild variant="outline" className="mt-8">
           <Link href="/browse">

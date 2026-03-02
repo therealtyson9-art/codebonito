@@ -16,13 +16,13 @@ export const PLANS = {
   free: {
     name: "Free",
     price: 0,
-    templates: 5,
-    description: "Access 5 free templates",
+    templates: 1,
+    description: "1 plantilla gratis al mes (requiere registro)",
   },
   pro: {
-    name: "Pro",
-    price: 5,
+    name: "Premium",
+    price: 2,
     templates: Infinity,
-    description: "Unlimited access to all templates",
+    description: "Compra cualquier plantilla individualmente por $2",
   },
 } as const;

@@ -19,11 +19,11 @@ import {
   Sparkles,
   Check,
   Search,
-  Package,
-  Rocket,
+  Copy,
   Upload,
 } from "lucide-react";
 import { MOCK_TEMPLATES } from "@/lib/mock-data";
+import { TemplateCard } from "@/components/template-card";
 
 export default function HomePage() {
   const popularTemplates = [...MOCK_TEMPLATES]
@@ -49,19 +49,18 @@ export default function HomePage() {
               className="mb-8 border border-brand-amber/20 bg-brand-amber-light px-4 py-1.5 text-sm font-medium text-amber-800"
             >
               <Sparkles className="mr-1.5 h-3.5 w-3.5 text-brand-amber" />
-              3 Free Templates + $2 Each
+              1 Free Template/Month + $2 Each
             </Badge>
             <h1 className="text-5xl font-bold tracking-tight text-foreground sm:text-7xl lg:text-8xl">
-              Stop building{" "}
+              ¿Tus webs hechas con IA se ven todas{" "}
               <span className="bg-gradient-to-r from-brand-blue to-blue-400 bg-clip-text text-transparent">
-                generic
-              </span>{" "}
-              AI websites
+                iguales
+              </span>
+              ?
             </h1>
             <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-              Premium, hand-crafted design templates for developers who care
-              about aesthetics. Production-ready code, design tokens, and
-              multi-platform support.
+              Plantillas únicas que hacen que tu web destaque.
+              Cópialas en tu IA favorita y listo.
             </p>
             <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button asChild size="lg" className="h-12 px-8 text-base bg-brand-blue hover:bg-brand-blue/90 text-white shadow-md shadow-brand-blue/25">
@@ -98,8 +97,26 @@ export default function HomePage() {
                 <div className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-blue/10">
                   <Code2 className="h-3.5 w-3.5 text-brand-blue" />
                 </div>
-                <span className="font-medium">5 platforms</span>
+                <span className="font-medium">6 platforms</span>
               </div>
+            </div>
+            {/* Platform badges */}
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
+              {[
+                { name: "Cursor", bg: "bg-gray-900 text-white" },
+                { name: "v0", bg: "bg-black text-white" },
+                { name: "Bolt", bg: "bg-violet-600 text-white" },
+                { name: "Lovable", bg: "bg-pink-500 text-white" },
+                { name: "Claude Code", bg: "bg-amber-700 text-white" },
+                { name: "OpenClaw", bg: "bg-emerald-600 text-white" },
+              ].map((p) => (
+                <span
+                  key={p.name}
+                  className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ${p.bg}`}
+                >
+                  {p.name}
+                </span>
+              ))}
             </div>
           </div>
         </div>
@@ -113,42 +130,42 @@ export default function HomePage() {
               Features
             </Badge>
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
-              Why Code Bonito?
+              ¿Por qué Code Bonito?
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Everything you need to ship beautiful products, faster.
+              Todo lo que necesitas para crear webs que destacan.
             </p>
           </div>
           <div className="mt-20 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             <FeatureCard
               icon={<Palette className="h-5 w-5" />}
-              title="Curated Designs"
-              description="Every template is hand-picked and reviewed for quality, accessibility, and production-readiness. No filler."
+              title="Diseños Únicos"
+              description="Cada plantilla es diferente. Nada de copias baratas o designs aburridos que ya viste mil veces."
             />
             <FeatureCard
               icon={<Download className="h-5 w-5" />}
-              title="Instant Downloads"
-              description="Download templates as ZIP files with design tokens, assets, component code, and full documentation."
+              title="Listo para Usar"
+              description="Recibes todo lo que necesitas: colores, fuentes, textos de ejemplo. Solo copia y pega en tu IA."
             />
             <FeatureCard
               icon={<Zap className="h-5 w-5" />}
-              title="Multi-Platform"
-              description="Templates that work across Web, iOS, Android, and Figma. Build once, deploy everywhere."
+              title="Funciona Donde Sea"
+              description="Úsalos en Claude, ChatGPT, v0, Cursor, Bolt. La misma plantilla, tu plataforma favorita."
             />
             <FeatureCard
               icon={<Code2 className="h-5 w-5" />}
-              title="Production-Ready Code"
-              description="Clean, typed, and well-structured code. Copy-paste into your project and start customizing immediately."
+              title="Solo Copia y Pega"
+              description="No necesitas saber programar. Le das el prompt a tu IA y ella hace todo el trabajo técnico."
             />
             <FeatureCard
               icon={<Layers className="h-5 w-5" />}
-              title="Design Tokens"
-              description="Every template ships with design tokens — colors, typography, spacing — for consistent theming across platforms."
+              title="Todo Definido"
+              description="Colores exactos, fuentes, espaciado. Tu IA sabrá exactamente cómo hacer tu web."
             />
             <FeatureCard
               icon={<Sparkles className="h-5 w-5" />}
-              title="Weekly Additions"
-              description="New templates added every week by our community of vetted creators. Fresh designs, always."
+              title="Siempre Hay Nuevos"
+              description="Cada semana agregamos plantillas nuevas. Tu competencia nunca tendrá el mismo diseño."
             />
           </div>
         </div>
@@ -162,30 +179,30 @@ export default function HomePage() {
               How It Works
             </Badge>
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
-              Three steps to beautiful
+              Elige → Copia → Pega
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              From browse to build in under a minute.
+              Tres pasos para destacar.
             </p>
           </div>
           <div className="mx-auto mt-20 grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-3">
             <StepCard
               step="01"
               icon={<Search className="h-6 w-6" />}
-              title="Browse & Filter"
-              description="Search by category, style, or platform. Find the perfect template for your next project."
+              title="Elige tu plantilla favorita"
+              description="Explora por categoría, estilo o plataforma. Encuentra el diseño perfecto para tu próximo proyecto."
             />
             <StepCard
               step="02"
-              icon={<Package className="h-6 w-6" />}
-              title="Download Package"
-              description="Get the full template package — source code, design tokens, assets, and documentation."
+              icon={<Copy className="h-6 w-6" />}
+              title="Copia el prompt en tu IA"
+              description="Obtén un prompt de diseño específico para Cursor, v0, Bolt, Lovable o Claude Code."
             />
             <StepCard
               step="03"
-              icon={<Rocket className="h-6 w-6" />}
-              title="Ship It"
-              description="Drop into your project, customize the tokens, and deploy. You're live in minutes."
+              icon={<Sparkles className="h-6 w-6" />}
+              title="Pega y deja que ella haga la magia"
+              description="Pega el prompt en tu herramienta de IA y mira cómo genera una web única y hermosa."
             />
           </div>
         </div>
@@ -200,10 +217,10 @@ export default function HomePage() {
                 Popular
               </Badge>
               <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
-                Trending templates
+                Plantillas populares
               </h2>
               <p className="mt-4 text-lg text-muted-foreground">
-                The most downloaded templates this month.
+                Las más descargadas este mes.
               </p>
             </div>
             <Button asChild variant="ghost" className="hidden text-brand-blue hover:text-brand-blue/80 hover:bg-brand-blue/5 sm:flex">
@@ -214,49 +231,7 @@ export default function HomePage() {
           </div>
           <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {popularTemplates.map((template) => (
-              <Link
-                key={template.id}
-                href={`/template/${template.id}`}
-                className="group"
-              >
-                <div className="overflow-hidden rounded-xl bg-white shadow-sm transition-all hover:shadow-lg hover:shadow-brand-blue/5 hover:-translate-y-0.5">
-                  <div className="relative aspect-[16/10] overflow-hidden bg-gray-50">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={template.preview_url || ""}
-                      alt={template.name}
-                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    {template.price_tier === "pro" ? (
-                      <Badge className="absolute right-3 top-3 bg-brand-blue text-white shadow-sm">$2</Badge>
-                    ) : (
-                      <Badge className="absolute right-3 top-3 bg-emerald-500 text-white shadow-sm hover:bg-emerald-600">
-                        FREE
-                      </Badge>
-                    )}
-                  </div>
-                  <div className="p-5">
-                    <h3 className="font-semibold text-foreground">{template.name}</h3>
-                    <p className="mt-1 line-clamp-1 text-sm text-muted-foreground">
-                      {template.description}
-                    </p>
-                    <div className="mt-3 flex items-center justify-between">
-                      <div className="flex gap-1.5">
-                        <Badge variant="secondary" className="text-xs">
-                          {template.category}
-                        </Badge>
-                        <Badge variant="outline" className="text-xs">
-                          {template.style}
-                        </Badge>
-                      </div>
-                      <span className="flex items-center gap-1 text-xs text-muted-foreground">
-                        <Download className="h-3 w-3" />
-                        {template.downloads_count.toLocaleString()}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </Link>
+              <TemplateCard key={template.id} template={template} />
             ))}
           </div>
           <div className="mt-8 text-center sm:hidden">
@@ -277,10 +252,10 @@ export default function HomePage() {
               Pricing
             </Badge>
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
-              Simple, transparent pricing
+              Precios simples y transparentes
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Start free. Upgrade when you need more.
+              Empieza gratis. Compra plantillas cuando quieras.
             </p>
           </div>
           <div className="mx-auto mt-16 grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-2">
@@ -288,24 +263,24 @@ export default function HomePage() {
               <CardHeader>
                 <CardTitle className="text-xl text-foreground">Free</CardTitle>
                 <CardDescription>
-                  Try 3 templates at no cost
+                  1 plantilla gratis al mes (requiere registro)
                 </CardDescription>
                 <div className="mt-4">
                   <span className="text-5xl font-bold text-foreground">$0</span>
-                  <span className="text-muted-foreground"> forever</span>
+                  <span className="text-muted-foreground"> /month</span>
                 </div>
               </CardHeader>
               <CardContent className="flex-1">
                 <ul className="space-y-3">
-                  <PricingFeature>3 free templates included</PricingFeature>
-                  <PricingFeature>All 5 platforms supported</PricingFeature>
-                  <PricingFeature>Copy prompts instantly</PricingFeature>
-                  <PricingFeature>No account required</PricingFeature>
+                  <PricingFeature>1 plantilla gratis al mes</PricingFeature>
+                  <PricingFeature>Funciona en las 6 plataformas</PricingFeature>
+                  <PricingFeature>Copia prompts al instante</PricingFeature>
+                  <PricingFeature>Requiere registro</PricingFeature>
                 </ul>
               </CardContent>
               <CardFooter>
                 <Button variant="outline" className="w-full" asChild>
-                  <Link href="/browse">Browse Free Templates</Link>
+                  <Link href="/login">Sign Up Free</Link>
                 </Button>
               </CardFooter>
             </Card>
@@ -319,7 +294,7 @@ export default function HomePage() {
               <CardHeader>
                 <CardTitle className="text-xl text-foreground">Premium</CardTitle>
                 <CardDescription>
-                  Buy only the templates you need
+                  Compra cualquier plantilla individualmente
                 </CardDescription>
                 <div className="mt-4">
                   <span className="text-5xl font-bold text-foreground">$2</span>
@@ -328,12 +303,15 @@ export default function HomePage() {
               </CardHeader>
               <CardContent className="flex-1">
                 <ul className="space-y-3">
-                  <PricingFeature>47 premium templates</PricingFeature>
-                  <PricingFeature>All 5 platforms (Cursor, v0, Bolt, Lovable, Claude Code)</PricingFeature>
-                  <PricingFeature>Design tokens & ZIP download</PricingFeature>
-                  <PricingFeature>One-time payment, yours forever</PricingFeature>
-                  <PricingFeature>New templates every week</PricingFeature>
+                  <PricingFeature>47 plantillas premium</PricingFeature>
+                  <PricingFeature>Las 6 plataformas (Cursor, v0, Bolt, Lovable, Claude Code, OpenClaw)</PricingFeature>
+                  <PricingFeature>Design tokens y descarga ZIP</PricingFeature>
+                  <PricingFeature>Pago único, tuya para siempre</PricingFeature>
+                  <PricingFeature>Nuevas plantillas cada semana</PricingFeature>
                 </ul>
+                <p className="mt-4 text-xs text-muted-foreground">
+                  Suscripción ilimitada ($5/mes) próximamente
+                </p>
               </CardContent>
               <CardFooter>
                 <Button className="w-full bg-brand-blue hover:bg-brand-blue/90 text-white shadow-sm" asChild>
@@ -354,11 +332,11 @@ export default function HomePage() {
             <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-blue/5 via-transparent to-transparent" />
             <div className="absolute top-0 right-0 -z-10 h-40 w-40 rounded-full bg-brand-amber/10 blur-3xl" />
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
-              Ready to build something beautiful?
+              ¿Listo para crear algo único?
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
-              Join thousands of developers shipping stunning projects with Code
-              Bonito templates.
+              Únete a miles de personas creando webs que realmente destacan
+              con los prompts de Code Bonito.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button asChild size="lg" className="h-12 px-8 text-base bg-brand-blue hover:bg-brand-blue/90 text-white shadow-md shadow-brand-blue/25">
