@@ -10,19 +10,15 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Check, X, ArrowRight } from "lucide-react";
-import { PLANS } from "@/lib/stripe";
 
 const comparisonFeatures = [
-  { name: "Plantillas gratis al mes", free: "1", pro: "Compra cualquiera" },
-  { name: "Plantillas web", free: true, pro: true },
-  { name: "Plantillas iOS y Android", free: false, pro: true },
-  { name: "Archivos Figma", free: false, pro: true },
-  { name: "Design tokens y manifest", free: false, pro: true },
-  { name: "Acceso al código fuente", free: true, pro: true },
-  { name: "Licencia comercial", free: true, pro: true },
-  { name: "Soporte prioritario", free: false, pro: true },
-  { name: "Acceso anticipado a nuevas plantillas", free: false, pro: true },
-  { name: "Herramientas de creador (sube y gana)", free: false, pro: true },
+  { name: "Plantillas por mes", free: "1", pro: "Ilimitadas", individual: "1 (tuya para siempre)" },
+  { name: "Plataformas incluidas", free: "Todas", pro: "Todas", individual: "Todas" },
+  { name: "Prompts optimizados", free: true, pro: true, individual: true },
+  { name: "Uso comercial", free: true, pro: true, individual: true },
+  { name: "Soporte prioritario", free: false, pro: true, individual: false },
+  { name: "Plantillas nuevas primero", free: false, pro: true, individual: false },
+  { name: "Herramientas creador", free: false, pro: true, individual: false },
 ];
 
 export default function PricingPage() {
@@ -34,94 +30,127 @@ export default function PricingPage() {
           Pricing
         </Badge>
         <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl">
-          Precios simples y transparentes
+          Precios claros, sin sorpresas
         </h1>
         <p className="mt-6 text-lg text-muted-foreground">
-          1 plantilla gratis al mes (requiere registro). O compra cualquier
-          plantilla individualmente por $2 — sin suscripción.
+          Prueba gratis con 1 plantilla al mes. Actualiza a Pro para acceso
+          ilimitado a todas las plantillas.
         </p>
       </div>
 
       {/* Pricing Cards */}
-      <div className="mx-auto mt-20 grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-2">
-        {/* Free Plan */}
+      <div className="mx-auto mt-20 grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-3">
+        {/* Gratis */}
         <Card className="flex flex-col border-border/60 bg-white shadow-sm">
           <CardHeader className="pb-4">
-            <CardTitle className="text-2xl text-foreground">{PLANS.free.name}</CardTitle>
+            <CardTitle className="text-2xl text-foreground">Gratis</CardTitle>
             <CardDescription className="text-base">
-              {PLANS.free.description}
+              Prueba sin compromiso
             </CardDescription>
             <div className="mt-6">
               <span className="text-6xl font-bold tracking-tight text-foreground">$0</span>
               <span className="ml-1 text-lg text-muted-foreground">
-                /month
+                /mes
               </span>
             </div>
           </CardHeader>
           <CardContent className="flex-1 pt-4">
             <ul className="space-y-4">
               <PricingFeature>1 plantilla gratis al mes</PricingFeature>
-              <PricingFeature>Solo plataforma web</PricingFeature>
-              <PricingFeature>Código fuente incluido</PricingFeature>
-              <PricingFeature>Licencia comercial</PricingFeature>
-              <PricingFeature>Soporte de la comunidad</PricingFeature>
+              <PricingFeature>Todas las plataformas (Claude, v0, Bolt, Cursor, Lovable)</PricingFeature>
+              <PricingFeature>Prompts listos para copiar</PricingFeature>
+              <PricingFeature>Úsala comercialmente</PricingFeature>
+              <PricingFeature>Soporte por Discord</PricingFeature>
             </ul>
+            <p className="mt-4 text-xs text-muted-foreground">
+              Requiere registro
+            </p>
           </CardContent>
           <CardFooter className="pt-6">
             <Button variant="outline" className="w-full h-12 text-base" asChild>
-              <Link href="/login">Sign Up Free</Link>
+              <Link href="/login">Registrarse Gratis</Link>
             </Button>
           </CardFooter>
         </Card>
 
-        {/* Premium Plan */}
+        {/* Por Plantilla — highlighted/recommended */}
         <Card className="relative flex flex-col border-brand-blue bg-white shadow-lg shadow-brand-blue/10">
           <div className="absolute -top-3 left-1/2 -translate-x-1/2">
             <Badge className="bg-brand-amber text-amber-900 shadow-sm px-4 hover:bg-brand-amber">
-              Most Popular
+              Recomendado
             </Badge>
           </div>
           <CardHeader className="pb-4">
-            <CardTitle className="text-2xl text-foreground">{PLANS.pro.name}</CardTitle>
+            <CardTitle className="text-2xl text-foreground">Por Plantilla</CardTitle>
             <CardDescription className="text-base">
-              {PLANS.pro.description}
+              Solo lo que necesitas
             </CardDescription>
             <div className="mt-6">
-              <span className="text-6xl font-bold tracking-tight text-foreground">
-                ${PLANS.pro.price}
-              </span>
+              <span className="text-6xl font-bold tracking-tight text-foreground">$2</span>
               <span className="ml-1 text-lg text-muted-foreground">
-                /template
+                /plantilla
               </span>
             </div>
           </CardHeader>
           <CardContent className="flex-1 pt-4">
             <ul className="space-y-4">
-              <PricingFeature>Compra cualquier plantilla individualmente</PricingFeature>
-              <PricingFeature>Todas las plataformas (Cursor, v0, Bolt, Lovable, Claude Code, OpenClaw)</PricingFeature>
-              <PricingFeature>Design tokens y archivos manifest</PricingFeature>
-              <PricingFeature>Código fuente incluido</PricingFeature>
-              <PricingFeature>Licencia comercial</PricingFeature>
-              <PricingFeature>Soporte prioritario</PricingFeature>
-              <PricingFeature>Acceso anticipado a nuevas plantillas</PricingFeature>
-              <PricingFeature>Herramientas de creador (sube y gana)</PricingFeature>
+              <PricingFeature>Una sola plantilla</PricingFeature>
+              <PricingFeature>Todas las plataformas (Claude, v0, Bolt, Cursor, Lovable)</PricingFeature>
+              <PricingFeature>Tuya para siempre</PricingFeature>
+              <PricingFeature>Uso comercial incluido</PricingFeature>
+              <PricingFeature>Prompts optimizados</PricingFeature>
             </ul>
-            <p className="mt-4 text-xs text-muted-foreground">
-              Suscripción ilimitada ($5/mes) próximamente
-            </p>
           </CardContent>
           <CardFooter className="pt-6">
             <Button className="w-full h-12 text-base bg-brand-blue hover:bg-brand-blue/90 text-white shadow-sm" asChild>
               <Link href="/browse">
-                Browse Templates <ArrowRight className="ml-2 h-4 w-4" />
+                Empezar a Explorar <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
+            </Button>
+          </CardFooter>
+        </Card>
+
+        {/* Pro — coming soon */}
+        <Card className="relative flex flex-col border-border/60 bg-white shadow-sm">
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+            <Badge variant="outline" className="border-brand-blue/30 bg-brand-blue-light text-brand-blue shadow-sm px-4">
+              Próximamente
+            </Badge>
+          </div>
+          <CardHeader className="pb-4">
+            <CardTitle className="text-2xl text-foreground">Pro</CardTitle>
+            <CardDescription className="text-base">
+              Acceso a todo
+            </CardDescription>
+            <div className="mt-6">
+              <span className="text-6xl font-bold tracking-tight text-foreground">$5</span>
+              <span className="ml-1 text-lg text-muted-foreground">
+                /mes
+              </span>
+            </div>
+          </CardHeader>
+          <CardContent className="flex-1 pt-4">
+            <ul className="space-y-4">
+              <PricingFeature>Todas las plantillas ilimitadas</PricingFeature>
+              <PricingFeature>Las 5 plataformas principales</PricingFeature>
+              <PricingFeature>Colores, fuentes y espaciado definidos</PricingFeature>
+              <PricingFeature>Prompts optimizados</PricingFeature>
+              <PricingFeature>Úsalas comercialmente</PricingFeature>
+              <PricingFeature>Soporte prioritario</PricingFeature>
+              <PricingFeature>Plantillas nuevas primero</PricingFeature>
+              <PricingFeature>Herramientas de creador (sube y gana)</PricingFeature>
+            </ul>
+          </CardContent>
+          <CardFooter className="pt-6">
+            <Button variant="outline" className="w-full h-12 text-base" disabled>
+              Próximamente
             </Button>
           </CardFooter>
         </Card>
       </div>
 
       {/* Feature Comparison */}
-      <div className="mx-auto mt-28 max-w-3xl">
+      <div className="mx-auto mt-28 max-w-4xl">
         <h2 className="text-center text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
           Comparación de planes
         </h2>
@@ -131,13 +160,16 @@ export default function PricingPage() {
 
         <div className="mt-12 overflow-hidden rounded-xl bg-white shadow-sm">
           {/* Table Header */}
-          <div className="grid grid-cols-3 border-b border-border/40 bg-gray-50 px-6 py-4">
+          <div className="grid grid-cols-4 border-b border-border/40 bg-gray-50 px-6 py-4">
             <div className="text-sm font-medium text-muted-foreground">
               Característica
             </div>
-            <div className="text-center text-sm font-medium text-foreground">Free</div>
+            <div className="text-center text-sm font-medium text-foreground">Gratis</div>
             <div className="text-center text-sm font-medium text-brand-blue">
-              Premium
+              Por Plantilla
+            </div>
+            <div className="text-center text-sm font-medium text-foreground">
+              Pro
             </div>
           </div>
 
@@ -145,7 +177,7 @@ export default function PricingPage() {
           {comparisonFeatures.map((feature, i) => (
             <div
               key={feature.name}
-              className={`grid grid-cols-3 px-6 py-4 ${
+              className={`grid grid-cols-4 px-6 py-4 ${
                 i < comparisonFeatures.length - 1
                   ? "border-b border-border/40"
                   : ""
@@ -164,6 +196,19 @@ export default function PricingPage() {
                 )}
               </div>
               <div className="flex justify-center">
+                {typeof feature.individual === "boolean" ? (
+                  feature.individual ? (
+                    <Check className="h-4 w-4 text-brand-blue" />
+                  ) : (
+                    <X className="h-4 w-4 text-gray-300" />
+                  )
+                ) : (
+                  <span className="text-sm font-medium text-brand-blue">
+                    {feature.individual}
+                  </span>
+                )}
+              </div>
+              <div className="flex justify-center">
                 {typeof feature.pro === "boolean" ? (
                   feature.pro ? (
                     <Check className="h-4 w-4 text-brand-blue" />
@@ -171,24 +216,12 @@ export default function PricingPage() {
                     <X className="h-4 w-4 text-gray-300" />
                   )
                 ) : (
-                  <span className="text-sm font-medium text-brand-blue">
-                    {feature.pro}
-                  </span>
+                  <span className="text-sm text-foreground">{feature.pro}</span>
                 )}
               </div>
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Individual purchase note */}
-      <div className="mx-auto mt-16 max-w-xl rounded-xl bg-brand-blue/5 border border-brand-blue/10 px-6 py-5 text-center">
-        <p className="text-sm font-medium text-foreground">
-          O compra cualquier plantilla individualmente por $2 — sin suscripción.
-        </p>
-        <p className="mt-1 text-xs text-muted-foreground">
-          Pago único. Tuya para siempre. Todas las plataformas incluidas.
-        </p>
       </div>
 
       {/* FAQ */}
@@ -197,15 +230,15 @@ export default function PricingPage() {
           ¿Preguntas?
         </h2>
         <p className="mt-4 text-muted-foreground">
-          ¿Puedo comprar solo una plantilla? <span className="font-medium text-foreground">Sí, $2 cada una.</span>{" "}
-          ¿Incluye actualizaciones?{" "}
+          ¿Puedo cancelar cuando quiera? <span className="font-medium text-foreground">Claro.</span>{" "}
+          ¿Las actualizaciones están incluidas?{" "}
           <span className="font-medium text-foreground">Siempre.</span> ¿Puedo usarlas
           comercialmente?{" "}
           <span className="font-medium text-foreground">Por supuesto.</span>
         </p>
         <Button asChild variant="outline" className="mt-8">
           <Link href="/browse">
-            Start Browsing <ArrowRight className="ml-2 h-4 w-4" />
+            Empezar a Explorar <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>
       </div>
