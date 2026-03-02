@@ -1,4 +1,5 @@
 import { FadeIn } from "@/components/fade-in";
+import { Hero } from "@/components/hero";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -43,98 +44,7 @@ export default function HomePage() {
 
   return (
     <div>
-      {/* Hero — Full viewport with gradient mesh */}
-      <section className="relative min-h-[100vh] overflow-hidden bg-[#fafafa]">
-        {/* Gradient mesh background */}
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,rgba(37,99,235,0.12),transparent)]" />
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_50%_at_80%_50%,rgba(139,92,246,0.08),transparent)]" />
-        <div className="absolute top-20 right-[10%] -z-10 h-[500px] w-[500px] rounded-full bg-brand-amber/[0.04] blur-[100px] animate-float animate-float" />
-        <div className="absolute bottom-20 left-[5%] -z-10 h-[400px] w-[400px] rounded-full bg-brand-blue/[0.06] blur-[80px] animate-float-delayed animate-float-delayed" />
-
-        <div className="mx-auto max-w-7xl px-4 pb-20 pt-20 sm:px-6 sm:pt-32 lg:px-8">
-          <div className="mx-auto max-w-4xl text-center">
-            <Badge
-              variant="secondary"
-              className="mb-8 border border-brand-amber/20 bg-brand-amber-light/80 px-4 py-1.5 text-sm font-medium text-amber-800 backdrop-blur-sm"
-            >
-              <Sparkles className="mr-1.5 h-3.5 w-3.5 text-brand-amber" />
-              1 Free Template/Month + $2 Each
-            </Badge>
-            <h1 className="text-5xl font-bold leading-[1.08] tracking-tight text-foreground sm:text-7xl lg:text-[5.5rem]">
-              Tired of your AI-built websites all looking the{" "}
-              <span className="bg-gradient-to-r from-brand-blue via-blue-500 to-violet-500 bg-clip-text text-transparent">
-                same
-              </span>
-              ?
-            </h1>
-            <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-              Unique templates that make your website stand out.
-              Copy them into your favorite AI tool and you&apos;re done.
-            </p>
-            <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button
-                asChild
-                size="lg"
-                className="h-13 rounded-xl px-8 text-base bg-gradient-to-r from-brand-blue to-blue-500 text-white shadow-lg shadow-brand-blue/25 transition-all duration-200 hover:shadow-xl hover:shadow-brand-blue/30 hover:brightness-110"
-              >
-                <Link href="/browse">
-                  Browse Templates <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="h-13 rounded-xl px-8 text-base border-border/80 bg-white/80 backdrop-blur-sm transition-all duration-200 hover:bg-white hover:shadow-md"
-              >
-                <Link href="/upload">
-                  <Upload className="mr-2 h-4 w-4" />
-                  Become a Creator
-                </Link>
-              </Button>
-            </div>
-          </div>
-
-          {/* Floating preview cards */}
-          <div className="relative mx-auto mt-20 max-w-5xl">
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-              {popularTemplates.slice(0, 3).map((template, i) => (
-                <div
-                  key={template.id}
-                  className={`transform transition-all duration-500 ${
-                    i === 0 ? "-rotate-2 translate-y-4" : i === 1 ? "translate-y-0 scale-105 z-10" : "rotate-2 translate-y-4"
-                  }`}
-                >
-                  <div className="overflow-hidden rounded-2xl bg-white shadow-xl shadow-black/[0.08] ring-1 ring-black/[0.05] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
-                    <div className="relative aspect-[16/10] overflow-hidden bg-gray-50">
-                      {template.demo_url ? (
-                        <iframe
-                          src={template.demo_url}
-                          title={template.name}
-                          className="pointer-events-none absolute left-0 top-0 border-0"
-                          style={{ width: "1440px", height: "900px", transform: "scale(0.26)", transformOrigin: "top left" }}
-                          tabIndex={-1}
-                          loading="lazy"
-                        />
-                      ) : (
-                        <div className="flex h-full items-center justify-center bg-gradient-to-br from-gray-100 to-gray-50">
-                          <span className="text-sm text-muted-foreground">{template.name}</span>
-                        </div>
-                      )}
-                    </div>
-                    <div className="p-4">
-                      <p className="font-semibold text-foreground">{template.name}</p>
-                      <p className="mt-1 text-xs text-muted-foreground">{template.category} &middot; {template.style}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats bar — Glass-morphism */}
+      <Hero />      {/* Stats bar — Glass-morphism */}
       <section className="relative -mt-8 z-20 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
