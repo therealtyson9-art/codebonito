@@ -11,8 +11,7 @@ export function Footer() {
               <span className="ml-0.5 inline-block h-1.5 w-1.5 rounded-full bg-brand-amber" />
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
-              Premium design templates for developers who care about aesthetics.
-              Production-ready, fully customizable, and built to ship fast.
+              Premium design templates for people who want their websites to stand out.
             </p>
           </div>
           <div>
@@ -72,7 +71,7 @@ export function Footer() {
               &copy; {new Date().getFullYear()} Code Bonito. All rights reserved.
             </p>
             <p className="text-xs text-muted-foreground/60">
-              Built for developers who ship beautiful things.
+              Built for people who want their websites to stand out.
             </p>
           </div>
         </div>

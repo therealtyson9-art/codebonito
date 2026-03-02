@@ -52,15 +52,15 @@ export default function HomePage() {
               1 Free Template/Month + $2 Each
             </Badge>
             <h1 className="text-5xl font-bold tracking-tight text-foreground sm:text-7xl lg:text-8xl">
-              ¿Tus webs hechas con IA se ven todas{" "}
+              Tired of your AI-built websites all looking the{" "}
               <span className="bg-gradient-to-r from-brand-blue to-blue-400 bg-clip-text text-transparent">
-                iguales
+                same
               </span>
               ?
             </h1>
             <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-              Plantillas únicas que hacen que tu web destaque.
-              Cópialas en tu IA favorita y listo.
+              Unique templates that make your website stand out.
+              Copy them into your favorite AI tool and you&apos;re done.
             </p>
             <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button asChild size="lg" className="h-12 px-8 text-base bg-brand-blue hover:bg-brand-blue/90 text-white shadow-md shadow-brand-blue/25">
@@ -130,42 +130,42 @@ export default function HomePage() {
               Features
             </Badge>
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
-              ¿Por qué Code Bonito?
+              Why Code Bonito?
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Todo lo que necesitas para crear webs que destacan.
+              Everything you need to create websites that stand out.
             </p>
           </div>
           <div className="mt-20 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             <FeatureCard
               icon={<Palette className="h-5 w-5" />}
-              title="Diseños Únicos"
-              description="Cada plantilla es diferente. Nada de copias baratas o designs aburridos que ya viste mil veces."
+              title="Unique Designs"
+              description="Every template is different. No cheap copies or boring designs you've seen a thousand times."
             />
             <FeatureCard
               icon={<Download className="h-5 w-5" />}
-              title="Listo para Usar"
-              description="Recibes todo lo que necesitas: colores, fuentes, textos de ejemplo. Solo copia y pega en tu IA."
+              title="Ready to Use"
+              description="You get everything you need: colors, fonts, example text. Just copy and paste into your AI."
             />
             <FeatureCard
               icon={<Zap className="h-5 w-5" />}
-              title="Funciona Donde Sea"
-              description="Úsalos en Claude, ChatGPT, v0, Cursor, Bolt. La misma plantilla, tu plataforma favorita."
+              title="Works Everywhere"
+              description="Use them in Claude, ChatGPT, v0, Cursor, Bolt. Same template, your favorite platform."
             />
             <FeatureCard
               icon={<Code2 className="h-5 w-5" />}
-              title="Solo Copia y Pega"
-              description="No necesitas saber programar. Le das el prompt a tu IA y ella hace todo el trabajo técnico."
+              title="Just Copy & Paste"
+              description="You don't need to know how to code. Give the prompt to your AI and it does all the technical work."
             />
             <FeatureCard
               icon={<Layers className="h-5 w-5" />}
-              title="Todo Definido"
-              description="Colores exactos, fuentes, espaciado. Tu IA sabrá exactamente cómo hacer tu web."
+              title="Everything Defined"
+              description="Exact colors, fonts, spacing. Your AI will know exactly how to build your website."
             />
             <FeatureCard
               icon={<Sparkles className="h-5 w-5" />}
-              title="Siempre Hay Nuevos"
-              description="Cada semana agregamos plantillas nuevas. Tu competencia nunca tendrá el mismo diseño."
+              title="Always New Ones"
+              description="We add new templates every week. Your competition will never have the same design."
             />
           </div>
         </div>
@@ -179,30 +179,30 @@ export default function HomePage() {
               How It Works
             </Badge>
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
-              Elige → Copia → Pega
+              Pick → Copy → Paste
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Tres pasos para destacar.
+              Three steps to stand out.
             </p>
           </div>
           <div className="mx-auto mt-20 grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-3">
             <StepCard
               step="01"
               icon={<Search className="h-6 w-6" />}
-              title="Elige tu plantilla favorita"
-              description="Explora por categoría, estilo o plataforma. Encuentra el diseño perfecto para tu próximo proyecto."
+              title="Pick your favorite template"
+              description="Browse by category, style, or platform. Find the perfect design for your next project."
             />
             <StepCard
               step="02"
               icon={<Copy className="h-6 w-6" />}
-              title="Copia el prompt en tu IA"
-              description="Obtén un prompt de diseño específico para Cursor, v0, Bolt, Lovable o Claude Code."
+              title="Copy the prompt into your AI"
+              description="Get a design prompt built for Cursor, v0, Bolt, Lovable, or Claude Code."
             />
             <StepCard
               step="03"
               icon={<Sparkles className="h-6 w-6" />}
-              title="Pega y deja que ella haga la magia"
-              description="Pega el prompt en tu herramienta de IA y mira cómo genera una web única y hermosa."
+              title="Paste and let it work the magic"
+              description="Paste the prompt into your AI tool and watch it generate a unique, beautiful website."
             />
           </div>
         </div>
@@ -217,10 +217,10 @@ export default function HomePage() {
                 Popular
               </Badge>
               <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
-                Plantillas populares
+                Trending templates
               </h2>
               <p className="mt-4 text-lg text-muted-foreground">
-                Las más descargadas este mes.
+                The most downloaded templates this month.
               </p>
             </div>
             <Button asChild variant="ghost" className="hidden text-brand-blue hover:text-brand-blue/80 hover:bg-brand-blue/5 sm:flex">
@@ -252,10 +252,10 @@ export default function HomePage() {
               Pricing
             </Badge>
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
-              Precios simples y transparentes
+              Clear pricing, no surprises
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Empieza gratis. Compra plantillas cuando quieras.
+              Try free with 1 template per month. Upgrade to Pro for unlimited access to all templates.
             </p>
           </div>
           <div className="mx-auto mt-16 grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-2">
@@ -263,7 +263,7 @@ export default function HomePage() {
               <CardHeader>
                 <CardTitle className="text-xl text-foreground">Free</CardTitle>
                 <CardDescription>
-                  1 plantilla gratis al mes (requiere registro)
+                  Try with no commitment
                 </CardDescription>
                 <div className="mt-4">
                   <span className="text-5xl font-bold text-foreground">$0</span>
@@ -272,10 +272,10 @@ export default function HomePage() {
               </CardHeader>
               <CardContent className="flex-1">
                 <ul className="space-y-3">
-                  <PricingFeature>1 plantilla gratis al mes</PricingFeature>
-                  <PricingFeature>Funciona en las 6 plataformas</PricingFeature>
-                  <PricingFeature>Copia prompts al instante</PricingFeature>
-                  <PricingFeature>Requiere registro</PricingFeature>
+                  <PricingFeature>1 free template per month</PricingFeature>
+                  <PricingFeature>All platforms (Claude, v0, Bolt, Cursor, Lovable)</PricingFeature>
+                  <PricingFeature>Ready-to-copy prompts</PricingFeature>
+                  <PricingFeature>Registration required</PricingFeature>
                 </ul>
               </CardContent>
               <CardFooter>
@@ -294,7 +294,7 @@ export default function HomePage() {
               <CardHeader>
                 <CardTitle className="text-xl text-foreground">Premium</CardTitle>
                 <CardDescription>
-                  Compra cualquier plantilla individualmente
+                  Just what you need
                 </CardDescription>
                 <div className="mt-4">
                   <span className="text-5xl font-bold text-foreground">$2</span>
@@ -303,14 +303,14 @@ export default function HomePage() {
               </CardHeader>
               <CardContent className="flex-1">
                 <ul className="space-y-3">
-                  <PricingFeature>47 plantillas premium</PricingFeature>
-                  <PricingFeature>Las 6 plataformas (Cursor, v0, Bolt, Lovable, Claude Code, OpenClaw)</PricingFeature>
-                  <PricingFeature>Design tokens y descarga ZIP</PricingFeature>
-                  <PricingFeature>Pago único, tuya para siempre</PricingFeature>
-                  <PricingFeature>Nuevas plantillas cada semana</PricingFeature>
+                  <PricingFeature>One single template</PricingFeature>
+                  <PricingFeature>All platforms (Cursor, v0, Bolt, Lovable, Claude Code, OpenClaw)</PricingFeature>
+                  <PricingFeature>Yours forever</PricingFeature>
+                  <PricingFeature>Commercial use included</PricingFeature>
+                  <PricingFeature>New templates every week</PricingFeature>
                 </ul>
                 <p className="mt-4 text-xs text-muted-foreground">
-                  Suscripción ilimitada ($5/mes) próximamente
+                  Unlimited subscription ($5/mo) coming soon
                 </p>
               </CardContent>
               <CardFooter>
@@ -332,11 +332,10 @@ export default function HomePage() {
             <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-blue/5 via-transparent to-transparent" />
             <div className="absolute top-0 right-0 -z-10 h-40 w-40 rounded-full bg-brand-amber/10 blur-3xl" />
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
-              ¿Listo para crear algo único?
+              Ready to build something that stands out?
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
-              Únete a miles de personas creando webs que realmente destacan
-              con los prompts de Code Bonito.
+              Join thousands of people creating websites that actually get noticed.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button asChild size="lg" className="h-12 px-8 text-base bg-brand-blue hover:bg-brand-blue/90 text-white shadow-md shadow-brand-blue/25">
