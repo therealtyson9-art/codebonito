@@ -68,14 +68,14 @@ export default function LandingPlayfulDemo() {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16" style={{ color: "#292524" }}>Every Pet is Welcome</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { emoji: "\uD83D\uDC36", name: "Dogs", desc: "All breeds, all sizes" },
-              { emoji: "\uD83D\uDC31", name: "Cats", desc: "Indoor & outdoor" },
-              { emoji: "\uD83D\uDC30", name: "Rabbits", desc: "Bunnies & small mammals" },
-              { emoji: "\uD83D\uDC26", name: "Birds", desc: "Parrots to finches" },
-              { emoji: "\uD83D\uDC20", name: "Fish", desc: "Freshwater & saltwater" },
-              { emoji: "\uD83D\uDC22", name: "Reptiles", desc: "Lizards, snakes, turtles" },
-              { emoji: "\uD83D\uDC39", name: "Hamsters", desc: "Guinea pigs & gerbils" },
-              { emoji: "\uD83D\uDC3E", name: "Exotic Pets", desc: "Hedgehogs, ferrets & more" },
+              { emoji: "🐶", name: "Dogs", desc: "All breeds, all sizes" },
+              { emoji: "🐱", name: "Cats", desc: "Indoor & outdoor" },
+              { emoji: "🐰", name: "Rabbits", desc: "Bunnies & small mammals" },
+              { emoji: "🐦", name: "Birds", desc: "Parrots to finches" },
+              { emoji: "🐠", name: "Fish", desc: "Freshwater & saltwater" },
+              { emoji: "🐢", name: "Reptiles", desc: "Lizards, snakes, turtles" },
+              { emoji: "🐹", name: "Hamsters", desc: "Guinea pigs & gerbils" },
+              { emoji: "🐾", name: "Exotic Pets", desc: "Hedgehogs, ferrets & more" },
             ].map((pet, i) => (
               <div key={i} className="bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition-shadow">
                 <span className="text-4xl block mb-3">{pet.emoji}</span>

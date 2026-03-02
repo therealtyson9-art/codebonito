@@ -1,11 +1,11 @@
 export default function LegalPlayfulDemo() {
   const services = [
-    { icon: "\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc66", title: "Family Law", desc: "Divorce, custody, adoption, and child support. We handle sensitive family matters with empathy, clear communication, and a focus on what is best for your children." },
-    { icon: "\ud83d\udee1\ufe0f", title: "Consumer Rights", desc: "Debt collection harassment, unfair billing, warranty disputes, and lemon law claims. We stand up to corporations that take advantage of everyday people." },
-    { icon: "\ud83d\udcbc", title: "Employment Law", desc: "Wrongful termination, wage theft, discrimination, and hostile work environments. If your employer crossed the line, we help you fight back." },
-    { icon: "\ud83c\udfe0", title: "Housing Disputes", desc: "Eviction defense, security deposit recovery, habitability complaints, and landlord-tenant mediation. Everyone deserves a safe, fair place to live." },
-    { icon: "\ud83d\udcb3", title: "Debt Defense", desc: "Credit card lawsuits, medical debt negotiation, and bankruptcy guidance. We help you understand your options and find a path forward." },
-    { icon: "\ud83d\udcdd", title: "Small Claims Help", desc: "Document preparation, case strategy, and coaching for small claims court. You do not need a fortune to get justice." },
+    { icon: "👨\u200d\ud83d\udc69\u200d👧\u200d\ud83d\udc66", title: "Family Law", desc: "Divorce, custody, adoption, and child support. We handle sensitive family matters with empathy, clear communication, and a focus on what is best for your children." },
+    { icon: "🛡\ufe0f", title: "Consumer Rights", desc: "Debt collection harassment, unfair billing, warranty disputes, and lemon law claims. We stand up to corporations that take advantage of everyday people." },
+    { icon: "💼", title: "Employment Law", desc: "Wrongful termination, wage theft, discrimination, and hostile work environments. If your employer crossed the line, we help you fight back." },
+    { icon: "🏠", title: "Housing Disputes", desc: "Eviction defense, security deposit recovery, habitability complaints, and landlord-tenant mediation. Everyone deserves a safe, fair place to live." },
+    { icon: "💳", title: "Debt Defense", desc: "Credit card lawsuits, medical debt negotiation, and bankruptcy guidance. We help you understand your options and find a path forward." },
+    { icon: "📝", title: "Small Claims Help", desc: "Document preparation, case strategy, and coaching for small claims court. You do not need a fortune to get justice." },
   ]
 
   const process = [

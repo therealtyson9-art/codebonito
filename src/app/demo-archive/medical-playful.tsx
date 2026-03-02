@@ -1,11 +1,11 @@
 export default function MedicalPlayfulDemo() {
   const services = [
-    { emoji: "\ud83d\udc76", title: "Well-Child Visits", desc: "Regular check-ups to track growth, development milestones, and vaccinations from newborn through adolescence. We make every visit fun and stress-free.", color: "#ccfbf1" },
-    { emoji: "\ud83e\ude7a", title: "Vaccinations", desc: "Stay up to date with childhood immunizations. Our gentle approach and reward stickers make shots a breeze for even the most nervous little ones.", color: "#fef3c7" },
-    { emoji: "\ud83e\uddb7", title: "Pediatric Dental", desc: "Cleanings, sealants, fluoride treatments, and cavity care in a colorful, kid-friendly dental suite with ceiling-mounted TVs and treasure chest prizes.", color: "#fce7f3" },
-    { emoji: "\ud83e\ude7b", title: "Sick Day Visits", desc: "Same-day appointments for fevers, ear infections, coughs, rashes, tummy troubles, and other childhood illnesses. Walk-ins welcome.", color: "#e0e7ff" },
-    { emoji: "\ud83e\udde0", title: "Behavioral Health", desc: "Compassionate screening and support for ADHD, anxiety, learning differences, and social-emotional development in a safe, judgment-free space.", color: "#f3e8ff" },
-    { emoji: "\ud83c\udf4e", title: "Nutrition Counseling", desc: "Personalized nutrition plans for picky eaters, food allergies, childhood obesity, and healthy growth. Fun cooking tips the whole family will love.", color: "#dcfce7" },
+    { emoji: "👶", title: "Well-Child Visits", desc: "Regular check-ups to track growth, development milestones, and vaccinations from newborn through adolescence. We make every visit fun and stress-free.", color: "#ccfbf1" },
+    { emoji: "🩺", title: "Vaccinations", desc: "Stay up to date with childhood immunizations. Our gentle approach and reward stickers make shots a breeze for even the most nervous little ones.", color: "#fef3c7" },
+    { emoji: "🦷", title: "Pediatric Dental", desc: "Cleanings, sealants, fluoride treatments, and cavity care in a colorful, kid-friendly dental suite with ceiling-mounted TVs and treasure chest prizes.", color: "#fce7f3" },
+    { emoji: "🩻", title: "Sick Day Visits", desc: "Same-day appointments for fevers, ear infections, coughs, rashes, tummy troubles, and other childhood illnesses. Walk-ins welcome.", color: "#e0e7ff" },
+    { emoji: "🧠", title: "Behavioral Health", desc: "Compassionate screening and support for ADHD, anxiety, learning differences, and social-emotional development in a safe, judgment-free space.", color: "#f3e8ff" },
+    { emoji: "🍎", title: "Nutrition Counseling", desc: "Personalized nutrition plans for picky eaters, food allergies, childhood obesity, and healthy growth. Fun cooking tips the whole family will love.", color: "#dcfce7" },
   ]
 
   const team = [

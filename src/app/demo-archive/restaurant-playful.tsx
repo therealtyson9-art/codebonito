@@ -13,19 +13,19 @@ export default function RestaurantPlayfulDemo() {
   ]
 
   const sides = [
-    { emoji: "\uD83E\uDD5F", name: "Gyoza (6pc)", price: "$8" },
-    { emoji: "\uD83C\uDF71", name: "Rice Bowl", price: "$5" },
-    { emoji: "\uD83E\uDD57", name: "Seaweed Salad", price: "$7" },
-    { emoji: "\uD83C\uDF64", name: "Karaage Chicken", price: "$10" },
-    { emoji: "\uD83C\uDF76", name: "Edamame", price: "$5" },
-    { emoji: "\uD83E\uDD6A", name: "Bao Buns (2pc)", price: "$9" },
+    { emoji: "🥟", name: "Gyoza (6pc)", price: "$8" },
+    { emoji: "🍱", name: "Rice Bowl", price: "$5" },
+    { emoji: "🥗", name: "Seaweed Salad", price: "$7" },
+    { emoji: "🍤", name: "Karaage Chicken", price: "$10" },
+    { emoji: "🍶", name: "Edamame", price: "$5" },
+    { emoji: "🥪", name: "Bao Buns (2pc)", price: "$9" },
   ]
 
   const drinks = [
-    { emoji: "\uD83C\uDF7A", name: "Asahi Draft", price: "$7" },
-    { emoji: "\uD83C\uDF75", name: "Hot Green Tea", price: "$3" },
-    { emoji: "\uD83E\uDDCB", name: "Ramune Soda", price: "$4" },
-    { emoji: "\uD83E\uDD64", name: "Calpico", price: "$4" },
+    { emoji: "🍺", name: "Asahi Draft", price: "$7" },
+    { emoji: "🍵", name: "Hot Green Tea", price: "$3" },
+    { emoji: "🧋", name: "Ramune Soda", price: "$4" },
+    { emoji: "🥤", name: "Calpico", price: "$4" },
   ]
 
   const favorites = [
@@ -40,14 +40,14 @@ export default function RestaurantPlayfulDemo() {
 
       {/* Fun Tab Nav */}
       <nav className="max-w-5xl mx-auto px-6 py-5 flex flex-wrap items-center justify-between gap-4">
-        <span className="text-3xl" style={{ fontFamily: "Bubblegum Sans, cursive", color: "#ef4444" }}>Noodle House \uD83C\uDF5C</span>
+        <span className="text-3xl" style={{ fontFamily: "Bubblegum Sans, cursive", color: "#ef4444" }}>Noodle House 🍜</span>
         <div className="flex flex-wrap gap-2">
           {[
-            { label: "Menu", icon: "\uD83C\uDF5C" },
-            { label: "Customize", icon: "\uD83C\uDFA8" },
+            { label: "Menu", icon: "🍜" },
+            { label: "Customize", icon: "🎨" },
             { label: "Favorites", icon: "\u2764\uFE0F" },
             { label: "Rewards", icon: "\u2B50" },
-            { label: "Order", icon: "\uD83D\uDED2" },
+            { label: "Order", icon: "🛒" },
           ].map((tab) => (
             <span key={tab.label} className="px-4 py-2 rounded-full text-sm font-semibold cursor-pointer" style={{ backgroundColor: "#fce7f3", color: "#ef4444" }}>
               {tab.icon} {tab.label}
@@ -58,7 +58,7 @@ export default function RestaurantPlayfulDemo() {
 
       {/* Food Emoji Hero */}
       <section className="text-center py-16 px-6">
-        <p className="text-6xl mb-6">\uD83C\uDF5C\uD83C\uDF72\uD83E\uDD62\uD83E\uDD5F\uD83C\uDF63</p>
+        <p className="text-6xl mb-6">🍜🍲🥢🥟🍣</p>
         <h1 className="text-5xl md:text-6xl mb-4" style={{ fontFamily: "Bubblegum Sans, cursive", color: "#ef4444" }}>
           Slurp-Worthy Noodles!
         </h1>
@@ -66,13 +66,13 @@ export default function RestaurantPlayfulDemo() {
           Handmade noodles, slow-simmered broths, and toppings piled high. Life&apos;s too short for boring soup.
         </p>
         <button className="mt-8 px-10 py-4 rounded-full text-lg font-bold text-white shadow-lg" style={{ backgroundColor: "#ef4444" }}>
-          Order Now \uD83D\uDE80
+          Order Now 🚀
         </button>
       </section>
 
       {/* Menu - Ramen */}
       <section className="max-w-4xl mx-auto px-6 py-12">
-        <h2 className="text-3xl mb-8 text-center" style={{ fontFamily: "Bubblegum Sans, cursive", color: "#ef4444" }}>\uD83C\uDF5C Ramen</h2>
+        <h2 className="text-3xl mb-8 text-center" style={{ fontFamily: "Bubblegum Sans, cursive", color: "#ef4444" }}>🍜 Ramen</h2>
         <div className="grid md:grid-cols-2 gap-5">
           {ramen.map((item) => (
             <div key={item.name} className="p-5 rounded-2xl bg-white shadow-sm">
@@ -81,13 +81,13 @@ export default function RestaurantPlayfulDemo() {
                 <span className="font-bold" style={{ color: "#ef4444" }}>{item.price}</span>
               </div>
               <p className="text-sm text-gray-500 mt-1">{item.desc}</p>
-              <p className="text-xs mt-2">{item.heat > 0 ? "\uD83C\uDF36\uFE0F".repeat(item.heat) : "\uD83C\uDF31 Mild"}</p>
+              <p className="text-xs mt-2">{item.heat > 0 ? "🌶\uFE0F".repeat(item.heat) : "🌱 Mild"}</p>
             </div>
           ))}
         </div>
 
         {/* Udon */}
-        <h2 className="text-3xl mb-8 mt-16 text-center" style={{ fontFamily: "Bubblegum Sans, cursive", color: "#ef4444" }}>\uD83E\uDD62 Udon</h2>
+        <h2 className="text-3xl mb-8 mt-16 text-center" style={{ fontFamily: "Bubblegum Sans, cursive", color: "#ef4444" }}>🥢 Udon</h2>
         <div className="grid md:grid-cols-3 gap-5">
           {udon.map((item) => (
             <div key={item.name} className="p-5 rounded-2xl bg-white shadow-sm">
@@ -99,7 +99,7 @@ export default function RestaurantPlayfulDemo() {
         </div>
 
         {/* Sides */}
-        <h2 className="text-3xl mb-8 mt-16 text-center" style={{ fontFamily: "Bubblegum Sans, cursive", color: "#ef4444" }}>\uD83C\uDF71 Sides</h2>
+        <h2 className="text-3xl mb-8 mt-16 text-center" style={{ fontFamily: "Bubblegum Sans, cursive", color: "#ef4444" }}>🍱 Sides</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {sides.map((item) => (
             <div key={item.name} className="flex items-center gap-3 p-4 rounded-2xl bg-white shadow-sm">
@@ -113,7 +113,7 @@ export default function RestaurantPlayfulDemo() {
         </div>
 
         {/* Drinks */}
-        <h2 className="text-3xl mb-8 mt-16 text-center" style={{ fontFamily: "Bubblegum Sans, cursive", color: "#ef4444" }}>\uD83C\uDF7A Drinks</h2>
+        <h2 className="text-3xl mb-8 mt-16 text-center" style={{ fontFamily: "Bubblegum Sans, cursive", color: "#ef4444" }}>🍺 Drinks</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {drinks.map((item) => (
             <div key={item.name} className="text-center p-4 rounded-2xl bg-white shadow-sm">
@@ -128,7 +128,7 @@ export default function RestaurantPlayfulDemo() {
       {/* Customization Guide */}
       <section className="py-16 px-6" style={{ backgroundColor: "#fce7f3" }}>
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl mb-6" style={{ fontFamily: "Bubblegum Sans, cursive", color: "#ef4444" }}>\uD83C\uDFA8 Build Your Bowl</h2>
+          <h2 className="text-3xl mb-6" style={{ fontFamily: "Bubblegum Sans, cursive", color: "#ef4444" }}>🎨 Build Your Bowl</h2>
           <p className="text-gray-700 mb-8">Every ramen and udon can be customized. Make it yours!</p>
           <div className="grid md:grid-cols-4 gap-4">
             {[
@@ -152,7 +152,7 @@ export default function RestaurantPlayfulDemo() {
         <div className="grid md:grid-cols-3 gap-6">
           {favorites.map((f, i) => (
             <div key={f.name} className="p-5 rounded-2xl bg-white shadow-sm">
-              <p className="text-4xl mb-2">{i === 0 ? "\uD83E\uDD47" : i === 1 ? "\uD83E\uDD48" : "\uD83E\uDD49"}</p>
+              <p className="text-4xl mb-2">{i === 0 ? "🥇" : i === 1 ? "🥈" : "🥉"}</p>
               <p className="font-bold text-gray-900">{f.name}</p>
               <p className="text-xs font-semibold px-3 py-1 rounded-full inline-block mt-2" style={{ backgroundColor: "#fce7f3", color: "#ef4444" }}>{f.badge}</p>
               <p className="text-sm text-gray-500 mt-2">{f.votes.toLocaleString()} votes</p>
@@ -178,7 +178,7 @@ export default function RestaurantPlayfulDemo() {
               </div>
             ))}
           </div>
-          <button className="px-8 py-3 rounded-full font-bold text-lg" style={{ backgroundColor: "white", color: "#ef4444" }}>Join Free \uD83C\uDF89</button>
+          <button className="px-8 py-3 rounded-full font-bold text-lg" style={{ backgroundColor: "white", color: "#ef4444" }}>Join Free 🎉</button>
         </div>
       </section>
 
@@ -187,17 +187,17 @@ export default function RestaurantPlayfulDemo() {
         <h2 className="text-3xl mb-4" style={{ fontFamily: "Bubblegum Sans, cursive", color: "#ef4444" }}>Craving Noodles Now?</h2>
         <p className="text-gray-600 mb-6">Order online for pickup or delivery. Hot, fresh, and ready when you are.</p>
         <div className="flex gap-4 justify-center">
-          <button className="px-8 py-3 rounded-full font-bold text-white" style={{ backgroundColor: "#ef4444" }}>Pickup \uD83C\uDFE0</button>
-          <button className="px-8 py-3 rounded-full font-bold border-2" style={{ borderColor: "#ef4444", color: "#ef4444" }}>Delivery \uD83D\uDE97</button>
+          <button className="px-8 py-3 rounded-full font-bold text-white" style={{ backgroundColor: "#ef4444" }}>Pickup 🏠</button>
+          <button className="px-8 py-3 rounded-full font-bold border-2" style={{ borderColor: "#ef4444", color: "#ef4444" }}>Delivery 🚗</button>
         </div>
       </section>
 
       {/* Footer */}
       <footer className="text-center py-8 px-6" style={{ backgroundColor: "#fce7f3" }}>
-        <p className="text-2xl mb-2" style={{ fontFamily: "Bubblegum Sans, cursive", color: "#ef4444" }}>Noodle House \uD83C\uDF5C</p>
+        <p className="text-2xl mb-2" style={{ fontFamily: "Bubblegum Sans, cursive", color: "#ef4444" }}>Noodle House 🍜</p>
         <p className="text-sm text-gray-600">456 Bowlside Lane, Portland, OR 97209 &middot; (503) 555-0189</p>
         <p className="text-sm text-gray-600">Open Daily 11 AM - 10 PM</p>
-        <p className="text-xs text-gray-400 mt-4">\uD83C\uDF5C\uD83E\uDD5F\uD83C\uDF63\uD83C\uDF72\uD83E\uDD62 &copy; 2025 Noodle House. Slurp responsibly. \uD83E\uDD62\uD83C\uDF72\uD83C\uDF63\uD83E\uDD5F\uD83C\uDF5C</p>
+        <p className="text-xs text-gray-400 mt-4">🍜🥟🍣🍲🥢 &copy; 2025 Noodle House. Slurp responsibly. 🥢🍲🍣🥟🍜</p>
       </footer>
     </div>
   )
