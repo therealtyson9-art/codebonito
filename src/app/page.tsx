@@ -28,7 +28,7 @@ import { TemplateCard } from "@/components/template-card";
 export default function HomePage() {
   const popularTemplates = [...MOCK_TEMPLATES]
     .sort((a, b) => b.downloads_count - a.downloads_count)
-    .slice(0, 3);
+    .slice(0, 6);
 
   const newThisWeek = [...MOCK_TEMPLATES]
     .filter((t) => Date.now() - new Date(t.created_at).getTime() < 7 * 24 * 60 * 60 * 1000)
@@ -42,23 +42,26 @@ export default function HomePage() {
 
   return (
     <div>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-white">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-blue/8 via-transparent to-transparent" />
-        <div className="absolute top-0 right-0 -z-10 h-96 w-96 rounded-full bg-brand-amber/5 blur-3xl" />
-        <div className="absolute bottom-0 left-0 -z-10 h-64 w-64 rounded-full bg-brand-blue/5 blur-3xl" />
-        <div className="mx-auto max-w-7xl px-4 py-28 sm:px-6 sm:py-40 lg:px-8">
+      {/* Hero — Full viewport with gradient mesh */}
+      <section className="relative min-h-[100vh] overflow-hidden bg-[#fafafa]">
+        {/* Gradient mesh background */}
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,rgba(37,99,235,0.12),transparent)]" />
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_50%_at_80%_50%,rgba(139,92,246,0.08),transparent)]" />
+        <div className="absolute top-20 right-[10%] -z-10 h-[500px] w-[500px] rounded-full bg-brand-amber/[0.04] blur-[100px] animate-float" />
+        <div className="absolute bottom-20 left-[5%] -z-10 h-[400px] w-[400px] rounded-full bg-brand-blue/[0.06] blur-[80px] animate-float-delayed" />
+
+        <div className="mx-auto max-w-7xl px-4 pb-20 pt-20 sm:px-6 sm:pt-32 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <Badge
               variant="secondary"
-              className="mb-8 border border-brand-amber/20 bg-brand-amber-light px-4 py-1.5 text-sm font-medium text-amber-800"
+              className="mb-8 border border-brand-amber/20 bg-brand-amber-light/80 px-4 py-1.5 text-sm font-medium text-amber-800 backdrop-blur-sm"
             >
               <Sparkles className="mr-1.5 h-3.5 w-3.5 text-brand-amber" />
               1 Free Template/Month + $2 Each
             </Badge>
-            <h1 className="text-5xl font-bold tracking-tight text-foreground sm:text-7xl lg:text-8xl">
+            <h1 className="text-5xl font-bold leading-[1.08] tracking-tight text-foreground sm:text-7xl lg:text-[5.5rem]">
               Tired of your AI-built websites all looking the{" "}
-              <span className="bg-gradient-to-r from-brand-blue to-blue-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-brand-blue via-blue-500 to-violet-500 bg-clip-text text-transparent">
                 same
               </span>
               ?
@@ -68,7 +71,11 @@ export default function HomePage() {
               Copy them into your favorite AI tool and you&apos;re done.
             </p>
             <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button asChild size="lg" className="h-12 px-8 text-base bg-brand-blue hover:bg-brand-blue/90 text-white shadow-md shadow-brand-blue/25">
+              <Button
+                asChild
+                size="lg"
+                className="h-13 rounded-xl px-8 text-base bg-gradient-to-r from-brand-blue to-blue-500 text-white shadow-lg shadow-brand-blue/25 transition-all duration-200 hover:shadow-xl hover:shadow-brand-blue/30 hover:brightness-110"
+              >
                 <Link href="/browse">
                   Browse Templates <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -77,7 +84,7 @@ export default function HomePage() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="h-12 px-8 text-base border-border hover:bg-secondary"
+                className="h-13 rounded-xl px-8 text-base border-border/80 bg-white/80 backdrop-blur-sm transition-all duration-200 hover:bg-white hover:shadow-md"
               >
                 <Link href="/upload">
                   <Upload className="mr-2 h-4 w-4" />
@@ -85,50 +92,147 @@ export default function HomePage() {
                 </Link>
               </Button>
             </div>
-            <div className="mt-14 flex items-center justify-center gap-8 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-blue/10">
-                  <Download className="h-3.5 w-3.5 text-brand-blue" />
-                </div>
-                <span className="font-medium">{totalDownloads.toLocaleString()}+ downloads</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-blue/10">
-                  <Layers className="h-3.5 w-3.5 text-brand-blue" />
-                </div>
-                <span className="font-medium">{MOCK_TEMPLATES.length} templates</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-blue/10">
-                  <Code2 className="h-3.5 w-3.5 text-brand-blue" />
-                </div>
-                <span className="font-medium">6 platforms</span>
-              </div>
-            </div>
-            {/* Platform badges */}
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
-              {[
-                { name: "Cursor", bg: "bg-gray-900 text-white" },
-                { name: "v0", bg: "bg-black text-white" },
-                { name: "Bolt", bg: "bg-violet-600 text-white" },
-                { name: "Lovable", bg: "bg-pink-500 text-white" },
-                { name: "Claude Code", bg: "bg-amber-700 text-white" },
-                { name: "OpenClaw", bg: "bg-emerald-600 text-white" },
-              ].map((p) => (
-                <span
-                  key={p.name}
-                  className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ${p.bg}`}
+          </div>
+
+          {/* Floating preview cards */}
+          <div className="relative mx-auto mt-20 max-w-5xl">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+              {popularTemplates.slice(0, 3).map((template, i) => (
+                <div
+                  key={template.id}
+                  className={`transform transition-all duration-500 ${
+                    i === 0 ? "-rotate-2 translate-y-4" : i === 1 ? "translate-y-0 scale-105 z-10" : "rotate-2 translate-y-4"
+                  }`}
                 >
-                  {p.name}
-                </span>
+                  <div className="overflow-hidden rounded-2xl bg-white shadow-xl shadow-black/[0.08] ring-1 ring-black/[0.05] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+                    <div className="relative aspect-[16/10] overflow-hidden bg-gray-50">
+                      {template.demo_url ? (
+                        <iframe
+                          src={template.demo_url}
+                          title={template.name}
+                          className="pointer-events-none absolute left-0 top-0 border-0"
+                          style={{ width: "1440px", height: "900px", transform: "scale(0.26)", transformOrigin: "top left" }}
+                          tabIndex={-1}
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="flex h-full items-center justify-center bg-gradient-to-br from-gray-100 to-gray-50">
+                          <span className="text-sm text-muted-foreground">{template.name}</span>
+                        </div>
+                      )}
+                    </div>
+                    <div className="p-4">
+                      <p className="font-semibold text-foreground">{template.name}</p>
+                      <p className="mt-1 text-xs text-muted-foreground">{template.category} &middot; {template.style}</p>
+                    </div>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
         </div>
       </section>
 
+      {/* Stats bar — Glass-morphism */}
+      <section className="relative -mt-8 z-20 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <div className="flex items-center gap-4 rounded-2xl border border-white/60 bg-white/70 p-6 shadow-lg shadow-black/[0.04] backdrop-blur-xl">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-blue/10 to-blue-100">
+                <Download className="h-5 w-5 text-brand-blue" />
+              </div>
+              <div>
+                <p className="text-2xl font-bold tracking-tight text-foreground">100+</p>
+                <p className="text-sm text-muted-foreground">Unique Templates</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4 rounded-2xl border border-white/60 bg-white/70 p-6 shadow-lg shadow-black/[0.04] backdrop-blur-xl">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-100 to-purple-100">
+                <Layers className="h-5 w-5 text-violet-600" />
+              </div>
+              <div>
+                <p className="text-2xl font-bold tracking-tight text-foreground">{MOCK_TEMPLATES.length}</p>
+                <p className="text-sm text-muted-foreground">Templates</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4 rounded-2xl border border-white/60 bg-white/70 p-6 shadow-lg shadow-black/[0.04] backdrop-blur-xl">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-amber-100 to-yellow-100">
+                <Code2 className="h-5 w-5 text-amber-600" />
+              </div>
+              <div>
+                <p className="text-2xl font-bold tracking-tight text-foreground">6</p>
+                <p className="text-sm text-muted-foreground">AI Platforms</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Platform logos */}
+      <section className="bg-[#fafafa] pt-20 pb-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="mb-6 text-center text-sm font-medium uppercase tracking-widest text-muted-foreground/60">
+            Works with your favorite AI tools
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+            {[
+              { name: "Cursor", style: "font-semibold text-gray-800" },
+              { name: "v0", style: "font-bold text-black" },
+              { name: "Bolt", style: "font-semibold text-violet-600" },
+              { name: "Lovable", style: "font-semibold text-pink-500" },
+              { name: "Claude Code", style: "font-semibold text-amber-700" },
+              { name: "OpenClaw", style: "font-semibold text-emerald-600" },
+            ].map((p) => (
+              <span
+                key={p.name}
+                className={`font-mono text-sm tracking-tight ${p.style} opacity-70 transition-opacity duration-200 hover:opacity-100`}
+              >
+                {p.name}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="bg-white py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <Badge className="mb-4 border-brand-amber/20 bg-brand-amber-light text-amber-800">
+              How It Works
+            </Badge>
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
+              Pick &rarr; Copy &rarr; Paste
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Three steps to stand out.
+            </p>
+          </div>
+          <div className="mx-auto mt-20 grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3">
+            <StepCard
+              step="01"
+              icon={<Search className="h-6 w-6" />}
+              title="Pick your favorite template"
+              description="Browse by category, style, or platform. Find the perfect design for your next project."
+            />
+            <StepCard
+              step="02"
+              icon={<Copy className="h-6 w-6" />}
+              title="Copy the prompt into your AI"
+              description="Get a design prompt built for Cursor, v0, Bolt, Lovable, or Claude Code."
+            />
+            <StepCard
+              step="03"
+              icon={<Sparkles className="h-6 w-6" />}
+              title="Paste and let it work the magic"
+              description="Paste the prompt into your AI tool and watch it generate a unique, beautiful website."
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Features */}
-      <section className="bg-[#fafafa] py-28">
+      <section className="bg-[#fafafa] py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <Badge className="mb-4 border-brand-blue/20 bg-brand-blue-light text-brand-blue">
@@ -141,7 +245,7 @@ export default function HomePage() {
               Everything you need to create websites that stand out.
             </p>
           </div>
-          <div className="mt-20 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-20 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             <FeatureCard
               icon={<Palette className="h-5 w-5" />}
               title="Unique Designs"
@@ -176,45 +280,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="bg-white py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <Badge className="mb-4 border-brand-amber/20 bg-brand-amber-light text-amber-800">
-              How It Works
-            </Badge>
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
-              Pick → Copy → Paste
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Three steps to stand out.
-            </p>
-          </div>
-          <div className="mx-auto mt-20 grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-3">
-            <StepCard
-              step="01"
-              icon={<Search className="h-6 w-6" />}
-              title="Pick your favorite template"
-              description="Browse by category, style, or platform. Find the perfect design for your next project."
-            />
-            <StepCard
-              step="02"
-              icon={<Copy className="h-6 w-6" />}
-              title="Copy the prompt into your AI"
-              description="Get a design prompt built for Cursor, v0, Bolt, Lovable, or Claude Code."
-            />
-            <StepCard
-              step="03"
-              icon={<Sparkles className="h-6 w-6" />}
-              title="Paste and let it work the magic"
-              description="Paste the prompt into your AI tool and watch it generate a unique, beautiful website."
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Popular Templates */}
-      <section className="bg-[#fafafa] py-28">
+      {/* Trending Templates — Horizontal scroll carousel */}
+      <section className="bg-white py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between">
             <div>
@@ -234,24 +301,28 @@ export default function HomePage() {
               </Link>
             </Button>
           </div>
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        </div>
+        <div className="mt-12 overflow-x-auto scrollbar-hide">
+          <div className="mx-auto flex max-w-7xl gap-6 px-4 pb-4 sm:px-6 lg:px-8" style={{ minWidth: "max-content" }}>
             {popularTemplates.map((template) => (
-              <TemplateCard key={template.id} template={template} />
+              <div key={template.id} className="w-[380px] shrink-0">
+                <TemplateCard template={template} />
+              </div>
             ))}
           </div>
-          <div className="mt-8 text-center sm:hidden">
-            <Button asChild variant="outline">
-              <Link href="/browse">
-                View all templates <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
+        </div>
+        <div className="mt-8 text-center sm:hidden">
+          <Button asChild variant="outline" className="rounded-xl">
+            <Link href="/browse">
+              View all templates <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
         </div>
       </section>
 
       {/* New This Week */}
       {newThisWeek.length > 0 && (
-        <section className="bg-white py-28">
+        <section className="bg-[#fafafa] py-32">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex items-end justify-between">
               <div>
@@ -277,7 +348,7 @@ export default function HomePage() {
               ))}
             </div>
             <div className="mt-8 text-center sm:hidden">
-              <Button asChild variant="outline">
+              <Button asChild variant="outline" className="rounded-xl">
                 <Link href="/browse">
                   View all templates <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -288,7 +359,7 @@ export default function HomePage() {
       )}
 
       {/* Pricing Preview */}
-      <section className="bg-white py-28">
+      <section className="bg-white py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <Badge className="mb-4 border-brand-blue/20 bg-brand-blue-light text-brand-blue">
@@ -302,7 +373,7 @@ export default function HomePage() {
             </p>
           </div>
           <div className="mx-auto mt-16 grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-2">
-            <Card className="flex flex-col border-border/60 bg-white shadow-sm">
+            <Card className="flex flex-col rounded-2xl border-border/60 bg-white shadow-sm transition-all duration-200 hover:shadow-md">
               <CardHeader>
                 <CardTitle className="text-xl text-foreground">Free</CardTitle>
                 <CardDescription>
@@ -322,15 +393,15 @@ export default function HomePage() {
                 </ul>
               </CardContent>
               <CardFooter>
-                <Button variant="outline" className="w-full" asChild>
+                <Button variant="outline" className="w-full rounded-xl" asChild>
                   <Link href="/login">Sign Up Free</Link>
                 </Button>
               </CardFooter>
             </Card>
 
-            <Card className="relative flex flex-col border-brand-blue bg-white shadow-lg shadow-brand-blue/10">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                <Badge className="bg-brand-blue text-white shadow-sm px-4">
+            <Card className="relative flex flex-col rounded-2xl border-brand-blue/40 bg-white shadow-lg shadow-brand-blue/[0.08] ring-1 ring-brand-blue/10">
+              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
+                <Badge className="bg-gradient-to-r from-brand-blue to-blue-500 text-white shadow-md shadow-brand-blue/25 px-4 py-1">
                   Pay Per Template
                 </Badge>
               </div>
@@ -357,7 +428,7 @@ export default function HomePage() {
                 </p>
               </CardContent>
               <CardFooter>
-                <Button className="w-full bg-brand-blue hover:bg-brand-blue/90 text-white shadow-sm" asChild>
+                <Button className="w-full rounded-xl bg-gradient-to-r from-brand-blue to-blue-500 text-white shadow-md shadow-brand-blue/25 transition-all duration-200 hover:shadow-lg hover:brightness-110" asChild>
                   <Link href="/browse">
                     Browse Templates <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
@@ -368,20 +439,26 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-[#fafafa] py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-2xl bg-white px-8 py-20 text-center shadow-lg shadow-brand-blue/5 sm:px-16">
-            <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-blue/5 via-transparent to-transparent" />
-            <div className="absolute top-0 right-0 -z-10 h-40 w-40 rounded-full bg-brand-amber/10 blur-3xl" />
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
+      {/* Final CTA — Full-width gradient */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-brand-blue via-blue-600 to-violet-600 py-32">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.1),transparent)]" />
+        <div className="absolute top-0 left-1/4 h-64 w-64 rounded-full bg-white/[0.05] blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 h-48 w-48 rounded-full bg-brand-amber/10 blur-3xl" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
               Ready to build something that stands out?
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
+            <p className="mx-auto mt-6 max-w-xl text-lg text-blue-100/80">
               Join thousands of people creating websites that actually get noticed.
+              Stop blending in, start standing out.
             </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button asChild size="lg" className="h-12 px-8 text-base bg-brand-blue hover:bg-brand-blue/90 text-white shadow-md shadow-brand-blue/25">
+            <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Button
+                asChild
+                size="lg"
+                className="h-13 rounded-xl bg-white px-8 text-base font-semibold text-brand-blue shadow-xl shadow-black/10 transition-all duration-200 hover:bg-gray-50 hover:shadow-2xl"
+              >
                 <Link href="/browse">
                   Browse Templates <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -390,7 +467,7 @@ export default function HomePage() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="h-12 px-8 text-base"
+                className="h-13 rounded-xl border-white/30 bg-white/10 px-8 text-base text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/20 hover:border-white/50"
               >
                 <Link href="/login">Create Free Account</Link>
               </Button>
@@ -412,8 +489,8 @@ function FeatureCard({
   description: string;
 }) {
   return (
-    <div className="group rounded-xl bg-white p-8 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5">
-      <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-brand-blue/10 text-brand-blue">
+    <div className="group rounded-2xl border border-border/40 bg-white p-8 shadow-sm transition-all duration-200 hover:shadow-lg hover:shadow-brand-blue/[0.04] hover:-translate-y-1">
+      <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-blue/10 to-blue-100 text-brand-blue transition-transform duration-200 group-hover:scale-110">
         {icon}
       </div>
       <h3 className="text-lg font-semibold text-foreground">{title}</h3>
@@ -436,14 +513,14 @@ function StepCard({
   description: string;
 }) {
   return (
-    <div className="relative rounded-xl bg-white p-8 text-center shadow-sm">
-      <span className="font-mono text-xs font-bold tracking-widest text-brand-amber">
+    <div className="group relative rounded-2xl border border-border/40 bg-white p-8 text-center shadow-sm transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
+      <span className="inline-block font-mono text-xs font-bold tracking-[0.2em] text-brand-amber">
         STEP {step}
       </span>
-      <div className="mx-auto mt-4 flex h-14 w-14 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue">
+      <div className="mx-auto mt-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-blue/10 to-blue-100 text-brand-blue transition-transform duration-200 group-hover:scale-110">
         {icon}
       </div>
-      <h3 className="mt-5 text-lg font-semibold text-foreground">{title}</h3>
+      <h3 className="mt-6 text-lg font-semibold text-foreground">{title}</h3>
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
         {description}
       </p>

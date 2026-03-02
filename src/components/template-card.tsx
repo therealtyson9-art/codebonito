@@ -14,7 +14,7 @@ import type { Template } from "@/types/database";
 export function TemplateCard({ template }: { template: Template }) {
   return (
     <Link href={`/template/${template.id}`}>
-      <Card className="group overflow-hidden border-border/60 bg-white shadow-sm transition-all hover:shadow-lg hover:shadow-brand-blue/5 hover:-translate-y-0.5">
+      <Card className="group overflow-hidden border-border/60 bg-white shadow-sm transition-all hover:shadow-xl hover:shadow-brand-blue/10 hover:-translate-y-1.5 hover:ring-2 hover:ring-brand-blue/20">
         <CardHeader className="p-0">
           <div className="relative aspect-[16/10] overflow-hidden bg-gray-50">
             {(() => {
