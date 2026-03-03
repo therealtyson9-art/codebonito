@@ -22,6 +22,12 @@ export async function POST(request: Request) {
       );
     }
 
+    // Dual currency: detect Mexico from Accept-Language header
+    const acceptLang = request.headers.get("accept-language") || "";
+    const isMX = acceptLang.toLowerCase().includes("es-mx");
+    const currency = isMX ? "mxn" : "usd";
+    const unitAmount = isMX ? 4000 : 200;
+
     const appUrl = "https://codebonito.com";
 
     const session = await getStripe().checkout.sessions.create({
@@ -29,12 +35,12 @@ export async function POST(request: Request) {
       line_items: [
         {
           price_data: {
-            currency: "mxn",
+            currency,
             product_data: {
               name: "Code Bonito Template",
               description: `One-time purchase — Template ${templateId}`,
             },
-            unit_amount: 4000, // $40 MXN
+            unit_amount: unitAmount,
           },
           quantity: 1,
         },
@@ -45,6 +51,7 @@ export async function POST(request: Request) {
       metadata: {
         templateId,
         userId: user.id,
+        currency,
       },
     });
 

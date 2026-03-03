@@ -438,7 +438,7 @@ export default function TemplateDetailPage({
                   ) : (
                     <ShoppingCart className="mr-2 h-4 w-4" />
                   )}
-                  Buy for $40 MXN
+                  Buy for $2 USD
                 </Button>
               ) : null}
             </div>
@@ -472,7 +472,7 @@ export default function TemplateDetailPage({
                     FREE
                   </Badge>
                 ) : (
-                  <Badge className="bg-brand-blue text-white">$40 MXN</Badge>
+                  <Badge className="bg-brand-blue text-white">$2 USD</Badge>
                 )}
                 <Badge variant="outline">{template.category}</Badge>
                 {template.style && (
