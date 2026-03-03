@@ -80,7 +80,7 @@ export default function HomePage() {
       </section>
 
       {/* Platform logos */}
-      <section className="bg-[#fafafa] pt-20 pb-8">
+      <section className="bg-[#fafafa] pt-16 pb-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <p className="mb-6 text-center text-sm font-medium uppercase tracking-widest text-muted-foreground/60">
             Works with your favorite AI tools
@@ -104,6 +104,86 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <FadeIn>
+      {/* Trending Templates — Horizontal scroll carousel */}
+      <section className="bg-white py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex items-end justify-between">
+            <div>
+              <Badge className="mb-4 border-brand-blue/20 bg-brand-blue-light text-brand-blue">
+                Popular
+              </Badge>
+              <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
+                Trending templates
+              </h2>
+              <p className="mt-4 text-lg text-muted-foreground">
+                The most downloaded templates this month.
+              </p>
+            </div>
+            <Button asChild variant="ghost" className="hidden text-brand-blue hover:text-brand-blue/80 hover:bg-brand-blue/5 sm:flex">
+              <Link href="/browse">
+                View all <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+        <div className="mt-12 overflow-x-auto scrollbar-hide">
+          <div className="mx-auto flex max-w-7xl gap-6 px-4 pb-4 sm:px-6 lg:px-8" style={{ minWidth: "max-content" }}>
+            {popularTemplates.map((template) => (
+              <div key={template.id} className="w-[380px] shrink-0">
+                <TemplateCard template={template} />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="mt-8 text-center sm:hidden">
+          <Button asChild variant="outline" className="rounded-xl">
+            <Link href="/browse">
+              View all templates <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
+      </section>
+      </FadeIn>
+
+      {/* New This Week */}
+      {newThisWeek.length > 0 && (
+        <section className="bg-[#fafafa] py-32">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="flex items-end justify-between">
+              <div>
+                <Badge className="mb-4 border-brand-amber/20 bg-brand-amber-light text-amber-800">
+                  Fresh
+                </Badge>
+                <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
+                  New this week
+                </h2>
+                <p className="mt-4 text-lg text-muted-foreground">
+                  Just added — the latest templates for your next project.
+                </p>
+              </div>
+              <Button asChild variant="ghost" className="hidden text-brand-blue hover:text-brand-blue/80 hover:bg-brand-blue/5 sm:flex">
+                <Link href="/browse">
+                  View all <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+            <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {newThisWeek.map((template) => (
+                <TemplateCard key={template.id} template={template} />
+              ))}
+            </div>
+            <div className="mt-8 text-center sm:hidden">
+              <Button asChild variant="outline" className="rounded-xl">
+                <Link href="/browse">
+                  View all templates <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* How It Works */}
       <FadeIn>
@@ -194,86 +274,6 @@ export default function HomePage() {
         </div>
       </section>
       </FadeIn>
-
-      <FadeIn>
-      {/* Trending Templates — Horizontal scroll carousel */}
-      <section className="bg-white py-32">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-end justify-between">
-            <div>
-              <Badge className="mb-4 border-brand-blue/20 bg-brand-blue-light text-brand-blue">
-                Popular
-              </Badge>
-              <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
-                Trending templates
-              </h2>
-              <p className="mt-4 text-lg text-muted-foreground">
-                The most downloaded templates this month.
-              </p>
-            </div>
-            <Button asChild variant="ghost" className="hidden text-brand-blue hover:text-brand-blue/80 hover:bg-brand-blue/5 sm:flex">
-              <Link href="/browse">
-                View all <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-        <div className="mt-12 overflow-x-auto scrollbar-hide">
-          <div className="mx-auto flex max-w-7xl gap-6 px-4 pb-4 sm:px-6 lg:px-8" style={{ minWidth: "max-content" }}>
-            {popularTemplates.map((template) => (
-              <div key={template.id} className="w-[380px] shrink-0">
-                <TemplateCard template={template} />
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="mt-8 text-center sm:hidden">
-          <Button asChild variant="outline" className="rounded-xl">
-            <Link href="/browse">
-              View all templates <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-        </div>
-      </section>
-      </FadeIn>
-
-      {/* New This Week */}
-      {newThisWeek.length > 0 && (
-        <section className="bg-[#fafafa] py-32">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex items-end justify-between">
-              <div>
-                <Badge className="mb-4 border-brand-amber/20 bg-brand-amber-light text-amber-800">
-                  Fresh
-                </Badge>
-                <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
-                  New this week
-                </h2>
-                <p className="mt-4 text-lg text-muted-foreground">
-                  Just added — the latest templates for your next project.
-                </p>
-              </div>
-              <Button asChild variant="ghost" className="hidden text-brand-blue hover:text-brand-blue/80 hover:bg-brand-blue/5 sm:flex">
-                <Link href="/browse">
-                  View all <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
-            <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {newThisWeek.map((template) => (
-                <TemplateCard key={template.id} template={template} />
-              ))}
-            </div>
-            <div className="mt-8 text-center sm:hidden">
-              <Button asChild variant="outline" className="rounded-xl">
-                <Link href="/browse">
-                  View all templates <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* Pricing Preview */}
       <section className="bg-white py-32">
