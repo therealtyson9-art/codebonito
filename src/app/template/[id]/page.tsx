@@ -86,8 +86,10 @@ export default function TemplateDetailPage({
       const { data: { user: currentUser } } = await supabase.auth.getUser();
       setUser(currentUser);
       if (currentUser && template) {
-        const { data } = await supabase.from("purchases").select("id").eq("user_id", currentUser.id).eq("template_id", template.id).limit(1).maybeSingle();
-        setPurchased(!!data);
+        try {
+          const { data } = await supabase.from("purchases").select("id").eq("user_id", currentUser.id).eq("template_id", template.id).limit(1).maybeSingle();
+          setPurchased(!!data);
+        } catch { /* purchases table may not exist yet */ }
       }
       setCheckingPurchase(false);
     }

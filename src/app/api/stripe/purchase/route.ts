@@ -22,8 +22,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const appUrl =
-      process.env.NEXT_PUBLIC_APP_URL || process.env.APP_URL || "http://localhost:3000";
+    const appUrl = "https://codebonito.com";
 
     const session = await getStripe().checkout.sessions.create({
       customer_email: user.email,
