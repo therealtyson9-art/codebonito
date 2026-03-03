@@ -346,9 +346,7 @@ export default function HomePage() {
                   <PricingFeature>Commercial use included</PricingFeature>
                   <PricingFeature>New templates every week</PricingFeature>
                 </ul>
-                <p className="mt-4 text-xs text-muted-foreground">
-                  Unlimited subscription ($5/mo) coming soon
-                </p>
+
               </CardContent>
               <CardFooter>
                 <Button className="w-full rounded-xl bg-gradient-to-r from-brand-blue to-blue-500 text-white shadow-md shadow-brand-blue/25 transition-all duration-200 hover:shadow-lg hover:brightness-110" asChild>

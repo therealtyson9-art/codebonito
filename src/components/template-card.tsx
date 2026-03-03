@@ -88,22 +88,15 @@ export function TemplateCard({ template, compact }: { template: Template; compac
               </Badge>
             )}
           </div>
-          <div className="flex items-center gap-1 text-muted-foreground">
-            {template.platforms.slice(0, 3).map((platform) => (
-              <Badge
-                key={platform}
-                variant="outline"
-                className="px-1.5 py-0 text-[10px] font-normal"
-              >
-                {platform}
-              </Badge>
-            ))}
-            {template.platforms.length > 3 && (
-              <span className="text-[10px]">
-                +{template.platforms.length - 3}
-              </span>
-            )}
-          </div>
+          {template.price_tier === "pro" ? (
+            <span className="inline-flex items-center rounded-lg bg-brand-blue px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition-all group-hover:bg-blue-600 group-hover:shadow-md">
+              Get Prompt · $2
+            </span>
+          ) : (
+            <span className="inline-flex items-center rounded-lg bg-emerald-500 px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition-all group-hover:bg-emerald-600">
+              Get Free
+            </span>
+          )}
         </CardFooter>
       </Card>
     </Link>
