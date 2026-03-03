@@ -13,7 +13,9 @@ import type { Template } from "@/types/database";
 
 export function TemplateCard({ template, compact }: { template: Template; compact?: boolean }) {
   const previewClass = compact ? "relative w-full overflow-hidden bg-gray-50" : "relative aspect-[16/10] overflow-hidden bg-gray-50";
-  const iframeScale = compact ? 0.185 : 0.26;
+  // Scale must ensure 1440px iframe fills container (~400px card in 3-col grid)
+  // 400/1440 = 0.278 minimum; using 0.30 so iframe always clips instead of leaving gaps
+  const iframeScale = compact ? 0.30 : 0.30;
 
   return (
     <Link href={`/template/${template.id}`}>
