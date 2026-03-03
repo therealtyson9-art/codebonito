@@ -22,6 +22,12 @@ export async function POST(request: Request) {
       );
     }
 
+    // Dual currency: Vercel provides x-vercel-ip-country header
+    const country = request.headers.get("x-vercel-ip-country") || "";
+    const isMX = country === "MX";
+    const currency = isMX ? "mxn" : "usd";
+    const unitAmount = isMX ? 4000 : 200; // $40 MXN or $2 USD
+
     const appUrl = "https://codebonito.com";
 
     const session = await getStripe().checkout.sessions.create({
@@ -29,12 +35,12 @@ export async function POST(request: Request) {
       line_items: [
         {
           price_data: {
-            currency: "mxn",
+            currency,
             product_data: {
               name: "Code Bonito Template",
               description: `One-time purchase — Template ${templateId}`,
             },
-            unit_amount: 4000,
+            unit_amount: unitAmount,
           },
           quantity: 1,
         },
@@ -45,6 +51,7 @@ export async function POST(request: Request) {
       metadata: {
         templateId,
         userId: user.id,
+        currency,
       },
     });
 

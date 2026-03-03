@@ -81,6 +81,7 @@ export default function TemplateDetailPage({
   // Check auth and purchase status
   useEffect(() => {
     if (!template) return;
+    const fromStripe = searchParams.get("purchased") === "true";
     const supabase = createClient();
     async function checkStatus() {
       const { data: { user: currentUser } } = await supabase.auth.getUser();
@@ -88,16 +89,29 @@ export default function TemplateDetailPage({
       if (currentUser && template) {
         try {
           const { data } = await supabase.from("purchases").select("id").eq("user_id", currentUser.id).eq("template_id", template.id).limit(1).maybeSingle();
-          setPurchased(!!data);
+          if (data) {
+            setPurchased(true);
+            setCheckingPurchase(false);
+            return;
+          }
         } catch { /* purchases table may not exist yet */ }
       }
       setCheckingPurchase(false);
     }
-    checkStatus().then(() => {
-      if (searchParams.get("purchased") === "true") {
-        setPurchased(true);
-      }
-    });
+    if (fromStripe) {
+      // Poll DB for webhook to process (up to 6s)
+      let attempts = 0;
+      const poll = async () => {
+        await checkStatus();
+        attempts++;
+        if (!purchased && attempts < 3) {
+          setTimeout(poll, 2000);
+        }
+      };
+      poll();
+    } else {
+      checkStatus();
+    }
   }, [template, searchParams]);
 
   if (loading) {
@@ -439,7 +453,7 @@ export default function TemplateDetailPage({
                   ) : (
                     <ShoppingCart className="mr-2 h-4 w-4" />
                   )}
-                  Buy for $40 MXN
+                  Buy for $2
                 </Button>
               ) : null}
             </div>
@@ -473,7 +487,7 @@ export default function TemplateDetailPage({
                     FREE
                   </Badge>
                 ) : (
-                  <Badge className="bg-brand-blue text-white">$40 MXN</Badge>
+                  <Badge className="bg-brand-blue text-white">$2</Badge>
                 )}
                 <Badge variant="outline">{template.category}</Badge>
                 {template.style && (
