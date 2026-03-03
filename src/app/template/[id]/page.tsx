@@ -124,6 +124,8 @@ export default function TemplateDetailPage({
   }
 
   const isFree = template.price_tier === "free";
+  const isMX = typeof navigator !== "undefined" && (navigator.language?.toLowerCase().startsWith("es-mx") || navigator.language?.toLowerCase() === "es-419");
+  const priceLabel = isMX ? "$40 MXN" : "$2";
   const canCopy = isFree || purchased;
 
   const prompt = activePlatform
@@ -165,7 +167,7 @@ export default function TemplateDetailPage({
       const res = await fetch("/api/stripe/purchase", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ templateId: template!.id }),
+        body: JSON.stringify({ templateId: template!.id, locale: navigator.language }),
       });
 
       if (res.status === 401) {
@@ -194,7 +196,7 @@ export default function TemplateDetailPage({
       const res = await fetch("/api/download", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ templateId: template!.id }),
+        body: JSON.stringify({ templateId: template!.id, locale: navigator.language }),
       });
 
       if (res.status === 401) {
@@ -437,7 +439,7 @@ export default function TemplateDetailPage({
                   ) : (
                     <ShoppingCart className="mr-2 h-4 w-4" />
                   )}
-                  Buy for $2
+                  Buy for {priceLabel}
                 </Button>
               ) : null}
             </div>
@@ -471,7 +473,7 @@ export default function TemplateDetailPage({
                     FREE
                   </Badge>
                 ) : (
-                  <Badge className="bg-brand-blue text-white">$2</Badge>
+                  <Badge className="bg-brand-blue text-white">{priceLabel}</Badge>
                 )}
                 <Badge variant="outline">{template.category}</Badge>
                 {template.style && (
