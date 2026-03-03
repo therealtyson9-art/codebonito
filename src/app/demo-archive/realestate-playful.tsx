@@ -2,9 +2,9 @@ export default function RealestatePlayfulDemo() {
   const navLinks = ["How It Works", "Homes", "Calculator", "Stories", "Resources"]
 
   const steps = [
-    { number: "1", title: "Tell Us Your Dream", desc: "Answer a few fun questions about your ideal home — neighborhood vibes, must-haves, deal-breakers, and your budget. Our matching algorithm does the heavy lifting.", emoji: "&#127968;" },
-    { number: "2", title: "Tour Your Matches", desc: "We handpick homes that fit your personality and budget. Schedule tours on your time — evenings, weekends, whenever works. No pressure, just exploring.", emoji: "&#128269;" },
-    { number: "3", title: "Move In & Celebrate", desc: "From offer to closing, we handle the paperwork, negotiations, and inspections. You pop the champagne when you get the keys.", emoji: "&#127881;" },
+    { number: "1", title: "Tell Us Your Dream", desc: "Answer a few fun questions about your ideal home — neighborhood vibes, must-haves, deal-breakers, and your budget. Our matching algorithm does the heavy lifting.", emoji: "🏠" },
+    { number: "2", title: "Tour Your Matches", desc: "We handpick homes that fit your personality and budget. Schedule tours on your time — evenings, weekends, whenever works. No pressure, just exploring.", emoji: "🔍" },
+    { number: "3", title: "Move In & Celebrate", desc: "From offer to closing, we handle the paperwork, negotiations, and inspections. You pop the champagne when you get the keys.", emoji: "🎉" },
   ]
 
   const homeTypes = [
@@ -63,7 +63,7 @@ export default function RealestatePlayfulDemo() {
           <div className="grid md:grid-cols-3 gap-12">
             {steps.map((s) => (
               <div key={s.number} className="text-center">
-                <div className="text-4xl mb-4" dangerouslySetInnerHTML={{ __html: s.emoji }} />
+                <div className="text-4xl mb-4">{s.emoji}</div>
                 <div className="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-xl font-bold" style={{ backgroundColor: "#f97316" }}>{s.number}</div>
                 <h3 className="text-xl font-bold mb-3">{s.title}</h3>
                 <p className="text-sm text-gray-600 leading-relaxed">{s.desc}</p>

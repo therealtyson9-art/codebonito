@@ -1,9 +1,9 @@
 export default function TravelCorporateDemo() {
   const services = [
-    { title: "Corporate Travel", icon: "&#128188;", description: "End-to-end managed travel for businesses of all sizes. Negotiated rates, policy compliance, and 24/7 support for your entire organization." },
-    { title: "Leisure Vacations", icon: "&#9728;", description: "Expert-planned holidays for individuals and families. From beach getaways to cultural explorations, we handle every detail." },
-    { title: "Group & Events", icon: "&#127915;", description: "Conferences, incentive trips, and team retreats. We coordinate flights, accommodations, venues, and ground logistics for groups of any size." },
-    { title: "Luxury Collection", icon: "&#11088;", description: "Access to private villas, first-class cabins, and exclusive experiences. Dedicated concierge service for our most discerning travelers." },
+    { title: "Corporate Travel", icon: "💼", description: "End-to-end managed travel for businesses of all sizes. Negotiated rates, policy compliance, and 24/7 support for your entire organization." },
+    { title: "Leisure Vacations", icon: "☀", description: "Expert-planned holidays for individuals and families. From beach getaways to cultural explorations, we handle every detail." },
+    { title: "Group & Events", icon: "🎫", description: "Conferences, incentive trips, and team retreats. We coordinate flights, accommodations, venues, and ground logistics for groups of any size." },
+    { title: "Luxury Collection", icon: "⭐", description: "Access to private villas, first-class cabins, and exclusive experiences. Dedicated concierge service for our most discerning travelers." },
   ]
 
   const topDestinations = [
@@ -85,7 +85,7 @@ export default function TravelCorporateDemo() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service) => (
               <div key={service.title} className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
-                <div className="text-3xl mb-4" dangerouslySetInnerHTML={{ __html: service.icon }} />
+                <div className="text-3xl mb-4">{service.icon}</div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2" style={{ fontFamily: "'Hind', sans-serif" }}>{service.title}</h3>
                 <p className="text-sm text-gray-500 leading-relaxed" style={{ fontFamily: "'Hind', sans-serif", fontWeight: 300 }}>{service.description}</p>
               </div>
