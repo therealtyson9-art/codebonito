@@ -266,12 +266,12 @@ export default function TemplateDetailPage({
             if (demoUrl) {
               return (
                 <div className="relative overflow-hidden rounded-xl bg-white shadow-lg shadow-black/5">
-                  <div className="relative w-full overflow-hidden rounded-t-xl bg-white" style={{ height: "450px" }}>
+                  <div className="relative w-full overflow-hidden rounded-t-xl bg-white" style={{ height: "520px" }}>
                     <iframe
                       src={demoUrl}
                       title={template.name + " preview"}
                       className="absolute left-0 top-0 border-0"
-                      style={{ width: "1440px", height: "900px", transform: "scale(0.45)", transformOrigin: "top left" }}
+                      style={{ width: "1440px", height: "900px", transform: "scale(0.5)", transformOrigin: "top left" }}
                     />
                   </div>
                   <a
@@ -359,7 +359,7 @@ export default function TemplateDetailPage({
 
             {/* Prompt Preview */}
             <div className="relative mt-4 overflow-hidden rounded-xl bg-gray-50 shadow-sm">
-              <div className="max-h-48 overflow-hidden p-4">
+              <div className="max-h-64 overflow-y-auto p-5">
                 <pre className="whitespace-pre-wrap font-mono text-xs leading-relaxed text-muted-foreground">
                   {canCopy
                     ? prompt.slice(0, 600) + (prompt.length > 600 ? "..." : "")
@@ -383,11 +383,11 @@ export default function TemplateDetailPage({
             {/* Action Button */}
             <div className="mt-4">
               {isFree ? (
-                <Button className="w-full bg-brand-blue hover:bg-brand-blue/90 text-white shadow-sm" onClick={handleCopy}>
+                <Button className={`w-full shadow-sm transition-all duration-300 ${copiedPlatform === activePlatform ? "bg-emerald-500 hover:bg-emerald-500 text-white scale-[1.02]" : "bg-brand-blue hover:bg-brand-blue/90 text-white"}`} onClick={handleCopy}>
                   {copiedPlatform === activePlatform ? (
                     <>
                       <Check className="mr-2 h-4 w-4" />
-                      Copied!
+                      Copied to clipboard! ✨
                     </>
                   ) : (
                     <>
@@ -406,11 +406,11 @@ export default function TemplateDetailPage({
                   Sign up free to copy
                 </Button>
               ) : purchased ? (
-                <Button className="w-full bg-brand-blue hover:bg-brand-blue/90 text-white shadow-sm" onClick={handleCopy}>
+                <Button className={`w-full shadow-sm transition-all duration-300 ${copiedPlatform === activePlatform ? "bg-emerald-500 hover:bg-emerald-500 text-white scale-[1.02]" : "bg-brand-blue hover:bg-brand-blue/90 text-white"}`} onClick={handleCopy}>
                   {copiedPlatform === activePlatform ? (
                     <>
                       <Check className="mr-2 h-4 w-4" />
-                      Copied!
+                      Copied to clipboard! ✨
                     </>
                   ) : (
                     <>
