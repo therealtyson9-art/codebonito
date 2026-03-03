@@ -109,7 +109,7 @@ export default function HomePage() {
             </div>
             <div className="group flex flex-col items-center gap-2">
               <OpenClawLogo className="h-7 w-7 opacity-40 grayscale transition-all duration-200 group-hover:opacity-100 group-hover:grayscale-0" />
-              <span className="text-[11px] font-medium text-gray-400">OpenClaw</span>
+              <span className="text-[11px] font-medium text-gray-400 transition-colors duration-200 group-hover:text-[#ff4d4d]">OpenClaw</span>
             </div>
           </div>
         </div>
