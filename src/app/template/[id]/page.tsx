@@ -81,6 +81,11 @@ export default function TemplateDetailPage({
   // Check auth and purchase status
   useEffect(() => {
     if (!template) return;
+    if (searchParams.get("purchased") === "true") {
+      setPurchased(true);
+      setCheckingPurchase(false);
+      return;
+    }
     const supabase = createClient();
     async function checkStatus() {
       const { data: { user: currentUser } } = await supabase.auth.getUser();
@@ -94,9 +99,6 @@ export default function TemplateDetailPage({
       setCheckingPurchase(false);
     }
     checkStatus();
-    if (searchParams.get("purchased") === "true") {
-      setPurchased(true);
-    }
   }, [template, searchParams]);
 
   if (loading) {
