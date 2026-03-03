@@ -130,7 +130,7 @@ export default function TemplateDetailPage({
           <p className="mt-2 text-muted-foreground">
             The template you&apos;re looking for doesn&apos;t exist.
           </p>
-          <Button asChild className="mt-6 bg-brand-blue hover:bg-brand-blue/90 text-white">
+          <Button asChild className="mt-6 bg-orange-500 hover:bg-orange-600 text-white">
             <Link href="/browse">Back to Browse</Link>
           </Button>
         </div>
@@ -248,15 +248,18 @@ export default function TemplateDetailPage({
       {showAuthModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
           <div className="mx-4 w-full max-w-md rounded-xl border border-border/60 bg-white p-8 shadow-2xl">
-            <h3 className="text-xl font-bold text-foreground">Sign up free to copy</h3>
+            <h3 className="text-xl font-bold text-foreground">
+              {isFree ? "Sign up to get this prompt for free" : "Sign up to purchase this template"}
+            </h3>
             <p className="mt-2 text-sm text-muted-foreground">
-              Create a free account to purchase and copy premium template
-              prompts.
+              {isFree
+                ? "Create a free account to access this prompt and get 1 free template per month."
+                : "Create an account and purchase this template for $2. Yours forever, all 6 platform prompts included."}
             </p>
             <div className="mt-6 flex gap-3">
-              <Button asChild className="flex-1 bg-brand-blue hover:bg-brand-blue/90 text-white">
+              <Button asChild className="flex-1 bg-orange-500 hover:bg-orange-600 text-white">
                 <Link href={`/login?redirect=/template/${template.id}`}>
-                  Sign Up Free
+                  {isFree ? "Sign Up Free" : "Sign Up & Purchase"}
                 </Link>
               </Button>
               <Button
@@ -404,8 +407,9 @@ export default function TemplateDetailPage({
 
             {/* Action Button */}
             <div className="mt-4">
-              {isFree ? (
-                <Button className={`w-full shadow-sm transition-all duration-300 ${copiedPlatform === activePlatform ? "bg-emerald-500 hover:bg-emerald-500 text-white scale-[1.02]" : "bg-brand-blue hover:bg-brand-blue/90 text-white"}`} onClick={handleCopy}>
+              {canCopy ? (
+                /* Already has access — show Copy button */
+                <Button className={`w-full shadow-sm transition-all duration-300 ${copiedPlatform === activePlatform ? "bg-emerald-500 hover:bg-emerald-500 text-white scale-[1.02]" : "bg-gray-900 hover:bg-gray-800 text-white"}`} onClick={handleCopy}>
                   {copiedPlatform === activePlatform ? (
                     <>
                       <Check className="mr-2 h-4 w-4" />
@@ -414,37 +418,23 @@ export default function TemplateDetailPage({
                   ) : (
                     <>
                       <Copy className="mr-2 h-4 w-4" />
-                      Copy {PLATFORM_LABELS[activePlatform] || activePlatform}{" "}
-                      Prompt
+                      Copy {PLATFORM_LABELS[activePlatform] || activePlatform} Prompt
                     </>
                   )}
                 </Button>
               ) : !user && !checkingPurchase ? (
+                /* Not logged in */
                 <Button
-                  className="w-full bg-brand-blue hover:bg-brand-blue/90 text-white shadow-sm"
+                  className="w-full bg-orange-500 hover:bg-orange-600 text-white shadow-sm"
                   onClick={() => setShowAuthModal(true)}
                 >
                   <Lock className="mr-2 h-4 w-4" />
-                  Sign up free to copy
-                </Button>
-              ) : purchased ? (
-                <Button className={`w-full shadow-sm transition-all duration-300 ${copiedPlatform === activePlatform ? "bg-emerald-500 hover:bg-emerald-500 text-white scale-[1.02]" : "bg-brand-blue hover:bg-brand-blue/90 text-white"}`} onClick={handleCopy}>
-                  {copiedPlatform === activePlatform ? (
-                    <>
-                      <Check className="mr-2 h-4 w-4" />
-                      Copied to clipboard! ✨
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="mr-2 h-4 w-4" />
-                      Copy {PLATFORM_LABELS[activePlatform] || activePlatform}{" "}
-                      Prompt
-                    </>
-                  )}
+                  {isFree ? "Sign up free to get this prompt" : "Sign up to purchase — $2"}
                 </Button>
               ) : !checkingPurchase ? (
+                /* Logged in but not purchased (paid template) */
                 <Button
-                  className="w-full bg-brand-blue hover:bg-brand-blue/90 text-white shadow-sm"
+                  className="w-full bg-orange-500 hover:bg-orange-600 text-white shadow-sm"
                   onClick={handlePurchase}
                   disabled={purchasing}
                 >
@@ -453,7 +443,7 @@ export default function TemplateDetailPage({
                   ) : (
                     <ShoppingCart className="mr-2 h-4 w-4" />
                   )}
-                  Buy for $2
+                  Purchase — $2
                 </Button>
               ) : null}
             </div>
