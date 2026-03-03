@@ -11,7 +11,7 @@ export function FadeIn({ children, className = "", delay = 0 }: { children: Reac
     if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
-      { threshold: 0.15 }
+      { threshold: 0.05 }
     );
     observer.observe(el);
     return () => observer.disconnect();

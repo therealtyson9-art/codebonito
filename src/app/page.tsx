@@ -128,16 +128,12 @@ export default function HomePage() {
             </Button>
           </div>
         </div>
-        <div className="mt-12 overflow-x-auto scrollbar-hide">
-          <div className="mx-auto flex max-w-7xl gap-6 px-4 pb-4 sm:px-6 lg:px-8" style={{ minWidth: "max-content" }}>
-            {popularTemplates.map((template) => (
-              <div key={template.id} className="w-[380px] shrink-0">
-                <TemplateCard template={template} />
-              </div>
-            ))}
-          </div>
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {popularTemplates.map((template) => (
+            <TemplateCard key={template.id} template={template} />
+          ))}
         </div>
-        <div className="mt-8 text-center sm:hidden">
+        <div className="mt-10 text-center">
           <Button asChild variant="outline" className="rounded-xl">
             <Link href="/browse">
               View all templates <ArrowRight className="ml-2 h-4 w-4" />
