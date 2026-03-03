@@ -29,8 +29,8 @@ export function TemplateCard({ template, compact }: { template: Template; compac
                   <iframe
                     src={demoUrl}
                     title={template.name}
-                    className="pointer-events-none absolute left-0 top-0 border-0"
-                    style={{ width: "1440px", height: "900px", transform: `scale(${iframeScale})`, transformOrigin: "top left" }}
+                    className="pointer-events-none absolute top-0 border-0"
+                    style={{ width: "1440px", height: "900px", transform: `scale(${iframeScale})`, transformOrigin: "top center", left: "50%", marginLeft: "-720px" }}
                     tabIndex={-1}
                     loading="lazy"
                   />
