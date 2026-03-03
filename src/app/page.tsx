@@ -1,5 +1,6 @@
 import { FadeIn } from "@/components/fade-in";
 import { Hero } from "@/components/hero";
+import { CursorLogo, V0Logo, BoltLogo, LovableLogo, ClaudeLogo, OpenClawLogo } from "@/components/platform-logos";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -82,25 +83,34 @@ export default function HomePage() {
       {/* Platform logos */}
       <section className="bg-[#fafafa] pt-16 pb-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="mb-6 text-center text-sm font-medium uppercase tracking-widest text-muted-foreground/60">
+          <p className="mb-8 text-center text-sm font-medium uppercase tracking-widest text-muted-foreground/60">
             Works with your favorite AI tools
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
-            {[
-              { name: "Cursor", style: "font-semibold text-gray-800" },
-              { name: "v0", style: "font-bold text-black" },
-              { name: "Bolt", style: "font-semibold text-violet-600" },
-              { name: "Lovable", style: "font-semibold text-pink-500" },
-              { name: "Claude Code", style: "font-semibold text-amber-700" },
-              { name: "OpenClaw", style: "font-semibold text-emerald-600" },
-            ].map((p) => (
-              <span
-                key={p.name}
-                className={`font-mono text-sm tracking-tight ${p.style} opacity-70 transition-opacity duration-200 hover:opacity-100`}
-              >
-                {p.name}
-              </span>
-            ))}
+          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+            <div className="group flex flex-col items-center gap-2">
+              <CursorLogo className="h-7 w-7 text-gray-400 transition-colors duration-200 group-hover:text-gray-900" />
+              <span className="text-[11px] font-medium text-gray-400 transition-colors duration-200 group-hover:text-gray-700">Cursor</span>
+            </div>
+            <div className="group flex flex-col items-center gap-2">
+              <V0Logo className="h-7 w-7 text-gray-400 transition-colors duration-200 group-hover:text-black" />
+              <span className="text-[11px] font-medium text-gray-400 transition-colors duration-200 group-hover:text-gray-700">v0</span>
+            </div>
+            <div className="group flex flex-col items-center gap-2">
+              <BoltLogo className="h-7 w-7 text-gray-400 transition-colors duration-200 group-hover:text-violet-600" />
+              <span className="text-[11px] font-medium text-gray-400 transition-colors duration-200 group-hover:text-violet-600">Bolt</span>
+            </div>
+            <div className="group flex flex-col items-center gap-2">
+              <LovableLogo className="h-7 w-7 text-gray-400 transition-colors duration-200 group-hover:text-pink-500" />
+              <span className="text-[11px] font-medium text-gray-400 transition-colors duration-200 group-hover:text-pink-500">Lovable</span>
+            </div>
+            <div className="group flex flex-col items-center gap-2">
+              <ClaudeLogo className="h-7 w-7 text-gray-400 transition-colors duration-200 group-hover:text-amber-700" />
+              <span className="text-[11px] font-medium text-gray-400 transition-colors duration-200 group-hover:text-amber-700">Claude Code</span>
+            </div>
+            <div className="group flex flex-col items-center gap-2">
+              <OpenClawLogo className="h-7 w-7 text-gray-400 transition-colors duration-200 group-hover:text-emerald-600" />
+              <span className="text-[11px] font-medium text-gray-400 transition-colors duration-200 group-hover:text-emerald-600">OpenClaw</span>
+            </div>
           </div>
         </div>
       </section>
