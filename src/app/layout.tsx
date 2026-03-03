@@ -60,6 +60,10 @@ export const metadata: Metadata = {
       "Tired of your AI-built websites all looking the same? 100+ unique templates. Pick → Copy → Paste.",
     images: ["/og-image.png"],
   },
+  icons: {
+    icon: '/favicon.png',
+    apple: '/apple-touch-icon.png',
+  },
   robots: {
     index: true,
     follow: true,
