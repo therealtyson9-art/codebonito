@@ -174,9 +174,13 @@ export default function TemplateDetailPage({
       const data = await res.json();
       if (data.url) {
         window.location.href = data.url;
+      } else {
+        console.error('No checkout URL:', data);
+        alert('Error creating checkout: ' + (data.error || 'Unknown error'));
       }
-    } catch {
-      // Network error
+    } catch (err) {
+      console.error('Network error:', err);
+      alert('Network error. Please try again.');
     } finally {
       setPurchasing(false);
     }
