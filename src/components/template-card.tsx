@@ -11,12 +11,15 @@ import { Download } from "lucide-react";
 import { getDemoUrl } from "@/lib/mock-data";
 import type { Template } from "@/types/database";
 
-export function TemplateCard({ template }: { template: Template }) {
+export function TemplateCard({ template, compact }: { template: Template; compact?: boolean }) {
+  const previewHeight = compact ? "h-[160px]" : "aspect-[16/10]";
+  const iframeScale = compact ? 0.185 : 0.26;
+
   return (
     <Link href={`/template/${template.id}`}>
       <Card className="group overflow-hidden border-border/60 bg-white shadow-sm transition-all hover:shadow-xl hover:shadow-brand-blue/10 hover:-translate-y-1.5 hover:ring-2 hover:ring-brand-blue/20">
         <CardHeader className="p-0">
-          <div className="relative aspect-[16/10] overflow-hidden bg-gray-50">
+          <div className={`relative overflow-hidden bg-gray-50 ${previewHeight}`}>
             {(() => {
               const demoUrl = getDemoUrl(template.slug);
               if (demoUrl) {
@@ -25,7 +28,7 @@ export function TemplateCard({ template }: { template: Template }) {
                     src={demoUrl}
                     title={template.name}
                     className="pointer-events-none absolute left-0 top-0 border-0"
-                    style={{ width: "1440px", height: "900px", transform: "scale(0.26)", transformOrigin: "top left" }}
+                    style={{ width: "1440px", height: "900px", transform: `scale(${iframeScale})`, transformOrigin: "top left" }}
                     tabIndex={-1}
                     loading="lazy"
                   />
