@@ -91,7 +91,7 @@ export function TemplateCard({ template, compact }: { template: Template; compac
             )}
           </div>
           {template.price_tier === "pro" ? (
-            <span className="inline-flex items-center rounded-lg bg-brand-blue px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition-all group-hover:bg-blue-600 group-hover:shadow-md">
+            <span className="inline-flex items-center rounded-lg bg-orange-500 px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition-all group-hover:bg-orange-600 group-hover:shadow-md">
               Get Template — $2
             </span>
           ) : (
