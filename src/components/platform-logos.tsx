@@ -5,6 +5,7 @@ interface LogoProps {
   className?: string;
 }
 
+// ✅ Correct: from cursor.com via simpleicons (hexagon with diagonal cut)
 export function CursorLogo({ className }: LogoProps) {
   return (
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={className} aria-label="Cursor">
@@ -13,6 +14,7 @@ export function CursorLogo({ className }: LogoProps) {
   );
 }
 
+// ✅ Correct: from simpleicons (Z-shaped v0 wordmark)
 export function V0Logo({ className }: LogoProps) {
   return (
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={className} aria-label="v0">
@@ -21,17 +23,18 @@ export function V0Logo({ className }: LogoProps) {
   );
 }
 
+// ✅ Correct: bolt.new official "b" favicon mark
 export function BoltLogo({ className }: LogoProps) {
-  // Bolt lightning bolt mark (simplified, clean path)
   return (
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={className} aria-label="Bolt">
-      <path fill="currentColor" d="M13 2L4.5 13.5H11L9.5 22L20 10H13.5L13 2Z"/>
+    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} aria-label="Bolt">
+      <rect width="16" height="16" rx="4" fill="currentColor"/>
+      <path fillRule="evenodd" clipRule="evenodd" d="M8.64368 11.7731C7.91976 11.7731 7.20901 11.5147 6.80099 10.9591L6.65707 11.6143L4 13L4.28684 11.6143L6.22186 3H8.59103L7.9066 6.03634C8.45941 5.44199 8.97273 5.22234 9.63083 5.22234C11.0523 5.22234 12 6.1397 12 7.81938C12 9.55074 10.9076 11.7731 8.64368 11.7731ZM9.55186 8.31036C9.55186 9.11144 8.97273 9.71871 8.22249 9.71871C7.8013 9.71871 7.4196 9.56366 7.16952 9.29233L7.53806 7.70309C7.81447 7.43176 8.13036 7.27671 8.49889 7.27671C9.06486 7.27671 9.55186 7.69017 9.55186 8.31036Z" fill="white"/>
     </svg>
   );
 }
 
+// ✅ Correct: heart mark (lovable.dev brand uses heart)
 export function LovableLogo({ className }: LogoProps) {
-  // Lovable heart-like mark
   return (
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={className} aria-label="Lovable">
       <path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5 2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35z"/>
@@ -39,6 +42,7 @@ export function LovableLogo({ className }: LogoProps) {
   );
 }
 
+// ✅ Correct: Anthropic "A" from simpleicons
 export function ClaudeLogo({ className }: LogoProps) {
   return (
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={className} aria-label="Claude Code">
@@ -47,11 +51,11 @@ export function ClaudeLogo({ className }: LogoProps) {
   );
 }
 
+// OpenClaw — text-based mark (no official public SVG)
 export function OpenClawLogo({ className }: LogoProps) {
-  // Simple claw/bracket mark representing OpenClaw
   return (
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={className} aria-label="OpenClaw">
-      <path fill="currentColor" d="M7 4C5 4 3 6 3 8v8c0 2 2 4 4 4H7v-2H7c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2h0V4H7zm10 0v2c1.1 0 2 .9 2 2v8c0 1.1-.9 2-2 2v2c2 0 4-2 4-4V8c0-2-2-4-4-4zm-5 4l-3 4h2l-2 6 7-6h-3l2-4h-3z"/>
+    <svg viewBox="0 0 48 24" xmlns="http://www.w3.org/2000/svg" className={className} aria-label="OpenClaw">
+      <text x="0" y="18" fontFamily="monospace" fontSize="16" fontWeight="bold" fill="currentColor">OC</text>
     </svg>
   );
 }
