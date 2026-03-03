@@ -51,11 +51,15 @@ export function ClaudeLogo({ className }: LogoProps) {
   );
 }
 
-// OpenClaw — text-based mark (no official public SVG)
+// ✅ Correct: OpenClaw official lobster logo
 export function OpenClawLogo({ className }: LogoProps) {
   return (
-    <svg viewBox="0 0 48 24" xmlns="http://www.w3.org/2000/svg" className={className} aria-label="OpenClaw">
-      <text x="0" y="18" fontFamily="monospace" fontSize="16" fontWeight="bold" fill="currentColor">OC</text>
+    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} aria-label="OpenClaw">
+      <path d="M60 10 C30 10 15 35 15 55 C15 75 30 95 45 100 L45 110 L55 110 L55 100 C55 100 60 102 65 100 L65 110 L75 110 L75 100 C90 95 105 75 105 55 C105 35 90 10 60 10Z" fill="currentColor"/>
+      <path d="M20 45 C5 40 0 50 5 60 C10 70 20 65 25 55 C28 48 25 45 20 45Z" fill="currentColor"/>
+      <path d="M100 45 C115 40 120 50 115 60 C110 70 100 65 95 55 C92 48 95 45 100 45Z" fill="currentColor"/>
+      <circle cx="45" cy="35" r="6" fill="white" opacity="0.3"/>
+      <circle cx="75" cy="35" r="6" fill="white" opacity="0.3"/>
     </svg>
   );
 }
