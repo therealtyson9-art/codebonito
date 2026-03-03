@@ -18,7 +18,7 @@ export function TemplateCard({ template, compact }: { template: Template; compac
   const iframeScale = compact ? 0.30 : 0.30;
 
   return (
-    <Link href={`/template/${template.id}`}>
+    <Link href={`/template/${template.id}`} className="block w-full min-w-0">
       <Card className="group overflow-hidden border-border/60 bg-white shadow-sm transition-all hover:shadow-xl hover:shadow-brand-blue/10 hover:-translate-y-1.5 hover:ring-2 hover:ring-brand-blue/20">
         <CardHeader className="p-0">
           <div className={previewClass} style={compact ? { aspectRatio: "16/9" } : undefined}>

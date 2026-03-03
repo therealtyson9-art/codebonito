@@ -3,6 +3,7 @@
 import { generatePrompt, type CustomizationData } from "@/lib/prompt-generator";
 import { use, useState, useEffect } from "react";
 import Image from "next/image";
+import { TemplateCard } from "@/components/template-card";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -572,32 +573,7 @@ export default function TemplateDetailPage({
           </div>
           <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
             {relatedTemplates.map((related) => (
-              <Link
-                key={related.id}
-                href={`/template/${related.id}`}
-                className="group"
-              >
-                <div className="overflow-hidden rounded-xl bg-white shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5">
-                  <div className="relative aspect-[16/10] overflow-hidden bg-gray-50">
-                    <Image
-                      src={
-                        related.preview_url ||
-                        "https://placehold.co/800x600/f3f4f6/6b7280?text=Preview"
-                      }
-                      alt={related.name}
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                      unoptimized
-                    />
-                  </div>
-                  <div className="p-4">
-                    <h3 className="font-semibold text-foreground">{related.name}</h3>
-                    <p className="mt-1 line-clamp-1 text-sm text-muted-foreground">
-                      {related.description}
-                    </p>
-                  </div>
-                </div>
-              </Link>
+              <TemplateCard key={related.id} template={related} compact />
             ))}
           </div>
         </div>
