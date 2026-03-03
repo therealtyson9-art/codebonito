@@ -124,8 +124,7 @@ export default function TemplateDetailPage({
   }
 
   const isFree = template.price_tier === "free";
-  const isMX = typeof navigator !== "undefined" && (navigator.language?.toLowerCase().startsWith("es-mx") || navigator.language?.toLowerCase() === "es-419");
-  const priceLabel = isMX ? "$40 MXN" : "$2";
+
   const canCopy = isFree || purchased;
 
   const prompt = activePlatform
@@ -439,7 +438,7 @@ export default function TemplateDetailPage({
                   ) : (
                     <ShoppingCart className="mr-2 h-4 w-4" />
                   )}
-                  Buy for {priceLabel}
+                  Buy for $40 MXN
                 </Button>
               ) : null}
             </div>
@@ -473,7 +472,7 @@ export default function TemplateDetailPage({
                     FREE
                   </Badge>
                 ) : (
-                  <Badge className="bg-brand-blue text-white">{priceLabel}</Badge>
+                  <Badge className="bg-brand-blue text-white">$40 MXN</Badge>
                 )}
                 <Badge variant="outline">{template.category}</Badge>
                 {template.style && (

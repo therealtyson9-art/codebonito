@@ -13,7 +13,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const { templateId, locale } = await request.json();
+    const { templateId } = await request.json();
 
     if (!templateId) {
       return NextResponse.json(
@@ -22,13 +22,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Dual currency: MXN for Mexico, USD for everyone else
-    const isMX =
-      locale?.toLowerCase().startsWith("es-mx") ||
-      locale?.toLowerCase() === "es-419";
-    const currency = isMX ? "mxn" : "usd";
-    const unitAmount = isMX ? 4000 : 200; // $40 MXN ≈ $2 USD
-
     const appUrl = "https://codebonito.com";
 
     const session = await getStripe().checkout.sessions.create({
@@ -36,12 +29,12 @@ export async function POST(request: Request) {
       line_items: [
         {
           price_data: {
-            currency,
+            currency: "mxn",
             product_data: {
               name: "Code Bonito Template",
               description: `One-time purchase — Template ${templateId}`,
             },
-            unit_amount: unitAmount,
+            unit_amount: 4000, // $40 MXN
           },
           quantity: 1,
         },
@@ -52,7 +45,6 @@ export async function POST(request: Request) {
       metadata: {
         templateId,
         userId: user.id,
-        currency,
       },
     });
 
