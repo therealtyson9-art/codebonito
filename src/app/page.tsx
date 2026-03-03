@@ -153,9 +153,45 @@ export default function HomePage() {
       </section>
       </FadeIn>
 
+      {/* How It Works — compact, between Trending and New This Week */}
+      <FadeIn>
+      <section className="bg-[#fafafa] py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-xl text-center">
+            <Badge className="mb-3 border-brand-amber/20 bg-brand-amber-light text-amber-800">
+              How It Works
+            </Badge>
+            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+              Pick &rarr; Copy &rarr; Paste
+            </h2>
+          </div>
+          <div className="mx-auto mt-8 grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-3">
+            <StepCard
+              step="01"
+              icon={<Search className="h-5 w-5" />}
+              title="Pick your template"
+              description="Browse by category, style, or platform. Find the perfect design for your next project."
+            />
+            <StepCard
+              step="02"
+              icon={<Copy className="h-5 w-5" />}
+              title="Copy the prompt"
+              description="Get a design prompt built for Cursor, v0, Bolt, Lovable, or Claude Code."
+            />
+            <StepCard
+              step="03"
+              icon={<Sparkles className="h-5 w-5" />}
+              title="Paste and build"
+              description="Paste into your AI tool and watch it generate a unique, beautiful website."
+            />
+          </div>
+        </div>
+      </section>
+      </FadeIn>
+
       {/* New This Week */}
       {newThisWeek.length > 0 && (
-        <section className="bg-[#fafafa] py-32">
+        <section className="bg-white py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex items-end justify-between">
               <div>
@@ -190,45 +226,6 @@ export default function HomePage() {
           </div>
         </section>
       )}
-
-      {/* How It Works */}
-      <FadeIn>
-      <section className="bg-white py-32">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <Badge className="mb-4 border-brand-amber/20 bg-brand-amber-light text-amber-800">
-              How It Works
-            </Badge>
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
-              Pick &rarr; Copy &rarr; Paste
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Three steps to stand out.
-            </p>
-          </div>
-          <div className="mx-auto mt-20 grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3">
-            <StepCard
-              step="01"
-              icon={<Search className="h-6 w-6" />}
-              title="Pick your favorite template"
-              description="Browse by category, style, or platform. Find the perfect design for your next project."
-            />
-            <StepCard
-              step="02"
-              icon={<Copy className="h-6 w-6" />}
-              title="Copy the prompt into your AI"
-              description="Get a design prompt built for Cursor, v0, Bolt, Lovable, or Claude Code."
-            />
-            <StepCard
-              step="03"
-              icon={<Sparkles className="h-6 w-6" />}
-              title="Paste and let it work the magic"
-              description="Paste the prompt into your AI tool and watch it generate a unique, beautiful website."
-            />
-          </div>
-        </div>
-      </section>
-      </FadeIn>
 
       <FadeIn>
       {/* Features */}
