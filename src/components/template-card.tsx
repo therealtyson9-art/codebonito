@@ -12,14 +12,14 @@ import { getDemoUrl } from "@/lib/mock-data";
 import type { Template } from "@/types/database";
 
 export function TemplateCard({ template, compact }: { template: Template; compact?: boolean }) {
-  const previewHeight = compact ? "h-[160px]" : "aspect-[16/10]";
+  const previewClass = compact ? "relative w-full overflow-hidden bg-gray-50" : "relative aspect-[16/10] overflow-hidden bg-gray-50";
   const iframeScale = compact ? 0.185 : 0.26;
 
   return (
     <Link href={`/template/${template.id}`}>
       <Card className="group overflow-hidden border-border/60 bg-white shadow-sm transition-all hover:shadow-xl hover:shadow-brand-blue/10 hover:-translate-y-1.5 hover:ring-2 hover:ring-brand-blue/20">
         <CardHeader className="p-0">
-          <div className={`relative overflow-hidden bg-gray-50 ${previewHeight}`}>
+          <div className={previewClass} style={compact ? { aspectRatio: "16/9" } : undefined}>
             {(() => {
               const demoUrl = getDemoUrl(template.slug);
               if (demoUrl) {
