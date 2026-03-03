@@ -55,7 +55,7 @@ export function TemplateCard({ template, compact }: { template: Template; compac
               ) : null;
             })()}
             {template.price_tier === "pro" ? (
-              <Badge className="absolute right-3 top-3 bg-brand-blue text-white font-mono text-[10px] tracking-wider shadow-sm">
+              <Badge className="absolute right-3 top-3 bg-orange-500 text-white font-mono text-[10px] tracking-wider shadow-sm">
                 $2
               </Badge>
             ) : (
