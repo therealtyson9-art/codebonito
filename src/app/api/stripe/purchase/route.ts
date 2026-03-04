@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getStripe } from "@/lib/stripe";
 import { createClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 
 export async function POST(request: Request) {
   try {
@@ -13,7 +14,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const { templateId } = await request.json();
+    const { templateId, promoCode } = await request.json();
 
     if (!templateId) {
       return NextResponse.json(
@@ -22,7 +23,43 @@ export async function POST(request: Request) {
       );
     }
 
-    // Dual currency: Vercel provides x-vercel-ip-country header
+    // --- Promo code handling ---
+    if (promoCode) {
+      const admin = createAdminClient();
+      const { data: promo } = await admin
+        .from("promo_codes")
+        .select("*")
+        .eq("code", promoCode.toUpperCase().trim())
+        .single();
+
+      const isValid =
+        promo &&
+        (promo.uses_remaining === null || promo.uses_remaining > 0) &&
+        (!promo.expires_at || new Date(promo.expires_at) > new Date());
+
+      if (isValid && promo.type === "free") {
+        // Record purchase directly, no Stripe needed
+        await admin.from("purchases").insert({
+          user_id: user.id,
+          template_id: String(templateId),
+          amount: 0,
+          stripe_session_id: `promo_${promo.code}_${Date.now()}`,
+          currency: "usd",
+        });
+
+        // Decrement uses_remaining if not unlimited
+        if (promo.uses_remaining !== null) {
+          await admin
+            .from("promo_codes")
+            .update({ uses_remaining: promo.uses_remaining - 1 })
+            .eq("code", promo.code);
+        }
+
+        return NextResponse.json({ free: true, templateId });
+      }
+    }
+
+    // --- Normal Stripe checkout ---
     const country = request.headers.get("x-vercel-ip-country") || "";
     const isMX = country === "MX";
     const currency = isMX ? "mxn" : "usd";

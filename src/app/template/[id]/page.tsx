@@ -51,6 +51,9 @@ export default function TemplateDetailPage({
   const [checkingPurchase, setCheckingPurchase] = useState(true);
   const [purchasing, setPurchasing] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
+  const [promoCode, setPromoCode] = useState("");
+  const [promoStatus, setPromoStatus] = useState<"idle" | "checking" | "valid" | "invalid">("idle");
+  const [promoMessage, setPromoMessage] = useState("");
   const [customization, setCustomization] = useState<CustomizationData>({});
 
   // Fetch template from Supabase, fallback to mock
@@ -171,6 +174,29 @@ export default function TemplateDetailPage({
     setTimeout(() => setCopiedPlatform(null), 2000);
   }
 
+  async function validatePromoCode() {
+    if (!promoCode.trim()) return;
+    setPromoStatus("checking");
+    try {
+      const res = await fetch("/api/promo/validate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code: promoCode }),
+      });
+      const data = await res.json();
+      if (data.valid) {
+        setPromoStatus("valid");
+        setPromoMessage(data.type === "free" ? "🎉 Free template! Click Purchase to claim." : `${data.discount_percent}% off applied!`);
+      } else {
+        setPromoStatus("invalid");
+        setPromoMessage(data.error || "Invalid code");
+      }
+    } catch {
+      setPromoStatus("invalid");
+      setPromoMessage("Error checking code");
+    }
+  }
+
   async function handlePurchase() {
     if (!user) {
       router.push(`/login?redirect=/template/${template!.id}`);
@@ -182,7 +208,7 @@ export default function TemplateDetailPage({
       const res = await fetch("/api/stripe/purchase", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ templateId: template!.id, locale: navigator.language }),
+        body: JSON.stringify({ templateId: template!.id, locale: navigator.language, promoCode: promoCode.trim() || undefined }),
       });
 
       if (res.status === 401) {
@@ -191,7 +217,12 @@ export default function TemplateDetailPage({
       }
 
       const data = await res.json();
-      if (data.url) {
+      if (data.free) {
+        // Promo code covered the full price — unlock immediately
+        setPurchased(true);
+        setPromoStatus("idle");
+        setPromoCode("");
+      } else if (data.url) {
         window.location.href = data.url;
       } else {
         console.error('No checkout URL:', data);
@@ -405,6 +436,36 @@ export default function TemplateDetailPage({
                 </div>
               )}
             </div>
+
+            {/* Promo Code — only show for paid templates not yet purchased */}
+            {!isFree && !purchased && user && (
+              <div className="mt-4">
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    placeholder="Promo code"
+                    value={promoCode}
+                    onChange={(e) => { setPromoCode(e.target.value.toUpperCase()); setPromoStatus("idle"); }}
+                    onKeyDown={(e) => e.key === "Enter" && validatePromoCode()}
+                    className="flex-1 rounded-lg border border-border bg-white px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-orange-400"
+                  />
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={validatePromoCode}
+                    disabled={promoStatus === "checking" || !promoCode.trim()}
+                    className="shrink-0"
+                  >
+                    {promoStatus === "checking" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : "Apply"}
+                  </Button>
+                </div>
+                {promoMessage && (
+                  <p className={`mt-1.5 text-xs ${promoStatus === "valid" ? "text-emerald-600" : "text-red-500"}`}>
+                    {promoMessage}
+                  </p>
+                )}
+              </div>
+            )}
 
             {/* Action Button */}
             <div className="mt-4">
