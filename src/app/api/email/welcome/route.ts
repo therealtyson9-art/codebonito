@@ -23,7 +23,7 @@ function welcomeHtml(name: string | null) {
       <div style="text-align:center;margin:32px 0;">
         <a href="https://codebonito.com/browse" style="background:#f97316;color:#fff;text-decoration:none;padding:14px 32px;border-radius:8px;font-weight:700;font-size:16px;display:inline-block;">Browse Templates →</a>
       </div>
-      <p style="margin:0 0 8px;color:#9ca3af;font-size:13px;">Use code <strong style="color:#1f2937;">PRODUCTHUNT</strong> for a free template — valid for 14 days.</p>
+
     </div>
     <div style="padding:20px 40px;border-top:1px solid #f3f4f6;background:#fafafa;">
       <p style="margin:0;color:#9ca3af;font-size:12px;text-align:center;">codebonito.com · <a href="https://codebonito.com" style="color:#9ca3af;">Unsubscribe</a></p>
