@@ -80,8 +80,19 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* "New every week" pill */}
+      <div className="flex justify-center py-6">
+        <span className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-sm font-medium text-emerald-700 shadow-sm">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+          </span>
+          New templates added every week
+        </span>
+      </div>
+
       {/* Platform logos */}
-      <section className="bg-[#fafafa] pt-16 pb-8">
+      <section className="bg-[#fafafa] pt-4 pb-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <p className="mb-8 text-center text-sm font-medium uppercase tracking-widest text-muted-foreground/60">
             Works with your favorite AI tools
