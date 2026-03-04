@@ -38,6 +38,18 @@ export async function POST(request: Request) {
         (!promo.expires_at || new Date(promo.expires_at) > new Date());
 
       if (isValid && promo.type === "free") {
+        // Check if this user already redeemed this promo code
+        const { data: existingUse } = await admin
+          .from("purchases")
+          .select("id")
+          .eq("user_id", user.id)
+          .like("stripe_session_id", `promo_${promo.code}_%`)
+          .maybeSingle();
+
+        if (existingUse) {
+          return NextResponse.json({ error: "You've already used this promo code" }, { status: 400 });
+        }
+
         // Record purchase directly, no Stripe needed
         await admin.from("purchases").insert({
           user_id: user.id,
