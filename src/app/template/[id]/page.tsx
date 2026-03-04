@@ -4,6 +4,7 @@ import { generatePrompt, type CustomizationData } from "@/lib/prompt-generator";
 import { use, useState, useEffect } from "react";
 import Image from "next/image";
 import { TemplateCard } from "@/components/template-card";
+import { trackViewItem, trackPurchase, trackCouponApplied } from "@/components/analytics";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -76,6 +77,8 @@ export default function TemplateDetailPage({
       setTemplate(found as (typeof MOCK_TEMPLATES)[number] | null);
       if (found && found.platforms?.length > 0) {
         setActivePlatform(found.platforms[0]);
+        // GA4: view_item
+        trackViewItem(found.id, found.name, found.price_tier === "pro" ? 2 : 0);
       }
       setLoading(false);
     }
@@ -112,6 +115,10 @@ export default function TemplateDetailPage({
           setTimeout(poll, 2000);
         }
       };
+      // GA4: purchase via Stripe
+      if (template) {
+        trackPurchase(template.id, template.name, 2, "usd", `stripe_${Date.now()}`);
+      }
       poll();
     } else {
       checkStatus();
@@ -221,6 +228,9 @@ export default function TemplateDetailPage({
         // Promo code covered the full price — unlock immediately
         setPurchased(true);
         setPromoStatus("idle");
+        // GA4: coupon_applied + purchase ($0)
+        trackCouponApplied(promoCode, template!.id);
+        trackPurchase(template!.id, template!.name, 0, "usd", `promo_${promoCode}_${Date.now()}`);
         setPromoCode("");
       } else if (data.url) {
         window.location.href = data.url;
