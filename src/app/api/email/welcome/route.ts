@@ -4,8 +4,7 @@ import { createAdminClient } from "@/lib/supabase/admin";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Use Resend's default sender until codebonito.com domain is verified at resend.com/domains
-const FROM_EMAIL = "Code Bonito <onboarding@resend.dev>";
+const FROM_EMAIL = "Code Bonito <noreply@codebonito.com>";
 
 function welcomeHtml(name: string | null) {
   const displayName = name ? name.split(" ")[0] : "there";
