@@ -179,6 +179,13 @@ export default function TemplateDetailPage({
     navigator.clipboard.writeText(prompt);
     setCopiedPlatform(activePlatform);
     setTimeout(() => setCopiedPlatform(null), 2000);
+    // GA4: copy_prompt
+    trackEvent("copy_prompt", {
+      template_id: String(template?.id),
+      template_name: template?.name,
+      platform: activePlatform,
+      is_free: template?.price_tier !== "pro",
+    });
   }
 
   async function validatePromoCode() {
