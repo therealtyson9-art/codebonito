@@ -4,7 +4,7 @@ import { generatePrompt, type CustomizationData } from "@/lib/prompt-generator";
 import { use, useState, useEffect } from "react";
 import Image from "next/image";
 import { TemplateCard } from "@/components/template-card";
-import { trackViewItem, trackPurchase, trackCouponApplied } from "@/components/analytics";
+import { trackEvent, trackViewItem, trackPurchase, trackCouponApplied } from "@/components/analytics";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
