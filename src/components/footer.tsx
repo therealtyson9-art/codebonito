@@ -187,9 +187,19 @@ export function Footer() {
               &copy; {new Date().getFullYear()} Code Bonito. All rights
               reserved.
             </p>
-            <p className="text-xs text-gray-600">
-              Built for people who want their websites to stand out.
-            </p>
+            <a
+              href="https://www.producthunt.com/products/code-bonito?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-code-bonito"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                alt="Code Bonito on Product Hunt"
+                width="250"
+                height="54"
+                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1089491&theme=dark&t=1772591660589"
+              />
+            </a>
           </div>
         </div>
       </div>
