@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -122,9 +122,8 @@ export function Hero() {
   const [sliderPos, setSliderPos] = useState(35);
   const [dragging, setDragging] = useState(false);
   const sliderRef = useRef<HTMLDivElement>(null);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => { setMounted(true); }, []);
+  // NOTE: No longer using `mounted` to hide content — that caused opacity-0 SSR = blank screen + 11s LCP
+  // Animations are now CSS-only (animate-fade-in-up) so content is visible immediately from server render
 
   useEffect(() => {
     const handleMove = (e: MouseEvent) => {
@@ -173,7 +172,7 @@ export function Hero() {
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
       <div className="relative mx-auto max-w-7xl px-4 pb-20 pt-24 sm:px-6 sm:pt-36 lg:px-8">
-        <div className={`mx-auto max-w-4xl text-center transition-all duration-1000 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+        <div className="mx-auto max-w-4xl text-center animate-fade-in-up">
           <Badge variant="secondary" className="mb-8 border border-brand-amber/30 bg-brand-amber/10 px-4 py-1.5 text-sm font-medium text-amber-300 backdrop-blur-sm">
             <Sparkles className="mr-1.5 h-3.5 w-3.5 text-brand-amber" />
             100+ Unique Templates &middot; $2 Each
@@ -199,7 +198,7 @@ export function Hero() {
         </div>
 
         {/* Before/After Slider */}
-        <div className={`mx-auto mt-20 max-w-4xl transition-all duration-1000 delay-300 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}>
+        <div className="mx-auto mt-20 max-w-4xl animate-fade-in-up" style={{ animationDelay: "300ms" }}>
           <p className="mb-4 text-center text-sm font-medium uppercase tracking-widest text-gray-500">
             Same AI prompt. Different result.
           </p>
@@ -248,7 +247,7 @@ export function Hero() {
         </div>
 
         {/* Platform logos */}
-        <div className={`mt-16 transition-all duration-1000 delay-500 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+        <div className="mt-16 animate-fade-in-up" style={{ animationDelay: "500ms" }}>
           <p className="mb-4 text-center text-xs font-medium uppercase tracking-[0.2em] text-gray-600">Works with your favorite AI tools</p>
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
             {[{name:"Cursor",c:"hover:text-white"},{name:"v0",c:"hover:text-white"},{name:"Bolt",c:"hover:text-violet-400"},{name:"Lovable",c:"hover:text-pink-400"},{name:"Claude Code",c:"hover:text-amber-400"},{name:"OpenClaw",c:"hover:text-emerald-400"}].map((p)=>(
