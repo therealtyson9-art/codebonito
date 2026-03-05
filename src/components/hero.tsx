@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -114,7 +114,11 @@ function LuxurySite() {
 }
 
 export function Hero() {
-  const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
+  // Gradient updated via direct DOM ref — no React state re-renders on mousemove
+  const gradientRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number | null>(null);
+  const mousePosRef = useRef({ x: 50, y: 50 });
+
   const [sliderPos, setSliderPos] = useState(35);
   const [dragging, setDragging] = useState(false);
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -124,7 +128,20 @@ export function Hero() {
 
   useEffect(() => {
     const handleMove = (e: MouseEvent) => {
-      setMousePos({ x: (e.clientX / window.innerWidth) * 100, y: (e.clientY / window.innerHeight) * 100 });
+      // Update gradient via RAF + direct DOM (no React re-render)
+      mousePosRef.current = {
+        x: (e.clientX / window.innerWidth) * 100,
+        y: (e.clientY / window.innerHeight) * 100,
+      };
+      if (rafRef.current === null) {
+        rafRef.current = requestAnimationFrame(() => {
+          const { x, y } = mousePosRef.current;
+          if (gradientRef.current) {
+            gradientRef.current.style.background = `radial-gradient(ellipse 80% 60% at ${x*0.6+20}% ${y*0.4+10}%, rgba(37,99,235,0.35), transparent), radial-gradient(ellipse 60% 50% at ${100-x*0.4}% ${y*0.5+30}%, rgba(139,92,246,0.3), transparent), radial-gradient(ellipse 50% 40% at ${x*0.3+40}% ${100-y*0.3}%, rgba(245,158,11,0.15), transparent)`;
+          }
+          rafRef.current = null;
+        });
+      }
       if (dragging && sliderRef.current) {
         const rect = sliderRef.current.getBoundingClientRect();
         setSliderPos(Math.max(5, Math.min(95, ((e.clientX - rect.left) / rect.width) * 100)));
@@ -133,7 +150,11 @@ export function Hero() {
     const handleUp = () => setDragging(false);
     window.addEventListener("mousemove", handleMove);
     window.addEventListener("mouseup", handleUp);
-    return () => { window.removeEventListener("mousemove", handleMove); window.removeEventListener("mouseup", handleUp); };
+    return () => {
+      window.removeEventListener("mousemove", handleMove);
+      window.removeEventListener("mouseup", handleUp);
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+    };
   }, [dragging]);
 
   const handleTouch = (e: React.TouchEvent) => {
@@ -144,9 +165,9 @@ export function Hero() {
 
   return (
     <section className="relative min-h-[100vh] overflow-hidden bg-[#050510]">
-      <div className="absolute inset-0 -z-10 transition-all duration-[2000ms] ease-out" style={{
-        background: `radial-gradient(ellipse 80% 60% at ${mousePos.x*0.6+20}% ${mousePos.y*0.4+10}%, rgba(37,99,235,0.35), transparent), radial-gradient(ellipse 60% 50% at ${100-mousePos.x*0.4}% ${mousePos.y*0.5+30}%, rgba(139,92,246,0.3), transparent), radial-gradient(ellipse 50% 40% at ${mousePos.x*0.3+40}% ${100-mousePos.y*0.3}%, rgba(245,158,11,0.15), transparent)`
-      }} />
+      <div ref={gradientRef} className="absolute inset-0 -z-10"
+        style={{ background: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(37,99,235,0.35), transparent), radial-gradient(ellipse 60% 50% at 70% 55%, rgba(139,92,246,0.3), transparent), radial-gradient(ellipse 50% 40% at 55% 85%, rgba(245,158,11,0.15), transparent)" }}
+      />
       <div className="absolute top-[10%] right-[15%] h-[300px] w-[300px] rounded-full bg-brand-blue/20 blur-[120px] animate-float" />
       <div className="absolute bottom-[15%] left-[10%] h-[250px] w-[250px] rounded-full bg-violet-500/15 blur-[100px] animate-float-delayed" />
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />

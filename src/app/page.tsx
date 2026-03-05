@@ -27,6 +27,7 @@ import {
 } from "lucide-react";
 import { MOCK_TEMPLATES } from "@/lib/mock-data";
 import { TemplateCard } from "@/components/template-card";
+import { MobileCTA } from "@/components/mobile-cta";
 
 export default function HomePage() {
   const popularTemplates = [...MOCK_TEMPLATES]
@@ -45,7 +46,9 @@ export default function HomePage() {
 
   return (
     <div>
-      <Hero />      {/* Stats bar — Glass-morphism */}
+      <Hero />
+      <MobileCTA />
+      {/* Stats bar — Glass-morphism */}
       <section className="relative -mt-8 z-20 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
