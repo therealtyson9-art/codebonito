@@ -123,17 +123,17 @@ export default async function DemoPage({ params }: { params: Promise<{ slug: str
   return (
     <div style={{ position: "relative" }}>
       <DemoComponent />
-      {/* Sticky purchase banner */}
+      {/* Sticky purchase banner — top */}
       {templateId && (
         <div style={{
           position: "fixed",
-          bottom: 0,
+          top: 0,
           left: 0,
           right: 0,
           zIndex: 9999,
           background: "rgba(5,5,16,0.92)",
           backdropFilter: "blur(12px)",
-          borderTop: "1px solid rgba(255,255,255,0.1)",
+          borderBottom: "1px solid rgba(255,255,255,0.1)",
           padding: "12px 16px",
           display: "flex",
           alignItems: "center",
