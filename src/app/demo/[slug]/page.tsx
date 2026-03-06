@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
 import dynamic from "next/dynamic";
+import Link from "next/link";
+import { MOCK_TEMPLATES } from "@/lib/mock-data";
 
 const demos: Record<string, ReturnType<typeof dynamic>> = {
   "agency-brutalist": dynamic(() => import("@/app/demo-archive/agency-brutalist")),
@@ -108,5 +110,73 @@ export default async function DemoPage({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const DemoComponent = demos[slug];
   if (!DemoComponent) notFound();
-  return <DemoComponent />;
+
+  // Look up template to get the ID and price for the CTA
+  const template = MOCK_TEMPLATES.find(t => t.slug === slug);
+  const templateId = template?.id;
+  const isFree = template?.price_tier !== "pro";
+  const label = isFree ? "Get this prompt — Free" : "Get this prompt — $2";
+  const ctaStyle = isFree
+    ? "background:#10b981;color:white"
+    : "background:#f97316;color:white";
+
+  return (
+    <div style={{ position: "relative" }}>
+      <DemoComponent />
+      {/* Sticky purchase banner */}
+      {templateId && (
+        <div style={{
+          position: "fixed",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: 9999,
+          background: "rgba(5,5,16,0.92)",
+          backdropFilter: "blur(12px)",
+          borderTop: "1px solid rgba(255,255,255,0.1)",
+          padding: "12px 16px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: "12px",
+        }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+            <span style={{ color: "white", fontWeight: 600, fontSize: "14px", fontFamily: "Inter,sans-serif" }}>
+              {template?.name ?? slug}
+            </span>
+            <span style={{ color: "rgba(255,255,255,0.5)", fontSize: "12px", fontFamily: "Inter,sans-serif" }}>
+              Design template for Cursor, v0, Bolt &amp; more
+            </span>
+          </div>
+          <div style={{ display: "flex", gap: "8px", flexShrink: 0 }}>
+            <Link href="/" style={{
+              padding: "8px 14px",
+              borderRadius: "8px",
+              border: "1px solid rgba(255,255,255,0.15)",
+              color: "rgba(255,255,255,0.7)",
+              fontSize: "13px",
+              fontFamily: "Inter,sans-serif",
+              textDecoration: "none",
+              whiteSpace: "nowrap",
+            }}>
+              Browse all
+            </Link>
+            <Link href={`/template/${templateId}`} style={{
+              padding: "8px 18px",
+              borderRadius: "8px",
+              fontWeight: 700,
+              fontSize: "13px",
+              fontFamily: "Inter,sans-serif",
+              textDecoration: "none",
+              whiteSpace: "nowrap",
+              background: isFree ? "#10b981" : "#f97316",
+              color: "white",
+            }}>
+              {label}
+            </Link>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
