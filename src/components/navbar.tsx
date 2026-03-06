@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, LogOut, LayoutDashboard, Upload, ArrowRight } from "lucide-react";
+import { Menu, LogOut, LayoutDashboard, Upload, ArrowRight, Dna } from "lucide-react";
 import type { User } from "@supabase/supabase-js";
 
 export function Navbar() {
@@ -49,6 +49,7 @@ export function Navbar() {
 
   const navLinks = [
     { href: "/browse", label: "Browse" },
+    { href: "/dna", label: "Clone DNA" },
     { href: "/pricing", label: "Pricing" },
     { href: "/creators", label: "Creators" },
   ];
