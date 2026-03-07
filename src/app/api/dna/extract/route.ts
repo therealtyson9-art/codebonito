@@ -141,35 +141,66 @@ Rules:
     return NextResponse.json({ error: "Failed to analyze design system. Please try again." }, { status: 500 });
   }
 
-  // Step 4: Generate the prompt
+  // Step 4: Generate platform-specific prompts
   const ts = tokens.typeScale;
-  const generatedPrompt = `# Design System: ${siteName}
-Visual personality: ${tokens.personality}
 
-## Color Palette
-Primary: ${tokens.primaryColor}
-Accent: ${tokens.accentColor}
-Full palette: ${tokens.colors.join(", ")}
+  const tokenBlock = `Colors: ${tokens.colors.join(", ")}
+Primary: ${tokens.primaryColor} | Accent: ${tokens.accentColor}
+Fonts: ${tokens.fonts.join(", ")}
+Type scale: H1 ${ts.h1.size}/${ts.h1.weight}, H2 ${ts.h2.size}/${ts.h2.weight}, H3 ${ts.h3.size}/${ts.h3.weight}, Body ${ts.body.size}/${ts.body.weight}
+Spacing: ${tokens.spacing.join(", ")}
+Border radius: ${tokens.borderRadius.join(", ")}
+Shadows: ${tokens.shadows[0] ?? "none"}`;
+
+  const promptV0Bolt = `Use this design system for everything you build. Do not deviate from these tokens.
+
+DESIGN SYSTEM — ${siteName} (${tokens.personality})
+${tokenBlock}
+
+Build with this exact visual language. Dark background: ${tokens.primaryColor}. All components, typography, spacing, and elevation must match these specs precisely.`;
+
+  const promptCursor = `# Design System: ${siteName}
+# Visual personality: ${tokens.personality}
+
+## Colors
+primary: "${tokens.primaryColor}"
+accent: "${tokens.accentColor}"
+palette: [${tokens.colors.map(c => `"${c}"`).join(", ")}]
 
 ## Typography
-Font families: ${tokens.fonts.join(", ")}
+fonts: [${tokens.fonts.map(f => `"${f}"`).join(", ")}]
+h1: { fontSize: "${ts.h1.size}", fontWeight: "${ts.h1.weight}", lineHeight: "${ts.h1.lineHeight}" }
+h2: { fontSize: "${ts.h2.size}", fontWeight: "${ts.h2.weight}", lineHeight: "${ts.h2.lineHeight}" }
+h3: { fontSize: "${ts.h3.size}", fontWeight: "${ts.h3.weight}", lineHeight: "${ts.h3.lineHeight}" }
+body: { fontSize: "${ts.body.size}", fontWeight: "${ts.body.weight}", lineHeight: "${ts.body.lineHeight}" }
+small: { fontSize: "${ts.small.size}", fontWeight: "${ts.small.weight}", lineHeight: "${ts.small.lineHeight}" }
 
-Type scale:
-- H1: ${ts.h1.size} / weight ${ts.h1.weight} / leading ${ts.h1.lineHeight}
-- H2: ${ts.h2.size} / weight ${ts.h2.weight} / leading ${ts.h2.lineHeight}
-- H3: ${ts.h3.size} / weight ${ts.h3.weight} / leading ${ts.h3.lineHeight}
-- Body: ${ts.body.size} / weight ${ts.body.weight} / leading ${ts.body.lineHeight}
-- Small: ${ts.small.size} / weight ${ts.small.weight} / leading ${ts.small.lineHeight}
+## Spacing
+scale: [${tokens.spacing.map(s => `"${s}"`).join(", ")}]
+borderRadius: [${tokens.borderRadius.map(r => `"${r}"`).join(", ")}]
 
-## Spacing & Layout
-Spacing scale: ${tokens.spacing.join(", ")}
-Border radius: ${tokens.borderRadius.join(", ")}
+## Rules
+- Always use the color palette above. No other colors.
+- Always use the font families above. Load from Google Fonts if needed.
+- Apply the type scale exactly — no approximations.
+- Spacing must follow the scale (4px base grid).
+- Components should feel like ${siteName}: ${tokens.personality}.`;
 
-## Elevation
-${tokens.shadows.join("\n")}
+  const promptLovable = `You are building a UI that looks and feels exactly like ${siteName}.
 
----
-Apply this design system to my project. Use these exact colors, fonts, and type scale. The result should feel like ${siteName} — ${tokens.personality}. Match the spacing rhythm, typographic hierarchy, and component style precisely.`;
+Visual personality: ${tokens.personality}
+
+Strict design rules:
+1. COLORS — use only these: ${tokens.colors.join(", ")}. Primary actions: ${tokens.primaryColor}. Accents: ${tokens.accentColor}.
+2. TYPOGRAPHY — font: ${tokens.fonts[0] ?? "Inter"}. Sizes: H1=${ts.h1.size} (w${ts.h1.weight}), H2=${ts.h2.size} (w${ts.h2.weight}), H3=${ts.h3.size} (w${ts.h3.weight}), body=${ts.body.size} (w${ts.body.weight}).
+3. SPACING — base grid: ${tokens.spacing[0] ?? "4px"}. Scale: ${tokens.spacing.join(" → ")}.
+4. RADIUS — components use: ${tokens.borderRadius.join(", ")}.
+5. ELEVATION — shadows: ${tokens.shadows[0] ?? "subtle"}.
+
+Every component, page, and interaction must match this system. If unsure, default to the ${siteName} aesthetic: ${tokens.personality}.`;
+
+  // Keep a combined prompt for backwards compat
+  const generatedPrompt = promptV0Bolt;
 
   // Step 5: Store in Supabase for history (best-effort)
   try {
@@ -188,5 +219,10 @@ Apply this design system to my project. Use these exact colors, fonts, and type 
     siteName,
     tokens,
     generatedPrompt,
+    prompts: {
+      v0: promptV0Bolt,
+      cursor: promptCursor,
+      lovable: promptLovable,
+    },
   });
 }

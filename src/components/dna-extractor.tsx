@@ -31,6 +31,11 @@ interface DNAResult {
   siteName: string;
   tokens: DNATokens;
   generatedPrompt: string;
+  prompts: {
+    v0: string;
+    cursor: string;
+    lovable: string;
+  };
 }
 
 interface DNAError {
@@ -49,6 +54,7 @@ export function DNAExtractor() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<Result>(null);
   const [copied, setCopied] = useState(false);
+  const [activeTab, setActiveTab] = useState<"v0" | "cursor" | "lovable">("v0");
 
   async function handleExtract(e: React.FormEvent) {
     e.preventDefault();
@@ -77,7 +83,9 @@ export function DNAExtractor() {
 
   function handleCopy() {
     if (!result || isError(result)) return;
-    navigator.clipboard.writeText(result.generatedPrompt);
+    const r = result as DNAResult;
+    const text = r.prompts?.[activeTab] ?? r.generatedPrompt;
+    navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   }
@@ -264,29 +272,54 @@ export function DNAExtractor() {
             </div>
           )}
 
-          {/* Generated Prompt */}
+          {/* Platform Prompts — Tabs */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Generated Prompt</h3>
-            <div className="relative">
+            <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Ready-to-use Prompts</h3>
+
+            {/* Tab bar */}
+            <div className="flex border border-gray-200 rounded-xl overflow-hidden mb-0">
+              {(["v0", "cursor", "lovable"] as const).map((tab) => {
+                const labels: Record<string, string> = { v0: "v0 / Bolt", cursor: "Cursor (.cursorrules)", lovable: "Lovable / Claude" };
+                const isActive = activeTab === tab;
+                return (
+                  <button
+                    key={tab}
+                    onClick={() => { setActiveTab(tab); setCopied(false); }}
+                    className={`flex-1 py-2.5 px-3 text-xs font-semibold transition-colors border-r border-gray-200 last:border-r-0 ${
+                      isActive ? "bg-gray-900 text-white" : "bg-white text-gray-500 hover:bg-gray-50"
+                    }`}
+                  >
+                    {labels[tab]}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Platform hint */}
+            <div className="bg-blue-50 border-x border-gray-200 px-4 py-2.5 flex items-center gap-2">
+              <span className="text-xs text-blue-600 font-medium">
+                {activeTab === "v0" && "Paste this at the start of your v0 or Bolt prompt, before describing what you want to build."}
+                {activeTab === "cursor" && "Copy this block into your .cursorrules file at the root of your project. Cursor will apply it to every file."}
+                {activeTab === "lovable" && "Paste this into Lovable's system prompt field (Settings → AI Instructions) or at the start of a Claude conversation."}
+              </span>
+            </div>
+
+            {/* Prompt text */}
+            <div className="relative border border-t-0 border-gray-200 rounded-b-xl overflow-hidden">
               <textarea
                 readOnly
-                value={success.generatedPrompt}
-                rows={10}
-                className="w-full font-mono text-sm bg-white border border-gray-200 rounded-xl p-4 resize-none focus:outline-none text-gray-800"
+                key={activeTab}
+                value={success.prompts?.[activeTab] ?? success.generatedPrompt}
+                rows={12}
+                className="w-full font-mono text-sm bg-white p-4 resize-none focus:outline-none text-gray-800"
               />
               <button
                 onClick={handleCopy}
                 className={`absolute top-3 right-3 flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
-                  copied
-                    ? "bg-emerald-500 text-white"
-                    : "bg-gray-900 text-white hover:bg-gray-700"
+                  copied ? "bg-emerald-500 text-white" : "bg-gray-900 text-white hover:bg-gray-700"
                 }`}
               >
-                {copied ? (
-                  <><Check className="w-3.5 h-3.5" /> Copied!</>
-                ) : (
-                  <><Copy className="w-3.5 h-3.5" /> Copy Prompt</>
-                )}
+                {copied ? <><Check className="w-3.5 h-3.5" /> Copied!</> : <><Copy className="w-3.5 h-3.5" /> Copy</>}
               </button>
             </div>
           </div>
