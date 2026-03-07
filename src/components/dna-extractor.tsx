@@ -3,9 +3,22 @@
 import { useState } from "react";
 import { Dna, Copy, Check, RotateCcw, Loader2, AlertCircle } from "lucide-react";
 
+interface TypeLevel {
+  size: string;
+  weight: string;
+  lineHeight: string;
+}
+
 interface DNATokens {
   colors: string[];
   fonts: string[];
+  typeScale: {
+    h1: TypeLevel;
+    h2: TypeLevel;
+    h3: TypeLevel;
+    body: TypeLevel;
+    small: TypeLevel;
+  };
   borderRadius: string[];
   shadows: string[];
   spacing: string[];
@@ -179,13 +192,42 @@ export function DNAExtractor() {
           {/* Typography */}
           <div>
             <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Typography</h3>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 mb-4">
               {success.tokens.fonts.map((font, i) => (
                 <span key={i} className="bg-gray-100 text-gray-700 px-3 py-2 rounded-lg text-sm font-semibold">
                   {font}
                 </span>
               ))}
             </div>
+            {/* Type scale */}
+            {success.tokens.typeScale && (
+              <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="bg-gray-50 border-b border-gray-200">
+                      <th className="text-left px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider w-16">Level</th>
+                      <th className="text-left px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">Preview</th>
+                      <th className="text-right px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">Size</th>
+                      <th className="text-right px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">Weight</th>
+                      <th className="text-right px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">Leading</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {(Object.entries(success.tokens.typeScale) as [string, { size: string; weight: string; lineHeight: string }][]).map(([level, val]) => (
+                      <tr key={level} className="border-b border-gray-100 last:border-0">
+                        <td className="px-4 py-2 font-mono text-xs text-gray-400 uppercase">{level}</td>
+                        <td className="px-4 py-2 text-gray-900 truncate max-w-[160px]" style={{ fontSize: `clamp(12px, ${val.size}, 22px)`, fontWeight: val.weight, lineHeight: val.lineHeight }}>
+                          {level === "h1" ? "The quick brown fox" : level === "h2" ? "Jumps over the lazy" : level === "h3" ? "Dog — 36 times" : "The quick brown fox jumps over the lazy dog."}
+                        </td>
+                        <td className="px-4 py-2 font-mono text-xs text-gray-500 text-right">{val.size}</td>
+                        <td className="px-4 py-2 font-mono text-xs text-gray-500 text-right">{val.weight}</td>
+                        <td className="px-4 py-2 font-mono text-xs text-gray-500 text-right">{val.lineHeight}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
           </div>
 
           {/* Border Radius */}

@@ -62,29 +62,43 @@ export async function POST(request: Request) {
   }
 
   // Step 3: Send HTML to Claude for design system extraction
-  const systemPrompt = `You are a design system analyst. Extract the visual design system from HTML/CSS.
+  const systemPrompt = `You are a design system analyst. Extract the complete visual design system from HTML/CSS.
 Return ONLY valid JSON with this exact structure:
 {
   "colors": ["#hex1", "#hex2", ...],
   "fonts": ["Font Name 1", "Font Name 2", ...],
+  "typeScale": {
+    "h1": { "size": "48px", "weight": "700", "lineHeight": "1.1" },
+    "h2": { "size": "36px", "weight": "600", "lineHeight": "1.2" },
+    "h3": { "size": "24px", "weight": "600", "lineHeight": "1.3" },
+    "body": { "size": "16px", "weight": "400", "lineHeight": "1.6" },
+    "small": { "size": "14px", "weight": "400", "lineHeight": "1.5" }
+  },
   "borderRadius": ["4px", "8px", ...],
   "shadows": ["0 1px 3px rgba(0,0,0,0.1)", ...],
   "spacing": ["4px", "8px", "16px", "24px", "32px"],
-  "personality": "minimalist|brutalist|corporate|playful|luxury",
+  "personality": "2-4 word precise description (e.g. 'Clean fintech, trust-focused' or 'Brutalist editorial, high contrast' or 'Soft SaaS, gradient-rich')",
   "primaryColor": "#hex",
   "accentColor": "#hex"
 }
 
 Rules:
-- Convert Tailwind classes to actual hex values (e.g. bg-blue-600 = #2563EB, text-gray-900 = #111827)
+- Convert Tailwind classes to actual hex values (bg-blue-600=#2563EB, text-gray-900=#111827, bg-indigo-500=#6366F1, etc.)
 - Extract up to 6 main colors, 3 fonts, 4 border-radius values
-- Infer personality from overall visual style
-- If you can't determine a value, use sensible defaults
+- For typeScale: infer from CSS font-size/font-weight classes or properties (text-4xl=36px, text-5xl=48px, font-bold=700, font-semibold=600, etc.)
+- personality MUST be specific and descriptive — NOT generic words like "corporate" or "minimalist" alone. Describe the brand feel: industry + visual tone (e.g. "Developer-focused, dark-mode-first" or "Luxury ecommerce, editorial whitespace")
 - Return ONLY the JSON, no explanation`;
 
   let tokens: {
     colors: string[];
     fonts: string[];
+    typeScale: {
+      h1: { size: string; weight: string; lineHeight: string };
+      h2: { size: string; weight: string; lineHeight: string };
+      h3: { size: string; weight: string; lineHeight: string };
+      body: { size: string; weight: string; lineHeight: string };
+      small: { size: string; weight: string; lineHeight: string };
+    };
     borderRadius: string[];
     shadows: string[];
     spacing: string[];
@@ -128,8 +142,9 @@ Rules:
   }
 
   // Step 4: Generate the prompt
+  const ts = tokens.typeScale;
   const generatedPrompt = `# Design System: ${siteName}
-Personality: ${tokens.personality}
+Visual personality: ${tokens.personality}
 
 ## Color Palette
 Primary: ${tokens.primaryColor}
@@ -137,17 +152,24 @@ Accent: ${tokens.accentColor}
 Full palette: ${tokens.colors.join(", ")}
 
 ## Typography
-Fonts: ${tokens.fonts.join(", ")}
+Font families: ${tokens.fonts.join(", ")}
+
+Type scale:
+- H1: ${ts.h1.size} / weight ${ts.h1.weight} / leading ${ts.h1.lineHeight}
+- H2: ${ts.h2.size} / weight ${ts.h2.weight} / leading ${ts.h2.lineHeight}
+- H3: ${ts.h3.size} / weight ${ts.h3.weight} / leading ${ts.h3.lineHeight}
+- Body: ${ts.body.size} / weight ${ts.body.weight} / leading ${ts.body.lineHeight}
+- Small: ${ts.small.size} / weight ${ts.small.weight} / leading ${ts.small.lineHeight}
 
 ## Spacing & Layout
 Spacing scale: ${tokens.spacing.join(", ")}
 Border radius: ${tokens.borderRadius.join(", ")}
 
-## Shadows
+## Elevation
 ${tokens.shadows.join("\n")}
 
 ---
-Apply this design system to my project. Use these exact colors and fonts. The result should feel like ${siteName} — ${tokens.personality} aesthetic, clean and intentional. Match the spacing rhythm and component style.`;
+Apply this design system to my project. Use these exact colors, fonts, and type scale. The result should feel like ${siteName} — ${tokens.personality}. Match the spacing rhythm, typographic hierarchy, and component style precisely.`;
 
   // Step 5: Store in Supabase for history (best-effort)
   try {
