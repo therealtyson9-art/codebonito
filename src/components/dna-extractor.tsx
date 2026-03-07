@@ -22,6 +22,18 @@ interface DNATokens {
   borderRadius: string[];
   shadows: string[];
   spacing: string[];
+  colorUsage?: {
+    background: string;
+    dominantRole: string;
+    accentFrequency: string;
+    accentNote: string;
+  };
+  layoutPattern?: {
+    heroType: string;
+    sectionPattern: string;
+    density: string;
+    heroTypeSizeNote: string;
+  };
   personality: string;
   primaryColor: string;
   accentColor: string;
@@ -196,6 +208,33 @@ export function DNAExtractor() {
               ))}
             </div>
           </div>
+
+          {/* Color Usage + Layout Pattern */}
+          {(success.tokens.colorUsage || success.tokens.layoutPattern) && (
+            <div className="grid grid-cols-2 gap-4">
+              {success.tokens.colorUsage && (
+                <div className="bg-white border border-gray-200 rounded-xl p-4">
+                  <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Color Usage</h4>
+                  <p className="text-xs text-gray-600 mb-1"><span className="font-semibold">Mode:</span> {success.tokens.colorUsage.dominantRole.replace(/-/g, " ")}</p>
+                  <p className="text-xs text-gray-600 mb-1"><span className="font-semibold">Accent:</span> {success.tokens.colorUsage.accentFrequency}</p>
+                  {success.tokens.colorUsage.accentNote && (
+                    <p className="text-xs text-gray-500 italic mt-1">{success.tokens.colorUsage.accentNote}</p>
+                  )}
+                </div>
+              )}
+              {success.tokens.layoutPattern && (
+                <div className="bg-white border border-gray-200 rounded-xl p-4">
+                  <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Layout Pattern</h4>
+                  <p className="text-xs text-gray-600 mb-1"><span className="font-semibold">Hero:</span> {success.tokens.layoutPattern.heroType.replace(/-/g, " ")}</p>
+                  <p className="text-xs text-gray-600 mb-1"><span className="font-semibold">Sections:</span> {success.tokens.layoutPattern.sectionPattern.replace(/-/g, " ")}</p>
+                  <p className="text-xs text-gray-600 mb-1"><span className="font-semibold">Density:</span> {success.tokens.layoutPattern.density}</p>
+                  {success.tokens.layoutPattern.heroTypeSizeNote && (
+                    <p className="text-xs text-gray-500 italic mt-1">{success.tokens.layoutPattern.heroTypeSizeNote}</p>
+                  )}
+                </div>
+              )}
+            </div>
+          )}
 
           {/* Typography */}
           <div>
