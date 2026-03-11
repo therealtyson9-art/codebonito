@@ -519,7 +519,7 @@ function CodePreview({ content }: { content: string }) {
   const lines = content.split("\n");
 
   return (
-    <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-[#1e1e2e] h-full flex flex-col">
+    <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-[#1e1e2e] flex flex-col max-h-[80vh]">
       <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-white/5 shrink-0">
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
@@ -730,7 +730,7 @@ export function CursorRulesClient() {
             </div>
 
             {/* RIGHT — Live Preview */}
-            <div className="lg:sticky lg:top-8 lg:self-start lg:max-h-[calc(100vh-4rem)]">
+            <div className="lg:sticky lg:top-24 lg:self-start max-h-[80vh]">
               <CodePreview content={generated} />
             </div>
           </div>
