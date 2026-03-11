@@ -1,44 +1,32 @@
 import type { Metadata } from "next";
-import { readFile } from "fs/promises";
-import { join } from "path";
 import { CursorRulesClient } from "./client";
 
 export const metadata: Metadata = {
-  title: "Design-First .cursorrules for AI Coding | Code Bonito",
+  title: "Build Your .cursorrules — Interactive Configurator | Code Bonito",
   description:
-    "Free cursor rules that make every AI-generated component look professional. Download and drop in your project.",
+    "Choose typography, colors, component style, and animations. Generate a custom .cursorrules file that makes Cursor produce beautiful code — every time.",
   openGraph: {
-    title: "Design-First .cursorrules for AI Coding | Code Bonito",
+    title: "Build Your .cursorrules — Interactive Configurator | Code Bonito",
     description:
-      "Free cursor rules that make every AI-generated component look professional. Download and drop in your project.",
+      "Choose typography, colors, component style, and animations. Generate a custom .cursorrules file that makes Cursor produce beautiful code — every time.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Code Bonito — Design-First Cursor Rules",
+        alt: "Code Bonito — Build Your .cursorrules",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Design-First .cursorrules for AI Coding | Code Bonito",
+    title: "Build Your .cursorrules — Interactive Configurator | Code Bonito",
     description:
-      "Free cursor rules that make every AI-generated component look professional. Download and drop in your project.",
+      "Choose typography, colors, component style, and animations. Generate a custom .cursorrules file that makes Cursor produce beautiful code — every time.",
     images: ["/og-image.png"],
   },
 };
 
-async function getCursorRulesContent(): Promise<string> {
-  try {
-    const filePath = join(process.cwd(), ".cursorrules");
-    return await readFile(filePath, "utf-8");
-  } catch {
-    return "# .cursorrules file not found";
-  }
-}
-
-export default async function CursorRulesPage() {
-  const content = await getCursorRulesContent();
-  return <CursorRulesClient content={content} />;
+export default function CursorRulesPage() {
+  return <CursorRulesClient />;
 }
