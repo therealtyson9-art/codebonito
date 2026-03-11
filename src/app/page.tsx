@@ -25,6 +25,7 @@ import {
 import { MOCK_TEMPLATES } from "@/lib/mock-data";
 import { TemplateCard } from "@/components/template-card";
 import { MobileCTA } from "@/components/mobile-cta";
+import { BeforeAfterSlider } from "@/components/before-after-slider";
 
 export default function HomePage() {
   const popularTemplates = [...MOCK_TEMPLATES]
@@ -86,6 +87,11 @@ export default function HomePage() {
           New templates added every week
         </span>
       </div>
+
+      {/* Before/After Slider — Social Proof */}
+      <FadeIn>
+        <BeforeAfterSlider />
+      </FadeIn>
 
       <FadeIn>
       {/* Trending Templates */}
