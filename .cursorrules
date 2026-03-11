@@ -1,0 +1,106 @@
+# Code Bonito — Design-First Cursor Rules
+# Make every AI-generated component look like a designer built it.
+# Drop this file in your project root. Cursor reads it automatically.
+
+## Typography
+- Always use two font families: one geometric sans-serif for headings (Inter, DM Sans, or Geist) and one serif or serif-italic for accent text (Instrument Serif, Playfair Display, or Lora).
+- Import fonts explicitly: `@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Instrument+Serif:ital@1&display=swap')`
+- Headings: font-weight 700-900, tracking tight (tracking-[-0.02em] to tracking-[-0.04em]), leading snug (leading-[1.05] to leading-[1.2]).
+- Body text: 16px base, font-weight 400, leading relaxed (leading-[1.6] to leading-[1.7]).
+- Use specific sizes, never vague: text-[72px] not "text-7xl", text-[48px] not "text-5xl" — precision matters.
+- For hero headlines, go big: minimum text-[56px] on desktop, text-[36px] on mobile.
+
+## Colors
+- Define a strict palette of max 6 colors: background, surface, text-primary, text-muted, primary (brand), accent.
+- Use exact hex values, never Tailwind defaults: `bg-[#050510]` not `bg-gray-900`, `text-[#f8fafc]` not `text-white`.
+- For dark themes: background should be near-black (#050510, #0a0a0f), not pure black (#000).
+- For light themes: background should be warm white (#fafaf9, #f8f7f4), not pure white (#fff).
+- Muted text: use opacity (text-white/50, text-black/40) rather than gray shades — it adapts to any background.
+- Accent color appears sparingly: only on 1-2 CTAs, links, and icon highlights. Never as large backgrounds.
+
+## Spacing & Layout
+- Use an 8px grid: spacing values should be multiples of 8 (8, 16, 24, 32, 48, 64, 96).
+- Hero sections: min-h-screen, content centered with flex flex-col items-center justify-center.
+- Section padding: py-24 minimum, py-32 preferred on desktop.
+- Max content width: max-w-6xl for full layouts, max-w-3xl for text-heavy sections.
+- Cards in grids: always gap-6 or gap-8, never gap-4.
+
+## Components
+
+### Navigation
+- Floating glassmorphism: bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl (dark) or bg-black/5 backdrop-blur-xl border border-black/5 rounded-2xl (light).
+- Position: fixed top-0 w-full z-50, inner content max-w-6xl mx-auto.
+- Apply `backdrop-filter: blur(20px) saturate(1.4)` with `-webkit-` prefix.
+- Logo: font-bold text-lg tracking-[-0.02em].
+- Nav links: text-sm font-medium, opacity 60% default → 100% on hover, transition-colors duration-200.
+- CTA button in nav: rounded-full px-5 py-2 text-sm font-medium bg-[PRIMARY_COLOR].
+
+### Buttons
+- Primary: rounded-full (not rounded-lg), px-8 py-4 for hero CTAs, px-5 py-2 for nav/inline.
+- Add a glow div behind primary buttons: absolute -inset-1 bg-[PRIMARY_COLOR] rounded-full blur-lg opacity-20, animate to opacity-60 on group-hover.
+- Hover: scale(1.05) with transition duration 200ms ease [0.23, 1, 0.32, 1].
+- Active/tap: scale(0.97).
+- Shadow on primary: shadow-[0_0_30px_rgba(PRIMARY_RGB,0.4)], increase to 0.6 on hover.
+- Never use default Tailwind shadows (shadow-md, shadow-lg). Always specify exact values.
+
+### Cards
+- Dark theme: bg-white/5 border border-white/10 rounded-2xl p-8.
+- Light theme: bg-white border border-black/5 rounded-2xl p-8 shadow-[0_1px_3px_rgba(0,0,0,0.04)].
+- Hover: translateY(-4px) + border-[ACCENT_COLOR]/30 + shadow-[0_0_30px_rgba(ACCENT_RGB,0.15)].
+- Transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1).
+- Icon in card: text-[ACCENT_COLOR] text-2xl mb-4.
+- Card title: font-bold text-lg mb-2.
+- Card description: text-sm text-muted leading-relaxed.
+
+### Badges/Pills
+- bg-white/10 border border-white/10 rounded-full px-4 py-1.5 text-xs uppercase tracking-wide (dark).
+- bg-black/5 border border-black/5 rounded-full px-4 py-1.5 text-xs uppercase tracking-wide (light).
+
+## Animations (Framer Motion preferred)
+
+### Entry animations
+- Default entry: initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+- BlurIn (premium): initial={{ opacity: 0, y: 20, filter: "blur(10px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} transition={{ duration: 0.6 }}
+- Stagger children: use staggerChildren: 0.08 in parent, each child gets delay: index * 0.08.
+- Word splitting: wrap each word in motion.span, stagger by 0.08s per word.
+
+### Hover interactions
+- Cards: whileHover={{ y: -4, scale: 1.02 }} transition={{ type: "spring", stiffness: 300, damping: 30 }}
+- Buttons: whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
+- Links: underline animation with pseudo-element scaleX(0) → scaleX(1) from left.
+
+### Scroll animations
+- Use useInView with { once: true, margin: "-100px" }.
+- Stats/counters: animate from 0 to value with requestAnimationFrame over 2000ms, easing cubic-bezier(0.16, 1, 0.3, 1).
+- Sections: fade-in-up with 0.6s duration triggered by intersection.
+
+## Effects
+
+### Glassmorphism
+- bg-white/5 (or bg-white/10) + backdrop-blur-xl + border border-white/10.
+- Always include -webkit-backdrop-filter for Safari support.
+- Saturate: backdrop-filter: blur(20px) saturate(1.4).
+
+### Gradient text
+- background: linear-gradient(135deg, [PRIMARY_COLOR], [ACCENT_COLOR])
+- -webkit-background-clip: text
+- -webkit-text-fill-color: transparent
+
+### Glow effects
+- Button glow: div behind with blur-lg, opacity 0.2→0.6 on hover.
+- Card border glow: box-shadow: 0 0 30px rgba(ACCENT_RGB, 0.15) on hover.
+- Never use Tailwind's ring utilities for glow — they look flat.
+
+### Corner accents
+- Four 8x8px divs at section corners (top-8 left-8, top-8 right-8, bottom-8 left-8, bottom-8 right-8).
+- bg-[ACCENT_COLOR]/60, animate in with delay 1.2s.
+
+## Anti-patterns (NEVER do these)
+- Never use default Tailwind colors without overriding (bg-blue-500, text-gray-600 etc.)
+- Never use rounded-md or rounded-lg on buttons — use rounded-full for primary CTAs, rounded-2xl for cards.
+- Never hardcode shadows as shadow-sm/md/lg — specify exact rgba values.
+- Never use generic spacing (p-4, m-2) on hero sections — hero needs generous spacing (py-32, gap-8).
+- Never skip the hover state — every interactive element needs a transition.
+- Never use color names in classes (bg-red-500) — use hex values via arbitrary values (bg-[#ef4444]).
+- Never animate with duration-300 alone — always specify an easing curve.
+- Never use text-xl or text-2xl for hero headlines — go bigger (text-[48px]+).
