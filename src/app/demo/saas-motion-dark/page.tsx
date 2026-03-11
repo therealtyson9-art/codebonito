@@ -42,7 +42,7 @@ const STATS: StatItem[] = [
 
 /* ─── Video Background ──────────────────────────────────────────── */
 const VIDEO_URL =
-  "https://videos.pexels.com/video-files/3130284/3130284-uhd_2560_1440_25fps.mp4";
+  "https://assets.mixkit.co/videos/4623/4623-720.mp4";
 
 /* ─── Stat Counter ───────────────────────────────────────────────── */
 function StatCounter({ stat }: { stat: StatItem }) {
