@@ -54,7 +54,11 @@ export function TemplateCard({ template, compact }: { template: Template; compac
                 </Badge>
               ) : null;
             })()}
-            {template.price_tier === "pro" ? (
+            {template.price_tier === "ultra_premium" ? (
+              <Badge className="absolute right-3 top-3 bg-indigo-600 text-white font-mono text-[10px] tracking-wider shadow-sm">
+                $5
+              </Badge>
+            ) : template.price_tier === "pro" ? (
               <Badge className="absolute right-3 top-3 bg-orange-500 text-white font-mono text-[10px] tracking-wider shadow-sm">
                 $2
               </Badge>
@@ -90,7 +94,11 @@ export function TemplateCard({ template, compact }: { template: Template; compac
               </Badge>
             )}
           </div>
-          {template.price_tier === "pro" ? (
+          {template.price_tier === "ultra_premium" ? (
+            <span className="inline-flex items-center rounded-lg bg-indigo-600 px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition-all group-hover:bg-indigo-700 group-hover:shadow-md">
+              Get Template — $5
+            </span>
+          ) : template.price_tier === "pro" ? (
             <span className="inline-flex items-center rounded-lg bg-orange-500 px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition-all group-hover:bg-orange-600 group-hover:shadow-md">
               Get Template — $2
             </span>

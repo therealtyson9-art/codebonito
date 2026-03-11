@@ -169,6 +169,7 @@ export function BrowseClient({ templates }: { templates: Template[] }) {
                 <SelectItem value="all">All Prices</SelectItem>
                 <SelectItem value="free">Free</SelectItem>
                 <SelectItem value="pro">Premium ($2)</SelectItem>
+                <SelectItem value="ultra_premium">✨ Ultra Premium ($5)</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -214,7 +215,16 @@ export function BrowseClient({ templates }: { templates: Template[] }) {
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((template) => (
               <div key={template.id} className="flex flex-col">
-                <TemplateCard template={template} />
+                <div className="relative">
+                  <TemplateCard template={template} />
+                  {template.price_tier === "ultra_premium" && (
+                    <span
+                      className="absolute left-3 bottom-[3.5rem] z-10 inline-flex items-center gap-1 rounded-full bg-indigo-600 px-2.5 py-0.5 text-[11px] font-semibold text-white shadow-lg shadow-indigo-500/30 ring-1 ring-indigo-400/40"
+                    >
+                      ✨ Ultra
+                    </span>
+                  )}
+                </div>
                 {template.demo_url && (
                   <Button
                     variant="outline"

@@ -1,5 +1,5 @@
 export type UserRole = "user" | "creator";
-export type PriceTier = "free" | "pro";
+export type PriceTier = "free" | "pro" | "ultra_premium";
 export type TemplateStatus = "draft" | "published" | "rejected";
 export type SubscriptionPlan = "free" | "pro";
 export type EarningStatus = "pending" | "paid";

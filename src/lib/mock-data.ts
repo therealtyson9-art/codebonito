@@ -144,6 +144,7 @@ const DEMO_SLUGS = new Set([
   "wellness-corporate",
   "wellness-playful",
   "wellness-luxury",
+  "saas-motion-dark",
 ]);
 
 // Deterministic pseudo-random from seed string
@@ -572,7 +573,34 @@ function generateTemplates(): Template[] {
   return templates;
 }
 
-export const MOCK_TEMPLATES: Template[] = generateTemplates();
+const _generatedTemplates = generateTemplates();
+
+// ── Ultra Premium templates (manually defined) ─────────────────────
+const ULTRA_PREMIUM_TEMPLATES: Template[] = [
+  {
+    id: "101",
+    name: "SaaS Dark Motion",
+    slug: "saas-motion-dark",
+    description:
+      "Dark SaaS with animated headline reveal, mesh gradient, hover micro-interactions, scroll counters.",
+    category: "SaaS",
+    style: "Motion",
+    platforms: ["cursor", "claude-code", "v0", "bolt", "lovable"],
+    creator_id: "creator-1",
+    price_tier: "ultra_premium",
+    downloads_count: 0,
+    preview_url: "https://placehold.co/800x600/050510/6366f1?text=SaaS+Dark+Motion",
+    preview_mobile_url: null,
+    manifest_json: null,
+    tokens_json: null,
+    status: "published",
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    demo_url: "/demo/saas-motion-dark",
+  },
+];
+
+export const MOCK_TEMPLATES: Template[] = [..._generatedTemplates, ...ULTRA_PREMIUM_TEMPLATES];
 
 // Helper to get demo URL for a template slug
 export function getDemoUrl(slug: string): string | null {
