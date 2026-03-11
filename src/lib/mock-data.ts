@@ -582,7 +582,7 @@ const ULTRA_PREMIUM_TEMPLATES: Template[] = [
     name: "SaaS Dark Motion",
     slug: "saas-motion-dark",
     description:
-      "Dark SaaS with animated headline reveal, mesh gradient, hover micro-interactions, scroll counters.",
+      "Dark SaaS blueprint: Pexels video background, glassmorphism nav (backdrop-blur-xl), dual typography (Inter 900 + Instrument Serif italic), 3D mouse-tracking tilt cards, CSS animations with cubic-bezier(0.23,1,0.32,1) easing, cursor-tracking glow, shimmer CTA button, and animated stat counters. Framer Motion specs + video bg + glassmorphism — production-ready implementation blueprint.",
     category: "SaaS",
     style: "Motion",
     platforms: ["cursor", "claude-code", "v0", "bolt", "lovable"],
