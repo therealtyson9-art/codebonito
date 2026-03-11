@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -30,15 +29,17 @@ export function Footer() {
   }
 
   return (
-    <footer className="border-t border-gray-800 bg-gray-950 text-gray-300">
+    <footer className="border-t border-white/10 bg-[#030308] text-white/50">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="transition-opacity duration-200 hover:opacity-80">
-              <Image src="/images/logo-dark.png" alt="Code Bonito" width={150} height={25} className="h-6 w-auto" />
+            <Link href="/" className="flex items-center gap-0.5 transition-opacity duration-200 hover:opacity-80">
+              <span className="text-lg font-bold text-white">Code</span>
+              <span className="text-lg font-bold text-indigo-400">Bonito</span>
+              <span className="ml-0.5 h-1.5 w-1.5 rounded-full bg-amber-500" />
             </Link>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-gray-400">
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/40">
               Premium design templates for people who want their websites to
               stand out. Copy into any AI tool and ship.
             </p>
@@ -48,7 +49,7 @@ export function Footer() {
                 href="https://x.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-800 text-gray-400 transition-all duration-200 hover:bg-gray-700 hover:text-white"
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] text-white/40 transition-all duration-200 hover:bg-white/10 hover:text-white"
                 aria-label="Twitter / X"
               >
                 <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
@@ -59,7 +60,7 @@ export function Footer() {
                 href="https://discord.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-800 text-gray-400 transition-all duration-200 hover:bg-gray-700 hover:text-white"
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] text-white/40 transition-all duration-200 hover:bg-white/10 hover:text-white"
                 aria-label="Discord"
               >
                 <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
@@ -70,7 +71,7 @@ export function Footer() {
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-800 text-gray-400 transition-all duration-200 hover:bg-gray-700 hover:text-white"
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] text-white/40 transition-all duration-200 hover:bg-white/10 hover:text-white"
                 aria-label="GitHub"
               >
                 <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
@@ -82,14 +83,14 @@ export function Footer() {
 
           {/* Product */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-white/70">
               Product
             </h3>
             <ul className="mt-4 space-y-3">
               <li>
                 <Link
                   href="/browse"
-                  className="text-sm text-gray-400 transition-colors duration-200 hover:text-white"
+                  className="text-sm text-white/40 transition-colors duration-200 hover:text-white"
                 >
                   Browse Templates
                 </Link>
@@ -97,7 +98,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/pricing"
-                  className="text-sm text-gray-400 transition-colors duration-200 hover:text-white"
+                  className="text-sm text-white/40 transition-colors duration-200 hover:text-white"
                 >
                   Pricing
                 </Link>
@@ -105,7 +106,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/login"
-                  className="text-sm text-gray-400 transition-colors duration-200 hover:text-white"
+                  className="text-sm text-white/40 transition-colors duration-200 hover:text-white"
                 >
                   Sign In
                 </Link>
@@ -115,14 +116,14 @@ export function Footer() {
 
           {/* Resources */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-white/70">
               Resources
             </h3>
             <ul className="mt-4 space-y-3">
               <li>
                 <Link
                   href="/creators"
-                  className="text-sm text-gray-400 transition-colors duration-200 hover:text-white"
+                  className="text-sm text-white/40 transition-colors duration-200 hover:text-white"
                 >
                   For Creators
                 </Link>
@@ -130,7 +131,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/dashboard"
-                  className="text-sm text-gray-400 transition-colors duration-200 hover:text-white"
+                  className="text-sm text-white/40 transition-colors duration-200 hover:text-white"
                 >
                   Dashboard
                 </Link>
@@ -138,7 +139,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/upload"
-                  className="text-sm text-gray-400 transition-colors duration-200 hover:text-white"
+                  className="text-sm text-white/40 transition-colors duration-200 hover:text-white"
                 >
                   Upload Template
                 </Link>
@@ -148,10 +149,10 @@ export function Footer() {
 
           {/* Newsletter */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-white/70">
               Newsletter
             </h3>
-            <p className="mt-4 text-sm text-gray-400">
+            <p className="mt-4 text-sm text-white/40">
               New templates and updates, straight to your inbox.
             </p>
             {subscribed ? (
@@ -166,12 +167,12 @@ export function Footer() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="h-9 rounded-lg border-gray-700 bg-gray-800 text-sm text-white placeholder:text-gray-500 focus-visible:ring-brand-blue"
+                  className="h-9 rounded-lg border-white/10 bg-white/[0.05] text-sm text-white placeholder:text-white/30 focus-visible:ring-indigo-400"
                 />
                 <Button
                   type="submit"
                   size="sm"
-                  className="h-9 rounded-lg bg-brand-blue px-3 text-white hover:bg-brand-blue/90"
+                  className="h-9 rounded-lg bg-indigo-600 px-3 text-white hover:bg-indigo-500"
                 >
                   <ArrowRight className="h-4 w-4" />
                 </Button>
@@ -181,9 +182,9 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="mt-12 border-t border-gray-800 pt-8">
+        <div className="mt-12 border-t border-white/10 pt-8">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-white/30">
               &copy; {new Date().getFullYear()} Code Bonito. All rights
               reserved.
             </p>

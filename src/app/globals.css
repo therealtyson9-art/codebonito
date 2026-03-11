@@ -170,3 +170,46 @@
   0%   { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
 }
+
+/* ── Dark redesign keyframes ──────────────────────────────────────── */
+@keyframes blur-in {
+  0%   { opacity: 0; filter: blur(12px); }
+  100% { opacity: 1; filter: blur(0); }
+}
+
+@keyframes fade-up {
+  0%   { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes mesh-bg-move {
+  0%, 100% {
+    background-position: 0% 50%, 100% 50%, 50% 100%;
+  }
+  25% {
+    background-position: 50% 0%, 0% 100%, 100% 50%;
+  }
+  50% {
+    background-position: 100% 50%, 50% 0%, 0% 50%;
+  }
+  75% {
+    background-position: 50% 100%, 100% 0%, 50% 0%;
+  }
+}
+
+.animate-blur-in {
+  animation: blur-in 0.8s ease-out both;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s ease-out both;
+}
+
+.animate-mesh-bg {
+  animation: mesh-bg-move 20s ease-in-out infinite;
+}
+
+/* Instrument Serif font family */
+.font-instrument-serif {
+  font-family: var(--font-instrument-serif), Georgia, serif;
+}

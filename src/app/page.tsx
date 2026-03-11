@@ -1,9 +1,7 @@
 import { FadeIn } from "@/components/fade-in";
 import { Hero } from "@/components/hero";
-import { CursorLogo, V0Logo, BoltLogo, LovableLogo, ClaudeLogo, OpenClawLogo } from "@/components/platform-logos";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
@@ -23,7 +21,6 @@ import {
   Check,
   Search,
   Copy,
-  Upload,
 } from "lucide-react";
 import { MOCK_TEMPLATES } from "@/lib/mock-data";
 import { TemplateCard } from "@/components/template-card";
@@ -39,44 +36,40 @@ export default function HomePage() {
     .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
     .slice(0, 6);
 
-  const totalDownloads = MOCK_TEMPLATES.reduce(
-    (sum, t) => sum + t.downloads_count,
-    0
-  );
-
   return (
-    <div>
+    <div className="bg-[#050510]">
       <Hero />
       <MobileCTA />
-      {/* Stats bar — Glass-morphism */}
+
+      {/* Stats bar — dark glassmorphism */}
       <section className="relative -mt-8 z-20 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-            <div className="flex items-center gap-4 rounded-2xl border border-white/60 bg-white/70 p-6 shadow-lg shadow-black/[0.04] backdrop-blur-xl">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-blue/10 to-blue-100">
-                <Download className="h-5 w-5 text-brand-blue" />
+            <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur-xl">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/[0.05]">
+                <Download className="h-5 w-5 text-indigo-400" />
               </div>
               <div>
-                <p className="text-2xl font-bold tracking-tight text-foreground">100+</p>
-                <p className="text-sm text-muted-foreground">Unique Templates</p>
+                <p className="text-2xl font-bold tracking-tight text-white">100+</p>
+                <p className="text-sm text-white/40">Unique Templates</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 rounded-2xl border border-white/60 bg-white/70 p-6 shadow-lg shadow-black/[0.04] backdrop-blur-xl">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-100 to-purple-100">
-                <Layers className="h-5 w-5 text-violet-600" />
+            <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur-xl">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/[0.05]">
+                <Layers className="h-5 w-5 text-indigo-400" />
               </div>
               <div>
-                <p className="text-2xl font-bold tracking-tight text-foreground">{MOCK_TEMPLATES.length}</p>
-                <p className="text-sm text-muted-foreground">Templates</p>
+                <p className="text-2xl font-bold tracking-tight text-white">{MOCK_TEMPLATES.length}</p>
+                <p className="text-sm text-white/40">Templates</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 rounded-2xl border border-white/60 bg-white/70 p-6 shadow-lg shadow-black/[0.04] backdrop-blur-xl">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-amber-100 to-yellow-100">
-                <Code2 className="h-5 w-5 text-amber-600" />
+            <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur-xl">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/[0.05]">
+                <Code2 className="h-5 w-5 text-indigo-400" />
               </div>
               <div>
-                <p className="text-2xl font-bold tracking-tight text-foreground">6</p>
-                <p className="text-sm text-muted-foreground">AI Platforms</p>
+                <p className="text-2xl font-bold tracking-tight text-white">6</p>
+                <p className="text-sm text-white/40">AI Platforms</p>
               </div>
             </div>
           </div>
@@ -85,67 +78,32 @@ export default function HomePage() {
 
       {/* "New every week" pill */}
       <div className="flex justify-center py-6">
-        <span className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-sm font-medium text-emerald-700 shadow-sm">
+        <span className="inline-flex items-center gap-2 rounded-full border border-indigo-400/20 bg-indigo-400/10 px-4 py-1.5 text-sm font-medium text-indigo-300">
           <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-indigo-400 opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-indigo-400" />
           </span>
           New templates added every week
         </span>
       </div>
 
-      {/* Platform logos */}
-      <section className="bg-[#fafafa] pt-4 pb-8">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="mb-8 text-center text-sm font-medium uppercase tracking-widest text-muted-foreground/60">
-            Works with your favorite AI tools
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
-            <div className="group flex flex-col items-center gap-2">
-              <CursorLogo className="h-7 w-7 text-gray-400 transition-colors duration-200 group-hover:text-gray-900" />
-              <span className="text-[11px] font-medium text-gray-400 transition-colors duration-200 group-hover:text-gray-700">Cursor</span>
-            </div>
-            <div className="group flex flex-col items-center gap-2">
-              <V0Logo className="h-7 w-7 text-gray-400 transition-colors duration-200 group-hover:text-black" />
-              <span className="text-[11px] font-medium text-gray-400 transition-colors duration-200 group-hover:text-gray-700">v0</span>
-            </div>
-            <div className="group flex flex-col items-center gap-2">
-              <BoltLogo className="h-7 w-7 text-gray-400 transition-colors duration-200 group-hover:text-violet-600" />
-              <span className="text-[11px] font-medium text-gray-400 transition-colors duration-200 group-hover:text-violet-600">Bolt</span>
-            </div>
-            <div className="group flex flex-col items-center gap-2">
-              <LovableLogo className="h-7 w-7 text-gray-400 transition-colors duration-200 group-hover:text-pink-500" />
-              <span className="text-[11px] font-medium text-gray-400 transition-colors duration-200 group-hover:text-pink-500">Lovable</span>
-            </div>
-            <div className="group flex flex-col items-center gap-2">
-              <ClaudeLogo className="h-7 w-7 text-gray-400 transition-colors duration-200 group-hover:text-amber-700" />
-              <span className="text-[11px] font-medium text-gray-400 transition-colors duration-200 group-hover:text-amber-700">Claude Code</span>
-            </div>
-            <div className="group flex flex-col items-center gap-2">
-              <OpenClawLogo className="h-7 w-7 opacity-40 grayscale transition-all duration-200 group-hover:opacity-100 group-hover:grayscale-0" />
-              <span className="text-[11px] font-medium text-gray-400 transition-colors duration-200 group-hover:text-[#ff4d4d]">OpenClaw</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <FadeIn>
       {/* Trending Templates */}
-      <section className="bg-white py-28">
+      <section className="bg-[#050510] py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between">
             <div>
-              <Badge className="mb-4 border-brand-blue/20 bg-brand-blue-light text-brand-blue">
+              <span className="mb-4 inline-flex items-center rounded-full border border-indigo-400/20 bg-indigo-400/10 px-3 py-1 text-xs font-semibold text-indigo-400">
                 Popular
-              </Badge>
-              <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
+              </span>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-5xl">
                 Trending templates
               </h2>
-              <p className="mt-4 text-lg text-muted-foreground">
+              <p className="mt-4 text-lg text-white/50">
                 The most downloaded templates this month.
               </p>
             </div>
-            <Button asChild variant="ghost" className="hidden text-brand-blue hover:text-brand-blue/80 hover:bg-brand-blue/5 sm:flex">
+            <Button asChild variant="ghost" className="hidden text-indigo-400 hover:text-indigo-300 hover:bg-indigo-400/10 sm:flex">
               <Link href="/browse">
                 View all <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
@@ -157,7 +115,7 @@ export default function HomePage() {
             ))}
           </div>
           <div className="mt-10 text-center">
-            <Button asChild variant="outline" className="rounded-xl">
+            <Button asChild variant="outline" className="rounded-xl border-white/10 bg-white/[0.05] text-white hover:bg-white/10 hover:text-white">
               <Link href="/browse">
                 View all templates <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
@@ -167,15 +125,15 @@ export default function HomePage() {
       </section>
       </FadeIn>
 
-      {/* How It Works — compact, between Trending and New This Week */}
+      {/* How It Works */}
       <FadeIn>
-      <section className="bg-[#fafafa] py-12">
+      <section className="bg-[#050510] py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-xl text-center">
-            <Badge className="mb-3 border-brand-amber/20 bg-brand-amber-light text-amber-800">
+            <span className="mb-3 inline-flex items-center rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-1 text-xs font-semibold text-amber-400">
               How It Works
-            </Badge>
-            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+            </span>
+            <h2 className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl">
               Pick &rarr; Copy &rarr; Paste
             </h2>
           </div>
@@ -205,21 +163,21 @@ export default function HomePage() {
 
       {/* New This Week */}
       {newThisWeek.length > 0 && (
-        <section className="bg-white py-28">
+        <section className="bg-[#050510] py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex items-end justify-between">
               <div>
-                <Badge className="mb-4 border-brand-amber/20 bg-brand-amber-light text-amber-800">
+                <span className="mb-4 inline-flex items-center rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-1 text-xs font-semibold text-amber-400">
                   Fresh
-                </Badge>
-                <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
+                </span>
+                <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-5xl">
                   New this week
                 </h2>
-                <p className="mt-4 text-lg text-muted-foreground">
+                <p className="mt-4 text-lg text-white/50">
                   Just added — the latest templates for your next project.
                 </p>
               </div>
-              <Button asChild variant="ghost" className="hidden text-brand-blue hover:text-brand-blue/80 hover:bg-brand-blue/5 sm:flex">
+              <Button asChild variant="ghost" className="hidden text-indigo-400 hover:text-indigo-300 hover:bg-indigo-400/10 sm:flex">
                 <Link href="/browse">
                   View all <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -231,7 +189,7 @@ export default function HomePage() {
               ))}
             </div>
             <div className="mt-8 text-center sm:hidden">
-              <Button asChild variant="outline" className="rounded-xl">
+              <Button asChild variant="outline" className="rounded-xl border-white/10 bg-white/[0.05] text-white hover:bg-white/10 hover:text-white">
                 <Link href="/browse">
                   View all templates <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -243,16 +201,16 @@ export default function HomePage() {
 
       <FadeIn>
       {/* Features */}
-      <section className="bg-[#fafafa] py-32">
+      <section className="bg-[#050510] py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <Badge className="mb-4 border-brand-blue/20 bg-brand-blue-light text-brand-blue">
+            <span className="mb-4 inline-flex items-center rounded-full border border-indigo-400/20 bg-indigo-400/10 px-3 py-1 text-xs font-semibold text-indigo-400">
               Features
-            </Badge>
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
+            </span>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-5xl">
               Why Code Bonito?
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
+            <p className="mt-4 text-lg text-white/50">
               Everything you need to create websites that stand out.
             </p>
           </div>
@@ -293,29 +251,29 @@ export default function HomePage() {
       </FadeIn>
 
       {/* Pricing Preview */}
-      <section className="bg-white py-32">
+      <section className="bg-[#050510] py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <Badge className="mb-4 border-brand-blue/20 bg-brand-blue-light text-brand-blue">
+            <span className="mb-4 inline-flex items-center rounded-full border border-indigo-400/20 bg-indigo-400/10 px-3 py-1 text-xs font-semibold text-indigo-400">
               Pricing
-            </Badge>
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
+            </span>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-5xl">
               Clear pricing, no surprises
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
+            <p className="mt-4 text-lg text-white/50">
               Try free with 1 template per month. Upgrade to Pro for unlimited access to all templates.
             </p>
           </div>
           <div className="mx-auto mt-16 grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-2">
-            <Card className="flex flex-col rounded-2xl border-border/60 bg-white shadow-sm transition-all duration-200 hover:shadow-md">
+            <Card className="flex flex-col rounded-2xl border-white/10 bg-white/[0.03] shadow-sm transition-all duration-200 hover:border-white/20">
               <CardHeader>
-                <CardTitle className="text-xl text-foreground">Free</CardTitle>
-                <CardDescription>
+                <CardTitle className="text-xl text-white">Free</CardTitle>
+                <CardDescription className="text-white/40">
                   Try with no commitment
                 </CardDescription>
                 <div className="mt-4">
-                  <span className="text-5xl font-bold text-foreground">$0</span>
-                  <span className="text-muted-foreground"> /month</span>
+                  <span className="text-5xl font-bold text-white">$0</span>
+                  <span className="text-white/40"> /month</span>
                 </div>
               </CardHeader>
               <CardContent className="flex-1">
@@ -327,26 +285,26 @@ export default function HomePage() {
                 </ul>
               </CardContent>
               <CardFooter>
-                <Button variant="outline" className="w-full rounded-xl" asChild>
+                <Button variant="outline" className="w-full rounded-xl border-white/10 text-white hover:bg-white/10 hover:text-white" asChild>
                   <Link href="/login">Sign Up Free</Link>
                 </Button>
               </CardFooter>
             </Card>
 
-            <Card className="relative flex flex-col rounded-2xl border-brand-blue/40 bg-white shadow-lg shadow-brand-blue/[0.08] ring-1 ring-brand-blue/10">
+            <Card className="relative flex flex-col rounded-2xl border-indigo-400/30 bg-white/[0.05] shadow-lg shadow-indigo-600/[0.08] ring-1 ring-indigo-400/20">
               <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                <Badge className="bg-gradient-to-r from-brand-blue to-blue-500 text-white shadow-md shadow-brand-blue/25 px-4 py-1">
+                <span className="inline-flex items-center rounded-full bg-gradient-to-r from-indigo-600 to-indigo-500 px-4 py-1 text-xs font-semibold text-white shadow-md shadow-indigo-600/25">
                   Pay Per Template
-                </Badge>
+                </span>
               </div>
               <CardHeader>
-                <CardTitle className="text-xl text-foreground">Premium</CardTitle>
-                <CardDescription>
+                <CardTitle className="text-xl text-white">Premium</CardTitle>
+                <CardDescription className="text-white/40">
                   Just what you need
                 </CardDescription>
                 <div className="mt-4">
-                  <span className="text-5xl font-bold text-foreground">$2</span>
-                  <span className="text-muted-foreground"> per template</span>
+                  <span className="text-5xl font-bold text-white">$2</span>
+                  <span className="text-white/40"> per template</span>
                 </div>
               </CardHeader>
               <CardContent className="flex-1">
@@ -357,49 +315,45 @@ export default function HomePage() {
                   <PricingFeature>Commercial use included</PricingFeature>
                   <PricingFeature>New templates every week</PricingFeature>
                 </ul>
-
               </CardContent>
               <CardFooter>
-                <Button className="w-full rounded-xl bg-gradient-to-r from-brand-blue to-blue-500 text-white shadow-md shadow-brand-blue/25 transition-all duration-200 hover:shadow-lg hover:brightness-110" asChild>
-                  <Link href="/browse">
+                <Link href="/browse" className="group relative w-full">
+                  <div className="absolute -inset-1 rounded-xl bg-indigo-600 opacity-20 blur-lg transition-opacity duration-300 group-hover:opacity-50" />
+                  <Button className="relative w-full rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/25 transition-all duration-200 hover:bg-indigo-500 hover:shadow-lg">
                     Browse Templates <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
+                  </Button>
+                </Link>
               </CardFooter>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* Final CTA — Full-width gradient */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-brand-blue via-blue-600 to-violet-600 py-32">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.1),transparent)]" />
-        <div className="absolute top-0 left-1/4 h-64 w-64 rounded-full bg-white/[0.05] blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 h-48 w-48 rounded-full bg-brand-amber/10 blur-3xl" />
+      {/* Final CTA */}
+      <section className="relative overflow-hidden py-32">
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 via-[#050510] to-violet-600/20" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(99,102,241,0.15),transparent_70%)]" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
               Ready to build something that stands out?
             </h2>
-            <p className="mx-auto mt-6 max-w-xl text-lg text-blue-100/80">
+            <p className="mx-auto mt-6 max-w-xl text-lg text-white/50">
               Join thousands of people creating websites that actually get noticed.
               Stop blending in, start standing out.
             </p>
             <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button
-                asChild
-                size="lg"
-                className="h-13 rounded-xl bg-white px-8 text-base font-semibold text-brand-blue shadow-xl shadow-black/10 transition-all duration-200 hover:bg-gray-50 hover:shadow-2xl"
-              >
-                <Link href="/browse">
+              <Link href="/browse" className="group relative">
+                <div className="absolute -inset-1 rounded-xl bg-indigo-600 opacity-30 blur-lg transition-opacity duration-300 group-hover:opacity-60" />
+                <span className="relative inline-flex h-13 items-center rounded-xl bg-indigo-600 px-8 text-base font-semibold text-white shadow-xl shadow-indigo-600/20 transition-all duration-200 hover:bg-indigo-500">
                   Browse Templates <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+                </span>
+              </Link>
               <Button
                 asChild
                 variant="outline"
                 size="lg"
-                className="h-13 rounded-xl border-white/30 bg-white/10 px-8 text-base text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/20 hover:border-white/50"
+                className="h-13 rounded-xl border-white/20 bg-white/[0.05] px-8 text-base text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/10 hover:border-white/30 hover:text-white"
               >
                 <Link href="/login">Create Free Account</Link>
               </Button>
@@ -421,12 +375,12 @@ function FeatureCard({
   description: string;
 }) {
   return (
-    <div className="group rounded-2xl border border-border/40 bg-white p-8 shadow-sm transition-all duration-200 hover:shadow-lg hover:shadow-brand-blue/[0.04] hover:-translate-y-1">
-      <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-blue/10 to-blue-100 text-brand-blue transition-transform duration-200 group-hover:scale-110">
+    <div className="group rounded-2xl border border-white/10 bg-white/[0.03] p-8 transition-all duration-300 hover:border-indigo-400/30 hover:shadow-[0_0_30px_rgba(99,102,241,0.15)] hover:-translate-y-1">
+      <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-white/[0.05] text-indigo-400 transition-transform duration-200 group-hover:scale-110">
         {icon}
       </div>
-      <h3 className="text-lg font-semibold text-foreground">{title}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+      <h3 className="text-lg font-semibold text-white">{title}</h3>
+      <p className="mt-2 text-sm leading-relaxed text-white/50">
         {description}
       </p>
     </div>
@@ -445,15 +399,15 @@ function StepCard({
   description: string;
 }) {
   return (
-    <div className="group relative rounded-2xl border border-border/40 bg-white p-8 text-center shadow-sm transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
-      <span className="inline-block font-mono text-xs font-bold tracking-[0.2em] text-brand-amber">
+    <div className="group relative rounded-2xl border border-white/10 bg-white/[0.03] p-8 text-center transition-all duration-300 hover:border-indigo-400/30 hover:-translate-y-1">
+      <span className="inline-block font-mono text-xs font-bold tracking-[0.2em] text-indigo-400">
         STEP {step}
       </span>
-      <div className="mx-auto mt-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-blue/10 to-blue-100 text-brand-blue transition-transform duration-200 group-hover:scale-110">
+      <div className="mx-auto mt-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/[0.05] text-indigo-400 transition-transform duration-200 group-hover:scale-110">
         {icon}
       </div>
-      <h3 className="mt-6 text-lg font-semibold text-foreground">{title}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+      <h3 className="mt-6 text-lg font-semibold text-white">{title}</h3>
+      <p className="mt-2 text-sm leading-relaxed text-white/50">
         {description}
       </p>
     </div>
@@ -462,8 +416,8 @@ function StepCard({
 
 function PricingFeature({ children }: { children: React.ReactNode }) {
   return (
-    <li className="flex items-center gap-3 text-sm text-foreground">
-      <Check className="h-4 w-4 shrink-0 text-brand-blue" />
+    <li className="flex items-center gap-3 text-sm text-white/80">
+      <Check className="h-4 w-4 shrink-0 text-indigo-400" />
       {children}
     </li>
   );
