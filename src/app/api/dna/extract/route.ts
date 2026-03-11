@@ -164,8 +164,10 @@ Rules:
     const jsonMatch = raw.match(/\{[\s\S]*\}/);
     if (!jsonMatch) throw new Error("No JSON in response");
     tokens = JSON.parse(jsonMatch[0]);
-  } catch {
-    return NextResponse.json({ error: "Failed to analyze design system. Please try again." }, { status: 500 });
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error("[DNA extract] Gemini error:", msg);
+    return NextResponse.json({ error: `Failed to analyze design system: ${msg}` }, { status: 500 });
   }
 
   // Step 4: Generate platform-specific prompts
