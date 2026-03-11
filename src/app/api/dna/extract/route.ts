@@ -134,32 +134,33 @@ Rules:
   };
 
   try {
-    const apiKey = process.env.ANTHROPIC_API_KEY;
-    if (!apiKey) throw new Error("No API key");
+    const apiKey = process.env.GOOGLE_API_KEY;
+    if (!apiKey) throw new Error("No Google API key");
 
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: {
-        "x-api-key": apiKey,
-        "anthropic-version": "2023-06-01",
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "claude-haiku-4-5",
-        max_tokens: 1024,
-        system: systemPrompt,
-        messages: [
-          {
-            role: "user",
-            content: `Extract the design system from this HTML (site: ${siteName}):\n\n${html}`,
-          },
-        ],
-      }),
-    });
+    // Gemini 2.0 Flash — free tier, fast, excellent at structured extraction
+    const res = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+      {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [
+                {
+                  text: `${systemPrompt}\n\nExtract the design system from this HTML (site: ${siteName}):\n\n${html}`,
+                },
+              ],
+            },
+          ],
+          generationConfig: { temperature: 0.1, maxOutputTokens: 1500 },
+        }),
+      }
+    );
 
-    if (!res.ok) throw new Error(`Anthropic API error: ${res.status}`);
+    if (!res.ok) throw new Error(`Gemini API error: ${res.status}`);
     const data = await res.json();
-    const raw = data.content?.[0]?.text ?? "";
+    const raw = data.candidates?.[0]?.content?.parts?.[0]?.text ?? "";
     const jsonMatch = raw.match(/\{[\s\S]*\}/);
     if (!jsonMatch) throw new Error("No JSON in response");
     tokens = JSON.parse(jsonMatch[0]);

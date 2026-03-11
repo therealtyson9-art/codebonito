@@ -1,0 +1,16 @@
+# Code Bonito
+
+> Design template platform for developers and vibe-coders who want their AI-built websites to look unique, not generic.
+
+## What we do
+Code Bonito offers 100+ curated design templates for AI-powered development tools like Cursor, v0, Bolt, Lovable, and Claude Code. Developers pick a template, copy it, and paste it into their AI tool — instantly giving their project a distinctive visual identity. We're for anyone tired of AI-built sites that all look the same.
+
+## Key pages
+- [Home](https://codebonito.com/): Browse featured templates and understand the platform
+- [Browse](https://codebonito.com/browse): Full library of design templates, filterable by style and platform
+- [Creators](https://codebonito.com/creators): Info for designers and developers who want to submit templates
+- [Pricing](https://codebonito.com/pricing): Plans and pricing for access to the full template library
+- [Demo](https://codebonito.com/demo): Live demo of how templates work in practice
+
+## Contact
+Website: https://codebonito.com

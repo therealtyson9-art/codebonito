@@ -85,6 +85,36 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "Code Bonito",
+                "url": "https://codebonito.com",
+                "description": "Design template platform for developers building with AI tools. 100+ unique templates for Cursor, v0, Bolt, Lovable, and Claude Code.",
+                "contactPoint": { "@type": "ContactPoint", "contactType": "customer support", "url": "https://codebonito.com" }
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "WebApplication",
+                "name": "Code Bonito",
+                "url": "https://codebonito.com",
+                "description": "Unique design templates for AI-built websites. Pick, copy, paste into your favorite AI coding tool and stand out from generic AI designs.",
+                "applicationCategory": "DeveloperApplication",
+                "operatingSystem": "Web",
+                "offers": {
+                  "@type": "Offer",
+                  "url": "https://codebonito.com/pricing"
+                }
+              }
+            ])
+          }}
+        />
+      </head>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
       >
