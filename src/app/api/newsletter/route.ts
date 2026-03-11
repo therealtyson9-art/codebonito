@@ -3,7 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 
 export async function POST(request: Request) {
   try {
-    const { email } = await request.json();
+    const { email, source } = await request.json();
 
     if (!email || !email.includes("@")) {
       return NextResponse.json({ error: "Email inválido" }, { status: 400 });
@@ -14,9 +14,12 @@ export async function POST(request: Request) {
       process.env.SUPABASE_SERVICE_ROLE_KEY!
     );
 
+    const insertData: Record<string, string> = { email: email.toLowerCase().trim() };
+    if (source) insertData.source = source;
+
     const { error } = await supabase
       .from("newsletter_subscribers")
-      .insert({ email: email.toLowerCase().trim() });
+      .insert(insertData);
 
     if (error?.code === "23505") {
       return NextResponse.json({ message: "Ya estás suscrito" });
