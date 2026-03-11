@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { CursorRulesClient } from "./client";
 
 export const metadata: Metadata = {
@@ -28,5 +29,9 @@ export const metadata: Metadata = {
 };
 
 export default function CursorRulesPage() {
-  return <CursorRulesClient />;
+  return (
+    <Suspense>
+      <CursorRulesClient />
+    </Suspense>
+  );
 }

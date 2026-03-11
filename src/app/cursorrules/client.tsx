@@ -1,6 +1,8 @@
 "use client";
 
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
 import Link from "next/link";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -577,10 +579,18 @@ export function CursorRulesClient() {
 
   const generated = useMemo(() => generateCursorrules(config), [config]);
 
-  const [showEmailGate, setShowEmailGate] = useState(false);
-  const [gateEmail, setGateEmail] = useState("");
-  const [gateLoading, setGateLoading] = useState(false);
-  const [gateError, setGateError] = useState("");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [user, setUser] = useState<{ id: string; email?: string } | null>(null);
+  const [authChecked, setAuthChecked] = useState(false);
+
+  useEffect(() => {
+    const supabase = createClient();
+    supabase.auth.getUser().then(({ data }) => {
+      setUser(data.user ? { id: data.user.id, email: data.user.email ?? undefined } : null);
+      setAuthChecked(true);
+    });
+  }, []);
 
   const triggerDownload = useCallback(() => {
     const blob = new Blob([generated], { type: "text/plain" });
@@ -594,31 +604,22 @@ export function CursorRulesClient() {
     URL.revokeObjectURL(url);
   }, [generated]);
 
-  const handleDownload = useCallback(() => {
-    setShowEmailGate(true);
-  }, []);
-
-  const handleEmailSubmit = useCallback(async () => {
-    if (!gateEmail || !gateEmail.includes("@")) {
-      setGateError("Enter a valid email");
-      return;
-    }
-    setGateLoading(true);
-    setGateError("");
-    try {
-      await fetch("/api/newsletter", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: gateEmail, source: "cursorrules" }),
-      });
-      setShowEmailGate(false);
+  // Auto-download after login redirect
+  useEffect(() => {
+    if (authChecked && user && searchParams.get("download") === "true") {
       triggerDownload();
-    } catch {
-      setGateError("Something went wrong. Try again.");
-    } finally {
-      setGateLoading(false);
+      // Clean URL
+      window.history.replaceState({}, "", "/cursorrules");
     }
-  }, [gateEmail, triggerDownload]);
+  }, [authChecked, user, searchParams, triggerDownload]);
+
+  const handleDownload = useCallback(() => {
+    if (user) {
+      triggerDownload();
+    } else {
+      router.push("/login?redirect=/cursorrules?download=true");
+    }
+  }, [user, triggerDownload, router]);
 
   return (
     <div className="bg-[#fafafa] text-[#1f2937] min-h-screen">
@@ -767,49 +768,7 @@ export function CursorRulesClient() {
         </div>
       </section>
 
-      {/* Email Gate Modal */}
-      {showEmailGate && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm px-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative">
-            <button
-              onClick={() => setShowEmailGate(false)}
-              className="absolute top-4 right-4 text-[#1f2937]/40 hover:text-[#1f2937] transition-colors"
-            >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-            <h3 className="font-bold text-xl text-[#1f2937] mb-2">Almost there!</h3>
-            <p className="text-sm text-[#1f2937]/60 mb-6">
-              Enter your email to download your custom .cursorrules file. We&apos;ll also send you design tips and new template drops.
-            </p>
-            <div className="flex gap-2">
-              <input
-                type="email"
-                value={gateEmail}
-                onChange={(e) => setGateEmail(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && handleEmailSubmit()}
-                placeholder="you@example.com"
-                className="flex-1 px-4 py-3 rounded-xl border border-[#1f2937]/10 text-sm focus:outline-none focus:ring-2 focus:ring-[#2563eb]/30 focus:border-[#2563eb] bg-[#fafafa]"
-                autoFocus
-              />
-              <button
-                onClick={handleEmailSubmit}
-                disabled={gateLoading}
-                className="px-6 py-3 bg-[#2563eb] text-white rounded-xl text-sm font-medium hover:bg-[#1d4ed8] transition-colors disabled:opacity-50"
-              >
-                {gateLoading ? "..." : "Download"}
-              </button>
-            </div>
-            {gateError && (
-              <p className="text-xs text-red-500 mt-2">{gateError}</p>
-            )}
-            <p className="text-xs text-[#1f2937]/30 mt-4">
-              No spam. Unsubscribe anytime.
-            </p>
-          </div>
-        </div>
-      )}
+      
     </div>
   );
 }
