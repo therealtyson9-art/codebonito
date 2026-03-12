@@ -149,9 +149,36 @@ function Hero() {
         textAlign: "center",
         position: "relative",
         padding: "0 48px",
+        overflow: "hidden",
         background: `linear-gradient(180deg, rgba(26,20,16,0.3) 0%, ${BG_COLOR} 100%), radial-gradient(ellipse at 50% 30%, rgba(139,69,19,0.15) 0%, transparent 70%)`,
       }}
     >
+      <video
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          opacity: 0.25,
+          pointerEvents: 'none',
+          zIndex: 0,
+        }}
+        src="/videos/particles-dust.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.5) 100%)',
+          zIndex: 1,
+          pointerEvents: 'none',
+        }}
+      />
       {/* Warm gradient overlay */}
       <div
         style={{
@@ -176,7 +203,7 @@ function Hero() {
       <div
         style={{
           position: "relative",
-          zIndex: 1,
+          zIndex: 2,
           maxWidth: "900px",
         }}
       >

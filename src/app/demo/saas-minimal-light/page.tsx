@@ -158,6 +158,10 @@ export default function SaasMinimalLightPage() {
           0%, 100% { transform: translate(-50%, -50%) scale(1); }
           50%      { transform: translate(-50%, -50%) scale(1.08); }
         }
+        @keyframes meshMove {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
 
         /* ── Scroll reveal ── */
         .sml-reveal {
@@ -429,6 +433,16 @@ export default function SaasMinimalLightPage() {
         <section ref={heroRef} className="sml-hero">
           <div className="sml-blob sml-blob-1" />
           <div className="sml-blob sml-blob-2" />
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'radial-gradient(ellipse 80% 60% at 20% 30%, rgba(99,102,241,0.08), transparent), radial-gradient(ellipse 60% 50% at 80% 20%, rgba(139,92,246,0.06), transparent)',
+              backgroundSize: '200% 200%',
+              animation: 'meshMove 20s ease-in-out infinite',
+              pointerEvents: 'none',
+            }}
+          />
 
           <div className="sml-badge">
             <div className="sml-badge-dot" />

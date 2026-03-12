@@ -96,7 +96,7 @@ function StatCounter({ stat }: { stat: StatItem }) {
 }
 
 /* ─── Scroll Fade-In ─────────────────────────────────────────────── */
-function FadeIn({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
+function FadeIn({ children, delay = 0, className = "", style: extraStyle = {} }: { children: React.ReactNode; delay?: number; className?: string; style?: React.CSSProperties }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -119,6 +119,7 @@ function FadeIn({ children, delay = 0, className = "" }: { children: React.React
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(36px)",
         transition: `opacity 0.7s cubic-bezier(0.23,1,0.32,1) ${delay}s, transform 0.7s cubic-bezier(0.23,1,0.32,1) ${delay}s`,
+        ...extraStyle,
       }}
     >
       {children}
@@ -321,6 +322,32 @@ export default function AppShowcasePage() {
         alignItems: "center", justifyContent: "center", textAlign: "center",
         padding: "120px 24px 80px", position: "relative", overflow: "hidden",
       }}>
+        <video
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            opacity: 0.3,
+            pointerEvents: 'none',
+            zIndex: 0,
+          }}
+          src="/videos/particles-glitter.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.5) 100%)',
+            zIndex: 1,
+            pointerEvents: 'none',
+          }}
+        />
         {/* Background glow */}
         <div style={{
           position: "absolute", top: "15%", left: "50%", transform: "translateX(-50%)",
@@ -338,7 +365,7 @@ export default function AppShowcasePage() {
           pointerEvents: "none",
         }} />
 
-        <FadeIn>
+        <FadeIn style={{ position: 'relative', zIndex: 2 }}>
           <div style={{
             display: "inline-flex", alignItems: "center", gap: 8,
             background: "rgba(168,85,247,0.08)", border: "1px solid rgba(168,85,247,0.2)",
@@ -354,7 +381,7 @@ export default function AppShowcasePage() {
           </div>
         </FadeIn>
 
-        <FadeIn delay={0.1}>
+        <FadeIn delay={0.1} style={{ position: 'relative', zIndex: 2 }}>
           <h1 style={{
             fontSize: "clamp(40px, 6vw, 72px)", fontWeight: 800,
             lineHeight: 1.05, letterSpacing: "-0.04em",
@@ -368,7 +395,7 @@ export default function AppShowcasePage() {
           </h1>
         </FadeIn>
 
-        <FadeIn delay={0.2}>
+        <FadeIn delay={0.2} style={{ position: 'relative', zIndex: 2 }}>
           <p style={{
             fontSize: 18, color: "rgba(248,250,252,0.6)",
             maxWidth: 500, margin: "0 auto 36px", lineHeight: 1.6,
@@ -377,14 +404,14 @@ export default function AppShowcasePage() {
           </p>
         </FadeIn>
 
-        <FadeIn delay={0.3}>
+        <FadeIn delay={0.3} style={{ position: 'relative', zIndex: 2 }}>
           <div style={{ display: "flex", gap: 14, flexWrap: "wrap", justifyContent: "center", marginBottom: 60 }}>
             <StoreButton store="apple" />
             <StoreButton store="google" />
           </div>
         </FadeIn>
 
-        <FadeIn delay={0.4}>
+        <FadeIn delay={0.4} style={{ position: 'relative', zIndex: 2 }}>
           <div style={{
             animation: "phone-float 5s ease-in-out infinite",
             position: "relative", zIndex: 1,

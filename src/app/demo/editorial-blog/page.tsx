@@ -185,6 +185,7 @@ export default function EditorialBlogPage() {
           max-width: 780px; margin: 0 auto;
           padding: 72px 24px 56px; text-align: center;
           animation: eb-fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+          position: relative; overflow: hidden;
         }
         .eb-hero-category {
           display: inline-block; font-family: 'Inter', sans-serif;
@@ -490,10 +491,28 @@ export default function EditorialBlogPage() {
 
         {/* ── Hero / Featured Article ───────────────────────── */}
         <section className="eb-hero">
-          <span className="eb-hero-category">{FEATURED.category}</span>
-          <h1 className="eb-hero-title">{FEATURED.title}</h1>
-          <p className="eb-hero-excerpt">{FEATURED.excerpt}</p>
-          <div className="eb-hero-meta">
+          <video
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              opacity: 0.15,
+              pointerEvents: 'none',
+              zIndex: 0,
+              mixBlendMode: 'multiply',
+            }}
+            src="/videos/particles-dust.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+          <span className="eb-hero-category" style={{ position: 'relative', zIndex: 2 }}>{FEATURED.category}</span>
+          <h1 className="eb-hero-title" style={{ position: 'relative', zIndex: 2 }}>{FEATURED.title}</h1>
+          <p className="eb-hero-excerpt" style={{ position: 'relative', zIndex: 2 }}>{FEATURED.excerpt}</p>
+          <div className="eb-hero-meta" style={{ position: 'relative', zIndex: 2 }}>
             <span className="eb-hero-author">{FEATURED.author}</span>
             <span className="eb-meta-dot" />
             <span>{FEATURED.date}</span>

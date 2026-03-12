@@ -345,8 +345,34 @@ export default function AnalyticsDashboardPage() {
         <section style={{
           minHeight: "100vh", display: "flex", flexDirection: "column",
           alignItems: "center", justifyContent: "center", textAlign: "center",
-          padding: "120px 24px 80px", position: "relative",
+          padding: "120px 24px 80px", position: "relative", overflow: "hidden",
         }}>
+          <video
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              opacity: 0.3,
+              pointerEvents: 'none',
+              zIndex: 0,
+            }}
+            src="/videos/particles-blue.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.5) 100%)',
+              zIndex: 1,
+              pointerEvents: 'none',
+            }}
+          />
           {/* Animated grid bg */}
           <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
             <svg width="100%" height="100%" style={{ opacity: 0.15 }}>
@@ -377,7 +403,7 @@ export default function AnalyticsDashboardPage() {
             animation: "ad-float 10s ease-in-out infinite 2s",
           }} />
 
-          <FadeIn>
+          <FadeIn style={{ position: 'relative', zIndex: 2 }}>
             <div style={{
               display: "inline-flex", alignItems: "center", gap: 8,
               background: "rgba(139,92,246,0.08)", border: "1px solid rgba(139,92,246,0.2)",
@@ -394,7 +420,7 @@ export default function AnalyticsDashboardPage() {
             </div>
           </FadeIn>
 
-          <FadeIn delay={0.15}>
+          <FadeIn delay={0.15} style={{ position: 'relative', zIndex: 2 }}>
             <h1 style={{
               fontSize: "clamp(2.8rem, 7vw, 5.5rem)", fontWeight: 900,
               letterSpacing: "-0.04em", lineHeight: 1.05, maxWidth: 800, margin: "0 auto 24px",
@@ -407,7 +433,7 @@ export default function AnalyticsDashboardPage() {
             </h1>
           </FadeIn>
 
-          <FadeIn delay={0.3}>
+          <FadeIn delay={0.3} style={{ position: 'relative', zIndex: 2 }}>
             <p style={{
               fontSize: "clamp(1rem, 2vw, 1.25rem)", color: "rgba(148,163,184,0.8)",
               maxWidth: 560, lineHeight: 1.7, margin: "0 auto 40px",
@@ -416,7 +442,7 @@ export default function AnalyticsDashboardPage() {
             </p>
           </FadeIn>
 
-          <FadeIn delay={0.45}>
+          <FadeIn delay={0.45} style={{ position: 'relative', zIndex: 2 }}>
             <div style={{ display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap", justifyContent: "center" }}>
               <button style={{
                 background: `linear-gradient(135deg, ${PRIMARY}, ${ACCENT})`,

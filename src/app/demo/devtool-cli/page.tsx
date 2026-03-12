@@ -556,6 +556,32 @@ export default function DevToolCLIPage() {
         padding: "120px 24px 60px",
         position: "relative", overflow: "hidden",
       }}>
+        <video
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            opacity: 0.3,
+            pointerEvents: 'none',
+            zIndex: 0,
+          }}
+          src="/videos/particles-blue.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.5) 100%)',
+            zIndex: 1,
+            pointerEvents: 'none',
+          }}
+        />
         {/* Dot grid background */}
         <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%", opacity: 0.4, pointerEvents: "none" }}>
           <defs>
@@ -584,7 +610,7 @@ export default function DevToolCLIPage() {
         }} />
 
         {/* Status badge */}
-        <FadeInSection delay={0}>
+        <FadeInSection delay={0} style={{ position: 'relative', zIndex: 2 }}>
           <div style={{
             display: "inline-flex", alignItems: "center", gap: 8,
             background: "rgba(16,185,129,0.08)",
@@ -608,7 +634,7 @@ export default function DevToolCLIPage() {
         </FadeInSection>
 
         {/* Headline */}
-        <FadeInSection delay={0.15}>
+        <FadeInSection delay={0.15} style={{ position: 'relative', zIndex: 2 }}>
           <h1 style={{
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: "clamp(2.5rem, 7vw, 5rem)",
@@ -630,7 +656,7 @@ export default function DevToolCLIPage() {
         </FadeInSection>
 
         {/* Subheadline */}
-        <FadeInSection delay={0.3}>
+        <FadeInSection delay={0.3} style={{ position: 'relative', zIndex: 2 }}>
           <p style={{
             fontFamily: "'Inter', sans-serif",
             fontSize: "clamp(1rem, 2.5vw, 1.35rem)",
@@ -643,12 +669,12 @@ export default function DevToolCLIPage() {
         </FadeInSection>
 
         {/* Install bar */}
-        <FadeInSection delay={0.45} style={{ marginTop: 40 }}>
+        <FadeInSection delay={0.45} style={{ marginTop: 40, position: 'relative', zIndex: 2 }}>
           <CopyInstallBar />
         </FadeInSection>
 
         {/* Terminal animation */}
-        <FadeInSection delay={0.6} style={{ marginTop: 48, width: "100%", display: "flex", justifyContent: "center" }}>
+        <FadeInSection delay={0.6} style={{ marginTop: 48, width: "100%", display: "flex", justifyContent: "center", position: 'relative', zIndex: 2 }}>
           <AnimatedTerminal />
         </FadeInSection>
       </section>

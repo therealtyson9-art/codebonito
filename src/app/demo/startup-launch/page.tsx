@@ -148,6 +148,10 @@ const GLOBAL_STYLES = `
   from { opacity: 0; transform: scale(0.95); }
   to   { opacity: 1; transform: scale(1); }
 }
+@keyframes meshMove {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
 `;
 
 /* ─── Components ─────────────────────────────────────────────────── */
@@ -286,6 +290,17 @@ function HeroSection() {
         background: "#FAFAF8",
       }}
     >
+      {/* Mesh gradient animation */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'radial-gradient(ellipse 80% 60% at 20% 30%, rgba(99,102,241,0.08), transparent), radial-gradient(ellipse 60% 50% at 80% 20%, rgba(139,92,246,0.06), transparent)',
+          backgroundSize: '200% 200%',
+          animation: 'meshMove 20s ease-in-out infinite',
+          pointerEvents: 'none',
+        }}
+      />
       {/* Dot pattern accent */}
       <div
         style={{

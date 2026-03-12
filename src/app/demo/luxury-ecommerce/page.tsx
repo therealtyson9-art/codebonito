@@ -189,6 +189,32 @@ export default function LuxuryEcommercePage() {
           overflow: "hidden",
         }}
       >
+        <video
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            opacity: 0.25,
+            pointerEvents: 'none',
+            zIndex: 0,
+          }}
+          src="/videos/particles-dust.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.5) 100%)',
+            zIndex: 1,
+            pointerEvents: 'none',
+          }}
+        />
         {/* BG gradient placeholder */}
         <div style={{
           position: "absolute", inset: 0,
