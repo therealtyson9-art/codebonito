@@ -31,7 +31,13 @@ import { CursorLogo, V0Logo, BoltLogo, LovableLogo, ClaudeLogo, OpenClawLogo } f
 
 export default function HomePage() {
   const popularTemplates = [...MOCK_TEMPLATES]
-    .sort((a, b) => b.downloads_count - a.downloads_count)
+    .sort((a, b) => {
+      // Ultra Premium first, then by downloads
+      const tierOrder = (t: typeof a) => t.price_tier === "ultra_premium" ? 0 : t.price_tier === "pro" ? 1 : 2;
+      const tierDiff = tierOrder(a) - tierOrder(b);
+      if (tierDiff !== 0) return tierDiff;
+      return b.downloads_count - a.downloads_count;
+    })
     .slice(0, 6);
 
   const newThisWeek = [...MOCK_TEMPLATES]
