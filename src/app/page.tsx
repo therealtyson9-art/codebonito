@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import { MOCK_TEMPLATES } from "@/lib/mock-data";
 import { TemplateCard } from "@/components/template-card";
+import { HomeTemplateCard } from "@/components/home-template-card";
 import { MobileCTA } from "@/components/mobile-cta";
 import { BeforeAfterSlider } from "@/components/before-after-slider";
 import { CursorLogo, V0Logo, BoltLogo, LovableLogo, ClaudeLogo, OpenClawLogo } from "@/components/platform-logos";
@@ -153,7 +154,7 @@ export default function HomePage() {
           </div>
           <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {popularTemplates.map((template) => (
-              <TemplateCard key={template.id} template={template} compact />
+              <HomeTemplateCard key={template.id} template={template} />
             ))}
           </div>
           <div className="mt-10 text-center">
@@ -227,7 +228,7 @@ export default function HomePage() {
             </div>
             <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {newThisWeek.map((template) => (
-                <TemplateCard key={template.id} template={template} compact />
+                <HomeTemplateCard key={template.id} template={template} />
               ))}
             </div>
             <div className="mt-8 text-center sm:hidden">
