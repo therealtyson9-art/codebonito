@@ -56,20 +56,11 @@ export default function HomePage() {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur-xl">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/[0.05]">
-                <Download className="h-5 w-5 text-indigo-400" />
-              </div>
-              <div>
-                <p className="text-2xl font-bold tracking-tight text-white">100+</p>
-                <p className="text-sm text-white/40">Unique Templates</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur-xl">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/[0.05]">
-                <Layers className="h-5 w-5 text-indigo-400" />
+                <Palette className="h-5 w-5 text-indigo-400" />
               </div>
               <div>
                 <p className="text-2xl font-bold tracking-tight text-white">{MOCK_TEMPLATES.length}</p>
-                <p className="text-sm text-white/40">Templates</p>
+                <p className="text-sm text-white/40">Unique Templates</p>
               </div>
             </div>
             <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur-xl">
@@ -79,6 +70,15 @@ export default function HomePage() {
               <div>
                 <p className="text-2xl font-bold tracking-tight text-white">6</p>
                 <p className="text-sm text-white/40">AI Platforms</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur-xl">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/[0.05]">
+                <Download className="h-5 w-5 text-indigo-400" />
+              </div>
+              <div>
+                <p className="text-2xl font-bold tracking-tight text-white">$2</p>
+                <p className="text-sm text-white/40">Per Template</p>
               </div>
             </div>
           </div>

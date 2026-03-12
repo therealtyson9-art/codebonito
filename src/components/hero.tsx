@@ -131,29 +131,6 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Platform logos */}
-        <div className="mt-16 animate-fade-up" style={{ animationDelay: "0.85s" }}>
-          <p className="mb-4 text-center text-xs font-medium uppercase tracking-[0.2em] text-white/30">
-            Works with your favorite AI tools
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
-            {[
-              { name: "Cursor", c: "hover:text-white" },
-              { name: "v0", c: "hover:text-white" },
-              { name: "Bolt", c: "hover:text-violet-400" },
-              { name: "Lovable", c: "hover:text-pink-400" },
-              { name: "Claude Code", c: "hover:text-amber-400" },
-              { name: "OpenClaw", c: "hover:text-emerald-400" },
-            ].map((p) => (
-              <span
-                key={p.name}
-                className={`font-mono text-sm tracking-tight text-white/30 transition-colors duration-300 ${p.c}`}
-              >
-                {p.name}
-              </span>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
