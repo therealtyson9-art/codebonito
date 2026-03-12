@@ -333,23 +333,15 @@ export default function SaasMotionDarkPage() {
           text-align: center;
           overflow: hidden;
         }
-        /* Mesh gradient background */
-        .smb-mesh-gradient {
+        /* Video background */
+        .smb-video {
           position: absolute;
           inset: 0;
-          background:
-            radial-gradient(ellipse 80% 60% at 20% 30%, rgba(99,102,241,0.3), transparent),
-            radial-gradient(ellipse 60% 50% at 80% 20%, rgba(139,92,246,0.25), transparent),
-            radial-gradient(ellipse 50% 40% at 50% 80%, rgba(99,102,241,0.15), transparent);
-          background-size: 200% 200%;
-          animation: smb-mesh-move 18s ease-in-out infinite;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          opacity: 0.35;
           pointer-events: none;
-        }
-        @keyframes smb-mesh-move {
-          0%, 100% { background-position: 0% 50%; }
-          25% { background-position: 100% 0%; }
-          50% { background-position: 100% 100%; }
-          75% { background-position: 0% 100%; }
         }
         /* Dark overlay over video */
         .smb-video-overlay {
@@ -695,8 +687,15 @@ export default function SaasMotionDarkPage() {
 
           {/* ── Hero with Video Background ── */}
           <section className="smb-hero">
-            {/* Animated mesh gradient background */}
-            <div className="smb-mesh-gradient" />
+            {/* Video background — blue particles */}
+            <video
+              className="smb-video"
+              src="/videos/particles-blue.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
             <div className="smb-video-overlay" />
 
             {/* Corner accents */}
