@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -64,10 +65,8 @@ export function Navbar() {
       >
         <div className="flex h-14 items-center justify-between px-5">
           <div className="flex items-center gap-8">
-            <Link href="/" className="flex items-center gap-0.5 transition-opacity duration-200 hover:opacity-80">
-              <span className="text-lg font-bold text-white">Code</span>
-              <span className="text-lg font-bold text-indigo-400">Bonito</span>
-              <span className="ml-0.5 h-1.5 w-1.5 rounded-full bg-amber-500" />
+            <Link href="/" className="flex items-center transition-opacity duration-200 hover:opacity-80">
+              <Image src="/images/logo-dark.png" alt="Code Bonito" width={150} height={25} className="h-6 w-auto" priority />
             </Link>
             <div className="hidden items-center gap-1 md:flex">
               {navLinks.map((link) => (
