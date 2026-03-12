@@ -26,6 +26,7 @@ import { MOCK_TEMPLATES } from "@/lib/mock-data";
 import { TemplateCard } from "@/components/template-card";
 import { MobileCTA } from "@/components/mobile-cta";
 import { BeforeAfterSlider } from "@/components/before-after-slider";
+import { CursorLogo, V0Logo, BoltLogo, LovableLogo, ClaudeLogo, OpenClawLogo } from "@/components/platform-logos";
 
 export default function HomePage() {
   const popularTemplates = [...MOCK_TEMPLATES]
@@ -72,6 +73,41 @@ export default function HomePage() {
                 <p className="text-2xl font-bold tracking-tight text-white">6</p>
                 <p className="text-sm text-white/40">AI Platforms</p>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Platform logos */}
+      <section className="pt-8 pb-4">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="mb-8 text-center text-sm font-medium uppercase tracking-widest text-white/30">
+            Works with your favorite AI tools
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+            <div className="group flex flex-col items-center gap-2">
+              <CursorLogo className="h-7 w-7 text-white/30 transition-colors duration-200 group-hover:text-white" />
+              <span className="text-[11px] font-medium text-white/30 transition-colors duration-200 group-hover:text-white/70">Cursor</span>
+            </div>
+            <div className="group flex flex-col items-center gap-2">
+              <V0Logo className="h-7 w-7 text-white/30 transition-colors duration-200 group-hover:text-white" />
+              <span className="text-[11px] font-medium text-white/30 transition-colors duration-200 group-hover:text-white/70">v0</span>
+            </div>
+            <div className="group flex flex-col items-center gap-2">
+              <BoltLogo className="h-7 w-7 text-white/30 transition-colors duration-200 group-hover:text-violet-400" />
+              <span className="text-[11px] font-medium text-white/30 transition-colors duration-200 group-hover:text-violet-400">Bolt</span>
+            </div>
+            <div className="group flex flex-col items-center gap-2">
+              <LovableLogo className="h-7 w-7 text-white/30 transition-colors duration-200 group-hover:text-pink-400" />
+              <span className="text-[11px] font-medium text-white/30 transition-colors duration-200 group-hover:text-pink-400">Lovable</span>
+            </div>
+            <div className="group flex flex-col items-center gap-2">
+              <ClaudeLogo className="h-7 w-7 text-white/30 transition-colors duration-200 group-hover:text-amber-400" />
+              <span className="text-[11px] font-medium text-white/30 transition-colors duration-200 group-hover:text-amber-400">Claude Code</span>
+            </div>
+            <div className="group flex flex-col items-center gap-2">
+              <OpenClawLogo className="h-7 w-7 opacity-30 grayscale transition-all duration-200 group-hover:opacity-100 group-hover:grayscale-0" />
+              <span className="text-[11px] font-medium text-white/30 transition-colors duration-200 group-hover:text-[#ff4d4d]">OpenClaw</span>
             </div>
           </div>
         </div>
