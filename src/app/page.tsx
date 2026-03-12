@@ -114,22 +114,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* "New every week" pill */}
-      <div className="flex justify-center py-6">
-        <span className="inline-flex items-center gap-2 rounded-full border border-indigo-400/20 bg-indigo-400/10 px-4 py-1.5 text-sm font-medium text-indigo-300">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-indigo-400 opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-indigo-400" />
-          </span>
-          New templates added every week
-        </span>
-      </div>
-
-      {/* Before/After Slider — Social Proof */}
-      <FadeIn>
-        <BeforeAfterSlider />
-      </FadeIn>
-
       <FadeIn>
       {/* Trending Templates */}
       <section className="bg-[#050510] py-28">
@@ -163,42 +147,6 @@ export default function HomePage() {
                 View all templates <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-          </div>
-        </div>
-      </section>
-      </FadeIn>
-
-      {/* How It Works */}
-      <FadeIn>
-      <section className="bg-[#050510] py-12">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-xl text-center">
-            <span className="mb-3 inline-flex items-center rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-1 text-xs font-semibold text-amber-400">
-              How It Works
-            </span>
-            <h2 className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl">
-              Pick &rarr; Copy &rarr; Paste
-            </h2>
-          </div>
-          <div className="mx-auto mt-8 grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-3">
-            <StepCard
-              step="01"
-              icon={<Search className="h-5 w-5" />}
-              title="Pick your template"
-              description="Browse by category, style, or platform. Find the perfect design for your next project."
-            />
-            <StepCard
-              step="02"
-              icon={<Copy className="h-5 w-5" />}
-              title="Copy the prompt"
-              description="Get a design prompt built for Cursor, v0, Bolt, Lovable, or Claude Code."
-            />
-            <StepCard
-              step="03"
-              icon={<Sparkles className="h-5 w-5" />}
-              title="Paste and build"
-              description="Paste into your AI tool and watch it generate a unique, beautiful website."
-            />
           </div>
         </div>
       </section>
@@ -241,6 +189,47 @@ export default function HomePage() {
           </div>
         </section>
       )}
+
+      {/* Before/After Slider — Social Proof */}
+      <FadeIn>
+        <BeforeAfterSlider />
+      </FadeIn>
+
+      {/* How It Works */}
+      <FadeIn>
+      <section className="bg-[#050510] py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-xl text-center">
+            <span className="mb-3 inline-flex items-center rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-1 text-xs font-semibold text-amber-400">
+              How It Works
+            </span>
+            <h2 className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl">
+              Pick &rarr; Copy &rarr; Paste
+            </h2>
+          </div>
+          <div className="mx-auto mt-8 grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-3">
+            <StepCard
+              step="01"
+              icon={<Search className="h-5 w-5" />}
+              title="Pick your template"
+              description="Browse by category, style, or platform. Find the perfect design for your next project."
+            />
+            <StepCard
+              step="02"
+              icon={<Copy className="h-5 w-5" />}
+              title="Copy the prompt"
+              description="Get a design prompt built for Cursor, v0, Bolt, Lovable, or Claude Code."
+            />
+            <StepCard
+              step="03"
+              icon={<Sparkles className="h-5 w-5" />}
+              title="Paste and build"
+              description="Paste into your AI tool and watch it generate a unique, beautiful website."
+            />
+          </div>
+        </div>
+      </section>
+      </FadeIn>
 
       <FadeIn>
       {/* Features */}
