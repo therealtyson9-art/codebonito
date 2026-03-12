@@ -213,3 +213,13 @@
 .font-instrument-serif {
   font-family: var(--font-instrument-serif), Georgia, serif;
 }
+
+/* Hide site navbar and footer on demo pages */
+body[data-demo="true"] nav.fixed,
+body[data-demo="true"] > footer,
+body[data-demo="true"] footer.border-t {
+  display: none !important;
+}
+body[data-demo="true"] main {
+  min-height: 100vh !important;
+}
