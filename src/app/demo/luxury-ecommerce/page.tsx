@@ -215,12 +215,11 @@ export default function LuxuryEcommercePage() {
             pointerEvents: 'none',
           }}
         />
-        {/* BG gradient placeholder */}
+        {/* BG base — behind video */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(165deg, #E8E4DE 0%, #D4CFC7 35%, #C8C0B5 65%, #B8B0A5 100%)",
-          transform: `translateY(${heroParallax.offset}px)`,
-          transition: "transform 0.1s linear",
+          background: "#1A1A1A",
+          zIndex: -1,
         }} />
         {/* Subtle shimmer overlay */}
         <div style={{
