@@ -556,14 +556,16 @@ export default function AIProductHeroPage() {
         .aph-morph-container {
           position: relative;
           display: inline-block;
-          min-width: 280px;
-          height: 1.1em;
+          min-width: 320px;
+          height: 1.15em;
           vertical-align: bottom;
+          overflow: hidden;
         }
         .aph-morph-word {
           position: absolute;
           left: 0;
           right: 0;
+          white-space: nowrap;
           transition: all 0.6s cubic-bezier(0.23,1,0.32,1);
           background: linear-gradient(135deg, #818cf8, #a78bfa, #c4b5fd);
           -webkit-background-clip: text;
@@ -978,7 +980,7 @@ export default function AIProductHeroPage() {
             </div>
 
             <h1 className="aph-headline aph-headline-gradient">
-              {HEADLINE}{" "}
+              Build<br />
               <MorphingText />
             </h1>
 
