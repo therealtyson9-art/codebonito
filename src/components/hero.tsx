@@ -77,6 +77,9 @@ export function Hero() {
               Clone Any Website <span className="ml-1">→</span>
             </Link>
           </div>
+          <p className="mt-5 text-sm text-white/40 animate-fade-up" style={{ animationDelay: "0.65s" }}>
+            🔒 30-day money-back guarantee · No credit card for free templates
+          </p>
         </div>
 
         {/* Template showcase cards */}
