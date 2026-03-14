@@ -30,6 +30,31 @@ export async function GET(request: Request) {
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ user_id: profile.id, email: profile.email, name: profile.name }),
             }).catch(() => {});
+
+            // Schedule day 3 and day 7 follow-up emails
+            const now = new Date();
+            const day3 = new Date(now.getTime() + 3 * 24 * 60 * 60 * 1000);
+            const day7 = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
+
+            void (async () => {
+              const { error: queueError } = await admin.from("email_queue").insert([
+                {
+                  user_id: profile.id,
+                  email: profile.email,
+                  name: profile.name,
+                  email_type: "day3_upsell",
+                  scheduled_for: day3.toISOString(),
+                },
+                {
+                  user_id: profile.id,
+                  email: profile.email,
+                  name: profile.name,
+                  email_type: "day7_pro_push",
+                  scheduled_for: day7.toISOString(),
+                },
+              ]);
+              if (queueError) console.error("email_queue insert error:", queueError);
+            })();
           }
         }
       } catch { /* non-blocking */ }
