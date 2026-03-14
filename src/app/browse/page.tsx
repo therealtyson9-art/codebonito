@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { getUserProStatus } from "@/lib/pro";
 import { MOCK_TEMPLATES, getDemoUrl } from "@/lib/mock-data";
 import type { Template } from "@/types/database";
 import { BrowseClient } from "./browse-client";
@@ -31,5 +32,13 @@ export default async function BrowsePage() {
     demo_url: t.demo_url ?? getDemoUrl(t.slug),
   }));
 
-  return <BrowseClient templates={templates} />;
+  // Check if user has Pro subscription
+  let isPro = false;
+  try {
+    isPro = await getUserProStatus();
+  } catch {
+    // Not logged in or error — treat as free
+  }
+
+  return <BrowseClient templates={templates} isPro={isPro} />;
 }

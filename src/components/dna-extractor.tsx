@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { Dna, Copy, Check, RotateCcw, Loader2, AlertCircle } from "lucide-react";
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { Dna, Copy, Check, RotateCcw, Loader2, AlertCircle, Zap } from "lucide-react";
 
 interface TypeLevel {
   size: string;
@@ -61,16 +62,42 @@ function isError(r: Result): r is DNAError {
   return r !== null && "error" in r;
 }
 
-export function DNAExtractor() {
+const DNA_LIMIT = 3;
+const DNA_STORAGE_KEY = "dna_uses";
+
+function getUsageCount(): number {
+  if (typeof window === "undefined") return 0;
+  return parseInt(localStorage.getItem(DNA_STORAGE_KEY) || "0", 10);
+}
+
+function incrementUsage(): number {
+  const next = getUsageCount() + 1;
+  localStorage.setItem(DNA_STORAGE_KEY, String(next));
+  return next;
+}
+
+export function DNAExtractor({ isPro = false }: { userId?: string; isPro?: boolean }) {
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<Result>(null);
   const [copied, setCopied] = useState(false);
   const [activeTab, setActiveTab] = useState<"v0" | "cursor" | "lovable">("v0");
+  const [usageCount, setUsageCount] = useState(0);
+
+  // Load usage count from localStorage on mount
+  useEffect(() => {
+    setUsageCount(getUsageCount());
+  }, []);
 
   async function handleExtract(e: React.FormEvent) {
     e.preventDefault();
     if (!url.trim()) return;
+
+    // Enforce usage limit for free users
+    if (!isPro && usageCount >= DNA_LIMIT) {
+      setResult({ error: `You've used your ${DNA_LIMIT} free DNA extractions. Upgrade to Pro for unlimited.` });
+      return;
+    }
 
     setLoading(true);
     setResult(null);
@@ -86,6 +113,12 @@ export function DNAExtractor() {
       });
       const data = await res.json();
       setResult(data);
+
+      // Increment usage counter for free users on success
+      if (!isPro && !("error" in data)) {
+        const next = incrementUsage();
+        setUsageCount(next);
+      }
     } catch {
       setResult({ error: "Network error. Please try again." });
     } finally {
@@ -165,19 +198,68 @@ export function DNAExtractor() {
               Fetching page and analyzing design system with AI…
             </p>
           )}
+
+          {/* Usage counter */}
+          {!isPro && (
+            <div className="mt-4 flex items-center justify-between rounded-xl border border-gray-200 bg-gray-50 px-4 py-3">
+              <div className="flex items-center gap-2">
+                <Zap className="h-4 w-4 text-indigo-500" />
+                <span className="text-sm text-gray-600">
+                  {usageCount >= DNA_LIMIT ? (
+                    <span className="font-semibold text-red-600">
+                      You&apos;ve used your {DNA_LIMIT} free DNA extractions this month.
+                    </span>
+                  ) : (
+                    <>
+                      <span className="font-semibold text-gray-900">{Math.max(0, DNA_LIMIT - usageCount)} of {DNA_LIMIT}</span> free extractions remaining
+                    </>
+                  )}
+                </span>
+              </div>
+              <Link
+                href="/pricing"
+                className="rounded-lg bg-indigo-600 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-indigo-500"
+              >
+                Upgrade to Pro
+              </Link>
+            </div>
+          )}
+          {isPro && (
+            <div className="mt-4 flex items-center gap-2 rounded-xl border border-indigo-200 bg-indigo-50 px-4 py-3">
+              <Zap className="h-4 w-4 text-indigo-600" />
+              <span className="text-sm font-medium text-indigo-700">Pro — unlimited extractions</span>
+            </div>
+          )}
         </form>
       </div>
 
       {/* Error state */}
       {result && isError(result) && (
         <div className="max-w-2xl mx-auto px-4 py-8">
-          <div className="flex items-start gap-3 bg-red-50 border border-red-200 rounded-xl p-4">
-            <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-            <div>
-              <p className="text-red-700 font-semibold text-sm">Extraction failed</p>
-              <p className="text-red-600 text-sm mt-1">{(result as DNAError).error}</p>
+          {usageCount >= DNA_LIMIT && !isPro ? (
+            <div className="rounded-xl border border-indigo-200 bg-gradient-to-br from-indigo-50 to-white p-6 text-center">
+              <Zap className="mx-auto mb-3 h-8 w-8 text-indigo-500" />
+              <h3 className="text-base font-semibold text-gray-900">Monthly limit reached</h3>
+              <p className="mt-1.5 text-sm text-gray-500">
+                You&apos;ve used your {DNA_LIMIT} free DNA extractions. Upgrade to Pro for <span className="font-medium text-gray-700">unlimited</span> extractions.
+              </p>
+              <Link
+                href="/pricing"
+                className="mt-4 inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm shadow-indigo-500/30 transition-colors hover:bg-indigo-500"
+              >
+                <Zap className="h-4 w-4" />
+                Upgrade to Pro — $6/mo
+              </Link>
             </div>
-          </div>
+          ) : (
+            <div className="flex items-start gap-3 bg-red-50 border border-red-200 rounded-xl p-4">
+              <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="text-red-700 font-semibold text-sm">Extraction failed</p>
+                <p className="text-red-600 text-sm mt-1">{(result as DNAError).error}</p>
+              </div>
+            </div>
+          )}
         </div>
       )}
 

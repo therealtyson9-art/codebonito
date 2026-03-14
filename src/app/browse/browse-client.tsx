@@ -14,10 +14,10 @@ import {
 } from "@/components/ui/select";
 import { TemplateCard } from "@/components/template-card";
 import { CATEGORIES, STYLES } from "@/lib/mock-data";
-import { Search, SlidersHorizontal, X, ExternalLink, Sparkles } from "lucide-react";
+import { Search, X, ExternalLink, Sparkles, Lock } from "lucide-react";
 import type { Template } from "@/types/database";
 
-export function BrowseClient({ templates }: { templates: Template[] }) {
+export function BrowseClient({ templates, isPro = false }: { templates: Template[]; isPro?: boolean }) {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState<string>("all");
   const [style, setStyle] = useState<string>("all");
@@ -213,33 +213,52 @@ export function BrowseClient({ templates }: { templates: Template[] }) {
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {filtered.map((template) => (
-              <div key={template.id} className="flex flex-col">
-                <div className="relative">
-                  <TemplateCard template={template} />
-                  {template.price_tier === "ultra_premium" && (
-                    <span
-                      className="absolute left-3 bottom-[3.5rem] z-10 inline-flex items-center gap-1 rounded-full bg-indigo-600 px-2.5 py-0.5 text-[11px] font-semibold text-white shadow-lg shadow-indigo-500/30 ring-1 ring-indigo-400/40"
+            {filtered.map((template) => {
+              const isUltra = template.price_tier === "ultra_premium";
+              const locked = isUltra && !isPro;
+              return (
+                <div key={template.id} className="flex flex-col">
+                  <div className="relative">
+                    <TemplateCard template={template} />
+                    {/* Ultra Premium Pro badge */}
+                    {isUltra && (
+                      <span className="absolute left-3 bottom-[3.5rem] z-10 inline-flex items-center gap-1 rounded-full bg-indigo-600 px-2.5 py-0.5 text-[11px] font-semibold text-white shadow-lg shadow-indigo-500/30 ring-1 ring-indigo-400/40">
+                        <Sparkles className="h-2.5 w-2.5" />
+                        Pro
+                      </span>
+                    )}
+                    {/* Lock overlay for non-Pro users */}
+                    {locked && (
+                      <Link
+                        href="/pricing"
+                        className="absolute inset-0 z-20 flex flex-col items-center justify-center rounded-xl bg-black/60 backdrop-blur-[2px] transition-opacity hover:bg-black/70"
+                      >
+                        <div className="flex flex-col items-center gap-2 text-white">
+                          <Lock className="h-7 w-7 drop-shadow" />
+                          <span className="text-sm font-semibold drop-shadow">Pro only</span>
+                          <span className="rounded-full bg-indigo-600 px-3 py-1 text-xs font-medium shadow-md">
+                            Upgrade for $6/mo
+                          </span>
+                        </div>
+                      </Link>
+                    )}
+                  </div>
+                  {template.demo_url && (
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="mt-2 rounded-lg border-border/60 hover:bg-brand-blue/5 hover:text-brand-blue transition-all duration-200"
+                      asChild
                     >
-                      ✨ Ultra
-                    </span>
+                      <Link href={template.demo_url} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="mr-1.5 h-3 w-3" />
+                        Live Demo
+                      </Link>
+                    </Button>
                   )}
                 </div>
-                {template.demo_url && (
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="mt-2 rounded-lg border-border/60 hover:bg-brand-blue/5 hover:text-brand-blue transition-all duration-200"
-                    asChild
-                  >
-                    <Link href={template.demo_url} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="mr-1.5 h-3 w-3" />
-                      Live Demo
-                    </Link>
-                  </Button>
-                )}
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>

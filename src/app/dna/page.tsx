@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { getUserProStatus } from "@/lib/pro";
 import { DNAExtractor } from "@/components/dna-extractor";
 
 export const metadata = {
@@ -15,5 +16,12 @@ export default async function DNAPage() {
     redirect("/auth/login?next=/dna");
   }
 
-  return <DNAExtractor />;
+  let isPro = false;
+  try {
+    isPro = await getUserProStatus();
+  } catch {
+    // treat as free
+  }
+
+  return <DNAExtractor userId={user.id} isPro={isPro} />;
 }

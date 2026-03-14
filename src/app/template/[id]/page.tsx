@@ -48,6 +48,7 @@ export default function TemplateDetailPage({
   const [copiedPlatform, setCopiedPlatform] = useState<string | null>(null);
   const [activePlatform, setActivePlatform] = useState<string>("");
   const [user, setUser] = useState<User | null>(null);
+  const [isPro, setIsPro] = useState(false);
   const [purchased, setPurchased] = useState(false);
   const [checkingPurchase, setCheckingPurchase] = useState(true);
   const [purchasing, setPurchasing] = useState(false);
@@ -94,6 +95,26 @@ export default function TemplateDetailPage({
       const { data: { user: currentUser } } = await supabase.auth.getUser();
       setUser(currentUser);
       if (currentUser && template) {
+        try {
+          // Check Pro subscription
+          const { data: sub } = await supabase
+            .from("subscriptions")
+            .select("status, current_period_end")
+            .eq("user_id", currentUser.id)
+            .eq("status", "active")
+            .maybeSingle();
+          if (sub) {
+            const isActive = sub.current_period_end
+              ? new Date(sub.current_period_end) > new Date()
+              : sub.status === "active";
+            setIsPro(isActive);
+            if (isActive && template.price_tier === "ultra_premium") {
+              setPurchased(true);
+              setCheckingPurchase(false);
+              return;
+            }
+          }
+        } catch { /* subscriptions table may not exist yet */ }
         try {
           const { data } = await supabase.from("purchases").select("id").eq("user_id", currentUser.id).eq("template_id", template.id).limit(1).maybeSingle();
           if (data) {
@@ -150,8 +171,11 @@ export default function TemplateDetailPage({
   }
 
   const isFree = template.price_tier === "free";
+  const isUltraPremium = template.price_tier === "ultra_premium";
+  // Ultra premium unlocked if user has Pro subscription
+  const ultraUnlocked = isUltraPremium && isPro;
 
-  const canCopy = isFree || purchased;
+  const canCopy = isFree || purchased || ultraUnlocked;
 
   const prompt = activePlatform
     ? generatePrompt(template as Parameters<typeof generatePrompt>[0], activePlatform, customization)
@@ -501,6 +525,25 @@ export default function TemplateDetailPage({
                     </>
                   )}
                 </Button>
+              ) : isUltraPremium && !isPro && !checkingPurchase ? (
+                /* Ultra Premium — requires Pro subscription */
+                <div className="rounded-xl border border-indigo-200 bg-gradient-to-br from-indigo-50 to-white p-5 text-center">
+                  <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-indigo-100">
+                    <Lock className="h-5 w-5 text-indigo-600" />
+                  </div>
+                  <h3 className="text-base font-semibold text-foreground">Pro exclusive</h3>
+                  <p className="mt-1.5 text-sm text-muted-foreground">
+                    Subscribe to Pro to unlock all Ultra Premium templates — <span className="font-medium text-foreground">unlimited access for $6/month</span>.
+                  </p>
+                  <Button
+                    className="mt-4 w-full bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm shadow-indigo-500/30"
+                    asChild
+                  >
+                    <Link href="/pricing">
+                      Subscribe to Pro — $6/mo
+                    </Link>
+                  </Button>
+                </div>
               ) : !user && !checkingPurchase ? (
                 /* Not logged in */
                 <Button
@@ -554,6 +597,10 @@ export default function TemplateDetailPage({
                 {isFree ? (
                   <Badge className="bg-emerald-500 text-white hover:bg-emerald-600">
                     FREE
+                  </Badge>
+                ) : isUltraPremium ? (
+                  <Badge className="bg-indigo-600 text-white hover:bg-indigo-700">
+                    ✨ Pro
                   </Badge>
                 ) : (
                   <Badge className="bg-brand-blue text-white">$2</Badge>
