@@ -182,10 +182,14 @@ export default function EditorialBlogPage() {
 
         /* ── Hero / Featured ── */
         .eb-hero {
+          width: 100%; position: relative; overflow: hidden;
+          text-align: center;
+        }
+        .eb-hero-inner {
           max-width: 780px; margin: 0 auto;
-          padding: 72px 24px 56px; text-align: center;
+          padding: 80px 24px 64px;
           animation: eb-fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
-          position: relative; overflow: hidden;
+          position: relative; z-index: 2;
         }
         .eb-hero-category {
           display: inline-block; font-family: 'Inter', sans-serif;
@@ -498,7 +502,7 @@ export default function EditorialBlogPage() {
               width: '100%',
               height: '100%',
               objectFit: 'cover',
-              opacity: 0.15,
+              opacity: 0.18,
               pointerEvents: 'none',
               zIndex: 0,
               mixBlendMode: 'multiply',
@@ -509,15 +513,18 @@ export default function EditorialBlogPage() {
             loop
             playsInline
           />
-          <span className="eb-hero-category" style={{ position: 'relative', zIndex: 2 }}>{FEATURED.category}</span>
-          <h1 className="eb-hero-title" style={{ position: 'relative', zIndex: 2 }}>{FEATURED.title}</h1>
-          <p className="eb-hero-excerpt" style={{ position: 'relative', zIndex: 2 }}>{FEATURED.excerpt}</p>
-          <div className="eb-hero-meta" style={{ position: 'relative', zIndex: 2 }}>
-            <span className="eb-hero-author">{FEATURED.author}</span>
-            <span className="eb-meta-dot" />
-            <span>{FEATURED.date}</span>
-            <span className="eb-meta-dot" />
-            <span>{FEATURED.readTime}</span>
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(250,250,248,0.1) 0%, rgba(250,250,248,0.05) 50%, rgba(250,250,248,0.2) 100%)', zIndex: 1, pointerEvents: 'none' }} />
+          <div className="eb-hero-inner">
+            <span className="eb-hero-category">{FEATURED.category}</span>
+            <h1 className="eb-hero-title">{FEATURED.title}</h1>
+            <p className="eb-hero-excerpt">{FEATURED.excerpt}</p>
+            <div className="eb-hero-meta">
+              <span className="eb-hero-author">{FEATURED.author}</span>
+              <span className="eb-meta-dot" />
+              <span>{FEATURED.date}</span>
+              <span className="eb-meta-dot" />
+              <span>{FEATURED.readTime}</span>
+            </div>
           </div>
         </section>
 
