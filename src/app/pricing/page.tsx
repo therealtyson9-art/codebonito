@@ -56,10 +56,10 @@ export default function PricingPage() {
         <Badge className="mb-4 border-brand-blue/20 bg-brand-blue-light text-brand-blue">
           Pricing
         </Badge>
-        <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl">
+        <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
           Clear pricing, no surprises
         </h1>
-        <p className="mt-6 text-lg text-muted-foreground">
+        <p className="mt-6 text-lg text-gray-400">
           Try free with 1 template per month. Upgrade to Pro for unlimited
           access to all templates — including Ultra Premium.
         </p>
@@ -189,10 +189,10 @@ export default function PricingPage() {
 
       {/* Feature Comparison */}
       <div className="mx-auto mt-28 max-w-4xl">
-        <h2 className="text-center text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+        <h2 className="text-center text-2xl font-bold tracking-tight text-white sm:text-3xl">
           Plan comparison
         </h2>
-        <p className="mt-3 text-center text-muted-foreground">
+        <p className="mt-3 text-center text-gray-400">
           Everything included at a glance.
         </p>
 
@@ -264,17 +264,17 @@ export default function PricingPage() {
 
       {/* FAQ */}
       <div className="mx-auto mt-28 max-w-2xl text-center">
-        <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+        <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
           Questions?
         </h2>
-        <p className="mt-4 text-muted-foreground">
-          Can I cancel anytime? <span className="font-medium text-foreground">Of course.</span>{" "}
+        <p className="mt-4 text-gray-400">
+          Can I cancel anytime? <span className="font-medium text-white">Of course.</span>{" "}
           Are updates included?{" "}
-          <span className="font-medium text-foreground">Always.</span> Can I use them
+          <span className="font-medium text-white">Always.</span> Can I use them
           commercially?{" "}
-          <span className="font-medium text-foreground">Absolutely.</span>
+          <span className="font-medium text-white">Absolutely.</span>
         </p>
-        <Button asChild variant="outline" className="mt-8">
+        <Button asChild variant="outline" className="mt-8 border-white/20 text-white hover:bg-white/10">
           <Link href="/browse">
             Start Exploring <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
