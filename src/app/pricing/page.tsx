@@ -183,6 +183,7 @@ export default function PricingPage() {
               )}
               Subscribe to Pro
             </Button>
+            <p className="mt-3 text-center text-sm text-indigo-300">🔒 30-day money-back guarantee</p>
           </CardFooter>
         </Card>
       </div>
@@ -273,6 +274,11 @@ export default function PricingPage() {
           <span className="font-medium text-white">Always.</span> Can I use them
           commercially?{" "}
           <span className="font-medium text-white">Absolutely.</span>
+        </p>
+        <p className="mt-4 text-gray-400">
+          <span className="font-medium text-white">What if I&apos;m not satisfied?</span>{" "}
+          We offer a full refund within 30 days of your first payment, no questions asked. Email us at{" "}
+          <a href="mailto:hello@codebonito.com" className="text-indigo-400 hover:text-indigo-300">hello@codebonito.com</a>
         </p>
         <Button asChild variant="outline" className="mt-8 border-white/20 text-white hover:bg-white/10">
           <Link href="/browse">
