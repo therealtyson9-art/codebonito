@@ -138,41 +138,41 @@ export default function PricingPage() {
         </Card>
 
         {/* Pro */}
-        <Card className="relative flex flex-col border-indigo-500/60 bg-gradient-to-b from-indigo-950/5 to-white shadow-lg shadow-indigo-500/10">
+        <Card className="relative flex flex-col border-indigo-500/40 bg-gradient-to-b from-indigo-950 to-[#0d0b2e] shadow-lg shadow-indigo-500/20">
           <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-            <Badge className="bg-indigo-600 text-white shadow-sm px-4 hover:bg-indigo-600">
+            <Badge className="bg-indigo-500 text-white shadow-sm px-4 hover:bg-indigo-500">
               <Sparkles className="mr-1 h-3 w-3" />
               Pro
             </Badge>
           </div>
           <CardHeader className="pb-4">
-            <CardTitle className="text-2xl text-foreground">Pro</CardTitle>
-            <CardDescription className="text-base">
+            <CardTitle className="text-2xl text-white">Pro</CardTitle>
+            <CardDescription className="text-base text-indigo-300">
               Access everything, unlimited
             </CardDescription>
             <div className="mt-6">
-              <span className="text-6xl font-bold tracking-tight text-foreground">$6</span>
-              <span className="ml-1 text-lg text-muted-foreground">
+              <span className="text-6xl font-bold tracking-tight text-white">$6</span>
+              <span className="ml-1 text-lg text-indigo-300">
                 /month
               </span>
             </div>
           </CardHeader>
           <CardContent className="flex-1 pt-4">
             <ul className="space-y-4">
-              <PricingFeature>All templates unlimited</PricingFeature>
-              <PricingFeature highlighted>✨ Ultra Premium templates included</PricingFeature>
-              <PricingFeature>All 5 major platforms</PricingFeature>
-              <PricingFeature>Colors, fonts, and spacing defined</PricingFeature>
-              <PricingFeature>Optimized prompts</PricingFeature>
-              <PricingFeature>Use commercially</PricingFeature>
-              <PricingFeature>Priority support</PricingFeature>
-              <PricingFeature>New templates first</PricingFeature>
-              <PricingFeature>Creator tools (upload &amp; earn)</PricingFeature>
+              <PricingFeaturePro>All templates unlimited</PricingFeaturePro>
+              <PricingFeaturePro highlighted>✨ Ultra Premium templates included</PricingFeaturePro>
+              <PricingFeaturePro>All 5 major platforms</PricingFeaturePro>
+              <PricingFeaturePro>Colors, fonts, and spacing defined</PricingFeaturePro>
+              <PricingFeaturePro>Optimized prompts</PricingFeaturePro>
+              <PricingFeaturePro>Use commercially</PricingFeaturePro>
+              <PricingFeaturePro>Priority support</PricingFeaturePro>
+              <PricingFeaturePro>New templates first</PricingFeaturePro>
+              <PricingFeaturePro>Creator tools (upload &amp; earn)</PricingFeaturePro>
             </ul>
           </CardContent>
           <CardFooter className="pt-6">
             <Button
-              className="w-full h-12 text-base bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm shadow-indigo-500/30"
+              className="w-full h-12 text-base bg-indigo-500 hover:bg-indigo-400 text-white shadow-sm shadow-indigo-500/40"
               onClick={handleSubscribe}
               disabled={subscribing}
             >
@@ -294,6 +294,21 @@ function PricingFeature({
   return (
     <li className={`flex items-center gap-3 text-sm ${highlighted ? "font-semibold text-indigo-700" : "text-foreground"}`}>
       <Check className={`h-4 w-4 shrink-0 ${highlighted ? "text-indigo-600" : "text-brand-blue"}`} />
+      {children}
+    </li>
+  );
+}
+
+function PricingFeaturePro({
+  children,
+  highlighted,
+}: {
+  children: React.ReactNode;
+  highlighted?: boolean;
+}) {
+  return (
+    <li className={`flex items-center gap-3 text-sm ${highlighted ? "font-semibold text-indigo-200" : "text-gray-100"}`}>
+      <Check className={`h-4 w-4 shrink-0 ${highlighted ? "text-indigo-300" : "text-indigo-400"}`} />
       {children}
     </li>
   );
