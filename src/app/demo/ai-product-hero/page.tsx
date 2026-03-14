@@ -957,7 +957,7 @@ export default function AIProductHeroPage() {
               pointerEvents: 'none',
               zIndex: 0,
             }}
-            src="/videos/particles-blue.mp4"
+            src="/videos/neural.mp4"
             autoPlay
             muted
             loop

@@ -333,7 +333,7 @@ export default function AppShowcasePage() {
             pointerEvents: 'none',
             zIndex: 0,
           }}
-          src="/videos/particles-glitter.mp4"
+          src="/videos/aurora.mp4"
           autoPlay
           muted
           loop

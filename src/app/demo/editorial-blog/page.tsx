@@ -503,7 +503,7 @@ export default function EditorialBlogPage() {
               zIndex: 0,
               mixBlendMode: 'multiply',
             }}
-            src="/videos/particles-dust.mp4"
+            src="/videos/forest.mp4"
             autoPlay
             muted
             loop

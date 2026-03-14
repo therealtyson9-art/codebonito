@@ -200,7 +200,7 @@ export default function LuxuryEcommercePage() {
             pointerEvents: 'none',
             zIndex: 0,
           }}
-          src="/videos/particles-dust.mp4"
+          src="/videos/silk.mp4"
           autoPlay
           muted
           loop

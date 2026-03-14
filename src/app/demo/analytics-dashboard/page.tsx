@@ -358,7 +358,7 @@ export default function AnalyticsDashboardPage() {
               pointerEvents: 'none',
               zIndex: 0,
             }}
-            src="/videos/particles-blue.mp4"
+            src="/videos/space.mp4"
             autoPlay
             muted
             loop
