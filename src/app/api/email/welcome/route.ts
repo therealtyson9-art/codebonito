@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
 
     const { error } = await resend.emails.send({
       from: FROM_EMAIL,
-      reply_to: REPLY_TO,
+      replyTo: REPLY_TO,
       to: email,
       subject: "Your first free template is waiting",
       html: welcomeHtml(name),

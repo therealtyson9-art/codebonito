@@ -110,7 +110,7 @@ export async function GET(request: Request) {
       if (subject && html) {
         const { error: sendError } = await resend.emails.send({
           from: FROM_EMAIL,
-          reply_to: REPLY_TO,
+          replyTo: REPLY_TO,
           to: item.email as string,
           subject,
           html,
