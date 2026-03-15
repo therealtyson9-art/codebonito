@@ -5,6 +5,7 @@ import { createAdminClient } from "@/lib/supabase/admin";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const FROM_EMAIL = "Code Bonito <noreply@codebonito.com>";
+const REPLY_TO = "hello@codebonito.com";
 
 function welcomeHtml(name: string | null) {
   const p = (text: string) => `<p style="margin:0 0 20px;color:#374151;line-height:1.8;font-size:15px;">${text}</p>`;
@@ -48,6 +49,7 @@ export async function POST(req: NextRequest) {
 
     const { error } = await resend.emails.send({
       from: FROM_EMAIL,
+      reply_to: REPLY_TO,
       to: email,
       subject: "Your first free template is waiting",
       html: welcomeHtml(name),
