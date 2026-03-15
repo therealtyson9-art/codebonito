@@ -79,7 +79,7 @@ export default function FreeCursorRulesPage() {
       {/* ── Social Proof ── */}
       <section className="bg-[#050510] px-6 py-10 text-center">
         <p className="text-sm text-gray-500">
-          11 Ultra Premium templates · 33+ builders using it · Trusted by
+          11 Ultra Premium templates · Tested on 4 platforms · Trusted by
           Cursor, v0 &amp; Bolt users
         </p>
       </section>

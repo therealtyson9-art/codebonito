@@ -512,7 +512,7 @@ export default function TemplateDetailPage({
             <div className="mt-4 space-y-2">
               <div className="flex items-center gap-2 text-sm text-gray-400">
                 <span>✨</span>
-                <span>Used by <strong className="text-white">33+ builders</strong></span>
+                <span><strong className="text-white">Trusted by early builders</strong></span>
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-400">
                 <span>✅</span>
