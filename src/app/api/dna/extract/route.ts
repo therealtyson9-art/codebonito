@@ -16,11 +16,12 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid URL. Must start with http:// or https://" }, { status: 400 });
   }
 
-  // Step 1: Fetch the page HTML
+  // Step 1: Fetch the page HTML (direct fetch first, Jina.ai fallback for blocked sites)
   let html = "";
   let blocked = false;
-  try {
-    const res = await fetch(url, {
+
+  async function directFetch(targetUrl: string): Promise<string> {
+    const res = await fetch(targetUrl, {
       headers: {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
@@ -28,26 +29,37 @@ export async function POST(request: Request) {
       },
       signal: AbortSignal.timeout(8000),
     });
+    if (!res.ok) return "";
+    const text = await res.text();
+    if (text.length < 500 || text.includes("cf-browser-verification") || text.includes("Just a moment")) return "";
+    return text.slice(0, 15000);
+  }
 
-    if (!res.ok) {
-      blocked = true;
-    } else {
-      const text = await res.text();
-      // If Cloudflare challenge or very short body, treat as blocked
-      if (text.length < 500 || text.includes("cf-browser-verification") || text.includes("Just a moment")) {
-        blocked = true;
-      } else {
-        // Trim HTML to avoid huge token usage — keep head + first 12KB of body
-        html = text.slice(0, 15000);
-      }
+  async function jinaFetch(targetUrl: string): Promise<string> {
+    const jinaUrl = `https://r.jina.ai/${targetUrl}`;
+    const res = await fetch(jinaUrl, {
+      headers: { "Accept": "text/plain", "X-No-Cache": "true" },
+      signal: AbortSignal.timeout(12000),
+    });
+    if (!res.ok) return "";
+    const text = await res.text();
+    return text.slice(0, 15000);
+  }
+
+  try {
+    html = await directFetch(url);
+    if (!html) {
+      // Fallback: Jina.ai Reader bypasses Cloudflare and anti-bot protections
+      html = await jinaFetch(url);
     }
+    if (!html) blocked = true;
   } catch {
     blocked = true;
   }
 
   if (blocked) {
     return NextResponse.json({
-      error: "This site can't be analyzed — it blocks automated access (apple.com, Twitter, etc). Try a different URL like stripe.com, linear.app, or vercel.com.",
+      error: "This site can't be analyzed — it blocks all automated access. Try a different URL.",
       blocked: true,
     }, { status: 400 });
   }
