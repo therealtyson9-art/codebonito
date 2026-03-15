@@ -47,7 +47,7 @@ export async function POST(request: Request) {
 
   if (blocked) {
     return NextResponse.json({
-      error: "This site blocks automated access. Try pasting their CSS/HTML manually (coming soon).",
+      error: "This site can't be analyzed — it blocks automated access (apple.com, Twitter, etc). Try a different URL like stripe.com, linear.app, or vercel.com.",
       blocked: true,
     }, { status: 400 });
   }
@@ -153,7 +153,7 @@ Rules:
               ],
             },
           ],
-          generationConfig: { temperature: 0.1, maxOutputTokens: 1500 },
+          generationConfig: { temperature: 0.1, maxOutputTokens: 1500, responseMimeType: "application/json" },
         }),
       }
     );
@@ -161,7 +161,9 @@ Rules:
     if (!res.ok) throw new Error(`Gemini API error: ${res.status}`);
     const data = await res.json();
     const raw = data.candidates?.[0]?.content?.parts?.[0]?.text ?? "";
-    const jsonMatch = raw.match(/\{[\s\S]*\}/);
+    // Strip markdown fences if present (fallback for models that ignore responseMimeType)
+    const clean = raw.replace(/^```(?:json)?\s*/i, "").replace(/\s*```\s*$/, "").trim();
+    const jsonMatch = clean.match(/\{[\s\S]*\}/);
     if (!jsonMatch) throw new Error("No JSON in response");
     tokens = JSON.parse(jsonMatch[0]);
   } catch (err) {
