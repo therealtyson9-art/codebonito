@@ -508,6 +508,22 @@ export default function TemplateDetailPage({
               </div>
             )}
 
+            {/* Social proof */}
+            <div className="mt-4 space-y-2">
+              <div className="flex items-center gap-2 text-sm text-gray-400">
+                <span>✨</span>
+                <span>Used by <strong className="text-white">33+ builders</strong></span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-400">
+                <span>✅</span>
+                <span>Tested on Cursor, v0, Bolt and Lovable</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-400">
+                <span>🔒</span>
+                <span>30-day money-back guarantee</span>
+              </div>
+            </div>
+
             {/* Action Button */}
             <div className="mt-4">
               {canCopy ? (

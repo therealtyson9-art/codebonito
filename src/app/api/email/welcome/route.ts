@@ -21,7 +21,7 @@ function welcomeHtml(name: string | null) {
       ${p("Hey,")}
       ${p("You just signed up for Code Bonito. Here's how it works.")}
       ${p("Every month you get one free template. No credit card. No catch.")}
-      ${p(`Browse the full library: <a href="https://codebonito.com/browse" style="color:#6366f1;font-weight:600;text-decoration:none;">codebonito.com/browse</a>`)}
+      ${p(`Browse the full library: <a href="https://codebonito.com/browse?utm_source=email&utm_medium=welcome&utm_campaign=onboarding" style="color:#6366f1;font-weight:600;text-decoration:none;">codebonito.com/browse</a>`)}
       ${p("A few worth checking out right now:")}
       <p style="margin:0 0 20px;color:#374151;line-height:1.8;font-size:15px;">
         — <strong>Brutalist SaaS</strong> — high contrast, bold type, nothing generic about it<br>

@@ -80,6 +80,14 @@ export function Hero() {
           <p className="mt-5 text-sm text-white/40 animate-fade-up" style={{ animationDelay: "0.65s" }}>
             🔒 30-day money-back guarantee · No credit card for free templates
           </p>
+
+          {/* Scroll indicator */}
+          <div className="mt-12 flex flex-col items-center gap-1 animate-bounce opacity-40">
+            <span className="text-xs text-white/40 tracking-widest uppercase">Scroll</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white/40">
+              <path d="M12 5v14M5 12l7 7 7-7"/>
+            </svg>
+          </div>
         </div>
 
         {/* Template showcase cards */}

@@ -23,7 +23,7 @@ function day3Html(name: string | null): string {
       ${p("Pro plan = $6 per month.")}
       ${p(`With Pro you get all 11 Ultra Premium templates (the ones with glassmorphism, parallax, and micro-interactions that make people ask "what tool did you use for that?") plus unlimited access to the DNA Cloner and every new template we add.`)}
       ${p("If you're building more than one project, the math does itself.")}
-      ${p(`<a href="https://codebonito.com/pricing" style="color:#6366f1;font-weight:600;text-decoration:none;">See what Pro includes →</a>`)}
+      ${p(`<a href="https://codebonito.com/pricing?utm_source=email&utm_medium=sequence&utm_campaign=d3" style="color:#6366f1;font-weight:600;text-decoration:none;">See what Pro includes →</a>`)}
       ${p("— Jose")}
     </div>
     <div style="padding:16px 40px 24px;border-top:1px solid #f3f4f6;background:#fafafa;">
@@ -52,7 +52,7 @@ function day7Html(name: string | null): string {
       <p style="margin:0 0 20px;color:#374151;line-height:1.8;font-size:15px;"><strong>Pro ($6/month):</strong> Everything. All 11 Ultra Premium templates. Unlimited DNA Cloner. Every new template as it drops.</p>
       ${p("The Ultra Premium ones are different. Animated backgrounds, glassmorphism cards, layouts that don't look like AI built them.")}
       ${p("If you've used Code Bonito at all this week, Pro pays for itself before the month ends.")}
-      ${p(`<a href="https://codebonito.com/pricing" style="color:#6366f1;font-weight:600;text-decoration:none;">codebonito.com/pricing</a>`)}
+      ${p(`<a href="https://codebonito.com/pricing?utm_source=email&utm_medium=sequence&utm_campaign=d7" style="color:#6366f1;font-weight:600;text-decoration:none;">codebonito.com/pricing</a>`)}
       ${p("— Jose")}
     </div>
     <div style="padding:16px 40px 24px;border-top:1px solid #f3f4f6;background:#fafafa;">
