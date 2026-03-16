@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@/components/analytics";
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
+import { NavbarWrapper } from "@/components/navbar-wrapper";
+import { FooterWrapper } from "@/components/footer-wrapper";
+
 
 const inter = Inter({
   variable: "--font-inter",
@@ -125,9 +126,9 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable} antialiased bg-[#050510]`}
       >
-        <Navbar />
+        <NavbarWrapper />
         <main className="min-h-[calc(100vh-4rem)]">{children}</main>
-        <Footer />
+        <FooterWrapper />
         <Analytics />
       </body>
     </html>
