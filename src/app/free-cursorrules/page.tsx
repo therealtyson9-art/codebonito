@@ -18,8 +18,16 @@ export default function FreeCursorRulesPage() {
       <Analytics />
       <LeadTracker />
 
+      {/* ── Logo bar ── */}
+      <header className="flex items-center justify-center px-6 pt-8 pb-0">
+        <Link href="https://codebonito.com" className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity">
+          <Sparkles className="h-5 w-5 text-indigo-400" />
+          <span className="text-lg font-semibold tracking-tight text-white">Code Bonito</span>
+        </Link>
+      </header>
+
       {/* ── Hero ── */}
-      <section className="bg-[#050510] px-6 py-20 text-center">
+      <section className="bg-[#050510] px-6 py-16 text-center">
         <div className="mx-auto max-w-3xl">
           {/* Badge */}
           <span className="mb-6 inline-block rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-1 text-sm font-medium text-indigo-400">
