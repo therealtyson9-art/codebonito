@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
-import { Sparkles } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { Analytics } from "@/components/analytics";
 import { CursorRulesClient } from "../cursorrules/client";
@@ -20,9 +20,8 @@ export default function FreeCursorRulesPage() {
 
       {/* ── Logo bar ── */}
       <header className="flex items-center justify-center px-6 pt-8 pb-0">
-        <Link href="https://codebonito.com" className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity">
-          <Sparkles className="h-5 w-5 text-indigo-400" />
-          <span className="text-lg font-semibold tracking-tight text-white">Code Bonito</span>
+        <Link href="https://codebonito.com" className="opacity-80 hover:opacity-100 transition-opacity">
+          <Image src="/images/logo-dark.png" alt="Code Bonito" width={150} height={25} className="h-7 w-auto" priority />
         </Link>
       </header>
 
