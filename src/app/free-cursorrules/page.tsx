@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Sparkles } from "lucide-react";
 import { Analytics } from "@/components/analytics";
 import { CursorRulesClient } from "../cursorrules/client";
 import { LeadTracker } from "./lead-tracker";
