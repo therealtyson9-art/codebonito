@@ -277,6 +277,30 @@ export default function TemplateDetailPage({
     }
   }
 
+  async function handleDesignMd() {
+    try {
+      const res = await fetch(`/api/design-md?id=${template!.id}`);
+      if (res.status === 401) {
+        router.push(`/login?redirect=/template/${template!.id}`);
+        return;
+      }
+      if (!res.ok) return;
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      const disposition = res.headers.get("Content-Disposition");
+      const match = disposition?.match(/filename="?([^"]+)"?/);
+      a.download = match?.[1] ?? `DESIGN-${template!.slug}.md`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    } catch {
+      // Network error
+    }
+  }
+
   async function handleDownload() {
     setDownloading(true);
     try {
@@ -599,6 +623,16 @@ export default function TemplateDetailPage({
                   <Download className="h-3.5 w-3.5" />
                 )}
                 Download ZIP with design tokens
+              </button>
+            )}
+            {/* Export DESIGN.md — for Cursor / Claude Code / Gemini CLI */}
+            {canCopy && (
+              <button
+                onClick={handleDesignMd}
+                className="mt-2 flex w-full items-center justify-center gap-2 text-sm text-indigo-400 transition-colors hover:text-indigo-300"
+              >
+                <Download className="h-3.5 w-3.5" />
+                Export DESIGN.md <span className="text-xs text-gray-500">(Cursor · Claude Code · Gemini CLI)</span>
               </button>
             )}
           </div>
