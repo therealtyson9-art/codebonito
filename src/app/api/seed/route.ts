@@ -2,12 +2,12 @@ import { NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { MOCK_TEMPLATES } from "@/lib/mock-data";
 
-export async function POST() {
-  if (false) {
-    return NextResponse.json(
-      { error: "Not allowed in production" },
-      { status: 403 }
-    );
+export async function POST(request: Request) {
+  // Guard: require SEED_SECRET to prevent unauthorized seeding in production
+  const authHeader = request.headers.get("authorization");
+  const seedSecret = process.env.SEED_SECRET;
+  if (!seedSecret || authHeader !== `Bearer ${seedSecret}`) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const supabase = createAdminClient();
