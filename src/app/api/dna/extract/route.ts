@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
+
+const FREE_LIMIT = 3;
+const PRO_DAILY_LIMIT = 50;
 
 export async function POST(request: Request) {
   // Auth check
@@ -7,6 +11,64 @@ export async function POST(request: Request) {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const admin = createAdminClient();
+
+  // --- Pro check (server-side) ---
+  const { data: sub } = await admin
+    .from("subscriptions")
+    .select("plan, status")
+    .eq("user_id", user.id)
+    .eq("status", "active")
+    .single();
+  const isPro = sub?.plan === "pro";
+
+  // --- Usage tracking + enforcement ---
+  const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+
+  // Upsert usage row
+  const { data: usage } = await admin
+    .from("dna_cloner_usage")
+    .upsert({ user_id: user.id }, { onConflict: "user_id", ignoreDuplicates: false })
+    .select()
+    .single();
+
+  // Re-fetch to get current counts (upsert may return stale)
+  const { data: currentUsage } = await admin
+    .from("dna_cloner_usage")
+    .select("free_uses_count, pro_uses_today, pro_reset_date")
+    .eq("user_id", user.id)
+    .single();
+
+  if (isPro) {
+    // Pro: 50 extractions/day, reset daily
+    const resetDate = currentUsage?.pro_reset_date ?? today;
+    const todayCount = resetDate === today ? (currentUsage?.pro_uses_today ?? 0) : 0;
+    if (todayCount >= PRO_DAILY_LIMIT) {
+      return NextResponse.json(
+        { error: `Daily limit reached (${PRO_DAILY_LIMIT} extractions/day for Pro). Resets tomorrow.`, limitReached: true },
+        { status: 429 }
+      );
+    }
+    // Increment pro usage
+    await admin.from("dna_cloner_usage").update({
+      pro_uses_today: resetDate === today ? todayCount + 1 : 1,
+      pro_reset_date: today,
+    }).eq("user_id", user.id);
+  } else {
+    // Free: 3 extractions total (lifetime)
+    const freeCount = currentUsage?.free_uses_count ?? 0;
+    if (freeCount >= FREE_LIMIT) {
+      return NextResponse.json(
+        { error: `Free limit reached (${FREE_LIMIT} extractions). Upgrade to Pro for unlimited access.`, limitReached: true, upgradeRequired: true },
+        { status: 429 }
+      );
+    }
+    // Increment free usage
+    await admin.from("dna_cloner_usage").update({
+      free_uses_count: freeCount + 1,
+    }).eq("user_id", user.id);
   }
 
   const body = await request.json();
