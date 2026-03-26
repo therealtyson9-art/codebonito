@@ -4,6 +4,7 @@ import "./globals.css";
 import { Analytics } from "@/components/analytics";
 import { NavbarWrapper } from "@/components/navbar-wrapper";
 import { FooterWrapper } from "@/components/footer-wrapper";
+import { ThemeProvider } from "next-themes";
 
 
 const inter = Inter({
@@ -131,10 +132,12 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${interTight.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable} antialiased bg-[#050510]`}
       >
-        <NavbarWrapper />
-        <main className="min-h-[calc(100vh-4rem)]">{children}</main>
-        <FooterWrapper />
-        <Analytics />
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <NavbarWrapper />
+          <main className="min-h-[calc(100vh-4rem)]">{children}</main>
+          <FooterWrapper />
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   );
