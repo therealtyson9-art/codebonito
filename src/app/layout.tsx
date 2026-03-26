@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Instrument_Serif } from "next/font/google";
+import { Inter, Inter_Tight, JetBrains_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@/components/analytics";
 import { NavbarWrapper } from "@/components/navbar-wrapper";
@@ -8,6 +8,11 @@ import { FooterWrapper } from "@/components/footer-wrapper";
 
 const inter = Inter({
   variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+const interTight = Inter_Tight({
+  variable: "--font-inter-tight",
   subsets: ["latin"],
 });
 
@@ -124,7 +129,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable} antialiased bg-[#050510]`}
+        className={`${inter.variable} ${interTight.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable} antialiased bg-[#050510]`}
       >
         <NavbarWrapper />
         <main className="min-h-[calc(100vh-4rem)]">{children}</main>

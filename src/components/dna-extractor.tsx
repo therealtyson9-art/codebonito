@@ -153,7 +153,7 @@ export function DNAExtractor({ isPro = false }: { userId?: string; isPro?: boole
               Beta
             </span>
           </div>
-          <h1 className="text-4xl font-bold text-white mb-3">Clone DNA</h1>
+          <h1 className="text-4xl font-bold text-white mb-3 font-heading">Clone DNA</h1>
           <p className="text-gray-400 text-lg">
             Extract any website&apos;s design system and turn it into an AI prompt. Paste the URL — get colors, fonts, spacing, and a ready-to-use prompt for Cursor, v0, or Bolt.
           </p>

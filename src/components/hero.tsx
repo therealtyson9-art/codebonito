@@ -35,7 +35,7 @@ export function Hero() {
           </div>
 
           {/* Headline */}
-          <h1 className="overflow-hidden">
+          <h1 className="overflow-hidden font-heading">
             <span
               className="block text-[48px] font-black uppercase leading-[1.05] tracking-[-0.04em] text-white sm:text-[56px] md:text-[72px] animate-fade-up"
               style={{ animationDelay: "0.1s" }}

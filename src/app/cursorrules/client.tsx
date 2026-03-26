@@ -626,7 +626,7 @@ export function CursorRulesClient() {
       {/* Hero */}
       <section className="pt-24 pb-12 px-6 text-center">
         <div className="max-w-3xl mx-auto">
-          <h1 className="font-[family-name:var(--font-inter)] font-black text-[36px] md:text-[56px] tracking-[-0.04em] leading-[1.05] mb-4">
+          <h1 className="font-[family-name:var(--font-inter-tight)] font-black text-[36px] md:text-[56px] tracking-[-0.04em] leading-[1.05] mb-4">
             Build Your{" "}
             <span
               style={{

@@ -78,7 +78,7 @@ export function BrowseClient({ templates, isPro = false }: { templates: Template
                 <Sparkles className="mr-1 h-3 w-3" />
                 {templates.length} Templates
               </Badge>
-              <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+              <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl font-heading">
                 Browse Templates
               </h1>
               <p className="mt-2 text-lg text-muted-foreground">

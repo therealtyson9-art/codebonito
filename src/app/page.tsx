@@ -129,7 +129,7 @@ export default function HomePage() {
               <span className="mb-4 inline-flex items-center rounded-full border border-indigo-400/20 bg-indigo-400/10 px-3 py-1 text-xs font-semibold text-indigo-400">
                 Popular
               </span>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-5xl">
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-5xl font-heading">
                 Trending templates
               </h2>
               <p className="mt-4 text-lg text-white/50">
@@ -167,7 +167,7 @@ export default function HomePage() {
                 <span className="mb-4 inline-flex items-center rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-1 text-xs font-semibold text-amber-400">
                   Fresh
                 </span>
-                <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-5xl">
+                <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-5xl font-heading">
                   New this week
                 </h2>
                 <p className="mt-4 text-lg text-white/50">
@@ -209,7 +209,7 @@ export default function HomePage() {
             <span className="mb-3 inline-flex items-center rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-1 text-xs font-semibold text-amber-400">
               How It Works
             </span>
-            <h2 className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl">
+            <h2 className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl font-heading">
               Pick &rarr; Copy &rarr; Paste
             </h2>
           </div>
@@ -245,7 +245,7 @@ export default function HomePage() {
             <span className="mb-4 inline-flex items-center rounded-full border border-indigo-400/20 bg-indigo-400/10 px-3 py-1 text-xs font-semibold text-indigo-400">
               Features
             </span>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-5xl">
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-5xl font-heading">
               Why Code Bonito?
             </h2>
             <p className="mt-4 text-lg text-white/50">
@@ -295,7 +295,7 @@ export default function HomePage() {
             <span className="mb-4 inline-flex items-center rounded-full border border-indigo-400/20 bg-indigo-400/10 px-3 py-1 text-xs font-semibold text-indigo-400">
               Pricing
             </span>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-5xl">
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-5xl font-heading">
               Clear pricing, no surprises
             </h2>
             <p className="mt-4 text-lg text-white/50">
@@ -373,7 +373,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(99,102,241,0.15),transparent_70%)]" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl font-heading">
               Ready to build something that stands out?
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-lg text-white/50">

@@ -56,7 +56,7 @@ export default function PricingPage() {
         <Badge className="mb-4 border-brand-blue/20 bg-brand-blue-light text-brand-blue">
           Pricing
         </Badge>
-        <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+        <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl font-heading">
           Clear pricing, no surprises
         </h1>
         <p className="mt-6 text-lg text-gray-400">
@@ -190,7 +190,7 @@ export default function PricingPage() {
 
       {/* Feature Comparison */}
       <div className="mx-auto mt-28 max-w-4xl">
-        <h2 className="text-center text-2xl font-bold tracking-tight text-white sm:text-3xl">
+        <h2 className="text-center text-2xl font-bold tracking-tight text-white sm:text-3xl font-heading">
           Plan comparison
         </h2>
         <p className="mt-3 text-center text-gray-400">
@@ -265,7 +265,7 @@ export default function PricingPage() {
 
       {/* FAQ */}
       <div className="mx-auto mt-28 max-w-2xl text-center">
-        <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+        <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl font-heading">
           Questions?
         </h2>
         <p className="mt-4 text-gray-400">
